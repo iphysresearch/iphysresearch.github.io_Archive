@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Machine Learning, Deep Learning, Physics">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      一段关于神经网络的故事：引言 | Teaching is Learning
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Teaching is Learning</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>一段关于神经网络的故事：引言</h2>
+  <p class="post-date">2018-02-03</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><ul>
+<li>这篇系列长文的灵感来源于自己参与【大数据文摘&amp;稀牛学院】的一个 CS231n 作业资料整理与讲解 case，详情可见：大数据文摘<a href="https://study.163.com/provider/10146755/index.htm" target="_blank" rel="noopener">网易云课堂专栏</a>，<a href="http://blog.csdn.net/bigdatadigest/article/details/79286510" target="_blank" rel="noopener">CSDN专栏</a> 和 <a href="https://github.com/theBigDataDigest/Stanford-CS231n-assignments-in-Chinese/tree/master/assignment2/Q1-Q3" target="_blank" rel="noopener">GitHub专栏</a>。 其中，我负责的是 CS231n 的 Assignment2 中的Q1-Q3部分，也正是此故事系列的主要内容，探讨的是基于全连接网络下各种常用技术的 Python 代码实现。</li>
+<li>Contents：<ol>
+<li>本文是什么？</li>
+<li>本文不是什么？</li>
+<li>本文的写作风格</li>
+<li>待折腾的数据集</li>
+<li>关于神经网络，这是你起码应该知道的！</li>
+</ol>
+</li>
+</ul>
+<a id="more"></a>
+<p> <br></p>
+<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p><br></p>
+<h2 id="本文是什么"><a href="#本文是什么" class="headerlink" title="本文是什么?"></a>本文是什么?</h2><blockquote>
+<ul>
+<li>本文以 CS231n 的 Assignment2 中的 Q1-Q3 部分代码作为例子，目标是由浅入深得搞清楚神经网络，同时以图片分类识别任务作为我们一步一步构建神经网路的目标。</li>
+<li>本文既适合仅看得懂一点 Python 代码、懂得矩阵的基本运算、听说过神经网络算法这个词的朋友，也适合准备学习和正在完成 CS231n 课程作业的朋友。</li>
+<li>本文内容特点：很细节的 Python 代码解析 + 神经网络中矩阵运算的图像化解释 + 模块化 Python 代码的流程图解析</li>
+<li>本文是从 Python 编程代码的实现角度理解，一层一层拨开神经网络的面纱，以搞清楚数据在其中究竟是怎么运动和处理的。希望可以为小白，尤其是为正在学习 CS231n 课程的朋友，提供一个既浅显又快捷的观点，用最直接的方式弄清楚并构建一个神经网络出来。所以，此文不适合章节跳跃式阅读。</li>
+<li>本文是我第一次接触 CS231n 课程时，边自学边做的笔记。</li>
+<li>本文中的代码仅基于 Python 及其中常见的库（如 pandas/numpy 等），没有用任何主流的深度学习框架和 API（TensorFlow/Keras/Caffe/PyTorch/MXNet等）。</li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="本文不是什么？"><a href="#本文不是什么？" class="headerlink" title="本文不是什么？"></a>本文不是什么？</h2><blockquote>
+<p>不涉及艰深的算法原理，忽略绝大多数数学细节，也尽量不扯任何生涩的专业术语，也不会对算法和优化处理技术做任何横向对比。</p>
+</blockquote>
+<p><br></p>
+<h2 id="本文的写作风格"><a href="#本文的写作风格" class="headerlink" title="本文的写作风格"></a>本文的写作风格</h2><p>CS231n 课程讲师 Andrej Karpathy 在他的博客上写过一篇文章 <a href="http://karpathy.github.io/neuralnets/" target="_blank" rel="noopener">Hacker’s guide to Neural Networks</a>，其中的精神是我最欣赏的一种教程写作方式：</p>
+<blockquote>
+<p>“My exposition will center around code and physical intuitions instead of mathematical derivations. Basically, I will strive to present the algorithms in a way that I wish I had come across when I was starting out.”</p>
+<p><strong>“…everything became much clearer when I started writing code.”</strong></p>
+</blockquote>
+<p><br></p>
+<p>废话不多说，找个板凳坐好，慢慢听故事～</p>
+<p><br></p>
+<h2 id="待折腾的数据集"><a href="#待折腾的数据集" class="headerlink" title="待折腾的数据集"></a>待折腾的数据集</h2><p>俗话说得好：皮裤套棉裤，里边有缘故；不是棉裤薄，就是皮裤没有毛！</p>
+<p><br></p>
+<p>我们的神经网络是要用来解决某特定问题的，不是家里闲置的花瓶摆设，每个模型的构建都有着它各自的动机。所以，首先让我们简单了解下要摆弄的数据集（CIFAR-10），而我们的最终目标是要完成一个图片样本数据源的分类问题。</p>
+<p><img src="https://i.loli.net/2018/02/03/5a74d39ab5ede.png" alt=""></p>
+<p><br></p>
+<p><strong>图像分类数据集：CIFAR-10。</strong></p>
+<p>这是一个非常流行的图像分类数据集是 <a href="http://link.zhihu.com/?target=http%3A//www.cs.toronto.edu/%7Ekriz/cifar.html" target="_blank" rel="noopener">CIFAR-10</a>。这个数据集包含了60000张$32\times32$的小图像，单个像素的数值范围都在0-255之间。每张图像都对应于是10种分类标签(label)中的一种。此外，这60000张图像被分为包含带有标签的50000张图像的训练集和包含不带有标签的10000张图像的测试集。</p>
+<hr>
+<p><img src="http://upload-images.jianshu.io/upload_images/2301760-77211119464a6c5d.png" alt="img"></p>
+<p>上图是图片样本数据源 <a href="http://link.zhihu.com/?target=http%3A//www.cs.toronto.edu/%7Ekriz/cifar.html" target="_blank" rel="noopener">CIFAR-10</a> 中训练集的一部分样本图像，从中你可以预览10个标签类别下的10张随机图片。</p>
+<hr>
+<p><strong>小结：</strong></p>
+<p><br></p>
+<p>在我们的故事中，只需要记得这个训练集是一堆 $32\times32$ 的RGB彩色图像作为训练目标，一个样本图像共有 $32\times32\times3$ 个数据，每个数据的取值范围 0~255，一般用 <code>x</code> 来标记。每个图还配有一个标签值，总共10个标签，以后我们都用 <code>y</code> 来标记。（悄悄告诉你的是：每个像素点的3个数据维度是有序的，分别对应红绿蓝(RGB)）</p>
+<p><br></p>
+<h2 id="关于神经网络，这是你起码应该知道的！"><a href="#关于神经网络，这是你起码应该知道的！" class="headerlink" title="关于神经网络，这是你起码应该知道的！"></a>关于神经网络，这是你起码应该知道的！</h2><p>下图是将神经网络算法以神经元的形式绘制的两个图例，想必同志们早已见怪不怪了。</p>
+<p><br></p>
+<p>但是，你起码应该知道的是其中各种约定和定义：</p>
+<hr>
+<p><img src="https://i.loli.net/2018/02/03/5a74d66594751.png" alt=""></p>
+<p><strong>左边</strong>是一个2层神经网络，一个隐藏层(蓝色层)有4个神经元(也可称为单元(unit))组成，输出层(绿色)由2个神经元组成，输入层(红色)是3个”神经元”。<strong>右边</strong>是一个3层神经网络，两个隐藏层，每层分别含4个神经元。<u>注意：层与层之间的神经元是全连接的，但是层内的神经元不连接（如此就是所谓<strong>全连接层神经网络</strong>）。</u></p>
+<p><br></p>
+<p>（接下文：<a href="https://iphysresearch.github.io/2018/02/cs231n_MLP2/">一段关于神经网络的故事：所谓的前向传播</a>）</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#漫游CS231n" >
+    <span class="tag-code">漫游CS231n</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/01/2018-flag/">
+        <span class="nav-arrow">← </span>
+        
+          2018年个人计划和目标
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/02/cs231n_MLP2/">
+        
+          一段关于神经网络的故事：所谓的前向传播
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#引言"><span class="toc-nav-text">引言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#本文是什么"><span class="toc-nav-text">本文是什么?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#本文不是什么？"><span class="toc-nav-text">本文不是什么？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#本文的写作风格"><span class="toc-nav-text">本文的写作风格</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#待折腾的数据集"><span class="toc-nav-text">待折腾的数据集</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#关于神经网络，这是你起码应该知道的！"><span class="toc-nav-text">关于神经网络，这是你起码应该知道的！</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://iphysresearch.github.io/2018/02/cs231n_MLP1/';
+    var banner = 'https://i.loli.net/2018/02/03/5a74d126a2aa9.png'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "iphysresearch";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "一段关于神经网络的故事：引言",
+        owner: "iphysresearch",
+        repo: "iphysresearch.github.io",
+        oauth: {
+          client_id: "6b978dc207dc30e58ec8",
+          client_secret: "2bc56895d0221e8c27ab87b072f8f18523231e22"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

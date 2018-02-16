@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Machine Learning, Deep Learning, Physics">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Andrew Ng 的 DeepLearning.ai 课程学习：神经网络和深度学习 | Teaching is Learning
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Teaching is Learning</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Andrew Ng 的 DeepLearning.ai 课程学习：神经网络和深度学习</h2>
+  <p class="post-date">2018-02-15</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>此文是吴恩达 DeepLearning.ai 课程第一课——神经网络和深度学习部分的个人学习笔记。</p>
+<p><br></p>
+<p>内含自己的学习历程和从其他信息渠道获取的归纳与总结，并不会细致的罗列所有内容，仅摘取对个人有一定价值的信息。</p>
+<p><br></p>
+<p>待续中。。。。</p>
+<a id="more"></a>
+<p><br></p>
+<p>黄兄组织整理了Ng的 <a href="http://www.ai-start.com/dl2017/" target="_blank" rel="noopener">深度学习（DeepLearning.ai）学习笔记</a> 是最全面的中文文本讲义资料。我这里将全面借鉴和引用其中内容和信息，不过此文背后更大程度上记录的是我个人的学习历程和从其他信息渠道获取的归纳与总结，并不会细致的罗列所有内容，仅摘取对个人有一定价值的信息，所以该文写作的目标最大受益者是我自己。</p>
+<p><br></p>
+<p>相关官方资源：<a href="http://mooc.study.163.com/learn/2001281002?tid=2001392029#/learn/content" target="_blank" rel="noopener">网易云微专业</a>、<a href="https://www.coursera.org/specializations/deep-learning" target="_blank" rel="noopener">Coursera</a></p>
+<h1 id="深度学习引言-Introduction-to-Deep-Learning"><a href="#深度学习引言-Introduction-to-Deep-Learning" class="headerlink" title="深度学习引言(Introduction to Deep Learning)"></a>深度学习引言(Introduction to Deep Learning)</h1><p><br></p>
+<h2 id="1-1-1-2-欢迎-amp-什么是神经网络？"><a href="#1-1-1-2-欢迎-amp-什么是神经网络？" class="headerlink" title="1.1-1.2 欢迎 &amp; 什么是神经网络？"></a>1.1-1.2 欢迎 &amp; 什么是神经网络？</h2><p>Ng 对 AI 的形象理解：</p>
+<blockquote>
+<p>我认为AI是最新的电力，大约在一百年前，我们社会的电气化改变了每个主要行业，从交通运输行业到制造业、医疗保健、通讯等方面，我认为如今我们见到了<strong>AI</strong>明显的令人惊讶的能量，带来了同样巨大的转变。显然，AI的各个分支中，发展的最为迅速的就是深度学习。</p>
+</blockquote>
+<p>总共有五门课：</p>
+<ul>
+<li><strong>神经网络和深度学习</strong>：学习神经网络的基础；用深度神经网络辨认猫的项目；</li>
+<li><strong>改善深层神经网络：超参数调试、正则化以及优化</strong>：学习严密地构建神经网络，如何真正让它表现良好；</li>
+<li><strong>结构化机器学习项目</strong>：让端对端的深度学习系统工作的更好；</li>
+<li><strong>卷积神经网络</strong>：它经常被用于图像领域；</li>
+<li><strong>序列模型</strong>：构建自然语言、音频以及其他序列数据的模型；</li>
+</ul>
+<p><img src="https://i.loli.net/2018/02/15/5a84fe01bd9d1.png" alt=""></p>
+<p>神经网络非常擅长计算从$x$到$y$的精准映射函数，神经网络在监督学习的环境下是非常的有效和强大的。</p>
+<p><br></p>
+<h2 id="1-3-1-6-神经网络的监督学习-amp-为什么深度学习会兴起？-amp-关于本课程-amp-课程资源"><a href="#1-3-1-6-神经网络的监督学习-amp-为什么深度学习会兴起？-amp-关于本课程-amp-课程资源" class="headerlink" title="1.3-1.6 神经网络的监督学习 &amp; 为什么深度学习会兴起？&amp; 关于本课程 &amp; 课程资源"></a>1.3-1.6 神经网络的监督学习 &amp; 为什么深度学习会兴起？&amp; 关于本课程 &amp; 课程资源</h2><ul>
+<li>事实表明，到目前几乎所有由神经网络创造的经济价值，本质上都离不开一种叫做<strong>监督学习</strong>的机器学习类别。</li>
+<li>神经网络算法对于<strong>结构化</strong>和<strong>非结构化数据</strong>都有用处。</li>
+</ul>
+<p><img src="https://i.loli.net/2018/02/15/5a8506ba4030f.png" alt=""></p>
+<p>事实上，如今在神经网络上最可靠的方法来获得更好的性能，往往就是<strong>要么训练一个更大的神经网络，要么投入更多的数据</strong>，但这只能在一定程度上起作用，因为最终你可能会耗尽了数据，或者最终你的网络是如此的大规模而导致将要用太久的时间去训练，但是仅仅提升规模的的确确地让我们在深度学习的世界中摸索了很多时间。</p>
+<h2 id="1-7-Geoffery-Hinton-专访"><a href="#1-7-Geoffery-Hinton-专访" class="headerlink" title="1.7 Geoffery Hinton 专访"></a>1.7 Geoffery Hinton 专访</h2><p>Hinton 的专访让我印象很深刻，不仅仅是他是深度学习教父一般的存在，他的传奇求学经历和时刻保持着新颖的思想让人印象深刻。这次 Ng 的专访实例文本可见：<a href="https://zhuanlan.zhihu.com/p/31003205" target="_blank" rel="noopener">XX</a></p>
+<p><img src="https://i.loli.net/2018/02/15/5a852baf8b7dc.png" alt=""></p>
+<blockquote>
+<p><strong>Geoffrey Hinton：</strong>当我还在高中时有一个什么都比我强的同学，他是个才华横溢的数学家，有天他来学校并且问我，你知道大脑是用全息图运作的吗？那时应该是1966年，我回答他：全息图是个啥？他就解释了一下，在全息图中，你可以切掉它的一半，但依然了解得到全貌，还有大脑中的记忆可能是分布于整个大脑中的，我大概猜到他可能是读过关于Karl Lashley的实验，其中讲到切掉老鼠几个小部分的脑子，然后发现很难找到哪一部分存储哪种特别的记忆。。。</p>
+</blockquote>
+<p>一个自负的家伙跑来卖弄自己还一知半解的见识。。。这种现象在学术圈屡见不鲜。</p>
+<blockquote>
+<p><strong>Geoffrey Hinton</strong>：。。。大脑怎么储存记忆产生兴趣。所以当我去上大学的时候，我就学习<strong>生理学</strong>和<strong>物理学</strong>，当我在剑桥的时候我是唯一一个在学生理学和物理学的本科生，之后我放弃了这个选择并且尝试学<strong>哲学</strong>，因为我觉得那可能会给我更多的深入了解，但是后来我又觉得<strong>缺乏真正能够辨别错误说法的方法</strong>，然后我就转去学了<strong>心理学</strong>而在心理学中有着非常非常过于简单的理论，对我个人来说用来解释大脑的运作看起来无可救药的不充分，之后我花了点时间做一个<strong>木匠</strong>，然后我又决定想去试试看人工智能，于是就跑去爱丁堡跟Longuet Higgins学人工智能，他已经做了很棒的关于神经网络的研究并且刚刚决定放弃于此，转而对Terry Winograd的学说表示赞赏，我刚去的时候他觉得我做这个（神经网络）已经过时了，应该开始搞符号主义人工智能，关于这个我们有很多争论，但我还是坚持做自己相信的事情，然后呢？最终我拿到了<strong>人工智能博士学位</strong>。但我在英国找不到工作。。。</p>
+</blockquote>
+<p>同时学习生理和物理，这在现在也几乎是不可能发生的事情；哲学这个学科也是挺醉人的，被评价为“缺乏真正能够辨别错误说法的方法”也不足为奇，毕竟是物理系出来的人嘛；心理学是最让外行人朝思幻想的学科了，被评价为过于简单也可以理解，毕竟没法与数学和物理里建立的庞大公理体系相提并论；最后，在导师不支持的 PhD 方向上最后让Hinton毕业了，这也算是听上去很不可思议，但是现今又屡见不鲜的现象。至于博士毕业会找不到工作。。。。似乎对应了自己的现状吧。。。。</p>
+<blockquote>
+<p><strong>Geoffrey Hinton：</strong>最后我们的论文（反向传播算法）上了《自然》，为了论文被接受，我做了不少<strong>人事工作</strong>，我想到其中一个审稿人很可能会是Stuart Sutherland英国一位很有名的心理学家，我跑去和他聊了很久，跟他解释这到底是怎么一回事，给他留下了很深刻的印象，因为我们给他展示了反向传播法可以学习字元表示，… 等等，这震惊了Stuart Sutherland，我想，这是论文被通过的原因。</p>
+</blockquote>
+<p>Hinton 著名的 backprop 算法不是全新的想法，但他使得这个算法得到了大推广，关键得益于他大力的<strong>游说</strong> reviewer 让他的文章发在了 nature 上。我想说的是：在科研学术界，类似的现象也可谓见怪不怪，习以为常，人面对真相和客观真理时，并不能保证有足够的能力和信心看到事物背后的本质，于是承载主观意志的说服力和修辞技巧就成了人必不可少的内禀品质，这亦可谓是人性的弱点之一吧。</p>
+<blockquote>
+<p><strong>Geoffrey Hinton：</strong>我认为最具学术之美的是我和Terry Sejnowski做的<strong>Boltzmann机</strong>，我们发现它能用非常非常简单的学习算法去应用到密度很高的连接起来的网络…..</p>
+</blockquote>
+<p>深度信念网络……</p>
+<blockquote>
+<p><strong>Geoffrey Hinton：</strong>… 我们在受限Boltzmann机上花功夫证明了，这是其中之一推进ReLU前进的力量。… 我显然已经知道ReLU还有logistic单元，由于我花了心血在Boltzmann机上，全都是用的logistic单元，那时候面临的问题是，这个学习算法可能用在ReLU吗，证明完<strong>ReLU几乎等同一叠logistic单元</strong>后，我们展示了所有的数学证明。。。。2014年，我在Google讲ReLU的用法以及怎么用单位矩阵初始化，因为ReLU的一大优点是，如果不断复制隐藏层，又用单位矩阵初始化，它会复制下层的模式。。。。</p>
+</blockquote>
+<p>出于好奇，我找到了这个证明的 paper：<a href="http://www.cs.toronto.edu/~fritz/absps/reluICML.pdf" target="_blank" rel="noopener">Rectified linear units improve restricted Boltzmann machines</a>，同时，还无意间找到了一个编年体格式讲述ReLU激活函数：<a href="http://www.gabormelli.com/RKB/Rectified_Linear_Unit_(ReLU" target="_blank" rel="noopener">Gabormelli</a>_Activation_Function#cite_note-nair2010-4)。</p>
+<blockquote>
+<p><strong>吴恩达：</strong>你应该常常被问到，如果有人想要入门深度学习，该做什么，你有什么建议吗？对于要学深度学习的人们，你有什么样的建议？</p>
+<p><strong>Geoffrey Hinton：</strong>好，我的建议是多读论文，但别读太多，我从导师那里得到这个建议，很不像大多数人说的，大多数人会告诉你尽量多读，然后开始自己的研究，对一些研究人员应该是正确的，但是对<strong>有创意的人</strong>应该读一少部分，然后发现一点你认为所有人都错了的东西，在这点我一般都逆着来，你看到它，感觉不太对，然后想怎么才能做对，当人们反对你时，要坚持自我，我支持人们坚持自我的原则，是判断直觉的对错，你直觉还不错的话，就该坚持，最后一定会成功，要是你直觉一般的话，做啥都无所谓。</p>
+</blockquote>
+<p>相信直觉，不相信就没意义了。。。。</p>
+<blockquote>
+<p><strong>Geoffrey Hinton：</strong>另一个建议是，<strong>永远不要停止编程</strong>，因为如果你给学生布置任务，他们三天打鱼两天晒网，回头就会告诉你看，没做成，没做成的原因，往往是他们所做的小决定，当时不觉得很重要。举个例子，如果你给一个好学生以任务，你可以给他任何任务，他都会做成。我记得曾经有一次，我说。诶等等，我们上次讨论时，因为某某原因，是不可能成功呀，学生回答说：“对呀，你说完我就发现了，就假设不是你真的这个意思”。。。。我认为基本上，<strong>开始锻炼直觉时要读够</strong>，<strong>然后相信直觉，自己动手</strong>，不要担心别人有反对意见。。。。<strong>如果你有个绝好的想法，别人都觉得完全荒谬，那你就找对东西了</strong>。举个例子，当我刚想出来变分法时，我给之前一个叫Peter Brown的学生写了封信，他懂得很多EN相关知识，他就拿去给一起工作的人看，名字叫俩兄弟，可能是双胞胎吧，然后他说，俩兄弟说了，你要么是你喝多了，要么是傻，俩兄弟当真认为是荒谬之论，部分原因可能是我用的解释方式，因为我只解释了直觉，但当你有个很不错的想法时，其他人觉得完全是垃圾，就是个好想法的信号了。</p>
+</blockquote>
+<p>这些建议就非常干货了！不要停止编程！记得去年隔了仅4个月没有敲 Python 代码，于是后来还要重头来熟悉。。。。</p>
+<blockquote>
+<p><strong>Geoffrey Hinton：</strong>对新研究生的一个好建议是，<strong>找一个和你意见一致的导师</strong>，因为如果你做的东西，导师也深深赞同，你会得到很好的建议，要是做你导师不感兴趣的东西，你会得到没啥用的建议。</p>
+</blockquote>
+<p>这个经验我深深的感到苟同。。。此处省略几千字。。。。</p>
+<blockquote>
+<p><strong>Geoffrey Hinton：</strong>（顶级公司）大多数部门很少有真正懂得这场革命的人，我基本上同意，这并不是二次工业革命，但是规模接近。有如此巨大的改变，基本是因为<strong>我们和计算机的关系发生了改变</strong>，<strong>不再只是编程序，而是让它们有能力自动解决问题，从根本上改变了计算机的用法，计算机科学部门，却是在之前基础上建立起来的</strong>，他们暂且还不懂训练计算机会和编程一样重要，公司部门中de 一半的人得实际去试过训练计算机。。。</p>
+</blockquote>
+<p>这一段评价真的解释了我一直以来的一个疑问，我接触过好多在努力入门和学习AI的程序员学员，而在交流的过程中发觉，有相当一部分朋友在入门的过程中并没有如我意料中的比非计算机编程背景的人入门更快，更容易理解 Python 编程以及 ML 和 DL 的知识原理。</p>
+<blockquote>
+<p><strong>Geoffrey Hinton：</strong>AI早期时，人们完全被说服为智力的表示该是某种符号表达，比较整洁的逻辑，而不完全是逻辑，但是类似逻辑，智力的本质是推理。然而，对比这种符号化的表示，我认为那些把 AI 想成是符号表达的人，大错特错。我认为其该是一个大向量，<strong>有因果能力的大向量，能引发出其他大向量，这于 AI 的标准观点</strong> ，符号化表达完全不同。</p>
+</blockquote>
+<p>Hinton 最后在这里的描述让我印象深刻，符号化的理解智能正是理论家最爱用也是最常用的方式，毕竟他们很不乐意把逻辑推理彻底摒弃掉，不过相信当我们构架好 DNN 的数据理论基础后，就能够真正彻底理解深度学习了吧。</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#品味DeepLearning.ai" >
+    <span class="tag-code">品味DeepLearning.ai</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/02/cn231n_MLP5/">
+        <span class="nav-arrow">← </span>
+        
+          一段关于神经网络的故事：最终章！
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/02/CS231n_MXNet1/">
+        
+          CS231n 与 MXNet 实现：线性分类
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#深度学习引言-Introduction-to-Deep-Learning"><span class="toc-nav-text">深度学习引言(Introduction to Deep Learning)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-1-1-2-欢迎-amp-什么是神经网络？"><span class="toc-nav-text">1.1-1.2 欢迎 &amp; 什么是神经网络？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-3-1-6-神经网络的监督学习-amp-为什么深度学习会兴起？-amp-关于本课程-amp-课程资源"><span class="toc-nav-text">1.3-1.6 神经网络的监督学习 &amp; 为什么深度学习会兴起？&amp; 关于本课程 &amp; 课程资源</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-7-Geoffery-Hinton-专访"><span class="toc-nav-text">1.7 Geoffery Hinton 专访</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://iphysresearch.github.io/2018/02/NG_DeepLearning1/';
+    var banner = 'https://i.loli.net/2018/02/15/5a852c10adc97.png'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "iphysresearch";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "Andrew Ng 的 DeepLearning.ai 课程学习：神经网络和深度学习",
+        owner: "iphysresearch",
+        repo: "iphysresearch.github.io",
+        oauth: {
+          client_id: "6b978dc207dc30e58ec8",
+          client_secret: "2bc56895d0221e8c27ab87b072f8f18523231e22"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

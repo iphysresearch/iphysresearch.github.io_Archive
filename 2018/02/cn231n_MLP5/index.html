@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Machine Learning, Deep Learning, Physics">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      一段关于神经网络的故事：最终章！ | Teaching is Learning
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Teaching is Learning</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>一段关于神经网络的故事：最终章！</h2>
+  <p class="post-date">2018-02-07</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><ul>
+<li>Contents：<ol>
+<li>漫漫优化路——SGD with momentum</li>
+<li>夜黑风高，小试牛刀！</li>
+</ol>
+</li>
+</ul>
+<a id="more"></a>
+<p>（接上文：<a href="https://iphysresearch.github.io/2018/02/cs231n_MLP4/">一段关于神经网络的故事：高速运转的加强版神经网络</a>）</p>
+<p><br></p>
+<h1 id="最终章！"><a href="#最终章！" class="headerlink" title="最终章！"></a>最终章！</h1><p>现在，我们已经会很轻的松搭建一个强大且复杂的神经网络了，并且我们始终采用模块化代码一步一步实现，因而可以很容易将其转化成应对不同场景环境的神经网络模型。然而，我们的故事其实一直在很模糊一个事实：</p>
+<ul>
+<li>神经网络究竟是如何工作的呢？</li>
+<li>如何才能更高效的工作？</li>
+<li>神经网络框架是搭建了，但它是静态不动的，所以训练的动态细节是什么？</li>
+</ul>
+<p>接下来，我们的故事就会接触到这些最优化问题，只要我们解决掉这个故事中上述的终极大boss，才能真正完美的剧终～</p>
+<p><br></p>
+<h2 id="漫漫优化路——SGD-with-momentum"><a href="#漫漫优化路——SGD-with-momentum" class="headerlink" title="漫漫优化路——SGD with momentum"></a>漫漫优化路——SGD with momentum</h2><blockquote>
+<p>不忘初心，方得始终。</p>
+</blockquote>
+<p>回忆一下，我们最初构建神经网络是为了什么呢？～～～ 是为了给图片分类。当一堆样本图片进入到神经网络中时，所有的神经元都在不断的打分做评价，最终输出的是两个值：损失函数的值和损失函数关于模型参数的梯度。而神经网络为了能正确的分辨出每一个图片，就必须有一套”正确的”模型参数才行，其使得损失函数达到(局部)最小值。于是，基于某一批样本图片下，如何利用算得的损失函数值及其关于模型参数的梯度，就成为了对神经网络最优化的核心问题。</p>
+<p><br></p>
+<p>故事在谈到反向传播算法的时候，我们其实已经接触到了<strong>随机梯度下降（stochastic gradient descent）</strong>的内涵：在负梯度方向上对模型参数进行更新。</p>
+<p><br></p>
+<p>虽然说的很神乎其神，关键一定要明白梯度方向是让损失函数值增大的方向就好，下面直接定义 <code>sgd(w, dw, config=None) = (w, config)</code> 函数代码就更清楚了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sgd</span><span class="params">(w, dw, config=None)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Performs vanilla stochastic gradient descent.</span></span><br><span class="line"><span class="string">    config format:</span></span><br><span class="line"><span class="string">    - learning_rate: Scalar learning rate.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">if</span> config <span class="keyword">is</span> <span class="keyword">None</span>: config = &#123;&#125;</span><br><span class="line">    config.setdefault(<span class="string">'learning_rate'</span>, <span class="number">1e-2</span>)</span><br><span class="line"></span><br><span class="line">    w -= config[<span class="string">'learning_rate'</span>] * dw</span><br><span class="line">    <span class="keyword">return</span> w, config</span><br></pre></td></tr></table></figure>
+<p><strong>代码详解：</strong></p>
+<ul>
+<li>函数的输入<code>w, dw</code>，分别是样本图片经过神经网络时的某个模型参数和该参数对应的损失函数梯度；<code>config</code> 如果没有在函数中输入的话，会默认为一个字典：<code>{&#39;learning_rate&#39;, 1e-2}</code>，其中 <code>learning_rate</code> 通常叫做学习率，它是一个固定的常量，是一个<strong>超参数</strong>，即与“模型参数”不同，是需要人工经验在神经网络外部设置调整的，与待学习的模型参数不同。当神经网络在整个图片数据集上进行计算时，只要学习率足够低，总是能在损失函数上得到非负的进展。</li>
+<li><code>w -= config[&#39;learning_rate&#39;] * dw</code> 就是随机梯度下降的算法核心了，只需要在每一次参数更新时，减去以学习率为倍数的梯度值即可，最后输出更新后的新模型参数 <code>w</code> 和sgd算法的设置字典 <code>config</code>。</li>
+</ul>
+<p>上述就是最简单最普通的模型参数更新方法了，其核心思想就是要找到损失函数的超曲面上最陡峭的方向，然后投影到模型参数空间中，为模型参数的更新带来启示。如下图：</p>
+<hr>
+<p><img src="https://image.slidesharecdn.com/optimization-150210111739-conversion-gate01/95/optimizationgradient-descent-9-638.jpg?cb=1423616779" alt=""></p>
+<p>不过这种朴素的方法，对于像是峡谷形状的损失函数曲面上的点来说就效果没那么好了：</p>
+<p><img src="http://ludovicarnold.altervista.org/wp-content/uploads/2015/01/gradient-trajectory.png" alt=""></p>
+<p>上图中的曲线是损失函数的关于模型参数的”等高线”，每一条曲线上的点都有着相同的损失函数值，圆心处对应于损失函数的局部最小值。途中的a和b都是神经网络在面对每一批不同的样本图片时所进行的参数更新路线，a很顺利的一步步走向”盆地“的最低点，而b的出发点位于一个细窄的”峡谷“处，于是负梯度方向就很可能并不是一直指向着盆地最低点，而是会先顺着更”陡峭”峡谷走到谷底，再一点一点震荡着靠近盆地最低点。</p>
+<hr>
+<p>显然，运气要是不好，传统的梯度下降方法的收敛速度会很糟糕。于是，就有了<strong>随机梯度下降的动量更新方法（stochastic gradient descent with momentum）</strong>，这个方法在神经网络上几乎总能得到更好的收敛速度。该方法可以看成是从物理角度上对于最优化问题得到的启发。传统的梯度下降本质上是将损失函数的梯度向量投影在模型参数空间，然后指导每个模型参数如何更新，每次更新的幅度由learnning_rate来控制；而动量版本的梯度下降方法可以看作是将初速度为0的小球从在一个山体表面上放手，不同的损失值代表山体表面的海拔高度，那么模型参数的更新不再去参考小球所在处的山体倾斜情况，而是改用小球的速度矢量在模型参数空间的投影来修正更新参数。</p>
+<hr>
+<p><img src="http://ovj0qranm.bkt.clouddn.com/momentum.png" alt=""></p>
+<p>如上图所示，从第一次参数更新之后，每一点的梯度矢量和速度矢量一般是不同的。小球所收到的合外力可以看作是保守力，就是损失函数的负梯度$(F=-\nabla L)$，再由牛顿定理$(F=ma=m\frac{dv}{dt})$，就可以得到动量关于时间的变化关系——亦所谓动量定理$(Fdt=mdv)$，若在单位时间t上两边积分，且单位时间t内看作每一次模型参数的迭代更新的话，就可以给出动量更新的表达式：$p_1 = p_0-a \nabla L$ (其中，学习率a，动量$p=mv$，并默认了单位数间t内负梯度是与时间不相关的函数)。与BN算法中的一次指数平滑法类似，我们可以在迭代更新动量的过程中引入第二个超参数$\mu$，以指数衰减的方式”跟踪”上一次”动量”的更新：$p_1=\mu p_0-a\nabla L$。最后将这个动量矢量投影到参数空间去更新模型参数。</p>
+<p><br></p>
+<p>直接看代码吧！我们定义函数 <code>sgd_momentum(w, dw, config) = (next_w, config)</code> ：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sgd_momentum</span><span class="params">(w, dw, config=None)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Performs stochastic gradient descent with momentum.</span></span><br><span class="line"><span class="string">    config format:</span></span><br><span class="line"><span class="string">    - learning_rate: Scalar learning rate.</span></span><br><span class="line"><span class="string">    - momentum: Scalar between 0 and 1 giving the momentum value.</span></span><br><span class="line"><span class="string">      Setting momentum = 0 reduces to sgd.</span></span><br><span class="line"><span class="string">    - velocity: A numpy array of the same shape as w and dw used to store a</span></span><br><span class="line"><span class="string">      moving average of the gradients.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">if</span> config <span class="keyword">is</span> <span class="keyword">None</span>: config = &#123;&#125;</span><br><span class="line">    config.setdefault(<span class="string">'learning_rate'</span>, <span class="number">1e-2</span>)</span><br><span class="line">    config.setdefault(<span class="string">'momentum'</span>, <span class="number">0.9</span>)</span><br><span class="line">    v = config.get(<span class="string">'velocity'</span>, np.zeros_like(w))</span><br><span class="line">    next_w = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    v = config[<span class="string">"momentum"</span>] * v - config[<span class="string">"learning_rate"</span>] * dw</span><br><span class="line">    next_w = w + v</span><br><span class="line">    config[<span class="string">'velocity'</span>] = v</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> next_w, config</span><br></pre></td></tr></table></figure>
+<p><strong>代码详解：</strong></p>
+<ul>
+<li>函数的输入<code>(w, dw)</code>和输出<code>(next_w, config)</code>与 <code>sgd()</code> 函数格式以及含义完全对应一致，只不过 <code>sgd_momentum()</code> 函数的最优化超参数有三个 <code>{&#39;learning_rate&#39;: le-2, &#39;momentum&#39;: 0.9, &#39;velocity&#39;: np.zeros_like(w)}</code>，其中的<code>velocity</code> 并不是经验可调的超参数，其对应于我们每一次更新时的“动量”，并且在每一次模型参数更新后，都会将更新后的“动量”再保存回 <code>config</code> 字典中。</li>
+</ul>
+<p>最后值得一提的是，上述定义的两个最优化函数，都是针对神经网络模型中的每一个参数来更新的，即在参数空间中的某一维度上进行的计算，亦对应于前面谈到的梯度矢量或动量矢量在参数空间的投影后，某一参数维度中的运算。</p>
+<p><br></p>
+<p>相关的资料可以参考：</p>
+<p><br></p>
+<p><a href="http://prinsphield.github.io/2016/02/04/An%20Overview%20on%20Optimization%20Algorithms%20in%20Deep%20Learning%20(I" target="_blank" rel="noopener">An Overview on Optimization Algorithms in Deep Learning (I)</a>/)</p>
+<p><br></p>
+<p><a href="http://www.cse.unsw.edu.au/~cs9417ml/MLP1/tutorial/advanced-tutorial2.htm" target="_blank" rel="noopener">Advanced tutorials - momentum, activation function, etc</a></p>
+<p><br></p>
+<p><a href="http://blog.csdn.net/heyongluoyao8/article/details/52478715" target="_blank" rel="noopener">梯度下降优化算法综述</a></p>
+<p><br></p>
+<p><a href="https://arxiv.org/abs/1609.04747" target="_blank" rel="noopener">An overview of gradient descent optimization algorithms</a></p>
+<p><br></p>
+<p><strong>小结：</strong></p>
+<p><br></p>
+<p>除了上面提到的两个简单的参数更新方法外，还有不少更好用的方法，如<strong>Nesterov</strong>‘s Accelerated Momentum，还有逐参数适应学习率方法，如<strong>Adagrad</strong>，<strong>RMSprop</strong>，<strong>Adam</strong>等等。在cs231n课程的讲义中，推荐的两个参数更新方法是SGD+Nesterov动量方法，或者Adam方法。</p>
+<p><br></p>
+<p>我们可以看到，训练一个神经网络会遇到很多超参数设置。关于超参数的调优也会有很多的要点和技巧，不过，我们的故事并不打算涉及其中，详情可参考cs231n的讲义笔记。</p>
+<p><br></p>
+<h2 id="夜黑风高，小试牛刀！"><a href="#夜黑风高，小试牛刀！" class="headerlink" title="夜黑风高，小试牛刀！"></a>夜黑风高，小试牛刀！</h2><p>经过前面故事中各种磨难的锻炼，经验的积累，现在终于可以一试身手，完成最后boss的挑战——我们要真正的训练一个强大的全连接的神经网络，来挑战10分类的数据源CIFAR-10！</p>
+<p><br></p>
+<p>首先在决斗之前，我们要做好一些准备工作：加载已经预处理好的数据源为 <code>data</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Load the (preprocessed) CIFAR10 data.</span></span><br><span class="line">data = get_CIFAR10_data()</span><br><span class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> data.items():</span><br><span class="line">	print(<span class="string">'%s: '</span> % k, v.shape)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">y_train:  (49000,)</span></span><br><span class="line"><span class="string">y_test:  (1000,)</span></span><br><span class="line"><span class="string">X_val:  (1000, 3, 32, 32)</span></span><br><span class="line"><span class="string">y_val:  (1000,)</span></span><br><span class="line"><span class="string">X_test:  (1000, 3, 32, 32)</span></span><br><span class="line"><span class="string">X_train:  (49000, 3, 32, 32)</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<p>可以看到已经准备好的训练集样本图片有49000张，另有用来调参优化网络的验证样本图片1000张，最后是考验我们的神经模型的测试集样本图片1000张。</p>
+<p><br></p>
+<p>接下来是最重要的一步，我们要在见最终分晓之前，起草一个详细的作战方案——定义一个 <code>Solve(object)</code> 类。</p>
+<p><br></p>
+<p>此时已月黑风高，话不多说，请直接一行一行地阅读到底，勿忘阅后即焚！</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 我们把优化算法的函数 sgd() 和 sgd_momentum() 定义在当前目录中的 optim.py 文件中</span></span><br><span class="line"><span class="keyword">import</span> optim</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solver</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    我们定义的这个Solver类将会根据我们的神经网络模型框架——FullyConnectedNet()类，</span></span><br><span class="line"><span class="string">    在数据源的训练集部分和验证集部分中，训练我们的模型，并且通过周期性的检查准确率的方式，</span></span><br><span class="line"><span class="string">    以避免过拟合。</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    在这个类中，包括__init__()，共定义5个函数，其中只有train()函数是最重要的。调用</span></span><br><span class="line"><span class="string">    它后，会自动启动神经网络模型优化程序。</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    训练结束后，经过更新在验证集上优化后的模型参数会保存在model.params中。此外，损失值的</span></span><br><span class="line"><span class="string">    历史训练信息会保存在solver.loss_history中，还有solver.train_acc_history和</span></span><br><span class="line"><span class="string">    solver.val_acc_history中会分别保存训练集和验证集在每一次epoch时的模型准确率。</span></span><br><span class="line"><span class="string">	===============================</span></span><br><span class="line"><span class="string">	下面是给出一个Solver类使用的实例：</span></span><br><span class="line"><span class="string">    data = &#123;</span></span><br><span class="line"><span class="string">        'X_train': # training data</span></span><br><span class="line"><span class="string">        'y_train': # training labels</span></span><br><span class="line"><span class="string">        'X_val': # validation data</span></span><br><span class="line"><span class="string">    '   y_val': # validation labels</span></span><br><span class="line"><span class="string">        &#125;	# 以字典的形式存入训练集和验证集的数据和标签</span></span><br><span class="line"><span class="string">    model = FullyConnectedNet(hidden_size=100, reg=10) # 我们的神经网络模型</span></span><br><span class="line"><span class="string">    solver = Solver(model, data,			# 模型／数据</span></span><br><span class="line"><span class="string">                  update_rule='sgd',		# 优化算法</span></span><br><span class="line"><span class="string">                  optim_config=&#123;			# 该优化算法的参数</span></span><br><span class="line"><span class="string">                    'learning_rate': 1e-3,	# 学习率</span></span><br><span class="line"><span class="string">                  &#125;,</span></span><br><span class="line"><span class="string">                  lr_decay=0.95,			# 学习率的衰减速率</span></span><br><span class="line"><span class="string">                  num_epochs=10,			# 训练模型的遍数</span></span><br><span class="line"><span class="string">                  batch_size=100,			# 每次丢入模型训练的图片数目</span></span><br><span class="line"><span class="string">                  print_every=100)			</span></span><br><span class="line"><span class="string">    solver.train()</span></span><br><span class="line"><span class="string">    ===============================    </span></span><br><span class="line"><span class="string">    # 神经网络模型中必须要有两个函数方法：模型参数model.params和损失函数model.loss(X, y)</span></span><br><span class="line"><span class="string">    A Solver works on a model object that must conform to the following API:</span></span><br><span class="line"><span class="string">    - model.params must be a dictionary mapping string parameter names to numpy</span></span><br><span class="line"><span class="string">        arrays containing parameter values.	# </span></span><br><span class="line"><span class="string">    - model.loss(X, y) must be a function that computes training-time loss and</span></span><br><span class="line"><span class="string">        gradients, and test-time classification scores, with the following inputs</span></span><br><span class="line"><span class="string">        and outputs:</span></span><br><span class="line"><span class="string">    Inputs:		# 全局的输入变量</span></span><br><span class="line"><span class="string">    - X: Array giving a minibatch of input data of shape (N, d_1, ..., d_k)</span></span><br><span class="line"><span class="string">    - y: Array of labels, of shape (N,) giving labels for X where y[i] is the</span></span><br><span class="line"><span class="string">      label for X[i].</span></span><br><span class="line"><span class="string">    Returns:	# 全局的输出变量</span></span><br><span class="line"><span class="string">    # 用标签y的存在与否标记训练mode还是测试mode</span></span><br><span class="line"><span class="string">    If y is None, run a test-time forward pass and return: # </span></span><br><span class="line"><span class="string">    - scores: Array of shape (N, C) giving classification scores for X where</span></span><br><span class="line"><span class="string">      scores[i, c] gives the score of class c for X[i].</span></span><br><span class="line"><span class="string">    If y is not None, run a training time forward and backward pass and return</span></span><br><span class="line"><span class="string">    a tuple of:</span></span><br><span class="line"><span class="string">    - loss: Scalar giving the loss	# 损失函数值</span></span><br><span class="line"><span class="string">    - grads: Dictionary with the same keys as self.params mapping parameter</span></span><br><span class="line"><span class="string">      names to gradients of the loss with respect to those parameters.# 模型梯度</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">	<span class="string">"""</span></span><br><span class="line"><span class="string">	"""</span></span><br><span class="line">    <span class="comment">#1# 初始化我们的 Slover() 类：</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, model, data, **kwargs)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Construct a new Solver instance.</span></span><br><span class="line"><span class="string">        # 必须要输入的函数参数：模型和数据</span></span><br><span class="line"><span class="string">        Required arguments:</span></span><br><span class="line"><span class="string">        - model: A model object conforming to the API described above</span></span><br><span class="line"><span class="string">        - data: A dictionary of training and validation data with the following:</span></span><br><span class="line"><span class="string">            'X_train': Array of shape (N_train, d_1, ..., d_k) giving training images</span></span><br><span class="line"><span class="string">            'X_val': Array of shape (N_val, d_1, ..., d_k) giving validation images</span></span><br><span class="line"><span class="string">            'y_train': Array of shape (N_train,) giving labels for training images</span></span><br><span class="line"><span class="string">            'y_val': Array of shape (N_val,) giving labels for validation images</span></span><br><span class="line"><span class="string">		# 可选的输入参数：</span></span><br><span class="line"><span class="string">        Optional arguments:</span></span><br><span class="line"><span class="string">          # 优化算法：默认为sgd</span></span><br><span class="line"><span class="string">        - update_rule: A string giving the name of an update rule in optim.py.</span></span><br><span class="line"><span class="string">          Default is 'sgd'.	</span></span><br><span class="line"><span class="string">          # 设置优化算法的超参数：</span></span><br><span class="line"><span class="string">        - optim_config: A dictionary containing hyperparameters that will be</span></span><br><span class="line"><span class="string">          passed to the chosen update rule. Each update rule requires different</span></span><br><span class="line"><span class="string">          hyperparameters (see optim.py) but all update rules require a</span></span><br><span class="line"><span class="string">          'learning_rate' parameter so that should always be present. </span></span><br><span class="line"><span class="string">          # 学习率在每次epoch时衰减率</span></span><br><span class="line"><span class="string">        - lr_decay: A scalar for learning rate decay; after each epoch the learning</span></span><br><span class="line"><span class="string">          rate is multiplied by this value.</span></span><br><span class="line"><span class="string">          # 在训练时，模型输入层接收样本图片的大小，默认100</span></span><br><span class="line"><span class="string">        - batch_size: Size of minibatches used to compute loss and gradient during</span></span><br><span class="line"><span class="string">          training.</span></span><br><span class="line"><span class="string">          # 在训练时，让神经网络模型一次全套训练的遍数</span></span><br><span class="line"><span class="string">        - num_epochs: The number of epochs to run for during training.</span></span><br><span class="line"><span class="string">          # 在训练时，打印损失值的迭代次数</span></span><br><span class="line"><span class="string">        - print_every: Integer; training losses will be printed every print_every</span></span><br><span class="line"><span class="string">          iterations.</span></span><br><span class="line"><span class="string">          # 是否在训练时输出中间过程</span></span><br><span class="line"><span class="string">        - verbose: Boolean; if set to false then no output will be printed during</span></span><br><span class="line"><span class="string">          training.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># 实例(Instance)中增加变量并赋予初值，以方便后面的 train() 函数等调用：</span></span><br><span class="line">        self.model = model							<span class="comment"># 模型</span></span><br><span class="line">        self.X_train = data[<span class="string">"X_train"</span>]				<span class="comment"># 训练样本图片数据</span></span><br><span class="line">        self.y_train = data[<span class="string">"y_train"</span>]				<span class="comment"># 训练样本图片的标签</span></span><br><span class="line">        self.X_val, self.y_val = data[<span class="string">"X_val"</span>], data[<span class="string">"y_val"</span>]	<span class="comment"># 验证样本图片的数据和标签</span></span><br><span class="line">		<span class="string">"""</span></span><br><span class="line"><span class="string">		以下是可选择输入的类参数，逐渐一个一个剪切打包kwargs参数列表</span></span><br><span class="line"><span class="string">		"""</span></span><br><span class="line">        self.update_rule = kwargs.pop(<span class="string">'update_rule'</span>, <span class="string">'sgd'</span>)	<span class="comment"># 默认优化算法sgd</span></span><br><span class="line">        self.optim_config = kwargs.pop(<span class="string">'optim_config'</span>, &#123;&#125;)	<span class="comment"># 默认设置优化算法为空字典</span></span><br><span class="line">        self.lr_decay = kwargs.pop(<span class="string">'lr_decay'</span>, <span class="number">1.0</span>)			<span class="comment"># 默认学习率不衰减</span></span><br><span class="line">        self.batch_size = kwargs.pop(<span class="string">'batch_size'</span>, <span class="number">100</span>)		<span class="comment"># 默认输入层神经元数100</span></span><br><span class="line">        self.num_epochs = kwargs.pop(<span class="string">'num_epochs'</span>, <span class="number">10</span>)		<span class="comment"># 默认神经网络训练10遍</span></span><br><span class="line">		<span class="comment">#</span></span><br><span class="line">        self.print_every = kwargs.pop(<span class="string">'print_every'</span>, <span class="number">10</span>)</span><br><span class="line">        self.verbose = kwargs.pop(<span class="string">'verbose'</span>, <span class="keyword">True</span>)			<span class="comment"># 默认打印训练的中间过程</span></span><br><span class="line">		<span class="string">""" </span></span><br><span class="line"><span class="string">		异常处理：如果kwargs参数列表中除了上述元素外还有其他的就报错！</span></span><br><span class="line"><span class="string">		"""</span></span><br><span class="line">        <span class="keyword">if</span> len(kwargs) &gt; <span class="number">0</span>:</span><br><span class="line">            extra = <span class="string">', '</span>.join(<span class="string">'"%s"'</span> % k <span class="keyword">for</span> k <span class="keyword">in</span> kwargs.keys())</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">'Unrecognized arguments %s'</span> % extra)</span><br><span class="line">		<span class="string">""" </span></span><br><span class="line"><span class="string">		异常处理：如果kwargs参数列表中没有优化算法，就报错！</span></span><br><span class="line"><span class="string">		将self.update_rule转化为优化算法的函数，即:</span></span><br><span class="line"><span class="string">		self.update_rule(w, dw, config) = (next_w, config)</span></span><br><span class="line"><span class="string">		"""</span>            </span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> hasattr(optim, self.update_rule): <span class="comment"># 若optim.py中没有写好的优化算法对应</span></span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">'Invalid update_rule "%s"'</span> % self.update_rule)</span><br><span class="line">        self.update_rule = getattr(optim, self.update_rule)</span><br><span class="line">		<span class="comment"># 执行_reset()函数：</span></span><br><span class="line">        self._reset()</span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="comment">#2# 定义我们的 _reset() 函数，其仅在类初始化函数 __init__() 中调用</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_reset</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        重置一些用于记录优化的变量</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># Set up some variables for book-keeping</span></span><br><span class="line">        self.epoch = <span class="number">0</span>		</span><br><span class="line">        self.best_val_acc = <span class="number">0</span>	</span><br><span class="line">        self.best_params = &#123;&#125;</span><br><span class="line">        self.loss_history = []</span><br><span class="line">        self.train_acc_history = []</span><br><span class="line">        self.val_acc_history = []</span><br><span class="line">        <span class="comment"># Make a deep copy of the optim_config for each parameter</span></span><br><span class="line">        self.optim_configs = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> p <span class="keyword">in</span> self.model.params:</span><br><span class="line">            d = &#123;k: v <span class="keyword">for</span> k, v <span class="keyword">in</span> self.optim_config.items()&#125;</span><br><span class="line">            self.optim_configs[p] = d</span><br><span class="line">        <span class="string">""" 上面根据模型中待学习的参数，创建了新的优化字典self.optim_configs，</span></span><br><span class="line"><span class="string">        形如：&#123;'b': &#123;'learnning_rate': 0.0005&#125;</span></span><br><span class="line"><span class="string">             ,'w': &#123;'learnning_rate': 0.0005&#125;&#125;，为每个模型参数指定了相同的超参数。</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="comment">#3# 定义我们的 _step() 函数，其仅在 train() 函数中调用</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_step</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">		训练模式下，样本图片数据的一次正向和反向传播，并且更新模型参数一次。</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># Make a minibatch of training data	# 输入数据准备</span></span><br><span class="line">        num_train = self.X_train.shape[<span class="number">0</span>]	<span class="comment"># 要训练的数据集总数</span></span><br><span class="line">        batch_mask = np.random.choice(num_train, self.batch_size)</span><br><span class="line">        X_batch = self.X_train[batch_mask]	<span class="comment"># 随机取得输入神经元个数的样本图片数据</span></span><br><span class="line">        y_batch = self.y_train[batch_mask]	<span class="comment"># 随机取得输入神经元个数的样本图片标签</span></span><br><span class="line">		<span class="string">"""</span></span><br><span class="line"><span class="string">		"""</span></span><br><span class="line">        <span class="comment"># Compute loss and gradient		# 数据通过神经网络后得到损失值和梯度字典</span></span><br><span class="line">        loss, grads = self.model.loss(X_batch, y_batch)</span><br><span class="line">        self.loss_history.append(loss)	<span class="comment"># 把本次算得的损失值记录下来</span></span><br><span class="line">		<span class="string">"""</span></span><br><span class="line"><span class="string">		"""</span></span><br><span class="line">        <span class="comment"># Perform a parameter update	# 执行一次模型参数的更新</span></span><br><span class="line">        <span class="keyword">for</span> p, w <span class="keyword">in</span> self.model.params.items():</span><br><span class="line">            dw = grads[p]							<span class="comment"># 取出模型参数p对应的梯度值</span></span><br><span class="line">            config = self.optim_configs[p]			<span class="comment"># 取出模型参数p对应的优化超参数</span></span><br><span class="line">            next_w, next_config = self.update_rule(w, dw, config) <span class="comment"># 优化算法</span></span><br><span class="line">            self.model.params[p] = next_w			<span class="comment"># 新参数替换掉旧的</span></span><br><span class="line">            self.optim_configs[p] = next_config		<span class="comment"># 新超参数替换掉旧的，如动量v</span></span><br><span class="line">	<span class="string">"""</span></span><br><span class="line"><span class="string">	"""</span></span><br><span class="line">	<span class="comment">#4# 定义我们的 check_accuracy() 函数，其仅在 train() 函数中调用</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">check_accuracy</span><span class="params">(self, X, y, num_samples=None, batch_size=<span class="number">100</span>)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        根据某图片样本数据，计算某与之对应的标签的准确率</span></span><br><span class="line"><span class="string">        Inputs:</span></span><br><span class="line"><span class="string">        - X: Array of data, of shape (N, d_1, ..., d_k)</span></span><br><span class="line"><span class="string">        - y: Array of labels, of shape (N,)</span></span><br><span class="line"><span class="string">        - num_samples: If not None, subsample the data and only test the model</span></span><br><span class="line"><span class="string">          on num_samples datapoints.</span></span><br><span class="line"><span class="string">        - batch_size: Split X and y into batches of this size to avoid using too</span></span><br><span class="line"><span class="string">          much memory.</span></span><br><span class="line"><span class="string">      </span></span><br><span class="line"><span class="string">        Returns:</span></span><br><span class="line"><span class="string">        - acc: Scalar giving the fraction of instances that were correctly</span></span><br><span class="line"><span class="string">          classified by the model.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">    </span><br><span class="line">        <span class="comment"># Maybe subsample the data</span></span><br><span class="line">        N = X.shape[<span class="number">0</span>]									<span class="comment"># 样本图片X的总数</span></span><br><span class="line">        <span class="keyword">if</span> num_samples <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span> <span class="keyword">and</span> N &gt; num_samples:	</span><br><span class="line">            mask = np.random.choice(N, num_samples)</span><br><span class="line">            N = num_samples</span><br><span class="line">            X = X[mask]</span><br><span class="line">            y = y[mask]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Compute predictions in batches</span></span><br><span class="line">        num_batches = N // batch_size</span><br><span class="line">        <span class="keyword">if</span> N % batch_size != <span class="number">0</span>:</span><br><span class="line">            num_batches += <span class="number">1</span></span><br><span class="line">        y_pred = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(num_batches):</span><br><span class="line">            start = i * batch_size</span><br><span class="line">            end = (i + <span class="number">1</span>) * batch_size</span><br><span class="line">            scores = self.model.loss(X[start:end])</span><br><span class="line">            y_pred.append(np.argmax(scores, axis=<span class="number">1</span>))</span><br><span class="line">        y_pred = np.hstack(y_pred)</span><br><span class="line">        acc = np.mean(y_pred == y)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> acc</span><br><span class="line"></span><br><span class="line">	<span class="comment">#5# 定义我们最重要的 train() 函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">		首先要确定下来总共要进行的迭代的次数num_iterations，</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        num_train = self.X_train.shape[<span class="number">0</span>]	<span class="comment"># 全部要用来训练的样本图片总数</span></span><br><span class="line">        iterations_per_epoch = max(num_train // self.batch_size, <span class="number">1</span>)	<span class="comment"># 每遍迭代的次数</span></span><br><span class="line">        num_iterations = self.num_epochs * iterations_per_epoch	<span class="comment"># 总迭代次数</span></span><br><span class="line">		<span class="string">"""</span></span><br><span class="line"><span class="string">		开始迭代循环！</span></span><br><span class="line"><span class="string">		"""</span></span><br><span class="line">        <span class="keyword">for</span> t <span class="keyword">in</span> range(num_iterations):</span><br><span class="line">            self._step()	</span><br><span class="line">            <span class="string">"""</span></span><br><span class="line"><span class="string">            上面完成了一次神经网络的迭代。此时，模型的参数已经更新过一次，</span></span><br><span class="line"><span class="string">            并且在self.loss_history中添加了一个新的loss值</span></span><br><span class="line"><span class="string">            """</span></span><br><span class="line">            <span class="comment"># Maybe print training loss	从self.loss_history中取最新的loss值</span></span><br><span class="line">            <span class="keyword">if</span> self.verbose <span class="keyword">and</span> t % self.print_every == <span class="number">0</span>:</span><br><span class="line">                print(<span class="string">'(Iteration %d / %d) loss: %f'</span> % (t + <span class="number">1</span>, </span><br><span class="line">                        num_iterations, self.loss_history[<span class="number">-1</span>]))</span><br><span class="line">			<span class="string">"""</span></span><br><span class="line"><span class="string">			"""</span></span><br><span class="line">            <span class="comment"># At the end of every epoch, increment the epoch counter and </span></span><br><span class="line">            <span class="comment"># decay the learning rate.</span></span><br><span class="line">            epoch_end = (t + <span class="number">1</span>) % iterations_per_epoch == <span class="number">0</span></span><br><span class="line">            <span class="keyword">if</span> epoch_end:	<span class="comment"># 只有当t = iterations_per_epoch-1 时为True</span></span><br><span class="line">                self.epoch += <span class="number">1</span>	<span class="comment"># 第一遍之后开始，从0自加1为每遍计数</span></span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> self.optim_configs: <span class="comment"># 第一遍之后开始，每遍给学习率自乘一个衰减率</span></span><br><span class="line">                    self.optim_configs[k][<span class="string">'learning_rate'</span>] *= self.lr_decay</span><br><span class="line">			<span class="string">"""</span></span><br><span class="line"><span class="string">			"""</span></span><br><span class="line">            <span class="comment"># Check train and val accuracy on the first iteration, the last</span></span><br><span class="line">            <span class="comment"># iteration, and at the end of each epoch.</span></span><br><span class="line">            first_it = (t == <span class="number">0</span>)					<span class="comment"># 起始的t</span></span><br><span class="line">            last_it = (t == num_iterations - <span class="number">1</span>)	<span class="comment"># 最后的t</span></span><br><span class="line">            <span class="keyword">if</span> first_it <span class="keyword">or</span> last_it <span class="keyword">or</span> epoch_end:	<span class="comment"># 在最开始／最后／每遍结束时</span></span><br><span class="line">                train_acc = self.check_accuracy(self.X_train, self.y_train,</span><br><span class="line">                                        num_samples=<span class="number">1000</span>) <span class="comment"># 随机取1000个训练图看准确率</span></span><br><span class="line">                val_acc = self.check_accuracy(self.X_val, self.y_val)</span><br><span class="line">                self.train_acc_history.append(train_acc)  <span class="comment"># 计算全部验证图片的准确率</span></span><br><span class="line">                self.val_acc_history.append(val_acc)</span><br><span class="line">				<span class="string">"""</span></span><br><span class="line"><span class="string">				"""</span></span><br><span class="line">                <span class="keyword">if</span> self.verbose:	<span class="comment"># 在最开始／最后／每遍结束时，打印准确率等信息</span></span><br><span class="line">                    print(<span class="string">'(Epoch %d / %d) train acc: %f; val_acc: %f'</span> % (</span><br><span class="line">                            self.epoch, self.num_epochs, train_acc, val_acc))</span><br><span class="line">				<span class="string">"""</span></span><br><span class="line"><span class="string">				"""</span></span><br><span class="line">                <span class="comment"># 在最开始／最后／每遍结束时，比较当前验证集的准确率和过往最佳验证集</span></span><br><span class="line">                <span class="comment"># Keep track of the best model	</span></span><br><span class="line">                <span class="keyword">if</span> val_acc &gt; self.best_val_acc:</span><br><span class="line">                    self.best_val_acc = val_acc</span><br><span class="line">                    self.best_params = &#123;&#125;</span><br><span class="line">                    <span class="keyword">for</span> k, v <span class="keyword">in</span> self.model.params.items():</span><br><span class="line">                        self.best_params[k] = v.copy() <span class="comment"># copy()仅复制值过来</span></span><br><span class="line">		<span class="string">"""</span></span><br><span class="line"><span class="string">		结束迭代循环！</span></span><br><span class="line"><span class="string">		"""</span></span><br><span class="line">        <span class="comment"># At the end of training swap the best params into the model</span></span><br><span class="line">        self.model.params = self.best_params <span class="comment"># 最后把得到的最佳模型参数存入到模型中</span></span><br></pre></td></tr></table></figure>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#漫游CS231n" >
+    <span class="tag-code">漫游CS231n</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/02/cs231n_MLP4/">
+        <span class="nav-arrow">← </span>
+        
+          一段关于神经网络的故事：高速运转的加强版神经网络
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/02/NG_DeepLearning1/">
+        
+          Andrew Ng 的 DeepLearning.ai 课程学习：神经网络和深度学习
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#最终章！"><span class="toc-nav-text">最终章！</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#漫漫优化路——SGD-with-momentum"><span class="toc-nav-text">漫漫优化路——SGD with momentum</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#夜黑风高，小试牛刀！"><span class="toc-nav-text">夜黑风高，小试牛刀！</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://iphysresearch.github.io/2018/02/cn231n_MLP5/';
+    var banner = 'https://i.loli.net/2018/02/03/5a74d126a2aa9.png'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "iphysresearch";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "一段关于神经网络的故事：最终章！",
+        owner: "iphysresearch",
+        repo: "iphysresearch.github.io",
+        oauth: {
+          client_id: "6b978dc207dc30e58ec8",
+          client_secret: "2bc56895d0221e8c27ab87b072f8f18523231e22"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
