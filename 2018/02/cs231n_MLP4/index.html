@@ -218,7 +218,7 @@
 <li>接下来就是重点了，我们要操作的数学公式是这样的：</li>
 </ul>
 <p><img src="http://upload-images.jianshu.io/upload_images/2301760-bbbed97563402350.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Batch Normalization, algorithm1"></p>
-<p>前两行公式我们已经谈过了，它们分别是 <code>sample_mean</code> 和 <code>sample_var</code> 所对应得分矩阵的每一列$x<em>i$算得平均值向量和标准差向量$(\mu</em>{B},\sigma^2_B)$。然后，我们就要利用这两个信息，对得分矩阵的每一列$x_i$特征数据进行<strong>“归一化”</strong>，即使得每一维特征均值为0，标准差为1，服从<strong>标准高斯分布</strong>。又因为归一化是一个简单且可求导的操作，所以这是可行的。最后一步更关键了，一招惊天地泣鬼神的招式：<strong>变换重构</strong>，引入了可学习参数$\gamma, \beta$，让该层神经元可以学习恢复出原始神经网络在该层所要学习的特征分布。</p>
+<p>前两行公式我们已经谈过了，它们分别是 <code>sample_mean</code> 和 <code>sample_var</code> 所对应得分矩阵的每一列$x_i$算得平均值向量和标准差向量$(\mu_{B},\sigma^2_B)$。然后，我们就要利用这两个信息，对得分矩阵的每一列$x_i$特征数据进行<strong>“归一化”</strong>，即使得每一维特征均值为0，标准差为1，服从<strong>标准高斯分布</strong>。又因为归一化是一个简单且可求导的操作，所以这是可行的。最后一步更关键了，一招惊天地泣鬼神的招式：<strong>变换重构</strong>，引入了可学习参数$\gamma, \beta$，让该层神经元可以学习恢复出原始神经网络在该层所要学习的特征分布。</p>
 <ul>
 <li>在代码中，<code>x_hat = (x - sample_mean) / (np.sqrt(sample_var + eps))</code> 和 <code>out = gamma * x_hat + beta</code> ，仍可以明显的看到Broadcasting机制的应用。参数向量(gamma, beta) 都被broadcasting拉成与矩阵x相同shape(N, D)的矩阵，然后在每一个对应元素上做如数学公式后两行所示的运算。在公式中 <code>eps</code> 的存在是必要的，因为数据某一列的标准差 <code>sample_var</code> 为0是可能的，比如仅一张图片流入神经网络的时候。</li>
 <li>在 <code>train</code> 模式里，<code>running_mean, running_var</code> 会在每经过一个BN层进行一次迭代计算～并在离开每一个BN层之前保存替换掉原BN参数字典中的 <code>running_mean, runing_var</code> 值。在训练结束后，这两个参数将会用于 <code>test</code> 测试模式下的每一个BN层中。其实你若留意英文注释的话，就会明白上面代码中的操作并不是BN算法的作者原始的处理方式，其本意是由于神经网络一旦训练完毕，参数都会基本固定下来，这个时候即使是每批样本图片再进入我们的神经网络，那么BN层计算的平均值和标准差都是固定不变的，所以我们可以采用这些数值来作为测试样本所需要的均值、标准差。然而，我们上述代码中所采用的估计整个训练集的方法，会高效简洁得多，严格地说，这叫<strong>一次指数平滑法(Single exponential smoothing)</strong>：</li>
