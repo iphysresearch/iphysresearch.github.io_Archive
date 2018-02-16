@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Machine Learning, Deep Learning, Physics">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      一段关于神经网络的故事：传说中的反向传播 | Teaching is Learning
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Teaching is Learning</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>一段关于神经网络的故事：传说中的反向传播</h2>
+  <p class="post-date">2018-02-05</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><ul>
+<li>Contents：<ol>
+<li>审判官！损失函数登场！</li>
+<li>跟着梯度走！</li>
+<li>链式的反向传播！</li>
+<li>小结：拉起神经网络的大网！</li>
+</ol>
+</li>
+</ul>
+<a id="more"></a>
+<blockquote>
+<p>这篇系列长文的灵感来源于自己参与【大数据文摘&amp;稀牛学院】的一个 CS231n 作业资料整理与讲解 case，详情可见：大数据文摘<a href="https://study.163.com/provider/10146755/index.htm" target="_blank" rel="noopener">网易云课堂专栏</a>，<a href="http://blog.csdn.net/bigdatadigest/article/details/79286510" target="_blank" rel="noopener">CSDN专栏</a> 和 <a href="https://github.com/theBigDataDigest/Stanford-CS231n-assignments-in-Chinese/tree/master/assignment2/Q1-Q3" target="_blank" rel="noopener">GitHub专栏</a>。 其中，我负责的是 CS231n 的 Assignment2 中的Q1-Q3部分，也正是此故事系列的主要内容，探讨的是基于全连接网络下各种常用技术的 Python 代码实现。</p>
+</blockquote>
+<p><br></p>
+<p>（接上文：<a href="https://iphysresearch.github.io/2018/02/cs231n_MLP2/">一段关于神经网络的故事：所谓的前向传播</a>）</p>
+<p><br></p>
+<h1 id="传说中的反向传播"><a href="#传说中的反向传播" class="headerlink" title="传说中的反向传播"></a>传说中的反向传播</h1><p>关于传说中的反向传播，首先我们最重要的是要明白：<strong>我们为什么需要这个反向传播？</strong></p>
+<p><br></p>
+<p>然而，要想弄清楚这点，我们就需要回头考察下我们前向传播下最后输出层得到10个标签的评分究竟有什么用。这个问题的答案，将会直接引出故事中的审判官——损失函数。</p>
+<p><br></p>
+<p>前情提要：</p>
+<hr>
+<p><img src="https://i.loli.net/2018/02/15/5a8544753397d.png" alt=""> </p>
+<p>在前向传播(从左向右)中，输入的图像数据$x_i$(以及所对应的正确标签$y_i$)是给定的，当然不可修改，唯一可以调整的参数是权重矩阵W(大写字母W表示神经网络中每层权重矩阵w的集合)和参数B(大写字母表示神经网络中每层偏置向量b的集合)，即上图中每一条黑色的线和黑色的圈。所以，我们希望通过调节参数(W, B)，使得最后评分的结果与训练数据集中图像的真实类别一致，即输出层输出的评分在正确的分类上应当得到最高的评分。</p>
+<p><br></p>
+<hr>
+<h2 id="审判官！损失函数登场！"><a href="#审判官！损失函数登场！" class="headerlink" title="审判官！损失函数登场！"></a>审判官！损失函数登场！</h2><p>回到之前那张用来尝鲜的猫的图像分类栗子，它有针对“猫”，“狗”，“船”三个类别的分数。我们看到例子中权重值非常差，因为猫分类的得分非常低（-96.8），而狗（437.9）和船（61.95）比较高。正如上文提到的，究竟该如何让计算机自动地判别得分的结果与正确标签之间的差异，并且对神经网络所有参数给出改进意见呢？</p>
+<p><br></p>
+<p>我们自己仅凭肉眼和肉脑当然是做不了审判官的，但是一个叫做<strong>损失函数（Loss Function）</strong>（有时也叫<strong>代价函数Cost Function</strong>或<strong>目标函数Objective</strong>）的可以做到！直观地讲，当输出层的评分给出结果与真实结果之间差异越大，我们的审判官——损失函数就会给出更加严厉的判决！举起一个写有很大的判决分数，以表示对其有多么的不满！反之差异若越小，损失函数就会给出越小的结果。</p>
+<p><br></p>
+<p>我们这里请的是<strong>交叉熵损失（cross-entropy loss）</strong>来作为最终得分的审判官！废话少说，直接看代码！</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">softmax_loss</span><span class="token punctuation">(</span>z<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    Computes the loss and gradient for softmax classification.
+    Inputs:
+    - z: Input data, of shape (N, C) where z[i, j] is the score for the jth class
+      for the ith input.
+    - y: Vector of labels, of shape (N,) where y[i] is the label for x[i] and
+      0 &lt;= y[i] &lt; C
+    Returns a tuple of:
+    - loss: Scalar giving the loss
+    - dz: Gradient of the loss with respect to z
+    """</span>
+    probs <span class="token operator">=</span> np<span class="token punctuation">.</span>exp<span class="token punctuation">(</span>z <span class="token operator">-</span> np<span class="token punctuation">.</span>max<span class="token punctuation">(</span>z<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> keepdims<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true"># 1</span>
+    probs <span class="token operator">/=</span> np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>probs<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> keepdims<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>            <span class="token comment" spellcheck="true"># 2</span>
+    N <span class="token operator">=</span> z<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>                                            <span class="token comment" spellcheck="true"># 3</span>
+    loss <span class="token operator">=</span> <span class="token operator">-</span>np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>np<span class="token punctuation">.</span>log<span class="token punctuation">(</span>probs<span class="token punctuation">[</span>np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">,</span> y<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> N        <span class="token comment" spellcheck="true"># 4</span>
+    dz <span class="token operator">=</span> probs<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    dz<span class="token punctuation">[</span>np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">,</span> y<span class="token punctuation">]</span> <span class="token operator">-=</span> <span class="token number">1</span>
+    dz <span class="token operator">/=</span> N
+    <span class="token keyword">return</span> loss<span class="token punctuation">,</span> dz
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>代码详解：</strong></p>
+<ul>
+<li><code>softmax_loss(z, y)</code> 函数的输入数据是shape为(N, C)的矩阵z和shape为(N, )的一维array行向量y。由于损失函数的输入数据来自神经网络的输出层，所以这里的矩阵z中的N代表是数据集样本图片的个数，C代表的是数据集的标签个数，对应于<a href="http://link.zhihu.com/?target=http%3A//www.cs.toronto.edu/%7Ekriz/cifar.html" target="_blank" rel="noopener">CIFAR-10</a>的训练集来说，z矩阵的shape应该为(50000, 10)，其中矩阵元素数值就是CIFAR-10的训练集数据经过整个神经网络层到达输出层，对每一张样本图片(每行)打分，给出对应各个标签(每列)的得分分数。一维array行向量y内的元素数值储存的是训练样本图片数据源的正确标签，数值范围是 $0\leqslant y_i&lt;C=10$，亦即 $y_i=0,1,…,9$。</li>
+<li>前2行代码定义了<code>probs</code>变量。首先，<code>np.max(z, axis=1, keepdims=True)</code> 是对输入矩阵x在横向方向挑出一个最大值，并要求保持横向的维度输出一个矩阵，即输出为一个shape为(N, 1)的矩阵，其每行的数值表示每张样本图片得分最高的标签对应得分；然后，再 <code>np.exp(z - ..)</code> 的操作表示的是对输入矩阵z的每张样本图片的所有标签得分都被减去该样本图片的最高得分，换句话说，将每行中的数值进行平移，使得最大值为0；再接下来对所有得分取exp函数，然后在每个样本图片中除以该样本图片中各标签的总和(<code>np.sum</code>)，最终得到一个与矩阵z同shape的(N, C)矩阵probs。上述得到矩阵probs中元素数值的过程对应的就是<strong>softmax函数</strong>：</li>
+</ul>
+<p>$$<br>S_{ij}\equiv\frac{e^{z_{ij}}}{\sum_je^{z_{ij}}}=\frac{Ce^{z_{ij}}}{C\sum_je^{z_{ij}}}=\frac{e^{z_{ij}+\log C}}{\sum_je^{z_{ij}+\log C}}\equiv\text{probs}<br>$$</p>
+<p>其中，我们已经取定了$C$的值：$\log C=-\max_ iz_{ij}$，且$z_{ij}(z;W,B)$对应于代码中的输出数据矩阵x的第 $i$ 行、第 $j$ 列的得分<code>z[i, j]</code>，其取值仅依赖于从输出层输入来的数据矩阵z和参数$(W,B)$，同理，$S_{ij}$ 表示矩阵probs的第 $i$ 行、第 $j$ 列的新得分。我们举一个简单3个图像样本，4个标签的输入数据矩阵x的栗子来说明得分有着怎样的变化：<br>$$<br>z_{ij}<br>\equiv<br>\underbrace{\begin{bmatrix}<br>1 &amp; 1 &amp; 1 &amp; 2 \\<br>2 &amp; 2 &amp; 2 &amp; 3 \\<br>3 &amp; 3 &amp; 3 &amp; 5 \end{bmatrix}}_{3\times 4}<br>\overset{-\max}{\Longrightarrow }<br>\underbrace{\begin{bmatrix}<br>-1 &amp; -1 &amp; -1 &amp; 0 \\<br>-1 &amp; -1 &amp; -1 &amp; 0 \\<br>-2 &amp; -2 &amp; -2 &amp; 0 \end{bmatrix}}_{3\times 4}<br>\overset{\exp}{\Longrightarrow }<br>\underbrace{\begin{bmatrix}<br>0.368 &amp; 0.368 &amp; 0.368 &amp; 1 \\<br>0.368 &amp; 0.368 &amp; 0.368 &amp; 1 \\<br>0.135 &amp; 0.135 &amp; 0.135 &amp; 1 \end{bmatrix}}_{3\times 4}<br>\\<br>\overset{1/\text{sum}}{\Longrightarrow }<br>\underbrace{\begin{bmatrix}<br>0.175 &amp; 0.175 &amp; 0.175 &amp; 1/2.104 \\<br>0.175 &amp; 0.175 &amp; 0.175 &amp; 1/2.104 \\<br>0.096 &amp; 0.096 &amp; 0.096 &amp; 1/1.405 \end{bmatrix}}_{3\times 4}<br>\equiv<br>\text{probs}_{ij}<br>$$<br>可以看到”新得分矩阵”probs的取值范围为$(0,1)$之间，并且矩阵每行的数值之和为1，由此可看出来每张样本图片分布在各个标签的得分有<strong>概率</strong>的含义。</p>
+<hr>
+<p><img src="http://img.blog.csdn.net/20170209172119806?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHVyZV9kcmVhbQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
+<p>这个图是另一个小例子来说明Softmax函数可以镶嵌在输出层中，相当于其他隐藏层神经元们中的激活函数一样，用Softmax函数对输出层算得的得分进行了一步“激活”操作。</p>
+<hr>
+<ul>
+<li>定义损失函数： <code>loss = -np.sum(np.log(probs[np.arange(N), y])) / N</code>，输出是一个scalar数 <code>loss</code>。其数学含义是这样的</li>
+</ul>
+<p>$$<br>L\equiv\sum_{i;j=y_i} L_{ij}= -\frac{1}{N}\sum_{i;j=y_{i}}\log(S_{ij})= -\frac{1}{N}\sum_{i;j=y_{i}}\log(\frac{e^{z_{ij}}}{\sum_je^{z_{ij}}})<br>$$</p>
+<p>其中的$\sum_{i;j=y_i} $表示的是对每个图片正确标签下的得分全部求和。听上去很晕是不是？还是痛快的给个栗子就清楚了：</p>
+<p>$$<br>\begin{align_}<br>\left.\begin{matrix}<br>S_{ij}=\text{probs}_{ij}<br>\equiv<br>\underbrace{\begin{bmatrix}<br>0.175 &amp; 0.175 &amp; {\color{Red}{0.175}} &amp; 1/2.104 \\<br>{\color{Red}{0.175}} &amp; 0.175 &amp; 0.175 &amp; 1/2.104 \\<br>0.096 &amp; {\color{Red}{0.096}} &amp; 0.096 &amp; 1/1.405 \end{bmatrix}}_{3\times 4}<br>\\<br>y_{i}\equiv \underbrace{\begin{bmatrix}<br>2 &amp; 0 &amp; 1<br>\end{bmatrix}}_{1\times 3}<br>\end{matrix}\right\}          \overset{\text{probs[np.arange(N), y]}}{\Longrightarrow } &amp;<br>\underbrace{\begin{bmatrix}<br>{\color{Red} {0.175}} &amp; {\color{Red} {0.096}} &amp; {\color{Red} {0.175}}<br>\end{bmatrix}}_{1\times 3}<br>\\<br>\overset{\log}{\Longrightarrow }  &amp; \underbrace{\begin{bmatrix}-1.743 &amp; -2.343 &amp; -1.743<br>\end{bmatrix}}_{1\times 3}<br>\\<br>\overset{\frac{-1}{N}\text{sum}}{\Longrightarrow }   &amp;  -\frac{1}{3}(-1.743  -2.343  -1.743) \Rightarrow L<br>\end{align_}<br>$$<br>上图的例子依旧是3个图像样本，4个标签从输出层输出数据矩阵x，同时利用到了该三个图像样本的正确标签y。我们通过对probs矩阵的切片操作，即<code>probs[np.arange(N), y]</code>，取出了每个图片样本在正确标签下的得分(红色数字)。这里值得留意的是向量y的标签取值范围(0~9)刚好是可以对应于probs矩阵每列的index。</p>
+<blockquote>
+<p>详解一下：<code>probs[np.arange(N), y]</code></p>
+<p>在例子中，对probs矩阵确切的切片含义是 <code>probs[np.array([0, 1 ,2]), np.array([2, 0, 1])]</code> </p>
+<p>这就像是定义了经纬度一样，指定了确切的行列数，要求切片出相应的数值。对于上面的例子而已，就是说取出第0行、第2列的值；取出第1行、第0列的值；取出第2行、第1列的值。于是，就得到了例子中的红色得分数值。切行数时，<code>np.arange(N)</code> 相当于是说“我每行都要切一下哦～”，而切列数时，<code>y</code> 向量(array)所存的数值型分类标签(0~9)，刚好可以对应于probs矩阵每列的index(0~9)，如果 <code>y = np.array([&#39;cat&#39;, &#39;dog&#39;, &#39;ship&#39;])</code> ，显然代码还这么写就会出问题了。</p>
+</blockquote>
+<p><u>再简单解释一下上面获得loss损失函数的过程</u>：我们首先对输出层输出的矩阵x做了一个”概率化”的rescale操作，改写为同shape的矩阵probs，使得每张样本图片的正确得分数值是足够充分考虑到了其他标签得分的(概率化)，可见，<strong>Softmax分类器为每种分类都提供了“可能性”</strong>；然后针对这个矩阵probs，取出每个样本图片的正确标签所对应得分，再被单调递增函数log和sum取平均值操作后，取其负值即为损失函数的结果了。最后要说一下，公式中负号的存在，并不仅仅保证了一个正定的损失函数，还使得若损失函数的结果越小，那么就意味着我们最初追求的是正确标签下得分越高，整个神经网络模型的参数就训练得越好，其中的关联性正是损失函数的数学定义中单调递增函数exp和log的保证下所实现的。</p>
+<p><br></p>
+<p>由此很显然，在一整套层状神经网络框架里，我们希望能够得到让我们满意的模型参数(W, B)，只需要使得损失函数最小，就说明我们的模型参数(W, B)取得好哈！</p>
+<p><br></p>
+<p>所以说，找输出层给出的得分和正确标签得分差距小的参数(W, B)的问题，就被转移为究竟什么样的参数(W, B)使得损失函数最小！</p>
+<p><br></p>
+<h2 id="跟着梯度走！"><a href="#跟着梯度走！" class="headerlink" title="跟着梯度走！"></a>跟着梯度走！</h2><p>别忘了代码中的 <code>softmax_loss(z, y)</code> 函数最后还有三行哈！它非常重要，是除了<strong>评分函数</strong>和<strong>损失函数</strong>之外，体现的是神经网络算法的第三个关键组成部分：<strong>最优化Optimization</strong>！最优化是寻找能使得损失函数值最小化的参数(W, B)的过程。由于每当我们取定的模型参数(W, B)稍微变化一点点的时候，最后算得的损失函数应该也会变化一点点。自然地，我们就非常希望模型参数每变化一点点的时候，损失函数都刚好能变小一点点，也就是说损失函数总是很乖地向着变小的方向变化，最终达到损失函数的最小值，然后我们就收获到理想的模型参数(W, B)。若真如此，不就省下了“踏破铁鞋无觅处”，反而“得来全不费工夫“！那么究竟怎么走才能才能如此省心省事呢？</p>
+<p><br></p>
+<p>这时候，就有必要引出<strong>梯度</strong>这个概念了。因为，我们希望能够看到损失函数是如何随着模型参数的变化而变化的，也就是说损失函数与模型参数之间的变化关系，然后才好进一步顺着我们想走的可持续发展的道路上，”衣食无忧，顺理成章，奔向小康～”</p>
+<p><br></p>
+<p>那么究竟什么是梯度呢？</p>
+<p><br></p>
+<p>梯度的本意是一个向量（矢量），表示某一函数在该点处的方向导数沿着该方向取得<strong>最大值</strong>，即函数在该点处沿着该方向（此梯度的方向）<strong>变化最快</strong>，<strong>变化率最大</strong>（为该梯度的模）。一张小图来解释梯度怎么用：</p>
+<p><img src="https://www.researchgate.net/profile/Ali_Kattan/publication/277039532/figure/fig1/AS:294486509932544@1447222463282/Figure-1-An-illustration-of-the-gradient-descent-technique-using-a-3-dimensional-error.png" alt=""></p>
+<p>上图中的曲面是二元函数$f(x,y)$在自变量$(x,y)$的图像。图上箭头就表示该点处函数f关于坐标参数x,y的梯度啦！从我们的神经网络角度去看，二元函数$f(x,y)$可以对应于模型最终算得的损失函数loss，其自变量就是模型的参数(W, B)。如果我们让训练样本图片经过一次神经网络，最后就可以得到一个损失值loss，再根据我们初始选定的模型参数(W, B)，就也可以在上面的(高维)曲面上找到一点对应。假若我们同时也知道了该点处loss的梯度，记号为grad，那么也就意味着参数(W, B)如果加上这个grad数值，在新参数(W+grad, b+grad)下让样本图片经过神经网络新计算出来的loss损失值一定会更大一些，这正是梯度的定义所保证的，如下图：(注：梯度grad是可为正也可为负的)</p>
+<p><img src="https://image.slidesharecdn.com/optimization-150210111739-conversion-gate01/95/optimizationgradient-descent-9-638.jpg?cb=1423616779" alt=""></p>
+<p>但是不要忘了，我们的目标是希望得到损失函数loss最小时的参数(W, B)，所以我们要让神经网络的参数(W, B)在每次有样本图片经过神经网络之后，都要让所有参数减去梯度(加负梯度)的方式来更新所有的参数，这就是所谓的<strong>梯度下降（gradient descent）</strong>。最终，使得损失函数关于模型参数的梯度达到足够小，即接近损失函数的最小值，就可以真正完成我们神经网络最优化的目的（更详细实现梯度下降的故事，我们留到最后的来说明）。</p>
+<p><br></p>
+<p>那么，如何在每一次有样本图片经过神经网络之后，得到损失函数关于模型参数的梯度呢？</p>
+<p><br></p>
+<p>寒暄到此为止，我们再贴一遍 <code>softmax_loss(z, y) = (loss, dx)</code> 函数代码，来观察下后三行代码里损失函数关于输出层输出数据矩阵z的梯度是如何计算出的：</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">softmax_loss</span><span class="token punctuation">(</span>z<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    Computes the loss and gradient for softmax classification.
+    Inputs:
+    - z: Input data, of shape (N, C) where z[i, j] is the score for the jth class
+      for the ith input.
+    - y: Vector of labels, of shape (N,) where y[i] is the label for x[i] and
+      0 &lt;= y[i] &lt; C
+    Returns a tuple of:
+    - loss: Scalar giving the loss
+    - dz: Gradient of the loss with respect to z, of shape (N, C)
+    """</span>
+    probs <span class="token operator">=</span> np<span class="token punctuation">.</span>exp<span class="token punctuation">(</span>z <span class="token operator">-</span> np<span class="token punctuation">.</span>max<span class="token punctuation">(</span>z<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> keepdims<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    probs <span class="token operator">/=</span> np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>probs<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> keepdims<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    N <span class="token operator">=</span> z<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    loss <span class="token operator">=</span> <span class="token operator">-</span>np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>np<span class="token punctuation">.</span>log<span class="token punctuation">(</span>probs<span class="token punctuation">[</span>np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">,</span> y<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> N
+    dz <span class="token operator">=</span> probs<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>           <span class="token comment" spellcheck="true"># 1 probs.copy() 表示获得变量probs的副本</span>
+    dz<span class="token punctuation">[</span>np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">,</span> y<span class="token punctuation">]</span> <span class="token operator">-=</span> <span class="token number">1</span>    <span class="token comment" spellcheck="true"># 2 </span>
+    dz <span class="token operator">/=</span> N                        <span class="token comment" spellcheck="true"># 3</span>
+    <span class="token keyword">return</span> loss<span class="token punctuation">,</span> dz
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>代码解析：</strong></p>
+<ul>
+<li>这里的后三行计算出的 <code>dz</code> 变量是损失函数关于从输出层输入来的数据矩阵z的梯度，其shape与数据矩阵z相同，即(N, C)。其严格的数学解析定义(证明过程<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top-right hint--error hint--large" aria-label="**Softmax分类器梯度的证明过程：**">[1]</span></a></sup>)是：</li>
+</ul>
+<p>$$<br>\left.\begin{matrix}<br>\begin{align_}<br> &amp;\frac{\partial L_{ij}}{\partial z_{ij}} = \frac{1}{N}(S_{ij}-1)\,\,,\\<br> &amp;\frac{\partial L_{ij}}{\partial z_{il}} = \frac{1}{N}S_{il}\,,\,\,\,\,\,(l\neq j)<br>\end{align_}<br>\end{matrix}\right\}<br>\Rightarrow<br>dL\equiv<br>\sum_{i;j=y_i}dL_{ij}<br>=<br>\sum_i\Big[\frac{1}{N}(S_{iy_j}-1)dz_{iy_i} +\frac{1}{N}S_{il}dz_{il} \Big]\,,\,\,\,(l\neq y_i)<br>$$</p>
+<p>不明白数学没有关系，只需要清楚我们算得的梯度是损失函数关于从输出层输入来的数据矩阵x上的梯度 $\partial L/\partial x$ 就足够了，直接看代码来弄清楚数据是如何运动的：<br>$$<br>\begin{align_}<br>\left.\begin{matrix}<br>S_{ij}<br>\equiv<br>\underbrace{\begin{bmatrix}<br>0.175 &amp; 0.175 &amp; {\color{Red}{0.175}} &amp; 1/2.104 \\<br>{\color{Red}{0.175}} &amp; 0.175 &amp; 0.175 &amp; 1/2.104 \\<br>0.096 &amp; {\color{Red}{0.096}} &amp; 0.096 &amp; 1/1.405 \end{bmatrix}}_{3\times 4}<br>\\<br>y_{i}\equiv \underbrace{\begin{bmatrix}<br>2 &amp; 0 &amp; 1<br>\end{bmatrix}}_{1\times 3}<br>\end{matrix}\right\}    &amp;      \overset{dx[\text{np.arange(N), y}] -= 1}{\Longrightarrow }<br>\underbrace{\begin{bmatrix}<br>0.175 &amp; 0.175 &amp; {\color{Red}{-0.825}} &amp; 1/2.104 \\<br>{\color{Red}{-0.825}} &amp; 0.175 &amp; 0.175 &amp; 1/2.104 \\<br>0.096 &amp; {\color{Red}{-0.904}} &amp; 0.096 &amp; 1/1.405 \end{bmatrix}}_{3\times 4}\\<br>    &amp;  \overset{\frac{1}{N}}{\Longrightarrow }<br>    \frac{1}{3}    \underbrace{\begin{bmatrix}<br>0.175 &amp; 0.175 &amp; {\color{Red}{-0.825}} &amp; 1/2.104 \\<br>{\color{Red}{-0.825}} &amp; 0.175 &amp; 0.175 &amp; 1/2.104 \\<br>0.096 &amp; {\color{Red}{-0.904}} &amp; 0.096 &amp; 1/1.405 \end{bmatrix}}_{3\times 4}<br>        =\text{dx}\equiv\Big[\frac{\partial L_{ij}}{\partial x_{il}}\Big]<br>\end{align_}<br>$$<br>在上述的过程中，我们得到经过Softmax函数处理过的”新得分矩阵”$S_{ij}$，并且令其中每张样本图片(每行)对应于正确标签的得分都减一，再配以系数1/N之后，就得到了损失函数关于输入矩阵z的“梯度矩阵” <code>dz</code>。严格的说，我们在 <code>softmax_loss(z, y)</code> 函数中输出的shape为(N, C)的 <code>dz</code> 矩阵变量对应的是$dL_{ij}/dz_{il}$。</p>
+<p><br></p>
+<p><strong>小结一下：</strong></p>
+<p><br></p>
+<p>在我们定义的 <code>softmax_loss(z, y)</code> 函数中，不仅对神经网络的输出层给出的得分矩阵z给出了一个最终打分 <code>loss</code>——即损失函数，同时还输出了一个和得分矩阵z相同shape的散度矩阵 <code>dz</code>，代表的是损失函数关于得分矩阵z的梯度：根据$\frac{\partial L_{ij}}{\partial z_{ij}} = \frac{1}{N}(S_{ij}-1); \frac{\partial L_{ij}}{\partial z_{il}} = \frac{1}{N}S_{il}\,;(l\neq y_i)$，有：<br>$$<br>\Big[\frac{\partial L_{ij}}{\partial z_{il}}\Big]<br>\Leftrightarrow<br>\underbrace{\begin{bmatrix}<br>\frac{\partial L_{0 0}}{\partial z_{00}} &amp; \cdots &amp; {\color{Red}{\frac{\partial L_{0 y_i}}{\partial z_{0y_i}}}} &amp;\cdots &amp; \cdots\\<br>{\color{Red}{\frac{\partial L_{1y_0}}{\partial z_{1y_0}}}} &amp; \cdots &amp;\frac{\partial L_{1 j}}{\partial z_{1j}} &amp; \cdots &amp; \cdots \\<br>\cdots &amp; {\color{Red}{\frac{\partial L_{iy_i}}{\partial z_{y_i}}}} &amp; \cdots &amp; \frac{\partial L_{ij}}{\partial z_{ij}} &amp;\cdots\\<br>\cdots &amp;\cdots &amp;\cdots &amp; \cdots &amp;\cdots<br>\end{bmatrix}}_{N\times C}<br>\Leftrightarrow   \frac{1}{N}<br>\underbrace{\begin{bmatrix}<br>S_{00} &amp; \cdots &amp; {\color{Red}{S_{0y_i}-1}} &amp;\cdots &amp; \cdots\\<br>{\color{Red}{S_{1y_0}-1}} &amp; \cdots &amp;S_{1j} &amp; \cdots &amp; \cdots \\<br>\cdots &amp; {\color{Red}{S_{iy_j}-1}}  &amp; \cdots &amp; S_{ij} &amp;\cdots\\<br>\cdots &amp;\cdots &amp;\cdots &amp; \cdots &amp;\cdots<br>\end{bmatrix}}_{N\times C}<br>\Rightarrow<br>\text{dz}<br>$$</p>
+<p>可以看到这个损失函数的梯度矩阵 <code>dz</code> 会得出每张样本图片(每行)的每个标签(每列)下输出层输出数据的得分梯度，亦即我们得到的是<u>损失函数关于输出层得分的变化率</u> $\partial L/\partial z$（后文用 $\partial L/\partial z$ 表示损失函数关于输出层神经元得分数据的梯度，用 $\partial L/\partial x, \partial L/\partial y$ 表示损失函数关于隐藏层神经元输出数据的梯度）。然而，我们的故事还远没有说完，回忆一下！我们需要的可是<u>损失函数关于神经网络中所有参数(W, B)的变化率啊</u>！(即 $\partial L/\partial W,\partial L/\partial B$ ) 然后我们才能不断通过损失函数$L$的反馈来调整神经网络中的参数(W, B)。</p>
+<p><br></p>
+<p>那么究竟该如何把<u>损失函数关于输出层得分的变化率</u> $\partial L/\partial z$ 与<u>损失函数关于神经网络中参数(W, B)的变化率</u> $\partial L/\partial W,\partial L/\partial B$ 建立起联系呢？这时候，传说中的<strong>反向传播</strong>终于要登场了！</p>
+<h2 id="链式的反向传播！"><a href="#链式的反向传播！" class="headerlink" title="链式的反向传播！"></a>链式的反向传播！</h2><p>目前，我们已经将损失函数$L$与输出层输出数据矩阵的每一个得分建立起了联系。只要最后我们能算得出损失函数的值，就说明我们已经获得输出层的输出数据，进而就能得到损失函数关于输出层输出数据的梯度 $\partial L/\partial z$。</p>
+<p><br></p>
+<p>那么该如何进一步得到损失函数关于其他隐藏神经元层的输出数据的梯度 $\partial L/\partial x$ 呢？还有其关于每一隐藏层的参数数据的梯度 $\partial L/\partial W,\partial L/\partial B$ 呢？这时候就要感谢一下伟大的莱布尼兹，感谢他发明复合函数的微积分求导“<strong>链式法则</strong>”就是传说中的反向传播算法的核心基础。</p>
+<p><br></p>
+<p>废话少说，看图说话，故事还是要先从一个神经元说起：</p>
+<hr>
+<p><img src="https://github.com/pangolulu/neural-network-from-scratch/raw/master/figures/bp.png" alt=""></p>
+<p>图中正中的函数f相当于输出层的某一个神经元。绿色箭头代表的是得分数据的前向传播 $f(x,y)=z$（可以看到输出层正向来的数据$x,y$被”激活”过，流出输出层的数据$z$并没有考虑”激活“），红色箭头即代表的是梯度的反向传播。图中右侧的$\partial L/\partial z$ 表示损失函数$L$关于输出层中来自当前神经元的数据得分$z$的梯度(scalar)。以上都是我们已知的，而我们未知且想知道的是损失函数$L$关于最后一隐藏层中流入当前神经元的数据得分$x$和$y$的梯度，即$\partial L/\partial x,\partial L/\partial y$。</p>
+<p><br></p>
+<p>链式法则给我们提供了解决方案，那就是通过“<strong>局部梯度</strong>”将损失函数的梯度传递回去：<br>$$<br>\frac{\partial L}{\partial x} = \frac{\partial L}{\partial z} {\color{blue} {\frac{\partial z}{\partial x}}}\,;<br>\,\,\,\,\,<br>\frac{\partial L}{\partial y} = \frac{\partial L}{\partial z}  {\color{blue} {\frac{\partial z}{\partial y}}}<br>$$</p>
+<p>在反向传播的过程中，我们只需要给出上面蓝色公式所代表的局部梯度 $\partial z/\partial x,\partial z/\partial  y$，即可从损失函数 $L$ 关于输出层输出数据$z$的梯度 $\partial L/\partial z$ 得到 $L$ 关于上一隐藏层输出数据$x,y$的梯度 $\partial L/\partial x,\partial L/\partial y$。如此一来，只要我们在每一层神经元处都定义好了局部梯度，就可以很轻松的把损失函数 $L$ 关于该层神经元们输出数据的梯度”搬运”到该层神经元们输入数据的梯度，如此反复迭代，就实现了传说中的反向传播。。。</p>
+<p><img src="http://fbim.fh-regensburg.de/~saj39122/jfroehl/diplom/fig/bpn.gif" alt=""></p>
+<p>关于反向传播的故事还有一点没说完：对损失函数的 $L$ 全微分不仅会涉及每层神经元给出的得分的微分，也会牵扯到该层参数(w, b)的微分，如此一来就可以得到我们想要的损失函数 $L$ 关于神经网络模型参数(W, B)的梯度。</p>
+<p><br></p>
+<p>整个过程很像是 $L$ 关于数据的梯度在每一层反向传播，顺便地把各层关于参数的梯度也算了出来。</p>
+<p><br></p>
+<p>是不是又被说晕了？不要急，直接上代码，最后奇迹立现！</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">affine_backward</span><span class="token punctuation">(</span>dout<span class="token punctuation">,</span> cache<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    Computes the backward pass for an affine layer.
+    Inputs:
+    - dout: Upstream derivative, of shape (N, M)    上一层的散度输出
+    - cache: Tuple of:
+    - z: Input data, of shape (N, d_1, ... d_k)
+    - w: Weights, of shape (D, M)
+    - b: biases, of shape (M,) 
+    Returns a tuple of:
+    - dz: Gradient with respect to z, of shape (N, d1, ..., d_k)
+    - dw: Gradient with respect to w, of shape (D, M)
+    - db: Gradient with respect to b, of shape (M,)
+    """</span>
+    z<span class="token punctuation">,</span> w<span class="token punctuation">,</span> b <span class="token operator">=</span> cache
+    dz<span class="token punctuation">,</span> dw<span class="token punctuation">,</span> db <span class="token operator">=</span> None<span class="token punctuation">,</span> None<span class="token punctuation">,</span> None
+    reshaped_x <span class="token operator">=</span> np<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span>z<span class="token punctuation">,</span> <span class="token punctuation">(</span>z<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    dz <span class="token operator">=</span> np<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span>dout<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>w<span class="token punctuation">.</span>T<span class="token punctuation">)</span><span class="token punctuation">,</span> z<span class="token punctuation">.</span>shape<span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># np.dot() 是矩阵乘法</span>
+    dw <span class="token operator">=</span> <span class="token punctuation">(</span>reshaped_x<span class="token punctuation">.</span>T<span class="token punctuation">)</span><span class="token punctuation">.</span>dot<span class="token punctuation">(</span>dout<span class="token punctuation">)</span>
+    db <span class="token operator">=</span> np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>dout<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> dz<span class="token punctuation">,</span> dw<span class="token punctuation">,</span> db
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>代码详解：</strong></p>
+<ul>
+<li>我们定义 <code>affine_backward(dout, cache) = (dz, dw, db)</code> 函数来描述输出层神经元的反向传播。其中shape为(N, M)的 <code>dout</code> 矩阵就是损失函数 $L$ 关于该层在 <code>affine_forward()</code> 函数正向输出数据 <code>out</code> 的梯度，其对应于我们上一节定义的 <code>softmax_loss()</code> 函数输出的 <code>dz</code> 矩阵。梯度在输出层反向传播的话，M的大小就等于样本图片的标签数，即 $M=10$。<code>cache</code> 元组是正向流入输出层的神经元的数据x和输出层的参数(w, b)，即有 <code>z, w, b = cache</code>，其中输出层的输入数据z是未经过reshaped的一个多维array，shape为$(N,d_1,…,d_k)$，权重矩阵W的shape是(D, M)，偏置b的shape是(M, )。</li>
+</ul>
+<p>接下来就是重点了！首先，在前向传播中，我们已经清楚该输出层神经元中数据的流动依据的是一个线形模型，即 形如函数表达式 $z(x,w,b）=xw+b$。找到函数 $z$ 的局部梯度显然很简单：<br>$$<br>\frac{\partial z}{\partial x}=w\,,\frac{\partial z}{\partial w}=x\,,\frac{\partial z}{\partial b}=1<br>$$<br>进而，就可以有：(蓝色部分即为局部梯度！)<br>$$<br>\begin{align_}<br> &amp;\frac{\partial L}{\partial x} = \frac{\partial L}{\partial z}  {\color{blue} {\frac{\partial z}{\partial x}}}<br>     = \frac{\partial L}{\partial z}  {\color{blue} {w}}\,\,,\\<br> &amp;\frac{\partial L}{\partial w} = \frac{\partial L}{\partial z}  {\color{blue} {\frac{\partial z}{\partial w}}}<br>     = \frac{\partial L}{\partial z}  {\color{blue} {x}}\,\,,\\<br>&amp;\frac{\partial L}{\partial b} = \frac{\partial L}{\partial z}  {\color{blue} {\frac{\partial z}{\partial b}}}<br>     = \frac{\partial L}{\partial z} \cdot{\color{blue} {1}}\,\,.<br>\end{align_}<br>$$<br>然而，我们的“得分”函数可没这么简单，其是如下的一个矩阵表达式：<br>$$<br>\underbrace{\begin{bmatrix}<br> &amp;  &amp; \\<br> &amp; \text{z} &amp; \\<br> &amp;  &amp;<br>\end{bmatrix}}_{N\times M}<br>\overleftarrow{=}<br>\underbrace{\begin{bmatrix}<br> &amp;  &amp; \\<br> &amp; \text{x} &amp; \\<br> &amp;  &amp;<br>\end{bmatrix}}_{N\times D}<br>\cdot<br>\underbrace{\begin{bmatrix}<br> &amp;  &amp; \\<br> &amp; \text{w} &amp; \\<br> &amp;  &amp;<br>\end{bmatrix}}_{D\times M}<br>+<br>\underbrace{\begin{bmatrix}<br> &amp;  &amp; \\<br> &amp;  \text{b}&amp; \\<br> &amp;  &amp;<br>\end{bmatrix}}_{\underset{\text{Broadcasting}}{N\times M}}<br>$$<br>那么，这个矩阵表达式的局部梯度究竟该怎么写呢？通常，大家把故事讲到这里都是用”矩阵维度适配”的办法说明的，我们也会遵循主流，因为故事这样讲会很容易理解，也更方便应用。若想详细了解其中涉及的矩阵论知识，可参阅：<a href="http://cs231n.stanford.edu/vecDerivs.pdf" target="_blank" rel="noopener">cs231n</a>，<a href="https://en.wikipedia.org/wiki/Matrix_calculus" target="_blank" rel="noopener">Wiki</a>。</p>
+<p><br></p>
+<p>“矩阵维度匹配”到底是什么意思？这其实是个挺”猥琐”的方法，故事是这样的：</p>
+<p><br></p>
+<p>首先，我们要约定好所有损失函数 $L$ 梯度的shape都要与其相关的矩阵变量的shape相同。比方说，上一节损失函数 <code>softmax_loss(z, y) = (loss, dz)</code> 中的梯度 <code>dz</code> 就和数据矩阵 <code>z</code> 的shape相同。所以，在函数 <code>affine_backward(dout, cache) = (dz, dw, db)</code> 中，我们就要求损失函数 $L$ 关于正向输入矩阵(x, w, b)的梯度矩阵 (dx, dw, db) 与矩阵 (x, w, b) 维度相同。(严格说，我们的局部梯度求导其实对应于vector-by-vector derivatives，我们如此约定不过是相当于取定denominator layout)</p>
+<p><br></p>
+<p>于是，我们就可以按照上面函数 $z$ 的局部梯度规则书写，只要保证矩阵表达式维度匹配即可：</p>
+<p>$$<br>\begin{align_}<br>\underbrace{\begin{bmatrix}<br> &amp;  &amp; \\<br> &amp; \text{dx} &amp; \\<br> &amp;  &amp;<br>\end{bmatrix}}_{N\times 32\times32\times3}<br> \overset{\text{np.reshape}}{\Longleftarrow }<br>\underbrace{\begin{bmatrix}<br> &amp;  &amp; \\<br> &amp; \hat{\text{dx}} &amp; \\<br> &amp;  &amp;<br>\end{bmatrix}}_{N\times D}<br>&amp;=<br>\underbrace{\begin{bmatrix}<br> &amp;  &amp; \\<br> &amp; \text{dout} &amp; \\<br> &amp;  &amp;<br>\end{bmatrix}}_{N\times M}<br>\cdot<br>{\color{blue} {<br>\underbrace{\begin{bmatrix}<br> &amp;  &amp; \\<br> &amp; \text{w}^T &amp; \\<br> &amp;  &amp;<br>\end{bmatrix}}_{M\times D} }}\\<br>\underbrace{\begin{bmatrix}<br> &amp;  &amp; \\<br> &amp; \text{dw} &amp; \\<br> &amp;  &amp;<br>\end{bmatrix}}_{D\times M}<br>&amp;=<br>{\color{blue} {<br>\underbrace{\begin{bmatrix}<br> &amp;  &amp; \\<br> &amp; \text{reshaped_x}^T &amp; \\<br> &amp;  &amp;<br>\end{bmatrix}}_{D\times N} }}<br>\cdot<br>\underbrace{\begin{bmatrix}<br> &amp;  &amp; \\<br> &amp; \text{dout} &amp; \\<br> &amp;  &amp;<br>\end{bmatrix}}_{N\times M}<br>\\<br>\underbrace{\begin{bmatrix}<br>\cdots &amp; \text{db} &amp; \cdots<br>\end{bmatrix}}_{1\times M}<br>&amp; =<br>{\color{blue} {<br>\underbrace{\begin{bmatrix}<br>\cdots &amp; 1 &amp; \cdots<br>\end{bmatrix}}_{1\times N} }}<br>\cdot<br>\underbrace{\begin{bmatrix}<br> &amp;  &amp; \\<br> &amp;  \text{dout} &amp; \\<br> &amp;  &amp;<br>\end{bmatrix}}_{N\times M}<br>\end{align_}<br>$$<br>其中蓝色矩阵正是局部梯度部分。上面的矩阵表达式分别对应于Python代码，：</p>
+<pre class="line-numbers language-python"><code class="language-python">dx <span class="token operator">=</span> np<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span>dout<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>w<span class="token punctuation">.</span>T<span class="token punctuation">)</span><span class="token punctuation">,</span> x<span class="token punctuation">.</span>shape<span class="token punctuation">)</span>
+dw <span class="token operator">=</span> <span class="token punctuation">(</span>reshaped_x<span class="token punctuation">.</span>T<span class="token punctuation">)</span><span class="token punctuation">.</span>dot<span class="token punctuation">(</span>dout<span class="token punctuation">)</span> 
+db <span class="token operator">=</span> np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>dout<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>代码解析：</strong></p>
+<ul>
+<li>可以看到对矩阵w和矩阵reshaped_x的转置操作，以及与dout矩阵的矩阵乘法前后顺序的安排，都是考虑到梯度矩阵(dx, dw, db)维数满足约定的前提下，所得到唯一可能的梯度矩阵表达形式。</li>
+<li>代码中 <code>np.reshape(.., x.shape)</code> 要求输出的矩阵与多维array输入数据x的shape同型。</li>
+<li>代码中 <code>np.sum(.., axis=0)</code> 表示每列元素求和，显然这个矩阵操作等价于我们在上面写的矩阵表达式哈！</li>
+</ul>
+<p>现在，我们懂得如何用 <code>affine_backward()</code> 函数反向传播表示损失函数关于输出层流入前后数据以及参数的梯度，那么其他隐藏神经元层也用这个函数反向传播梯度行不行？</p>
+<p><br></p>
+<p>当然不行，千万别忘了，其他隐藏层神经元给出得分后还有“激活”的操作。所以我们再定义一个 <code>relu_backward(dout, cache) = dx</code> 函数表示隐藏层神经元中激活函数部分的梯度的反向传播，然后就可以组成一个完整的损失函数 $L$ 关于隐藏层神经元的反向传播函数 <code>affine_relu_backward(dout, cache) = (dx, dw, db)</code>。</p>
+<p><br></p>
+<p>说这么多，其实代码很简单啦：</p>
+<pre class="line-numbers language-python"><code class="language-python">  <span class="token keyword">def</span> <span class="token function">relu_backward</span><span class="token punctuation">(</span>dout<span class="token punctuation">,</span> cache<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    Computes the backward pass for a layer of rectified linear units (ReLUs).
+    Input:
+    - dout: Upstream derivatives, of any shape
+    - cache: Input x, of same shape as dout
+    Returns:
+    - dx: Gradient with respect to x
+    """</span>
+    dx<span class="token punctuation">,</span> x <span class="token operator">=</span> None<span class="token punctuation">,</span> cache
+    dx <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">*</span> dout    
+    <span class="token comment" spellcheck="true"># 与所有x中元素为正的位置处，位置对应于dout矩阵的元素保留，其他都取0</span>
+    <span class="token keyword">return</span> dx
+
+  <span class="token keyword">def</span> <span class="token function">affine_relu_backward</span><span class="token punctuation">(</span>dout<span class="token punctuation">,</span> cache<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    Backward pass for the affine-relu convenience layer
+    """</span>
+    fc_cache<span class="token punctuation">,</span> relu_cache <span class="token operator">=</span> cache            <span class="token comment" spellcheck="true"># fc_cache = (x, w, b)   relu_cache = a</span>
+    da <span class="token operator">=</span> relu_backward<span class="token punctuation">(</span>dout<span class="token punctuation">,</span> relu_cache<span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># da = (x > 0) * relu_cache</span>
+    dx<span class="token punctuation">,</span> dw<span class="token punctuation">,</span> db <span class="token operator">=</span> affine_backward<span class="token punctuation">(</span>da<span class="token punctuation">,</span> fc_cache<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> dx<span class="token punctuation">,</span> dw<span class="token punctuation">,</span> db
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>代码详解：</strong></p>
+<ul>
+<li>代码 <code>dx = (x &gt; 0) * dout</code> ，表示损失函数关于在ReLU激活函数处流入流出数据的梯度的反向传递。下图是某层神经元激活函数部分中的数据正反向传播的示意图：</li>
+</ul>
+<p>$$<br>\begin{align_}<br>\underbrace{\begin{bmatrix}<br>{\color{green} {-1 }}&amp; {\color{green} {-1 }} &amp;  3\\<br>{\color{green} {-2}} &amp; (\text{x}) &amp; 4 \\<br>2 &amp; 4  &amp; {\color{green} {-5 }}<br>\end{bmatrix}}_{N\times H}<br>&amp;<br> \overset{\text{forward}}{\Longrightarrow }<br>\underbrace{\begin{bmatrix}<br> {\color{green} {0 }} &amp;  {\color{green} {0 }}  &amp; 3 \\<br> {\color{green} {0 }}  &amp; (\hat{\text{x}}) &amp; 4 \\<br>2 &amp; 4  &amp;  {\color{green} {0 }}<br>\end{bmatrix}}_{N\times H}<br>\\<br>\underbrace{\begin{bmatrix}<br> {\color{green} {0 }} &amp;  {\color{green} {0 }} &amp; 0.7 \\<br> {\color{green} {0 }} &amp; ( \text{dx}) &amp; -0.5\\<br>-0.2 &amp; 0.3 &amp;  {\color{green} {0 }}<br>\end{bmatrix}}_{N\times H}<br>&amp;<br> \overset{\text{backward}}{\Longleftarrow }<br>\underbrace{\begin{bmatrix}<br>  {\color{green} {0.1}} &amp; {\color{green} {-0.3}} &amp; 0.7 \\<br> {\color{green} {0.4}} &amp; (\text{dout)} &amp; -0.5\\<br>-0.2 &amp; 0.3 &amp;  {\color{green} {0.8 }}<br>\end{bmatrix}}_{N\times H}<br>\end{align_}<br>$$</p>
+<p>上面的列数H对应的是该隐藏层神经元的个数。激活函数 $f(x)=\max(0,x)$ 的局部梯度：<br>$$<br>\begin{align_}<br>\frac{\partial f}{\partial x}= 1 \,,x \geqslant 0\,,(\hat{x}&gt;0)\\<br>\frac{\partial f}{\partial x}= 0 \,,x &lt; 0\,,(\hat{x}=0)<br>\end{align_}<br>$$<br>再运用链式法则 $\frac{\partial L}{\partial x}=\frac{\partial L}{\partial f}\frac{\partial f}{\partial x}=(\text{dout})\frac{\partial f}{\partial x}$，就可实现损失函数的梯度在激活函数处的反向传播。</p>
+<p><br></p>
+<h2 id="小结：拉起神经网络的大网！"><a href="#小结：拉起神经网络的大网！" class="headerlink" title="小结：拉起神经网络的大网！"></a>小结：拉起神经网络的大网！</h2><p>故事讲到此，我们就基本可以成功的建立起神经网络的框架了。下面以一个<u>2层的全连接神经网络</u>为例，从我们上文所有定义过的模块化Python代码函数的角度，总结一下数据在这张神经大网上是如何传播运动的。</p>
+<p><img src="http://www.kdnuggets.com/wp-content/uploads/neural-network-input-hidden-output.jpg" alt=""></p>
+<p><img src="https://i.loli.net/2018/02/15/5a854a53a0d56.jpeg" alt=""></p>
+<p>其实，前面讲了那么多故事，定义了那么多函数，归根结底就是为了看懂上面我们自己手绘的<strong>“数据流动走向图”</strong>，以及可以用Python代码构造出来我们的一个超简易版本的全连接神经网络框架。</p>
+<p><br></p>
+<p><strong>数据流动走向图的代码详解：</strong></p>
+<p>注：下面代码在cs231n作业略有简化修改(无正则化)。</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">TwoLayerNet</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># 我们的2层全连接神经网络</span>
+    <span class="token triple-quoted-string string">"""
+    首先，需要初始化我们的神经网络。
+    毕竟，数据从输入层第一次流入到神经网络里，我们的参数(W,B)不能为空，
+    也不能都太大或太小，因为参数(W,B)的初始化是相当重要的，
+    对整个神经网络的训练影响巨大，但如何proper的初始化参数仍然没有定论
+    目前仍有很多paper在专门讨论这个话题。
+    """</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self
+                 <span class="token punctuation">,</span>input_dim<span class="token operator">=</span><span class="token number">3</span><span class="token operator">*</span><span class="token number">32</span><span class="token operator">*</span><span class="token number">32</span>        <span class="token comment" spellcheck="true"># 每张样本图片的数据维度大小</span>
+                 <span class="token punctuation">,</span>hidden_dim<span class="token operator">=</span><span class="token number">100</span>        <span class="token comment" spellcheck="true"># 隐藏层的神经元个数</span>
+                 <span class="token punctuation">,</span>num_classes<span class="token operator">=</span><span class="token number">10</span>        <span class="token comment" spellcheck="true"># 样本图片的分类类别个数是</span>
+                 <span class="token punctuation">,</span>weight_scale<span class="token operator">=</span><span class="token number">1e</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token comment" spellcheck="true"># 初始化参数的权重尺度(标准偏差)</span>
+        <span class="token triple-quoted-string string">"""
+        我们把需要学习的参数(W,B)都存在self.params字典中，
+        其中每个元素都是都是numpy arrays:
+        """</span>
+        self<span class="token punctuation">.</span>params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+        <span class="token triple-quoted-string string">"""
+        我们用标准差为weight_scale的高斯分布初始化参数W,
+        偏置B的初始都为0:
+        (其中randn函数是基于零均值和标准差的一个高斯分布)
+        """</span>
+        self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"W1"</span><span class="token punctuation">]</span> <span class="token operator">=</span> weight_scale <span class="token operator">*</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span>input_dim
+                                                           <span class="token punctuation">,</span>hidden_dim<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"b1"</span><span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>hidden_dim<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"W2"</span><span class="token punctuation">]</span> <span class="token operator">=</span> weight_scale <span class="token operator">*</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span>hidden_dim
+                                                           <span class="token punctuation">,</span>num_classes<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"b2"</span><span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>num_classes<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token triple-quoted-string string">"""
+        可以看到,
+        隐藏层的参数矩阵行数是3*32*32，列数是100；
+        输出层的参数矩阵行数是100，列数10.
+        """</span>
+
+    <span class="token comment" spellcheck="true"># 接下来，我们最后定义一个loss函数就可以完成神经网络的构造</span>
+    <span class="token keyword">def</span> <span class="token function">loss</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""
+        首先，输入的数据X是一个多维的array，shape为(样本图片的个数N*3*32*32),
+        y是与输入数据X对应的正确标签，shape为(N,)。
+        我们loss函数目标输出一个损失值loss和一个grads字典，
+        其中存有loss关于隐藏层和输出层的参数(W,B)的梯度值：
+        """</span>  
+        loss<span class="token punctuation">,</span> grads <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true"># 数据X在隐藏层和输出层的前向传播：</span>
+        h1_out<span class="token punctuation">,</span> h1_cache <span class="token operator">=</span> affine_relu_forward<span class="token punctuation">(</span>X
+                                               <span class="token punctuation">,</span>self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"W1"</span><span class="token punctuation">]</span>
+                                               <span class="token punctuation">,</span>self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"b1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        scores<span class="token punctuation">,</span> out_cache <span class="token operator">=</span> affine_forward<span class="token punctuation">(</span>h1_out
+                                           <span class="token punctuation">,</span>self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"W2"</span><span class="token punctuation">]</span>
+                                           <span class="token punctuation">,</span>self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"b2"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+        <span class="token comment" spellcheck="true"># 输出层后，结合正确标签y得出损失值和其在输出层的梯度：</span>
+        loss<span class="token punctuation">,</span> dout <span class="token operator">=</span> softmax_loss<span class="token punctuation">(</span>scores<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+
+        <span class="token comment" spellcheck="true"># 损失值loss的梯度在输出层和隐藏层的反向传播：</span>
+        dout<span class="token punctuation">,</span> dw2<span class="token punctuation">,</span> db2 <span class="token operator">=</span> affine_backward<span class="token punctuation">(</span>dout<span class="token punctuation">,</span> out_cache<span class="token punctuation">)</span>
+        grads<span class="token punctuation">[</span><span class="token string">"W2"</span><span class="token punctuation">]</span> <span class="token operator">=</span> dw2 <span class="token punctuation">,</span> grads<span class="token punctuation">[</span><span class="token string">"b2"</span><span class="token punctuation">]</span> <span class="token operator">=</span> db2
+        _<span class="token punctuation">,</span> dw1<span class="token punctuation">,</span> db1 <span class="token operator">=</span> affine_relu_backward<span class="token punctuation">(</span>dout<span class="token punctuation">,</span> h1_cache<span class="token punctuation">)</span>
+        grads<span class="token punctuation">[</span><span class="token string">"W1"</span><span class="token punctuation">]</span> <span class="token operator">=</span> dw1 <span class="token punctuation">,</span> grads<span class="token punctuation">[</span><span class="token string">"b1"</span><span class="token punctuation">]</span> <span class="token operator">=</span> db1
+
+        <span class="token triple-quoted-string string">"""
+        可以看到图片样本的数据梯度dout只起到了带路的作用，
+        最终会舍弃掉，我们只要loss关于参数的梯度，
+        然后保存在grads字典中。
+        """</span>
+        <span class="token keyword">return</span> loss<span class="token punctuation">,</span> grads
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上面代码定义的类 <code>TwoLayerNet()</code> 就是一个两层全链接神经网络模型，其中富含了我们之前讲到的所有内容。</p>
+<p><br></p>
+<p>那么故事到此，我们总算是知道怎么建立一个神经网络框架了。</p>
+<p><br></p>
+<p>感觉很简单是不？是不是以为我们的神经网络现在可以开始干活了？</p>
+<p><br></p>
+<p>NO~ no~ no~ </p>
+<p><br></p>
+<p>还远没有哦～ 我们不过是铺好了一条通往目的地的林荫小路和各种道路两旁的设施，还没有真正地上路行驶呢！也就是说，我们的神经网络还没有搭建起自我<strong>模型最优化</strong>的程序，即<strong>“训练”</strong>的过程。在后面的故事里，我们不仅要搞清楚训练的流程思路，还要进一步强化和改造我们刚刚搭建的简易神经网路，把它从一条奔小康的乡间小路打造成实现四个”现代化”、高速运转的高速公路！</p>
+<p>关于矩阵$L_{ij}$中第$i$行、第$j$列元素的全微分：<br>$$<br>\begin{align*}<br>dL_{ij}=-\frac{1}{N}d\left(\log[S_{ij}] \right)<br>&amp;=-\frac{1}{N}d\left(\log[\frac{e^{x_{ij}}}{\sum_ke^{x_{ik}}}] \right) \\<br>&amp;=-\frac{1}{N}\frac{\sum_ke^{x_{ik}}}{e^{x_{ik}}}\left(\frac{e^{x_{ij}}}{\sum_ke^{x_{ik}}}dx_{ij} -\frac{e^{x_{ij}}d(\sum_ke^{x_{ik}})}{\sum_ke^{x_{ik}}\sum_le^{x_{il}}} \right) \\<br>&amp;=-\frac{1}{N}\left(dx_{ij} -\frac{e^{x_{ij}}dx_{ij}+e^{x_{ik}}dx_{ik}}{\sum_le^{x_{il}}} \right) \,\,\,\,\,\,\, (k\neq j) \\<br>&amp;=\frac{1}{N}(1-S_{ij})dx_{ij} +\frac{1}{N}S_{ik}dx_{ik}   \,\,\,\,\,\,\,(k\neq j) \\<br>\end{align_}<br>$$<br>再由全微分公式 $dL_{ij}=\frac{\partial L_{ij}}{\partial x_{ij}}dx_{ij}+\frac{\partial L_{ij}}{\partial x_{ik}}dx_{ik}$，可得出：<br>$$<br>\begin{align_}<br> &amp;\frac{\partial L_{ij}}{\partial x_{ij}} = \frac{1}{N}(S_{ij}-1)\,\,,\\<br> &amp;\frac{\partial L_{ij}}{\partial x_{il}} = \frac{1}{N}S_{il}\,.\,\,\,\,\,(l\neq j)<br>\end{align*}<br>$$</p>
+<p>（接下文：<a href="https://iphysresearch.github.io/2018/02/cs231n_MLP4/">一段关于神经网络的故事：高速运转的加强版神经网络</a>）<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><strong>Softmax分类器梯度的证明过程：</strong><a href="#fnref:1" rev="footnote"> ↩</a></span></li></ol></div></div></p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#漫游CS231n" >
+    <span class="tag-code">漫游CS231n</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/02/cs231n_MLP2/">
+        <span class="nav-arrow">← </span>
+        
+          一段关于神经网络的故事：所谓的前向传播
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/02/cs231n_MLP4/">
+        
+          一段关于神经网络的故事：高速运转的加强版神经网络
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#传说中的反向传播"><span class="toc-nav-text">传说中的反向传播</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#审判官！损失函数登场！"><span class="toc-nav-text">审判官！损失函数登场！</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#跟着梯度走！"><span class="toc-nav-text">跟着梯度走！</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#链式的反向传播！"><span class="toc-nav-text">链式的反向传播！</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#小结：拉起神经网络的大网！"><span class="toc-nav-text">小结：拉起神经网络的大网！</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://iphysresearch.github.io/2018/02/cs231n_MLP3/';
+    var banner = 'https://i.loli.net/2018/02/03/5a74d126a2aa9.png'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "iphysresearch";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "一段关于神经网络的故事：传说中的反向传播",
+        owner: "iphysresearch",
+        repo: "iphysresearch.github.io",
+        oauth: {
+          client_id: "6b978dc207dc30e58ec8",
+          client_secret: "2bc56895d0221e8c27ab87b072f8f18523231e22"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
