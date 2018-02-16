@@ -10,7 +10,7 @@
   
   <title>
     
-      Andrew Ng 的 DeepLearning.ai 课程学习：神经网络和深度学习 | Teaching is Learning
+      品读 A. Ng 的 DeepLearning.ai 之“神经网络和深度学习” | Teaching is Learning
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -139,7 +139,7 @@
 </header>
 
     <div id="article-banner">
-  <h2>Andrew Ng 的 DeepLearning.ai 课程学习：神经网络和深度学习</h2>
+  <h2>品读 A. Ng 的 DeepLearning.ai 之“神经网络和深度学习”</h2>
   <p class="post-date">2018-02-15</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
@@ -148,7 +148,7 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>此文是吴恩达 DeepLearning.ai 课程第一课——神经网络和深度学习部分的个人学习笔记。</p>
+    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>此文是吴恩达 DeepLearning.ai 课程第一课——神经网络和深度学习部分的自己讲给自己的讲稿。</p>
 <p><br></p>
 <p>内含自己的学习历程和从其他信息渠道获取的归纳与总结，并不会细致的罗列所有内容，仅摘取对个人有一定价值的信息。</p>
 <p><br></p>
@@ -156,15 +156,17 @@
 <a id="more"></a>
 <hr>
 <p><br></p>
-<p>黄兄组织整理了Ng的 <a href="http://www.ai-start.com/dl2017/" target="_blank" rel="noopener">深度学习（DeepLearning.ai）学习笔记</a> 是最全面的中文文本讲义资料。我这里将全面借鉴和引用其中内容和信息，不过此文背后更大程度上记录的是我个人的学习历程和从其他信息渠道获取的归纳与总结，并不会细致的罗列所有内容，仅摘取对个人有一定价值的信息，所以该文写作的目标最大受益者是我自己。</p>
+<p>黄兄组织整理了Ng的 <a href="http://www.ai-start.com/dl2017/" target="_blank" rel="noopener">深度学习（DeepLearning.ai）学习笔记</a> 是最全面的中文文本讲义资料。我这里将全面借鉴和引用其中内容和信息，不过此文背后更大程度上记录的是我个人的学习历程和从其他信息渠道获取的归纳与总结，以自述的方式“教自己”。</p>
 <p><br></p>
 <p>相关官方资源：<a href="http://mooc.study.163.com/learn/2001281002?tid=2001392029#/learn/content" target="_blank" rel="noopener">网易云微专业</a>、<a href="https://www.coursera.org/specializations/deep-learning" target="_blank" rel="noopener">Coursera</a></p>
-<p>​    </p>
+<p><br></p>
 <h1 id="1-深度学习引言"><a href="#1-深度学习引言" class="headerlink" title="1. 深度学习引言"></a>1. 深度学习引言</h1><p><br></p>
 <h2 id="1-1-1-2-欢迎-amp-什么是神经网络？"><a href="#1-1-1-2-欢迎-amp-什么是神经网络？" class="headerlink" title="1.1-1.2 欢迎 &amp; 什么是神经网络？"></a>1.1-1.2 欢迎 &amp; 什么是神经网络？</h2><p>Ng 对 AI 的形象理解：</p>
 <blockquote>
 <p>我认为AI是最新的电力，大约在一百年前，我们社会的电气化改变了每个主要行业，从交通运输行业到制造业、医疗保健、通讯等方面，我认为如今我们见到了<strong>AI</strong>明显的令人惊讶的能量，带来了同样巨大的转变。显然，AI的各个分支中，发展的最为迅速的就是深度学习。</p>
 </blockquote>
+<p>这个理解基本等价于是把 AI 技术的崛起等价于了第四次工业革命，不过究竟是否真的是一场给人类带来巨大变革的革命，还需要拭目以待。</p>
+<p><br></p>
 <p>总共有五门课：</p>
 <ul>
 <li><strong>神经网络和深度学习</strong>：学习神经网络的基础；用深度神经网络辨认猫的项目；</li>
@@ -173,16 +175,50 @@
 <li><strong>卷积神经网络</strong>：它经常被用于图像领域；</li>
 <li><strong>序列模型</strong>：构建自然语言、音频以及其他序列数据的模型；</li>
 </ul>
-<p><img src="https://i.loli.net/2018/02/15/5a84fe01bd9d1.png" alt=""></p>
-<p>神经网络非常擅长计算从$x$到$y$的精准映射函数，神经网络在监督学习的环境下是非常的有效和强大的。</p>
+<p>本文对应的是第一门课，即所谓“神经网络和深度学习”。源于 Ng 在著名的 Coursera 上的一门网络公开课，现今国内的网易云课堂已经将课程完整引入，可以免费观看到全部视频课程和讲义，不过并不包括编程作业和解答。</p>
 <p><br></p>
-<h2 id="1-3-1-6-神经网络的监督学习-amp-为什么深度学习会兴起？-amp-关于本课程-amp-课程资源"><a href="#1-3-1-6-神经网络的监督学习-amp-为什么深度学习会兴起？-amp-关于本课程-amp-课程资源" class="headerlink" title="1.3-1.6 神经网络的监督学习 &amp; 为什么深度学习会兴起？&amp; 关于本课程 &amp; 课程资源"></a>1.3-1.6 神经网络的监督学习 &amp; 为什么深度学习会兴起？&amp; 关于本课程 &amp; 课程资源</h2><ul>
-<li>事实表明，到目前几乎所有由神经网络创造的经济价值，本质上都离不开一种叫做<strong>监督学习</strong>的机器学习类别。</li>
+<p>Ng 对于什么是神经网络这个问题的引入可谓非常浅显。用一个房价预测的回归例子不仅引入了一个神经元的行为（突出强调数据输入与输出），还顺便把 <strong>ReLU</strong> 非线性函数也顺带安利了一下。</p>
+<p><img src="https://i.loli.net/2018/02/16/5a86e16695305.png" alt=""></p>
+<p><strong>ReLU</strong> 激活函数如今可谓是相当常用且非常强大的。它的全称是<strong>Rectified Linear Unit</strong>。rectify（修正）可以理解成 $\max(0,x)$。</p>
+<p><br></p>
+<p>接着将单个神经元拓展成多个神经元的结构，继续用房价作为例子，不过是更多的特征作为”输入层”。</p>
+<p><img src="https://i.loli.net/2018/02/16/5a86e2446d721.png" alt=""></p>
+<p>在图上每一个画的小圆圈都可以是<strong>ReLU</strong>的一部分，也就是指修正线性单元，或者其它稍微非线性的函数。下面的图，用一个标准且典型的单隐层神经网络来揭开DDL的庐山真面目：</p>
+<p><img src="https://i.loli.net/2018/02/16/5a86e31d589fa.png" alt=""></p>
+<p>这是一个全连接的神经网络，中间隐层中每一个神经元都与全部四个特征相连接，训练好后的三个节点神经元将会有各自的内禀含义，比如第一个节点训练好后发现它赋予了 $x_1,x_2$ 更大的权重，那么这个节点可能就代表着“家庭人口”这个含义。最终输出层给出一个标量值，来表示在当前特征参数下的房价预测值。</p>
+<p><br></p>
+<p>总之，神经网络非常擅长计算从$x$到$y$的精准映射函数。那么训练是如何保证给出的房价贴近于真实房价呢？这就是监督学习最擅长的事情了，要知道，神经网络在监督学习的环境下也是非常的有效和强大的。</p>
+<p><br></p>
+<h2 id="1-3-神经网络的监督学习"><a href="#1-3-神经网络的监督学习" class="headerlink" title="1.3 神经网络的监督学习"></a>1.3 神经网络的监督学习</h2><p>监督学习说白了就是给你一本带答案的习题集，你知道自己学的知识究竟对不对，肯定要看一眼答案，然后回过头来做比对。相对应的，木有课后答案的习题集就是非监督学习了。Ng 在课程中有言：</p>
+<ul>
+<li>事实表明，到目前几乎所有由神经网络创造的经济价值，本质上都离不开一种叫做<strong>监督学习</strong>的机器学习类别。尤其是广告商！人家能够预测你会点击哪个广告，都是基于用户的信息和过去线上的操作行为，这些就相当于是”答案“，进而机器学会了后，再对新题目给出的新答案就相当于是对用户对广告的点击行为预测了。</li>
+</ul>
+<p>Ng 将结构化数据和非结构化数据专门讨论了一番。这其实挺重要的，因为对于我们数据的类型进行分类后可以很好的为我们模型的构建和理解带来参考。</p>
+<p><img src="https://i.loli.net/2018/02/16/5a86edbd4e607.png" alt=""></p>
+<p>通常来说，传统的机器学习仅适用于结构化数据，对非结构化数据表现非常差。Ng 指出：</p>
+<ul>
 <li>神经网络算法对于<strong>结构化</strong>和<strong>非结构化数据</strong>都有用处。</li>
 </ul>
+<p>要我来说，神经网络算法不仅几乎完美的解决了非结构化数据的模型构建，还非常完美的实现了结构化数据的自动化特征工程技术。</p>
+<p><br></p>
+<h2 id="1-4-1-6-为什么深度学习会兴起？-amp-关于本课程-amp-课程资源"><a href="#1-4-1-6-为什么深度学习会兴起？-amp-关于本课程-amp-课程资源" class="headerlink" title="1.4-1.6 为什么深度学习会兴起？&amp; 关于本课程 &amp; 课程资源"></a>1.4-1.6 为什么深度学习会兴起？&amp; 关于本课程 &amp; 课程资源</h2><p>关于为啥深度学习火了呢？这是一个很多人都谈的问题，Ng 也没法回避它。 我来一语中的先从学术上说，就是因为2007年 Hinton 等人发的一篇重要文章开始了深度学习领域的篇章，但整个学术界真正开始广泛重视起 DL 是因为2012年一场数据科学竞赛的结果。而 DL 以及带动的整个机器学习/人工智能/数据分析等领域在全世界范围内如此之火，是因为 Google 家里的那只狗（AlphaGo）。</p>
+<p><br></p>
+<p>Ng 是从技术发展的本质角度来谈的，非常重要的三要素得到了史无前例的提升和进步：</p>
+<p><img src="https://i.loli.net/2018/02/16/5a86f43a9963a.png" alt=""></p>
+<ul>
+<li>Data （大数据啊！深度学习本质上是数据驱动的啊！）</li>
+<li>Computation（英伟达啊！黄教主啊！GPU 啊！）</li>
+<li>Algorithms（算法肯定进步了啊！不然你我还来学这个干啥？）</li>
+</ul>
+<p>下面的图记得是 Google 最早给出的吧，毕竟人家有大量的资源做这种测评估计。图中描述的是不同数据量尺度下的传统机器学习和深度学习之间的差异关系。</p>
 <p><img src="https://i.loli.net/2018/02/15/5a8506ba4030f.png" alt=""></p>
+<p>Ng 指出：</p>
+<blockquote>
 <p>事实上，如今在神经网络上最可靠的方法来获得更好的性能，往往就是<strong>要么训练一个更大的神经网络，要么投入更多的数据</strong>，但这只能在一定程度上起作用，因为最终你可能会耗尽了数据，或者最终你的网络是如此的大规模而导致将要用太久的时间去训练，但是仅仅提升规模的的确确地让我们在深度学习的世界中摸索了很多时间。</p>
-<h2 id="1-7-Geoffery-Hinton-专访"><a href="#1-7-Geoffery-Hinton-专访" class="headerlink" title="1.7 Geoffery Hinton 专访"></a>1.7 Geoffery Hinton 专访</h2><p>Hinton 的专访让我印象很深刻，不仅仅是他是深度学习教父一般的存在，他的传奇求学经历和时刻保持着新颖的思想让人印象深刻。这次 Ng 的专访实例文本可见：<a href="https://zhuanlan.zhihu.com/p/31003205" target="_blank" rel="noopener">XX</a></p>
+</blockquote>
+<p>Ng 确实是学术出身，在讲解这个图的过程中描述的很严谨，强调了该图的描述其实有很多定义和理解是含糊的，大趋势确实是如图所示，不过其中很多细节还不敢一概而论。</p>
+<h1 id="2-神经网络的编程基础"><a href="#2-神经网络的编程基础" class="headerlink" title="2. 神经网络的编程基础"></a>2. 神经网络的编程基础</h1><h2 id="2-1-二分类"><a href="#2-1-二分类" class="headerlink" title="2.1 二分类"></a>2.1 二分类</h2><p>待续中。。。。</p>
+<h1 id="人工智能大师实录"><a href="#人工智能大师实录" class="headerlink" title="人工智能大师实录"></a>人工智能大师实录</h1><h2 id="Geoffery-Hinton-专访"><a href="#Geoffery-Hinton-专访" class="headerlink" title="Geoffery Hinton 专访"></a>Geoffery Hinton 专访</h2><p>Hinton 的专访让我印象很深刻，不仅仅是他是深度学习教父一般的存在，他的传奇求学经历和时刻保持着新颖的思想让人印象深刻。这次 Ng 的专访实例文本可见：<a href="http://www.ai-start.com/dl2017/interview.html" target="_blank" rel="noopener">XX</a></p>
 <p><img src="https://i.loli.net/2018/02/15/5a852baf8b7dc.png" alt=""></p>
 <blockquote>
 <p><strong>Geoffrey Hinton：</strong>当我还在高中时有一个什么都比我强的同学，他是个才华横溢的数学家，有天他来学校并且问我，你知道大脑是用全息图运作的吗？那时应该是1966年，我回答他：全息图是个啥？他就解释了一下，在全息图中，你可以切掉它的一半，但依然了解得到全貌，还有大脑中的记忆可能是分布于整个大脑中的，我大概猜到他可能是读过关于Karl Lashley的实验，其中讲到切掉老鼠几个小部分的脑子，然后发现很难找到哪一部分存储哪种特别的记忆。。。</p>
@@ -302,7 +338,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#1-深度学习引言"><span class="toc-nav-text">1. 深度学习引言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-1-1-2-欢迎-amp-什么是神经网络？"><span class="toc-nav-text">1.1-1.2 欢迎 &amp; 什么是神经网络？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-3-1-6-神经网络的监督学习-amp-为什么深度学习会兴起？-amp-关于本课程-amp-课程资源"><span class="toc-nav-text">1.3-1.6 神经网络的监督学习 &amp; 为什么深度学习会兴起？&amp; 关于本课程 &amp; 课程资源</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-7-Geoffery-Hinton-专访"><span class="toc-nav-text">1.7 Geoffery Hinton 专访</span></a></li></ol></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#1-深度学习引言"><span class="toc-nav-text">1. 深度学习引言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-1-1-2-欢迎-amp-什么是神经网络？"><span class="toc-nav-text">1.1-1.2 欢迎 &amp; 什么是神经网络？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-3-神经网络的监督学习"><span class="toc-nav-text">1.3 神经网络的监督学习</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-4-1-6-为什么深度学习会兴起？-amp-关于本课程-amp-课程资源"><span class="toc-nav-text">1.4-1.6 为什么深度学习会兴起？&amp; 关于本课程 &amp; 课程资源</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#2-神经网络的编程基础"><span class="toc-nav-text">2. 神经网络的编程基础</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-1-二分类"><span class="toc-nav-text">2.1 二分类</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#人工智能大师实录"><span class="toc-nav-text">人工智能大师实录</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Geoffery-Hinton-专访"><span class="toc-nav-text">Geoffery Hinton 专访</span></a></li></ol></li></ol>
     
   </div>
 </aside>
@@ -368,7 +404,7 @@
     var gitmentConfig = "iphysresearch";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "Andrew Ng 的 DeepLearning.ai 课程学习：神经网络和深度学习",
+        id: "品读 A. Ng 的 DeepLearning.ai 之“神经网络和深度学习”",
         owner: "iphysresearch",
         repo: "iphysresearch.github.io",
         oauth: {
