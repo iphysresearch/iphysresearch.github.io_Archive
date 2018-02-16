@@ -148,16 +148,13 @@
   <!-- Article START -->
   <article class="post-article">
     <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>CS231n &amp; MXNet 复现</p>
-<p><br></p>
 <p>$a^2$</p>
-<p><br></p>
 <p>$$a^2$$<br>$$<br>a^2<br>$$<br><br></p>
 <p>[a^2]</p>
 <p><br></p>
 <p>(a^2)</p>
 <p><br></p>
 <p>\(a^2\)</p>
-<p><br></p>
 <p>待续中。。。</p>
 <p><br></p>
 <a id="more"></a>
@@ -243,7 +240,7 @@
 <p><br></p>
 <h3 id="多类支持向量机损失-Multiclass-Support-Vector-Machine-Loss"><a href="#多类支持向量机损失-Multiclass-Support-Vector-Machine-Loss" class="headerlink" title="多类支持向量机损失 Multiclass Support Vector Machine Loss"></a>多类支持向量机损失 Multiclass Support Vector Machine Loss</h3><p>损失函数的具体形式多种多样。首先，介绍常用的<u>多类支持向量机（SVM）损失函数</u>。SVM的损失函数想要SVM在正确分类上的得分始终比不正确分类上的得分高出一个边界值$\Delta$。我们可以把损失函数想象成一个人，这位SVM先生（或者女士）对于结果有自己的品位，如果某个结果能使得损失值更低，那么SVM就更加喜欢它。</p>
 <p><br></p>
-<p>让我们更精确一些。回忆一下，第i个数据中包含图像$x_i$的像素和代表正确类别的标签$y_i$。评分函数输入像素数据，然后通过公式$f(x_i,W)$来计算不同分类类别的分值。这里我们将分值简写为$s$。比如，针对第j个类别的得分就是其第j个元素：\(s_j=f(x<em>i,W)</em>{j} \)。针对第i个数据的多类SVM的损失函数定义如下:</p>
+<p>让我们更精确一些。回忆一下，第i个数据中包含图像$x_i$的像素和代表正确类别的标签$y_i$。评分函数输入像素数据，然后通过公式$f(x_i,W)$来计算不同分类类别的分值。这里我们将分值简写为$s$。比如，针对第j个类别的得分就是其第j个元素：$s_j=f(x<em>i,W)</em>{j}$。针对第i个数据的多类SVM的损失函数定义如下:<br>$$<br>L+\Delta)<br>$$</p>
 <p>$$<br>L<em>i=\sum</em>{j\neq y_i}\max(0,s<em>j-s</em>{y_i}+\Delta)<br>$$<br><strong>举例</strong>：用一个例子演示公式是如何计算的。假设有3个分类，并且得到了分值$s=[13,-7,11]$。其中第一个类别是正确类别，即$y_i=0$。同时假设$\Delta$是10（后面会详细介绍该超参数）。上面的公式是将所有不正确分类（$j\neq y_i$）加起来，所以我们得到两个部分：<br>$$<br>L_i=\max(0,-7-13+10)+\max(0,11-13+10)<br>$$<br>可以看到第一个部分结果是0，这是因为[-7-13+10]得到的是负数，经过$\max(0,-)$函数处理后得到0。这一对类别分数和标签的损失值是0，这是因为正确分类的得分13与错误分类的得分-7的差为20，高于边界值10。而SVM只关心差距至少要大于10，更大的差值还是算作损失值为0。第二个部分计算[11-13+10]得到8。虽然正确分类的得分比不正确分类的得分要高（13&gt;11），但是比10的边界值还是小了，分差只有2，这就是为什么损失值等于8。简而言之，SVM的损失函数想要正确分类类别 $y_i$ 分数比不正确类别分数高，而且至少要高$\Delta$。如果不满足这点，就开始计算损失值。</p>
 <p><br></p>
 <p>那么在这次的模型中，我们面对的是线性评分函数（$f(x_i,W)=Wx_i$），所以我们可以将损失函数的公式稍微改写一下：<br>$$<br>L<em>i=\sum</em>{j\neq y_i}\max(0,w^T_jx<em>i-w^T</em>{y_i}x_i+\Delta)<br>$$<br>其中$w_j$是权重$W$的第j行，被变形为列向量。然而，一旦开始考虑更复杂的评分函数$f$公式，这样做就不是必须的了。</p>
