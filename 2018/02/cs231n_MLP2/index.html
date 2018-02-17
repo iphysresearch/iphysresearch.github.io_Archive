@@ -49,8 +49,7 @@
   
 
 
-<link rel="stylesheet" href="/css/prism.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+</head>
 <div class="wechat-share">
   <img src="/css/images/logo.png" />
 </div>
@@ -250,8 +249,8 @@
 <p>再强大的算法，无论矫情得怎么解释，也都不如直接飞代码来得更清晰，更直接。</p>
 <p><br></p>
 <p>那么任意某一层神经元们在前向传播中，究竟做了什么呢？前面总算把数据如何运动的故事说清楚了，现在开始直接用代码说明一切，第一步，我们定义面对输入数据某一层神经元们给出“得分”的函数 <code>affine_forward(x, w, b) = (out, cache)</code> ：</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">affine_forward</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> w<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+<pre><code class="python">def affine_forward(x, w, b):
+    &quot;&quot;&quot;
     Inputs:
     - x: A numpy array containing input data, of shape (N, d_1, ..., d_k) 样本
     - w: A numpy array of weights, of shape (D, M) 权重
@@ -259,14 +258,14 @@
     Returns a tuple of:
     - out: output, of shape (N, M)
     - cache: (x, w, b)
-    """</span>
-    out <span class="token operator">=</span> None            <span class="token comment" spellcheck="true"># 初始化</span>
-    reshaped_x <span class="token operator">=</span> np<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token punctuation">(</span>x<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 确保x是一个规整的矩阵</span>
-    out <span class="token operator">=</span> reshape_x<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>w<span class="token punctuation">)</span> <span class="token operator">+</span>b                    <span class="token comment" spellcheck="true"># out = w x +b</span>
-    cache <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> w<span class="token punctuation">,</span> b<span class="token punctuation">)</span>                            
-    <span class="token comment" spellcheck="true"># cache将该函数的输入值缓冲储存起来，以备后面计算梯度时使用</span>
-    <span class="token keyword">return</span> out<span class="token punctuation">,</span> cache
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    &quot;&quot;&quot;
+    out = None            # 初始化
+    reshaped_x = np.reshape(x, (x.shape[0],-1))  # 确保x是一个规整的矩阵
+    out = reshape_x.dot(w) +b                    # out = w x +b
+    cache = (x, w, b)                            
+    # cache将该函数的输入值缓冲储存起来，以备后面计算梯度时使用
+    return out, cache
+</code></pre>
 <p><strong>代码详解：</strong></p>
 <ul>
 <li>首先，需要对输入数据$x$进行<strong>矩阵化</strong>，这是因为如果这代表的是第一层神经元前向传播，那么对于我们的图片数据集CIFAR-10，其每张图片输入进来的数据$x$的shape是$(N,32,32,3)$，是一个4维的array，所以需要将其reshape成$(N,3072)$的2维矩阵，其中每行是由一串3072个数字所代表的一个图片样本。<code>np.reshape(x, (x.shape[0],-1))</code> 中的 <code>-1</code> 是指剩余可填充的维度，所以这段代码意思就是保证reshape后的矩阵行数是$N$，剩余的维度信息都规则的排场一行即可。</li>
@@ -277,35 +276,35 @@
 <p>这里你要清楚的是 <code>reshape_x</code> 中每一行和 <code>w</code> 中的每一列的运算对应于一个神经元面对一张图片的运算过程。矩阵乘法没啥可说的，只要把输入矩阵和要输出的矩阵的维数掰扯清楚了，就会很简单。这里参数w和b都作为函数的输入参数参与运算的，可见你想让神经网络运作起来，你是需要先初始化所有的神经网络参数的，那么究竟如何初始化呢？这还是门小学问，我们暂且假定是随机填了些的参数进来。虽然输入进来的参数 b 的shape是 <code>(M,)</code>，但在numpy中，两个array的”+”相加，是完全等价于<code>np.add()</code>函数(详情可help该函数)，这里体现了numpy的<strong>Broadcasting机制</strong>：(详情可查看 <a href="http://blog.csdn.net/hongxingabc/article/details/53149655" target="_blank" rel="noopener">Python库numpy中的Broadcasting机制解析</a>)</p>
 <blockquote>
 <p>简单的说，对两个阵进行操作时，NumPy逐元素地比较他们的形状。只有两种情况下Numpy会认为两个矩阵内的两个对应维度是兼容的：1. 它们相等； 2. 其中一个是1维。举个例子：</p>
-<pre class="line-numbers language-python"><code class="language-python">A      <span class="token punctuation">(</span><span class="token number">4d</span> array<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token number">8</span> x <span class="token number">1</span> x <span class="token number">6</span> x <span class="token number">1</span>
-B      <span class="token punctuation">(</span><span class="token number">3d</span> array<span class="token punctuation">)</span><span class="token punctuation">:</span>      <span class="token number">7</span> x <span class="token number">1</span> x <span class="token number">5</span>
-Result <span class="token punctuation">(</span><span class="token number">4d</span> array<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token number">8</span> x <span class="token number">7</span> x <span class="token number">6</span> x <span class="token number">5</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code class="python">A      (4d array):  8 x 1 x 6 x 1
+B      (3d array):      7 x 1 x 5
+Result (4d array):  8 x 7 x 6 x 5
+</code></pre>
 <p>当任何一个维度是1，那么另一个不为1的维度将被用作最终结果的维度。也就是说，尺寸为1的维度将延展或“逐个复制”到与另一个维度匹配。<br><br><br>所以，<strong>代码中的偏置b，其shape为(M,)，其实它表明是一个$1\times M$的行向量，面对另一个$N\times M$的矩阵，b 便遇强则强的在弱势维度上(纵向)被延展成了一个$N\times M$的矩阵</strong>：<br>$$<br>\Big\downarrow\left.\begin{bmatrix}<br>\cdots &amp;b &amp; \cdots \\<br>\cdots  &amp;  b&amp; \cdots \\<br>\cdots  &amp;  b&amp;  \cdots<br>\end{bmatrix}\right\} N行<br>$$</p>
 </blockquote>
 <p>虽然，我们说清楚了 <code>affine_forward(x,w,b)</code> 函数的故事，但要注意的是，在前向传播中一层神经元要干的活还没完哦～ 在隐藏层中得到的得分结果还需要ReLU激活函数“刺激”一下才算结束。</p>
 <p><br></p>
 <p>于是我们再定义 <code>relu_forward(x) = (out, cache)</code> 函数来完成这一步，其Python代码就更简单了：</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">relu_forward</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+<pre><code class="python">def relu_forward(x):
+    &quot;&quot;&quot;
     Computes the forward pass for a layer of rectified linear units (ReLUs).
     Input:
     - x: Inputs, of any shape
     Returns a tuple of:
     - out: Output, of the same shape as x
     - cache: x
-    """</span>
-    out <span class="token operator">=</span> np<span class="token punctuation">.</span>maximum<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 取x中每个元素和0做比较</span>
-    cache <span class="token operator">=</span> x                 <span class="token comment" spellcheck="true"># 缓冲输入进来的x矩阵</span>
-    <span class="token keyword">return</span> out<span class="token punctuation">,</span> cache
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    &quot;&quot;&quot;
+    out = np.maximum(0, x)   # 取x中每个元素和0做比较
+    cache = x                 # 缓冲输入进来的x矩阵
+    return out, cache
+</code></pre>
 <p><strong>代码详解：</strong></p>
 <p><br></p>
 <p>我们可以注意到，<code>np.maximum()</code> 函数中的接受的两个参数一样用到了刚刚详解过的Broadcasting机制：前一个参数是只有一个维度的数值0，被延展成了一个和矩阵x同样shape的矩阵，然后在对应元素上比大小(相当于矩阵x的所有元素中把比0小的元素都替换成0)，取较大元素填在新的同shape形的矩阵out中。</p>
 <p><br></p>
 <p>那么，终于到最后了。一个隐藏层层神经元们在前向传播中究竟做了什么呢？那就是下面定义的 <code>affine_relu_forward(x, w, b) = (out, cache)</code> 函数：</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">affine_relu_forward</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> w<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+<pre><code class="python">def affine_relu_forward(x, w, b):
+    &quot;&quot;&quot;
     Convenience layer that perorms an affine transform followed by a ReLU
 
     Inputs:
@@ -315,12 +314,12 @@ Result <span class="token punctuation">(</span><span class="token number">4d</sp
     Returns a tuple of:
     - out: Output from the ReLU
     - cache: Object to give to the backward pass
-    """</span>
-    a<span class="token punctuation">,</span> fc_cache <span class="token operator">=</span> affine_forward<span class="token punctuation">(</span>x<span class="token punctuation">,</span> w<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 线性模型</span>
-    out<span class="token punctuation">,</span> relu_cache <span class="token operator">=</span> relu_forward<span class="token punctuation">(</span>a<span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 激活函数</span>
-    cache <span class="token operator">=</span> <span class="token punctuation">(</span>fc_cache<span class="token punctuation">,</span> relu_cache<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 缓冲的是元组：(x, w, b, (a))</span>
-    <span class="token keyword">return</span> out<span class="token punctuation">,</span> cache
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    &quot;&quot;&quot;
+    a, fc_cache = affine_forward(x, w, b) # 线性模型
+    out, relu_cache = relu_forward(a)    # 激活函数
+    cache = (fc_cache, relu_cache)  # 缓冲的是元组：(x, w, b, (a))
+    return out, cache
+</code></pre>
 <p>这里还是要留个心眼，对于输出层的神经元们来说，他们只需要用 <code>affine_forward(x, w, b)</code> 函数给出得分即可，无需再被”激活”。</p>
 <p><br></p>
 <h2 id="前向传播手绘图"><a href="#前向传播手绘图" class="headerlink" title="前向传播手绘图"></a>前向传播手绘图</h2><p><strong>小结一下：</strong></p>

@@ -49,8 +49,7 @@
   
 
 
-<link rel="stylesheet" href="/css/prism.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+</head>
 <div class="wechat-share">
   <img src="/css/images/logo.png" />
 </div>
@@ -226,67 +225,67 @@
 <p>以图片中的一个颜色通道为例来进行说明。两张图片使用L1距离来进行比较。逐个像素求差值，然后将所有差值加起来得到一个数值。如果两张图片一模一样，那么L1距离为0，但是如果两张图片很是不同，那L1值将会非常大。</p>
 <hr>
 <p>下面，让我们看看如何用代码来实现这个分类器。首先，我们将CIFAR-10的数据加载到内存中，并分成4个数组：训练数据和标签，测试数据和标签。在下面的代码中，<strong>Xtr</strong>（大小是50000x32x32x3）存有训练集中所有的图像，<strong>Ytr</strong>是对应的长度为50000的1维数组，存有图像对应的分类标签（从0到9）：</p>
-<pre class="line-numbers language-python"><code class="language-python">Xtr<span class="token punctuation">,</span> Ytr<span class="token punctuation">,</span> Xte<span class="token punctuation">,</span> Yte <span class="token operator">=</span> load_CIFAR10<span class="token punctuation">(</span><span class="token string">'data/cifar10/'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># a magic function we provide</span>
-<span class="token comment" spellcheck="true"># flatten out all images to be one-dimensional</span>
-Xtr_rows <span class="token operator">=</span> Xtr<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span>Xtr<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">32</span> <span class="token operator">*</span> <span class="token number">32</span> <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># Xtr_rows becomes 50000 x 3072</span>
-Xte_rows <span class="token operator">=</span> Xte<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span>Xte<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">32</span> <span class="token operator">*</span> <span class="token number">32</span> <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># Xte_rows becomes 10000 x 3072</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="python">Xtr, Ytr, Xte, Yte = load_CIFAR10(&#39;data/cifar10/&#39;) # a magic function we provide
+# flatten out all images to be one-dimensional
+Xtr_rows = Xtr.reshape(Xtr.shape[0], 32 * 32 * 3) # Xtr_rows becomes 50000 x 3072
+Xte_rows = Xte.reshape(Xte.shape[0], 32 * 32 * 3) # Xte_rows becomes 10000 x 3072
+</code></pre>
 <p>（自注：训练集中有50000张图片，每个图片reshape成为了一条一维的数组，共3072个元素。）</p>
 <p><br></p>
 <p>现在我们得到所有的图像数据，并且把他们拉长成为行向量了。接下来展示如何训练并评价一个分类器：</p>
-<pre class="line-numbers language-python"><code class="language-python">nn <span class="token operator">=</span> NearestNeighbor<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># create a Nearest Neighbor classifier class</span>
-nn<span class="token punctuation">.</span>train<span class="token punctuation">(</span>Xtr_rows<span class="token punctuation">,</span> Ytr<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># train the classifier on the training images and labels</span>
-Yte_predict <span class="token operator">=</span> nn<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>Xte_rows<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># predict labels on the test images</span>
-<span class="token comment" spellcheck="true"># and now print the classification accuracy, which is the average number</span>
-<span class="token comment" spellcheck="true"># of examples that are correctly predicted (i.e. label matches)</span>
-<span class="token keyword">print</span> <span class="token string">'accuracy: %f'</span> <span class="token operator">%</span> <span class="token punctuation">(</span> np<span class="token punctuation">.</span>mean<span class="token punctuation">(</span>Yte_predict <span class="token operator">==</span> Yte<span class="token punctuation">)</span> <span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># python2.x</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="python">nn = NearestNeighbor() # create a Nearest Neighbor classifier class
+nn.train(Xtr_rows, Ytr) # train the classifier on the training images and labels
+Yte_predict = nn.predict(Xte_rows) # predict labels on the test images
+# and now print the classification accuracy, which is the average number
+# of examples that are correctly predicted (i.e. label matches)
+print &#39;accuracy: %f&#39; % ( np.mean(Yte_predict == Yte) )  # python2.x
+</code></pre>
 <p>作为评价标准，我们常常使用<strong>准确率</strong>，它描述了我们预测正确的得分。请注意以后我们实现的所有分类器都需要有这个API：<strong>train(X, y)</strong>函数。该函数使用训练集的数据和标签来进行训练。从其内部来看，类应该实现一些关于标签和标签如何被预测的模型。这里还有个<strong>predict(X)</strong>函数，它的作用是预测输入的新数据的分类标签。现在还没介绍分类器的实现，下面就是<u>使用L1距离的Nearest Neighbor分类器</u>的实现套路：</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<pre><code class="python">import numpy as np
 
-<span class="token keyword">class</span> <span class="token class-name">NearestNeighbor</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">pass</span>
+class NearestNeighbor(object):
+    def __init__(self):
+        pass
 
-    <span class="token keyword">def</span> <span class="token function">train</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">""" 
+    def train(self, X, y):
+        &quot;&quot;&quot; 
         这个地方的训练其实就是把所有的已有图片读取进来 -_-||
-        """</span>
-        <span class="token triple-quoted-string string">""" X is N x D where each row is an example. Y is 1-dimension of size N """</span>
-        <span class="token comment" spellcheck="true"># the nearest neighbor classifier simply remembers all the training data</span>
-        self<span class="token punctuation">.</span>Xtr <span class="token operator">=</span> X
-        self<span class="token punctuation">.</span>ytr <span class="token operator">=</span> y
+        &quot;&quot;&quot;
+        &quot;&quot;&quot; X is N x D where each row is an example. Y is 1-dimension of size N &quot;&quot;&quot;
+        # the nearest neighbor classifier simply remembers all the training data
+        self.Xtr = X
+        self.ytr = y
 
-    <span class="token keyword">def</span> <span class="token function">predict</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">)</span><span class="token punctuation">:</span>
-         <span class="token triple-quoted-string string">""" 
+    def predict(self, X):
+         &quot;&quot;&quot; 
         所谓的预测过程其实就是扫描所有训练集中的图片，计算距离，取最小的距离对应图片的类目
-        """</span>
-        <span class="token triple-quoted-string string">""" X is N x D where each row is an example we wish to predict label for """</span>
-        num_test <span class="token operator">=</span> X<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-        <span class="token comment" spellcheck="true"># 这里要保证维度一致！</span>
-        <span class="token comment" spellcheck="true"># lets make sure that the output type matches the input type</span>
-        Ypred <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span>num_test<span class="token punctuation">,</span> dtype <span class="token operator">=</span> self<span class="token punctuation">.</span>ytr<span class="token punctuation">.</span>dtype<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 一维元素都是0的array</span>
+        &quot;&quot;&quot;
+        &quot;&quot;&quot; X is N x D where each row is an example we wish to predict label for &quot;&quot;&quot;
+        num_test = X.shape[0]
+        # 这里要保证维度一致！
+        # lets make sure that the output type matches the input type
+        Ypred = np.zeros(num_test, dtype = self.ytr.dtype) # 一维元素都是0的array
 
-        <span class="token comment" spellcheck="true"># 把训练集扫一遍 -_-||</span>
-        <span class="token comment" spellcheck="true"># loop over all test rows</span>
-        <span class="token keyword">for</span> i <span class="token keyword">in</span> xrange<span class="token punctuation">(</span>num_test<span class="token punctuation">)</span><span class="token punctuation">:</span>  
-            <span class="token comment" spellcheck="true"># 注意这里的xrange仅适用于python2.x，range适用于python3.x</span>
-              <span class="token comment" spellcheck="true"># find the nearest training image to the i'th test image</span>
-              <span class="token comment" spellcheck="true"># using the L1 distance (sum of absolute value differences)</span>
-              <span class="token comment" spellcheck="true"># 对训练集中每一张图片都与指定的一张测试图片，在对应元素位置上做差，</span>
-            <span class="token comment" spellcheck="true"># 然后分别以每张图片为单位求和。</span>
-              distances <span class="token operator">=</span> np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>np<span class="token punctuation">.</span>abs<span class="token punctuation">(</span>self<span class="token punctuation">.</span>Xtr <span class="token operator">-</span> X<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> axis <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 一个5000元素的list</span>
-              <span class="token comment" spellcheck="true"># 取最小distance图片的下标：</span>
-              min_index <span class="token operator">=</span> np<span class="token punctuation">.</span>argmin<span class="token punctuation">(</span>distances<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># get the index with smallest distance</span>
-              Ypred<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> self<span class="token punctuation">.</span>ytr<span class="token punctuation">[</span>min_index<span class="token punctuation">]</span> <span class="token comment" spellcheck="true"># predict the label of the nearest example</span>
+        # 把训练集扫一遍 -_-||
+        # loop over all test rows
+        for i in xrange(num_test):  
+            # 注意这里的xrange仅适用于python2.x，range适用于python3.x
+              # find the nearest training image to the i&#39;th test image
+              # using the L1 distance (sum of absolute value differences)
+              # 对训练集中每一张图片都与指定的一张测试图片，在对应元素位置上做差，
+            # 然后分别以每张图片为单位求和。
+              distances = np.sum(np.abs(self.Xtr - X[i,:]), axis = 1)    # 一个5000元素的list
+              # 取最小distance图片的下标：
+              min_index = np.argmin(distances) # get the index with smallest distance
+              Ypred[i] = self.ytr[min_index] # predict the label of the nearest example
 
-        <span class="token keyword">return</span> Ypred
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        return Ypred
+</code></pre>
 <p>如果你用这段代码跑CIFAR-10，你会发现准确率能达到<strong>38.6%</strong>。这比随机猜测的10%要好，但是比人类识别的水平（<a href="http://link.zhihu.com/?target=http%3A//karpathy.github.io/2011/04/27/manually-classifying-cifar10/" target="_blank" rel="noopener">据研究推测是94%</a>）和卷积神经网络能达到的95%还是差多了。点击查看基于CIFAR-10数据的<a href="http://link.zhihu.com/?target=http%3A//www.kaggle.com/c/cifar-10/leaderboard" target="_blank" rel="noopener">Kaggle算法竞赛排行榜</a>。</p>
 <p><br></p>
 <p><strong>距离选择</strong>：计算向量间的距离有很多种方法，另一个常用的方法是<strong>L2距离</strong>，从几何学的角度，可以理解为它在计算两个向量间的欧式距离。L2距离的公式如下：<br>$$<br>d_2(I_1,I_2)=\sqrt{\sum_p(I^P_1-I^p_2)^2}<br>$$<br>换句话说，我们依旧是在计算像素间的差值，只是先求其平方，然后把这些平方全部加起来，最后对这个和开方。在Numpy中，我们只需要替换上面代码中的1行代码就行：</p>
-<pre class="line-numbers language-python"><code class="language-python">distances <span class="token operator">=</span> np<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span>np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>np<span class="token punctuation">.</span>square<span class="token punctuation">(</span>self<span class="token punctuation">.</span>Xtr <span class="token operator">-</span> X<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> axis <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="python">distances = np.sqrt(np.sum(np.square(self.Xtr - X[i,:]), axis = 1))
+</code></pre>
 <p>注意在这里使用了<strong>np.sqrt</strong>，但是在实际中可能不用。因为求平方根函数是一个_单调函数_，它对不同距离的绝对值求平方根虽然改变了数值大小，但依然保持了不同距离大小的顺序。所以用不用它，都能够对像素差异的大小进行正确比较。如果你在CIFAR-10上面跑这个模型，正确率是<strong>35.4%</strong>，比刚才低了一点。</p>
 <p><br></p>
 <p><strong>L1和L2比较</strong>。比较这两个度量方式是挺有意思的。在面对两个向量之间的差异时，L2比L1更加不能容忍这些差异。也就是说，相对于1个巨大的差异，L2距离更倾向于接受多个中等程度的差异。L1和L2都是在<a href="http://link.zhihu.com/?target=http%3A//planetmath.org/vectorpnorm" target="_blank" rel="noopener">p-norm</a>常用的特殊形式。</p>
@@ -307,33 +306,33 @@ Yte_predict <span class="token operator">=</span> nn<span class="token punctuati
 <p>测试数据集只使用一次，即在训练完成后评价最终的模型时使用。</p>
 </blockquote>
 <p>好在我们有不用测试集调优的方法。其思路是：从训练集中取出一部分数据用来调优，我们称之为<strong>验证集（validation set）</strong>。以CIFAR-10为例，我们可以用49000个图像作为训练集，用1000个图像作为验证集。验证集其实就是作为假的测试集来调优。下面就是代码：</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 假定已经有Xtr_rows, Ytr, Xte_rows, Yte了，其中Xtr_rows为50000*3072 矩阵</span>
-<span class="token comment" spellcheck="true"># assume we have Xtr_rows, Ytr, Xte_rows, Yte as before</span>
-<span class="token comment" spellcheck="true"># recall Xtr_rows is 50,000 x 3072 matrix</span>
-Xval_rows <span class="token operator">=</span> Xtr_rows<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">1000</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true"># take first 1000 for validation 构建前1000个图为交叉验证集</span>
-Yval <span class="token operator">=</span> Ytr<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">1000</span><span class="token punctuation">]</span>
-Xtr_rows <span class="token operator">=</span> Xtr_rows<span class="token punctuation">[</span><span class="token number">1000</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true"># keep last 49,000 for train 保留其余49000个图为训练集</span>
-Ytr <span class="token operator">=</span> Ytr<span class="token punctuation">[</span><span class="token number">1000</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+<pre><code class="python"># 假定已经有Xtr_rows, Ytr, Xte_rows, Yte了，其中Xtr_rows为50000*3072 矩阵
+# assume we have Xtr_rows, Ytr, Xte_rows, Yte as before
+# recall Xtr_rows is 50,000 x 3072 matrix
+Xval_rows = Xtr_rows[:1000, :] # take first 1000 for validation 构建前1000个图为交叉验证集
+Yval = Ytr[:1000]
+Xtr_rows = Xtr_rows[1000:, :] # keep last 49,000 for train 保留其余49000个图为训练集
+Ytr = Ytr[1000:]
 
-<span class="token comment" spellcheck="true"># 设置一些k值，用于试验</span>
-<span class="token comment" spellcheck="true"># find hyperparameters that work best on the validation set</span>
-validation_accuracies <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+# 设置一些k值，用于试验
+# find hyperparameters that work best on the validation set
+validation_accuracies = []
+for k in [1, 3, 5, 10, 20, 50, 100]:
 
-    <span class="token comment" spellcheck="true"># 初始化对象</span>
-    <span class="token comment" spellcheck="true"># use a particular value of k and evaluation on validation data</span>
-    nn <span class="token operator">=</span> NearestNeighbor<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    nn<span class="token punctuation">.</span>train<span class="token punctuation">(</span>Xtr_rows<span class="token punctuation">,</span> Ytr<span class="token punctuation">)</span>
-    <span class="token comment" spellcheck="true"># 修改一下predict函数，接受 k 作为参数</span>
-      <span class="token comment" spellcheck="true"># here we assume a modified NearestNeighbor class that can take a k as input</span>
-      Yval_predict <span class="token operator">=</span> nn<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>Xval_rows<span class="token punctuation">,</span> k <span class="token operator">=</span> k<span class="token punctuation">)</span>
-      acc <span class="token operator">=</span> np<span class="token punctuation">.</span>mean<span class="token punctuation">(</span>Yval_predict <span class="token operator">==</span> Yval<span class="token punctuation">)</span>
-      <span class="token keyword">print</span> <span class="token string">'accuracy: %f'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>acc<span class="token punctuation">,</span><span class="token punctuation">)</span>
+    # 初始化对象
+    # use a particular value of k and evaluation on validation data
+    nn = NearestNeighbor()
+    nn.train(Xtr_rows, Ytr)
+    # 修改一下predict函数，接受 k 作为参数
+      # here we assume a modified NearestNeighbor class that can take a k as input
+      Yval_predict = nn.predict(Xval_rows, k = k)
+      acc = np.mean(Yval_predict == Yval)
+      print &#39;accuracy: %f&#39; % (acc,)
 
-    <span class="token comment" spellcheck="true"># 输出结果</span>
-      <span class="token comment" spellcheck="true"># keep track of what works on the validation set</span>
-      validation_accuracies<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> acc<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 元组形式append在列表里</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    # 输出结果
+      # keep track of what works on the validation set
+      validation_accuracies.append((k, acc)) # 元组形式append在列表里
+</code></pre>
 <p>程序结束后，我们会作图分析出哪个k值表现最好，然后用这个k值来跑真正的测试集，并作出对算法的评价。</p>
 <blockquote>
 <p>把训练集分成训练集和验证集。使用验证集来对所有超参数调优。最后只在测试集上跑一次并报告结果。</p>
@@ -399,106 +398,106 @@ validation_accuracies <span class="token operator">=</span> <span class="token p
 <ul>
 <li>首先，初始化一些代码：</li>
 </ul>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> random
-<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
-<span class="token keyword">from</span> cs231n<span class="token punctuation">.</span>data_utils <span class="token keyword">import</span> load_CIFAR10
-<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<pre><code class="python">import random
+import numpy as np
+from cs231n.data_utils import load_CIFAR10
+import matplotlib.pyplot as plt
 
-<span class="token keyword">from</span> __future__ <span class="token keyword">import</span> print_function
+from __future__ import print_function
 
-<span class="token comment" spellcheck="true"># This is a bit of magic to make matplotlib figures appear inline in the notebook</span>
-<span class="token comment" spellcheck="true"># rather than in a new window.</span>
-<span class="token comment" spellcheck="true">#这里有一个小技巧可以让matplotlib画的图出现在notebook页面上，而不是新建一个画图窗口</span>
-<span class="token operator">%</span>matplotlib inline
-<span class="token comment" spellcheck="true"># set default size of plots 设置默认的绘图窗口大小</span>
-plt<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'figure.figsize'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">10.0</span><span class="token punctuation">,</span> <span class="token number">8.0</span><span class="token punctuation">)</span> 
-plt<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'image.interpolation'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'nearest'</span> <span class="token comment" spellcheck="true"># 差值方式</span>
-plt<span class="token punctuation">.</span>rcParams<span class="token punctuation">[</span><span class="token string">'image.cmap'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'gray'</span> <span class="token comment" spellcheck="true"># 灰度空间</span>
+# This is a bit of magic to make matplotlib figures appear inline in the notebook
+# rather than in a new window.
+#这里有一个小技巧可以让matplotlib画的图出现在notebook页面上，而不是新建一个画图窗口
+%matplotlib inline
+# set default size of plots 设置默认的绘图窗口大小
+plt.rcParams[&#39;figure.figsize&#39;] = (10.0, 8.0) 
+plt.rcParams[&#39;image.interpolation&#39;] = &#39;nearest&#39; # 差值方式
+plt.rcParams[&#39;image.cmap&#39;] = &#39;gray&#39; # 灰度空间
 
-<span class="token comment" spellcheck="true"># Some more magic so that the notebook will reload external python modules;</span>
-<span class="token comment" spellcheck="true"># see http://stackoverflow.com/questions/1907993/autoreload-of-modules-in-ipython</span>
-<span class="token comment" spellcheck="true">#另一个小技巧，下面的语句会让notebook自动加载最新版本的外部python模块</span>
-<span class="token comment" spellcheck="true">#详情见 http://stackoverflow.com/questions/1907993/autoreload-of-modules-in-ipython</span>
-<span class="token operator">%</span>load_ext autoreload
-<span class="token operator">%</span>autoreload <span class="token number">2</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+# Some more magic so that the notebook will reload external python modules;
+# see http://stackoverflow.com/questions/1907993/autoreload-of-modules-in-ipython
+#另一个小技巧，下面的语句会让notebook自动加载最新版本的外部python模块
+#详情见 http://stackoverflow.com/questions/1907993/autoreload-of-modules-in-ipython
+%load_ext autoreload
+%autoreload 2
+</code></pre>
 <p>There is a trick: when you <strong>forget all</strong> of the meaning of autoreload when using <code>ipython</code>, just try:</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> autoreload
+<pre><code class="python">import autoreload
 ?autoreload
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</code></pre>
 <ul>
 <li>加载数据源：</li>
 </ul>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Load the raw CIFAR-10 data.</span>
-<span class="token comment" spellcheck="true"># 这里加载数据源的方法在data_utils.py中，会将data_batch_!到5的数据作为训练集，test_batch作为测试集</span>
-cifar10_dir <span class="token operator">=</span> <span class="token string">'cs231n/datasets/cifar-10-batches-py'</span>
-X_train<span class="token punctuation">,</span> y_train<span class="token punctuation">,</span> X_test<span class="token punctuation">,</span> y_test <span class="token operator">=</span> load_CIFAR10<span class="token punctuation">(</span>cifar10_dir<span class="token punctuation">)</span>
+<pre><code class="python"># Load the raw CIFAR-10 data.
+# 这里加载数据源的方法在data_utils.py中，会将data_batch_!到5的数据作为训练集，test_batch作为测试集
+cifar10_dir = &#39;cs231n/datasets/cifar-10-batches-py&#39;
+X_train, y_train, X_test, y_test = load_CIFAR10(cifar10_dir)
 
-<span class="token comment" spellcheck="true"># As a sanity check, we print out the size o f the training and test data.</span>
-<span class="token comment" spellcheck="true"># 检查一下数据，打印训练集及其标签和测试集及其标签的大小 </span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Training data shape: '</span><span class="token punctuation">,</span> X_train<span class="token punctuation">.</span>shape<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Training labels shape: '</span><span class="token punctuation">,</span> y_train<span class="token punctuation">.</span>shape<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Test data shape: '</span><span class="token punctuation">,</span> X_test<span class="token punctuation">.</span>shape<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Test labels shape: '</span><span class="token punctuation">,</span> y_test<span class="token punctuation">.</span>shape<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 返回值是：</span>
-<span class="token comment" spellcheck="true"># Training data shape:  (50000, 32, 32, 3)</span>
-<span class="token comment" spellcheck="true"># Training labels shape:  (50000,)</span>
-<span class="token comment" spellcheck="true"># Test data shape:  (10000, 32, 32, 3)</span>
-<span class="token comment" spellcheck="true"># Test labels shape:  (10000,)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+# As a sanity check, we print out the size o f the training and test data.
+# 检查一下数据，打印训练集及其标签和测试集及其标签的大小 
+print(&#39;Training data shape: &#39;, X_train.shape)
+print(&#39;Training labels shape: &#39;, y_train.shape)
+print(&#39;Test data shape: &#39;, X_test.shape)
+print(&#39;Test labels shape: &#39;, y_test.shape)
+# 返回值是：
+# Training data shape:  (50000, 32, 32, 3)
+# Training labels shape:  (50000,)
+# Test data shape:  (10000, 32, 32, 3)
+# Test labels shape:  (10000,)
+</code></pre>
 <ul>
 <li>来看看数据集都长什么样：</li>
 </ul>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Visualize some examples from the dataset.</span>
-<span class="token comment" spellcheck="true"># We show a few examples of training images from each class.</span>
-<span class="token comment" spellcheck="true"># 这里我们将训练集中每一个类别的样本随机挑出几个进行展示</span>
-classes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'plane'</span><span class="token punctuation">,</span> <span class="token string">'car'</span><span class="token punctuation">,</span> <span class="token string">'bird'</span><span class="token punctuation">,</span> <span class="token string">'cat'</span><span class="token punctuation">,</span> <span class="token string">'deer'</span><span class="token punctuation">,</span> <span class="token string">'dog'</span><span class="token punctuation">,</span> <span class="token string">'frog'</span><span class="token punctuation">,</span> <span class="token string">'horse'</span><span class="token punctuation">,</span> <span class="token string">'ship'</span><span class="token punctuation">,</span> <span class="token string">'truck'</span><span class="token punctuation">]</span>
-num_classes <span class="token operator">=</span> len<span class="token punctuation">(</span>classes<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 类别数目</span>
-samples_per_class <span class="token operator">=</span> <span class="token number">7</span>    <span class="token comment" spellcheck="true"># 每个类别采样个数</span>
-<span class="token comment" spellcheck="true"># 对列表的元素位置和元素进行循环：</span>
-<span class="token keyword">for</span> y<span class="token punctuation">,</span> cls <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>classes<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># 这里对应生成的是 (y, cls) = (0, plane), (1, car), (2, bird), ..., (9, truck)</span>
-    <span class="token comment" spellcheck="true"># 在循环每一个类别时，挑出测试集y中该类别图片的索引位置（index）：</span>
-    idxs <span class="token operator">=</span> np<span class="token punctuation">.</span>flatnonzero<span class="token punctuation">(</span>y_train <span class="token operator">==</span> y<span class="token punctuation">)</span>   
-    <span class="token comment" spellcheck="true"># np.flatnonzero函数：返回扁平化后矩阵中非零元素(或真值)的位置索引（index）</span>
-    <span class="token comment" spellcheck="true"># 随机从idxs中选取num_classes个数的内容，并将选取结果生成新的array中返回</span>
-    idxs <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>idxs<span class="token punctuation">,</span> samples_per_class<span class="token punctuation">,</span> replace<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> i<span class="token punctuation">,</span> idx <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>idxs<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># 同上，i表示循环idx的序列号，idx是idxs的元素之一</span>
-        plt_idx <span class="token operator">=</span> i <span class="token operator">*</span> num_classes <span class="token operator">+</span> y <span class="token operator">+</span> <span class="token number">1</span>  <span class="token comment" spellcheck="true"># 在子图中所占位置的计算，竖着一列一列画的。</span>
-        plt<span class="token punctuation">.</span>subplot<span class="token punctuation">(</span>samples_per_class<span class="token punctuation">,</span> num_classes<span class="token punctuation">,</span> plt_idx<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 说明要画的子图的编号</span>
-        plt<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>X_train<span class="token punctuation">[</span>idx<span class="token punctuation">]</span><span class="token punctuation">.</span>astype<span class="token punctuation">(</span><span class="token string">'uint8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># show出image</span>
-        plt<span class="token punctuation">.</span>axis<span class="token punctuation">(</span><span class="token string">'off'</span><span class="token punctuation">)</span>
-        <span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-            plt<span class="token punctuation">.</span>title<span class="token punctuation">(</span>cls<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 每当画第一行图像时，写上标题，也就是类别名</span>
-plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre><code class="python"># Visualize some examples from the dataset.
+# We show a few examples of training images from each class.
+# 这里我们将训练集中每一个类别的样本随机挑出几个进行展示
+classes = [&#39;plane&#39;, &#39;car&#39;, &#39;bird&#39;, &#39;cat&#39;, &#39;deer&#39;, &#39;dog&#39;, &#39;frog&#39;, &#39;horse&#39;, &#39;ship&#39;, &#39;truck&#39;]
+num_classes = len(classes)  # 类别数目
+samples_per_class = 7    # 每个类别采样个数
+# 对列表的元素位置和元素进行循环：
+for y, cls in enumerate(classes):  # 这里对应生成的是 (y, cls) = (0, plane), (1, car), (2, bird), ..., (9, truck)
+    # 在循环每一个类别时，挑出测试集y中该类别图片的索引位置（index）：
+    idxs = np.flatnonzero(y_train == y)   
+    # np.flatnonzero函数：返回扁平化后矩阵中非零元素(或真值)的位置索引（index）
+    # 随机从idxs中选取num_classes个数的内容，并将选取结果生成新的array中返回
+    idxs = np.random.choice(idxs, samples_per_class, replace=False)
+    for i, idx in enumerate(idxs):  # 同上，i表示循环idx的序列号，idx是idxs的元素之一
+        plt_idx = i * num_classes + y + 1  # 在子图中所占位置的计算，竖着一列一列画的。
+        plt.subplot(samples_per_class, num_classes, plt_idx)  # 说明要画的子图的编号
+        plt.imshow(X_train[idx].astype(&#39;uint8&#39;))  # show出image
+        plt.axis(&#39;off&#39;)
+        if i == 0:
+            plt.title(cls)   # 每当画第一行图像时，写上标题，也就是类别名
+plt.show()
 
-<span class="token comment" spellcheck="true"># REF：http://www.cnblogs.com/lijiajun/p/5479523.html</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+# REF：http://www.cnblogs.com/lijiajun/p/5479523.html
+</code></pre>
 <p><img src="https://i.loli.net/2018/02/16/5a86f7bc34507.png" alt=""></p>
 <ul>
 <li>数据准备</li>
 </ul>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Subsample the data for more efficient code execution in this exercise</span>
-<span class="token comment" spellcheck="true"># 为了更高效地运行我们的代码，这里取出一个子集进行后面的练习（取训练集前50000个，测试集前500个）</span>
-num_training <span class="token operator">=</span> <span class="token number">5000</span>
-mask <span class="token operator">=</span> list<span class="token punctuation">(</span>range<span class="token punctuation">(</span>num_training<span class="token punctuation">)</span><span class="token punctuation">)</span>
-X_train <span class="token operator">=</span> X_train<span class="token punctuation">[</span>mask<span class="token punctuation">]</span>
-y_train <span class="token operator">=</span> y_train<span class="token punctuation">[</span>mask<span class="token punctuation">]</span>
+<pre><code class="python"># Subsample the data for more efficient code execution in this exercise
+# 为了更高效地运行我们的代码，这里取出一个子集进行后面的练习（取训练集前50000个，测试集前500个）
+num_training = 5000
+mask = list(range(num_training))
+X_train = X_train[mask]
+y_train = y_train[mask]
 
-num_test <span class="token operator">=</span> <span class="token number">500</span>
-mask <span class="token operator">=</span> list<span class="token punctuation">(</span>range<span class="token punctuation">(</span>num_test<span class="token punctuation">)</span><span class="token punctuation">)</span>
-X_test <span class="token operator">=</span> X_test<span class="token punctuation">[</span>mask<span class="token punctuation">]</span>
-y_test <span class="token operator">=</span> y_test<span class="token punctuation">[</span>mask<span class="token punctuation">]</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+num_test = 500
+mask = list(range(num_test))
+X_test = X_test[mask]
+y_test = y_test[mask]
+</code></pre>
 <p>(下面这一步可以省)</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Reshape the image data into rows</span>
-<span class="token comment" spellcheck="true"># 将图像数据转置成二维的</span>
-X_train <span class="token operator">=</span> np<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span> <span class="token punctuation">(</span>X_train<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  
-X_test <span class="token operator">=</span> np<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span> <span class="token punctuation">(</span>X_test<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 这里的-1表示，X_train.shape[0]作为新array的行数后，剩余可自动推断出的列数。</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>X_train<span class="token punctuation">.</span>shape<span class="token punctuation">,</span> X_test<span class="token punctuation">.</span>shape<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 打印结果：</span>
-<span class="token comment" spellcheck="true"># (5000, 3072) (500, 3072)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="python"># Reshape the image data into rows
+# 将图像数据转置成二维的
+X_train = np.reshape(X_train, (X_train.shape[0], -1))  
+X_test = np.reshape(X_test, (X_test.shape[0], -1))
+# 这里的-1表示，X_train.shape[0]作为新array的行数后，剩余可自动推断出的列数。
+print(X_train.shape, X_test.shape)
+# 打印结果：
+# (5000, 3072) (500, 3072)
+</code></pre>
 <ul>
 <li>训练模型</li>
 </ul>
@@ -518,37 +517,37 @@ X_test <span class="token operator">=</span> np<span class="token punctuation">.
 <p>First, open <code>cs231n/classifiers/k_nearest_neighbor.py</code> and implement the function <code>compute_distances_two_loops</code> that uses a (very inefficient) double loop over all pairs of (test, train) examples and computes the distance matrix one element at a time.</p>
 <p><br></p>
 <p>下面，打开<code>cs231n/classifiers/k_nearest_neighbor.py</code>，并补全<code>compute_distances_two_loops</code>方法，它使用了一个两层循环的方式（非常低效）计算测试样本与训练样本的距离.</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> cs231n<span class="token punctuation">.</span>classifiers <span class="token keyword">import</span> KNearestNeighbor
+<pre><code class="python">from cs231n.classifiers import KNearestNeighbor
 
-<span class="token comment" spellcheck="true"># Create a kNN classifier instance. </span>
-<span class="token comment" spellcheck="true"># Remember that training a kNN classifier is a noop: </span>
-<span class="token comment" spellcheck="true"># the Classifier simply remembers the data and does no further processing </span>
-classifier <span class="token operator">=</span> KNearestNeighbor<span class="token punctuation">(</span><span class="token punctuation">)</span>
-classifier<span class="token punctuation">.</span>train<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+# Create a kNN classifier instance. 
+# Remember that training a kNN classifier is a noop: 
+# the Classifier simply remembers the data and does no further processing 
+classifier = KNearestNeighbor()
+classifier.train(X_train, y_train)
+</code></pre>
 <ul>
 <li>模型测试</li>
 </ul>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Open cs231n/classifiers/k_nearest_neighbor.py and implement</span>
-<span class="token comment" spellcheck="true"># compute_distances_two_loops.</span>
-<span class="token comment" spellcheck="true"># 打开cs231n/classifiers/k_nearest_neighbor.py，补全compute_distances_two_loops方法</span>
+<pre><code class="python"># Open cs231n/classifiers/k_nearest_neighbor.py and implement
+# compute_distances_two_loops.
+# 打开cs231n/classifiers/k_nearest_neighbor.py，补全compute_distances_two_loops方法
 
-<span class="token comment" spellcheck="true"># Test your implementation:</span>
-<span class="token comment" spellcheck="true"># 测试一下</span>
-dists <span class="token operator">=</span> classifier<span class="token punctuation">.</span>compute_distances_two_loops<span class="token punctuation">(</span>X_test<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>dists<span class="token punctuation">.</span>shape<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 打印结果：</span>
-<span class="token comment" spellcheck="true"># (500, 5000)    其dists[i,j]表示的是第i个测试图片与第j个训练图片之间的L2距离</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+# Test your implementation:
+# 测试一下
+dists = classifier.compute_distances_two_loops(X_test)
+print(dists.shape)
+# 打印结果：
+# (500, 5000)    其dists[i,j]表示的是第i个测试图片与第j个训练图片之间的L2距离
+</code></pre>
 <ul>
 <li>距离矩阵可视化</li>
 </ul>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># We can visualize the distance matrix: each row is a single test example and</span>
-<span class="token comment" spellcheck="true"># its distances to training examples</span>
-<span class="token comment" spellcheck="true"># 我们可以将距离矩阵进行可视化：其中每一行表示一个测试样本与所有训练样本的距离</span>
-plt<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>dists<span class="token punctuation">,</span> interpolation<span class="token operator">=</span><span class="token string">'none'</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="python"># We can visualize the distance matrix: each row is a single test example and
+# its distances to training examples
+# 我们可以将距离矩阵进行可视化：其中每一行表示一个测试样本与所有训练样本的距离
+plt.imshow(dists, interpolation=&#39;none&#39;)
+plt.show()
+</code></pre>
 <p><img src="https://i.loli.net/2018/02/16/5a86f7d47568c.png" alt=""></p>
 <p><strong>Inline Question #1:</strong> Notice the structured patterns in the distance matrix, where some rows or columns are visible brighter. (Note that with the default color scheme black indicates low distances while white indicates high distances.) </p>
 <p><br></p>
@@ -568,224 +567,224 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <li>测试样本与训练集中的样本差异较大，该测试样本可能是其他类别的图片，或者是一个异常图片</li>
 <li>所有测试样本与该列表示的训练样本L2距离都较大</li>
 </ol>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Now implement the function predict_labels and run the code below:</span>
-<span class="token comment" spellcheck="true"># We use k = 1 (which is Nearest Neighbor).</span>
-<span class="token comment" spellcheck="true"># 实现predict_labels方法，然后运行下列代码</span>
-<span class="token comment" spellcheck="true"># 这里我们将k设置为1</span>
+<pre><code class="python"># Now implement the function predict_labels and run the code below:
+# We use k = 1 (which is Nearest Neighbor).
+# 实现predict_labels方法，然后运行下列代码
+# 这里我们将k设置为1
 
-y_test_pred <span class="token operator">=</span> classifier<span class="token punctuation">.</span>predict_labels<span class="token punctuation">(</span>dists<span class="token punctuation">,</span> k<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+y_test_pred = classifier.predict_labels(dists, k=1)
 
-<span class="token comment" spellcheck="true"># Compute and print the fraction of correctly predicted examples</span>
-<span class="token comment" spellcheck="true"># 计算并打印准确率</span>
-num_correct <span class="token operator">=</span> np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>y_test_pred <span class="token operator">==</span> y_test<span class="token punctuation">)</span>
-accuracy <span class="token operator">=</span> float<span class="token punctuation">(</span>num_correct<span class="token punctuation">)</span> <span class="token operator">/</span> num_test
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Got %d / %d correct => accuracy: %f'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>num_correct<span class="token punctuation">,</span> num_test<span class="token punctuation">,</span> accuracy<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 打印结果：</span>
-<span class="token comment" spellcheck="true"># Got 137 / 500 correct => accuracy: 0.274000</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+# Compute and print the fraction of correctly predicted examples
+# 计算并打印准确率
+num_correct = np.sum(y_test_pred == y_test)
+accuracy = float(num_correct) / num_test
+print(&#39;Got %d / %d correct =&gt; accuracy: %f&#39; % (num_correct, num_test, accuracy))
+# 打印结果：
+# Got 137 / 500 correct =&gt; accuracy: 0.274000
+</code></pre>
 <p>You should expect to see approximately <code>27%</code> accuracy. Now lets try out a larger <code>k</code>, say <code>k = 5</code>: </p>
 <p>结果应该约为27%。现在，我们将k调大一点试试，令k = 5：</p>
-<pre class="line-numbers language-python"><code class="language-python">y_test_pred <span class="token operator">=</span> classifier<span class="token punctuation">.</span>predict_labels<span class="token punctuation">(</span>dists<span class="token punctuation">,</span> k<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span>
-num_correct <span class="token operator">=</span> np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>y_test_pred <span class="token operator">==</span> y_test<span class="token punctuation">)</span>
-accuracy <span class="token operator">=</span> float<span class="token punctuation">(</span>num_correct<span class="token punctuation">)</span> <span class="token operator">/</span> num_test
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Got %d / %d correct => accuracy: %f'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>num_correct<span class="token punctuation">,</span> num_test<span class="token punctuation">,</span> accuracy<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 打印结果：</span>
-<span class="token comment" spellcheck="true"># Got 139 / 500 correct => accuracy: 0.278000</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="python">y_test_pred = classifier.predict_labels(dists, k=5)
+num_correct = np.sum(y_test_pred == y_test)
+accuracy = float(num_correct) / num_test
+print(&#39;Got %d / %d correct =&gt; accuracy: %f&#39; % (num_correct, num_test, accuracy))
+# 打印结果：
+# Got 139 / 500 correct =&gt; accuracy: 0.278000
+</code></pre>
 <p>You should expect to see a slightly better performance than with <code>k = 1</code>. </p>
 <p>结果应该略好于k=1时的情况。</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Now lets speed up distance matrix computation by using partial vectorization</span>
-<span class="token comment" spellcheck="true"># with one loop. Implement the function compute_distances_one_loop and run the</span>
-<span class="token comment" spellcheck="true"># code below:</span>
-<span class="token comment" spellcheck="true"># 现在我们将距离计算的效率提升一下，使用单层循环结构的计算方法。实现</span>
-<span class="token comment" spellcheck="true"># compute_distances_one_loop方法，并运行下列代码</span>
+<pre><code class="python"># Now lets speed up distance matrix computation by using partial vectorization
+# with one loop. Implement the function compute_distances_one_loop and run the
+# code below:
+# 现在我们将距离计算的效率提升一下，使用单层循环结构的计算方法。实现
+# compute_distances_one_loop方法，并运行下列代码
 
-dists_one <span class="token operator">=</span> classifier<span class="token punctuation">.</span>compute_distances_one_loop<span class="token punctuation">(</span>X_test<span class="token punctuation">)</span>
+dists_one = classifier.compute_distances_one_loop(X_test)
 
-<span class="token comment" spellcheck="true"># To ensure that our vectorized implementation is correct, we make sure that it</span>
-<span class="token comment" spellcheck="true"># agrees with the naive implementation. There are many ways to decide whether</span>
-<span class="token comment" spellcheck="true"># two matrices are similar; one of the simplest is the Frobenius norm. In case</span>
-<span class="token comment" spellcheck="true"># you haven't seen it before, the Frobenius norm of two matrices is the square</span>
-<span class="token comment" spellcheck="true"># root of the squared sum of differences of all elements; in other words, reshape</span>
-<span class="token comment" spellcheck="true"># the matrices into vectors and compute the Euclidean distance between them.</span>
-<span class="token comment" spellcheck="true"># 为了保证矢量化的代码运行正确，我们将运行结果与前面的方法的结果进行对比。对比两个</span>
-<span class="token comment" spellcheck="true"># 矩阵是否相等的方法有很多，比较简单的一种是使用Frobenius范数。Frobenius范数表示的</span>
-<span class="token comment" spellcheck="true"># 是两个矩阵所有元素的插值的平方和的根。或者说是将两个矩阵reshape成矢量后，它们之</span>
-<span class="token comment" spellcheck="true"># 间的欧氏距离</span>
-difference <span class="token operator">=</span> np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>norm<span class="token punctuation">(</span>dists <span class="token operator">-</span> dists_one<span class="token punctuation">,</span> ord<span class="token operator">=</span><span class="token string">'fro'</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Difference was: %f'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>difference<span class="token punctuation">,</span> <span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">if</span> difference <span class="token operator">&lt;</span> <span class="token number">0.001</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Good! The distance matrices are the same'</span><span class="token punctuation">)</span>
-<span class="token keyword">else</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Uh-oh! The distance matrices are different'</span><span class="token punctuation">)</span>
+# To ensure that our vectorized implementation is correct, we make sure that it
+# agrees with the naive implementation. There are many ways to decide whether
+# two matrices are similar; one of the simplest is the Frobenius norm. In case
+# you haven&#39;t seen it before, the Frobenius norm of two matrices is the square
+# root of the squared sum of differences of all elements; in other words, reshape
+# the matrices into vectors and compute the Euclidean distance between them.
+# 为了保证矢量化的代码运行正确，我们将运行结果与前面的方法的结果进行对比。对比两个
+# 矩阵是否相等的方法有很多，比较简单的一种是使用Frobenius范数。Frobenius范数表示的
+# 是两个矩阵所有元素的插值的平方和的根。或者说是将两个矩阵reshape成矢量后，它们之
+# 间的欧氏距离
+difference = np.linalg.norm(dists - dists_one, ord=&#39;fro&#39;)
+print(&#39;Difference was: %f&#39; % (difference, ))
+if difference &lt; 0.001:
+    print(&#39;Good! The distance matrices are the same&#39;)
+else:
+    print(&#39;Uh-oh! The distance matrices are different&#39;)
 
-<span class="token comment" spellcheck="true"># 打印结果：</span>
-<span class="token comment" spellcheck="true"># Difference was: 0.000000</span>
-<span class="token comment" spellcheck="true"># Good! The distance matrices are the same</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Now implement the fully vectorized version inside compute_distances_no_loops</span>
-<span class="token comment" spellcheck="true"># and run the code</span>
-<span class="token comment" spellcheck="true"># 完成完全矢量化方式运行的compute_distances_no_loops方法，并运行下列代码</span>
-dists_two <span class="token operator">=</span> classifier<span class="token punctuation">.</span>compute_distances_no_loops<span class="token punctuation">(</span>X_test<span class="token punctuation">)</span>
+# 打印结果：
+# Difference was: 0.000000
+# Good! The distance matrices are the same
+</code></pre>
+<pre><code class="python"># Now implement the fully vectorized version inside compute_distances_no_loops
+# and run the code
+# 完成完全矢量化方式运行的compute_distances_no_loops方法，并运行下列代码
+dists_two = classifier.compute_distances_no_loops(X_test)
 
-<span class="token comment" spellcheck="true"># check that the distance matrix agrees with the one we computed before:</span>
-<span class="token comment" spellcheck="true"># 将结果与之前的计算结果进行对比</span>
-difference <span class="token operator">=</span> np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>norm<span class="token punctuation">(</span>dists <span class="token operator">-</span> dists_two<span class="token punctuation">,</span> ord<span class="token operator">=</span><span class="token string">'fro'</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Difference was: %f'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>difference<span class="token punctuation">,</span> <span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">if</span> difference <span class="token operator">&lt;</span> <span class="token number">0.001</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Good! The distance matrices are the same'</span><span class="token punctuation">)</span>
-<span class="token keyword">else</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Uh-oh! The distance matrices are different'</span><span class="token punctuation">)</span>
+# check that the distance matrix agrees with the one we computed before:
+# 将结果与之前的计算结果进行对比
+difference = np.linalg.norm(dists - dists_two, ord=&#39;fro&#39;)
+print(&#39;Difference was: %f&#39; % (difference, ))
+if difference &lt; 0.001:
+    print(&#39;Good! The distance matrices are the same&#39;)
+else:
+    print(&#39;Uh-oh! The distance matrices are different&#39;)
 
-<span class="token comment" spellcheck="true"># 打印结果：</span>
-<span class="token comment" spellcheck="true"># Difference was: 0.000000</span>
-<span class="token comment" spellcheck="true"># Good! The distance matrices are the same</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Let's compare how fast the implementations are</span>
-<span class="token comment" spellcheck="true"># 下面我们对比一下各方法的执行速度</span>
-<span class="token keyword">def</span> <span class="token function">time_function</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+# 打印结果：
+# Difference was: 0.000000
+# Good! The distance matrices are the same
+</code></pre>
+<pre><code class="python"># Let&#39;s compare how fast the implementations are
+# 下面我们对比一下各方法的执行速度
+def time_function(f, *args):
+    &quot;&quot;&quot;
     Call a function f with args and return the time (in seconds) that it took to execute.
-    """</span>
-    <span class="token keyword">import</span> time
-    tic <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    f<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">)</span>
-    toc <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> toc <span class="token operator">-</span> tic
+    &quot;&quot;&quot;
+    import time
+    tic = time.time()
+    f(*args)
+    toc = time.time()
+    return toc - tic
 
-two_loop_time <span class="token operator">=</span> time_function<span class="token punctuation">(</span>classifier<span class="token punctuation">.</span>compute_distances_two_loops<span class="token punctuation">,</span> X_test<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Two loop version took %f seconds'</span> <span class="token operator">%</span> two_loop_time<span class="token punctuation">)</span>
+two_loop_time = time_function(classifier.compute_distances_two_loops, X_test)
+print(&#39;Two loop version took %f seconds&#39; % two_loop_time)
 
-one_loop_time <span class="token operator">=</span> time_function<span class="token punctuation">(</span>classifier<span class="token punctuation">.</span>compute_distances_one_loop<span class="token punctuation">,</span> X_test<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'One loop version took %f seconds'</span> <span class="token operator">%</span> one_loop_time<span class="token punctuation">)</span>
+one_loop_time = time_function(classifier.compute_distances_one_loop, X_test)
+print(&#39;One loop version took %f seconds&#39; % one_loop_time)
 
-no_loop_time <span class="token operator">=</span> time_function<span class="token punctuation">(</span>classifier<span class="token punctuation">.</span>compute_distances_no_loops<span class="token punctuation">,</span> X_test<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'No loop version took %f seconds'</span> <span class="token operator">%</span> no_loop_time<span class="token punctuation">)</span>
+no_loop_time = time_function(classifier.compute_distances_no_loops, X_test)
+print(&#39;No loop version took %f seconds&#39; % no_loop_time)
 
-<span class="token comment" spellcheck="true"># 打印结果：</span>
-<span class="token comment" spellcheck="true"># Two loop version took 57.122203 seconds</span>
-<span class="token comment" spellcheck="true"># One loop version took 71.512672 seconds</span>
-<span class="token comment" spellcheck="true"># No loop version took 0.510630 seconds</span>
+# 打印结果：
+# Two loop version took 57.122203 seconds
+# One loop version took 71.512672 seconds
+# No loop version took 0.510630 seconds
 
-<span class="token comment" spellcheck="true"># you should see significantly faster performance with the fully vectorized implementation</span>
-<span class="token comment" spellcheck="true"># 你应该可以看到，完全矢量化的代码运行效率有明显的提高</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+# you should see significantly faster performance with the fully vectorized implementation
+# 你应该可以看到，完全矢量化的代码运行效率有明显的提高
+</code></pre>
 <h3 id="Cross-validation"><a href="#Cross-validation" class="headerlink" title="Cross-validation"></a>Cross-validation</h3><p>We have implemented the k-Nearest Neighbor classifier but we set the value k = 5 arbitrarily. We will now determine the best value of this hyperparameter with cross-validation.</p>
 <h3 id="交叉验证"><a href="#交叉验证" class="headerlink" title="交叉验证"></a>交叉验证</h3><p>之前我们已经完成了k-Nearest分类器的编写，但是对于k值的选择很随意。下面我们将使用交叉验证的方法选择最优的超参数k。</p>
-<pre class="line-numbers language-python"><code class="language-python">num_folds <span class="token operator">=</span> <span class="token number">5</span>
-k_choices <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">]</span>
+<pre><code class="python">num_folds = 5
+k_choices = [1, 3, 5, 8, 10, 12, 15, 20, 50, 100]
 
-X_train_folds <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-y_train_folds <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token comment" spellcheck="true">################################################################################</span>
-<span class="token comment" spellcheck="true"># TODO:                                                                        #</span>
-<span class="token comment" spellcheck="true"># Split up the training data into folds. After splitting, X_train_folds and    #</span>
-<span class="token comment" spellcheck="true"># y_train_folds should each be lists of length num_folds, where                #</span>
-<span class="token comment" spellcheck="true"># y_train_folds[i] is the label vector for the points in X_train_folds[i].     #</span>
-<span class="token comment" spellcheck="true"># Hint: Look up the numpy array_split function.                                #</span>
-<span class="token comment" spellcheck="true"># 任务:                                                                        #</span>
-<span class="token comment" spellcheck="true"># 将训练数据切分成不同的折。切分之后,训练样本和对应的样本标签被包含在数组                 #</span>
-<span class="token comment" spellcheck="true"># X_train_folds和y_train_folds之中，数组长度是折数num_folds。其中                  #</span>
-<span class="token comment" spellcheck="true"># y_train_folds[i]是一个矢量，表示矢量X_train_folds[i]中所有样本的标签              #</span>
-<span class="token comment" spellcheck="true"># 提示: 可以尝试使用numpy的array_split方法。                                      #</span>
-<span class="token comment" spellcheck="true">################################################################################</span>
-X_train_folds <span class="token operator">=</span> np<span class="token punctuation">.</span>array_split<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span> num_folds<span class="token punctuation">)</span>    
-y_train_folds <span class="token operator">=</span> np<span class="token punctuation">.</span>array_split<span class="token punctuation">(</span>y_train<span class="token punctuation">,</span> num_folds<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 以num_folds的折数从前向后分割，最后不够num_folds数目的为最后一折</span>
-<span class="token comment" spellcheck="true">################################################################################</span>
-<span class="token comment" spellcheck="true">#                                 END OF YOUR CODE                             #</span>
-<span class="token comment" spellcheck="true">#                                 结束                                          #</span>
-<span class="token comment" spellcheck="true">################################################################################</span>
+X_train_folds = []
+y_train_folds = []
+################################################################################
+# TODO:                                                                        #
+# Split up the training data into folds. After splitting, X_train_folds and    #
+# y_train_folds should each be lists of length num_folds, where                #
+# y_train_folds[i] is the label vector for the points in X_train_folds[i].     #
+# Hint: Look up the numpy array_split function.                                #
+# 任务:                                                                        #
+# 将训练数据切分成不同的折。切分之后,训练样本和对应的样本标签被包含在数组                 #
+# X_train_folds和y_train_folds之中，数组长度是折数num_folds。其中                  #
+# y_train_folds[i]是一个矢量，表示矢量X_train_folds[i]中所有样本的标签              #
+# 提示: 可以尝试使用numpy的array_split方法。                                      #
+################################################################################
+X_train_folds = np.array_split(X_train, num_folds)    
+y_train_folds = np.array_split(y_train, num_folds)
+# 以num_folds的折数从前向后分割，最后不够num_folds数目的为最后一折
+################################################################################
+#                                 END OF YOUR CODE                             #
+#                                 结束                                          #
+################################################################################
 
-<span class="token comment" spellcheck="true"># A dictionary holding the accuracies for different values of k that we find</span>
-<span class="token comment" spellcheck="true"># when running cross-validation. After running cross-validation,</span>
-<span class="token comment" spellcheck="true"># k_to_accuracies[k] should be a list of length num_folds giving the different</span>
-<span class="token comment" spellcheck="true"># accuracy values that we found when using that value of k.</span>
-<span class="token comment" spellcheck="true"># 我们将不同k值下的准确率保存在一个字典中。交叉验证之后，k_to_accuracies[k]保存了</span>
-<span class="token comment" spellcheck="true"># k值下，一个长度为折数的准确率矢量</span>
+# A dictionary holding the accuracies for different values of k that we find
+# when running cross-validation. After running cross-validation,
+# k_to_accuracies[k] should be a list of length num_folds giving the different
+# accuracy values that we found when using that value of k.
+# 我们将不同k值下的准确率保存在一个字典中。交叉验证之后，k_to_accuracies[k]保存了
+# k值下，一个长度为折数的准确率矢量
 
-k_to_accuracies <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-<span class="token keyword">for</span> k <span class="token keyword">in</span> k_choices<span class="token punctuation">:</span>
-    k_to_accuracies<span class="token punctuation">.</span>setdefault<span class="token punctuation">(</span>k<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">################################################################################</span>
-<span class="token comment" spellcheck="true"># TODO:                                                                        #</span>
-<span class="token comment" spellcheck="true"># Perform k-fold cross validation to find the best value of k. For each        #</span>
-<span class="token comment" spellcheck="true"># possible value of k, run the k-nearest-neighbor algorithm num_folds times,   #</span>
-<span class="token comment" spellcheck="true"># where in each case you use all but one of the folds as training data and the #</span>
-<span class="token comment" spellcheck="true"># last fold as a validation set. Store the accuracies for all fold and all     #</span>
-<span class="token comment" spellcheck="true"># values of k in the k_to_accuracies dictionary.                               #</span>
-<span class="token comment" spellcheck="true"># 任务:                                                                         #</span>
-<span class="token comment" spellcheck="true"># 通过k折的交叉验证找到最佳k值。对于每一个k值，执行kNN算法num_folds次，每一次            #</span>
-<span class="token comment" spellcheck="true"># 执行中，选择一折为训练集，最后一折为验证集。将不同k值在不同折上的运算结果保              #</span>
-<span class="token comment" spellcheck="true"># 存在k_to_accuracies字典中。                                                    #</span>
-<span class="token comment" spellcheck="true">################################################################################</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>num_folds<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    classifier <span class="token operator">=</span> KNearestNeighbor<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    X_train_ <span class="token operator">=</span> np<span class="token punctuation">.</span>vstack<span class="token punctuation">(</span>X_train_folds<span class="token punctuation">[</span><span class="token punctuation">:</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> X_train_folds<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    y_train_ <span class="token operator">=</span> np<span class="token punctuation">.</span>hstack<span class="token punctuation">(</span>y_train_folds<span class="token punctuation">[</span><span class="token punctuation">:</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> y_train_folds<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    classifier<span class="token punctuation">.</span>train<span class="token punctuation">(</span>X_train_<span class="token punctuation">,</span> y_train_<span class="token punctuation">)</span>
-    <span class="token keyword">for</span> k <span class="token keyword">in</span> k_choices<span class="token punctuation">:</span>
-        y_pred_ <span class="token operator">=</span> classifier<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>X_train_folds<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> k<span class="token operator">=</span>k<span class="token punctuation">)</span>
-        accuracy <span class="token operator">=</span> np<span class="token punctuation">.</span>mean<span class="token punctuation">(</span>y_pred_ <span class="token operator">==</span> y_train_folds<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
-        k_to_accuracies<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span>accuracy<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">################################################################################</span>
-<span class="token comment" spellcheck="true">#                                 END OF YOUR CODE                             #</span>
-<span class="token comment" spellcheck="true">################################################################################</span>
+k_to_accuracies = {}
+for k in k_choices:
+    k_to_accuracies.setdefault(k, [])
+################################################################################
+# TODO:                                                                        #
+# Perform k-fold cross validation to find the best value of k. For each        #
+# possible value of k, run the k-nearest-neighbor algorithm num_folds times,   #
+# where in each case you use all but one of the folds as training data and the #
+# last fold as a validation set. Store the accuracies for all fold and all     #
+# values of k in the k_to_accuracies dictionary.                               #
+# 任务:                                                                         #
+# 通过k折的交叉验证找到最佳k值。对于每一个k值，执行kNN算法num_folds次，每一次            #
+# 执行中，选择一折为训练集，最后一折为验证集。将不同k值在不同折上的运算结果保              #
+# 存在k_to_accuracies字典中。                                                    #
+################################################################################
+for i in range(num_folds):
+    classifier = KNearestNeighbor()
+    X_train_ = np.vstack(X_train_folds[:i] + X_train_folds[i+1:])
+    y_train_ = np.hstack(y_train_folds[:i] + y_train_folds[i+1:])
+    classifier.train(X_train_, y_train_)
+    for k in k_choices:
+        y_pred_ = classifier.predict(X_train_folds[i], k=k)
+        accuracy = np.mean(y_pred_ == y_train_folds[i])
+        k_to_accuracies[k].append(accuracy)
+################################################################################
+#                                 END OF YOUR CODE                             #
+################################################################################
 
-<span class="token comment" spellcheck="true"># Print out the computed accuracies</span>
-<span class="token keyword">for</span> k <span class="token keyword">in</span> sorted<span class="token punctuation">(</span>k_to_accuracies<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">for</span> accuracy <span class="token keyword">in</span> k_to_accuracies<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'k = %d, accuracy = %f'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>k<span class="token punctuation">,</span> accuracy<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># plot the raw observations</span>
-<span class="token comment" spellcheck="true"># 画个图会更直观一点</span>
-<span class="token keyword">for</span> k <span class="token keyword">in</span> k_choices<span class="token punctuation">:</span>
-    accuracies <span class="token operator">=</span> k_to_accuracies<span class="token punctuation">[</span>k<span class="token punctuation">]</span>
-    plt<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">*</span> len<span class="token punctuation">(</span>accuracies<span class="token punctuation">)</span><span class="token punctuation">,</span> accuracies<span class="token punctuation">)</span>
+# Print out the computed accuracies
+for k in sorted(k_to_accuracies):
+    for accuracy in k_to_accuracies[k]:
+        print(&#39;k = %d, accuracy = %f&#39; % (k, accuracy))
+</code></pre>
+<pre><code class="python"># plot the raw observations
+# 画个图会更直观一点
+for k in k_choices:
+    accuracies = k_to_accuracies[k]
+    plt.scatter([k] * len(accuracies), accuracies)
 
-<span class="token comment" spellcheck="true"># plot the trend line with error bars that correspond to standard deviation</span>
-<span class="token comment" spellcheck="true"># 画出在不同k值下，误差均值和标准差</span>
-accuracies_mean <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span>np<span class="token punctuation">.</span>mean<span class="token punctuation">(</span>v<span class="token punctuation">)</span> <span class="token keyword">for</span> k<span class="token punctuation">,</span>v <span class="token keyword">in</span> sorted<span class="token punctuation">(</span>k_to_accuracies<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-accuracies_std <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span>np<span class="token punctuation">.</span>std<span class="token punctuation">(</span>v<span class="token punctuation">)</span> <span class="token keyword">for</span> k<span class="token punctuation">,</span>v <span class="token keyword">in</span> sorted<span class="token punctuation">(</span>k_to_accuracies<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>errorbar<span class="token punctuation">(</span>k_choices<span class="token punctuation">,</span> accuracies_mean<span class="token punctuation">,</span> yerr<span class="token operator">=</span>accuracies_std<span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>title<span class="token punctuation">(</span><span class="token string">'Cross-validation on k'</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>xlabel<span class="token punctuation">(</span><span class="token string">'k'</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>ylabel<span class="token punctuation">(</span><span class="token string">'Cross-validation accuracy'</span><span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+# plot the trend line with error bars that correspond to standard deviation
+# 画出在不同k值下，误差均值和标准差
+accuracies_mean = np.array([np.mean(v) for k,v in sorted(k_to_accuracies.items())])
+accuracies_std = np.array([np.std(v) for k,v in sorted(k_to_accuracies.items())])
+plt.errorbar(k_choices, accuracies_mean, yerr=accuracies_std)
+plt.title(&#39;Cross-validation on k&#39;)
+plt.xlabel(&#39;k&#39;)
+plt.ylabel(&#39;Cross-validation accuracy&#39;)
+plt.show()
+</code></pre>
 <p><img src="https://i.loli.net/2018/02/16/5a86f7eb294d2.png" alt=""></p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Based on the cross-validation results above, choose the best value for k,   </span>
-<span class="token comment" spellcheck="true"># retrain the classifier using all the training data, and test it on the test</span>
-<span class="token comment" spellcheck="true"># data. You should be able to get above 28% accuracy on the test data.</span>
-<span class="token comment" spellcheck="true"># 根据上面交叉验证的结果，选择最优的k，然后在全量数据上进行试验，你将得到约28%的准确率</span>
-best_k <span class="token operator">=</span> <span class="token number">6</span>
+<pre><code class="python"># Based on the cross-validation results above, choose the best value for k,   
+# retrain the classifier using all the training data, and test it on the test
+# data. You should be able to get above 28% accuracy on the test data.
+# 根据上面交叉验证的结果，选择最优的k，然后在全量数据上进行试验，你将得到约28%的准确率
+best_k = 6
 
-classifier <span class="token operator">=</span> KNearestNeighbor<span class="token punctuation">(</span><span class="token punctuation">)</span>
-classifier<span class="token punctuation">.</span>train<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span> y_train<span class="token punctuation">)</span>
-y_test_pred <span class="token operator">=</span> classifier<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span> k<span class="token operator">=</span>best_k<span class="token punctuation">)</span>
+classifier = KNearestNeighbor()
+classifier.train(X_train, y_train)
+y_test_pred = classifier.predict(X_test, k=best_k)
 
-<span class="token comment" spellcheck="true"># Compute and display the accuracy</span>
-<span class="token comment" spellcheck="true"># 计算并展示准确率</span>
-num_correct <span class="token operator">=</span> np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>y_test_pred <span class="token operator">==</span> y_test<span class="token punctuation">)</span>
-accuracy <span class="token operator">=</span> float<span class="token punctuation">(</span>num_correct<span class="token punctuation">)</span> <span class="token operator">/</span> num_test
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Got %d / %d correct => accuracy: %f'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>num_correct<span class="token punctuation">,</span> num_test<span class="token punctuation">,</span> accuracy<span class="token punctuation">)</span><span class="token punctuation">)</span>
+# Compute and display the accuracy
+# 计算并展示准确率
+num_correct = np.sum(y_test_pred == y_test)
+accuracy = float(num_correct) / num_test
+print(&#39;Got %d / %d correct =&gt; accuracy: %f&#39; % (num_correct, num_test, accuracy))
 
-<span class="token comment" spellcheck="true"># 打印结果：</span>
-<span class="token comment" spellcheck="true"># Got 141 / 500 correct => accuracy: 0.282000</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="k-nearest-neighbor-py"><a href="#k-nearest-neighbor-py" class="headerlink" title="k_nearest_neighbor.py"></a>k_nearest_neighbor.py</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true">#-*- coding:utf-8 -*-</span>
-<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
-<span class="token comment" spellcheck="true">#from past.builtins import xrange</span>
+# 打印结果：
+# Got 141 / 500 correct =&gt; accuracy: 0.282000
+</code></pre>
+<h3 id="k-nearest-neighbor-py"><a href="#k-nearest-neighbor-py" class="headerlink" title="k_nearest_neighbor.py"></a>k_nearest_neighbor.py</h3><pre><code class="python">#-*- coding:utf-8 -*-
+import numpy as np
+#from past.builtins import xrange
 
-<span class="token keyword">class</span> <span class="token class-name">KNearestNeighbor</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">""" a kNN classifier with L2 distance """</span>
-    <span class="token triple-quoted-string string">""" 使用L2距离的kNN分类器 """</span>
+class KNearestNeighbor(object):
+    &quot;&quot;&quot; a kNN classifier with L2 distance &quot;&quot;&quot;
+    &quot;&quot;&quot; 使用L2距离的kNN分类器 &quot;&quot;&quot;
 
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">pass</span>
+    def __init__(self):
+        pass
 
-    <span class="token keyword">def</span> <span class="token function">train</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+    def train(self, X, y):
+    &quot;&quot;&quot;
     Train the classifier. For k-nearest neighbors this is just 
     memorizing the training data.
 
@@ -800,12 +799,12 @@ accuracy <span class="token operator">=</span> float<span class="token punctuati
     输入：
     -X: 训练数据集，一个(训练样本数量，维度)大小的numpy数组
     -y: 训练样本标签，一个(训练样本数量，1)大小的numpy数组，其中y[i]表示样本X[i]的类别标签
-    """</span>
-        self<span class="token punctuation">.</span>X_train <span class="token operator">=</span> X
-        self<span class="token punctuation">.</span>y_train <span class="token operator">=</span> y
+    &quot;&quot;&quot;
+        self.X_train = X
+        self.y_train = y
 
-    <span class="token keyword">def</span> <span class="token function">predict</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">,</span> k<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> num_loops<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+    def predict(self, X, k=1, num_loops=0):
+    &quot;&quot;&quot;
     Predict labels for test data using this classifier.
 
     Inputs:
@@ -828,20 +827,20 @@ accuracy <span class="token operator">=</span> float<span class="token punctuati
 
     返回：
     - y: 类别预测结果，一个(测试样本数量，1)大小的numpy数组，其中y[i]是样本X[i]的预测结果
-    """</span>
-        <span class="token keyword">if</span> num_loops <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-              dists <span class="token operator">=</span> self<span class="token punctuation">.</span>compute_distances_no_loops<span class="token punctuation">(</span>X<span class="token punctuation">)</span>
-        <span class="token keyword">elif</span> num_loops <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
-              dists <span class="token operator">=</span> self<span class="token punctuation">.</span>compute_distances_one_loop<span class="token punctuation">(</span>X<span class="token punctuation">)</span>
-        <span class="token keyword">elif</span> num_loops <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
-            dists <span class="token operator">=</span> self<span class="token punctuation">.</span>compute_distances_two_loops<span class="token punctuation">(</span>X<span class="token punctuation">)</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">'Invalid value %d for num_loops'</span> <span class="token operator">%</span> num_loops<span class="token punctuation">)</span>
+    &quot;&quot;&quot;
+        if num_loops == 0:
+              dists = self.compute_distances_no_loops(X)
+        elif num_loops == 1:
+              dists = self.compute_distances_one_loop(X)
+        elif num_loops == 2:
+            dists = self.compute_distances_two_loops(X)
+        else:
+            raise ValueError(&#39;Invalid value %d for num_loops&#39; % num_loops)
 
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>predict_labels<span class="token punctuation">(</span>dists<span class="token punctuation">,</span> k<span class="token operator">=</span>k<span class="token punctuation">)</span>
+        return self.predict_labels(dists, k=k)
 
-    <span class="token keyword">def</span> <span class="token function">compute_distances_two_loops</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+    def compute_distances_two_loops(self, X):
+    &quot;&quot;&quot;
     Compute the distance between each test point in X and each training point
     in self.X_train using a nested loop over both the training data and the 
     test data.
@@ -863,31 +862,31 @@ accuracy <span class="token operator">=</span> float<span class="token punctuati
     - dists: 一个(测试样本数量, 训练样本数量) 大小的numpy数组，其中dists[i, j]
       表示测试样本i到训练样本j的欧式距离
 
-    """</span>
-        num_test <span class="token operator">=</span> X<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-        num_train <span class="token operator">=</span> self<span class="token punctuation">.</span>X_train<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-        dists <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>num_test<span class="token punctuation">,</span> num_train<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>num_test<span class="token punctuation">)</span><span class="token punctuation">:</span>
-              <span class="token keyword">for</span> j <span class="token keyword">in</span> range<span class="token punctuation">(</span>num_train<span class="token punctuation">)</span><span class="token punctuation">:</span>
-                <span class="token comment" spellcheck="true">#####################################################################</span>
-                <span class="token comment" spellcheck="true"># TODO:                                                             #</span>
-                <span class="token comment" spellcheck="true"># Compute the l2 distance between the ith test point and the jth    #</span>
-                <span class="token comment" spellcheck="true"># training point, and store the result in dists[i, j]. You should   #</span>
-                <span class="token comment" spellcheck="true"># not use a loop over dimension.                                    #</span>
-                <span class="token comment" spellcheck="true"># 任务:                                                             #</span>
-                <span class="token comment" spellcheck="true"># 计算第i个测试点到第j个训练样本点的L2距离，并保存到dists[i, j]中，         #</span>
-                <span class="token comment" spellcheck="true"># 注意不要在维度上使用for循环                                           #</span>
-                <span class="token comment" spellcheck="true">#####################################################################</span>
-                dists<span class="token punctuation">[</span>i<span class="token punctuation">,</span> j<span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span>np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>np<span class="token punctuation">.</span>square<span class="token punctuation">(</span>self<span class="token punctuation">.</span>X_train<span class="token punctuation">[</span>j<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">-</span> X<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                <span class="token comment" spellcheck="true"># 这里的np.square()是对其中每个元素平方操作</span>
-                <span class="token comment" spellcheck="true">#####################################################################</span>
-                <span class="token comment" spellcheck="true">#                       END OF YOUR CODE                            #</span>
-                <span class="token comment" spellcheck="true">#                       任务结束                                     #</span>
-                <span class="token comment" spellcheck="true">#####################################################################</span>
-        <span class="token keyword">return</span> dists
+    &quot;&quot;&quot;
+        num_test = X.shape[0]
+        num_train = self.X_train.shape[0]
+        dists = np.zeros((num_test, num_train))
+        for i in range(num_test):
+              for j in range(num_train):
+                #####################################################################
+                # TODO:                                                             #
+                # Compute the l2 distance between the ith test point and the jth    #
+                # training point, and store the result in dists[i, j]. You should   #
+                # not use a loop over dimension.                                    #
+                # 任务:                                                             #
+                # 计算第i个测试点到第j个训练样本点的L2距离，并保存到dists[i, j]中，         #
+                # 注意不要在维度上使用for循环                                           #
+                #####################################################################
+                dists[i, j] = np.sqrt(np.sum(np.square(self.X_train[j,:] - X[i,:])))
+                # 这里的np.square()是对其中每个元素平方操作
+                #####################################################################
+                #                       END OF YOUR CODE                            #
+                #                       任务结束                                     #
+                #####################################################################
+        return dists
 
-    <span class="token keyword">def</span> <span class="token function">compute_distances_one_loop</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+    def compute_distances_one_loop(self, X):
+    &quot;&quot;&quot;
     Compute the distance between each test point in X and each training point
     in self.X_train using a single loop over the test data.
 
@@ -895,27 +894,27 @@ accuracy <span class="token operator">=</span> float<span class="token punctuati
 
     通过一个单层的嵌套循环，遍历测试样本点，并求其到全部训练样本点的距离
     输入/输出：和compute_distances_two_loops方法相同
-    """</span>
-        num_test <span class="token operator">=</span> X<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-        num_train <span class="token operator">=</span> self<span class="token punctuation">.</span>X_train<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-        dists <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>num_test<span class="token punctuation">,</span> num_train<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>num_test<span class="token punctuation">)</span><span class="token punctuation">:</span>
-              <span class="token comment" spellcheck="true">#######################################################################</span>
-              <span class="token comment" spellcheck="true"># TODO:                                                               #</span>
-              <span class="token comment" spellcheck="true"># Compute the l2 distance between the ith test point and all training #</span>
-              <span class="token comment" spellcheck="true"># points, and store the result in dists[i, :].                        #</span>
-              <span class="token comment" spellcheck="true"># 任务:                                                               #</span>
-              <span class="token comment" spellcheck="true"># 计算第i个测试样本点到所有训练样本点的L2距离，并保存到dists[i, :]中          #</span>
-              <span class="token comment" spellcheck="true">#######################################################################</span>
-            dists<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span>np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>np<span class="token punctuation">.</span>square<span class="token punctuation">(</span>self<span class="token punctuation">.</span>X_train <span class="token operator">-</span> X<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>axis <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-              <span class="token comment" spellcheck="true">#######################################################################</span>
-              <span class="token comment" spellcheck="true">#                         END OF YOUR CODE                            #</span>
-              <span class="token comment" spellcheck="true">#                         任务结束                                     #</span>
-              <span class="token comment" spellcheck="true">#######################################################################</span>
-    <span class="token keyword">return</span> dists
+    &quot;&quot;&quot;
+        num_test = X.shape[0]
+        num_train = self.X_train.shape[0]
+        dists = np.zeros((num_test, num_train))
+        for i in range(num_test):
+              #######################################################################
+              # TODO:                                                               #
+              # Compute the l2 distance between the ith test point and all training #
+              # points, and store the result in dists[i, :].                        #
+              # 任务:                                                               #
+              # 计算第i个测试样本点到所有训练样本点的L2距离，并保存到dists[i, :]中          #
+              #######################################################################
+            dists[i,:] = np.sqrt(np.sum(np.square(self.X_train - X[i,:]),axis = 1))
+              #######################################################################
+              #                         END OF YOUR CODE                            #
+              #                         任务结束                                     #
+              #######################################################################
+    return dists
 
-    <span class="token keyword">def</span> <span class="token function">compute_distances_no_loops</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+    def compute_distances_no_loops(self, X):
+    &quot;&quot;&quot;
     Compute the distance between each test point in X and each training point
     in self.X_train using no explicit loops.
 
@@ -923,45 +922,45 @@ accuracy <span class="token operator">=</span> float<span class="token punctuati
 
     不通过循环方式，遍历测试样本点，并求其到全部训练样本点的距离
     输入/输出：和compute_distances_two_loops方法相同
-    """</span>
-        num_test <span class="token operator">=</span> X<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-        num_train <span class="token operator">=</span> self<span class="token punctuation">.</span>X_train<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-        dists <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>num_test<span class="token punctuation">,</span> num_train<span class="token punctuation">)</span><span class="token punctuation">)</span> 
-        <span class="token comment" spellcheck="true">#########################################################################</span>
-        <span class="token comment" spellcheck="true"># TODO:                                                                 #</span>
-        <span class="token comment" spellcheck="true"># Compute the l2 distance between all test points and all training      #</span>
-        <span class="token comment" spellcheck="true"># points without using any explicit loops, and store the result in      #</span>
-        <span class="token comment" spellcheck="true"># dists.                                                                #</span>
-        <span class="token comment" spellcheck="true">#                                                                       #</span>
-        <span class="token comment" spellcheck="true"># You should implement this function using only basic array operations; #</span>
-        <span class="token comment" spellcheck="true"># in particular you should not use functions from scipy.                #</span>
-        <span class="token comment" spellcheck="true">#                                                                       #</span>
-        <span class="token comment" spellcheck="true"># HINT: Try to formulate the l2 distance using matrix multiplication    #</span>
-        <span class="token comment" spellcheck="true">#       and two broadcast sums.                                         #</span>
-        <span class="token comment" spellcheck="true"># 任务:                                                                 #</span>
-        <span class="token comment" spellcheck="true"># 计算测试样本点和训练样本点之间的L2距离，并且不使用for循环，最后将结果           #</span>
-        <span class="token comment" spellcheck="true"># 保存到dists中                                                          #</span>
-        <span class="token comment" spellcheck="true">#                                                                       #</span>
-        <span class="token comment" spellcheck="true"># 请使用基本的数组操作完成该方法；另外，不要使用scipy中的方法                    #</span>
-        <span class="token comment" spellcheck="true">#                                                                       #</span>
-        <span class="token comment" spellcheck="true"># 提示: 可以使用矩阵乘法和两次广播加法                                        #</span>
-        <span class="token comment" spellcheck="true">#########################################################################</span>
-        <span class="token comment" spellcheck="true"># 这里对完全平方公式做了展开，以方便我们实现矢量化，(a-b)^2=a^2+b^2-2ab</span>
-        dists <span class="token operator">=</span> np<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2</span><span class="token operator">*</span>np<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>X<span class="token punctuation">,</span> self<span class="token punctuation">.</span>X_train<span class="token punctuation">.</span>T<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 一个500*5000的矩阵</span>
-                        <span class="token operator">+</span> np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>np<span class="token punctuation">.</span>square<span class="token punctuation">(</span>self<span class="token punctuation">.</span>X_train<span class="token punctuation">)</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 一个1*5000的矩阵</span>
-                        <span class="token operator">+</span> np<span class="token punctuation">.</span>transpose<span class="token punctuation">(</span><span class="token punctuation">[</span>np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>np<span class="token punctuation">.</span>square<span class="token punctuation">(</span>X<span class="token punctuation">)</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 一个500*1的矩阵</span>
-        <span class="token comment" spellcheck="true"># 留意self.X_train的shape是(5000,3072),X的shape是(500,3072)</span>
-        <span class="token comment" spellcheck="true"># np.dot()是矩阵乘法, np.sqrt()和np.square()都是对矩阵每个元素的操作</span>
-        <span class="token comment" spellcheck="true"># np.sum(array_like, axis=1)是对矩阵每行分别求和，即每个图片像素求和</span>
-        <span class="token comment" spellcheck="true"># 注意：后两个矩阵的加法可以张成一个500*5000的矩阵！</span>
-        <span class="token comment" spellcheck="true">#########################################################################</span>
-        <span class="token comment" spellcheck="true">#                         END OF YOUR CODE                              #</span>
-        <span class="token comment" spellcheck="true">#                         任务结束                                       #</span>
-        <span class="token comment" spellcheck="true">#########################################################################</span>
-    <span class="token keyword">return</span> dists
+    &quot;&quot;&quot;
+        num_test = X.shape[0]
+        num_train = self.X_train.shape[0]
+        dists = np.zeros((num_test, num_train)) 
+        #########################################################################
+        # TODO:                                                                 #
+        # Compute the l2 distance between all test points and all training      #
+        # points without using any explicit loops, and store the result in      #
+        # dists.                                                                #
+        #                                                                       #
+        # You should implement this function using only basic array operations; #
+        # in particular you should not use functions from scipy.                #
+        #                                                                       #
+        # HINT: Try to formulate the l2 distance using matrix multiplication    #
+        #       and two broadcast sums.                                         #
+        # 任务:                                                                 #
+        # 计算测试样本点和训练样本点之间的L2距离，并且不使用for循环，最后将结果           #
+        # 保存到dists中                                                          #
+        #                                                                       #
+        # 请使用基本的数组操作完成该方法；另外，不要使用scipy中的方法                    #
+        #                                                                       #
+        # 提示: 可以使用矩阵乘法和两次广播加法                                        #
+        #########################################################################
+        # 这里对完全平方公式做了展开，以方便我们实现矢量化，(a-b)^2=a^2+b^2-2ab
+        dists = np.sqrt(-2*np.dot(X, self.X_train.T) # 一个500*5000的矩阵
+                        + np.sum(np.square(self.X_train), axis=1) # 一个1*5000的矩阵
+                        + np.transpose([np.sum(np.square(X), axis=1)]))    # 一个500*1的矩阵
+        # 留意self.X_train的shape是(5000,3072),X的shape是(500,3072)
+        # np.dot()是矩阵乘法, np.sqrt()和np.square()都是对矩阵每个元素的操作
+        # np.sum(array_like, axis=1)是对矩阵每行分别求和，即每个图片像素求和
+        # 注意：后两个矩阵的加法可以张成一个500*5000的矩阵！
+        #########################################################################
+        #                         END OF YOUR CODE                              #
+        #                         任务结束                                       #
+        #########################################################################
+    return dists
 
-    <span class="token keyword">def</span> <span class="token function">predict_labels</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> dists<span class="token punctuation">,</span> k<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+    def predict_labels(self, dists, k=1):
+    &quot;&quot;&quot;
     Given a matrix of distances between test points and training points,
     predict a label for each test point.
 
@@ -981,49 +980,49 @@ accuracy <span class="token operator">=</span> float<span class="token punctuati
 
     返回：
     - y: 一个(测试样本数量，)大小的numpy数组，其中y[i]表示测试样本X[i]的预测结果
-    """</span>
-        num_test <span class="token operator">=</span> dists<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-        y_pred <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span>num_test<span class="token punctuation">)</span>
-        <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>num_test<span class="token punctuation">)</span><span class="token punctuation">:</span>
-              <span class="token comment" spellcheck="true"># A list of length k storing the labels of the k nearest neighbors to</span>
-              <span class="token comment" spellcheck="true"># the ith test point.</span>
-              <span class="token comment" spellcheck="true"># 一个长度为k的list数组，其中保存着第i个测试样本的k个最近邻的类别标签</span>
-              closest_y <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-              <span class="token comment" spellcheck="true">#########################################################################</span>
-              <span class="token comment" spellcheck="true"># TODO:                                                                 #</span>
-              <span class="token comment" spellcheck="true"># Use the distance matrix to find the k nearest neighbors of the ith    #</span>
-              <span class="token comment" spellcheck="true"># testing point, and use self.y_train to find the labels of these       #</span>
-              <span class="token comment" spellcheck="true"># neighbors. Store these labels in closest_y.                           #</span>
-              <span class="token comment" spellcheck="true"># Hint: Look up the function numpy.argsort.                             #</span>
-              <span class="token comment" spellcheck="true"># 任务:                                                                 #</span>
-              <span class="token comment" spellcheck="true"># 通过距离矩阵找到第i个测试样本的k个最近邻,然后在self.y_train中找到这些         #</span>
-              <span class="token comment" spellcheck="true"># 最近邻对应的类别标签，并将这些类别标签保存到closest_y中。                    #</span>
-              <span class="token comment" spellcheck="true"># 提示: 可以尝试使用numpy.argsort方法                                      #</span>
-              <span class="token comment" spellcheck="true">#########################################################################</span>
-              <span class="token comment" spellcheck="true"># 在dists距离矩阵中，第i个测试图片(第i行)下的列(训练图片)，按值从小到大排列，</span>
-            <span class="token comment" spellcheck="true"># 取出前k个的索引(原列数，亦训练集的索引)，最后根据该索引在测试集中切片出相应的标签值</span>
-            closest_y <span class="token operator">=</span> self<span class="token punctuation">.</span>y_train<span class="token punctuation">[</span>np<span class="token punctuation">.</span>argsort<span class="token punctuation">(</span>dists<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">:</span>k<span class="token punctuation">]</span><span class="token punctuation">]</span>
-            <span class="token comment" spellcheck="true"># np.argsort()函数返回的是数组值从小到大的索引值</span>
-              <span class="token comment" spellcheck="true">#########################################################################</span>
-              <span class="token comment" spellcheck="true"># TODO:                                                                 #</span>
-              <span class="token comment" spellcheck="true"># Now that you have found the labels of the k nearest neighbors, you    #</span>
-              <span class="token comment" spellcheck="true"># need to find the most common label in the list closest_y of labels.   #</span>
-              <span class="token comment" spellcheck="true"># Store this label in y_pred[i]. Break ties by choosing the smaller     #</span>
-              <span class="token comment" spellcheck="true"># label.                                                                #</span>
-              <span class="token comment" spellcheck="true"># 任务:                                                                 #</span>
-              <span class="token comment" spellcheck="true"># 现在你已经找到了k个最近邻对应的标签, 下面就需要找到其中最普遍的那个             #</span>
-              <span class="token comment" spellcheck="true"># 类别标签，然后保存到y_pred[i]中。如果有票数相同的类别，则选择编号小            #</span>
-              <span class="token comment" spellcheck="true"># 的类别                                                                #</span>
-              <span class="token comment" spellcheck="true">#########################################################################</span>
-              y_pred<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>np<span class="token punctuation">.</span>bincount<span class="token punctuation">(</span>closest_y<span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token comment" spellcheck="true"># np.bincount()是凡是与索引值相同的值，计数+1，计数结果返回为新的索引值里的计数值</span>
-            <span class="token comment" spellcheck="true"># np.argmax() 返回的是数值最大的索引值，在这个例子中即是标签</span>
-              <span class="token comment" spellcheck="true">#########################################################################</span>
-              <span class="token comment" spellcheck="true">#                           END OF YOUR CODE                            # </span>
-              <span class="token comment" spellcheck="true">#########################################################################</span>
+    &quot;&quot;&quot;
+        num_test = dists.shape[0]
+        y_pred = np.zeros(num_test)
+        for i in range(num_test):
+              # A list of length k storing the labels of the k nearest neighbors to
+              # the ith test point.
+              # 一个长度为k的list数组，其中保存着第i个测试样本的k个最近邻的类别标签
+              closest_y = []
+              #########################################################################
+              # TODO:                                                                 #
+              # Use the distance matrix to find the k nearest neighbors of the ith    #
+              # testing point, and use self.y_train to find the labels of these       #
+              # neighbors. Store these labels in closest_y.                           #
+              # Hint: Look up the function numpy.argsort.                             #
+              # 任务:                                                                 #
+              # 通过距离矩阵找到第i个测试样本的k个最近邻,然后在self.y_train中找到这些         #
+              # 最近邻对应的类别标签，并将这些类别标签保存到closest_y中。                    #
+              # 提示: 可以尝试使用numpy.argsort方法                                      #
+              #########################################################################
+              # 在dists距离矩阵中，第i个测试图片(第i行)下的列(训练图片)，按值从小到大排列，
+            # 取出前k个的索引(原列数，亦训练集的索引)，最后根据该索引在测试集中切片出相应的标签值
+            closest_y = self.y_train[np.argsort(dists[i])[:k]]
+            # np.argsort()函数返回的是数组值从小到大的索引值
+              #########################################################################
+              # TODO:                                                                 #
+              # Now that you have found the labels of the k nearest neighbors, you    #
+              # need to find the most common label in the list closest_y of labels.   #
+              # Store this label in y_pred[i]. Break ties by choosing the smaller     #
+              # label.                                                                #
+              # 任务:                                                                 #
+              # 现在你已经找到了k个最近邻对应的标签, 下面就需要找到其中最普遍的那个             #
+              # 类别标签，然后保存到y_pred[i]中。如果有票数相同的类别，则选择编号小            #
+              # 的类别                                                                #
+              #########################################################################
+              y_pred[i] = np.argmax(np.bincount(closest_y))
+            # np.bincount()是凡是与索引值相同的值，计数+1，计数结果返回为新的索引值里的计数值
+            # np.argmax() 返回的是数值最大的索引值，在这个例子中即是标签
+              #########################################################################
+              #                           END OF YOUR CODE                            # 
+              #########################################################################
 
-    <span class="token keyword">return</span> y_pred
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    return y_pred
+</code></pre>
 </section>
     <!-- Tags START -->
     

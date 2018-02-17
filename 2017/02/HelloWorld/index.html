@@ -49,8 +49,7 @@
   
 
 
-<link rel="stylesheet" href="/css/prism.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+</head>
 <div class="wechat-share">
   <img src="/css/images/logo.png" />
 </div>
@@ -157,81 +156,81 @@
 <p><br></p>
 <h2 id="Hexo-的标签插件（Tag-Plugins）"><a href="#Hexo-的标签插件（Tag-Plugins）" class="headerlink" title="Hexo 的标签插件（Tag Plugins）"></a>Hexo 的标签插件（Tag Plugins）</h2><p>REF：<a href="https://hexo.io/zh-cn/docs/tag-plugins.html" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/tag-plugins.html</a></p>
 <h3 id="引用块"><a href="#引用块" class="headerlink" title="引用块"></a>引用块</h3><p>在文章中插入引言，可包含作者、来源和标题。</p>
-<pre class="line-numbers language-markdown"><code class="language-markdown">{% blockquote [author[, source]] [link] [source<span class="token italic"><span class="token punctuation">_</span>link<span class="token punctuation">_</span></span>title] %}
+<pre><code class="markdown">{% blockquote [author[, source]] [link] [source_link_title] %}
 content
 {% endblockquote %}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <ul>
 <li>样例</li>
 </ul>
 <p><strong>没有提供参数，则只输出普通的 blockquote</strong>：</p>
-<pre class="line-numbers language-markdown"><code class="language-markdown">{% blockquote %}
+<pre><code class="markdown">{% blockquote %}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.
 {% endblockquote %}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</p>
 </blockquote>
 <p><strong>引用书上的句子</strong>：</p>
-<pre class="line-numbers language-markdown"><code class="language-markdown">{% blockquote David Levithan, Wide Awake %}
+<pre><code class="markdown">{% blockquote David Levithan, Wide Awake %}
 Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.
 {% endblockquote %}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p>
 <footer><strong>David Levithan</strong><cite>Wide Awake</cite></footer></blockquote>
 <p><strong>引用 Twitter</strong>：</p>
-<pre class="line-numbers language-markdown"><code class="language-markdown">{% blockquote @DevDocs https://twitter.com/devdocs/status/356095192085962752 %}
+<pre><code class="markdown">{% blockquote @DevDocs https://twitter.com/devdocs/status/356095192085962752 %}
 NEW: DevDocs now comes with syntax highlighting. http://devdocs.io
 {% endblockquote %}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <blockquote><p>NEW: DevDocs now comes with syntax highlighting. <a href="http://devdocs.io" target="_blank" rel="noopener">http://devdocs.io</a></p>
 <footer><strong>@DevDocs</strong><cite><a href="https://twitter.com/devdocs/status/356095192085962752" target="_blank" rel="noopener">twitter.com/devdocs/status/356095192085962752</a></cite></footer></blockquote>
 <p><strong>引用网络上的文章</strong>：</p>
-<pre class="line-numbers language-markdown"><code class="language-markdown">{% blockquote Seth Godin http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html Welcome to Island Marketing %}
+<pre><code class="markdown">{% blockquote Seth Godin http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html Welcome to Island Marketing %}
 Every interaction is both precious and an opportunity to delight.
 {% endblockquote %}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <blockquote><p>Every interaction is both precious and an opportunity to delight.</p>
 <footer><strong>Seth Godin</strong><cite><a href="http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html" target="_blank" rel="noopener">Welcome to Island Marketing</a></cite></footer></blockquote>
 <h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><p>在文章中插入代码。</p>
 <p><strong>别名：</strong> code</p>
-<pre class="line-numbers language-markdown"><code class="language-markdown">{% codeblock <span class="token url">[title] [<span class="token variable">lang:language</span>]</span> <span class="token url">[url] [<span class="token variable">link text</span>]</span> %}
+<pre><code class="markdown">{% codeblock [title] [lang:language] [url] [link text] %}
 code snippet
 {% endcodeblock %}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <ul>
 <li>样例</li>
 </ul>
 <p><strong>普通的代码块</strong>：</p>
-<pre class="line-numbers language-markdown"><code class="language-markdown">{% codeblock %}
+<pre><code class="markdown">{% codeblock %}
 alert('Hello World!');
 {% endcodeblock %}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <pre><code>alert(&#39;Hello World!&#39;);</code></pre>
 <p><strong>指定语言</strong>：Python 语言的注释仍存 Bug</p>
-<pre class="line-numbers language-markdown"><code class="language-markdown">{% codeblock lang:python %}
+<pre><code class="markdown">{% codeblock lang:python %}
 import pandas as pd  # Import Libs
 print('Hello World! My name is %s' %'Herb')
 {% endcodeblock %}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <pre><code>import pandas as pd  # Import Libs
 print(&#39;Hello World! My name is %s&#39; %&#39;Herb&#39;)</code></pre>
 <p><strong>附加说明</strong>：</p>
-<pre class="line-numbers language-markdown"><code class="language-markdown">{% codeblock Array.map %}
+<pre><code class="markdown">{% codeblock Array.map %}
 array.map(callback[, thisArg])
 {% endcodeblock %}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <pre><code>array.map(callback[, thisArg])</code></pre>
 <p><strong>附加说明和网址</strong>：</p>
-<pre class="line-numbers language-markdown"><code class="language-markdown">{% codeblock <span class="token italic"><span class="token punctuation">_</span>.compact http://underscorejs.org/#compact Underscore.js %}
-<span class="token punctuation">_</span></span>.compact([0, 1, false, 2, '', 3]);
+<pre><code class="markdown">{% codeblock _.compact http://underscorejs.org/#compact Underscore.js %}
+_.compact([0, 1, false, 2, '', 3]);
 => [1, 2, 3]
 {% endcodeblock %}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <pre><code>_.compact([0, 1, false, 2, &#39;&#39;, 3]);
 =&gt; [1, 2, 3]</code></pre>
 <h3 id="反引号代码块"><a href="#反引号代码块" class="headerlink" title="反引号代码块"></a>反引号代码块</h3><p>另一种形式的代码块，不同的是它使用三个反引号来包裹。</p>
-<pre class="line-numbers language-markdown"><code class="language-markdown">​``` <span class="token url">[language] [<span class="token variable">title</span>]</span> <span class="token url">[url] [<span class="token variable">link text</span>]</span> code snippet
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="markdown">​``` [language] [title] [url] [link text] code snippet
+</code></pre>
 <p>```</p>
 <h2 id="Markdown-样例"><a href="#Markdown-样例" class="headerlink" title="Markdown 样例"></a>Markdown 样例</h2></section>
     <!-- Tags START -->

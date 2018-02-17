@@ -49,8 +49,7 @@
   
 
 
-<link rel="stylesheet" href="/css/prism.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+</head>
 <div class="wechat-share">
   <img src="/css/images/logo.png" />
 </div>
@@ -179,8 +178,8 @@
 <p>我们自己仅凭肉眼和肉脑当然是做不了审判官的，但是一个叫做<strong>损失函数（Loss Function）</strong>（有时也叫<strong>代价函数Cost Function</strong>或<strong>目标函数Objective</strong>）的可以做到！直观地讲，当输出层的评分给出结果与真实结果之间差异越大，我们的审判官——损失函数就会给出更加严厉的判决！举起一个写有很大的判决分数，以表示对其有多么的不满！反之差异若越小，损失函数就会给出越小的结果。</p>
 <p><br></p>
 <p>我们这里请的是<strong>交叉熵损失（cross-entropy loss）</strong>来作为最终得分的审判官！废话少说，直接看代码！</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">softmax_loss</span><span class="token punctuation">(</span>z<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+<pre><code class="python">def softmax_loss(z, y):
+    &quot;&quot;&quot;
     Computes the loss and gradient for softmax classification.
     Inputs:
     - z: Input data, of shape (N, C) where z[i, j] is the score for the jth class
@@ -190,16 +189,16 @@
     Returns a tuple of:
     - loss: Scalar giving the loss
     - dz: Gradient of the loss with respect to z
-    """</span>
-    probs <span class="token operator">=</span> np<span class="token punctuation">.</span>exp<span class="token punctuation">(</span>z <span class="token operator">-</span> np<span class="token punctuation">.</span>max<span class="token punctuation">(</span>z<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> keepdims<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true"># 1</span>
-    probs <span class="token operator">/=</span> np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>probs<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> keepdims<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>            <span class="token comment" spellcheck="true"># 2</span>
-    N <span class="token operator">=</span> z<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>                                            <span class="token comment" spellcheck="true"># 3</span>
-    loss <span class="token operator">=</span> <span class="token operator">-</span>np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>np<span class="token punctuation">.</span>log<span class="token punctuation">(</span>probs<span class="token punctuation">[</span>np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">,</span> y<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> N        <span class="token comment" spellcheck="true"># 4</span>
-    dz <span class="token operator">=</span> probs<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    dz<span class="token punctuation">[</span>np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">,</span> y<span class="token punctuation">]</span> <span class="token operator">-=</span> <span class="token number">1</span>
-    dz <span class="token operator">/=</span> N
-    <span class="token keyword">return</span> loss<span class="token punctuation">,</span> dz
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    &quot;&quot;&quot;
+    probs = np.exp(z - np.max(z, axis=1, keepdims=True))     # 1
+    probs /= np.sum(probs, axis=1, keepdims=True)            # 2
+    N = z.shape[0]                                            # 3
+    loss = -np.sum(np.log(probs[np.arange(N), y])) / N        # 4
+    dz = probs.copy()
+    dz[np.arange(N), y] -= 1
+    dz /= N
+    return loss, dz
+</code></pre>
 <p><strong>代码详解：</strong></p>
 <ul>
 <li><code>softmax_loss(z, y)</code> 函数的输入数据是shape为(N, C)的矩阵z和shape为(N, )的一维array行向量y。由于损失函数的输入数据来自神经网络的输出层，所以这里的矩阵z中的N代表是数据集样本图片的个数，C代表的是数据集的标签个数，对应于<a href="http://link.zhihu.com/?target=http%3A//www.cs.toronto.edu/%7Ekriz/cifar.html" target="_blank" rel="noopener">CIFAR-10</a>的训练集来说，z矩阵的shape应该为(50000, 10)，其中矩阵元素数值就是CIFAR-10的训练集数据经过整个神经网络层到达输出层，对每一张样本图片(每行)打分，给出对应各个标签(每列)的得分分数。一维array行向量y内的元素数值储存的是训练样本图片数据源的正确标签，数值范围是 $0\leqslant y_i&lt;C=10$，亦即 $y_i=0,1,…,9$。</li>
@@ -243,8 +242,8 @@
 <p>那么，如何在每一次有样本图片经过神经网络之后，得到损失函数关于模型参数的梯度呢？</p>
 <p><br></p>
 <p>寒暄到此为止，我们再贴一遍 <code>softmax_loss(z, y) = (loss, dx)</code> 函数代码，来观察下后三行代码里损失函数关于输出层输出数据矩阵z的梯度是如何计算出的：</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">softmax_loss</span><span class="token punctuation">(</span>z<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+<pre><code class="python">def softmax_loss(z, y):
+    &quot;&quot;&quot;
     Computes the loss and gradient for softmax classification.
     Inputs:
     - z: Input data, of shape (N, C) where z[i, j] is the score for the jth class
@@ -254,16 +253,16 @@
     Returns a tuple of:
     - loss: Scalar giving the loss
     - dz: Gradient of the loss with respect to z, of shape (N, C)
-    """</span>
-    probs <span class="token operator">=</span> np<span class="token punctuation">.</span>exp<span class="token punctuation">(</span>z <span class="token operator">-</span> np<span class="token punctuation">.</span>max<span class="token punctuation">(</span>z<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> keepdims<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    probs <span class="token operator">/=</span> np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>probs<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> keepdims<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-    N <span class="token operator">=</span> z<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-    loss <span class="token operator">=</span> <span class="token operator">-</span>np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>np<span class="token punctuation">.</span>log<span class="token punctuation">(</span>probs<span class="token punctuation">[</span>np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">,</span> y<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> N
-    dz <span class="token operator">=</span> probs<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>           <span class="token comment" spellcheck="true"># 1 probs.copy() 表示获得变量probs的副本</span>
-    dz<span class="token punctuation">[</span>np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">,</span> y<span class="token punctuation">]</span> <span class="token operator">-=</span> <span class="token number">1</span>    <span class="token comment" spellcheck="true"># 2 </span>
-    dz <span class="token operator">/=</span> N                        <span class="token comment" spellcheck="true"># 3</span>
-    <span class="token keyword">return</span> loss<span class="token punctuation">,</span> dz
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    &quot;&quot;&quot;
+    probs = np.exp(z - np.max(z, axis=1, keepdims=True))
+    probs /= np.sum(probs, axis=1, keepdims=True)
+    N = z.shape[0]
+    loss = -np.sum(np.log(probs[np.arange(N), y])) / N
+    dz = probs.copy()           # 1 probs.copy() 表示获得变量probs的副本
+    dz[np.arange(N), y] -= 1    # 2 
+    dz /= N                        # 3
+    return loss, dz
+</code></pre>
 <p><strong>代码解析：</strong></p>
 <ul>
 <li>这里的后三行计算出的 <code>dz</code> 变量是损失函数关于从输出层输入来的数据矩阵z的梯度，其shape与数据矩阵z相同，即(N, C)。其严格的数学解析定义(证明过程<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top-right hint--error hint--large" aria-label="**Softmax分类器梯度的证明过程：**">[1]</span></a></sup>)是：</li>
@@ -294,8 +293,8 @@
 <p>整个过程很像是 $L$ 关于数据的梯度在每一层反向传播，顺便地把各层关于参数的梯度也算了出来。</p>
 <p><br></p>
 <p>是不是又被说晕了？不要急，直接上代码，最后奇迹立现！</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">affine_backward</span><span class="token punctuation">(</span>dout<span class="token punctuation">,</span> cache<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+<pre><code class="python">def affine_backward(dout, cache):
+    &quot;&quot;&quot;
     Computes the backward pass for an affine layer.
     Inputs:
     - dout: Upstream derivative, of shape (N, M)    上一层的散度输出
@@ -307,15 +306,15 @@
     - dz: Gradient with respect to z, of shape (N, d1, ..., d_k)
     - dw: Gradient with respect to w, of shape (D, M)
     - db: Gradient with respect to b, of shape (M,)
-    """</span>
-    z<span class="token punctuation">,</span> w<span class="token punctuation">,</span> b <span class="token operator">=</span> cache
-    dz<span class="token punctuation">,</span> dw<span class="token punctuation">,</span> db <span class="token operator">=</span> None<span class="token punctuation">,</span> None<span class="token punctuation">,</span> None
-    reshaped_x <span class="token operator">=</span> np<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span>z<span class="token punctuation">,</span> <span class="token punctuation">(</span>z<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    dz <span class="token operator">=</span> np<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span>dout<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>w<span class="token punctuation">.</span>T<span class="token punctuation">)</span><span class="token punctuation">,</span> z<span class="token punctuation">.</span>shape<span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># np.dot() 是矩阵乘法</span>
-    dw <span class="token operator">=</span> <span class="token punctuation">(</span>reshaped_x<span class="token punctuation">.</span>T<span class="token punctuation">)</span><span class="token punctuation">.</span>dot<span class="token punctuation">(</span>dout<span class="token punctuation">)</span>
-    db <span class="token operator">=</span> np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>dout<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> dz<span class="token punctuation">,</span> dw<span class="token punctuation">,</span> db
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    &quot;&quot;&quot;
+    z, w, b = cache
+    dz, dw, db = None, None, None
+    reshaped_x = np.reshape(z, (z.shape[0], -1))
+    dz = np.reshape(dout.dot(w.T), z.shape)    # np.dot() 是矩阵乘法
+    dw = (reshaped_x.T).dot(dout)
+    db = np.sum(dout, axis=0)
+    return dz, dw, db
+</code></pre>
 <p><strong>代码详解：</strong></p>
 <ul>
 <li>我们定义 <code>affine_backward(dout, cache) = (dz, dw, db)</code> 函数来描述输出层神经元的反向传播。其中shape为(N, M)的 <code>dout</code> 矩阵就是损失函数 $L$ 关于该层在 <code>affine_forward()</code> 函数正向输出数据 <code>out</code> 的梯度，其对应于我们上一节定义的 <code>softmax_loss()</code> 函数输出的 <code>dz</code> 矩阵。梯度在输出层反向传播的话，M的大小就等于样本图片的标签数，即 $M=10$。<code>cache</code> 元组是正向流入输出层的神经元的数据x和输出层的参数(w, b)，即有 <code>z, w, b = cache</code>，其中输出层的输入数据z是未经过reshaped的一个多维array，shape为$(N,d_1,…,d_k)$，权重矩阵W的shape是(D, M)，偏置b的shape是(M, )。</li>
@@ -328,10 +327,10 @@
 <p><br></p>
 <p>于是，我们就可以按照上面函数 $z$ 的局部梯度规则书写，只要保证矩阵表达式维度匹配即可：</p>
 <p>$$<br>\begin{align_}<br>\underbrace{\begin{bmatrix}<br> &amp;  &amp; \\<br> &amp; \text{dx} &amp; \\<br> &amp;  &amp;<br>\end{bmatrix}}_{N\times 32\times32\times3}<br> \overset{\text{np.reshape}}{\Longleftarrow }<br>\underbrace{\begin{bmatrix}<br> &amp;  &amp; \\<br> &amp; \hat{\text{dx}} &amp; \\<br> &amp;  &amp;<br>\end{bmatrix}}_{N\times D}<br>&amp;=<br>\underbrace{\begin{bmatrix}<br> &amp;  &amp; \\<br> &amp; \text{dout} &amp; \\<br> &amp;  &amp;<br>\end{bmatrix}}_{N\times M}<br>\cdot<br>{\color{blue} {<br>\underbrace{\begin{bmatrix}<br> &amp;  &amp; \\<br> &amp; \text{w}^T &amp; \\<br> &amp;  &amp;<br>\end{bmatrix}}_{M\times D} }}\\<br>\underbrace{\begin{bmatrix}<br> &amp;  &amp; \\<br> &amp; \text{dw} &amp; \\<br> &amp;  &amp;<br>\end{bmatrix}}_{D\times M}<br>&amp;=<br>{\color{blue} {<br>\underbrace{\begin{bmatrix}<br> &amp;  &amp; \\<br> &amp; \text{reshaped_x}^T &amp; \\<br> &amp;  &amp;<br>\end{bmatrix}}_{D\times N} }}<br>\cdot<br>\underbrace{\begin{bmatrix}<br> &amp;  &amp; \\<br> &amp; \text{dout} &amp; \\<br> &amp;  &amp;<br>\end{bmatrix}}_{N\times M}<br>\\<br>\underbrace{\begin{bmatrix}<br>\cdots &amp; \text{db} &amp; \cdots<br>\end{bmatrix}}_{1\times M}<br>&amp; =<br>{\color{blue} {<br>\underbrace{\begin{bmatrix}<br>\cdots &amp; 1 &amp; \cdots<br>\end{bmatrix}}_{1\times N} }}<br>\cdot<br>\underbrace{\begin{bmatrix}<br> &amp;  &amp; \\<br> &amp;  \text{dout} &amp; \\<br> &amp;  &amp;<br>\end{bmatrix}}_{N\times M}<br>\end{align_}<br>$$<br>其中蓝色矩阵正是局部梯度部分。上面的矩阵表达式分别对应于Python代码，：</p>
-<pre class="line-numbers language-python"><code class="language-python">dx <span class="token operator">=</span> np<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span>dout<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>w<span class="token punctuation">.</span>T<span class="token punctuation">)</span><span class="token punctuation">,</span> x<span class="token punctuation">.</span>shape<span class="token punctuation">)</span>
-dw <span class="token operator">=</span> <span class="token punctuation">(</span>reshaped_x<span class="token punctuation">.</span>T<span class="token punctuation">)</span><span class="token punctuation">.</span>dot<span class="token punctuation">(</span>dout<span class="token punctuation">)</span> 
-db <span class="token operator">=</span> np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>dout<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code class="python">dx = np.reshape(dout.dot(w.T), x.shape)
+dw = (reshaped_x.T).dot(dout) 
+db = np.sum(dout, axis=0)
+</code></pre>
 <p><strong>代码解析：</strong></p>
 <ul>
 <li>可以看到对矩阵w和矩阵reshaped_x的转置操作，以及与dout矩阵的矩阵乘法前后顺序的安排，都是考虑到梯度矩阵(dx, dw, db)维数满足约定的前提下，所得到唯一可能的梯度矩阵表达形式。</li>
@@ -343,29 +342,29 @@ db <span class="token operator">=</span> np<span class="token punctuation">.</sp
 <p>当然不行，千万别忘了，其他隐藏层神经元给出得分后还有“激活”的操作。所以我们再定义一个 <code>relu_backward(dout, cache) = dx</code> 函数表示隐藏层神经元中激活函数部分的梯度的反向传播，然后就可以组成一个完整的损失函数 $L$ 关于隐藏层神经元的反向传播函数 <code>affine_relu_backward(dout, cache) = (dx, dw, db)</code>。</p>
 <p><br></p>
 <p>说这么多，其实代码很简单啦：</p>
-<pre class="line-numbers language-python"><code class="language-python">  <span class="token keyword">def</span> <span class="token function">relu_backward</span><span class="token punctuation">(</span>dout<span class="token punctuation">,</span> cache<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+<pre><code class="python">  def relu_backward(dout, cache):
+    &quot;&quot;&quot;
     Computes the backward pass for a layer of rectified linear units (ReLUs).
     Input:
     - dout: Upstream derivatives, of any shape
     - cache: Input x, of same shape as dout
     Returns:
     - dx: Gradient with respect to x
-    """</span>
-    dx<span class="token punctuation">,</span> x <span class="token operator">=</span> None<span class="token punctuation">,</span> cache
-    dx <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">*</span> dout    
-    <span class="token comment" spellcheck="true"># 与所有x中元素为正的位置处，位置对应于dout矩阵的元素保留，其他都取0</span>
-    <span class="token keyword">return</span> dx
+    &quot;&quot;&quot;
+    dx, x = None, cache
+    dx = (x &gt; 0) * dout    
+    # 与所有x中元素为正的位置处，位置对应于dout矩阵的元素保留，其他都取0
+    return dx
 
-  <span class="token keyword">def</span> <span class="token function">affine_relu_backward</span><span class="token punctuation">(</span>dout<span class="token punctuation">,</span> cache<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+  def affine_relu_backward(dout, cache):
+    &quot;&quot;&quot;
     Backward pass for the affine-relu convenience layer
-    """</span>
-    fc_cache<span class="token punctuation">,</span> relu_cache <span class="token operator">=</span> cache            <span class="token comment" spellcheck="true"># fc_cache = (x, w, b)   relu_cache = a</span>
-    da <span class="token operator">=</span> relu_backward<span class="token punctuation">(</span>dout<span class="token punctuation">,</span> relu_cache<span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># da = (x > 0) * relu_cache</span>
-    dx<span class="token punctuation">,</span> dw<span class="token punctuation">,</span> db <span class="token operator">=</span> affine_backward<span class="token punctuation">(</span>da<span class="token punctuation">,</span> fc_cache<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> dx<span class="token punctuation">,</span> dw<span class="token punctuation">,</span> db
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    &quot;&quot;&quot;
+    fc_cache, relu_cache = cache            # fc_cache = (x, w, b)   relu_cache = a
+    da = relu_backward(dout, relu_cache)    # da = (x &gt; 0) * relu_cache
+    dx, dw, db = affine_backward(da, fc_cache)
+    return dx, dw, db
+</code></pre>
 <p><strong>代码详解：</strong></p>
 <ul>
 <li>代码 <code>dx = (x &gt; 0) * dout</code> ，表示损失函数关于在ReLU激活函数处流入流出数据的梯度的反向传递。下图是某层神经元激活函数部分中的数据正反向传播的示意图：</li>
@@ -380,75 +379,75 @@ db <span class="token operator">=</span> np<span class="token punctuation">.</sp
 <p><br></p>
 <p><strong>数据流动走向图的代码详解：</strong></p>
 <p>注：下面代码在cs231n作业略有简化修改(无正则化)。</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">TwoLayerNet</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># 我们的2层全连接神经网络</span>
-    <span class="token triple-quoted-string string">"""
+<pre><code class="python">class TwoLayerNet(object): # 我们的2层全连接神经网络
+    &quot;&quot;&quot;
     首先，需要初始化我们的神经网络。
     毕竟，数据从输入层第一次流入到神经网络里，我们的参数(W,B)不能为空，
     也不能都太大或太小，因为参数(W,B)的初始化是相当重要的，
     对整个神经网络的训练影响巨大，但如何proper的初始化参数仍然没有定论
     目前仍有很多paper在专门讨论这个话题。
-    """</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self
-                 <span class="token punctuation">,</span>input_dim<span class="token operator">=</span><span class="token number">3</span><span class="token operator">*</span><span class="token number">32</span><span class="token operator">*</span><span class="token number">32</span>        <span class="token comment" spellcheck="true"># 每张样本图片的数据维度大小</span>
-                 <span class="token punctuation">,</span>hidden_dim<span class="token operator">=</span><span class="token number">100</span>        <span class="token comment" spellcheck="true"># 隐藏层的神经元个数</span>
-                 <span class="token punctuation">,</span>num_classes<span class="token operator">=</span><span class="token number">10</span>        <span class="token comment" spellcheck="true"># 样本图片的分类类别个数是</span>
-                 <span class="token punctuation">,</span>weight_scale<span class="token operator">=</span><span class="token number">1e</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token comment" spellcheck="true"># 初始化参数的权重尺度(标准偏差)</span>
-        <span class="token triple-quoted-string string">"""
+    &quot;&quot;&quot;
+    def __init__(self
+                 ,input_dim=3*32*32        # 每张样本图片的数据维度大小
+                 ,hidden_dim=100        # 隐藏层的神经元个数
+                 ,num_classes=10        # 样本图片的分类类别个数是
+                 ,weight_scale=1e-3):    # 初始化参数的权重尺度(标准偏差)
+        &quot;&quot;&quot;
         我们把需要学习的参数(W,B)都存在self.params字典中，
         其中每个元素都是都是numpy arrays:
-        """</span>
-        self<span class="token punctuation">.</span>params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-        <span class="token triple-quoted-string string">"""
+        &quot;&quot;&quot;
+        self.params = {}
+        &quot;&quot;&quot;
         我们用标准差为weight_scale的高斯分布初始化参数W,
         偏置B的初始都为0:
         (其中randn函数是基于零均值和标准差的一个高斯分布)
-        """</span>
-        self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"W1"</span><span class="token punctuation">]</span> <span class="token operator">=</span> weight_scale <span class="token operator">*</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span>input_dim
-                                                           <span class="token punctuation">,</span>hidden_dim<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"b1"</span><span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>hidden_dim<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"W2"</span><span class="token punctuation">]</span> <span class="token operator">=</span> weight_scale <span class="token operator">*</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span>hidden_dim
-                                                           <span class="token punctuation">,</span>num_classes<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"b2"</span><span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>num_classes<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token triple-quoted-string string">"""
+        &quot;&quot;&quot;
+        self.params[&quot;W1&quot;] = weight_scale * np.random.randn(input_dim
+                                                           ,hidden_dim)
+        self.params[&quot;b1&quot;] = np.zeros((hidden_dim,))
+        self.params[&quot;W2&quot;] = weight_scale * np.random.randn(hidden_dim
+                                                           ,num_classes)
+        self.params[&quot;b2&quot;] = np.zeros((num_classes,))
+        &quot;&quot;&quot;
         可以看到,
         隐藏层的参数矩阵行数是3*32*32，列数是100；
         输出层的参数矩阵行数是100，列数10.
-        """</span>
+        &quot;&quot;&quot;
 
-    <span class="token comment" spellcheck="true"># 接下来，我们最后定义一个loss函数就可以完成神经网络的构造</span>
-    <span class="token keyword">def</span> <span class="token function">loss</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""
+    # 接下来，我们最后定义一个loss函数就可以完成神经网络的构造
+    def loss(self, X, y):
+        &quot;&quot;&quot;
         首先，输入的数据X是一个多维的array，shape为(样本图片的个数N*3*32*32),
         y是与输入数据X对应的正确标签，shape为(N,)。
         我们loss函数目标输出一个损失值loss和一个grads字典，
         其中存有loss关于隐藏层和输出层的参数(W,B)的梯度值：
-        """</span>  
-        loss<span class="token punctuation">,</span> grads <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+        &quot;&quot;&quot;  
+        loss, grads = 0, {}
 
-        <span class="token comment" spellcheck="true"># 数据X在隐藏层和输出层的前向传播：</span>
-        h1_out<span class="token punctuation">,</span> h1_cache <span class="token operator">=</span> affine_relu_forward<span class="token punctuation">(</span>X
-                                               <span class="token punctuation">,</span>self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"W1"</span><span class="token punctuation">]</span>
-                                               <span class="token punctuation">,</span>self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"b1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-        scores<span class="token punctuation">,</span> out_cache <span class="token operator">=</span> affine_forward<span class="token punctuation">(</span>h1_out
-                                           <span class="token punctuation">,</span>self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"W2"</span><span class="token punctuation">]</span>
-                                           <span class="token punctuation">,</span>self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"b2"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        # 数据X在隐藏层和输出层的前向传播：
+        h1_out, h1_cache = affine_relu_forward(X
+                                               ,self.params[&quot;W1&quot;]
+                                               ,self.params[&quot;b1&quot;])
+        scores, out_cache = affine_forward(h1_out
+                                           ,self.params[&quot;W2&quot;]
+                                           ,self.params[&quot;b2&quot;])
 
-        <span class="token comment" spellcheck="true"># 输出层后，结合正确标签y得出损失值和其在输出层的梯度：</span>
-        loss<span class="token punctuation">,</span> dout <span class="token operator">=</span> softmax_loss<span class="token punctuation">(</span>scores<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+        # 输出层后，结合正确标签y得出损失值和其在输出层的梯度：
+        loss, dout = softmax_loss(scores, y)
 
-        <span class="token comment" spellcheck="true"># 损失值loss的梯度在输出层和隐藏层的反向传播：</span>
-        dout<span class="token punctuation">,</span> dw2<span class="token punctuation">,</span> db2 <span class="token operator">=</span> affine_backward<span class="token punctuation">(</span>dout<span class="token punctuation">,</span> out_cache<span class="token punctuation">)</span>
-        grads<span class="token punctuation">[</span><span class="token string">"W2"</span><span class="token punctuation">]</span> <span class="token operator">=</span> dw2 <span class="token punctuation">,</span> grads<span class="token punctuation">[</span><span class="token string">"b2"</span><span class="token punctuation">]</span> <span class="token operator">=</span> db2
-        _<span class="token punctuation">,</span> dw1<span class="token punctuation">,</span> db1 <span class="token operator">=</span> affine_relu_backward<span class="token punctuation">(</span>dout<span class="token punctuation">,</span> h1_cache<span class="token punctuation">)</span>
-        grads<span class="token punctuation">[</span><span class="token string">"W1"</span><span class="token punctuation">]</span> <span class="token operator">=</span> dw1 <span class="token punctuation">,</span> grads<span class="token punctuation">[</span><span class="token string">"b1"</span><span class="token punctuation">]</span> <span class="token operator">=</span> db1
+        # 损失值loss的梯度在输出层和隐藏层的反向传播：
+        dout, dw2, db2 = affine_backward(dout, out_cache)
+        grads[&quot;W2&quot;] = dw2 , grads[&quot;b2&quot;] = db2
+        _, dw1, db1 = affine_relu_backward(dout, h1_cache)
+        grads[&quot;W1&quot;] = dw1 , grads[&quot;b1&quot;] = db1
 
-        <span class="token triple-quoted-string string">"""
+        &quot;&quot;&quot;
         可以看到图片样本的数据梯度dout只起到了带路的作用，
         最终会舍弃掉，我们只要loss关于参数的梯度，
         然后保存在grads字典中。
-        """</span>
-        <span class="token keyword">return</span> loss<span class="token punctuation">,</span> grads
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        &quot;&quot;&quot;
+        return loss, grads
+</code></pre>
 <p>上面代码定义的类 <code>TwoLayerNet()</code> 就是一个两层全链接神经网络模型，其中富含了我们之前讲到的所有内容。</p>
 <p><br></p>
 <p>那么故事到此，我们总算是知道怎么建立一个神经网络框架了。</p>

@@ -49,8 +49,7 @@
   
 
 
-<link rel="stylesheet" href="/css/prism.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+</head>
 <div class="wechat-share">
   <img src="/css/images/logo.png" />
 </div>
@@ -185,11 +184,11 @@
 <p>上图是在$w_1,w_2$参数平面内，绘制的loss损失函数值的等高线图。圈圈最中心的点即使loss损失函数最小值所对应的参数$w_1,w_2$。而正则化是我们对于神经网络中的每个权重$w$，向损失函数中增加一个正则项 $\frac{1}{2}\lambda w^2$ (<strong>L2正则化</strong>)，其中 $\lambda$ 是正则化强度。于是，在最优化的过程中，解空间缩小了，解参数$w_1,w_2$的可选范围不再是整个平面，而是被限制在图中阴影的圆形区域内。所以，经过惩罚且最小化的loss损失值所对应的最优参数$w_1,w_2$，就是距离未经历惩罚的最小化loss损失值最近，位于圆形区域边界上的一点。(See more: <a href="http://blog.csdn.net/wsj998689aa/article/details/39547771" target="_blank" rel="noopener">XX</a>，<a href="http://rasbt.github.io/mlxtend/user_guide/general_concepts/regularization-linear/" target="_blank" rel="noopener">XX</a>)</p>
 <hr>
 <p>废话说了很多，反映在代码上其实很简单，只需要对神经网络给出的loss和其梯度稍加修改即可：</p>
-<pre class="line-numbers language-python"><code class="language-python">loss <span class="token operator">+=</span> <span class="token number">0.5</span> <span class="token operator">*</span> self<span class="token punctuation">.</span>reg <span class="token operator">*</span> <span class="token punctuation">(</span>np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"W1"</span><span class="token punctuation">]</span> <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> \
-                                  np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"W2"</span><span class="token punctuation">]</span> <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-dW2 <span class="token operator">+=</span> self<span class="token punctuation">.</span>reg <span class="token operator">*</span> self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"W2"</span><span class="token punctuation">]</span>
-dW1 <span class="token operator">+=</span> self<span class="token punctuation">.</span>reg <span class="token operator">*</span> self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"W1"</span><span class="token punctuation">]</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="python">loss += 0.5 * self.reg * (np.sum(self.params[&quot;W1&quot;] ** 2) + \
+                                  np.sum(self.params[&quot;W2&quot;] ** 2))
+dW2 += self.reg * self.params[&quot;W2&quot;]
+dW1 += self.reg * self.params[&quot;W1&quot;]
+</code></pre>
 <p><strong>代码详解：</strong></p>
 <ul>
 <li><code>self.reg</code> 是正则化强度，这不是一个要优化的学习参数，需要在训练之前设置好，取其值为0就意味着不考虑正则化。</li>
@@ -214,8 +213,8 @@ dW1 <span class="token operator">+=</span> self<span class="token punctuation">.
 <p>可以看到，我们在每一层神经网络的激活函数前都进行批量归一化处理，要求数据和梯度在正反向传播中都要有这一步骤。千万不要小瞧神经元体内的这一步骤，它的存在意义重大且深刻。这个在每一个隐藏层中增加”批量归一化”作为数据预处理的方法可以在未来的学习过程中，进一步加速收敛，其效果非同小可。它的作用就像高透光的手机贴膜，既能保护手机对外界环境的磨损，又能保证膜内手机屏幕透光性，我们的手机当然就更健康啦！</p>
 <hr>
 <p>下面直接给出前向传播Batch Normalization(BN)层的 <code>batchnorm_forward(x, gamma, beta, bn_param)=(out,cache)</code> 函数代码，会更清晰明了！</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">batchnorm_forward</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> gamma<span class="token punctuation">,</span> beta<span class="token punctuation">,</span> bn_param<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+<pre><code class="python">def batchnorm_forward(x, gamma, beta, bn_param):
+    &quot;&quot;&quot;
         During training the sample mean and (uncorrected) sample variance are
     computed from minibatch statistics and used to normalize the incoming data.
     During training we also keep an exponentially decaying running mean of the mean
@@ -240,7 +239,7 @@ dW1 <span class="token operator">+=</span> self<span class="token punctuation">.
     - gamma: Scale parameter of shape (D,)
     - beta: Shift paremeter of shape (D,)
     - bn_param: Dictionary with the following keys:
-    - mode: 'train' or 'test'; required
+    - mode: &#39;train&#39; or &#39;test&#39;; required
     - eps: Constant for numeric stability
     - momentum: Constant for running mean / variance.
     - running_mean: Array of shape (D,) giving running mean of features
@@ -249,36 +248,36 @@ dW1 <span class="token operator">+=</span> self<span class="token punctuation">.
     Returns a tuple of:
     - out: of shape (N, D)
     - cache: A tuple of values needed in the backward pass
-    """</span>
-    mode <span class="token operator">=</span> bn_param<span class="token punctuation">[</span><span class="token string">'mode'</span><span class="token punctuation">]</span>
-    eps <span class="token operator">=</span> bn_param<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'eps'</span><span class="token punctuation">,</span> <span class="token number">1e</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">)</span>
-    momentum <span class="token operator">=</span> bn_param<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'momentum'</span><span class="token punctuation">,</span> <span class="token number">0.9</span><span class="token punctuation">)</span>
+    &quot;&quot;&quot;
+    mode = bn_param[&#39;mode&#39;]
+    eps = bn_param.get(&#39;eps&#39;, 1e-5)
+    momentum = bn_param.get(&#39;momentum&#39;, 0.9)
 
-    N<span class="token punctuation">,</span> D <span class="token operator">=</span> x<span class="token punctuation">.</span>shape
-    running_mean <span class="token operator">=</span> bn_param<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'running_mean'</span><span class="token punctuation">,</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span>D<span class="token punctuation">,</span> dtype<span class="token operator">=</span>x<span class="token punctuation">.</span>dtype<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    running_var <span class="token operator">=</span> bn_param<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'running_var'</span><span class="token punctuation">,</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span>D<span class="token punctuation">,</span> dtype<span class="token operator">=</span>x<span class="token punctuation">.</span>dtype<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    N, D = x.shape
+    running_mean = bn_param.get(&#39;running_mean&#39;, np.zeros(D, dtype=x.dtype))
+    running_var = bn_param.get(&#39;running_var&#39;, np.zeros(D, dtype=x.dtype))
 
-    out<span class="token punctuation">,</span> cache <span class="token operator">=</span> None<span class="token punctuation">,</span> None
-    <span class="token keyword">if</span> mode <span class="token operator">==</span> <span class="token string">'train'</span><span class="token punctuation">:</span>        <span class="token comment" spellcheck="true"># 训练模式</span>
-        sample_mean <span class="token operator">=</span> np<span class="token punctuation">.</span>mean<span class="token punctuation">(</span>x<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 矩阵x每一列的平均值 shaple: (D,)</span>
-        sample_var <span class="token operator">=</span> np<span class="token punctuation">.</span>var<span class="token punctuation">(</span>x<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true"># 矩阵x每一列的方差 shape: (D,)</span>
-        x_hat <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> sample_mean<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span>np<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span>sample_var <span class="token operator">+</span> eps<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        out <span class="token operator">=</span> gamma <span class="token operator">*</span> x_hat <span class="token operator">+</span> beta
-        cache <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> sample_mean<span class="token punctuation">,</span> sample_var<span class="token punctuation">,</span> x_hat<span class="token punctuation">,</span> eps<span class="token punctuation">,</span> gamma<span class="token punctuation">,</span> beta<span class="token punctuation">)</span>
-        running_mean <span class="token operator">=</span> momentum <span class="token operator">*</span> running_mean <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> momentum<span class="token punctuation">)</span> <span class="token operator">*</span> sample_mean
-        running_var <span class="token operator">=</span> momentum <span class="token operator">*</span> running_var <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> momentum<span class="token punctuation">)</span> <span class="token operator">*</span> sample_var
+    out, cache = None, None
+    if mode == &#39;train&#39;:        # 训练模式
+        sample_mean = np.mean(x, axis=0)    # 矩阵x每一列的平均值 shaple: (D,)
+        sample_var = np.var(x, axis=0)        # 矩阵x每一列的方差 shape: (D,)
+        x_hat = (x - sample_mean) / (np.sqrt(sample_var + eps))
+        out = gamma * x_hat + beta
+        cache = (x, sample_mean, sample_var, x_hat, eps, gamma, beta)
+        running_mean = momentum * running_mean + (1 - momentum) * sample_mean
+        running_var = momentum * running_var + (1 - momentum) * sample_var
 
-    <span class="token keyword">elif</span> mode <span class="token operator">==</span> <span class="token string">'test'</span><span class="token punctuation">:</span>    <span class="token comment" spellcheck="true"># 测试模式</span>
-          out <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> running_mean<span class="token punctuation">)</span> <span class="token operator">*</span> gamma <span class="token operator">/</span> <span class="token punctuation">(</span>np<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span>running_var <span class="token operator">+</span> eps<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> beta
-    <span class="token keyword">else</span><span class="token punctuation">:</span>
-        <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">'Invalid forward batchnorm mode "%s"'</span> <span class="token operator">%</span> mode<span class="token punctuation">)</span>
+    elif mode == &#39;test&#39;:    # 测试模式
+          out = (x - running_mean) * gamma / (np.sqrt(running_var + eps)) + beta
+    else:
+        raise ValueError(&#39;Invalid forward batchnorm mode &quot;%s&quot;&#39; % mode)
 
-    <span class="token comment" spellcheck="true"># Store the updated running means back into bn_param</span>
-    bn_param<span class="token punctuation">[</span><span class="token string">'running_mean'</span><span class="token punctuation">]</span> <span class="token operator">=</span> running_mean
-    bn_param<span class="token punctuation">[</span><span class="token string">'running_var'</span><span class="token punctuation">]</span> <span class="token operator">=</span> running_var
+    # Store the updated running means back into bn_param
+    bn_param[&#39;running_mean&#39;] = running_mean
+    bn_param[&#39;running_var&#39;] = running_var
 
-    <span class="token keyword">return</span> out<span class="token punctuation">,</span> cache
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    return out, cache
+</code></pre>
 <p><strong>代码详解：</strong></p>
 <ul>
 <li><code>batchnorm_forward()</code> 函数的输入矩阵x可以看做是输入的样本数据(或者是经过线性函数的输出值)，shape为(N, D)，N是样本图片的个数，D是特征个数(本例中就是像素点数)。参数(gamma, beta)是我们新的待优化学习的参数，shape都为(D, )，这样一来，我们的神经网络模型参数增加到四个(w, b, gamma, beta)。</li>
@@ -299,8 +298,8 @@ dW1 <span class="token operator">+=</span> self<span class="token punctuation">.
 <p>关于一次指数平滑法的初值取法也是有讲究的。可以看到我们上面的代码就是取第一次算得的平均值或标准差来作为初始默认值的。</p>
 </blockquote>
 <p>那么，清楚了神经元层中 <code>batchnorm_forward()</code> 函数干的活，就可以很轻松的改写原一层神经元们在前向传播中的 <code>affine_relu_forward()</code> 函数为含有Batch Normalization层的 <code>affine_bn_relu_forward(x, w, b, gamma, beta, bn_param) = (out, cache)</code> 函数：</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">affine_bn_relu_forward</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> w<span class="token punctuation">,</span> b<span class="token punctuation">,</span> gamma<span class="token punctuation">,</span> beta<span class="token punctuation">,</span> bn_param<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+<pre><code class="python">def affine_bn_relu_forward(x, w, b, gamma, beta, bn_param):
+    &quot;&quot;&quot;
     Inputs:
     - x: Array of shape (N, D1); input to the affine layer
     - w, b: Arrays of shape (D2, D2) and (D2,) giving the weight and bias for
@@ -311,20 +310,20 @@ dW1 <span class="token operator">+=</span> self<span class="token punctuation">.
     Returns:
     - out: Output from ReLU, of shape (N, D2)
     - cache: Object to give to the backward pass.
-    """</span>
-    a<span class="token punctuation">,</span> fc_cache <span class="token operator">=</span> affine_forward<span class="token punctuation">(</span>x<span class="token punctuation">,</span> w<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
-    a_bn<span class="token punctuation">,</span> bn_cache <span class="token operator">=</span> batchnorm_forward<span class="token punctuation">(</span>a<span class="token punctuation">,</span> gamma<span class="token punctuation">,</span> beta<span class="token punctuation">,</span> bn_param<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#BN层，注意！它在ReLU层前</span>
-    out<span class="token punctuation">,</span> relu_cache <span class="token operator">=</span> relu_forward<span class="token punctuation">(</span>a_bn<span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># ReLU层</span>
-    cache <span class="token operator">=</span> <span class="token punctuation">(</span>fc_cache<span class="token punctuation">,</span> bn_cache<span class="token punctuation">,</span> relu_cache<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> out<span class="token punctuation">,</span> cache
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    &quot;&quot;&quot;
+    a, fc_cache = affine_forward(x, w, b)
+    a_bn, bn_cache = batchnorm_forward(a, gamma, beta, bn_param) #BN层，注意！它在ReLU层前
+    out, relu_cache = relu_forward(a_bn)    # ReLU层
+    cache = (fc_cache, bn_cache, relu_cache)
+    return out, cache
+</code></pre>
 <p>显然在反向传播中，损失函数的梯度也需要添加一步Batch Normalization的局部梯度：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2301760-925f85e899bfd47a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Backpropagate the gradient of loss ℓ"></p>
 <p>其中数学公式有点复杂，证明可见网络。</p>
 <p><br></p>
 <p>看见就想吐就不要看了，还是直接飞代码才能清晰我们的思路，要理清楚损失函数的数据梯度是如何经过这一层的就好：</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">batchnorm_backward</span><span class="token punctuation">(</span>dout<span class="token punctuation">,</span> cache<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+<pre><code class="python">def batchnorm_backward(dout, cache):
+    &quot;&quot;&quot;
     Inputs:
     - dout: Upstream derivatives, of shape (N, D)
     - cache: Variable of intermediates from batchnorm_forward.
@@ -332,42 +331,42 @@ dW1 <span class="token operator">+=</span> self<span class="token punctuation">.
     - dx: Gradient with respect to inputs x, of shape (N, D)
     - dgamma: Gradient with respect to scale parameter gamma, of shape (D,)
     - dbeta: Gradient with respect to shift parameter beta, of shape (D,)
-    """</span>
-    x<span class="token punctuation">,</span> mean<span class="token punctuation">,</span> var<span class="token punctuation">,</span> x_hat<span class="token punctuation">,</span> eps<span class="token punctuation">,</span> gamma<span class="token punctuation">,</span> beta <span class="token operator">=</span> cache
-    N <span class="token operator">=</span> x<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-    dgamma <span class="token operator">=</span> np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>dout <span class="token operator">*</span> x_hat<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 第5行公式</span>
-    dbeta <span class="token operator">=</span> np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>dout <span class="token operator">*</span> <span class="token number">1.0</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true"># 第6行公式</span>
-    dx_hat <span class="token operator">=</span> dout <span class="token operator">*</span> gamma                    <span class="token comment" spellcheck="true"># 第1行公式</span>
-    dx_hat_numerator <span class="token operator">=</span> dx_hat <span class="token operator">/</span> np<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span>var <span class="token operator">+</span> eps<span class="token punctuation">)</span>        <span class="token comment" spellcheck="true"># 第3行第1项(未负求和)</span>
-    dx_hat_denominator <span class="token operator">=</span> np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>dx_hat <span class="token operator">*</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> mean<span class="token punctuation">)</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 第2行前半部分</span>
-    dx_1 <span class="token operator">=</span> dx_hat_numerator                    <span class="token comment" spellcheck="true"># 第4行第1项</span>
-    dvar <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.5</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>var <span class="token operator">+</span> eps<span class="token punctuation">)</span> <span class="token operator">**</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1.5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> dx_hat_denominator    <span class="token comment" spellcheck="true"># 第2行公式</span>
-    <span class="token comment" spellcheck="true"># Note var is also a function of mean</span>
-    dmean <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1.0</span> <span class="token operator">*</span> np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>dx_hat_numerator<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> \
-              dvar <span class="token operator">*</span> np<span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2.0</span> <span class="token operator">*</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> mean<span class="token punctuation">)</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 第3行公式(部分)</span>
-    dx_var <span class="token operator">=</span> dvar <span class="token operator">*</span> <span class="token number">2.0</span> <span class="token operator">/</span> N <span class="token operator">*</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> mean<span class="token punctuation">)</span>     <span class="token comment" spellcheck="true"># 第4行第2项</span>
-    dx_mean <span class="token operator">=</span> dmean <span class="token operator">*</span> <span class="token number">1.0</span> <span class="token operator">/</span> N                  <span class="token comment" spellcheck="true"># 第4行第3项</span>
-    <span class="token comment" spellcheck="true"># with shape (D,), no trouble with broadcast</span>
-    dx <span class="token operator">=</span> dx_1 <span class="token operator">+</span> dx_var <span class="token operator">+</span> dx_mean            <span class="token comment" spellcheck="true"># 第4行公式</span>
+    &quot;&quot;&quot;
+    x, mean, var, x_hat, eps, gamma, beta = cache
+    N = x.shape[0]
+    dgamma = np.sum(dout * x_hat, axis=0)    # 第5行公式
+    dbeta = np.sum(dout * 1.0, axis=0)        # 第6行公式
+    dx_hat = dout * gamma                    # 第1行公式
+    dx_hat_numerator = dx_hat / np.sqrt(var + eps)        # 第3行第1项(未负求和)
+    dx_hat_denominator = np.sum(dx_hat * (x - mean), axis=0)    # 第2行前半部分
+    dx_1 = dx_hat_numerator                    # 第4行第1项
+    dvar = -0.5 * ((var + eps) ** (-1.5)) * dx_hat_denominator    # 第2行公式
+    # Note var is also a function of mean
+    dmean = -1.0 * np.sum(dx_hat_numerator, axis=0) + \
+              dvar * np.mean(-2.0 * (x - mean), axis=0)  # 第3行公式(部分)
+    dx_var = dvar * 2.0 / N * (x - mean)     # 第4行第2项
+    dx_mean = dmean * 1.0 / N                  # 第4行第3项
+    # with shape (D,), no trouble with broadcast
+    dx = dx_1 + dx_var + dx_mean            # 第4行公式
 
-    <span class="token keyword">return</span> dx<span class="token punctuation">,</span> dgamma<span class="token punctuation">,</span> dbeta
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    return dx, dgamma, dbeta
+</code></pre>
 <p><strong>代码详解：</strong></p>
 <ul>
 <li>代码中已经给出了详细的与数学公式对应的注释。</li>
 <li>提前提个醒，在 <code>test</code> 模式下，我们并不需要有反向传播这一步骤，只需要样本图片数据经过神经网络后，在输出层给出的得分即可。</li>
 </ul>
 <p>同样地，我们可以改写原一层神经元们在反向传播中的 <code>affine_relu_backward()</code> 函数为含有Batch Normalization层的 <code>affine_bn_relu_backward(dout, cache) = (dx, dw, db, dgamma, dbeta)</code> 函数：</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">affine_bn_relu_backward</span><span class="token punctuation">(</span>dout<span class="token punctuation">,</span> cache<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+<pre><code class="python">def affine_bn_relu_backward(dout, cache):
+    &quot;&quot;&quot;
     Backward pass for the affine-batchnorm-relu convenience layer.
-    """</span>
-    fc_cache<span class="token punctuation">,</span> bn_cache<span class="token punctuation">,</span> relu_cache <span class="token operator">=</span> cache
-    da_bn <span class="token operator">=</span> relu_backward<span class="token punctuation">(</span>dout<span class="token punctuation">,</span> relu_cache<span class="token punctuation">)</span>        <span class="token comment" spellcheck="true"># ReLU层</span>
-    da<span class="token punctuation">,</span> dgamma<span class="token punctuation">,</span> dbeta <span class="token operator">=</span> batchnorm_backward<span class="token punctuation">(</span>da_bn<span class="token punctuation">,</span> bn_cache<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># BN层，反向传播时在ReLU后</span>
-    dx<span class="token punctuation">,</span> dw<span class="token punctuation">,</span> db <span class="token operator">=</span> affine_backward<span class="token punctuation">(</span>da<span class="token punctuation">,</span> fc_cache<span class="token punctuation">)</span>    
-    <span class="token keyword">return</span> dx<span class="token punctuation">,</span> dw<span class="token punctuation">,</span> db<span class="token punctuation">,</span> dgamma<span class="token punctuation">,</span> dbeta
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    &quot;&quot;&quot;
+    fc_cache, bn_cache, relu_cache = cache
+    da_bn = relu_backward(dout, relu_cache)        # ReLU层
+    da, dgamma, dbeta = batchnorm_backward(da_bn, bn_cache) # BN层，反向传播时在ReLU后
+    dx, dw, db = affine_backward(da, fc_cache)    
+    return dx, dw, db, dgamma, dbeta
+</code></pre>
 <p><br></p>
 <p><strong>小注：</strong></p>
 <p><br></p>
@@ -397,14 +396,14 @@ dW1 <span class="token operator">+=</span> self<span class="token punctuation">.
 <p>还是那句话，再空洞的理论阐述，都不如直接飞代码来的实际！</p>
 <p><br></p>
 <p>下面是在前向传播中，在dropout层处定义的 <code>dropout_forward(x, dropout_param) = (out, cache)</code> 函数：</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">dropout_forward</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> dropout_param<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+<pre><code class="python">def dropout_forward(x, dropout_param):
+    &quot;&quot;&quot;
     Performs the forward pass for (inverted) dropout.
     Inputs:
     - x: Input data, of any shape
     - dropout_param: A dictionary with the following keys:
     - p: Dropout parameter. We drop each neuron output with probability p.
-    - mode: 'test' or 'train'. If the mode is train, then perform dropout;
+    - mode: &#39;test&#39; or &#39;train&#39;. If the mode is train, then perform dropout;
       if the mode is test, then just return the input.
     - seed: Seed for the random number generator. Passing seed makes this
       function deterministic, which is needed for gradient checking but not in
@@ -413,27 +412,27 @@ dW1 <span class="token operator">+=</span> self<span class="token punctuation">.
     - out: Array of the same shape as x.
     - cache: A tuple (dropout_param, mask). In training mode, mask is the dropout
       mask that was used to multiply the input; in test mode, mask is None.
-    """</span>
-    p<span class="token punctuation">,</span> mode <span class="token operator">=</span> dropout_param<span class="token punctuation">[</span><span class="token string">'p'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dropout_param<span class="token punctuation">[</span><span class="token string">'mode'</span><span class="token punctuation">]</span>
-    <span class="token keyword">if</span> <span class="token string">'seed'</span> <span class="token keyword">in</span> dropout_param<span class="token punctuation">:</span>
-        np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span>dropout_param<span class="token punctuation">[</span><span class="token string">'seed'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    &quot;&quot;&quot;
+    p, mode = dropout_param[&#39;p&#39;], dropout_param[&#39;mode&#39;]
+    if &#39;seed&#39; in dropout_param:
+        np.random.seed(dropout_param[&#39;seed&#39;])
 
-    mask <span class="token operator">=</span> None
-    out <span class="token operator">=</span> None
-    <span class="token comment" spellcheck="true"># 训练模式</span>
-    <span class="token keyword">if</span> mode <span class="token operator">==</span> <span class="token string">'train'</span><span class="token punctuation">:</span>
-        keep_prob <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">-</span> p
-        mask <span class="token operator">=</span> <span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>rand<span class="token punctuation">(</span><span class="token operator">*</span>x<span class="token punctuation">.</span>shape<span class="token punctuation">)</span> <span class="token operator">&lt;</span> keep_prob<span class="token punctuation">)</span> <span class="token operator">/</span> keep_prob
-        out <span class="token operator">=</span> mask <span class="token operator">*</span> x
-    <span class="token comment" spellcheck="true"># 测试模式</span>
-    <span class="token keyword">elif</span> mode <span class="token operator">==</span> <span class="token string">'test'</span><span class="token punctuation">:</span>
-        out <span class="token operator">=</span> x
+    mask = None
+    out = None
+    # 训练模式
+    if mode == &#39;train&#39;:
+        keep_prob = 1 - p
+        mask = (np.random.rand(*x.shape) &lt; keep_prob) / keep_prob
+        out = mask * x
+    # 测试模式
+    elif mode == &#39;test&#39;:
+        out = x
 
-    cache <span class="token operator">=</span> <span class="token punctuation">(</span>dropout_param<span class="token punctuation">,</span> mask<span class="token punctuation">)</span>
-    out <span class="token operator">=</span> out<span class="token punctuation">.</span>astype<span class="token punctuation">(</span>x<span class="token punctuation">.</span>dtype<span class="token punctuation">,</span> copy<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+    cache = (dropout_param, mask)
+    out = out.astype(x.dtype, copy=False)
 
-    <span class="token keyword">return</span> out<span class="token punctuation">,</span> cache
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    return out, cache
+</code></pre>
 <p><strong>代码详解：</strong></p>
 <ul>
 <li><p>输入数据矩阵x，其shape可以任意。dropout的参数字典 <code>dropout_param</code> 中存有超参数 <code>p</code> 和 <code>mode</code>，分别代表每层神经元们被失活的概率和当前 dropout 层是训练模式，还是测试模式。该参数字典中的可以有随机数生成种子 <code>seed</code>，要来标记随机性。</p>
@@ -446,24 +445,24 @@ dW1 <span class="token operator">+=</span> self<span class="token punctuation">.
 </li>
 </ul>
 <p>在训练模式下的反向传播中，损失函数的梯度通过dropout层的 <code>dropout_backward(dout, cache) = dx</code> 函数恐怕是写起来最简单的：</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">dropout_backward</span><span class="token punctuation">(</span>dout<span class="token punctuation">,</span> cache<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+<pre><code class="python">def dropout_backward(dout, cache):
+    &quot;&quot;&quot;
     Perform the backward pass for (inverted) dropout.
     Inputs:
     - dout: Upstream derivatives, of any shape
     - cache: (dropout_param, mask) from dropout_forward.
-    """</span>
-    dropout_param<span class="token punctuation">,</span> mask <span class="token operator">=</span> cache
-    mode <span class="token operator">=</span> dropout_param<span class="token punctuation">[</span><span class="token string">'mode'</span><span class="token punctuation">]</span>
+    &quot;&quot;&quot;
+    dropout_param, mask = cache
+    mode = dropout_param[&#39;mode&#39;]
 
-    dx <span class="token operator">=</span> None
-    <span class="token keyword">if</span> mode <span class="token operator">==</span> <span class="token string">'train'</span><span class="token punctuation">:</span>
-        dx <span class="token operator">=</span> mask <span class="token operator">*</span> dout
+    dx = None
+    if mode == &#39;train&#39;:
+        dx = mask * dout
 
-    <span class="token keyword">elif</span> mode <span class="token operator">==</span> <span class="token string">'test'</span><span class="token punctuation">:</span>
-        dx <span class="token operator">=</span> dout
-    <span class="token keyword">return</span> dx
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    elif mode == &#39;test&#39;:
+        dx = dout
+    return dx
+</code></pre>
 <p><strong>代码详解：</strong></p>
 <ul>
 <li>梯度反向传播时使用同样的 <code>mask</code>将被遮罩的梯度置零。</li>
@@ -491,8 +490,8 @@ dW1 <span class="token operator">+=</span> self<span class="token punctuation">.
 <h2 id="构造任意深度的神经网络！"><a href="#构造任意深度的神经网络！" class="headerlink" title="构造任意深度的神经网络！"></a>构造任意深度的神经网络！</h2><p>接下来，我们要做一件很酷的事情，那就是构造一张更加强大的全连接神经网络，不仅包含了我们之前故事里提到的所有算法和技巧，同时不限定神经网络的深度(隐藏层的层数)和厚度(隐藏层神经元的个数)。</p>
 <p><br></p>
 <p>下面直接一行一行的阅读代码，我们定义一个 <code>FullyConnectedNet()</code> 类，里面只有一个初始化函数 <code>__init__()</code> 和一个损失函数 <code>loss()</code>：</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">FullyConnectedNet</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+<pre><code class="python">class FullyConnectedNet(object):
+    &quot;&quot;&quot;
     一个任意隐藏层数和神经元数的全连接神经网络，其中 ReLU 激活函数，sofmax 损失函数，同时可选的
     采用 dropout 和 batch normalization(批量归一化)。那么，对于一个L层的神经网络来说，其
     框架是：  
@@ -504,89 +503,89 @@ dW1 <span class="token operator">+=</span> self<span class="token punctuation">.
 
       与我们在上面的故事中定义的 TwoLayerNet() 类保持一致，所有待学习的参数都会存在 
       self.params 字典中，并且最终会被最优化 Solver() 类训练学习得到(后面的故事会谈到)。
-    """</span>
-    <span class="token triple-quoted-string string">"""
-    """</span>
-    <span class="token comment" spellcheck="true">#1# 第一步是初始化我们的 FullyConnectedNet() 类：</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self
-                 <span class="token punctuation">,</span>hidden_dims        <span class="token comment" spellcheck="true"># 一个列表，元素个数是隐藏层数，元素值为该层神经元数</span>
-                 <span class="token punctuation">,</span>input_dim<span class="token operator">=</span><span class="token number">3</span><span class="token operator">*</span><span class="token number">32</span><span class="token operator">*</span><span class="token number">32</span>    <span class="token comment" spellcheck="true"># 默认输入神经元的个数是3072个(匹配CIFAR-10数据集)</span>
-                 <span class="token punctuation">,</span>num_classes<span class="token operator">=</span><span class="token number">10</span>    <span class="token comment" spellcheck="true"># 默认输出神经元的个数是10个(匹配CIFAR-10数据集)</span>
-                 <span class="token punctuation">,</span>dropout<span class="token operator">=</span><span class="token number">0</span>            <span class="token comment" spellcheck="true"># 默认不开启dropout，若取(0,1)表示失活概率</span>
-                 <span class="token punctuation">,</span>use_batchnorm<span class="token operator">=</span><span class="token boolean">False</span>    <span class="token comment" spellcheck="true"># 默认不开启批量归一化，若开启取True</span>
-                 <span class="token punctuation">,</span>reg<span class="token operator">=</span><span class="token number">0.0</span>            <span class="token comment" spellcheck="true"># 默认无L2正则化，取某scalar表示正则化的强度</span>
-                 <span class="token punctuation">,</span>weight_scale<span class="token operator">=</span><span class="token number">1e</span><span class="token operator">-</span><span class="token number">2</span>    <span class="token comment" spellcheck="true"># 默认0.01，表示权重参数初始化的标准差</span>
-                 <span class="token punctuation">,</span>dtype<span class="token operator">=</span>np<span class="token punctuation">.</span>float64    <span class="token comment" spellcheck="true"># 默认np.float64精度，要求所有的计算都应该在此精度下。</span>
-                 <span class="token punctuation">,</span>seed<span class="token operator">=</span>None<span class="token punctuation">)</span><span class="token punctuation">:</span>        <span class="token comment" spellcheck="true"># 默认无随机种子，若有会传递给dropout层。</span>
-        <span class="token triple-quoted-string string">"""
-        """</span>
-        <span class="token comment" spellcheck="true"># 实例(Instance)中增加变量并赋予初值，以方便后面的 loss() 函数调用：</span>
-        self<span class="token punctuation">.</span>use_batchnorm <span class="token operator">=</span> use_batchnorm
-        self<span class="token punctuation">.</span>use_dropout <span class="token operator">=</span> dropout <span class="token operator">></span> <span class="token number">0</span>    <span class="token comment" spellcheck="true"># 可见，若dropout若为0时，为False</span>
-        self<span class="token punctuation">.</span>reg <span class="token operator">=</span> reg
-        self<span class="token punctuation">.</span>num_layers <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">+</span> len<span class="token punctuation">(</span>hidden_dims<span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 在loss()函数里，</span>
-                                                <span class="token comment" spellcheck="true"># 我们用神经网络的层数来标记规模</span>
-        self<span class="token punctuation">.</span>dtype <span class="token operator">=</span> dtype
-        self<span class="token punctuation">.</span>params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>                <span class="token comment" spellcheck="true"># self.params 空字典保存待训练学习的参数</span>
-        <span class="token triple-quoted-string string">"""
-        """</span>
-        <span class="token comment" spellcheck="true"># 定义所有隐藏层的参数到字典 self.params 中：</span>
-        in_dim <span class="token operator">=</span> input_dim    <span class="token comment" spellcheck="true"># Eg: in_dim = D</span>
-        <span class="token keyword">for</span> i<span class="token punctuation">,</span> h_dim <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>hidden_dims<span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token comment" spellcheck="true"># Eg:(i, h_dim)=(0, H1)、(1, H2)...</span>
-            <span class="token comment" spellcheck="true"># Eg: W1(D, H1)、W2(H1, H2)...             小随机数为初始值</span>
-            self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"W%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> weight_scale <span class="token operator">*</span> \
-                                        np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span>in_dim
-                                                        <span class="token punctuation">,</span>h_dim<span class="token punctuation">)</span>
-            <span class="token comment" spellcheck="true"># Eg: b1(H1,)、b2(H2,)...                0为初始值</span>
-            self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"b%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>h_dim<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token keyword">if</span> use_batchnorm<span class="token punctuation">:</span>                    <span class="token comment" spellcheck="true"># 若有批量归一化层</span>
-                  <span class="token comment" spellcheck="true"># Eg: gamma1(H1,)、gamma2(H2,)...    1为初始值</span>
-                <span class="token comment" spellcheck="true"># Eg: beta1(H1,)、beta2(H2)...        0为初始值</span>
-                self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"gamma%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>ones<span class="token punctuation">(</span><span class="token punctuation">(</span>h_dim<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    
-                self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"beta%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>h_dim<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            in_dim <span class="token operator">=</span> h_dim    <span class="token comment" spellcheck="true"># 将该隐藏层的列数传递给下一层的行数</span>
-        <span class="token triple-quoted-string string">"""
-        """</span>
-        <span class="token comment" spellcheck="true"># 定义输出层的参数到字典 params 中：</span>
-        self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"W%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>num_layers<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> weight_scale <span class="token operator">*</span> \
-                                                np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span>in_dim
-                                                                <span class="token punctuation">,</span>num_classes<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"b%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>num_layers<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>num_classes<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token triple-quoted-string string">"""
-        """</span>
-        <span class="token triple-quoted-string string">"""
+    &quot;&quot;&quot;
+    &quot;&quot;&quot;
+    &quot;&quot;&quot;
+    #1# 第一步是初始化我们的 FullyConnectedNet() 类：
+    def __init__(self
+                 ,hidden_dims        # 一个列表，元素个数是隐藏层数，元素值为该层神经元数
+                 ,input_dim=3*32*32    # 默认输入神经元的个数是3072个(匹配CIFAR-10数据集)
+                 ,num_classes=10    # 默认输出神经元的个数是10个(匹配CIFAR-10数据集)
+                 ,dropout=0            # 默认不开启dropout，若取(0,1)表示失活概率
+                 ,use_batchnorm=False    # 默认不开启批量归一化，若开启取True
+                 ,reg=0.0            # 默认无L2正则化，取某scalar表示正则化的强度
+                 ,weight_scale=1e-2    # 默认0.01，表示权重参数初始化的标准差
+                 ,dtype=np.float64    # 默认np.float64精度，要求所有的计算都应该在此精度下。
+                 ,seed=None):        # 默认无随机种子，若有会传递给dropout层。
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
+        # 实例(Instance)中增加变量并赋予初值，以方便后面的 loss() 函数调用：
+        self.use_batchnorm = use_batchnorm
+        self.use_dropout = dropout &gt; 0    # 可见，若dropout若为0时，为False
+        self.reg = reg
+        self.num_layers = 1 + len(hidden_dims)    # 在loss()函数里，
+                                                # 我们用神经网络的层数来标记规模
+        self.dtype = dtype
+        self.params = {}                # self.params 空字典保存待训练学习的参数
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
+        # 定义所有隐藏层的参数到字典 self.params 中：
+        in_dim = input_dim    # Eg: in_dim = D
+        for i, h_dim in enumerate(hidden_dims):    # Eg:(i, h_dim)=(0, H1)、(1, H2)...
+            # Eg: W1(D, H1)、W2(H1, H2)...             小随机数为初始值
+            self.params[&quot;W%d&quot; % (i+1,)] = weight_scale * \
+                                        np.random.randn(in_dim
+                                                        ,h_dim)
+            # Eg: b1(H1,)、b2(H2,)...                0为初始值
+            self.params[&quot;b%d&quot; % (i+1,)] = np.zeros((h_dim,))
+            if use_batchnorm:                    # 若有批量归一化层
+                  # Eg: gamma1(H1,)、gamma2(H2,)...    1为初始值
+                # Eg: beta1(H1,)、beta2(H2)...        0为初始值
+                self.params[&quot;gamma%d&quot; % (i+1,)] = np.ones((h_dim,))    
+                self.params[&quot;beta%d&quot; % (i+1,)] = np.zeros((h_dim,))
+            in_dim = h_dim    # 将该隐藏层的列数传递给下一层的行数
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
+        # 定义输出层的参数到字典 params 中：
+        self.params[&quot;W%d&quot; % (self.num_layers,)] = weight_scale * \
+                                                np.random.randn(in_dim
+                                                                ,num_classes)
+        self.params[&quot;b%d&quot; % (self.num_layers,)] = np.zeros((num_classes,))
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
         当开启 dropout 时，我们需要在每一个神经元层中传递一个相同的
         dropout 参数字典 self.dropout_param ，以保证每一层的神经元们
         都知晓失活概率p和当前神经网络的模式状态mode(训练／测试)。        
-        """</span>
-        self<span class="token punctuation">.</span>dropout_param <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>    <span class="token comment" spellcheck="true"># dropout的参数字典</span>
-        <span class="token keyword">if</span> self<span class="token punctuation">.</span>use_dropout<span class="token punctuation">:</span>    <span class="token comment" spellcheck="true"># 如果use_dropout的值是(0,1)，即启用dropout</span>
-              <span class="token comment" spellcheck="true"># 设置mode默认为训练模式，取p为失活概率</span>
-            self<span class="token punctuation">.</span>dropout_param <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'mode'</span><span class="token punctuation">:</span> <span class="token string">'train'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">:</span> dropout<span class="token punctuation">}</span>
-        <span class="token keyword">if</span> seed <span class="token keyword">is</span> <span class="token operator">not</span> None<span class="token punctuation">:</span>    <span class="token comment" spellcheck="true"># 如果有seed随机种子，存入seed</span>
-            self<span class="token punctuation">.</span>dropout_param<span class="token punctuation">[</span><span class="token string">'seed'</span><span class="token punctuation">]</span> <span class="token operator">=</span> seed
-        <span class="token triple-quoted-string string">"""
-        """</span>
-        <span class="token triple-quoted-string string">"""
+        &quot;&quot;&quot;
+        self.dropout_param = {}    # dropout的参数字典
+        if self.use_dropout:    # 如果use_dropout的值是(0,1)，即启用dropout
+              # 设置mode默认为训练模式，取p为失活概率
+            self.dropout_param = {&#39;mode&#39;: &#39;train&#39;, &#39;p&#39;: dropout}
+        if seed is not None:    # 如果有seed随机种子，存入seed
+            self.dropout_param[&#39;seed&#39;] = seed
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
         当开启批量归一化时，我们要定义一个BN算法的参数列表 self.bn_params ，
         以用来跟踪记录每一层的平均值和标准差。其中，第0个元素 self.bn_params[0] 
         表示前向传播第1个BN层的参数，第1个元素 self.bn_params[1] 表示前向传播
         第2个BN层的参数，以此类推。
-        """</span>
-        self<span class="token punctuation">.</span>bn_params <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>        <span class="token comment" spellcheck="true"># BN算法的参数列表</span>
-        <span class="token keyword">if</span> self<span class="token punctuation">.</span>use_batchnorm<span class="token punctuation">:</span>    <span class="token comment" spellcheck="true"># 如果开启批量归一化，设置每层mode默认为训练模式</span>
-            self<span class="token punctuation">.</span>bn_params <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">'mode'</span><span class="token punctuation">:</span> <span class="token string">'train'</span><span class="token punctuation">}</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>self<span class="token punctuation">.</span>num_layers <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span> 
-            <span class="token comment" spellcheck="true"># 上面 self.bn_params 列表的元素个数是hidden layers的个数</span>
-        <span class="token triple-quoted-string string">"""
-        """</span>
-        <span class="token comment" spellcheck="true"># 最后，调整所有的待学习神经网络参数为指定计算精度：np.float64</span>
-        <span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token keyword">in</span> self<span class="token punctuation">.</span>params<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>params<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">.</span>astype<span class="token punctuation">(</span>dtype<span class="token punctuation">)</span>
-    <span class="token triple-quoted-string string">"""
-    """</span>
-    <span class="token comment" spellcheck="true">#2# 第二步是定义我们的损失函数：</span>
-    <span class="token keyword">def</span> <span class="token function">loss</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">,</span> y<span class="token operator">=</span>None<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""
+        &quot;&quot;&quot;
+        self.bn_params = []        # BN算法的参数列表
+        if self.use_batchnorm:    # 如果开启批量归一化，设置每层mode默认为训练模式
+            self.bn_params = [{&#39;mode&#39;: &#39;train&#39;} for i in range(self.num_layers - 1)] 
+            # 上面 self.bn_params 列表的元素个数是hidden layers的个数
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
+        # 最后，调整所有的待学习神经网络参数为指定计算精度：np.float64
+        for k, v in self.params.items():
+            self.params[k] = v.astype(dtype)
+    &quot;&quot;&quot;
+    &quot;&quot;&quot;
+    #2# 第二步是定义我们的损失函数：
+    def loss(self, X, y=None):
+        &quot;&quot;&quot;
         和 TwoLayerNet() 一样：
         首先，输入的数据X是一个多维的array，shape为(样本图片的个数N*3*32*32),
         y是与输入数据X对应的正确标签，shape为(N,)。
@@ -595,114 +594,114 @@ dW1 <span class="token operator">+=</span> self<span class="token punctuation">.
         其中存有loss关于隐藏层和输出层的参数(W,B,gamma,beta)的梯度值.
         # 在测试模式下：#
         我们的loss函数只需要直接给出输出层后的得分即可。
-        """</span>
-        <span class="token triple-quoted-string string">"""
-        """</span>
-        <span class="token comment" spellcheck="true"># 把输入数据源矩阵X的精度调整一下</span>
-        X <span class="token operator">=</span> X<span class="token punctuation">.</span>astype<span class="token punctuation">(</span>self<span class="token punctuation">.</span>dtype<span class="token punctuation">)</span>     
-        <span class="token comment" spellcheck="true"># 根据正确标签y是否为None来调整模式是test还是train</span>
-        mode <span class="token operator">=</span> <span class="token string">'test'</span> <span class="token keyword">if</span> y <span class="token keyword">is</span> None <span class="token keyword">else</span> <span class="token string">'train'</span>   
-        <span class="token triple-quoted-string string">"""
-        """</span>
-        <span class="token triple-quoted-string string">"""
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
+        # 把输入数据源矩阵X的精度调整一下
+        X = X.astype(self.dtype)     
+        # 根据正确标签y是否为None来调整模式是test还是train
+        mode = &#39;test&#39; if y is None else &#39;train&#39;   
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
         确定了当前神经网络所处的模式状态后，
         就可以设置 dropout 的参数字典和 BN 算法的参数列表中的mode了，
         因为他们在不同的模式下行为是不同的。
-        """</span>
-        <span class="token keyword">if</span> self<span class="token punctuation">.</span>dropout_param <span class="token keyword">is</span> <span class="token operator">not</span> None<span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># 如果开启dropout</span>
-            self<span class="token punctuation">.</span>dropout_param<span class="token punctuation">[</span><span class="token string">'mode'</span><span class="token punctuation">]</span> <span class="token operator">=</span> mode
-        <span class="token keyword">if</span> self<span class="token punctuation">.</span>use_batchnorm<span class="token punctuation">:</span>                <span class="token comment" spellcheck="true"># 如果开启批量归一化</span>
-            <span class="token keyword">for</span> bn_param <span class="token keyword">in</span> self<span class="token punctuation">.</span>bn_params<span class="token punctuation">:</span>
-                bn_param<span class="token punctuation">[</span><span class="token string">'mode'</span><span class="token punctuation">]</span> <span class="token operator">=</span> mode
-        <span class="token triple-quoted-string string">"""
-        """</span>
-        scores <span class="token operator">=</span> None
-        <span class="token triple-quoted-string string">"""
-        """</span>
-        <span class="token triple-quoted-string string">"""
+        &quot;&quot;&quot;
+        if self.dropout_param is not None:  # 如果开启dropout
+            self.dropout_param[&#39;mode&#39;] = mode
+        if self.use_batchnorm:                # 如果开启批量归一化
+            for bn_param in self.bn_params:
+                bn_param[&#39;mode&#39;] = mode
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
+        scores = None
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
         %前向传播%
         如果开启了dropout，我们需要将dropout的参数字典 self.dropout_param 
         在每一个dropout层中传递。
         如果开启了批量归一化，我们需要指定BN算法的参数列表 self.bn_params[0]
         对应前向传播第一层的参数，self.bn_params[1]对应第二层的参数，以此类推。
-        """</span>
-        fc_mix_cache <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>        <span class="token comment" spellcheck="true"># 初始化每层前向传播的缓冲字典</span>
-        <span class="token keyword">if</span> self<span class="token punctuation">.</span>use_dropout<span class="token punctuation">:</span>    <span class="token comment" spellcheck="true"># 如果开启了dropout，初始化其对应的缓冲字典</span>
-            dp_cache <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-        <span class="token triple-quoted-string string">"""
-        """</span>
-        <span class="token comment" spellcheck="true"># 从第一个隐藏层开始循环每一个隐藏层，传递数据out，保存每一层的缓冲cache</span>
-        out <span class="token operator">=</span> X        
-        <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>self<span class="token punctuation">.</span>num_layers <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token comment" spellcheck="true"># 在每个hidden层中循环</span>
-            w<span class="token punctuation">,</span> b <span class="token operator">=</span> self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"W%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"b%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span> 
-            <span class="token keyword">if</span> self<span class="token punctuation">.</span>use_batchnorm<span class="token punctuation">:</span>                <span class="token comment" spellcheck="true"># 若开启批量归一化</span>
-                gamma <span class="token operator">=</span> self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"gamma%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-                beta <span class="token operator">=</span> self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"beta%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-                out<span class="token punctuation">,</span> fc_mix_cache<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> affine_bn_relu_forward<span class="token punctuation">(</span>out<span class="token punctuation">,</span> w<span class="token punctuation">,</span> b
-                                                              <span class="token punctuation">,</span>gamma
-                                                              <span class="token punctuation">,</span>beta
-                                                              <span class="token punctuation">,</span>self<span class="token punctuation">.</span>bn_params<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
-            <span class="token keyword">else</span><span class="token punctuation">:</span>                                <span class="token comment" spellcheck="true"># 若未开启批量归一化</span>
-                out<span class="token punctuation">,</span> fc_mix_cache<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> affine_relu_forward<span class="token punctuation">(</span>out<span class="token punctuation">,</span> w<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
-            <span class="token keyword">if</span> self<span class="token punctuation">.</span>use_dropout<span class="token punctuation">:</span>                <span class="token comment" spellcheck="true"># 若开启dropout</span>
-                out<span class="token punctuation">,</span> dp_cache<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> dropout_forward<span class="token punctuation">(</span>out<span class="token punctuation">,</span> self<span class="token punctuation">.</span>dropout_param<span class="token punctuation">)</span>
-        <span class="token comment" spellcheck="true"># 最后的输出层</span>
-        w <span class="token operator">=</span> self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"W%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>num_layers<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-        b <span class="token operator">=</span> self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"b%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>num_layers<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-        out<span class="token punctuation">,</span> out_cache <span class="token operator">=</span> affine_forward<span class="token punctuation">(</span>out<span class="token punctuation">,</span> w<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
-        scores <span class="token operator">=</span> out
-        <span class="token triple-quoted-string string">"""
+        &quot;&quot;&quot;
+        fc_mix_cache = {}        # 初始化每层前向传播的缓冲字典
+        if self.use_dropout:    # 如果开启了dropout，初始化其对应的缓冲字典
+            dp_cache = {}
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
+        # 从第一个隐藏层开始循环每一个隐藏层，传递数据out，保存每一层的缓冲cache
+        out = X        
+        for i in range(self.num_layers - 1):    # 在每个hidden层中循环
+            w, b = self.params[&quot;W%d&quot; % (i + 1,)], self.params[&quot;b%d&quot; % (i + 1,)] 
+            if self.use_batchnorm:                # 若开启批量归一化
+                gamma = self.params[&quot;gamma%d&quot; % (i + 1,)]
+                beta = self.params[&quot;beta%d&quot; % (i + 1,)]
+                out, fc_mix_cache[i] = affine_bn_relu_forward(out, w, b
+                                                              ,gamma
+                                                              ,beta
+                                                              ,self.bn_params[i])
+            else:                                # 若未开启批量归一化
+                out, fc_mix_cache[i] = affine_relu_forward(out, w, b)
+            if self.use_dropout:                # 若开启dropout
+                out, dp_cache[i] = dropout_forward(out, self.dropout_param)
+        # 最后的输出层
+        w = self.params[&quot;W%d&quot; % (self.num_layers,)]
+        b = self.params[&quot;b%d&quot; % (self.num_layers,)]
+        out, out_cache = affine_forward(out, w, b)
+        scores = out
+        &quot;&quot;&quot;
         可以看到，上面对隐藏层的每次循环中，out变量实现了自我迭代更新；
         fc_mix_cache 缓冲字典中顺序地存储了每个隐藏层的得分情况和模型参数(其中可内含BN层)；
         dp_cache 缓冲字典中单独顺序地保存了每个dropout层的失活概率和遮罩；
         out_cache 变量缓存了输出层处的信息；
         值得留意的是，若开启批量归一化的话，BN层的参数列表 self.bn_params[i]，
-        从第一层开始多出'running_mean'和'running_var'的键值保存在参数列表的每一个元素中，
-        形如：[{'mode': 'train','running_mean': ***,'running_var':***},{...}]
-        """</span>
-        <span class="token triple-quoted-string string">"""
-        """</span>
-        <span class="token comment" spellcheck="true"># 接下来开始让loss函数区分不同模式：</span>
-        <span class="token keyword">if</span> mode <span class="token operator">==</span> <span class="token string">'test'</span><span class="token punctuation">:</span>    <span class="token comment" spellcheck="true"># 若是测试模式，输出scores表示预测的每个分类概率后，函数停止跳出。</span>
-            <span class="token keyword">return</span> scores
-        <span class="token triple-quoted-string string">"""
-        """</span>
-        <span class="token triple-quoted-string string">"""
+        从第一层开始多出&#39;running_mean&#39;和&#39;running_var&#39;的键值保存在参数列表的每一个元素中，
+        形如：[{&#39;mode&#39;: &#39;train&#39;,&#39;running_mean&#39;: ***,&#39;running_var&#39;:***},{...}]
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
+        # 接下来开始让loss函数区分不同模式：
+        if mode == &#39;test&#39;:    # 若是测试模式，输出scores表示预测的每个分类概率后，函数停止跳出。
+            return scores
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
         %反向传播%
         既然运行到了这里，说明我们的神经网络是在训练模式下了，
         接下来我们要计算损失值，并且通过反向传播，计算损失函数关于模型参数的梯度！
-        """</span>
-        loss<span class="token punctuation">,</span> grads <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>    <span class="token comment" spellcheck="true"># 初始化 loss 变量和梯度字典 grads</span>
-        loss<span class="token punctuation">,</span> dout <span class="token operator">=</span> softmax_loss<span class="token punctuation">(</span>scores<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
-        loss <span class="token operator">+=</span> <span class="token number">0.5</span> <span class="token operator">*</span> self<span class="token punctuation">.</span>reg <span class="token operator">*</span> np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"W%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>num_layers<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token operator">**</span><span class="token number">2</span><span class="token punctuation">)</span>
-        <span class="token triple-quoted-string string">"""
+        &quot;&quot;&quot;
+        loss, grads = 0.0, {}    # 初始化 loss 变量和梯度字典 grads
+        loss, dout = softmax_loss(scores, y)
+        loss += 0.5 * self.reg * np.sum(self.params[&quot;W%d&quot; % (self.num_layers,)]**2)
+        &quot;&quot;&quot;
         你可能奇怪上面的loss损失值是不是有问题，还有其他隐藏层的权重矩阵的正则化呢？
         别着急，我们要loss损失值的求解，跟随梯度的反向传播一点一点的算出来～
-        """</span>
-        <span class="token comment" spellcheck="true"># 在输出层处梯度的反向传播，顺便把梯度保存在梯度字典 grad 中：</span>
-        dout<span class="token punctuation">,</span> dw<span class="token punctuation">,</span> db <span class="token operator">=</span> affine_backward<span class="token punctuation">(</span>dout<span class="token punctuation">,</span> out_cache<span class="token punctuation">)</span>
-        grads<span class="token punctuation">[</span><span class="token string">"W%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>num_layers<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> dw <span class="token operator">+</span> self<span class="token punctuation">.</span>reg <span class="token operator">*</span> \
-                                            self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"W%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>num_layers<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-        grads<span class="token punctuation">[</span><span class="token string">"b%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>num_layers<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> db
-        <span class="token comment" spellcheck="true"># 在每一个隐藏层处梯度的反向传播，不仅顺便更新了梯度字典 grad，还迭代算出了损失值loss:</span>
-        <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>self<span class="token punctuation">.</span>num_layers <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            ri <span class="token operator">=</span> self<span class="token punctuation">.</span>num_layers <span class="token operator">-</span> <span class="token number">2</span> <span class="token operator">-</span> i    <span class="token comment" spellcheck="true"># 倒数第ri+1隐藏层</span>
-            loss <span class="token operator">+=</span> <span class="token number">0.5</span> <span class="token operator">*</span> self<span class="token punctuation">.</span>reg <span class="token operator">*</span> \        <span class="token comment" spellcheck="true"># 迭代地补上每层的正则项给loss</span>
-                                np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"W%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>ri<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token operator">**</span><span class="token number">2</span><span class="token punctuation">)</span>
-            <span class="token keyword">if</span> self<span class="token punctuation">.</span>use_dropout<span class="token punctuation">:</span>            <span class="token comment" spellcheck="true"># 若开启dropout</span>
-                dout <span class="token operator">=</span> dropout_backward<span class="token punctuation">(</span>dout<span class="token punctuation">,</span> dp_cache<span class="token punctuation">[</span>ri<span class="token punctuation">]</span><span class="token punctuation">)</span>
-            <span class="token keyword">if</span> self<span class="token punctuation">.</span>use_batchnorm<span class="token punctuation">:</span>            <span class="token comment" spellcheck="true"># 若开启批量归一化</span>
-                dout<span class="token punctuation">,</span> dw<span class="token punctuation">,</span> db<span class="token punctuation">,</span> dgamma<span class="token punctuation">,</span> dbeta <span class="token operator">=</span> affine_bn_relu_backward<span class="token punctuation">(</span>dout<span class="token punctuation">,</span> 
-                                                            fc_mix_cache<span class="token punctuation">[</span>ri<span class="token punctuation">]</span><span class="token punctuation">)</span>
-                grads<span class="token punctuation">[</span><span class="token string">"gamma%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>ri<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> dgamma
-                grads<span class="token punctuation">[</span><span class="token string">"beta%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>ri<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> dbeta
-            <span class="token keyword">else</span><span class="token punctuation">:</span>                            <span class="token comment" spellcheck="true"># 若未开启批量归一化</span>
-                dout<span class="token punctuation">,</span> dw<span class="token punctuation">,</span> db <span class="token operator">=</span> affine_relu_backward<span class="token punctuation">(</span>dout<span class="token punctuation">,</span> fc_mix_cache<span class="token punctuation">[</span>ri<span class="token punctuation">]</span><span class="token punctuation">)</span>
-            grads<span class="token punctuation">[</span><span class="token string">"W%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>ri<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> dw <span class="token operator">+</span> self<span class="token punctuation">.</span>reg <span class="token operator">*</span> self<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token string">"W%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>ri<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-            grads<span class="token punctuation">[</span><span class="token string">"b%d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>ri<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> db
+        &quot;&quot;&quot;
+        # 在输出层处梯度的反向传播，顺便把梯度保存在梯度字典 grad 中：
+        dout, dw, db = affine_backward(dout, out_cache)
+        grads[&quot;W%d&quot; % (self.num_layers,)] = dw + self.reg * \
+                                            self.params[&quot;W%d&quot; % (self.num_layers,)]
+        grads[&quot;b%d&quot; % (self.num_layers,)] = db
+        # 在每一个隐藏层处梯度的反向传播，不仅顺便更新了梯度字典 grad，还迭代算出了损失值loss:
+        for i in range(self.num_layers - 1):
+            ri = self.num_layers - 2 - i    # 倒数第ri+1隐藏层
+            loss += 0.5 * self.reg * \        # 迭代地补上每层的正则项给loss
+                                np.sum(self.params[&quot;W%d&quot; % (ri+1,)]**2)
+            if self.use_dropout:            # 若开启dropout
+                dout = dropout_backward(dout, dp_cache[ri])
+            if self.use_batchnorm:            # 若开启批量归一化
+                dout, dw, db, dgamma, dbeta = affine_bn_relu_backward(dout, 
+                                                            fc_mix_cache[ri])
+                grads[&quot;gamma%d&quot; % (ri+1,)] = dgamma
+                grads[&quot;beta%d&quot; % (ri+1,)] = dbeta
+            else:                            # 若未开启批量归一化
+                dout, dw, db = affine_relu_backward(dout, fc_mix_cache[ri])
+            grads[&quot;W%d&quot; % (ri+1,)] = dw + self.reg * self.params[&quot;W%d&quot; % (ri+1,)]
+            grads[&quot;b%d&quot; % (ri+1,)] = db
 
-        <span class="token keyword">return</span> loss<span class="token punctuation">,</span> grads    <span class="token comment" spellcheck="true"># 输出训练模式下的损失值和损失函数的梯度！</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        return loss, grads    # 输出训练模式下的损失值和损失函数的梯度！
+</code></pre>
 <p>虽然注释已经给的足够详细了，但还是有必要为这个强大的神经网络画一张<strong>“数据流动走向图”</strong>才能真的让我们心有成竹，妈妈再也不用担心我的深度学习～</p>
 <p><img src="http://ovj0qranm.bkt.clouddn.com/diy%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.004.jpeg" alt="diy神经网络.004"></p>
 <p><img src="https://i.loli.net/2018/02/15/5a854ae2cd9f1.jpeg" alt=""></p>
