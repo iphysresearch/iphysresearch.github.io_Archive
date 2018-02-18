@@ -217,7 +217,7 @@
 </blockquote>
 <p>Ng 确实是学术出身，在讲解这个图的过程中描述的很严谨，强调了该图的描述其实有很多定义和理解是含糊的，大趋势确实是如图所示，不过其中很多细节还不敢一概而论。</p>
 <h1 id="2-神经网络的编程基础"><a href="#2-神经网络的编程基础" class="headerlink" title="2. 神经网络的编程基础"></a>2. 神经网络的编程基础</h1><p>建设中。。。。</p>
-<h2 id="2-1-二分类"><a href="#2-1-二分类" class="headerlink" title="2.1 二分类"></a>2.1 二分类</h2><p>这周我们将学习神经网络的基础知识，其中需要注意的是，当实现一个神经网络的时候，我们需要知道一些非常重要的技术和技巧。例如有一个包含个样本的训练集，你很可能习惯于用一个<strong>for</strong>循环来遍历训练集中的每个样本，但是当实现一个神经网络的时候，我们通常不直接使用<strong>for</strong>循环来遍历整个训练集，所以在这周的课程中你将学会如何处理训练集。</p>
+<h3 id="2-1-二分类"><a href="#2-1-二分类" class="headerlink" title="2.1 二分类"></a>2.1 二分类</h3><p>这周我们将学习神经网络的基础知识，其中需要注意的是，当实现一个神经网络的时候，我们需要知道一些非常重要的技术和技巧。例如有一个包含个样本的训练集，你很可能习惯于用一个<strong>for</strong>循环来遍历训练集中的每个样本，但是当实现一个神经网络的时候，我们通常不直接使用<strong>for</strong>循环来遍历整个训练集，所以在这周的课程中你将学会如何处理训练集。</p>
 <p>另外在神经网络的计算中，通常先有一个叫做前向暂停(<strong>forward pause</strong>)或叫做前向传播(<strong>foward propagation</strong>)的步骤，接着有一个叫做反向暂停(<strong>backward pause</strong>) 或叫做反向传播<strong>(backward propagation</strong>)的步骤。所以这周我也会向你介绍为什么神经网络的训练过程可以分为前向传播和反向传播两个独立的部分。</p>
 <p>在课程中我将使用逻辑回归(l<strong>ogistic regression</strong>)来传达这些想法，以使大家能够更加容易地理解这些概念。即使你之前了解过逻辑回归，我认为这里还是有些新的、有趣的东西等着你去发现和了解，所以现在开始进入正题。</p>
 <p>逻辑回归是一个用于二分类(<strong>binary classification</strong>)的算法。首先我们从一个问题开始说起，这里有一个二分类问题的例子，假如你有一张图片作为输入，比如这只猫，如果识别这张图片为猫，则输出标签1作为结果；如果识别出不是猫，那么输出标签0作为结果。现在我们可以用字母 来 表示输出的结果标签，如下图所示：</p>
@@ -589,6 +589,201 @@
 <p><img src="http://www.ai-start.com/dl2017/images/6ce9e585fab07fe9fc124dd2dc14bdbf.png" alt="img"></p>
 <p>由于训练模型时，目标是让成本函数最小化，所以我们不是直接用最大似然概率，要去掉这里的负号，最后为了方便，可以对成本函数进行适当的缩放，我们就在前面加一个额外的常数因子，即:。</p>
 <p>总结一下，为了最小化成本函数，我们从<strong>logistic</strong>回归模型的最大似然估计的角度出发，假设训练集中的样本都是独立同分布的条件下。尽管这节课是选修性质的，但还是感谢观看本节视频。我希望通过本节课您能更好地明白逻辑回归的损失函数，为什么是那种形式，明白了损失函数的原理，希望您能继续完成课后的练习，前面课程的练习以及本周的测验，在课后的小测验和编程练习中,祝您好运。</p>
+<h2 id="第三周：浅层神经网络-Shallow-neural-networks"><a href="#第三周：浅层神经网络-Shallow-neural-networks" class="headerlink" title="第三周：浅层神经网络(Shallow neural networks)"></a>第三周：浅层神经网络(Shallow neural networks)</h2><p>待续中。。。。。</p>
+<h3 id="3-1-神经网络概述（Neural-Network-Overview）"><a href="#3-1-神经网络概述（Neural-Network-Overview）" class="headerlink" title="3.1 神经网络概述（Neural Network Overview）"></a>3.1 神经网络概述（Neural Network Overview）</h3><p>本周你将学习如何实现一个神经网络。在我们深入学习具体技术之前，我希望快速的带你预览一下本周你将会学到的东西。如果这个视频中的某些细节你没有看懂你也不用担心，我们将在后面的几个视频中深入讨论技术细节。</p>
+<p>现在我们开始快速浏览一下如何实现神经网络。上周我们讨论了逻辑回归，我们了解了这个模型(见图3.1.1)如何与下面公式3.1建立联系。 图3.1.1 : <img src="http://www.ai-start.com/dl2017/images/L1_week3_1.png" alt="img"></p>
+<p>公式3.1：</p>
+<p>如上所示，首先你需要输入特征，参数和，通过这些你就可以计算出，公式3.2：</p>
+<p>接下来使用就可以计算出。我们将的符号换为表示输出,然后可以计算出<strong>loss function</strong> </p>
+<p>神经网络看起来是如下这个样子（图3.1.2）。正如我之前已经提到过，你可以把许多<strong>sigmoid</strong>单元堆叠起来形成一个神经网络。对于图3.1.1中的节点，它包含了之前讲的计算的两个步骤：首先通过公式3.1计算出值，然后通过计算值。</p>
+<p><img src="http://www.ai-start.com/dl2017/images/L1_week3_2.png" alt="w600"></p>
+<p>图3.1.2</p>
+<p>在这个神经网络（图3.1.2）对应的3个节点，首先计算第一层网络中的各个节点相关的数，接着计算，在计算下一层网络同理； 我们会使用符号表示第层网络中节点相关的数，这些节点的集合被称为第层网络。这样可以保证不会和我们之前用来表示单个的训练样本的(即我们使用表示第i个训练样本)混淆； 整个计算过程，公式如下: 公式3.3：</p>
+<p>公式3.4：</p>
+<p>类似逻辑回归，在计算后需要使用计算，接下来你需要使用另外一个线性方程对应的参数计算， 计算，此时就是整个神经网络最终的输出，用 表示网络的输出。</p>
+<p>公式3.5：</p>
+<p>公式3.6：</p>
+<p>我知道这其中有很多细节，其中有一点非常难以理解，即在逻辑回归中，通过直接计算得到结果。而这个神经网络中，我们反复的计算和，计算和，最后得到了最终的输出<strong>loss function</strong>。</p>
+<p>你应该记得逻辑回归中，有一些从后向前的计算用来计算导数、。同样，在神经网络中我们也有从后向前的计算，看起来就像这样，最后会计算 、，计算出来之后，然后计算计算、 等，按公式3.5、3.6箭头表示的那样，从右到左反向计算。</p>
+<p>现在你大概了解了一下什么是神经网络，基于逻辑回归重复使用了两次该模型得到上述例子的神经网络。我清楚这里面多了很多新符号和细节，如果没有理解也不用担心，在接下来的视频中我们会仔细讨论具体细节。</p>
+<p>那么，下一个视频讲述神经网络的表示。</p>
+<h3 id="3-2-神经网络的表示（Neural-Network-Representation）"><a href="#3-2-神经网络的表示（Neural-Network-Representation）" class="headerlink" title="3.2 神经网络的表示（Neural Network Representation）"></a>3.2 神经网络的表示（Neural Network Representation）</h3><p>先回顾一下我在上一个视频画几张神经网络的图片，在这次课中我们将讨论这些图片的具体含义，也就是我们画的这些神经网络到底代表什么。</p>
+<p>我们首先关注一个例子，本例中的神经网络只包含一个隐藏层（图3.2.1）。这是一张神经网络的图片，让我们给此图的不同部分取一些名字。</p>
+<p><img src="http://www.ai-start.com/dl2017/images/L1_week3_3.png" alt="img"></p>
+<p>图3.2.1</p>
+<p>我们有输入特征、、，它们被竖直地堆叠起来，这叫做神经网络的<strong>输入层</strong>。它包含了神经网络的输入；然后这里有另外一层我们称之为<strong>隐藏层</strong>（图3.2.1的四个结点）。待会儿我会回过头来讲解术语”隐藏”的意义；在本例中最后一层只由一个结点构成，而这个只有一个结点的层被称为<strong>输出层</strong>，它负责产生预测值。解释隐藏层的含义：在一个神经网络中，当你使用监督学习训练它的时候，训练集包含了输入也包含了目标输出，所以术语隐藏层的含义是在训练集中，这些中间结点的准确值我们是不知道到的，也就是说你看不见它们在训练集中应具有的值。你能看见输入的值，你也能看见输出的值，但是隐藏层中的东西，在训练集中你是无法看到的。所以这也解释了词语隐藏层，只是表示你无法在训练集中看到他们。</p>
+<p>现在我们再引入几个符号，就像我们之前用向量表示输入特征。这里有个可代替的记号可以用来表示输入特征。表示激活的意思，它意味着网络中不同层的值会传递到它们后面的层中，输入层将传递给隐藏层，所以我们将输入层的激活值称为；下一层即隐藏层也同样会产生一些激活值，那么我将其记作，所以具体地，这里的第一个单元或结点我们将其表示为，第二个结点的值我们记为以此类推。所以这里的是一个四维的向量如果写成Python代码，那么它是一个规模为4x1的矩阵或一个大小为4的列向量，如下公式，它是四维的，因为在本例中，我们有四个结点或者单元，或者称为四个隐藏层单元； 公式3.7</p>
+<p>最后输出层将产生某个数值，它只是一个单独的实数，所以的值将取为。这与逻辑回归很相似，在逻辑回归中，我们有直接等于，在逻辑回归中我们只有一个输出层，所以我们没有用带方括号的上标。但是在神经网络中，我们将使用这种带上标的形式来明确地指出这些值来自于哪一层，有趣的是在约定俗成的符号传统中，在这里你所看到的这个例子，只能叫做一个两层的神经网络（图3.2.2）。原因是当我们计算网络的层数时，输入层是不算入总层数内，所以隐藏层是第一层，输出层是第二层。第二个惯例是我们将输入层称为第零层，所以在技术上，这仍然是一个三层的神经网络，因为这里有输入层、隐藏层，还有输出层。但是在传统的符号使用中，如果你阅读研究论文或者在这门课中，你会看到人们将这个神经网络称为一个两层的神经网络，因为我们不将输入层看作一个标准的层。</p>
+<p><img src="http://www.ai-start.com/dl2017/images/L1_week3_4.png" alt="w600"> 图3.2.2</p>
+<p>最后，我们要看到的隐藏层以及最后的输出层是带有参数的，这里的隐藏层将拥有两个参数和，我将给它们加上上标(,)，表示这些参数是和第一层这个隐藏层有关系的。之后在这个例子中我们会看到是一个4x3的矩阵，而是一个4x1的向量，第一个数字4源自于我们有四个结点或隐藏层单元，然后数字3源自于这里有三个输入特征，我们之后会更加详细地讨论这些矩阵的维数，到那时你可能就更加清楚了。相似的输出层也有一些与之关联的参数以及。从维数上来看，它们的规模分别是1x4以及1x1。1x4是因为隐藏层有四个隐藏层单元而输出层只有一个单元，之后我们会对这些矩阵和向量的维度做出更加深入的解释，所以现在你已经知道一个两层的神经网络什么样的了，即它是一个只有一个隐藏层的神经网络。</p>
+<p>在下一个视频中。我们将更深入地了解这个神经网络是如何进行计算的，也就是这个神经网络是怎么输入，然后又是怎么得到。</p>
+<h3 id="3-3-计算一个神经网络的输出（Computing-a-Neural-Network’s-output）"><a href="#3-3-计算一个神经网络的输出（Computing-a-Neural-Network’s-output）" class="headerlink" title="3.3 计算一个神经网络的输出（Computing a Neural Network’s output）"></a>3.3 计算一个神经网络的输出（Computing a Neural Network’s output）</h3><p>在上一节的视频中，我们介绍只有一个隐藏层的神经网络的结构与符号表示。在这节的视频中让我们了解神经网络的输出究竟是如何计算出来的。</p>
+<p>首先，回顾下只有一个隐藏层的简单两层<strong>神经网络结构</strong>：</p>
+<p><img src="http://www.ai-start.com/dl2017/images/L1_week3_5.png" alt="w600"> 图3.3.1</p>
+<p>其中，表示输入特征，表示每个神经元的输出，表示特征的权重，上标表示神经网络的层数（隐藏层为1），下标表示该层的第几个神经元。这是神经网络的<strong>符号惯例</strong>，下同。</p>
+<p><strong>神经网络的计算</strong></p>
+<p>关于神经网络是怎么计算的，从我们之前提及的逻辑回归开始，如下图所示。用圆圈表示神经网络的计算单元，逻辑回归的计算有两个步骤，首先你按步骤计算出，然后在第二步中你以<strong>sigmoid</strong>函数为激活函数计算（得出），一个神经网络只是这样子做了好多次重复计算。</p>
+<p><img src="http://www.ai-start.com/dl2017/images/L1_week3_6.png" alt="img"> 图3.3.2</p>
+<p>回到两层的神经网络，我们从隐藏层的第一个神经元开始计算，如上图第一个最上面的箭头所指。从上图可以看出，输入与逻辑回归相似，这个神经元的计算与逻辑回归一样分为两步，小圆圈代表了计算的两个步骤。</p>
+<p>第一步，计算。</p>
+<p>第二步，通过激活函数计算。</p>
+<p>隐藏层的第二个以及后面两个神经元的计算过程一样，只是注意符号表示不同，最终分别得到、、，详细结果见下:</p>
+<p><strong>向量化计算</strong> 如果你执行神经网络的程序，用for循环来做这些看起来真的很低效。所以接下来我们要做的就是把这四个等式向量化。向量化的过程是将神经网络中的一层神经元参数纵向堆积起来，例如隐藏层中的纵向堆积起来变成一个的矩阵，用符号表示。另一个看待这个的方法是我们有四个逻辑回归单元，且每一个逻辑回归单元都有相对应的参数——向量，把这四个向量堆积在一起，你会得出这4×3的矩阵。 因此， 公式3.8：     </p>
+<p>公式3.9：</p>
+<p>​        </p>
+<p>详细过程见下: 公式3.10：</p>
+<p>公式3.11：</p>
+<p>对于神经网络的第一层，给予一个输入，得到，可以表示为。通过相似的衍生你会发现，后一层的表示同样可以写成类似的形式，得到，，具体过程见公式3.8、3.9。</p>
+<p><img src="http://www.ai-start.com/dl2017/images/L1_week3_7.png" alt="w600"> 图3.3.3</p>
+<p>如上图左半部分所示为神经网络，把网络左边部分盖住先忽略，那么最后的输出单元就相当于一个逻辑回归的计算单元。当你有一个包含一层隐藏层的神经网络，你需要去实现以计算得到输出的是右边的四个等式，并且可以看成是一个向量化的计算过程，计算出隐藏层的四个逻辑回归单元和整个隐藏层的输出结果，如果编程实现需要的也只是这四行代码。</p>
+<p><strong>总结</strong> 通过本视频，你能够根据给出的一个单独的输入特征向量，运用四行代码计算出一个简单神经网络的输出。接下来你将了解的是如何一次能够计算出不止一个样本的神经网络输出，而是能一次性计算整个训练集的输出。</p>
+<h3 id="3-4-多样本向量化（Vectorizing-across-multiple-examples）"><a href="#3-4-多样本向量化（Vectorizing-across-multiple-examples）" class="headerlink" title="3.4 多样本向量化（Vectorizing across multiple examples）"></a>3.4 多样本向量化（Vectorizing across multiple examples）</h3><p>在上一个视频，了解到如何针对于单一的训练样本，在神经网络上计算出预测值。</p>
+<p>在这个视频，将会了解到如何向量化多个训练样本，并计算出结果。该过程与你在逻辑回归中所做类似。</p>
+<p>逻辑回归是将各个训练样本组合成矩阵，对矩阵的各列进行计算。神经网络是通过对逻辑回归中的等式简单的变形，让神经网络计算出输出值。这种计算是所有的训练样本同时进行的，以下是实现它具体的步骤：</p>
+<p><img src="http://www.ai-start.com/dl2017/images/L1_week3_8.png" alt="w800"> 图3.4.1</p>
+<p>上一节视频中得到的四个等式。它们给出如何计算出，，，。</p>
+<p>对于一个给定的输入特征向量，这四个等式可以计算出等于。这是针对于单一的训练样本。如果有个训练样本,那么就需要重复这个过程。</p>
+<p>用第一个训练样本来计算出预测值，就是第一个训练样本上得出的结果。</p>
+<p>然后，用来计算出预测值，循环往复，直至用计算出。</p>
+<p>用激活函数表示法，如上图左下所示，它写成、和。</p>
+<p>【注】：，是指第个训练样本而是指第二层。</p>
+<p>如果有一个非向量化形式的实现，而且要计算出它的预测值，对于所有训练样本，需要让从1到实现这四个等式：</p>
+<p>对于上面的这个方程中的，是所有依赖于训练样本的变量，即将添加到，和。如果想计算个训练样本上的所有输出，就应该向量化整个计算，以简化这列。</p>
+<p>本课程需要使用很多线性代数的内容，重要的是能够正确地实现这一点，尤其是在深度学习的错误中。实际上本课程认真地选择了运算符号，这些符号只是针对于这个课程的，并且能使这些向量化容易一些。</p>
+<p>所以，希望通过这个细节可以更快地正确实现这些算法。接下来讲讲如何向量化这些： 公式3.12：</p>
+<p>公式3.13：</p>
+<p>公式3.14：</p>
+<p>公式3.15：</p>
+<p>前一张幻灯片中的<strong>for</strong>循环是来遍历所有个训练样本。 定义矩阵等于训练样本，将它们组合成矩阵的各列，形成一个维或乘以维矩阵。接下来计算见公式3.15：</p>
+<p>以此类推，从小写的向量到这个大写的矩阵，只是通过组合向量在矩阵的各列中。</p>
+<p>同理，，等等都是的列向量，将所有都组合在各列中，就的到矩阵。</p>
+<p>同理，，，……，将其组合在矩阵各列中，如同从向量到矩阵，以及从向量到矩阵一样，就能得到矩阵。</p>
+<p>同样的，对于和，也是这样得到。</p>
+<p>这种符号其中一个作用就是，可以通过训练样本来进行索引。这就是水平索引对应于不同的训练样本的原因，这些训练样本是从左到右扫描训练集而得到的。</p>
+<p>在垂直方向，这个垂直索引对应于神经网络中的不同节点。例如，这个节点，该值位于矩阵的最左上角对应于激活单元，它是位于第一个训练样本上的第一个隐藏单元。它的下一个值对应于第二个隐藏单元的激活值。它是位于第一个训练样本上的，以及第一个训练示例中第三个隐藏单元，等等。</p>
+<p>当垂直扫描，是索引到隐藏单位的数字。当水平扫描，将从第一个训练示例中从第一个隐藏的单元到第二个训练样本，第三个训练样本……直到节点对应于第一个隐藏单元的激活值，且这个隐藏单元是位于这m个训练样本中的最终训练样本。</p>
+<p>从水平上看，矩阵A代表了各个训练样本。从竖直上看，矩阵A的不同的索引对应于不同的隐藏单元。</p>
+<p>对于矩阵，情况也类似，水平方向上，对应于不同的训练样本；竖直方向上，对应不同的输入特征，而这就是神经网络输入层中各个节点。</p>
+<p>神经网络上通过在多样本情况下的向量化来使用这些等式。</p>
+<p>在下一个视频中，将证明为什么这是一种正确向量化的实现。这种证明将会与逻辑回归中的证明类似。</p>
+<h3 id="3-5-向量化实现的解释（Justification-for-vectorized-implementation）"><a href="#3-5-向量化实现的解释（Justification-for-vectorized-implementation）" class="headerlink" title="3.5 向量化实现的解释（Justification for vectorized implementation）"></a>3.5 向量化实现的解释（Justification for vectorized implementation）</h3><p>在上一个视频中，我们学习到如何将多个训练样本横向堆叠成一个矩阵，然后就可以推导出神经网络中前向传播（forward propagation）部分的向量化实现。</p>
+<p>在这个视频中，我们将会继续了解到，为什么上一节中写下的公式就是将多个样本向量化的正确实现。</p>
+<p>我们先手动对几个样本计算一下前向传播，看看有什么规律： 公式3.16： </p>
+<p>这里，为了描述的简便，我们先忽略掉 后面你将会看到利用<strong>Python</strong> 的广播机制，可以很容易的将 加进来。</p>
+<p>现在  是一个矩阵，都是列向量，矩阵乘以列向量得到列向量，下面将它们用图形直观的表示出来: 公式3.17：</p>
+<p>视频中，吴恩达老师很细心的用不同的颜色表示不同的样本向量，及其对应的输出。所以从图中可以看出，当加入更多样本时，只需向矩阵中加入更多列。</p>
+<p>所以从这里我们也可以了解到，为什么之前我们对单个样本的计算要写成  这种形式，因为当有不同的训练样本时，将它们堆到矩阵的各列中，那么它们的输出也就会相应的堆叠到矩阵  的各列中。现在我们就可以直接计算矩阵  加上，因为列向量  和矩阵 的列向量有着相同的尺寸，而<strong>Python</strong>的广播机制对于这种矩阵与向量直接相加的处理方式是，将向量与矩阵的每一列相加。 所以这一节只是说明了为什么公式 是前向传播的第一步计算的正确向量化实现，但事实证明，类似的分析可以发现，前向传播的其它步也可以使用非常相似的逻辑，即如果将输入按列向量横向堆叠进矩阵，那么通过公式计算之后，也能得到成列堆叠的输出。</p>
+<p>最后，对这一段视频的内容做一个总结:</p>
+<p>由公式3.12、公式3.13、公式3.14、公式3.15可以看出，使用向量化的方法，可以不需要显示循环，而直接通过矩阵运算从就可以计算出 ，实际上可以记为 ，使用同样的方法就可以由神经网络中的每一层的输入  计算输出 。其实这些方程有一定对称性，其中第一个方程也可以写成，你看这对方程，还有这对方程形式其实很类似，只不过这里所有指标加了1。所以这样就显示出神经网络的不同层次，你知道大概每一步做的都是一样的，或者只不过同样的计算不断重复而已。这里我们有一个双层神经网络，我们在下周视频里会讲深得多的神经网络，你看到随着网络的深度变大，基本上也还是重复这两步运算，只不过是比这里你看到的重复次数更多。在下周的视频中将会讲解更深层次的神经网络，随着层数的加深，基本上也还是重复同样的运算。</p>
+<p>以上就是对神经网络向量化实现的正确性的解释，到目前为止，我们仅使用<strong>sigmoid</strong>函数作为激活函数，事实上这并非最好的选择，在下一个视频中，将会继续深入的讲解如何使用更多不同种类的激活函数。</p>
+<h3 id="3-6-激活函数（Activation-functions）"><a href="#3-6-激活函数（Activation-functions）" class="headerlink" title="3.6 激活函数（Activation functions）"></a>3.6 激活函数（Activation functions）</h3><p>使用一个神经网络时，需要决定使用哪种激活函数用隐藏层上，哪种用在输出节点上。到目前为止，之前的视频只用过<strong>sigmoid</strong>激活函数，但是，有时其他的激活函数效果会更好。</p>
+<p>在神经网路的前向传播中，的和这两步会使用到<strong>sigmoid</strong>函数。<strong>sigmoid</strong>函数在这里被称为激活函数。 公式3.18： </p>
+<p>更通常的情况下，使用不同的函数，可以是除了<strong>sigmoid</strong>函数意外的非线性函数。<strong>tanh</strong>函数或者双曲正切函数是总体上都优于<strong>sigmoid</strong>函数的激活函数。</p>
+<p>如图，的值域是位于+1和-1之间。 公式3.19： </p>
+<p>事实上，<strong>tanh</strong>函数是<strong>sigmoid</strong>的向下平移和伸缩后的结果。对它进行了变形后，穿过了点，并且值域介于+1和-1之间。</p>
+<p>结果表明，如果在隐藏层上使用函数 公式3.20：  效果总是优于<strong>sigmoid</strong>函数。因为函数值域在-1和+1的激活函数，其均值是更接近零均值的。在训练一个算法模型时，如果使用<strong>tanh</strong>函数代替<strong>sigmoid</strong>函数中心化数据，使得数据的平均值更接近0而不是0.5.</p>
+<p>这会使下一层学习简单一点，在第二门课中会详细讲解。</p>
+<p>在讨论优化算法时，有一点要说明：我基本已经不用<strong>sigmoid</strong>激活函数了，<strong>tanh</strong>函数在所有场合都优于<strong>sigmoid</strong>函数。</p>
+<p>但有一个例外：在二分类的问题中，对于输出层，因为的值是0或1，所以想让的数值介于0和1之间，而不是在-1和+1之间。所以需要使用<strong>sigmoid</strong>激活函数。这里的 公式3.21：  在这个例子里看到的是，对隐藏层使用<strong>tanh</strong>激活函数，输出层使用<strong>sigmoid</strong>函数。</p>
+<p>所以，在不同的神经网络层中，激活函数可以不同。为了表示不同的激活函数，在不同的层中，使用方括号上标来指出上标为的激活函数，可能会跟上标为不同。方括号上标代表隐藏层，方括号上标表示输出层。</p>
+<p><strong>sigmoid</strong>函数和<strong>tanh</strong>函数两者共同的缺点是，在特别大或者特别小的情况下，导数的梯度或者函数的斜率会变得特别小，最后就会接近于0，导致降低梯度下降的速度。</p>
+<p>在机器学习另一个很流行的函数是：修正线性单元的函数（<strong>ReLu</strong>），<strong>ReLu</strong>函数图像是如下图。 公式3.22：  所以，只要是正值的情况下，导数恒等于1，当是负值的时候，导数恒等于0。从实际上来说，当使用的导数时，=0的导数是没有定义的。但是当编程实现的时候，的取值刚好等于0.0000000，这个值相当小，所以，在实践中，不需要担心这个值，是等于0的时候，假设一个导数是1或者0效果都可以。</p>
+<p>这有一些选择激活函数的经验法则：</p>
+<p>如果输出是0、1值（二分类问题），则输出层选择<strong>sigmoid</strong>函数，然后其它的所有单元都选择<strong>Relu</strong>函数。</p>
+<p>这是很多激活函数的默认选择，如果在隐藏层上不确定使用哪个激活函数，那么通常会使用Relu激活函数。有时，也会使用<strong>tanh</strong>激活函数，但<strong>Relu</strong>的一个优点是：当是负值的时候，导数等于0。</p>
+<p>这里也有另一个版本的<strong>Relu</strong>被称为<strong>Leaky Relu</strong>。</p>
+<p>当是负值时，这个函数的值不是等于0，而是轻微的倾斜，如图。</p>
+<p>这个函数通常比<strong>Relu</strong>激活函数效果要好，尽管在实际中<strong>Leaky ReLu</strong>使用的并不多。</p>
+<p><img src="http://www.ai-start.com/dl2017/images/L1_week3_9.jpg" alt="w600"> 图3.6.1</p>
+<p>两者的优点是：</p>
+<p>第一，在的区间变动很大的情况下，激活函数的导数或者激活函数的斜率都会远大于0，在程序实现就是一个<strong>if-else</strong>语句，而<strong>sigmoid</strong>函数需要进行浮点四则运算，在实践中，使用<strong>ReLu</strong>激活函数神经网络通常会比使用<strong>sigmoid</strong>或者<strong>tanh</strong>激活函数学习的更快。</p>
+<p>第二，<strong>sigmoid</strong>和<strong>tanh</strong>函数的导数在正负饱和区的梯度都会接近于0，这会造成梯度弥散，而<strong>Relu</strong>和<strong>Leaky ReLu</strong>函数大于0部分都为常熟，不会产生梯度弥散现象。(同时应该注意到的是，<strong>Relu</strong>进入负半区的时候，梯度为0，神经元此时不会训练，产生所谓的稀疏性，而<strong>Leaky ReLu</strong>不会有这问题)</p>
+<p>在<strong>ReLu</strong>的梯度一半都是0，但是，有足够的隐藏层使得z值大于0，所以对大多数的训练数据来说学习过程仍然可以很快。</p>
+<p>快速概括一下不同激活函数的过程和结论。</p>
+<p><strong>sigmoid</strong>激活函数：除了输出层是一个二分类问题基本不会用它。</p>
+<p><strong>tanh</strong>激活函数：<strong>tanh</strong>是非常优秀的，几乎适合所有场合。</p>
+<p><strong>ReLu</strong>激活函数：最常用的默认函数，，如果不确定用哪个激活函数，就使用<strong>ReLu</strong>或者<strong>Leaky ReLu</strong>。公式3.23：  为什么常数是0.01？当然，可以为学习算法选择不同的参数。</p>
+<p>在选择自己神经网络的激活函数时，有一定的直观感受，在深度学习中的经常遇到一个问题：在编写神经网络的时候，会有很多选择：隐藏层单元的个数、激活函数的选择、初始化权值……这些选择想得到一个对比较好的指导原则是挺困难的。</p>
+<p>鉴于以上三个原因，以及在工业界的见闻，提供一种直观的感受，哪一种工业界用的多，哪一种用的少。但是，自己的神经网络的应用，以及其特殊性，是很难提前知道选择哪些效果更好。所以通常的建议是：如果不确定哪一个激活函数效果更好，可以把它们都试试，然后在验证集或者发展集上进行评价。然后看哪一种表现的更好，就去使用它。</p>
+<p>为自己的神经网络的应用测试这些不同的选择，会在以后检验自己的神经网络或者评估算法的时候，看到不同的效果。如果仅仅遵守使用默认的<strong>ReLu</strong>激活函数，而不要用其他的激励函数，那就可能在近期或者往后，每次解决问题的时候都使用相同的办法。</p>
+<h3 id="3-7-为什么需要非线性激活函数？（why-need-a-nonlinear-activation-function-）"><a href="#3-7-为什么需要非线性激活函数？（why-need-a-nonlinear-activation-function-）" class="headerlink" title="3.7 为什么需要非线性激活函数？（why need a nonlinear activation function?）"></a>3.7 为什么需要非线性激活函数？（why need a nonlinear activation function?）</h3><p>为什么神经网络需要非线性激活函数？事实证明：要让你的神经网络能够计算出有趣的函数，你必须使用非线性激活函数，证明如下：</p>
+<p>这是神经网络正向传播的方程，现在我们去掉函数，然后令，或者我们也可以令，这个有时被叫做线性激活函数（更学术点的名字是恒等激励函数，因为它们就是把输入值输出）。为了说明问题我们把，那么这个模型的输出或仅仅只是输入特征的线性组合。</p>
+<p>如果我们改变前面的式子，令： (1) </p>
+<p>(2)  将式子(1)代入式子(2)中，则： </p>
+<p>(3)  简化多项式得  如果你是用线性激活函数或者叫恒等激励函数，那么神经网络只是把输入线性组合再输出。</p>
+<p>我们稍后会谈到深度网络，有很多层的神经网络，很多隐藏层。事实证明，如果你使用线性激活函数或者没有使用一个激活函数，那么无论你的神经网络有多少层一直在做的只是计算线性函数，所以不如直接去掉全部隐藏层。在我们的简明案例中，事实证明如果你在隐藏层用线性激活函数，在输出层用<strong>sigmoid</strong>函数，那么这个模型的复杂度和没有任何隐藏层的标准<strong>Logistic</strong>回归是一样的，如果你愿意的话，可以证明一下。</p>
+<p>在这里线性隐层一点用也没有，因为这两个线性函数的组合本身就是线性函数，所以除非你引入非线性，否则你无法计算更有趣的函数，即使你的网络层数再多也不行；只有一个地方可以使用线性激活函数——，就是你在做机器学习中的回归问题。 是一个实数，举个例子，比如你想预测房地产价格， 就不是二分类任务0或1，而是一个实数，从0到正无穷。如果 是个实数，那么在输出层用线性激活函数也许可行，你的输出也是一个实数，从负无穷到正无穷。</p>
+<p>总而言之，不能在隐藏层用线性激活函数，可以用<strong>ReLU</strong>或者<strong>tanh</strong>或者<strong>leaky ReLU</strong>或者其他的非线性激活函数，唯一可以用线性激活函数的通常就是输出层；除了这种情况，会在隐层用线性函数的，除了一些特殊情况，比如与压缩有关的，那方面在这里将不深入讨论。在这之外，在隐层使用线性激活函数非常少见。因为房价都是非负数，所以我们也可以在输出层使用<strong>ReLU</strong>函数这样你的都大于等于0。</p>
+<p>理解为什么使用非线性激活函数对于神经网络十分关键，接下来我们讨论梯度下降，并在下一个视频中开始讨论梯度下降的基础——激活函数的导数。</p>
+<h3 id="3-8-激活函数的导数（Derivatives-of-activation-functions）"><a href="#3-8-激活函数的导数（Derivatives-of-activation-functions）" class="headerlink" title="3.8 激活函数的导数（Derivatives of activation functions）"></a>3.8 激活函数的导数（Derivatives of activation functions）</h3><p>在神经网络中使用反向传播的时候，你真的需要计算激活函数的斜率或者导数。针对以下四种激活，求其导数如下：</p>
+<p>1）<strong>sigmoid activation function</strong></p>
+<p><img src="http://www.ai-start.com/dl2017/images/L1_week3_10.png" alt="w600"> 图3.8.1</p>
+<p>其具体的求导如下： 公式3.25： </p>
+<p>注：</p>
+<p>当 = 10或  </p>
+<p>当= 0  </p>
+<p>在神经网络中; </p>
+<p>2) <strong>Tanh activation function</strong></p>
+<p><img src="http://www.ai-start.com/dl2017/images/L1_week3_11.png" alt="w600"> 图3.8.2</p>
+<p>其具体的求导如下： 公式3.26： </p>
+<p>公式3.27：  注：</p>
+<p>当 = 10或  </p>
+<p>当 = 0  </p>
+<p>在神经网络中;</p>
+<p>3）<strong>Rectified Linear Unit (ReLU)</strong></p>
+<p><img src="http://www.ai-start.com/dl2017/images/L1_week3_12.png" alt="w600"> </p>
+<p>注：通常在= 0的时候给定其导数1,0；当然=0的情况很少</p>
+<p>4）<strong>Leaky linear unit (Leaky ReLU)</strong></p>
+<p>与<strong>ReLU</strong>类似</p>
+<p>注：通常在的时候给定其导数1,0.01；当然的情况很少</p>
+<h3 id="3-9-神经网络的梯度下降（Gradient-descent-for-neural-networks）"><a href="#3-9-神经网络的梯度下降（Gradient-descent-for-neural-networks）" class="headerlink" title="3.9 神经网络的梯度下降（Gradient descent for neural networks）"></a>3.9 神经网络的梯度下降（Gradient descent for neural networks）</h3><p>在这个视频中，我会给你实现反向传播或者说梯度下降算法的方程组，在下一个视频我们会介绍为什么这几个特定的方程是针对你的神经网络实现梯度下降的正确方程。</p>
+<p>你的单隐层神经网络会有，，，这些参数，还有个表示输入特征的个数，表示隐藏单元个数，表示输出单元个数。</p>
+<p>在我们的例子中，我们只介绍过的这种情况，那么参数:</p>
+<p>矩阵的维度就是()，就是维向量，可以写成，就是一个的列向量。 矩阵的维度就是()，的维度就是维度。</p>
+<p>你还有一个神经网络的成本函数，假设你在做二分类任务，那么你的成本函数等于：</p>
+<p><strong>Cost function</strong>: 公式3.28：  <strong>loss function</strong>和之前做<strong>logistic</strong>回归完全一样。</p>
+<p>训练参数需要做梯度下降，在训练神经网络的时候，随机初始化参数很重要，而不是初始化成全零。当你参数初始化成某些值后，每次梯度下降都会循环计算以下预测值：</p>
+<p> 公式3.28：  公式3.29： </p>
+<p>其中</p>
+<p>公式3.30： </p>
+<p>公式3.31：  正向传播方程如下（之前讲过）： <strong>forward propagation</strong>： (1)  (2)  (3)  (4) </p>
+<p>反向传播方程如下:</p>
+<p><strong>back propagation</strong>： 公式3.32：  公式3.33：  公式3.34：  公式3.35：  公式3.36：  公式3.37： </p>
+<p>上述是反向传播的步骤，注：这些都是针对所有样本进行过向量化，是的矩阵；这里<code>np.sum</code>是python的numpy命令，<code>axis=1</code>表示水平相加求和，<code>keepdims</code>是防止python输出那些古怪的秩数，加上这个确保阵矩阵这个向量输出的维度为这样标准的形式。 </p>
+<p>目前为止，我们计算的都和<strong>Logistic</strong>回归十分相似，但当你开始计算反向传播时，你需要计算，是隐藏层函数的导数，输出在使用<strong>sigmoid</strong>函数进行二元分类。这里是进行逐个元素乘积，因为和这两个都为矩阵；</p>
+<p>还有一种防止<strong>python</strong>输出奇怪的秩数，需要显式地调用<code>reshape</code>把<code>np.sum</code>输出结果写成矩阵形式。</p>
+<p>以上就是正向传播的4个方程和反向传播的6个方程，这里我是直接给出的，在下个视频中，我会讲如何导出反向传播的这6个式子的。如果你要实现这些算法，你必须正确执行正向和反向传播运算，你必须能计算所有需要的导数，用梯度下降来学习神经网络的参数；你也可以许多成功的深度学习从业者一样直接实现这个算法，不去了解其中的知识。</p>
+<h3 id="3-10（选修）直观理解反向传播（Backpropagation-intuition）"><a href="#3-10（选修）直观理解反向传播（Backpropagation-intuition）" class="headerlink" title="3.10（选修）直观理解反向传播（Backpropagation intuition）"></a>3.10（选修）直观理解反向传播（Backpropagation intuition）</h3><p>这个视频主要是推导反向传播。</p>
+<p>下图是逻辑回归的推导：</p>
+<p>回想一下逻辑回归的公式(参考公式3.2、公式3.5、公式3.6、公式3.15) 公式3.38：</p>
+<p>所以回想当时我们讨论逻辑回归的时候，我们有这个正向传播步骤，其中我们计算，然后，然后损失函数。</p>
+<p>公式3.39：</p>
+<p>神经网络的计算中，与逻辑回归十分类似，但中间会有多层的计算。下图是一个双层神经网络，有一个输入层，一个隐藏层和一个输出层。</p>
+<p>前向传播：</p>
+<p>计算，，再计算，，最后得到<strong>loss function</strong>。</p>
+<p>反向传播：</p>
+<p>向后推算出，然后推算出，接着推算出，然后推算出。我们不需要对求导，因为是固定的，我们也不是想优化。向后推算出，然后推算出的步骤可以合为一步： 公式3.40： ， (注意：逻辑回归中；为什么多了个转置：中的(视频里是)是一个列向量，而是个行向量，故需要加个转置); 公式3.41：  公式3.42：  注意：这里的矩阵：的维度是：。</p>
+<p> ， 的维度都是：，如果是二分类，那维度就是。</p>
+<p>，的维度都是：。</p>
+<p>证明过程： 见公式3.42，其中dz^{[2]}维度为：(n^{[1]},n^{[2]})、(n^{[2]},1)相乘得到(n^{[1]},1)，和z^{[1]}$维度相同，</p>
+<p>的维度为，这就变成了两个都是向量逐元素乘积。</p>
+<p>实现后向传播有个技巧，就是要保证矩阵的维度相互匹配。最后得到和，公式3.43： </p>
+<p>可以看出 和 非常相似，其中扮演了的角色， 等同于。</p>
+<p>由：  得到： </p>
+<p>注意：大写的表示的列向量堆叠成的矩阵，以下类同。</p>
+<p>下图写了主要的推导过程： 公式3.44： ， 公式3.45：  公式3.46：  公式3.47：  公式3.48：  公式3.49： </p>
+<p>吴恩达老师认为反向传播的推导是机器学习领域最难的数学推导之一，矩阵的导数要用链式法则来求，如果这章内容掌握不了也没大的关系，只要有这种直觉就可以了。还有一点，就是初始化你的神经网络的权重，不要都是0，而是随机初始化，下一章将详细介绍原因。</p>
+<h3 id="3-11-随机初始化（Random-Initialization）"><a href="#3-11-随机初始化（Random-Initialization）" class="headerlink" title="3.11 随机初始化（Random+Initialization）"></a>3.11 随机初始化（Random+Initialization）</h3><p>当你训练神经网络时，权重随机初始化是很重要的。对于逻辑回归，把权重初始化为0当然也是可以的。但是对于一个神经网络，如果你把权重或者参数都初始化为0，那么梯度下降将不会起作用。</p>
+<p>让我们看看这是为什么。有两个输入特征，，2个隐藏层单元就等于2。 因此与一个隐藏层相关的矩阵，或者说是2_2的矩阵，假设把它初始化为0的2_2矩阵，也等于 ，把偏置项初始化为0是合理的，但是把初始化为0就有问题了。 那这个问题如果按照这样初始化的话，你总是会发现 和 相等，这个激活单元和这个激活单元就会一样。因为两个隐含单元计算同样的函数，当你做反向传播计算时，这会导致和 也会一样，对称这些隐含单元会初始化得一样，这样输出的权值也会一模一样，由此等于；</p>
+<p><img src="http://www.ai-start.com/dl2017/images/L1_week3_13.png" alt="w600"></p>
+<p>图3.11.1 但是如果你这样初始化这个神经网络，那么这两个隐含单元就会完全一样，因此他们完全对称，也就意味着计算同样的函数，并且肯定的是最终经过每次训练的迭代，这两个隐含单元仍然是同一个函数，令人困惑。会是一个这样的矩阵，每一行有同样的值因此我们做权重更新把权重每次迭代后的，第一行等于第二行。</p>
+<p>由此可以推导，如果你把权重都初始化为0，那么由于隐含单元开始计算同一个函数，所有的隐含单元就会对输出单元有同样的影响。一次迭代后同样的表达式结果仍然是相同的，即隐含单元仍是对称的。通过推导，两次、三次、无论多少次迭代，不管你训练网络多长时间，隐含单元仍然计算的是同样的函数。因此这种情况下超过1个隐含单元也没什么意义，因为他们计算同样的东西。当然更大的网络，比如你有3个特征，还有相当多的隐含单元。</p>
+<p>如果你要初始化成0，由于所有的隐含单元都是对称的，无论你运行梯度下降多久，他们一直计算同样的函数。这没有任何帮助，因为你想要两个不同的隐含单元计算不同的函数，这个问题的解决方法就是随机初始化参数。你应该这么做：把设为<code>np.random.randn(2,2)</code>(生成高斯分布)，通常再乘上一个小的数，比如0.01，这样把它初始化为很小的随机数。然后没有这个对称的问题（叫做<strong>symmetry breaking problem</strong>），所以可以把  初始化为0，因为只要随机初始化你就有不同的隐含单元计算不同的东西，因此不会有<strong>symmetry breaking</strong>问题了。相似的，对于你可以随机初始化，可以初始化为0。</p>
+<p>你也许会疑惑，这个常数从哪里来，为什么是0.01，而不是100或者1000。我们通常倾向于初始化为很小的随机数。因为如果你用<strong>tanh</strong>或者<strong>sigmoid</strong>激活函数，或者说只在输出层有一个<strong>Sigmoid</strong>，如果（数值）波动太大，当你计算激活值时如果很大，就会很大。的一些值就会很大或者很小，因此这种情况下你很可能停在<strong>tanh</strong>/<strong>sigmoid</strong>函数的平坦的地方(见图3.8.2)，这些地方梯度很小也就意味着梯度下降会很慢，因此学习也就很慢。</p>
+<p>回顾一下：如果很大，那么你很可能最终停在（甚至在训练刚刚开始的时候）很大的值，这会造成<strong>tanh</strong>/<strong>Sigmoid</strong>激活函数饱和在龟速的学习上，如果你没有<strong>sigmoid</strong>/<strong>tanh</strong>激活函数在你整个的神经网络里，就不成问题。但如果你做二分类并且你的输出单元是<strong>Sigmoid</strong>函数，那么你不会想让初始参数太大，因此这就是为什么乘上0.01或者其他一些小数是合理的尝试。对于一样，就是<code>np.random.randn((1,2))</code>，我猜会是乘以0.01。</p>
+<p>事实上有时有比0.01更好的常数，当你训练一个只有一层隐藏层的网络时（这是相对浅的神经网络，没有太多的隐藏层），设为0.01可能也可以。但当你训练一个非常非常深的神经网络，你可能会选择一个不同于的常数而不是0.01。下一节课我们会讨论怎么并且何时去选择一个不同于0.01的常数，但是无论如何它通常都会是个相对小的数。</p>
+<p>好了，这就是这周的视频。你现在已经知道如何建立一个一层的神经网络了，初始化参数，用前向传播预测，还有计算导数，结合反向传播用在梯度下降中。</p>
+<p>站长统计</p>
 <h1 id="人工智能大师实录"><a href="#人工智能大师实录" class="headerlink" title="人工智能大师实录"></a>人工智能大师实录</h1><h2 id="Geoffery-Hinton-专访"><a href="#Geoffery-Hinton-专访" class="headerlink" title="Geoffery Hinton 专访"></a>Geoffery Hinton 专访</h2><p>Hinton 的专访让我印象很深刻，不仅仅是他是深度学习教父一般的存在，他的传奇求学经历和时刻保持着新颖的思想让人印象深刻。这次 Ng 的专访实例文本可见：<a href="http://www.ai-start.com/dl2017/interview.html" target="_blank" rel="noopener">XX</a></p>
 <p><img src="https://i.loli.net/2018/02/15/5a852baf8b7dc.png" alt=""></p>
 <blockquote>
@@ -709,7 +904,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#1-深度学习引言"><span class="toc-nav-text">1. 深度学习引言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-1-1-2-欢迎-amp-什么是神经网络？"><span class="toc-nav-text">1.1-1.2 欢迎 &amp; 什么是神经网络？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-3-神经网络的监督学习"><span class="toc-nav-text">1.3 神经网络的监督学习</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-4-1-6-为什么深度学习会兴起？-amp-关于本课程-amp-课程资源"><span class="toc-nav-text">1.4-1.6 为什么深度学习会兴起？&amp; 关于本课程 &amp; 课程资源</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#2-神经网络的编程基础"><span class="toc-nav-text">2. 神经网络的编程基础</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-1-二分类"><span class="toc-nav-text">2.1 二分类</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-2-逻辑回归-Logistic-Regression"><span class="toc-nav-text">2.2 逻辑回归(Logistic Regression)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-3-逻辑回归的代价函数（Logistic-Regression-Cost-Function）"><span class="toc-nav-text">2.3 逻辑回归的代价函数（Logistic Regression Cost Function）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-4-梯度下降法（Gradient-Descent）"><span class="toc-nav-text">2.4 梯度下降法（Gradient Descent）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-5-导数（Derivatives）"><span class="toc-nav-text">2.5 导数（Derivatives）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-6-更多的导数例子（More-Derivative-Examples）"><span class="toc-nav-text">2.6 更多的导数例子（More Derivative Examples）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-7-计算图（Computation-Graph）"><span class="toc-nav-text">2.7 计算图（Computation Graph）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-8-计算图的导数计算（Derivatives-with-a-Computation-Graph）"><span class="toc-nav-text">2.8 计算图的导数计算（Derivatives with a Computation Graph）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-9-逻辑回归中的梯度下降（Logistic-Regression-Gradient-Descent）"><span class="toc-nav-text">2.9 逻辑回归中的梯度下降（Logistic Regression Gradient Descent）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-10-m-个样本的梯度下降-Gradient-Descent-on-m-Examples"><span class="toc-nav-text">2.10  m 个样本的梯度下降(Gradient Descent on m Examples)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-11-向量化-Vectorization"><span class="toc-nav-text">2.11 向量化(Vectorization)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-12-向量化的更多例子（More-Examples-of-Vectorization）"><span class="toc-nav-text">2.12 向量化的更多例子（More Examples of Vectorization）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-13-向量化逻辑回归-Vectorizing-Logistic-Regression"><span class="toc-nav-text">2.13 向量化逻辑回归(Vectorizing Logistic Regression)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-14-向量化-logistic-回归的梯度输出（Vectorizing-Logistic-Regression’s-Gradient）"><span class="toc-nav-text">2.14 向量化 logistic 回归的梯度输出（Vectorizing Logistic Regression’s Gradient）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-15-Python-中的广播（Broadcasting-in-Python）"><span class="toc-nav-text">2.15 Python 中的广播（Broadcasting in Python）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-16-关于-python-numpy-向量的说明（A-note-on-python-or-numpy-vectors）参考视频："><span class="toc-nav-text">2.16 关于 python _ numpy 向量的说明（A note on python or numpy vectors）参考视频：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-17-Jupyter-iPython-Notebooks快速入门（Quick-tour-of-Jupyter-iPython-Notebooks）"><span class="toc-nav-text">2.17 Jupyter/iPython Notebooks快速入门（Quick tour of Jupyter/iPython Notebooks）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-18-（选修）logistic-损失函数的解释（Explanation-of-logistic-regression-cost-function）"><span class="toc-nav-text">2.18 （选修）logistic 损失函数的解释（Explanation of logistic regression cost function）</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#人工智能大师实录"><span class="toc-nav-text">人工智能大师实录</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Geoffery-Hinton-专访"><span class="toc-nav-text">Geoffery Hinton 专访</span></a></li></ol></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#1-深度学习引言"><span class="toc-nav-text">1. 深度学习引言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-1-1-2-欢迎-amp-什么是神经网络？"><span class="toc-nav-text">1.1-1.2 欢迎 &amp; 什么是神经网络？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-3-神经网络的监督学习"><span class="toc-nav-text">1.3 神经网络的监督学习</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-4-1-6-为什么深度学习会兴起？-amp-关于本课程-amp-课程资源"><span class="toc-nav-text">1.4-1.6 为什么深度学习会兴起？&amp; 关于本课程 &amp; 课程资源</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#2-神经网络的编程基础"><span class="toc-nav-text">2. 神经网络的编程基础</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-1-二分类"><span class="toc-nav-text">2.1 二分类</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-2-逻辑回归-Logistic-Regression"><span class="toc-nav-text">2.2 逻辑回归(Logistic Regression)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-3-逻辑回归的代价函数（Logistic-Regression-Cost-Function）"><span class="toc-nav-text">2.3 逻辑回归的代价函数（Logistic Regression Cost Function）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-4-梯度下降法（Gradient-Descent）"><span class="toc-nav-text">2.4 梯度下降法（Gradient Descent）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-5-导数（Derivatives）"><span class="toc-nav-text">2.5 导数（Derivatives）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-6-更多的导数例子（More-Derivative-Examples）"><span class="toc-nav-text">2.6 更多的导数例子（More Derivative Examples）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-7-计算图（Computation-Graph）"><span class="toc-nav-text">2.7 计算图（Computation Graph）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-8-计算图的导数计算（Derivatives-with-a-Computation-Graph）"><span class="toc-nav-text">2.8 计算图的导数计算（Derivatives with a Computation Graph）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-9-逻辑回归中的梯度下降（Logistic-Regression-Gradient-Descent）"><span class="toc-nav-text">2.9 逻辑回归中的梯度下降（Logistic Regression Gradient Descent）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-10-m-个样本的梯度下降-Gradient-Descent-on-m-Examples"><span class="toc-nav-text">2.10  m 个样本的梯度下降(Gradient Descent on m Examples)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-11-向量化-Vectorization"><span class="toc-nav-text">2.11 向量化(Vectorization)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-12-向量化的更多例子（More-Examples-of-Vectorization）"><span class="toc-nav-text">2.12 向量化的更多例子（More Examples of Vectorization）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-13-向量化逻辑回归-Vectorizing-Logistic-Regression"><span class="toc-nav-text">2.13 向量化逻辑回归(Vectorizing Logistic Regression)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-14-向量化-logistic-回归的梯度输出（Vectorizing-Logistic-Regression’s-Gradient）"><span class="toc-nav-text">2.14 向量化 logistic 回归的梯度输出（Vectorizing Logistic Regression’s Gradient）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-15-Python-中的广播（Broadcasting-in-Python）"><span class="toc-nav-text">2.15 Python 中的广播（Broadcasting in Python）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-16-关于-python-numpy-向量的说明（A-note-on-python-or-numpy-vectors）参考视频："><span class="toc-nav-text">2.16 关于 python _ numpy 向量的说明（A note on python or numpy vectors）参考视频：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-17-Jupyter-iPython-Notebooks快速入门（Quick-tour-of-Jupyter-iPython-Notebooks）"><span class="toc-nav-text">2.17 Jupyter/iPython Notebooks快速入门（Quick tour of Jupyter/iPython Notebooks）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-18-（选修）logistic-损失函数的解释（Explanation-of-logistic-regression-cost-function）"><span class="toc-nav-text">2.18 （选修）logistic 损失函数的解释（Explanation of logistic regression cost function）</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#第三周：浅层神经网络-Shallow-neural-networks"><span class="toc-nav-text">第三周：浅层神经网络(Shallow neural networks)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-1-神经网络概述（Neural-Network-Overview）"><span class="toc-nav-text">3.1 神经网络概述（Neural Network Overview）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-2-神经网络的表示（Neural-Network-Representation）"><span class="toc-nav-text">3.2 神经网络的表示（Neural Network Representation）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-3-计算一个神经网络的输出（Computing-a-Neural-Network’s-output）"><span class="toc-nav-text">3.3 计算一个神经网络的输出（Computing a Neural Network’s output）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-4-多样本向量化（Vectorizing-across-multiple-examples）"><span class="toc-nav-text">3.4 多样本向量化（Vectorizing across multiple examples）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-5-向量化实现的解释（Justification-for-vectorized-implementation）"><span class="toc-nav-text">3.5 向量化实现的解释（Justification for vectorized implementation）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-6-激活函数（Activation-functions）"><span class="toc-nav-text">3.6 激活函数（Activation functions）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-7-为什么需要非线性激活函数？（why-need-a-nonlinear-activation-function-）"><span class="toc-nav-text">3.7 为什么需要非线性激活函数？（why need a nonlinear activation function?）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-8-激活函数的导数（Derivatives-of-activation-functions）"><span class="toc-nav-text">3.8 激活函数的导数（Derivatives of activation functions）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-9-神经网络的梯度下降（Gradient-descent-for-neural-networks）"><span class="toc-nav-text">3.9 神经网络的梯度下降（Gradient descent for neural networks）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-10（选修）直观理解反向传播（Backpropagation-intuition）"><span class="toc-nav-text">3.10（选修）直观理解反向传播（Backpropagation intuition）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-11-随机初始化（Random-Initialization）"><span class="toc-nav-text">3.11 随机初始化（Random+Initialization）</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#人工智能大师实录"><span class="toc-nav-text">人工智能大师实录</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Geoffery-Hinton-专访"><span class="toc-nav-text">Geoffery Hinton 专访</span></a></li></ol></li></ol>
     
   </div>
 </aside>
