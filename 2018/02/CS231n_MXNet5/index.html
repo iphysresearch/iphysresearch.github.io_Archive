@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Machine Learning, Deep Learning, Physics">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      CS231n 与 MXNet 实现：神经网络初步 | Teaching is Learning
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Teaching is Learning</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>CS231n 与 MXNet 实现：神经网络初步</h2>
+  <p class="post-date">2018-02-18</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>CS231n &amp; MXNet 复现</p>
+<p>有待整理中。。。</p>
+<p><br></p>
+<a id="more"></a>
+<blockquote>
+<p><strong>自注</strong>：此文是在转载的基础上，通过网络搜集其他相关学习资料，再结合自己理解前提下，填充并注释了更多的细节和内容，以此详尽的文本资料代替各种视频课程等资料，方便自己回头翻查。并希望借此自学打卡的机会，用 MXNet 复现所有的作业代码。</p>
+<p><br></p>
+<p>（个人填充的内容：下划线、注明“自注”）</p>
+<p><br></p>
+<p>转载请注明本文出处和原译文出处。</p>
+<p><strong>译者注</strong>：本文<a href="https://zhuanlan.zhihu.com/intelligentunit" target="_blank" rel="noopener">智能单元</a>首发，译自斯坦福CS231n课程笔记<a href="http://link.zhihu.com/?target=http%3A//cs231n.github.io/linear-classify/" target="_blank" rel="noopener">Linear Classification Note</a>，课程教师<a href="http://link.zhihu.com/?target=http%3A//cs.stanford.edu/people/karpathy/" target="_blank" rel="noopener">Andrej Karpathy</a>授权翻译。本篇教程由<a href="https://www.zhihu.com/people/du-ke" target="_blank" rel="noopener">杜客</a>翻译完成，<a href="https://www.zhihu.com/people/gong-zi-jia-57" target="_blank" rel="noopener">巩子嘉</a>和<a href="https://www.zhihu.com/people/kun-kun-97-81" target="_blank" rel="noopener">堃堃</a>进行校对修改。译文含公式和代码，建议PC端阅读。</p>
+</blockquote>
+<p>内容列表：</p>
+<ul>
+<li>不用大脑做类比的快速简介</li>
+<li>单个神经元建模<ul>
+<li>生物动机和连接</li>
+<li>作为线性分类器的单个神经元</li>
+<li>常用的激活函数 <strong>译者注：上篇翻译截止处</strong></li>
+</ul>
+</li>
+<li>神经网络结构<ul>
+<li>层组织</li>
+<li>前向传播计算例子</li>
+<li>表达能力</li>
+<li>设置层的数量和尺寸</li>
+</ul>
+</li>
+<li>小节</li>
+<li>参考文献</li>
+</ul>
+<p><br></p>
+<h2 id="快速简介"><a href="#快速简介" class="headerlink" title="快速简介"></a>快速简介</h2><p>在不诉诸大脑的类比的情况下，依然是可以对神经网络算法进行介绍的。在线性分类一节中，在给出图像的情况下，是使用$s=Wx$来计算不同视觉类别的评分，其中$W$是一个矩阵，$x$是一个输入列向量，它包含了图像的全部像素数据。在使用数据库CIFAR-10的案例中，$x$是一个[3072x1]的列向量，$W$是一个[10x3072]的矩阵，所以输出的评分是一个包含10个分类评分的向量。</p>
+<p><br></p>
+<p>神经网络算法则不同，它的计算公式是$s=W_2\max(0,W_1x)$。其中$W_1$的含义是这样的：举个例子来说，它可以是一个[100x3072]的矩阵，其作用是将图像转化为一个100维的过渡向量。函数$max(0,-)$是<u>非线性的</u>，它会作用到每个元素。这个非线性函数有多种选择，后续将会学到。但这个形式是一个最常用的选择，它就是简单地设置阈值，将所有小于0的值变成0。最终，矩阵<img src="http://www.zhihu.com/equation?tex=W_2" alt="W_2">的尺寸是[10x100]，因此将得到10个数字，这10个数字可以解释为是分类的评分。注意<u>非线性函数在计算上是至关重要的</u>，如果略去这一步，那么两个矩阵将会合二为一，对于分类的评分计算将重新变成关于输入的线性函数。<u>这个非线性函数就是_改变_的关键点</u>。参数$W_1,W_2$将通过随机梯度下降来学习到，他们的梯度在反向传播过程中，通过链式法则来求导计算得出。</p>
+<p><br></p>
+<p>一个三层的神经网络可以类比地看做$s=W_3max(0,W_2max(0,W_1x))$，其中$W_1,W_2,W_3$是需要进行学习的参数。中间隐层的尺寸是网络的超参数，后续将学习如何设置它们。现在让我们先从神经元或者网络的角度理解上述计算。</p>
+<p><br></p>
+<h2 id="单个神经元建模"><a href="#单个神经元建模" class="headerlink" title="单个神经元建模"></a>单个神经元建模</h2><p>神经网络算法领域最初是被对生物神经系统建模这一目标启发，但随后与其<u>分道扬镳</u>，成为一个工程问题，并在机器学习领域取得良好效果。然而，讨论将还是从对生物系统的一个高层次的简略描述开始，因为神经网络毕竟是从这里得到了启发。</p>
+<p><br></p>
+<h3 id="生物动机与连接"><a href="#生物动机与连接" class="headerlink" title="生物动机与连接"></a>生物动机与连接</h3><p>大脑的基本计算单位是<strong>神经元（neuron</strong>）。人类的神经系统中大约有860亿个神经元，它们被大约10^14-10^15个<strong>突触（synapses）</strong>连接起来。下面图表的左边展示了一个生物学的神经元，右边展示了一个常用的数学模型。每个神经元都从它的<strong>树突</strong>获得输入信号，然后沿着它唯一的<strong>轴突（axon）</strong>产生输出信号。轴突在末端会逐渐分枝，通过突触和其他神经元的树突相连。</p>
+<p><br></p>
+<p>在神经元的计算模型中，沿着轴突传播的信号（比如$x_0$）将基于突触的突触强度（比如$w_0$），与其他神经元的树突进行乘法交互（比如$w_0x_0$）。<u>其观点是，突触的强度（也就是权重$w$），是可学习的且可以控制一个神经元对于另一个神经元的影响强度（还可以控制影响方向：使其兴奋（正权重）或使其抑制（负权重））</u>。在基本模型中，树突将信号传递到细胞体，信号在细胞体中相加。如果最终之和高于某个阈值，那么神经元将会_激活_，向其轴突输出一个峰值信号。在计算模型中，我们假设峰值信号的准确时间点不重要，是激活信号的频率在交流信息。基于这个_速率编码_的观点，将神经元的激活率建模为<strong>激活函数（activation function）$f$</strong>，它表达了轴突上激活信号的频率。由于历史原因，激活函数常常选择使用<strong>sigmoid函数$\sigma$</strong>，该函数输入实数值（求和后的信号强度），然后将输入值压缩到0-1之间。在本节后面部分会看到这些激活函数的各种细节。</p>
+<hr>
+<p><img src="https://pic2.zhimg.com/d0cbce2f2654b8e70fe201fec2982c7d_b.png" alt=""></p>
+<p>左边是生物神经元，右边是数学模型。</p>
+<hr>
+<p>一个神经元前向传播的实例代码如下：</p>
+<pre><code class="python">class Neuron(object):
+  # ... 
+  def forward(inputs):
+    &quot;&quot;&quot; 假设输入和权重是1-D的numpy数组，偏差是一个数字 &quot;&quot;&quot;
+    cell_body_sum = np.sum(inputs * self.weights) + self.bias
+    firing_rate = 1.0 / (1.0 + math.exp(-cell_body_sum)) # sigmoid激活函数
+    return firing_rate
+</code></pre>
+<p>换句话说，每个神经元都对它的输入和权重进行点积，然后加上偏差，最后使用非线性函数（或称为激活函数）。本例中使用的是sigmoid函数$\sigma(x)=1/(1+e^{-x})$。在本节的末尾部分将介绍不同激活函数的细节。</p>
+<p><br></p>
+<p><strong>粗糙模型</strong>：要注意这个对于生物神经元的建模是非常粗糙的：在实际中，有很多不同类型的神经元，每种都有不同的属性。生物神经元的树突可以进行复杂的非线性计算。突触并不就是一个简单的权重，它们是复杂的非线性动态系统。很多系统中，输出的峰值信号的精确时间点非常重要，说明速率编码的近似是不够全面的。鉴于所有这些已经介绍和更多未介绍的简化，如果你画出人类大脑和神经网络之间的类比，有神经科学背景的人对你的板书起哄也是非常自然的。如果你对此感兴趣，可以看看这份<a href="http://link.zhihu.com/?target=https%3A//physics.ucsd.edu/neurophysics/courses/physics_171/annurev.neuro.28.061604.135703.pdf" target="_blank" rel="noopener">评论</a>或者最新的<a href="http://link.zhihu.com/?target=http%3A//www.sciencedirect.com/science/article/pii/S0959438814000130" target="_blank" rel="noopener">另一份</a>。</p>
+<p><br></p>
+<h3 id="作为线性分类器的单个神经元"><a href="#作为线性分类器的单个神经元" class="headerlink" title="作为线性分类器的单个神经元"></a>作为线性分类器的单个神经元</h3><p>神经元模型的前向计算数学公式看起来可能比较眼熟。就像在线性分类器中看到的那样，神经元有能力“喜欢”（激活函数值接近1），或者不喜欢（激活函数值接近0）输入空间中的某些线性区域。因此，只要在神经元的输出端有一个合适的损失函数，就能让单个神经元变成一个线性分类器。</p>
+<p><br></p>
+<p><strong>二分类Softmax分类器</strong>。举例来说，可以把$\displaystyle\sigma(\Sigma_iw_ix_i+b)$看做其中一个分类的概率$P(y_i=1|x_i;w)$，其他分类的概率为$P(y_i=0|x_i;w)=1-P(y_i=1|x_i;w)$，因为它们加起来必须为1。根据这种理解，可以得到交叉熵损失，这个在线性分类器一节中已经介绍。然后将它最优化为二分类的Softmax分类器（也就是逻辑回归）。因为sigmoid函数输出限定在0-1之间，所以分类器做出预测的基准是神经元的输出是否大于0.5。</p>
+<p><br></p>
+<p><strong>二分类SVM分类器</strong>。或者可以在神经元的输出外增加一个最大边界折叶损失（max-margin hinge loss）函数，将其训练成一个二分类的支持向量机。</p>
+<p><br></p>
+<p><strong>理解正则化</strong>。在SVM/Softmax的例子中，正则化损失从生物学角度可以看做_逐渐遗忘_，因为它的效果是让所有突触权重$w$在参数更新过程中逐渐向着0变化。</p>
+<blockquote>
+<p>一个单独的神经元可以用来实现一个二分类分类器，比如二分类的Softmax或者SVM分类器。</p>
+</blockquote>
+<p><br></p>
+<h3 id="常用激活函数"><a href="#常用激活函数" class="headerlink" title="常用激活函数"></a>常用激活函数</h3><p>每个激活函数（或非线性函数）的输入都是一个数字，然后对其进行某种固定的数学操作。下面是在实践中可能遇到的几种激活函数：</p>
+<hr>
+<p><img src="https://pic3.zhimg.com/677187e96671a4cac9c95352743b3806_b.png" alt=""></p>
+<p>左边是Sigmoid非线性函数，将实数压缩到[0,1]之间。右边是tanh函数，将实数压缩到[-1,1]。</p>
+<hr>
+<p><strong>Sigmoid。</strong>sigmoid非线性函数的数学公式是<br>$$<br>\displaystyle\sigma(x)=1/(1+e^{-x})<br>$$<br>函数图像如上图的左边所示。在前一节中已经提到过，它输入实数值并将其“挤压”到0到1范围内。更具体地说，很大的负数变成0，很大的正数变成1。在历史上，sigmoid函数非常常用，这是因为它对于神经元的激活频率有良好的解释：从完全不激活（0）到在求和后的最大频率处的完全饱和（<strong>saturated</strong>）的激活（1）。然而现在sigmoid函数已经不太受欢迎，实际很少使用了，这是因为它有两个主要缺点：</p>
+<ul>
+<li>_Sigmoid函数饱和使梯度消失_。sigmoid神经元有一个不好的特性，就是<u>当神经元的激活在接近0或1处时会饱和：在这些区域，梯度几乎为0</u>。回忆一下，在反向传播的时候，这个（局部）梯度将会与整个损失函数关于该门单元输出的梯度相乘。因此，如果局部梯度非常小，那么相乘的结果也会接近零，这会有效地“杀死”梯度，几乎就没有信号通过神经元传到权重再到数据了。还有，为了防止饱和，必须对于权重矩阵初始化特别留意。比如，如果初始化权重过大，那么大多数神经元将会饱和，导致网络就几乎不学习了。</li>
+<li>_Sigmoid函数的输出不是零中心的_。这个性质并不是我们想要的，因为<u>在神经网络后面层中的神经元得到的数据将不是零中心的。这一情况将影响梯度下降的运作</u>，因为如果输入神经元的数据总是正数（比如在$f=w^Tx+b$中每个元素都$x&gt;0$），那么关于$w$的梯度在反向传播的过程中，将会要么全部是正数，要么全部是负数（具体依整个表达式$f$而定）。这将会导致梯度下降权重更新时出现z字型的下降。然而，可以看到整个批量的数据的梯度被加起来后，对于权重的最终更新将会有不同的正负，这样就从一定程度上减轻了这个问题。因此，该问题相对于上面的神经元饱和问题来说只是个小麻烦，没有那么严重。</li>
+</ul>
+<p><strong>Tanh。</strong>tanh非线性函数图像如上图右边所示。它将实数值压缩到[-1,1]之间。和sigmoid神经元一样，它也存在饱和问题，但是和sigmoid神经元不同的是，它的输出是零中心的。因此，<u>在实际操作中，_tanh非线性函数比sigmoid非线性函数更受欢迎_</u>。注意tanh神经元是一个简单放大的sigmoid神经元，具体说来就是：<br>$$<br>tanh(x)=2\sigma(2x)-1<br>$$</p>
+<hr>
+<p><img src="https://pic3.zhimg.com/83682a138f6224230f5b0292d9c01bd2_b.png" alt=""></p>
+<p>左边是ReLU（校正线性单元：Rectified Linear Unit）激活函数，当$x=0$时函数值为0。当<img src="http://www.zhihu.com/equation?tex=x%3E0" alt="x&gt;0">函数的斜率为1。右边是从 <a href="http://link.zhihu.com/?target=http%3A//www.cs.toronto.edu/%7Efritz/absps/imagenet.pdf" target="_blank" rel="noopener">Krizhevsky</a>等的论文中截取的图表，指明使用ReLU比使用tanh的收敛快6倍。</p>
+<hr>
+<p><strong>ReLU。</strong>在近些年ReLU变得非常流行。它的函数公式是<br>$$<br>f(x)=max(0,x)<br>$$<br>换句话说，这个激活函数就是一个关于0的阈值（如上图左侧）。使用ReLU有以下一些优缺点：</p>
+<ul>
+<li>优点：相较于sigmoid和tanh函数，ReLU对于随机梯度下降的收敛有巨大的加速作用（ <a href="http://link.zhihu.com/?target=http%3A//www.cs.toronto.edu/%7Efritz/absps/imagenet.pdf" target="_blank" rel="noopener">Krizhevsky </a>等的论文指出有6倍之多）。据称这是由它的线性，非饱和的公式导致的。</li>
+<li>优点：sigmoid和tanh神经元含有指数运算等耗费计算资源的操作，而ReLU可以简单地通过对一个矩阵进行阈值计算得到。</li>
+<li>缺点：在训练的时候，ReLU单元比较脆弱并且可能“死掉”。举例来说，当一个很大的梯度流过ReLU的神经元的时候，可能会导致梯度更新到一种特别的状态，在这种状态下神经元将无法被其他任何数据点再次激活。如果这种情况发生，那么从此所以流过这个神经元的梯度将都变成0。也就是说，这个ReLU单元在训练中将不可逆转的死亡，因为这导致了数据多样化的丢失。例如，如果学习率设置得太高，可能会发现网络中40%的神经元都会死掉（在整个训练集中这些神经元都不会被激活）。通过合理设置学习率，这种情况的发生概率会降低。</li>
+</ul>
+<p><strong>Leaky ReLU。</strong>Leaky ReLU是为解决“ReLU死亡”问题的尝试。ReLU中当x&lt;0时，函数值为0。而Leaky ReLU则是给出一个很小的负数梯度值，比如0.01。所以其函数公式为<br>$$<br>f(x)=1(x<0)(\alpha x)+1(x="">=0)(x)<br>$$<br>其中$\alpha$是一个小的常量。有些研究者的论文指出这个激活函数表现很不错，但是其效果并不是很稳定。Kaiming He等人在2015年发布的论文<a href="http://link.zhihu.com/?target=http%3A//arxiv.org/abs/1502.01852" target="_blank" rel="noopener">Delving Deep into Rectifiers</a>中介绍了一种新方法PReLU，把负区间上的斜率当做每个神经元中的一个参数。然而该激活函数在不同任务中均有益处的一致性并没有特别清晰。</0)(\alpha></p>
+<p><br></p>
+<p><strong>Maxout。</strong>一些其他类型的单元被提了出来，它们对于权重和数据的内积结果不再使用$f(w^Tx+b)$函数形式。一个相关的流行选择是Maxout（最近由<a href="http://link.zhihu.com/?target=http%3A//www-etud.iro.umontreal.ca/%7Egoodfeli/maxout.html" target="_blank" rel="noopener">Goodfellow</a>等发布）神经元。Maxout是对ReLU和leaky ReLU的一般化归纳，它的函数是：$max(w^T_1x+b_1,w^T_2x+b_2)$。ReLU和Leaky ReLU都是这个公式的特殊情况（比如ReLU就是当$w_1,b_1=0$的时候）。这样Maxout神经元就拥有ReLU单元的所有优点（线性操作和不饱和），而没有它的缺点（死亡的ReLU单元）。然而和ReLU对比，它每个神经元的参数数量增加了一倍，这就导致整体参数的数量激增。</p>
+<p><br></p>
+<p>以上就是一些常用的神经元及其激活函数。最后需要注意一点：在同一个网络中混合使用不同类型的神经元是非常少见的，虽然没有什么根本性问题来禁止这样做。</p>
+<p><br></p>
+<p><strong>一句话</strong>：<u>“_那么该用那种呢？_”用ReLU非线性函数。</u>注意设置好学习率，或许可以监控你的网络中死亡的神经元占的比例。如果单元死亡问题困扰你，就试试Leaky ReLU或者Maxout，不要再用sigmoid了。也可以试试tanh，但是其效果应该不如ReLU或者Maxout。</p>
+<p><br></p>
+<h2 id="神经网络结构"><a href="#神经网络结构" class="headerlink" title="神经网络结构"></a>神经网络结构</h2><h3 id="灵活地组织层"><a href="#灵活地组织层" class="headerlink" title="灵活地组织层"></a>灵活地组织层</h3><p><strong>将神经网络算法以神经元的形式图形化。</strong>神经网络被建模成神经元的集合，神经元之间以<u>无环图</u>的形式进行连接。也就是说，一些神经元的输出是另一些神经元的输入。在网络中是不允许循环的，因为这样会导致前向传播的无限循环。<u>通常神经网络模型中神经元是分层的</u>，而不是像生物神经元一样聚合成大小不一的团状。对于普通神经网络，最普通的层的类型是<strong>全连接层（fully-connected layer）</strong>。全连接层中的神经元与其前后两层的神经元是完全成对连接的，但是在同一个全连接层内的神经元之间没有连接。下面是两个神经网络的图例，都使用的全连接层：</p>
+<hr>
+<p><img src="https://pic3.zhimg.com/ccb56c1fb267bc632d6d88459eb14ace_b.png" alt=""></p>
+<p>左边是一个2层神经网络，隐层由4个神经元（也可称为单元（unit））组成，输出层由2个神经元组成，输入层是3个神经元。右边是一个3层神经网络，两个含4个神经元的隐层。<u>注意：层与层之间的神经元是全连接的，但是层内的神经元不连接。</u></p>
+<hr>
+<p><strong>命名规则。</strong>当我们说N层神经网络的时候，我们没有把输入层算入。因此，单层的神经网络就是没有隐层的（输入直接映射到输出）。因此，有的研究者会说逻辑回归或者SVM只是单层神经网络的一个特例。研究者们也会使用_人工神经网络（_Artificial Neural Networks _缩写ANN）_或者_多层感知器（_Multi-Layer Perceptrons _缩写MLP）_来指代神经网络。很多研究者并不喜欢神经网络算法和人类大脑之间的类比，他们更倾向于用_单元（unit）_而不是神经元作为术语。</p>
+<p><br></p>
+<p><strong>输出层。</strong>和神经网络中其他层不同，输出层的神经元一般是不会有激活函数的（或者也可以认为它们有一个线性相等的激活函数）。这是因为最后的输出层大多用于表示分类评分值，因此是任意值的实数，或者某种实数值的目标数（比如在回归中）。</p>
+<p><br></p>
+<p><strong>确定网络尺寸。</strong>用来度量神经网络的尺寸的标准主要有两个：一个是神经元的个数，另一个是参数的个数，用上面图示的两个网络举例：</p>
+<ul>
+<li>第一个网络有4+2=6个神经元（输入层不算），[3x4]+[4x2]=20个权重，还有4+2=6个偏置，共26个可学习的参数。</li>
+<li>第二个网络有4+4+1=9个神经元，[3x4]+[4x4]+[4x1]=32个权重，4+4+1=9个偏置，共41个可学习的参数。 </li>
+</ul>
+<p>为了方便对比，现代卷积神经网络能包含约1亿个参数，可由10-20层构成（这就是深度学习）。然而，_有效（effective）_连接的个数因为参数共享的缘故大大增多。在后面的卷积神经网络内容中我们将学习更多。</p>
+<p><br></p>
+<h3 id="前向传播计算举例"><a href="#前向传播计算举例" class="headerlink" title="前向传播计算举例"></a>前向传播计算举例</h3><p>_不断重复的矩阵乘法与激活函数交织_。将神经网络组织成层状的一个主要原因，就是这个结构让神经网络算法使用矩阵向量操作变得简单和高效。用上面那个3层神经网络举例，输入是[3x1]的向量。一个层所有连接的强度可以存在一个单独的矩阵中。比如第一个隐层的权重<strong>W1</strong>是[4x3]，所有单元的偏置储存在<strong>b1</strong>中，尺寸[4x1]。这样，每个神经元的权重都在<strong>W1</strong>的一个行中，于是矩阵乘法<strong>np.dot(W1, x)</strong>就能计算该层中所有神经元的激活数据。类似的，<strong>W2</strong>将会是[4x4]矩阵，存储着第二个隐层的连接，<strong>W3</strong>是[1x4]的矩阵，用于输出层。完整的3层神经网络的前向传播就是简单的3次矩阵乘法，其中交织着激活函数的应用。</p>
+<pre><code class="python"># 一个3层神经网络的前向传播:
+f = lambda x: 1.0/(1.0 + np.exp(-x)) # 激活函数(用的sigmoid)
+x = np.random.randn(3, 1) # 含3个数字的随机输入向量(3x1)
+h1 = f(np.dot(W1, x) + b1) # 计算第一个隐层的激活数据(4x1)
+h2 = f(np.dot(W2, h1) + b2) # 计算第二个隐层的激活数据(4x1)
+out = np.dot(W3, h2) + b3 # 神经元输出(1x1)
+# 可以看到最后的输出层没有再用激活函数～
+</code></pre>
+<p>在上面的代码中，<strong>W1，W2，W3，b1，b2，b3</strong>都是网络中可以学习的参数。注意<strong>x</strong>并不是一个单独的列向量，而可以是一个批量的训练数据（其中每个输入样本将会是<strong>x</strong>中的一列），所有的样本将会被并行化的高效计算出来。<u>注意神经网络最后一层通常是没有激活函数的</u>（例如，在分类任务中它给出一个实数值的分类评分）。</p>
+<blockquote>
+<p>全连接层的前向传播一般就是先进行一个矩阵乘法，然后加上偏置并运用激活函数。</p>
+</blockquote>
+<h3 id="表达能力"><a href="#表达能力" class="headerlink" title="表达能力"></a>表达能力</h3><p>理解具有全连接层的神经网络的一个方式是：可以认为它们定义了一个由一系列函数组成的函数族，网络的权重就是每个函数的参数。如此产生的问题是：该函数族的表达能力如何？存在不能被神经网络表达的函数吗？</p>
+<p><br></p>
+<p>现在看来，拥有至少一个隐层的神经网络是一个_通用的近似器_。在研究（例如1989年的论文<a href="http://link.zhihu.com/?target=http%3A//www.dartmouth.edu/%257Egvc/Cybenko_MCSS.pdf" target="_blank" rel="noopener">Approximation by Superpositions of Sigmoidal Function</a>，或者<a href="http://link.zhihu.com/?target=http%3A//neuralnetworksanddeeplearning.com/chap4.html" target="_blank" rel="noopener">Michael Nielsen</a>的这个直观解释。）中已经证明，给出任意连续函数$f(x)$和任意$\epsilon &gt;0$，均存在一个至少含1个隐层的神经网络$g(x)$（并且网络中有合理选择的非线性激活函数，比如sigmoid），对于$\forall x$，使得$|f(x)-g(x)|&lt;\epsilon$。换句话说，<u>神经网络可以近似任何连续函数</u>。</p>
+<p><br></p>
+<p>既然一个隐层就能近似任何函数，那为什么还要构建更多层来将网络做得更深？答案是：虽然一个2层网络在数学理论上能完美地近似所有连续函数，但在实际操作中效果相对较差。在一个维度上，虽然以$a,b,c$为参数向量“指示块之和”函数$g(x)=\sum_ic_i1(a_i&lt;x&lt;b_i)$也是通用的近似器，但是谁也不会建议在机器学习中使用这个函数公式。<u>神经网络在实践中非常好用，是因为它们表达出的函数不仅平滑，而且对于数据的统计特性有很好的拟合</u>。同时，<u>网络通过最优化算法（例如梯度下降）能比较容易地学习到这个函数</u>。类似的，虽然在理论上深层网络（使用了多个隐层）和单层网络的表达能力是一样的，但是就实践经验而言，深度网络效果比单层网络好。</p>
+<p><br></p>
+<p>另外，在实践中3层的神经网络会比2层的表现好，然而继续加深（做到4，5，6层）很少有太大帮助。卷积神经网络的情况却不同，<u>在卷积神经网络中，对于一个良好的识别系统来说，深度是一个极端重要的因素</u>（比如数十(以10为量级)个可学习的层）。对于该现象的一种解释观点是：因为<u>图像拥有层次化结构</u>（比如脸是由眼睛等组成，眼睛又是由边缘组成），所以多层处理对于这种数据就有直观意义。</p>
+<p><br></p>
+<p>全面的研究内容还很多，近期研究的进展也很多。如果你对此感兴趣，我么推荐你阅读下面文献：</p>
+<ul>
+<li><a href="http://link.zhihu.com/?target=http%3A//www.deeplearningbook.org/" target="_blank" rel="noopener">Deep Learning</a>的<a href="http://link.zhihu.com/?target=http%3A//www.deeplearningbook.org/contents/mlp.html" target="_blank" rel="noopener">Chapter6.4</a>，作者是Bengio等。</li>
+<li><a href="http://link.zhihu.com/?target=http%3A//arxiv.org/abs/1312.6184" target="_blank" rel="noopener">Do Deep Nets Really Need to be Deep?</a></li>
+<li><a href="http://link.zhihu.com/?target=http%3A//arxiv.org/abs/1412.6550" target="_blank" rel="noopener">FitNets: Hints for Thin Deep Nets</a></li>
+</ul>
+<p><br></p>
+<h3 id="设置层的数量和尺寸"><a href="#设置层的数量和尺寸" class="headerlink" title="设置层的数量和尺寸"></a>设置层的数量和尺寸</h3><p>在面对一个具体问题的时候该如何确定网络结构呢？到底是不用隐层呢？还是一个隐层？两个隐层或更多？每个层的尺寸该多大？</p>
+<p><br></p>
+<p>首先，要知道当我们增加层的数量和尺寸时，网络的容量上升了。即神经元们可以合作表达许多复杂函数，所以表达函数的空间增加。例如，如果有一个在二维平面上的二分类问题。我们可以训练3个不同的神经网络，每个网络都只有一个隐层，但是每层的神经元数目不同：</p>
+<hr>
+<p><img src="https://pic1.zhimg.com/cf3fc543bf1dc81e2083530a4492b0ec_b.png" alt=""></p>
+<p>更大的神经网络可以表达更复杂的函数。数据是用不同颜色的圆点表示他们的不同类别，决策边界是由训练过的神经网络做出的。你可以在<a href="http://link.zhihu.com/?target=http%3A//cs.stanford.edu/people/karpathy/convnetjs/demo/classify2d.html" target="_blank" rel="noopener">ConvNetsJS demo</a>上练练手。</p>
+<hr>
+<p>在上图中，可以看见有更多神经元的神经网络可以表达更复杂的函数。然而这既是优势也是不足，优势是可以分类更复杂的数据，不足是可能造成对训练数据的过拟合。<strong>过拟合（Overfitting）</strong>是<u>网络对数据中的噪声有很强的拟合能力，而没有重视数据间（假设）的潜在基本关系。</u>举例来说，有20个神经元隐层的网络拟合了所有的训练数据，但是其代价是把决策边界变成了许多不相连的红绿区域。而有3个神经元的模型的表达能力只能用比较宽泛的方式去分类数据。它将数据看做是两个大块，并把个别在绿色区域内的红色点看做噪声。在实际中，这样可以在测试数据中获得更好的<strong>泛化（generalization）</strong>能力。</p>
+<p><br></p>
+<p>基于上面的讨论，看起来如果数据不是足够复杂，则似乎小一点的网络更好，因为可以防止过拟合。然而并非如此，<u>防止神经网络的过拟合有很多方法</u>（L2正则化，dropout和输入噪音等），后面会详细讨论。在实践中，<u>使用这些方法来控制过拟合比减少网络神经元数目要好得多</u>。</p>
+<p><br></p>
+<p><u>不要减少网络神经元数目的主要原因在于小网络更难使用梯度下降等局部方法来进行训练</u>：虽然小型网络的损失函数的局部极小值更少，也比较容易收敛到这些局部极小值，但是这些最小值一般都很差，损失值很高。相反，大网络拥有更多的局部极小值，但就实际损失值来看，这些局部极小值表现更好，损失更小。因为<u>神经网络是非凸的</u>，就很难从数学上研究这些特性。即便如此，还是有一些文章尝试对这些目标函数进行理解，例如<a href="http://link.zhihu.com/?target=http%3A//arxiv.org/abs/1412.0233" target="_blank" rel="noopener">The Loss Surfaces of Multilayer Networks</a>这篇论文。在实际中，你将发现如果训练的是一个小网络，那么最终的损失值将展现出多变性：某些情况下运气好会收敛到一个好的地方，某些情况下就收敛到一个不好的极值。从另一方面来说，如果你训练一个大的网络，你将发现许多不同的解决方法，但是最终损失值的差异将会小很多。这就是说，所有的解决办法都差不多，而且对于随机初始化参数好坏的依赖也会小很多。</p>
+<p><br></p>
+<p>重申一下，正则化强度是控制神经网络过拟合的好方法。看下图结果：</p>
+<hr>
+<p><img src="https://pic1.zhimg.com/4f8af027d6059549d160199a1717df14_b.png" alt=""></p>
+<p>不同正则化强度的效果：每个神经网络都有20个隐层神经元，但是随着正则化强度增加，它的决策边界变得更加平滑。你可以在<a href="http://link.zhihu.com/?target=http%3A//cs.stanford.edu/people/karpathy/convnetjs/demo/classify2d.html" target="_blank" rel="noopener">ConvNetsJS demo</a>上练练手。</p>
+<hr>
+<p>需要记住的是：<u>不应该因为害怕出现过拟合而使用小网络。相反，应该进尽可能使用大网络，然后使用正则化技巧来控制过拟合。</u></p>
+<p><br></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>小结如下：</p>
+<ul>
+<li><p>介绍了生物神经元的粗略模型；</p>
+</li>
+<li><p>讨论了几种不同类型的激活函数，其中ReLU是最佳推荐；</p>
+</li>
+<li><p>介绍了<strong>神经网络</strong>，神经元通过<strong>全连接层</strong>连接，层间神经元两两相连，但是层内神经元不连接；</p>
+</li>
+<li><p>理解了分层的结构能够让神经网络高效地进行矩阵乘法和激活函数运算；</p>
+</li>
+<li><p>理解了神经网络是一个<strong>通用函数近似器</strong>，但是该性质与其广泛使用无太大关系。之所以使用神经网络，是因为它们对于实际问题中的函数的公式能够某种程度上做出“正确”假设。</p>
+</li>
+<li><p>讨论了更大网络总是更好的这一事实。然而更大容量的模型一定要和更强的正则化（比如更高的权重衰减）配合，否则它们就会过拟合。在后续章节中我们讲学习更多正则化的方法，尤其是dropout。</p>
+<p><br></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1></li>
+<li><p>使用Theano的<a href="http://link.zhihu.com/?target=http%3A//www.deeplearning.net/tutorial/mlp.html" target="_blank" rel="noopener">deeplearning.net tutorial</a></p>
+</li>
+<li><p><a href="http://link.zhihu.com/?target=http%3A//www.deeplearning.net/tutorial/mlp.html" target="_blank" rel="noopener">ConvNetJS</a></p>
+</li>
+<li><p><a href="http://link.zhihu.com/?target=http%3A//neuralnetworksanddeeplearning.com/chap1.html" target="_blank" rel="noopener">Michael Nielsen’s tutorials</a></p>
+</li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#漫游CS231n" >
+    <span class="tag-code">漫游CS231n</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/02/CS231n_MXNet4/">
+        <span class="nav-arrow">← </span>
+        
+          CS231n 与 MXNet 实现：反向传播
+        
+      </a>
+    
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#快速简介"><span class="toc-nav-text">快速简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#单个神经元建模"><span class="toc-nav-text">单个神经元建模</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#生物动机与连接"><span class="toc-nav-text">生物动机与连接</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#作为线性分类器的单个神经元"><span class="toc-nav-text">作为线性分类器的单个神经元</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#常用激活函数"><span class="toc-nav-text">常用激活函数</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#神经网络结构"><span class="toc-nav-text">神经网络结构</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#灵活地组织层"><span class="toc-nav-text">灵活地组织层</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#前向传播计算举例"><span class="toc-nav-text">前向传播计算举例</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#表达能力"><span class="toc-nav-text">表达能力</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#设置层的数量和尺寸"><span class="toc-nav-text">设置层的数量和尺寸</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#小结"><span class="toc-nav-text">小结</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#参考资料"><span class="toc-nav-text">参考资料</span></a>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://iphysresearch.github.io/2018/02/CS231n_MXNet5/';
+    var banner = 'https://i.loli.net/2018/02/15/5a855eaf63ccd.png'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "iphysresearch";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "CS231n 与 MXNet 实现：神经网络初步",
+        owner: "iphysresearch",
+        repo: "iphysresearch.github.io",
+        oauth: {
+          client_id: "6b978dc207dc30e58ec8",
+          client_secret: "2bc56895d0221e8c27ab87b072f8f18523231e22"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
