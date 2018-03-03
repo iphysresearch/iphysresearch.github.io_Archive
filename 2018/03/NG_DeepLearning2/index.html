@@ -10,7 +10,7 @@
   
   <title>
     
-      《机器学习》(周志华)——要点笔记1 | Teaching is Learning
+      品读 A. Ng 的 DeepLearning.ai 之“改善深层神经网络” | Teaching is Learning
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,8 +138,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>《机器学习》(周志华)——要点笔记1</h2>
-  <p class="post-date">2018-03-02</p>
+  <h2>品读 A. Ng 的 DeepLearning.ai 之“改善深层神经网络”</h2>
+  <p class="post-date">2018-03-03</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -147,94 +147,56 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><ul>
-<li>西瓜书中的第1~3章<ul>
-<li>绪论</li>
-<li>模型评估与选择</li>
-<li>线性模型</li>
-</ul>
-</li>
-</ul>
+    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>此文是吴恩达 DeepLearning.ai 课程第二课——”改善深层神经网络：超参数调试、正则化以及优化“部分的自学笔记。</p>
+<p><br></p>
+<p>内含自己的学习历程和从其他信息渠道获取的归纳与总结，并不会细致的罗列所有内容，仅摘取对个人有一定价值的信息。</p>
+<p><br></p>
+<p>Under construction。。。。</p>
 <a id="more"></a>
+<hr>
+<p><br></p>
+<p>黄兄组织整理了Ng的 <a href="http://www.ai-start.com/dl2017/" target="_blank" rel="noopener">深度学习（DeepLearning.ai）学习笔记</a> 是最全面的中文文本讲义资料。我这里将全面借鉴和引用其中内容和信息，不过此文背后更大程度上记录的是我个人的学习历程和从其他信息渠道获取的归纳与总结，以自述的方式“教自己”。</p>
+<p><br></p>
+<p>相关官方资源：<a href="http://mooc.study.163.com/learn/2001281002?tid=2001392029#/learn/content" target="_blank" rel="noopener">网易云微专业</a>、<a href="https://www.coursera.org/specializations/deep-learning" target="_blank" rel="noopener">Coursera</a></p>
+<p><br></p>
+<h1 id="一、深度学习的实用层面"><a href="#一、深度学习的实用层面" class="headerlink" title="一、深度学习的实用层面"></a>一、深度学习的实用层面</h1><p><br></p>
+<h2 id="1-1-训练，验证，测试集"><a href="#1-1-训练，验证，测试集" class="headerlink" title="1.1 训练，验证，测试集"></a>1.1 训练，验证，测试集</h2><p>对于很多应用系统，即使是经验丰富的深度学习行家也不太可能一开始就预设出最匹配的超级参数。所以需要多次循环往复，才能找到一个称心的神经网络，因此循环该过程的效率是决定项目进展速度的一个关键因素，而创建<strong>高质量的训练数据集，验证集和测试集</strong>也有助于提高循环效率。</p>
+<ul>
+<li>那么如何构建训练集、验证机和测试集呢？</li>
+</ul>
+<p>对于小数据量（100、1000或者1w条）来说，通常会将所有数据三七分，就是70%验证集，30%测试集。当然也可以按照60%训练，20%验证和20%测试集来划分。</p>
+<p><br></p>
+<p>如果对于大数据量来说，验证集和测试集要小于数据总量的20%或10%。事实上，数据量越大，这个比例会越小，毕竟分布的评估只要够数就好，而验证/测试集的存在只是用来评估分类器性能。</p>
 <blockquote>
-<p>内含自己的学习历程和从其他信息渠道获取的归纳与总结，并不会细致的罗列所有内容，仅摘取对个人有一定价值的信息，以备不时之需。</p>
+<p>除了数量的考量，还要有质量的考量：</p>
+<p>训练和测试集的分布应该来自同一分布，相互匹配。</p>
+</blockquote>
+<p>这很容易理解，毕竟机器学习的出发点是以独立同分布为假设前提的。如果都来自同一分布，那么对于深度学习来说，性能和效果肯定会很好。</p>
+<p><br></p>
+<p>关于测试集的价值是在于对模型做无偏估计。所以即使没有测试集也不伤大雅，验证集上迭代评估模型即可。</p>
+<p><br></p>
+<h2 id="1-2-偏差，方差"><a href="#1-2-偏差，方差" class="headerlink" title="1.2 偏差，方差"></a>1.2 偏差，方差</h2><p>区分和理解透<strong>偏差</strong>和<strong>方差</strong>这两个概念，可谓易学难精。</p>
+<blockquote>
+<p>首先，假设基本误差（最优误差）是已知的，训练集和验证集数据来自相同分布。</p>
+<p>那么，训练误差与基本误差之间的比较可以判断模型的偏差情况，进而可以给出是否欠拟合的结论；</p>
+<p>训练误差与验证误差之间的比较可以判断模型的方差情况，进而可以给出是否过拟合的结论。</p>
+</blockquote>
+<p>最后，根据算法偏差和方差的具体情况决定接下来要运用哪些方法来优化算法性能。</p>
+<p><br></p>
+<h2 id="1-3-机器学习基础"><a href="#1-3-机器学习基础" class="headerlink" title="1.3 机器学习基础"></a>1.3 机器学习基础</h2><p>在机器学习中，通常无脑的处理高偏差和高方差的优化方案：</p>
+<blockquote>
+<p>偏差高，甚至模型无法拟合训练数据，那就修改模型算法等，直到解决掉偏差问题。</p>
+<p>高方差，最好的解决办法是采用更多数据。也可以正则化来减少过拟合，也可能是是更合适的神经网络框架。</p>
 </blockquote>
 <p><br></p>
-<h1 id="第1章-绪论"><a href="#第1章-绪论" class="headerlink" title="第1章 绪论"></a>第1章 绪论</h1><p>刚开始的引言部分，看似虽短，但就已经道出了“机器学习”与通常的程式化编程的本质区别：</p>
-<blockquote>
-<p>通过对<strong>经验</strong>的利用，对新情况做出有效的<strong>决策</strong>（预判）。</p>
-</blockquote>
-<p>不过，经常被引用的是另一个<a href="https://zh.wikipedia.org/wiki/机器学习" target="_blank" rel="noopener">英文定义</a>：</p>
-<blockquote>
-<p>A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.</p>
-</blockquote>
-<p>注：用“模型(model)”泛指从数据中学得的结果。（如神经网络中的模型参数和权重等）</p>
-<p><br></p>
-<p>周老师在“基本术语”中给出了相当丰富，甚至细致过分的术语定义和解释，并配有英文释义。让我自己眼前一亮的术语定义有：“属性空间（attribute space）或”“样本空间”（sample space）、“真相”或“真实”（ground-truth）、要区别“示例”（instance）或“样本”（sample） 与“样例”（example）等等。</p>
-<p><br></p>
-<p>可以说，“泛化”（generalization）能力是机器学习的最重要目标之一。</p>
-<blockquote>
-<p>通常假设样本空间中全体样本服从一个未知”分布”（distribution）$\mathcal{D}$，我们获得的每个样本都是独立地从这个分布上采样获得的，即“<strong>独立同分布</strong>”（independent and identically distributed，简称 i.i.d）。</p>
-</blockquote>
-<p>统计机器学习算法都是基于了样本<strong>独立同分布</strong>的假设。说白了，就是获取每个样本的随机变量的时候，假设每个样本的随机变量之间都是独立不相关的，而且关于各个样本的随机变量的分布是相同的。举个例子：环境条件保持不变的情况下，一系列的抛硬币的正反面结果（作为随机变量）是独立同分布的；再比如，若预测天津市西青区的房屋价格，我们就不能拿北京某个小区的房子放到这个模型中去预测，这样做会导致误差很大。</p>
-<p><br></p>
-<p>接下来谈到的两个概念是非常有趣的：“<strong>假设空间</strong>”（hypothesis space） 和“<strong>版本空间</strong>”（version space），源于概念学习技术。说到底，假设空间就是穷尽样本空间所有可能性，是样本空间中所有”开子集”的集合（包括$\varnothing$）。那么显然，训练集中所有独立假设构成的集合肯定是假设空间的子集，机器学习充当了搜索或匹配（fit）的过程，寻找数据样例要求的”标记“（label） 下的”最具概括意义“的最小假设集合。那么这个最小假设集合可能不是唯一的，这就有了版本空间的概念。</p>
-<p><img src="https://i.loli.net/2018/03/03/5a9a505cc9337.png" alt=""></p>
-<blockquote>
-<p>GB 是最大泛化正假设边界（maximally General positive hypothesis Boundary）；SB 是最大精确正假设边界（maximally Specific positive hypothesis Boundary）。 所有绿色方块就是所有绿色样本的版本空间了。</p>
-</blockquote>
-<p>再用习题1.1作为例子，有如下两个样例：</p>
-<p><br></p>
-<table>
-<thead>
-<tr>
-<th>编号</th>
-<th>色泽</th>
-<th>根蒂</th>
-<th>敲声</th>
-<th>好瓜？</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>青绿</td>
-<td>蜷缩</td>
-<td>浊响</td>
-<td>是</td>
-</tr>
-<tr>
-<td>4</td>
-<td>乌黑</td>
-<td>稍卷</td>
-<td>沉闷</td>
-<td>否</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<p>找编号1的版本空间，就是找出包含编号1这个假设的所有其他更具概括意义的假设，同时还不能包含作为负样本的编号4的假设。所以就有：</p>
-<p><img src="https://i.loli.net/2018/03/03/5a9a5c46cfbee.png" alt=""></p>
-<p>上图中，不能进一步的向下将 <code>色泽=*,根蒂=*,敲声=*</code> 作为编号1的版本空间，是因为 <code>色泽=*,根蒂=*,敲声=*</code> 会包含了编号4的负样本。编号4的版本空间以此类推。</p>
-<p><br></p>
-<p>“归纳偏好”（inductive bias）是一个很有趣的提法：</p>
-<blockquote>
-<p>任何一个有效的机器学习算法必有其归纳偏好。</p>
-</blockquote>
-<p>在物理学等基础学科中，“奥卡姆剃刀”（Occam’s razor） 无疑是默认的追求事物运行机制背后本质的基本原则。但是在机器学习算法中，将这个原则单纯的去类比到算法和决策选择上并不合适。造成这个现象的原因，在我的理解下，我想很可能是在机器学习领域中，我们还没有达到或触及更本质、更一般、更深层的规律机制吧。</p>
-<p><br></p>
-<p>最后，“没有免费的午餐”定理（No Free Lunch Theorem，NFL）给出了令人惊异的结论，告诉了我们，不存在普遍意义下绝对好用的算法。要因地制宜，随机应变。 至于证明嘛，日后补上吧。。。。</p>
-<p><br></p>
-<p>至于习题作业嘛，再日后补上吧。。。。</p>
-<p><br></p>
-<h1 id="第2章-模型评估与选择"><a href="#第2章-模型评估与选择" class="headerlink" title="第2章 模型评估与选择"></a>第2章 模型评估与选择</h1><h1 id="第3章-线性模型"><a href="#第3章-线性模型" class="headerlink" title="第3章 线性模型"></a>第3章 线性模型</h1></section>
+<h2 id="1-4-正则化"><a href="#1-4-正则化" class="headerlink" title="1.4 正则化"></a>1.4 正则化</h2></section>
     <!-- Tags START -->
     
       <div class="tags">
         <span>Tags:</span>
         
-  <a href="/tags#怒啃西瓜书" >
-    <span class="tag-code">怒啃西瓜书</span>
+  <a href="/tags#品味DeepLearning.ai" >
+    <span class="tag-code">品味DeepLearning.ai</span>
   </a>
 
       </div>
@@ -245,20 +207,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2018/02/CS231n_MXNet4/">
+      <a class="nav-left" href="/2018/03/ML_ZHOU1/">
         <span class="nav-arrow">← </span>
         
-          CS231n 与 MXNet 实现：反向传播
+          《机器学习》(周志华)——要点笔记1
         
       </a>
     
-    
-      <a class="nav-right" href="/2018/03/NG_DeepLearning2/">
-        
-          品读 A. Ng 的 DeepLearning.ai 之“改善深层神经网络”
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -304,7 +259,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#第1章-绪论"><span class="toc-nav-text">第1章 绪论</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#第2章-模型评估与选择"><span class="toc-nav-text">第2章 模型评估与选择</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#第3章-线性模型"><span class="toc-nav-text">第3章 线性模型</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一、深度学习的实用层面"><span class="toc-nav-text">一、深度学习的实用层面</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-1-训练，验证，测试集"><span class="toc-nav-text">1.1 训练，验证，测试集</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-2-偏差，方差"><span class="toc-nav-text">1.2 偏差，方差</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-3-机器学习基础"><span class="toc-nav-text">1.3 机器学习基础</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-4-正则化"><span class="toc-nav-text">1.4 正则化</span></a></li></ol></li></ol>
     
   </div>
 </aside>
@@ -314,8 +269,8 @@
 
 <script>
   (function () {
-    var url = 'http://iphysresearch.github.io/2018/03/ML_ZHOU1/';
-    var banner = 'https://i.loli.net/2018/03/02/5a993e559d4d1.jpg'
+    var url = 'http://iphysresearch.github.io/2018/03/NG_DeepLearning2/';
+    var banner = 'https://i.loli.net/2018/02/15/5a852c10adc97.png'
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
         'background-image': 'url(' + banner + ')'
@@ -370,7 +325,7 @@
     var gitmentConfig = "iphysresearch";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "《机器学习》(周志华)——要点笔记1",
+        id: "品读 A. Ng 的 DeepLearning.ai 之“改善深层神经网络”",
         owner: "iphysresearch",
         repo: "iphysresearch.github.io",
         oauth: {
