@@ -190,7 +190,16 @@
 <p>高方差，最好的解决办法是采用更多数据。也可以正则化来减少过拟合，也可能是是更合适的神经网络框架。</p>
 </blockquote>
 <p><br></p>
-<h2 id="1-4-正则化"><a href="#1-4-正则化" class="headerlink" title="1.4 正则化"></a>1.4 正则化</h2></section>
+<h2 id="1-4-正则化"><a href="#1-4-正则化" class="headerlink" title="1.4 正则化"></a>1.4 正则化</h2><p>过拟合问题（高方差）通常有两种解决方法：正则化 or more data。</p>
+<p>如果有条件，准备更多数据无疑是更靠谱的办法，好处多多，不过不见得让人如愿以偿。所以通常是利用正则化来避免过度拟合，以减少神经网络的误差。</p>
+<p>简单说来，就是给损失函数加上一个$L^2$正则化项：<br>$$<br>J(\boldsymbol{w},b) = \frac{1}{m}\sum^m_{i=1}\mathscr{L}(\hat{y}^{(i)},y^{(i)}) + \frac{\lambda}{2m}||\boldsymbol{w}||^2<br>$$<br>其中，$||\boldsymbol{w}||^2=\sum^{n_x}_{i=1}=\boldsymbol{w}^T\boldsymbol{w}$ 是欧几里德范数（2范数）的平方。（越来越常用的 L2）</p>
+<p>这里解答了我以前一直有的疑问，问啥参数的正则项并不包含偏置，原来它是可以忽略不计的。</p>
+<p>之后是反向传播部分，暂且略过。。。</p>
+<h2 id="1-5-为什么正则化有利于预防过拟合呢？"><a href="#1-5-为什么正则化有利于预防过拟合呢？" class="headerlink" title="1.5 为什么正则化有利于预防过拟合呢？"></a>1.5 为什么正则化有利于预防过拟合呢？</h2><blockquote>
+<p>如果正则化参数变得很大，参数$W$很小，z也会相对变小，此时忽略b的影响，z会相对变小，实际上，z的取值范围很小，这个激活函数，也就是曲线函数$\tanh$会相对呈线性，整个神经网络会计算离线性函数近的值，这个线性函数非常简单，并不是一个极复杂的高度非线性函数，不会发生过拟合。</p>
+</blockquote>
+<p>一句话说，正则化有效的原因不是简单的说让网络中的部分参数稀疏，关键是正则化的程度可以调整神经网络的”线性程度“。</p>
+<h2 id="1-6-dropout-正则化"><a href="#1-6-dropout-正则化" class="headerlink" title="1.6 dropout 正则化"></a>1.6 dropout 正则化</h2></section>
     <!-- Tags START -->
     
       <div class="tags">
@@ -208,10 +217,10 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2018/02/CS231n_MXNet5/">
+      <a class="nav-left" href="/2018/02/CS231n_MXNet6/">
         <span class="nav-arrow">← </span>
         
-          CS231n 讲义笔记：神经网络初步
+          CS231n 讲义笔记：神经网络训练细节
         
       </a>
     
@@ -267,7 +276,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一、深度学习的实用层面"><span class="toc-nav-text">一、深度学习的实用层面</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-1-训练，验证，测试集"><span class="toc-nav-text">1.1 训练，验证，测试集</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-2-偏差，方差"><span class="toc-nav-text">1.2 偏差，方差</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-3-机器学习基础"><span class="toc-nav-text">1.3 机器学习基础</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-4-正则化"><span class="toc-nav-text">1.4 正则化</span></a></li></ol></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一、深度学习的实用层面"><span class="toc-nav-text">一、深度学习的实用层面</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-1-训练，验证，测试集"><span class="toc-nav-text">1.1 训练，验证，测试集</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-2-偏差，方差"><span class="toc-nav-text">1.2 偏差，方差</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-3-机器学习基础"><span class="toc-nav-text">1.3 机器学习基础</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-4-正则化"><span class="toc-nav-text">1.4 正则化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-5-为什么正则化有利于预防过拟合呢？"><span class="toc-nav-text">1.5 为什么正则化有利于预防过拟合呢？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-6-dropout-正则化"><span class="toc-nav-text">1.6 dropout 正则化</span></a></li></ol></li></ol>
     
   </div>
 </aside>
