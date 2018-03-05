@@ -460,7 +460,71 @@
 </li>
 </ul>
 <p><br></p>
-<h1 id="第3章-线性模型"><a href="#第3章-线性模型" class="headerlink" title="第3章 线性模型"></a>第3章 线性模型</h1></section>
+<h1 id="第3章-线性模型"><a href="#第3章-线性模型" class="headerlink" title="第3章 线性模型"></a>第3章 线性模型</h1><h2 id="3-1-基本形式"><a href="#3-1-基本形式" class="headerlink" title="3.1 基本形式"></a>3.1 基本形式</h2><blockquote>
+<p>线性模型（linear model）的核心理念就是：属性的线性组合！</p>
+</blockquote>
+<p>向量形式：<br>$$<br>f(\boldsymbol{x})=\boldsymbol{w}^T\boldsymbol{x}+b<br>$$<br>其中 $\boldsymbol{w}=(w_1;w_2;\dots;w_d)$。</p>
+<blockquote>
+<p>可解释性（comprehensibility） 是通过各属性变量的系数表达。</p>
+</blockquote>
+<h2 id="3-2-线性回归"><a href="#3-2-线性回归" class="headerlink" title="3.2 线性回归"></a>3.2 线性回归</h2><p>线性回归（linear regression）就是找到线性模型的一组参数使得尽可能准确地预测某给定数据集。</p>
+<blockquote>
+<p>基于均方误差最小化来进行模型求解——最小二乘法（least square method）</p>
+</blockquote>
+<p>在线性回归中，最小二乘法的求解是一个凸优化问题。</p>
+<blockquote>
+<p>补充凸优化知识。。。。</p>
+</blockquote>
+<p>也可以很容易推广到“多元线性回归”（multivariate linear regression）。</p>
+<p>“对数线性回归”（log-linear regression） 是试图让 $e^{\boldsymbol{w}^T\boldsymbol{x}+b}$ 逼近$y$。其本质是求取输入空间到输出空间的非线性函数映射。</p>
+<p>最后，我们还可以谈”广义线性模型“（generalized linear model），<br>$$<br>y=g^{-1}(\boldsymbol{w}^T\boldsymbol{x}+b)<br>$$<br>这里已经可以看到感知器的影子了。</p>
+<h2 id="3-3-对数几率回归"><a href="#3-3-对数几率回归" class="headerlink" title="3.3 对数几率回归"></a>3.3 对数几率回归</h2><p>线性模型解决回归问题，还算 so far so good，那么分类问题是如何呢？</p>
+<p>关键是考虑到了一个近似单位阶跃函数的”Sigmoid“ 函数：<br>$$<br>y=\frac{1}{1+e^{-z}}<br>$$<br>该函数连续。若考虑广义线性模型，则有：<br>$$<br>y=\frac{1}{1+e^{-(\boldsymbol{w}^T\boldsymbol{x}+b)}}<br>$$<br>类似对数线性回归那样，调整上式后，有：<br>$$<br>\ln\frac{y}{1-y}=\boldsymbol{w}^T\boldsymbol{x}+b<br>$$</p>
+<ul>
+<li>”对数“来源于$\ln$</li>
+<li>“几率”（odds）来源于$\frac{y}{1-y}$，表示样本正例的相对可能性</li>
+<li>”对数几率“（log odds，亦称 logit），所以有文献译为”逻辑“（logistic）</li>
+</ul>
+<p>通过”极大似然法“（maximum likelihood method）和凸优化理论求解，即目标每个样本的真实标签的概率越大越好。</p>
+<h2 id="3-4-线性判别分析"><a href="#3-4-线性判别分析" class="headerlink" title="3.4 线性判别分析"></a>3.4 线性判别分析</h2><p>“线性判别分析”（Linear Discriminant Analysis，LDA）是一个有趣的方法：</p>
+<blockquote>
+<p>在样本空间中找到一个超曲面，令训练样本在该超曲面上投影，寻求投影后的“类间距”最大的超曲面。</p>
+</blockquote>
+<p>可见，这也是一个有趣的监督降维技术（逐层降维呗~）。</p>
+<h2 id="3-5-多分类学习"><a href="#3-5-多分类学习" class="headerlink" title="3.5 多分类学习"></a>3.5 多分类学习</h2><ul>
+<li>“一对一”（One vs. One，OvO）<ul>
+<li>通过排列组合，每次挑出两个类别来训练二分类学习器，预测投票的时候，取某样本最多被预测分类的结果</li>
+</ul>
+</li>
+<li>“一对其余”（One vs. Rest，OvR）<ul>
+<li>分别对每一类和其他类训练二分类学习器，预测样本时，取置信度大的分类结果</li>
+</ul>
+</li>
+<li>“多对多”（Many vs. Many，MvM）<ul>
+<li>没啥意思。。。。</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-6-类别不平衡问题"><a href="#3-6-类别不平衡问题" class="headerlink" title="3.6 类别不平衡问题"></a>3.6 类别不平衡问题</h2><p>上述的多分类问题，都是以不同类别的样本数目基本相同为前提的。</p>
+<p>关于类别不平衡的分类问题，解决办法大体有三类：</p>
+<ul>
+<li>“欠采样”（undersampling）<ul>
+<li>把量多的样本缩减，达到与量少的样本数目一致</li>
+<li>EasyEnsemble（集成学习）</li>
+</ul>
+</li>
+<li>“过采样”（oversampling）<ul>
+<li>把量少的样本扩增，达到与量多的样本数目一致</li>
+<li>SMOTE（插值）</li>
+</ul>
+</li>
+<li>“阈值移动”（threshold-moving）<ul>
+<li>算法最后分类决策时，依据类别不平衡比例来调整阈值</li>
+<li>“再缩放”（rescaling）；“代价敏感学习”（cost-sensitive learning）</li>
+</ul>
+</li>
+</ul>
+</section>
     <!-- Tags START -->
     
       <div class="tags">
@@ -530,7 +594,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#第1章-绪论"><span class="toc-nav-text">第1章 绪论</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#第2章-模型评估与选择"><span class="toc-nav-text">第2章 模型评估与选择</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-1-经验误差与过拟合"><span class="toc-nav-text">2.1 经验误差与过拟合</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-2-评估方法"><span class="toc-nav-text">2.2 评估方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-2-1-留出法"><span class="toc-nav-text">2.2.1 留出法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-2-2-交叉验证法"><span class="toc-nav-text">2.2.2 交叉验证法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-2-3-自助法"><span class="toc-nav-text">2.2.3 自助法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-2-4-调参与最终模型"><span class="toc-nav-text">2.2.4 调参与最终模型</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-3-性能度量"><span class="toc-nav-text">2.3 性能度量</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-3-1-错误率与精度"><span class="toc-nav-text">2.3.1 错误率与精度</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-3-2-查准率、查全率与-F1"><span class="toc-nav-text">2.3.2 查准率、查全率与 F1</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-3-3-ROC-与-AUC"><span class="toc-nav-text">2.3.3 ROC 与 AUC</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-3-4-代价敏感错误率与代价曲线（略）"><span class="toc-nav-text">2.3.4 代价敏感错误率与代价曲线（略）</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-4-比较检验（略）"><span class="toc-nav-text">2.4 比较检验（略）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-5-偏差与方差"><span class="toc-nav-text">2.5 偏差与方差</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#第3章-线性模型"><span class="toc-nav-text">第3章 线性模型</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#第1章-绪论"><span class="toc-nav-text">第1章 绪论</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#第2章-模型评估与选择"><span class="toc-nav-text">第2章 模型评估与选择</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-1-经验误差与过拟合"><span class="toc-nav-text">2.1 经验误差与过拟合</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-2-评估方法"><span class="toc-nav-text">2.2 评估方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-2-1-留出法"><span class="toc-nav-text">2.2.1 留出法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-2-2-交叉验证法"><span class="toc-nav-text">2.2.2 交叉验证法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-2-3-自助法"><span class="toc-nav-text">2.2.3 自助法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-2-4-调参与最终模型"><span class="toc-nav-text">2.2.4 调参与最终模型</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-3-性能度量"><span class="toc-nav-text">2.3 性能度量</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-3-1-错误率与精度"><span class="toc-nav-text">2.3.1 错误率与精度</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-3-2-查准率、查全率与-F1"><span class="toc-nav-text">2.3.2 查准率、查全率与 F1</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-3-3-ROC-与-AUC"><span class="toc-nav-text">2.3.3 ROC 与 AUC</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-3-4-代价敏感错误率与代价曲线（略）"><span class="toc-nav-text">2.3.4 代价敏感错误率与代价曲线（略）</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-4-比较检验（略）"><span class="toc-nav-text">2.4 比较检验（略）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-5-偏差与方差"><span class="toc-nav-text">2.5 偏差与方差</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#第3章-线性模型"><span class="toc-nav-text">第3章 线性模型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-1-基本形式"><span class="toc-nav-text">3.1 基本形式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-2-线性回归"><span class="toc-nav-text">3.2 线性回归</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-3-对数几率回归"><span class="toc-nav-text">3.3 对数几率回归</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-4-线性判别分析"><span class="toc-nav-text">3.4 线性判别分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-5-多分类学习"><span class="toc-nav-text">3.5 多分类学习</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-6-类别不平衡问题"><span class="toc-nav-text">3.6 类别不平衡问题</span></a></li></ol></li></ol>
     
   </div>
 </aside>
