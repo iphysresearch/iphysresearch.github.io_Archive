@@ -199,7 +199,39 @@
 <p>如果正则化参数变得很大，参数$W$很小，z也会相对变小，此时忽略b的影响，z会相对变小，实际上，z的取值范围很小，这个激活函数，也就是曲线函数$\tanh$会相对呈线性，整个神经网络会计算离线性函数近的值，这个线性函数非常简单，并不是一个极复杂的高度非线性函数，不会发生过拟合。</p>
 </blockquote>
 <p>一句话说，正则化有效的原因不是简单的说让网络中的部分参数稀疏，关键是正则化的程度可以调整神经网络的”线性程度“。</p>
-<h2 id="1-6-dropout-正则化"><a href="#1-6-dropout-正则化" class="headerlink" title="1.6 dropout 正则化"></a>1.6 dropout 正则化</h2></section>
+<h2 id="1-6-dropout-正则化"><a href="#1-6-dropout-正则化" class="headerlink" title="1.6 dropout 正则化"></a>1.6 dropout 正则化</h2><p>目前用<strong>dropout</strong>最常用的方法就是<strong>Inverted dropout</strong></p>
+<p>详情见我的另一个笔记：<a href="https://iphysresearch.github.io/2018/02/cs231n_MLP4/#就是这么任性！——Dropout">就是这么任性！—— Dropout</a></p>
+<h2 id="1-7-理解-dropout"><a href="#1-7-理解-dropout" class="headerlink" title="1.7 理解 dropout"></a>1.7 理解 dropout</h2><ul>
+<li><strong>dropout</strong>的功能类似于正则化</li>
+<li>“除非算法过拟合，不然我是不会使用<strong>dropout</strong>的” —— A. Ng</li>
+<li><strong>dropout</strong>一大缺点就是代价函数$J$不再被明确定义</li>
+</ul>
+<h2 id="1-8-其他正则化方法"><a href="#1-8-其他正则化方法" class="headerlink" title="1.8 其他正则化方法"></a>1.8 其他正则化方法</h2><h3 id="数据扩增"><a href="#数据扩增" class="headerlink" title="数据扩增"></a>数据扩增</h3><h3 id="Early-stopping"><a href="#Early-stopping" class="headerlink" title="Early stopping"></a>Early stopping</h3><ul>
+<li><strong>Early stopping</strong>的优点是，只运行一次梯度下降</li>
+</ul>
+<h2 id="1-9-归一化输入"><a href="#1-9-归一化输入" class="headerlink" title="1.9 归一化输入"></a>1.9 归一化输入</h2><p>归一化需要两个步骤：</p>
+<ol>
+<li>零均值</li>
+<li>归一化方差；</li>
+</ol>
+<blockquote>
+<p>为了让代价函数平均起来看更对称，梯度下降效率更高</p>
+</blockquote>
+<h2 id="1-10-梯度消失-梯度爆炸"><a href="#1-10-梯度消失-梯度爆炸" class="headerlink" title="1.10 梯度消失/梯度爆炸"></a>1.10 梯度消失/梯度爆炸</h2><p>在深度神经网络中，激活函数将以指数级递减。训练神经网络的时候，导数或坡度有时会变得非常大，或者非常小，甚至于以指数方式变小，这加大了训练的难度。</p>
+<h2 id="1-11-神经网络的权重初始化"><a href="#1-11-神经网络的权重初始化" class="headerlink" title="1.11 神经网络的权重初始化"></a>1.11 神经网络的权重初始化</h2><ul>
+<li>虽然调优该参数能起到一定作用，但考虑到相比调优，其它超级参数的重要性，通常把它的优先级放得比较低。</li>
+</ul>
+<h2 id="1-12-梯度的数值逼近"><a href="#1-12-梯度的数值逼近" class="headerlink" title="1.12 梯度的数值逼近"></a>1.12 梯度的数值逼近</h2><blockquote>
+<p>传说的“梯度检验”！</p>
+</blockquote>
+<p>这相关的部分就暂时略过了，现在基本用的都是自动求导。。。。</p>
+<h2 id="1-13-梯度检验"><a href="#1-13-梯度检验" class="headerlink" title="1.13 梯度检验"></a>1.13 梯度检验</h2><blockquote>
+<p>梯度检验的工作原理</p>
+</blockquote>
+<h2 id="1-14-梯度检验应用的注意事项"><a href="#1-14-梯度检验应用的注意事项" class="headerlink" title="1.14 梯度检验应用的注意事项"></a>1.14 梯度检验应用的注意事项</h2><blockquote>
+<p>梯度检验不能与<strong>dropout</strong>同时使用！</p>
+</blockquote>
+</section>
     <!-- Tags START -->
     
       <div class="tags">
@@ -276,7 +308,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一、深度学习的实用层面"><span class="toc-nav-text">一、深度学习的实用层面</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-1-训练，验证，测试集"><span class="toc-nav-text">1.1 训练，验证，测试集</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-2-偏差，方差"><span class="toc-nav-text">1.2 偏差，方差</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-3-机器学习基础"><span class="toc-nav-text">1.3 机器学习基础</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-4-正则化"><span class="toc-nav-text">1.4 正则化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-5-为什么正则化有利于预防过拟合呢？"><span class="toc-nav-text">1.5 为什么正则化有利于预防过拟合呢？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-6-dropout-正则化"><span class="toc-nav-text">1.6 dropout 正则化</span></a></li></ol></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一、深度学习的实用层面"><span class="toc-nav-text">一、深度学习的实用层面</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-1-训练，验证，测试集"><span class="toc-nav-text">1.1 训练，验证，测试集</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-2-偏差，方差"><span class="toc-nav-text">1.2 偏差，方差</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-3-机器学习基础"><span class="toc-nav-text">1.3 机器学习基础</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-4-正则化"><span class="toc-nav-text">1.4 正则化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-5-为什么正则化有利于预防过拟合呢？"><span class="toc-nav-text">1.5 为什么正则化有利于预防过拟合呢？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-6-dropout-正则化"><span class="toc-nav-text">1.6 dropout 正则化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-7-理解-dropout"><span class="toc-nav-text">1.7 理解 dropout</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-8-其他正则化方法"><span class="toc-nav-text">1.8 其他正则化方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#数据扩增"><span class="toc-nav-text">数据扩增</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Early-stopping"><span class="toc-nav-text">Early stopping</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-9-归一化输入"><span class="toc-nav-text">1.9 归一化输入</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-10-梯度消失-梯度爆炸"><span class="toc-nav-text">1.10 梯度消失/梯度爆炸</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-11-神经网络的权重初始化"><span class="toc-nav-text">1.11 神经网络的权重初始化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-12-梯度的数值逼近"><span class="toc-nav-text">1.12 梯度的数值逼近</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-13-梯度检验"><span class="toc-nav-text">1.13 梯度检验</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-14-梯度检验应用的注意事项"><span class="toc-nav-text">1.14 梯度检验应用的注意事项</span></a></li></ol></li></ol>
     
   </div>
 </aside>
