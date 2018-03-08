@@ -195,20 +195,26 @@
 <p>简单说来，就是给损失函数加上一个$L^2$正则化项：<br>$$<br>J(\boldsymbol{w},b) = \frac{1}{m}\sum^m_{i=1}\mathscr{L}(\hat{y}^{(i)},y^{(i)}) + \frac{\lambda}{2m}||\boldsymbol{w}||^2<br>$$<br>其中，$||\boldsymbol{w}||^2=\sum^{n_x}_{i=1}=\boldsymbol{w}^T\boldsymbol{w}$ 是欧几里德范数（2范数）的平方。（越来越常用的 L2）</p>
 <p>这里解答了我以前一直有的疑问，问啥参数的正则项并不包含偏置，原来它是可以忽略不计的。</p>
 <p>之后是反向传播部分，暂且略过。。。</p>
+<p><br></p>
 <h2 id="1-5-为什么正则化有利于预防过拟合呢？"><a href="#1-5-为什么正则化有利于预防过拟合呢？" class="headerlink" title="1.5 为什么正则化有利于预防过拟合呢？"></a>1.5 为什么正则化有利于预防过拟合呢？</h2><blockquote>
 <p>如果正则化参数变得很大，参数$W$很小，z也会相对变小，此时忽略b的影响，z会相对变小，实际上，z的取值范围很小，这个激活函数，也就是曲线函数$\tanh$会相对呈线性，整个神经网络会计算离线性函数近的值，这个线性函数非常简单，并不是一个极复杂的高度非线性函数，不会发生过拟合。</p>
 </blockquote>
 <p>一句话说，正则化有效的原因不是简单的说让网络中的部分参数稀疏，关键是正则化的程度可以调整神经网络的”线性程度“。</p>
+<p><br></p>
 <h2 id="1-6-dropout-正则化"><a href="#1-6-dropout-正则化" class="headerlink" title="1.6 dropout 正则化"></a>1.6 dropout 正则化</h2><p>目前用<strong>dropout</strong>最常用的方法就是<strong>Inverted dropout</strong></p>
+<p><br></p>
 <p>详情见我的另一个笔记：<a href="https://iphysresearch.github.io/2018/02/cs231n_MLP4/#就是这么任性！——Dropout">就是这么任性！—— Dropout</a></p>
+<p><br></p>
 <h2 id="1-7-理解-dropout"><a href="#1-7-理解-dropout" class="headerlink" title="1.7 理解 dropout"></a>1.7 理解 dropout</h2><ul>
 <li><strong>dropout</strong>的功能类似于正则化</li>
 <li>“除非算法过拟合，不然我是不会使用<strong>dropout</strong>的” —— A. Ng</li>
 <li><strong>dropout</strong>一大缺点就是代价函数$J$不再被明确定义</li>
 </ul>
+<p><br></p>
 <h2 id="1-8-其他正则化方法"><a href="#1-8-其他正则化方法" class="headerlink" title="1.8 其他正则化方法"></a>1.8 其他正则化方法</h2><h3 id="数据扩增"><a href="#数据扩增" class="headerlink" title="数据扩增"></a>数据扩增</h3><h3 id="Early-stopping"><a href="#Early-stopping" class="headerlink" title="Early stopping"></a>Early stopping</h3><ul>
 <li><strong>Early stopping</strong>的优点是，只运行一次梯度下降</li>
 </ul>
+<p><br></p>
 <h2 id="1-9-归一化输入"><a href="#1-9-归一化输入" class="headerlink" title="1.9 归一化输入"></a>1.9 归一化输入</h2><p>归一化需要两个步骤：</p>
 <ol>
 <li>零均值</li>
@@ -217,35 +223,66 @@
 <blockquote>
 <p>为了让代价函数平均起来看更对称，梯度下降效率更高</p>
 </blockquote>
+<p><br></p>
 <h2 id="1-10-梯度消失-梯度爆炸"><a href="#1-10-梯度消失-梯度爆炸" class="headerlink" title="1.10 梯度消失/梯度爆炸"></a>1.10 梯度消失/梯度爆炸</h2><p>在深度神经网络中，激活函数将以指数级递减。训练神经网络的时候，导数或坡度有时会变得非常大，或者非常小，甚至于以指数方式变小，这加大了训练的难度。</p>
+<p><br></p>
 <h2 id="1-11-神经网络的权重初始化"><a href="#1-11-神经网络的权重初始化" class="headerlink" title="1.11 神经网络的权重初始化"></a>1.11 神经网络的权重初始化</h2><ul>
 <li>虽然调优该参数能起到一定作用，但考虑到相比调优，其它超级参数的重要性，通常把它的优先级放得比较低。</li>
 </ul>
+<p><br></p>
 <h2 id="1-12-梯度的数值逼近"><a href="#1-12-梯度的数值逼近" class="headerlink" title="1.12 梯度的数值逼近"></a>1.12 梯度的数值逼近</h2><blockquote>
 <p>传说的“梯度检验”！</p>
 </blockquote>
 <p>这相关的部分就暂时略过了，现在基本用的都是自动求导。。。。</p>
+<p><br></p>
 <h2 id="1-13-梯度检验"><a href="#1-13-梯度检验" class="headerlink" title="1.13 梯度检验"></a>1.13 梯度检验</h2><blockquote>
 <p>梯度检验的工作原理</p>
 </blockquote>
+<p><br></p>
 <h2 id="1-14-梯度检验应用的注意事项"><a href="#1-14-梯度检验应用的注意事项" class="headerlink" title="1.14 梯度检验应用的注意事项"></a>1.14 梯度检验应用的注意事项</h2><blockquote>
 <p>梯度检验不能与<strong>dropout</strong>同时使用！</p>
 </blockquote>
+<p><br></p>
 <h1 id="二、优化算法"><a href="#二、优化算法" class="headerlink" title="二、优化算法"></a>二、优化算法</h1><h2 id="2-1-Mini-batch-梯度下降"><a href="#2-1-Mini-batch-梯度下降" class="headerlink" title="2.1 Mini-batch 梯度下降"></a>2.1 Mini-batch 梯度下降</h2><p>方法：</p>
 <blockquote>
 <p>使用<strong>batch</strong>梯度下降法，一次遍历训练集只能让你做一个梯度下降，使用<strong>mini-batch</strong>梯度下降法，一次遍历训练集。。。</p>
 </blockquote>
+<p><br></p>
 <h3 id="2-2-理解mini-batch梯度下降法"><a href="#2-2-理解mini-batch梯度下降法" class="headerlink" title="2.2 理解mini-batch梯度下降法"></a>2.2 理解mini-batch梯度下降法</h3><p>取 batch size方法：</p>
 <blockquote>
 <p>如果训练集较小，直接使用<strong>batch</strong>梯度下降法，样本集较小就没必要使用<strong>mini-batch</strong>梯度下降法，你可以快速处理整个训练集，所以使用<strong>batch</strong>梯度下降法也很好，这里的少是说小于2000个样本，这样比较适合使用<strong>batch</strong>梯度下降法。不然，样本数目较大的话，一般的<strong>mini-batch</strong>大小为<strong>64到512</strong>，考虑到电脑内存设置和使用的方式，如果<strong>mini-batch</strong>大小是2的次方，代码会运行地快一些，64就是2的6次方，以此类推，128是2的7次方，256是2的8次方，512是2的9次方。所以我经常把<strong>mini-batch</strong>大小设成2的次方。</p>
 </blockquote>
+<p><br></p>
 <h2 id="2-3-指数加权平均数"><a href="#2-3-指数加权平均数" class="headerlink" title="2.3 指数加权平均数"></a>2.3 指数加权平均数</h2><p><img src="https://i.loli.net/2018/03/07/5a9ffbc3eb356.png" alt=""></p>
 <p>指数加权平均数经常被使用，它在统计学中被称为<strong>指数加权移动平均值</strong>，我们就简称为<strong>指数加权平均数</strong>。通过调整这个参数（$\beta$），或者说后面的算法学习，你会发现这是一个很重要的参数，可以取得稍微不同的效果，往往中间有某个值效果最好，为中间值时得到的红色曲线，比起绿线和黄线更好地平均了温度。</p>
 <p>$\beta$ 这个值究竟如何确定，貌似只能靠试验了。</p>
+<p><br></p>
 <h2 id="2-4-理解指数加权平均数"><a href="#2-4-理解指数加权平均数" class="headerlink" title="2.4 理解指数加权平均数"></a>2.4 理解指数加权平均数</h2><p>指数加权平均数公式的好处之一在于，它占用极少内存。</p>
+<p><br></p>
 <h2 id="2-5-指数加权平均的偏差修正"><a href="#2-5-指数加权平均的偏差修正" class="headerlink" title="2.5 指数加权平均的偏差修正"></a>2.5 指数加权平均的偏差修正</h2><blockquote>
 <p>在机器学习中，在计算指数加权平均数的大部分时候，大家不在乎执行偏差修正，因为大部分人宁愿熬过初始时期，拿到具有偏差的估测，然后继续计算下去。如果你关心初始时期的偏差，在刚开始计算指数加权移动平均数的时候，偏差修正能帮助你在早期获取更好的估测。</p>
 </blockquote>
+<p><br></p>
+<h2 id="2-6-动量梯度下降法"><a href="#2-6-动量梯度下降法" class="headerlink" title="2.6 动量梯度下降法"></a>2.6 动量梯度下降法</h2><blockquote>
+<p>动量梯度下降法的本质是最小化碗状函数。</p>
+</blockquote>
+<p>一个物理角度的解释：想象你有一个碗，你拿一个球，微分项给了这个球一个加速度，此时球正向山下滚，球因为加速度越滚越快，而因为 稍小于1，表现出一些摩擦力，所以球不会无限加速下去，所以不像梯度下降法，每一步都独立于之前的步骤，你的球可以向下滚，获得动量，可以从碗向下加速获得动量。</p>
+<p><br></p>
+<h2 id="2-7-RMSprop"><a href="#2-7-RMSprop" class="headerlink" title="2.7 RMSprop"></a>2.7 RMSprop</h2><p>（略）</p>
+<p><br></p>
+<h2 id="2-8-Adam-优化算法"><a href="#2-8-Adam-优化算法" class="headerlink" title="2.8 Adam 优化算法"></a>2.8 Adam 优化算法</h2><blockquote>
+<p> <strong>RMSprop</strong>以及<strong>Adam</strong>优化算法（<strong>Adam</strong>优化算法也是本视频的内容），就是少有的经受住人们考验的两种算法，已被证明适用于不同的深度学习结构。</p>
+</blockquote>
+<p><img src="https://i.loli.net/2018/03/08/5aa145a3d92ad.png" alt=""></p>
+<p><br></p>
+<h2 id="2-9-学习率衰减"><a href="#2-9-学习率衰减" class="headerlink" title="2.9 学习率衰减"></a>2.9 学习率衰减</h2><p>这个东西嘛。。。刚开始的时候不会使用的。超参数调参的时候才会真正考虑。</p>
+<blockquote>
+<p>一会之后，学习率减少了一半，一会儿减少一半，一会儿又一半，这就是离散下降（<strong>discrete stair cease</strong>）</p>
+</blockquote>
+<p><br></p>
+<h2 id="2-10-局部最优的问题"><a href="#2-10-局部最优的问题" class="headerlink" title="2.10 局部最优的问题"></a>2.10 局部最优的问题</h2><p>局部最优不是问题，为啥？因为遇到的几率太小啦！所以，不太可能困在极差的局部最优中，条件是你在训练较大的神经网络，存在大量参数，并且成本函数被定义在较高的维度空间。</p>
+<p>怕的是什么？平稳段。。。。 训练太慢啦</p>
+<p><br></p>
 </section>
     <!-- Tags START -->
     
@@ -323,7 +360,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一、深度学习的实用层面"><span class="toc-nav-text">一、深度学习的实用层面</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-1-训练，验证，测试集"><span class="toc-nav-text">1.1 训练，验证，测试集</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-2-偏差，方差"><span class="toc-nav-text">1.2 偏差，方差</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-3-机器学习基础"><span class="toc-nav-text">1.3 机器学习基础</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-4-正则化"><span class="toc-nav-text">1.4 正则化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-5-为什么正则化有利于预防过拟合呢？"><span class="toc-nav-text">1.5 为什么正则化有利于预防过拟合呢？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-6-dropout-正则化"><span class="toc-nav-text">1.6 dropout 正则化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-7-理解-dropout"><span class="toc-nav-text">1.7 理解 dropout</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-8-其他正则化方法"><span class="toc-nav-text">1.8 其他正则化方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#数据扩增"><span class="toc-nav-text">数据扩增</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Early-stopping"><span class="toc-nav-text">Early stopping</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-9-归一化输入"><span class="toc-nav-text">1.9 归一化输入</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-10-梯度消失-梯度爆炸"><span class="toc-nav-text">1.10 梯度消失/梯度爆炸</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-11-神经网络的权重初始化"><span class="toc-nav-text">1.11 神经网络的权重初始化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-12-梯度的数值逼近"><span class="toc-nav-text">1.12 梯度的数值逼近</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-13-梯度检验"><span class="toc-nav-text">1.13 梯度检验</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-14-梯度检验应用的注意事项"><span class="toc-nav-text">1.14 梯度检验应用的注意事项</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#二、优化算法"><span class="toc-nav-text">二、优化算法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-1-Mini-batch-梯度下降"><span class="toc-nav-text">2.1 Mini-batch 梯度下降</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-2-理解mini-batch梯度下降法"><span class="toc-nav-text">2.2 理解mini-batch梯度下降法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-3-指数加权平均数"><span class="toc-nav-text">2.3 指数加权平均数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-4-理解指数加权平均数"><span class="toc-nav-text">2.4 理解指数加权平均数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-5-指数加权平均的偏差修正"><span class="toc-nav-text">2.5 指数加权平均的偏差修正</span></a></li></ol></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一、深度学习的实用层面"><span class="toc-nav-text">一、深度学习的实用层面</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-1-训练，验证，测试集"><span class="toc-nav-text">1.1 训练，验证，测试集</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-2-偏差，方差"><span class="toc-nav-text">1.2 偏差，方差</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-3-机器学习基础"><span class="toc-nav-text">1.3 机器学习基础</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-4-正则化"><span class="toc-nav-text">1.4 正则化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-5-为什么正则化有利于预防过拟合呢？"><span class="toc-nav-text">1.5 为什么正则化有利于预防过拟合呢？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-6-dropout-正则化"><span class="toc-nav-text">1.6 dropout 正则化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-7-理解-dropout"><span class="toc-nav-text">1.7 理解 dropout</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-8-其他正则化方法"><span class="toc-nav-text">1.8 其他正则化方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#数据扩增"><span class="toc-nav-text">数据扩增</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Early-stopping"><span class="toc-nav-text">Early stopping</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-9-归一化输入"><span class="toc-nav-text">1.9 归一化输入</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-10-梯度消失-梯度爆炸"><span class="toc-nav-text">1.10 梯度消失/梯度爆炸</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-11-神经网络的权重初始化"><span class="toc-nav-text">1.11 神经网络的权重初始化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-12-梯度的数值逼近"><span class="toc-nav-text">1.12 梯度的数值逼近</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-13-梯度检验"><span class="toc-nav-text">1.13 梯度检验</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-14-梯度检验应用的注意事项"><span class="toc-nav-text">1.14 梯度检验应用的注意事项</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#二、优化算法"><span class="toc-nav-text">二、优化算法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-1-Mini-batch-梯度下降"><span class="toc-nav-text">2.1 Mini-batch 梯度下降</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-2-理解mini-batch梯度下降法"><span class="toc-nav-text">2.2 理解mini-batch梯度下降法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-3-指数加权平均数"><span class="toc-nav-text">2.3 指数加权平均数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-4-理解指数加权平均数"><span class="toc-nav-text">2.4 理解指数加权平均数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-5-指数加权平均的偏差修正"><span class="toc-nav-text">2.5 指数加权平均的偏差修正</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-6-动量梯度下降法"><span class="toc-nav-text">2.6 动量梯度下降法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-7-RMSprop"><span class="toc-nav-text">2.7 RMSprop</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-8-Adam-优化算法"><span class="toc-nav-text">2.8 Adam 优化算法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-9-学习率衰减"><span class="toc-nav-text">2.9 学习率衰减</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-10-局部最优的问题"><span class="toc-nav-text">2.10 局部最优的问题</span></a></li></ol></li></ol>
     
   </div>
 </aside>
