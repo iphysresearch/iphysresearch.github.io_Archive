@@ -460,7 +460,7 @@
 <li><strong>ResNet</strong>：<a href="http://link.zhihu.com/?target=http%3A//arxiv.org/abs/1512.03385" target="_blank" rel="noopener">残差网络</a>（Residual Network）是ILSVRC2015的胜利者，由何恺明等实现。它使用了特殊的_跳跃链接_，大量使用了<a href="http://link.zhihu.com/?target=http%3A//arxiv.org/abs/1502.03167" target="_blank" rel="noopener">批量归一化</a>（batch normalization）。这个结构同样在最后没有使用全连接层。读者可以查看何恺明的的演讲（<a href="http://link.zhihu.com/?target=https%3A//github.com/gcr/torch-residual-networks" target="_blank" rel="noopener">视频</a>，<a href="http://link.zhihu.com/?target=https%3A//github.com/gcr/torch-residual-networks" target="_blank" rel="noopener">PPT</a>），以及一些使用Torch重现网络的<a href="http://link.zhihu.com/?target=https%3A//github.com/gcr/torch-residual-networks" target="_blank" rel="noopener">实验</a>。ResNet当前最好的卷积神经网络模型（2016年五月）。何开明等最近的工作是对原始结构做一些优化，可以看论文<a href="http://link.zhihu.com/?target=https%3A//arxiv.org/abs/1603.05027" target="_blank" rel="noopener">Identity Mappings in Deep Residual Networks</a>，2016年3月发表。</li>
 </ul>
 <p><strong>VGGNet的细节：</strong>我们进一步对<a href="http://link.zhihu.com/?target=http%3A//www.robots.ox.ac.uk/%7Evgg/research/very_deep/" target="_blank" rel="noopener">VGGNet</a>的细节进行分析学习。整个VGGNet中的卷积层都是以步长为1进行3x3的卷积，使用了1的零填充，汇聚层都是以步长为2进行了2x2的最大值汇聚。可以写出处理过程中每一步数据体尺寸的变化，然后对数据尺寸和整体权重的数量进行查看：</p>
-<pre><code class="python">INPUT: [224x224x3]        memory:  224*224*3=150K   weights: 0
+<pre><code class="shell">INPUT: [224x224x3]        memory:  224*224*3=150K   weights: 0
 CONV3-64: [224x224x64]  memory:  224*224*64=3.2M   weights: (3*3*3)*64 = 1,728
 CONV3-64: [224x224x64]  memory:  224*224*64=3.2M   weights: (3*3*64)*64 = 36,864
 POOL2: [112x112x64]  memory:  112*112*64=800K   weights: 0
