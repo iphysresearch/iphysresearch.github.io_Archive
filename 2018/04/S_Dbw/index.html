@@ -210,95 +210,9 @@
 <p>变化模拟数据的中心点，固定每类的散布程度：</p>
 <p><img src="https://i.loli.net/2018/04/10/5accba9fb87b5.png" alt=""></p>
 <p>上面两个图的代码如下：</p>
-<pre><code class="python">import numpy as np
-import S_Dbw as sdbw
-from sklearn.cluster import KMeans
-from sklearn.datasets.samples_generator import make_blobs
-from sklearn.metrics.pairwise import pairwise_distances_argmin
+<script src="https://gist.github.com/iphysresearch/0a10d44d73b7441154074e4e95ef1fd2.js"></script>
 
-np.random.seed(0)
 
-S_Dbw_result = []
-batch_size = 45
-centers = [[1, 1], [-1, -1], [1, -1]]
-cluster_std=[0.7,0.3,1.2]
-n_clusters = len(centers)
-X1, _ = make_blobs(n_samples=3000, centers=centers, cluster_std=cluster_std[0])
-X2, _ = make_blobs(n_samples=3000, centers=centers, cluster_std=cluster_std[1])
-X3, _ = make_blobs(n_samples=3000, centers=centers, cluster_std=cluster_std[2])
-
-import matplotlib.pyplot as plt
-fig = plt.figure(figsize=(9, 3))
-fig.subplots_adjust(left=0.02, right=0.98, bottom=0.08, top=0.9)
-colors = [&#39;#4EACC5&#39;, &#39;#FF9C34&#39;, &#39;#4E9A06&#39;]
-
-for item, X in enumerate(list([X1, X2, X3])):
-    k_means = KMeans(init=&#39;k-means++&#39;, n_clusters=3, n_init=10)
-    k_means.fit(X)
-
-    k_means_cluster_centers = k_means.cluster_centers_
-    k_means_labels = pairwise_distances_argmin(X, k_means_cluster_centers)
-
-    KS = sdbw.S_Dbw(X, k_means_labels, k_means_cluster_centers)
-    S_Dbw_result.append(KS.S_Dbw_result())
-
-    ax = fig.add_subplot(1,3,item+1)
-    for k, col in zip(range(n_clusters), colors):
-        my_members = k_means_labels == k
-        cluster_center = k_means_cluster_centers[k]
-        ax.plot(X[my_members, 0], X[my_members, 1], &#39;w&#39;,
-                markerfacecolor=col, marker=&#39;.&#39;)
-        ax.plot(cluster_center[0], cluster_center[1], &#39;o&#39;, markerfacecolor=col,
-                markeredgecolor=&#39;k&#39;, markersize=6)
-    ax.set_title(&#39;S_Dbw: %.3f&#39; %(S_Dbw_result[item]))
-    ax.set_ylim((-4,4))
-    ax.set_xlim((-4,4))
-    plt.text(-3.5, 1.8, &#39;cluster_std: %f&#39; %(cluster_std[item]))
-plt.savefig(&#39;./pic1.png&#39;, dpi=150)
-</code></pre>
-<pre><code class="python">np.random.seed(0)
-
-S_Dbw_result = []
-batch_size = 45
-centers = [[[1, 1], [-1, -1], [1, -1]],
-            [[0.8, 0.8], [-0.8, -0.8], [0.8, -0.8]],
-            [[1.2, 1.2], [-1.2, -1.2], [1.2, -1.2]]]
-n_clusters = len(centers)
-X1, _ = make_blobs(n_samples=3000, centers=centers[0], cluster_std=0.7)
-X2, _ = make_blobs(n_samples=3000, centers=centers[1], cluster_std=0.7)
-X3, _ = make_blobs(n_samples=3000, centers=centers[2], cluster_std=0.7)
-
-import matplotlib.pyplot as plt
-fig = plt.figure(figsize=(8, 3))
-fig.subplots_adjust(left=0.02, right=0.98, bottom=0.2, top=0.9)
-colors = [&#39;#4EACC5&#39;, &#39;#FF9C34&#39;, &#39;#4E9A06&#39;]
-
-for item, X in enumerate(list([X1, X2, X3])):
-    k_means = KMeans(init=&#39;k-means++&#39;, n_clusters=3, n_init=10)
-    k_means.fit(X)
-
-    k_means_cluster_centers = k_means.cluster_centers_
-    k_means_labels = pairwise_distances_argmin(X, k_means_cluster_centers)
-
-    KS = sdbw.S_Dbw(X, k_means_labels, k_means_cluster_centers)
-    S_Dbw_result.append(KS.S_Dbw_result())
-
-    ax = fig.add_subplot(1,3,item+1)
-    for k, col in zip(range(n_clusters), colors):
-        my_members = k_means_labels == k
-        cluster_center = k_means_cluster_centers[k]
-        ax.plot(X[my_members, 0], X[my_members, 1], &#39;w&#39;,
-                markerfacecolor=col, marker=&#39;.&#39;)
-        ax.plot(cluster_center[0], cluster_center[1], &#39;o&#39;, markerfacecolor=col,
-                markeredgecolor=&#39;k&#39;, markersize=6)
-    ax.set_title(&#39;S_Dbw: %.3f &#39; %(S_Dbw_result[item]))
-#     ax.set_xticks(())
-#     ax.set_yticks(())
-    ax.set_ylim((-4,4))
-    ax.set_xlim((-4,4))
-    ax.set_xlabel(&#39;centers: \n%s&#39; %(centers[item]))
-plt.savefig(&#39;./pic2.png&#39;, dpi=150)
-</code></pre>
 <p><br></p>
 <div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a href="http://ieeexplore.ieee.org/abstract/document/989517/" target="_blank" rel="noopener">      Clustering validity assessment: Finding the optimal partitioning of a data set</a> （<a href="http://datamining.rutgers.edu/publication/internalmeasures.pdf" target="_blank" rel="noopener">下载地址</a>）<a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a href="https://github.com/scikit-learn/scikit-learn/issues/6654" target="_blank" rel="noopener">     Add more unsupervised clustering metrics #6654</a><a href="#fnref:2" rev="footnote"> ↩</a></span></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">3.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a href="https://www.jstatsoft.org/article/view/v061i06/v61i06.pdf" target="_blank" rel="noopener">NbClust: An R Package for Determining the Relevant Number of Clusters in a Data Set</a><a href="#fnref:3" rev="footnote"> ↩</a></span></li></ol></div></div></section>
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
