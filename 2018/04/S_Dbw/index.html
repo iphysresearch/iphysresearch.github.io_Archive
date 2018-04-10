@@ -186,12 +186,13 @@
 <p>值得注意的是，我刚刚用了”圆“这个词，其实也就是暗示了每个样本的维度是 comparable 的。也就是说数据至少要做过标准化才行哦~ 最好也是正态化好的。</p>
 <p><br></p>
 <p>下面就是这个 <code>density(density_list=[])</code> 函数的定义了：</p>
-<p>定义完 <code>density()</code> ，我们就终于可以给出 Inter-cluster Density（ID），即要定义的 <code>Dens_bw</code> 函数：<br>$$<br>\text{Dens_bw}(c) = \frac{1}{c\cdot(c-1)}\sum^c_{i=1}\left(\sum^c_{j=1,j\neq i} \frac{density(u_{ij})}{\max\{density(\nu_i),density(\nu_j)\}}\right)<br>$$<br>这个时候，上面的公式就好读多了。</p>
-<p><br></p>
-<p>大括号里有很多项是加起来的，每一项对应于在所有聚类类别中，两两匹配且有序不重复的去穷举（所谓“排列”规则，如6个里面取2个就有 $6^2$ 种取法）。其中分子是两个聚类类别合在一起的密度，再除以该两个聚类类别里密度相对最大的那个。可见，如果两个聚类中心分得很开，同时每个类还各自密度很高很紧凑，那么分子就越小（两个类中心的中点处密度甚至可能为0），分母就越大（显然每类越紧凑，密度越大嘛）。所以，由此可见一斑，这个评估指标是越小越好啊！</p>
 <p><br></p>
 <script src="https://gist.github.com/iphysresearch/e734dc3e3d6e3c649b853aee94181060.js"></script>
 
+<p><br></p>
+<p>定义完 <code>density()</code> ，我们就终于可以给出 Inter-cluster Density（ID），即要定义的 <code>Dens_bw</code> 函数：<br>$$<br>\text{Dens_bw}(c) = \frac{1}{c\cdot(c-1)}\sum^c_{i=1}\left(\sum^c_{j=1,j\neq i} \frac{density(u_{ij})}{\max\{density(\nu_i),density(\nu_j)\}}\right)<br>$$<br>这个时候，上面的公式就好读多了。</p>
+<p><br></p>
+<p>大括号里有很多项是加起来的，每一项对应于在所有聚类类别中，两两匹配且有序不重复的去穷举（所谓“排列”规则，如6个里面取2个就有 $6^2$ 种取法）。其中分子是两个聚类类别合在一起的密度，再除以该两个聚类类别里密度相对最大的那个。可见，如果两个聚类中心分得很开，同时每个类还各自密度很高很紧凑，那么分子就越小（两个类中心的中点处密度甚至可能为0），分母就越大（显然每类越紧凑，密度越大嘛）。所以，由此可见一斑，这个评估指标是越小越好啊！</p>
 <p><br></p>
 <p>下面的代码对应的就是上面公式 <code>Dens_bw</code>：</p>
 <p><br></p>
