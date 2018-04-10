@@ -173,8 +173,10 @@
 <p>说 $D = \{\nu_i|i_1,\dots,c\}$ 是一个针对数据集 S 的划分，分成了 c 个类，其中的 $\nu_i$ 就是第 $i$ 类的中心。</p>
 <p><br></p>
 <p>下面定义类 <code>S_Dbw</code>，并且可以看到，算法的输入信息有三个方面：数据集+聚类结果+各聚类类别的”中心”</p>
+<p><br></p>
 <script src="https://gist.github.com/iphysresearch/ce548d477ca4e756b5d1f32fa8e29b87.js"></script>
 
+<p><br></p>
 <p>在上面的初始化中，我们定义了一个叫做 <code>stdev</code> 的变量，定义为每个类的平均标准方差：<br>$$<br>stdev = \frac{1}{c}\sqrt{\sum^c_{i=1}||\sigma(\nu_i)||}<br>$$<br>其中，符号 $||\cdot||$ 表示为 $||\mathbf{x}||=(\mathbf{x}^T\mathbf{x})^{1/2}$ （矢量的欧式距离，或者说白了，就是高维空间中坐标两点之间的欧氏距离）。</p>
 <p><br></p>
 <p>下面开始计算所谓的 Inter-cluster Density（ID），即要定义的 <code>Dens_bw</code> 函数。但在此之前，需要先行考量计算的是一个关于两个类之间的 density，定义如下：<br>$$<br>density(u)=\sum^{n_{ij}}_{l=1}f(x_l,u), \,\text{where } n_{ij}= \text{ number of tuples}<br>$$<br>其中，$x_l$ 是以 $u$ 为邻域内的样本个数，显然这个样本数目肯定不会超过两个类的合并，更不会超过整个数据量，也就是说满足：$x_l\in c_i\cup c_j \subseteq S$。所以说，上面的公式针对两个类别样本，只要给定一个邻域范围 $u$，就可以给出一个 scalar 来表征密度的含义。那么 $u$ 怎么定义？表征密度的 $f$ 函数又怎么定义呢？说来就来，立马给你定义！<br>$$<br>f(x,u) = \left\{\begin{matrix}<br> 0,&amp; \text{if } d(x,u)&gt;stdev\\<br> 1,&amp; \text{otherwise}<br>\end{matrix}\right.<br>$$<br>这是啥意思呢？</p>
@@ -187,22 +189,27 @@
 <p>定义完 <code>density()</code> ，我们就终于可以给出 Inter-cluster Density（ID），即要定义的 <code>Dens_bw</code> 函数：<br>$$<br>\text{Dens_bw}(c) = \frac{1}{c\cdot(c-1)}\sum^c_{i=1}\left(\sum^c_{j=1,j\neq i} \frac{density(u_{ij})}{\max\{density(\nu_i),density(\nu_j)\}}\right)<br>$$<br>这个时候，上面的公式就好读多了。</p>
 <p><br></p>
 <p>大括号里有很多项是加起来的，每一项对应于在所有聚类类别中，两两匹配且有序不重复的去穷举（所谓“排列”规则，如6个里面取2个就有 $6^2$ 种取法）。其中分子是两个聚类类别合在一起的密度，再除以该两个聚类类别里密度相对最大的那个。可见，如果两个聚类中心分得很开，同时每个类还各自密度很高很紧凑，那么分子就越小（两个类中心的中点处密度甚至可能为0），分母就越大（显然每类越紧凑，密度越大嘛）。所以，由此可见一斑，这个评估指标是越小越好啊！</p>
-<script src="https://gist.github.com/iphysresearch/ce548d477ca4e756b5d1f32fa8e29b87.js"></script>
-
-
+<p><br></p>
+<script src="https://gist.github.com/iphysresearch/e734dc3e3d6e3c649b853aee94181060.js"></script>
 
 <p><br></p>
 <p>下面的代码对应的就是上面公式 <code>Dens_bw</code>：</p>
+<p><br></p>
 <script src="https://gist.github.com/iphysresearch/5caed5bdeda23668e1b098b924bd26e8.js"></script>
 
+<p><br></p>
 <p>我们把 <code>Dens_bw</code> 定义好后，任务只能说是刚过半。接下来要把另一半定义清楚，即_Intra-cluster variance_ ，所谓对 average scattering 的衡量，定义为 <code>Scat()</code> 函数：<br>$$<br>\text{Scat}(c) = \frac{1}{c}\sum^c_{i=1}\frac{||\sigma(\nu_i)||}{||\sigma(S)||}<br>$$<br>上式中，$||\sigma(S)||$ 表示的是整个样本数据 $S$ 的方差，那么 $||\sigma(\nu_i)||$ 表示的就是第 $i$ 类样本数据的方差。一个数列的方差我们很清楚，俺么话说一个二维数列的方差是什么鬼呢？原论文给出了详细的解释：不管是整个样本数据集 $S$ 还是其中的某一类样本数据集合 $\nu_i$。所谓方差，是对数据集合的每一列（每一个特征）求方差，得到一个维数为特征数目的向量 $\mathbf{x}$，然后就是如上法炮制去算该矢量的欧式距离 $||\mathbf{x}||$ 即可。</p>
+<p><br></p>
 <script src="https://gist.github.com/iphysresearch/dbd440a8ba7bb1595daedc6ebdb097d6.js"></script>
 
+<p><br></p>
 <p>从上面的公式也可以晓得，如果所有的聚类类目在高维特征空间上散布的很开（即 $||\sigma(S)||$ 挺大的），同时每个聚类类别各自在空间中散布的很紧凑（$||\sigma(\nu_i)||$都挺小），那不就说明聚类效果还不错，输出 <code>Scat()</code> 也就对应于一个较小的评估值。</p>
 <p><br></p>
 <p>综上呢，我们的 <code>S_Dbw</code> 聚类评估指标就是把 <code>Dens_bw()</code> 和 <code>Scat()</code> 的结果加起来，即可万事大吉：</p>
+<p><br></p>
 <script src="https://gist.github.com/iphysresearch/8f733071a4269ec2cb3dcf07c42b9ff6.js"></script>
 
+<p><br></p>
 <p>来个栗子，瞧一瞧！</p>
 <p><br></p>
 <p>固定住模拟数据的中心点，变化散布程度：</p>
