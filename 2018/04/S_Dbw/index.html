@@ -154,12 +154,12 @@
 </blockquote>
 <a id="more"></a>
 <p>此文的 motivation 来自于近期接的某无监督 k-means 聚类项目，并计划是用基于 K-means 算法的 <a href="https://github.com/nicodv/kmodes" target="_blank" rel="noopener"><code>k-prototypes</code></a> 聚类算法来打发了事。为了对聚类结果给出合理靠谱的评估评价，最终决定主要参考 <code>S_Dbw</code> 评估指标，并且打算写作此文，非原理性的解析 <code>S_Dbw</code>，原因有二：</p>
-<ol>
+<ul>
 <li>在2001年有一篇引用率挺高(300+)的 paper <sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top-right hint--error hint--large" aria-label="[Understanding of Internal Clustering Validation Measures](http://datamining.rutgers.edu/publication/internalmeasures.pdf)
 ">[1]</span></a></sup>谈到说，<code>S_Dbw</code> 聚类评价指标对于各种噪声，不同密度的数据集等等干扰项来调参的鲁棒性最强，直接完爆其他所有评价指标~ </li>
 <li><code>S_Dbw</code> 算法在 sciki-learn 中至今还没有被添加到 api 中 <sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top-right hint--error hint--large" aria-label="[Add more unsupervised clustering metrics #6654](https://github.com/scikit-learn/scikit-learn/issues/6654)
 ">[2]</span></a></sup>，相比， R 语言里却有现成且很好的 api 可以调用，如  <a href="https://rdrr.io/cran/clv/man/SD_SDbw.html" target="_blank" rel="noopener"><code>clv</code></a> 和 <a href="https://github.com/cran/NbClust" target="_blank" rel="noopener"><code>NbClust</code></a> <sup id="fnref:3"><a href="#fn:3" rel="footnote"><span class="hint--top-right hint--error hint--large" aria-label="[NbClust: An R Package for Determining the Relevant Number of Clusters in a Data Set](https://www.jstatsoft.org/article/view/v061i06/v61i06.pdf)">[3]</span></a></sup>。关于 <code>S_Dbw</code> 算法现成的 Python 代码版本，在网络上也难以寻觅，唯一的参考是 fanfanda 的 <a href="https://github.com/fanfanda/S_Dbw" target="_blank" rel="noopener">版本</a>。不过，此代码应该是有问题的，它聚类中心的定义是有误的。</li>
-</ol>
+</ul>
 <p>综上，自己决定在 fanfanda 的代码基础上修正代码，并且贴出此代码算法的详细解析。</p>
 <p><br></p>
 <p>注：符号完全参考论文原文，且已尽可能的说明算法的内涵和代码实现原理，更详细信息请参阅原论文。</p>
@@ -214,8 +214,7 @@
 <p>来个栗子，瞧一瞧！</p>
 <p><br></p>
 <p>固定住模拟数据的中心点，变化散布程度：</p>
-<p>[^_^]:<br>    <img src="https://i.loli.net/2018/04/10/5accba84c4288.png" alt=""></p>
-<p><img src="https://github.com/iphysresearch/S_Dbw_validity_index/blob/master/pic1.png" alt=""></p>
+<p><img src="https://i.loli.net/2018/04/10/5accba84c4288.png" alt=""></p>
 <p>变化模拟数据的中心点，固定每类的散布程度：</p>
 <p><img src="https://i.loli.net/2018/04/10/5accba9fb87b5.png" alt=""></p>
 <p>上面两个图的代码如下：</p>
