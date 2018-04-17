@@ -300,8 +300,8 @@
 </blockquote>
 <ul>
 <li>学会寻求帮助：<ul>
-<li>工具函数：help() 和 dir()   （20m20s起）</li>
-<li>不知道某函数或变量等的含义的时候，可以通过上面两个函数指令来查询说明文档。<br> dir() 查询内置成员函数     Eg：dir(int)   dir(str)<br>  help() 告诉你怎么用该函数        Eg：help(str.strip)   help(pandas)     </li>
+<li>工具函数：<code>help()</code> 和 <code>dir()</code> （20m20s起）</li>
+<li>不知道某函数或变量等的含义的时候，可以通过上面两个函数指令来查询说明文档。<br> dir() 查询内置成员函数     Eg: <code>dir(int)</code>   <code>dir(str)</code><br> help() 告诉你怎么用该函数        Eg: <code>help(str.strip)</code>   <code>help(pandas)</code>    </li>
 </ul>
 </li>
 </ul>
@@ -412,11 +412,11 @@ print b
 <p>如果从数学意义上理解，就会错误地得出<code>b</code>和<code>a</code>相同，也应该是<code>&#39;XYZ&#39;</code>，但实际上<code>b</code>的值是<code>&#39;ABC&#39;</code>，让我们一行一行地执行代码，就可以看到到底发生了什么事：</p>
 <p><br></p>
 <p>执行<code>a = &#39;ABC&#39;</code>，解释器创建了字符串<code>&#39;ABC&#39;</code>和变量<code>a</code>，并把<code>a</code>指向<code>&#39;ABC&#39;</code>：</p>
-<p><img src="https://www.liaoxuefeng.com/files/attachments/0013871830933164ebea9bff3e24a64a1d36c0a6c7d368f000/0" alt=""></p>
+<p><img src="https://i.loli.net/2018/04/17/5ad5fa10afc9e.png" alt=""></p>
 <p>执行<code>b = a</code>，解释器创建了变量<code>b</code>，并把<code>b</code>指向<code>a</code>指向的字符串<code>&#39;ABC&#39;</code>：</p>
-<p><img src="https://www.liaoxuefeng.com/files/attachments/0013871831797715367a9e297944ca88f362ea3b01efaf7000/0" alt=""></p>
+<p><img src="https://i.loli.net/2018/04/17/5ad5f9ff7c5be.png" alt=""></p>
 <p>执行<code>a = &#39;XYZ&#39;</code>，解释器创建了字符串’XYZ’，并把<code>a</code>的指向改为<code>&#39;XYZ&#39;</code>，但<code>b</code>并没有更改：</p>
-<p><img src="https://www.liaoxuefeng.com/files/attachments/00138718324379052e7366c983442ac971699da163cacc7000/0" alt=""></p>
+<p><img src="https://i.loli.net/2018/04/17/5ad5f9e4a1de9.png" alt=""></p>
 <p>所以，最后打印变量<code>b</code>的结果自然是<code>&#39;ABC&#39;</code>了。</p>
 <p><br></p>
 <h3 id="“复杂点”的数据类型（容器）"><a href="#“复杂点”的数据类型（容器）" class="headerlink" title="“复杂点”的数据类型（容器）"></a>“复杂点”的数据类型（容器）</h3><p><br></p>
