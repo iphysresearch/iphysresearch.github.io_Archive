@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Machine Learning, Deep Learning, Physics">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      数据科学实训基础之 Python | Teaching is Learning
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <script src="https://hypothes.is/embed.js" async></script>
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Teaching is Learning</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>数据科学实训基础之 Python</h2>
+  <p class="post-date">2018-04-17</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+      <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><blockquote>
+<p>内含自己的学习历程和从其他信息渠道获取的归纳与总结，并不会细致的罗列所有内容，但会尽可能将 REF 明确的指向出来。内容素材仅摘取对个人有一定价值的信息，以备不时之需。</p>
+</blockquote>
+<a id="more"></a>
+<ul>
+<li>LOG</li>
+</ul>
+<blockquote>
+<p>第一次更新：2018.4.17</p>
+</blockquote>
+<p><br></p>
+<h2 id="0-选择Python的理由："><a href="#0-选择Python的理由：" class="headerlink" title="0. 选择Python的理由："></a>0. 选择Python的理由：</h2><ul>
+<li>简单、够用，21天可以速成Python</li>
+<li>Data Science 中，IT背景的喜欢Python，数学统计出身的爱用R。Python社区活跃，Machine Learning 和 Deep Learning 最近很火，任何一个相关的 package 都有 Python 的接口。R 相比效率差一点。</li>
+</ul>
+<p><br></p>
+<h2 id="1-终端（terminal）下的文件操作"><a href="#1-终端（terminal）下的文件操作" class="headerlink" title="1. 终端（terminal）下的文件操作"></a>1. 终端（terminal）下的文件操作</h2><ul>
+<li>常用终端指令：(活用<code>TAB</code>)<ul>
+<li><code>pwd</code>：查看当前目录</li>
+<li><code>ls</code>：列出当前目录文件(夹)列表</li>
+<li><code>cd</code>：切换当前目录到指定目录  （<code>.</code> 是当前目录、<code>..</code>是上一层目录）</li>
+<li><code>mkdir</code>：当前目录下新建文件夹目录</li>
+<li><code>rm</code>：删除文件／文件夹</li>
+<li><code>cp</code>：复制文件／文件夹</li>
+<li><code>less</code> or <code>cat</code>：预览文件内容</li>
+<li><code>python yourfile.py</code> ：运行Python文件</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>REF：<a href="http://blog.csdn.net/yuexianchang/article/details/51730085" target="_blank" rel="noopener">Ubuntu 终端常用命令</a></p>
+</blockquote>
+<p><br></p>
+<h2 id="2-论Jupyter-Notebook的入门与提高"><a href="#2-论Jupyter-Notebook的入门与提高" class="headerlink" title="2. 论Jupyter Notebook的入门与提高"></a>2. 论Jupyter Notebook的入门与提高</h2><blockquote>
+<p>左手程序员，右手作家 </p>
+</blockquote>
+<p><br></p>
+<h3 id="Jupyter-Notebook的优点"><a href="#Jupyter-Notebook的优点" class="headerlink" title="Jupyter Notebook的优点"></a>Jupyter Notebook的优点</h3><ul>
+<li>以下列举了 Jupyter Notebook 的众多优点：(REF：<a href="http://www.jianshu.com/p/86117613b7a6" target="_blank" rel="noopener">http://www.jianshu.com/p/86117613b7a6</a>)<ul>
+<li>极其适合数据分析<br>想象一下如下混乱的场景：你在终端中运行程序，可视化结果却显示在另一个窗口中，包含函数和类的脚本存在其他文档中，更可恶的是你还需另外写一份说明文档来解释程序如何执行以及结果如何。此时 Jupyter Notebook 从天而降，将所有内容收归一处，你是不是顿觉灵台清明，思路更加清晰了呢？</li>
+<li>支持多语言<br>也许你习惯使用 R 语言来做数据分析，或者是想用学术界常用的 MATLAB 和 Mathematica，这些都不成问题，只要安装相对应的核（kernel）即可。<a href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels" target="_blank" rel="noopener">这里</a>列出了 Jupyter 支持的所有语言，供您参考。</li>
+<li>分享便捷<br>支持以网页的形式分享，GitHub 中天然支持 Notebook 展示，也可以通过 <a href="http://nbviewer.jupyter.org/" target="_blank" rel="noopener">nbviewer</a> 分享你的文档。当然也支持导出成 HTML、Markdown 、PDF 等多种格式的文档。</li>
+<li>远程运行<br>在任何地点都可以通过网络链接远程服务器来实现运算，这里给出一个远程运行的<a href="https://try.jupyter.org/" target="_blank" rel="noopener">例子</a>，可以体验一下 Jupyter Notebook。</li>
+<li>交互式展现<br>不仅可以输出图片、视频、数学公式，甚至可以呈现一些互动的可视化内容，比如可以缩放的地图或者是可以旋转的三维模型。这就需要交互式插件（Interactive widgets）来支持，更多内容请参考<a href="http://jupyter.org/widgets.html" target="_blank" rel="noopener">这里</a>。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>云平台的界面简介</p>
+<ul>
+<li>cell （如代码执行框）</li>
+<li>kernel<ul>
+<li>云平台默认Python2.7</li>
+</ul>
+</li>
+<li>编辑模式／命令模式 （Esc切换）</li>
+<li>markdown <ul>
+<li><a href="http://blog.leanote.com/post/freewalk/Markdown-%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C" target="_blank" rel="noopener">Markdown 语法手册 （完整整理版）参考</a></li>
+</ul>
+</li>
+</ul>
+<p>​</p>
+</li>
+<li><p>Jupyter的各种快捷键</p>
+<ul>
+<li><strong>执行当前cell，并自动跳到下一个cell</strong>：<code>Shift+Enter</code></li>
+<li>执行当前cell，执行后不自动调转到下一个cell：<code>Ctrl+Enter</code></li>
+<li>是当前的cell进入编辑模式：<code>Enter</code></li>
+<li><strong>退出当前cell的编辑模式</strong>：<code>Esc</code></li>
+<li><strong>删除当前的cell</strong>：双D （命令模式）</li>
+<li>为当前的cell加入line number：单L（命令模式）</li>
+<li>将当前的cell转化为具有一级标题的maskdown：单1（命令模式）</li>
+<li>将当前的cell转化为具有二级标题的maskdown：单2（命令模式）</li>
+<li>将当前的cell转化为具有三级标题的maskdown：单3（命令模式）</li>
+<li><strong>为一行或者多行添加/取消注释</strong>：<code>Crtl /</code>（编辑模式）</li>
+<li>撤销对某个cell的删除：<code>z</code> （命令模式）</li>
+<li>浏览器的各个Tab之间切换：<code>Crtl PgUp</code>和<code>Crtl PgDn</code> （命令模式）</li>
+<li>快速跳转到首个cell：<code>Crtl Home</code> （命令模式）</li>
+<li>快速跳转到最后一个cell：<code>Crtl End</code> （命令模式）</li>
+<li><strong>超级牛逼的快捷键！快速查询help文档</strong>：（编辑模式）<ul>
+<li><code>command + control + shift + tab</code> (Mac) *4</li>
+<li><code>win +ctrl + shift + tab</code> (Wins)*4</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><code>!</code> </p>
+<ul>
+<li><p>jupyter的cell可以作为unix command使用</p>
+<pre><code class="python">#查看python版本：
+!python --version
+</code></pre>
+<p>​</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><code>%</code> or <code>%%</code> </p>
+<ul>
+<li>可以将本地的.py文件load到jupyter的一个cell中，也可以save当前某些cell中的代码到本地的.py文件</li>
+</ul>
+<pre><code class="python">#%load [options] source
+!load yourfile.py
+</code></pre>
+<pre><code class="python">#%save [options] filename n1-n2 n3-n4 ... n5 .. n6 ...
+%save yourfile_temp.py 1
+</code></pre>
+<ul>
+<li>在Jupyter Notebook中，如果使用Matplotlib绘图，有时是弹不出图像框的，此时，可以在开头加入</li>
+</ul>
+<pre><code class="python">%matplotlib inline
+</code></pre>
+<ul>
+<li>利用jupyter的cell是可以运行python文件的，即在cell中运行如下代码：</li>
+</ul>
+<pre><code class="python">%run yourfile.py
+</code></pre>
+<p>​</p>
+</li>
+</ul>
+<blockquote>
+<p>REF：具体细节可见<a href="http://nbviewer.jupyter.org/github/ipython/ipython/blob/1.x/examples/notebooks/Cell%20Magics.ipynb#The-cell-magics-in-IPython" target="_blank" rel="noopener">The cell magics in IPython</a></p>
+<p>REF：更详细的清单请参考 <a href="http://ipython.readthedocs.io/en/stable/interactive/magics.html" target="_blank" rel="noopener">Built-in magic commands</a> </p>
+<p>REF： <a href="http://blog.csdn.net/tina_ttl/article/details/51031113" target="_blank" rel="noopener">Python·Jupyter Notebook各种使用方法记录·持续更新</a></p>
+</blockquote>
+<p><br></p>
+<h2 id="3-Python编程基础中的基础"><a href="#3-Python编程基础中的基础" class="headerlink" title="3. Python编程基础中的基础"></a>3. Python编程基础中的基础</h2><p>（数据类型／循环结构／函数定义／类的浅理解／版本差异）</p>
+<p><br></p>
+<p>这一部分是写给超级小白的打怪攻略，个人建议以最快的速度浏览QQ群文件中，资料分享里的“<strong>简明Python教程.pdf</strong>”，文档内容很短，可以非常快的读完。</p>
+<p><br></p>
+<p>接下来的内容将有别于正课，是寒老师第一讲的预习入门，涉及Python编程中最基础知识的最浅部分，是上课前最起码该晓得的东西，也是寒老师讲课基本没法仔细讲解的内容。对于有Python编程经验的老手可以快速浏览这一部分即可，而对于完全没有接触过Python语言，甚至完全没有接触过编程的小白来说，希望这一部分能够切实的帮助到你，轻松应对实训营的第一课！</p>
+<p><br></p>
+<ul>
+<li><p>Python程序是<strong>大小写敏感</strong>的，如果写错了大小写，程序会报错。</p>
+</li>
+<li><p>Python<strong>强制用缩进的方式写代码</strong>！</p>
+<ul>
+<li><p>缩进有利有弊。好处是强迫你写出格式化的代码，但没有规定缩进是几个空格还是Tab。按照约定俗成的管理，应该始终坚持使用4个空格的缩进。</p>
+<p>缩进的另一个好处是强迫你写出缩进较少的代码，你会倾向于把一段很长的代码拆分成若干函数，从而得到缩进较少的代码。</p>
+<p>缩进的坏处就是“复制－粘贴”功能失效了，这是最坑爹的地方。当你重构代码时，粘贴过去的代码必须重新检查缩进是否正确。此外，IDE很难像格式化Java代码那样格式化Python代码。</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>REF：<a href="https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001374738264643de15c5c4abad47dd9510e3b86286acb8000" target="_blank" rel="noopener">Python 2.7教程- 廖雪峰的官方网站</a></p>
+</blockquote>
+<ul>
+<li>学会寻求帮助：<ul>
+<li>工具函数：help() 和 dir()   （20m20s起）</li>
+<li>不知道某函数或变量等的含义的时候，可以通过上面两个函数指令来查询说明文档。<br> dir() 查询内置成员函数     Eg：dir(int)   dir(str)<br>  help() 告诉你怎么用该函数        Eg：help(str.strip)   help(pandas)     </li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h3 id="“简单的”数据类型"><a href="#“简单的”数据类型" class="headerlink" title="“简单的”数据类型"></a>“简单的”数据类型</h3><p>计算机顾名思义就是可以做数学计算的机器，因此，计算机程序理所当然地可以处理各种数值。但是，计算机能处理的远不止数值，还可以处理文本、图形、音频、视频、网页等各种各样的数据，不同的数据，需要定义不同的数据类型。在Python中，能够直接处理的数据类型有以下几种：</p>
+<p><br></p>
+<h4 id="1-整数（int）"><a href="#1-整数（int）" class="headerlink" title="1. 整数（int）"></a>1. 整数（int）</h4><p>Python可以处理任意大小的整数，当然包括负整数，在程序中的表示方法和数学上的写法一模一样，例如：<code>1</code>，<code>100</code>，<code>-8080</code>，<code>0</code>，等等。</p>
+<p><br></p>
+<h4 id="2-浮点数（float）"><a href="#2-浮点数（float）" class="headerlink" title="2. 浮点数（float）"></a>2. 浮点数（float）</h4><p>浮点数也就是小数，之所以称为浮点数，是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的，比如，1.23x109和12.3x108是相等的。浮点数可以用数学写法，如 <code>1.23</code>，<code>3.14</code>，<code>-9.01</code>，等等。但是对于很大或很小的浮点数，就必须用科学计数法表示，把10用e替代，1.23x109就是<code>1.23e9</code>，或者<code>12.3e8</code>，0.000012可以写成<code>1.2e-5</code>，等等。</p>
+<ul>
+<li><p>整数和浮点数的运算：加减乘除 <code>+ - * /</code>，幂次方 <code>**</code>，等于 <code>==</code>，不等于 <code>!=</code>，等等。</p>
+</li>
+<li><p>知识点：Python2.x 与 Python3.x 中除法的区别。</p>
+<blockquote>
+<p>Python2.x 中的 <code>/</code> 会自动取整，但 Python3.x 中不会</p>
+<p>Python3.x 中的取整除法可以用 `//</p>
+</blockquote>
+<ul>
+<li>变量的自加和自减法。Eg：<code>x += 1</code> <code>y -= 2</code>  （注：不建议用 <code>++</code> 和 <code>--</code>）</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h4 id="3-字符串（str／string）"><a href="#3-字符串（str／string）" class="headerlink" title="3. 字符串（str／string）"></a>3. 字符串（str／string）</h4><p>字符串是以<code>&#39;&#39;</code>或<code>&quot;&quot;</code>括起来的任意文本，比如<code>&#39;abc&#39;</code>，<code>&quot;xyz&quot;</code>等等。请注意，<code>&#39;&#39;</code>或<code>&quot;&quot;</code>本身只是一种表示方式，不是字符串的一部分，因此，字符串<code>&#39;abc&#39;</code>只有<code>a</code>，<code>b</code>，<code>c</code>这3个字符。如果<code>&#39;</code>本身也是一个字符，那就可以用<code>&quot;&quot;</code>括起来，比如 <code>&quot;I&#39;m OK&quot;</code>包含的字符是<code>I</code>，<code>&#39;</code>，<code>m</code>，空格，<code>O</code>，<code>K</code>这6个字符。</p>
+<ul>
+<li><p><code>&#39;&#39;</code>单引号内的字符串会忽略掉转义字符，如：<code>\n</code>换行符</p>
+</li>
+<li><p>清楚三引号的功能：自动忽略换行符 </p>
+</li>
+<li><p>清楚字符串中每个字符的位置！也就是说<strong>切片</strong>！如：<code>str[1:8:2]</code></p>
+<ul>
+<li><p>切片/slice**（字符串中很重要的操作）</p>
+<pre><code class="python">test_str = &#39;abcdefghi&#39; # 每个字符的 index 分别为 0、1、2、3、4、5、6、7、8
+test_str[1:4]  #从 index 为1的字符到第4个字符(第4个字符的 index 是 3)。
+# 输出结果： &#39;bcd&#39;
+
+test_str[1:]
+# 输出结果： &#39;bcdefghi&#39;
+test_str[:2]     # 前两个元素
+# 输出结果： &#39;ab&#39;
+
+test_str[1:8:2]  # 每后面第2个取字符（每隔一个）
+# 输出结果： &#39;bdfh&#39;
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>字符串的“运算”：加法 <code>+</code> 。 如：<code>&#39;hello &#39; + &#39;world&#39;+&#39;!&#39;</code></p>
+</li>
+<li><p>熟悉 <code>str.strip()</code> 函数（清除字符串两端的空格）</p>
+<pre><code class="python">l_str = &#39;   this is Big Data lab.  &#39;
+l_str.strip()
+# 输出结果： &#39;this is Big Data lab.&#39;
+</code></pre>
+<ul>
+<li>同理，还有 <code>str.lstrip()</code> 和 <code>str.rstrip()</code> 函数含义。</li>
+</ul>
+</li>
+<li><p>熟悉 <code>str.split()</code> 函数（以指定的分隔符分割字符串到容器中） </p>
+<pre><code class="python"># 接上
+str_list = l_str.split(&quot; &quot;) # 以空格为分割符，分割字符串到list中
+# str_list : [&#39;this&#39;,&#39;is&#39;,&#39;Big&#39;,&#39;Data&#39;,&#39;lab.&#39;]
+</code></pre>
+</li>
+<li><p>熟悉 <code>join</code> 函数（以某字符作为连接符连接list中的字符串元素）</p>
+<pre><code class="python"># 接上
+new_str = &quot; # &quot;.join(str_list)
+# new_str : &#39;this # is # Big # Data # lab.&#39;
+</code></pre>
+</li>
+<li><p>关于字符串编码和乱码的理解: <a href="http://www.cnblogs.com/litaozijin/p/6416133.html" target="_blank" rel="noopener">print打印中文异常及显示乱码问题分析与解决(python2)</a></p>
+</li>
+</ul>
+<p><br></p>
+<h4 id="4-布尔值（bool）"><a href="#4-布尔值（bool）" class="headerlink" title="4. 布尔值（bool）"></a>4. 布尔值（bool）</h4><p>说白了就是 <code>True</code> 和 <code>False</code>，这么两个而已。</p>
+<ul>
+<li>布尔值可以用<code>and</code>、<code>or</code> 和 <code>not</code>运算：与、或、非。</li>
+</ul>
+<p><br></p>
+<h4 id="5-空值（None）"><a href="#5-空值（None）" class="headerlink" title="5. 空值（None）"></a>5. 空值（None）</h4><p>空值是Python里一个特殊的值，就这么一个，用<code>None</code>表示。<code>None</code>不能理解为<code>0</code>，因为<code>0</code>是有意义的，而<code>None</code>是一个特殊的空值。</p>
+<p><br></p>
+<h3 id="变量与赋值"><a href="#变量与赋值" class="headerlink" title="变量与赋值"></a>变量与赋值</h3><p>变量的概念基本上和初中代数的方程变量是一致的，只是在计算机程序中，变量不仅可以是数字，还<strong>可以是任意数据类型</strong>。</p>
+<p><br></p>
+<p>变量在程序中就是用一个变量名表示了，变量名必须是大小写英文、数字和<code>_</code>的组合，且不能用数字开头。</p>
+<p><br></p>
+<p>请不要把赋值语句的等号等同于数学的等号。比如下面的代码：</p>
+<pre><code class="python">x = 10
+x = x + 2
+</code></pre>
+<p>如果从数学上理解<code>x = x + 2</code>那无论如何是不成立的，在程序中，赋值语句先计算右侧的表达式<code>x + 2</code>，得到结果<code>12</code>，再赋给变量<code>x</code>。由于<code>x</code>之前的值是<code>10</code>，重新赋值后，<code>x</code>的值变成<code>12</code>。</p>
+<p><br></p>
+<p>最后，理解变量在计算机内存中的表示也非常重要。当我们写：</p>
+<pre><code class="python">a = &#39;ABC&#39;
+</code></pre>
+<p>时，Python解释器干了两件事情：</p>
+<ol>
+<li>在内存中创建了一个<code>&#39;ABC&#39;</code>的字符串；</li>
+<li>在内存中创建了一个名为<code>a</code>的变量，并把它指向<code>&#39;ABC&#39;</code>。</li>
+</ol>
+<p>也可以把一个变量<code>a</code>赋值给另一个变量<code>b</code>，这个操作实际上是把变量<code>b</code>指向变量<code>a</code>所指向的数据，例如下面的代码：</p>
+<pre><code class="python">a = &#39;ABC&#39;
+b = a
+a = &#39;XYZ&#39;
+print b
+</code></pre>
+<p>最后一行打印出变量<code>b</code>的内容到底是<code>&#39;ABC&#39;</code>呢还是<code>&#39;XYZ&#39;</code>？</p>
+<p><br></p>
+<p>如果从数学意义上理解，就会错误地得出<code>b</code>和<code>a</code>相同，也应该是<code>&#39;XYZ&#39;</code>，但实际上<code>b</code>的值是<code>&#39;ABC&#39;</code>，让我们一行一行地执行代码，就可以看到到底发生了什么事：</p>
+<p><br></p>
+<p>执行<code>a = &#39;ABC&#39;</code>，解释器创建了字符串<code>&#39;ABC&#39;</code>和变量<code>a</code>，并把<code>a</code>指向<code>&#39;ABC&#39;</code>：</p>
+<p><img src="https://www.liaoxuefeng.com/files/attachments/0013871830933164ebea9bff3e24a64a1d36c0a6c7d368f000/0" alt=""></p>
+<p>执行<code>b = a</code>，解释器创建了变量<code>b</code>，并把<code>b</code>指向<code>a</code>指向的字符串<code>&#39;ABC&#39;</code>：</p>
+<p><img src="https://www.liaoxuefeng.com/files/attachments/0013871831797715367a9e297944ca88f362ea3b01efaf7000/0" alt=""></p>
+<p>执行<code>a = &#39;XYZ&#39;</code>，解释器创建了字符串’XYZ’，并把<code>a</code>的指向改为<code>&#39;XYZ&#39;</code>，但<code>b</code>并没有更改：</p>
+<p><img src="https://www.liaoxuefeng.com/files/attachments/00138718324379052e7366c983442ac971699da163cacc7000/0" alt=""></p>
+<p>所以，最后打印变量<code>b</code>的结果自然是<code>&#39;ABC&#39;</code>了。</p>
+<p><br></p>
+<h3 id="“复杂点”的数据类型（容器）"><a href="#“复杂点”的数据类型（容器）" class="headerlink" title="“复杂点”的数据类型（容器）"></a>“复杂点”的数据类型（容器）</h3><p><br></p>
+<h4 id="6-列表（list）"><a href="#6-列表（list）" class="headerlink" title="6. 列表（list）"></a>6. 列表（list）</h4><p>一种有序的集合，可以随时添加和删除其中的元素。</p>
+<pre><code class="python">classmates = [&#39;Michael&#39;, &#39;Bob&#39;, &#39;Tracy&#39;]
+</code></pre>
+<p>list 类似c／c++中的数组，但是比数组更强大，list 可以多种数据类型的元素同时存在。</p>
+<ul>
+<li><p>知识点：</p>
+<ul>
+<li><p>切片（同理字符串中的切片）</p>
+</li>
+<li><p>用 <code>in</code> 来判断一个元素是否在 list 中 （常用于条件语句判断）</p>
+<pre><code class="python">list = [&#39;abcd&#39;,2]
+2 in list  # 输出结果： True
+3 in list  # 输出结果： False
+</code></pre>
+</li>
+<li><p>熟悉并区别 <code>list.append</code> 和 <code>list.extend</code> 函数（用于对 list 做扩充）（33m25s起）</p>
+<pre><code class="python"># 接上
+new_list = [1,2,3]
+# append
+list.append(new_list)  # list 被就地赋值为 [&#39;abcd&#39;, 2, [1, 2, 3]]
+# remove  # 去除list中的某元素
+list.remove(new_list)  # list 的结果回到 [&#39;abcd&#39;, 2]
+# extend
+list.extend(new_list)  # list 被就地赋值为 [&#39;abcd&#39;, 2, 1, 2, 3]
+# 除了用 append 和 extend 扩充 list外，也可以直接&quot;加法&quot;扩充
+list[:2] += new_list   # list 被就地赋值为 [&#39;abcd&#39;, 2, 1, 2, 3]
+</code></pre>
+</li>
+<li><p>了解  <code>list.count()</code> 函数（统计某元素在该 list 中的个数）</p>
+<p>作为对比，要熟悉 <code>len()</code> 函数。</p>
+</li>
+<li><p>list 的高级用法——熟悉 <code>list.reverse()</code>，并区分 <code>list.sort()</code> 和 <code>sorted()</code> 函数 （47m04s起）</p>
+<pre><code class="python">list.reverse()    # 就地(IN PLACE)做倒序，说白了就是倒序后，赋值或覆盖原list罢了
+list.sort(key = None, reverse = False)        # 就地(IN PLACE)做排序
+sorted(list, key = None, reverse = False)    # 做排序，返回新的list，不赋值或覆盖原list
+# key = 指定的函数／映射
+
+# 例子：
+strs = [&#39;ccc&#39;,&#39;aaaaa&#39;,&#39;BB&#39;,&#39;dd&#39;,&#39;e&#39;]
+
+sorted(strs)                    # sorted 默认按照ASCII码排序(大写在前，小写在后)
+# 输出结果： [&#39;BB&#39;, &#39;aaaaa&#39;, &#39;ccc&#39;, &#39;dd&#39;, &#39;e&#39;]
+sorted(strs, key = str.lower, reverse = False)    # 根据字符串的小写，做顺序
+# 输出结果： [&#39;aaaaa&#39;, &#39;BB&#39;, &#39;ccc&#39;, &#39;dd&#39;, &#39;e&#39;]
+sorted(strs, key = len, reverse = True)            # 根据字符串的长度，做倒序
+# 输出结果：[&#39;e&#39;, &#39;BB&#39;, &#39;dd&#39;, &#39;ccc&#39;, &#39;aaaaa&#39;]
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h4 id="7-元组（tuple）"><a href="#7-元组（tuple）" class="headerlink" title="7. 元组（tuple）"></a>7. 元组（tuple）</h4><p>另一种有序列表叫元组：tuple。tuple和list非常类似，但是tuple<strong>一旦初始化就不能修改</strong>。</p>
+<ul>
+<li>不可变的tuple有什么意义？因为tuple不可变，所以代码更安全。如果可能，能用tuple代替list就尽量用tuple。</li>
+</ul>
+<ul>
+<li>tuple的陷阱：当你定义一个tuple时，在定义的时候，tuple的元素就必须被确定下来.</li>
+</ul>
+<p><br></p>
+<h4 id="8-字典（dict）"><a href="#8-字典（dict）" class="headerlink" title="8. 字典（dict）"></a>8. 字典（dict）</h4><p>Python内置了字典：dict的支持，dict全称dictionary，在其他语言中也称为map，使用键-值（key-value）存储，具有极快的查找速度。</p>
+<pre><code class="python">d = {&#39;Michael&#39;: 95, &#39;Bob&#39;: 75, &#39;Tracy&#39;: 85}
+</code></pre>
+<p>元素的结构：键-值对（key-value）</p>
+<pre><code class="python"># C/C++/Java hash map
+# key - value
+animal_legs = {&#39;dog&#39;: 4, &#39;chincken&#39;: 2, &#39;spider&#39;: 8}
+print &#39;Dog has &#39; + str(animal_legs[&#39;dog&#39;]) + &#39; legs.&#39;   # 类型转换函数：str()
+# 打印结果： dog has 4 legs.
+
+animal_legs.keys()            # 取出来所有的 keys
+# 输出结果： dict_keys([&#39;dog&#39;, &#39;chincken&#39;, &#39;spider&#39;])
+animal_legs.values()        # 取出来所有的 values
+# 输出结果： dict_values([4, 2, 8])
+animal_legs.items()            # 取出来所有的 key-value 元组对
+# 输出结果： dict_items([(&#39;dog&#39;, 4), (&#39;chincken&#39;, 2), (&#39;spider&#39;, 8)])
+
+# 赋值
+animal_legs[&#39;dog&#39;] = 3
+</code></pre>
+<p><br></p>
+<h4 id="9-集合（set）（略）"><a href="#9-集合（set）（略）" class="headerlink" title="9. 集合（set）（略）"></a>9. 集合（set）（略）</h4><p>set和dict类似，也是一组key的集合，但不存储value。由于key不能重复，所以，在set中，没有重复的key。</p>
+<p><br></p>
+<h3 id="列表推导式／字典推导式（重点）"><a href="#列表推导式／字典推导式（重点）" class="headerlink" title="列表推导式／字典推导式（重点）"></a>列表推导式／字典推导式（<strong>重点</strong>）</h3><pre><code class="python">num_list = range(10)    # range()函数生成list [0,1,2,3,4,5,6,7,8,9]
+# for循环的写法，为了生成一个给定要求的list
+new_num_list = []
+for elem in num_list:
+    num_list_list.append(elem**2)        # [0,1,4,9,16,25,36,49,64,81]
+
+# list comprehension 列表推导式：基于某已知list，为了生成另一个给定要求的list
+[tmp**2 for tmp in num_list]            # [0,1,4,9,16,25,36,49,64,81]
+# 加条件
+[tmp**2 for tmp in num_list if tmp%2 == 0]                        # [0,4,16,36,64]
+[tmp**3 for tmp in num_list if (tmp%2 == 0) and (tmp &gt;= 4)]        # [64, 216, 512]
+
+# dict comprehension 字典推导式：基于某已知list，为了生成另一个给定要求的dict
+{tmp: tmp**2 for tmp in num_list}    
+# {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
+</code></pre>
+<p><br></p>
+<h2 id="学无尽之路。。。。"><a href="#学无尽之路。。。。" class="headerlink" title="学无尽之路。。。。"></a>学无尽之路。。。。</h2><p>在自学的道路上，靠山靠地，不如靠自己！</p>
+<p>Ref：<a href="https://iphysresearch.github.io/2018/01/MyWay2017/#四、自学路上必会之-“上下求索的技能”">数据科学入门之我谈(2017)</a></p>
+<p><br></p>
+<h2 id="4-loop／循环-和-判断"><a href="#4-loop／循环-和-判断" class="headerlink" title="4. loop／循环 和 判断"></a>4. loop／循环 和 判断</h2><p>条件判断语句：</p>
+<ul>
+<li><p>知识点：</p>
+<pre><code class="python">age = 60
+if age &gt; 50:
+    print &quot;old man&quot;
+elif age &gt; 35:
+    print &quot;middle age&quot;
+else
+    print &quot;young people&quot;
+# 打印结果： old man  
+# 条件语句有执行顺序的
+</code></pre>
+</li>
+</ul>
+<p>循环语句：</p>
+<ul>
+<li><p>知识点：</p>
+<ul>
+<li>区别 <code>for</code> 和 <code>while</code> （<code>while</code> 循环关注的是条件是否满足，<code>for</code> 循环通常关注的是循环的次数）</li>
+</ul>
+<pre><code class="python">str_list = [&quot;You&quot;,&quot;are&quot;,&quot;so&quot;,&quot;hot!&quot;,38]
+# for
+for elem in str_list: 
+    # 上面语句其实新定义了局部变量elem，来表示 str_list 中的每个元素，循环次数为len(str_list)
+    # 别忘了容易漏写的冒号
+    print elem
+
+# while
+index = 0
+while type(str_list[index]) != int:  # 不满足条件时，跳出循环
+    index += 1
+print str_list[index]    #打印结果：38
+</code></pre>
+</li>
+</ul>
+<p><br></p>
+<h2 id="5-函数"><a href="#5-函数" class="headerlink" title="5. 函数"></a>5. 函数</h2><p>为了避免某功能／算法的重复编写。</p>
+<pre><code class="python"># def 关键词
+# 函数名后接()，括号内是 list of parameters
+# 冒号之后是锁进后的函数代码
+def my_sum(a, b):
+    return a +b
+
+# 不定长的参数
+def print_all(*args):
+    print type(args)
+    print args
+print_all(&#39;hello&#39;,&#39;world&#39;,&#39;Big&#39;,&#39;Data&#39;)
+
+# 可以默认函数参数值, 调用函数时，可以更改相应的默认参数值
+def my_sum(a = 3, b = 5):
+    return a + b
+my_sum(a = 5)        # 输出结果： 10
+</code></pre>
+<ul>
+<li>lambda 函数 （暂略）</li>
+</ul>
+<p><br></p>
+<h2 id="6-文件读写"><a href="#6-文件读写" class="headerlink" title="6. 文件读写"></a>6. 文件读写</h2><pre><code class="python">for line in open(&#39;data/ShangHai.txt&#39;)
+    print line.strip() # 去掉每行之间的空格
+</code></pre>
+<p>对文件统计词频：</p>
+<pre><code class="python">def count_word_num(in_file, out_file):
+    word_count_dic = {}
+    # 打开文件，读内容
+    for line in open(in_file):
+        # 把每一行的左右空格去掉，再以空格为分割符将字符串切割成每个单词为元素的list
+        words = line.strip().split(&quot; &quot;)
+        # 遍历list列表
+        for word in words:
+            if word in word_count_dic:    # 如果单词又一次出现在了字典中
+                word_count_dic[word] += 1
+            else:                        # 头一次看到该单词
+                word_count_dic[word] = 1
+    # 文件句柄
+    out = open(out_file, &#39;w&#39;)            # w 表示写入
+    for word in word_count_dic:
+        out.write(word + &quot; : &quot; + str(word_count_dic[word]) + &quot;\n&quot;)    # 写入文件
+       out.close()
+# 文件使用完毕后必须关闭，因为文件对象会占用操作系统的资源，并且操作系统同一时间能打开的文件数量也是有限的
+
+in_file = &#39;data/ShangHai.txt&#39;
+out_file = &#39;data/word_count.txt&#39;
+count_word_num(in_file, out_file)
+</code></pre>
+<ul>
+<li><p>由于文件读写时都有可能产生 <code>IOError</code>，一旦出错，后面的 <code>f.close()</code> 就不会调用。所以，Python引入了<code>with</code> 语句来自动帮我们调用 <code>close()</code> 方法。</p>
+</li>
+<li><p>调用 <code>read()</code> 会一次性读取文件的全部内容，如果文件有10G，内存就爆了，所以，要保险起见，可以反复调用 <code>read(size)</code> 方法，每次最多读取size个字节的内容。另外，调用 <code>readline()</code> 可以每次读取一行内容，调用 <code>readlines()</code> 一次读取所有内容并按行返回 <code>list</code>。因此，要根据需要决定怎么调用。</p>
+</li>
+<li><p>如果文件很小，<code>read()</code>一次性读取最方便；如果不能确定文件大小，反复调用<code>read(size)</code>比较保险；如果是配置文件，调用<code>readlines()</code>最方便。</p>
+<pre><code class="python">with open(in_file, &#39;r&#39;) as f:  # r 表示读出
+    f.readline()
+    f.readlines()
+    for line in f.readlines():
+        print(line.strip()) # 把末尾的&#39;\n&#39;删掉
+</code></pre>
+</li>
+<li><p>写文件时，你可以反复调用<code>write()</code>来写入文件，但是务必要调用<code>f.close()</code>来关闭文件。当我们写文件时，操作系统往往不会立刻把数据写入磁盘，而是放到内存缓存起来，空闲的时候再慢慢写入。只有调用<code>close()</code>方法时，操作系统才保证把没有写入的数据全部写入磁盘。忘记调用<code>close()</code>的后果是数据可能只写了一部分到磁盘，剩下的丢失了。所以，还是用<code>with</code>语句来得保险：</p>
+<pre><code class="python">with open(in_file, &#39;w&#39;) as f:
+    f.write(&#39;Hello, world!&#39;)
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>REF: <a href="http://www.cnblogs.com/ymjyqsx/p/6554817.html" target="_blank" rel="noopener">http://www.cnblogs.com/ymjyqsx/p/6554817.html</a></p>
+</blockquote>
+<p><br></p>
+<h2 id="7-类／Class"><a href="#7-类／Class" class="headerlink" title="7. 类／Class"></a>7. 类／Class</h2><p>Python 是面向对象的编程语言，需要两个概念：class 类 和 object 对象</p>
+<p><br></p>
+<p>Eg：“人” 是一个类，“韩美美”，“李雷” 都是对象。</p>
+<pre><code class="python"># 定义类
+class Employee(object):  
+    def __init__(self, name, ID, title, salary, manager = None):  # 一个初始化函数；
+        self.name = name
+        self.ID = ID
+        self.title = title
+        self.salary = salary
+        self.manager = manager
+
+    # 定义这个类的成员函数
+    def get_info(self):
+        return &quot;Employee name:&quot; +self.name +&quot;,&quot; +&quot;Employee ID:&quot; +str(self.ID) +&quot;,&quot; +&quot;Employee title:&quot; +self.title +&quot;,&quot; + &quot;Employee salary:&quot; +str(self.salary)
+</code></pre>
+<pre><code class="python">boss = Employee(&quot;mayun&quot;, 1, &quot;CEO&quot;, 99999999)
+print boss.get_info()
+Xiaoming = Employee(&quot;Xiaoming&quot;, 10000, &quot;engineer&quot;, 5000)
+print Xiaoming.get_info()
+# 打印结果：
+# Employee name:mayun,Employee ID:1,Employee title:CEO,Employee salary:99999999
+# Employee name:Xiaoming,Employee ID:10000,Employee title:engineer,Employee salary:5000
+</code></pre>
+<pre><code class="python"># 定义一个子类 subclass
+class CEO(Employee):
+    def __init__():
+
+    def work():
+</code></pre>
+<p>以上仅关于类的课程笔记而已。</p>
+<p><br></p>
+<p>更多关于类的理解，可以查看这个很有趣的连载系列文章：</p>
+<blockquote>
+<p> <a href="https://ask.hellobi.com/blog/wangdawei/8429" target="_blank" rel="noopener">Python面向对象编程从零开始（1）——从没对象到有对象</a></p>
+<p> <a href="https://ask.hellobi.com/blog/wangdawei/8446" target="_blank" rel="noopener">Python面向对象编程从零开始（2）—— 与对象相互了解</a></p>
+<p> <a href="https://ask.hellobi.com/blog/wangdawei/8463" target="_blank" rel="noopener">Python面向对象编程从零开始（3）—— 小姐姐请客上篇</a></p>
+<p> <a href="https://ask.hellobi.com/blog/wangdawei/8478" target="_blank" rel="noopener">Python面向对象编程从零开始（4）—— 小姐姐请客下篇</a></p>
+<p> <a href="https://ask.hellobi.com/blog/wangdawei/8586" target="_blank" rel="noopener">Python面向对象编程从零开始（5）—— 小姐姐要买房</a></p>
+</blockquote>
+<p><br></p>
+<h2 id="8-正则表达式"><a href="#8-正则表达式" class="headerlink" title="8. 正则表达式"></a>8. 正则表达式</h2><p>正则表达式是<strong>处理字符串</strong>的强大工具，拥有独特的语法和独立的处理引擎。（非Python语言所独有）</p>
+<p><br></p>
+<p>我们在大文本中匹配字符串时，有些情况用str自带的函数(比如find, in)可能可以完成，有些情况会稍稍复杂一些(比如说找出所有长得“像邮箱”的字符串，所有和bigdatadigest相关的句子)，这个时候我们需要一个某种模式的工具，这个时候<strong>正则表达式</strong>就派上用场了。（自然语言处理一定绕不开正则表达式）</p>
+<p><br></p>
+<p>说起来正则表达式效率上可能不如str自带的方法，但匹配功能实在强大太多。对啦，正则表达式不是Python独有的，如果已经在其他语言里使用过正则表达式，这里的说明只需要简单看一看就可以上手啦。</p>
+<p><br></p>
+<h3 id="1-语法"><a href="#1-语法" class="headerlink" title="1. 语法"></a>1. 语法</h3><p>废话少说，直接上技能。</p>
+<p><br></p>
+<p>下面是一张有些同学比较熟的图，我们俗称python正则表达式小抄，把写正则表达式当做一个开卷考试，显然容易得多。</p>
+<p><br></p>
+<p>当你要匹配 <strong>一个/多个/任意个 数字/字母/非数字/非字母/某几个字符/任意字符</strong>，想要 <strong>贪婪/非贪婪</strong> 匹配，想要捕获匹配出来的 <strong>第一个/所有</strong> 内容的时候，记得这里有个小手册供你参考。</p>
+<p><img src="https://i.loli.net/2018/04/17/5ad5f3ed1dacb.jpg" alt=""></p>
+<pre><code class="shell">.    # 匹配所有除了\n外所有的单个字符
+..    # 匹配所有除了\n外所有的一对相邻字符
+...    # 匹配所有除了\n外所有的三个相邻字符
+[]  # 匹配中括号范围内的每个单个字符 注：匹配中括号内的符号需要\来转义
+\d  # 匹配所有的数字
+\D    # 匹配所有非数字
+\s    # 匹配所有的space相关的，如空格／tab等
+\S    # 匹配所有的非space相关的，如空格／tab等
+\w    # 匹配所有的A-Z、a-z、0-9和_，等同于[A-Za-z0-9_]
+\W    # 匹配所有的非\w
+
+w{3}    # 匹配连续出现3次的字符w
+w{2,4}    # 匹配连续出现2到4次的字符w（尽可能的捕捉）
+w+        # 匹配至少相邻出现1次以上的字符w
+w*        # 匹配至少相邻出现0次以上的字符w（wed* 可以匹配 we wed weddd）
+w?        # 匹配出现0次或者1次的字符w（wed? 可以匹配 we wed）
+
+^W        # 匹配出现在字符串的开头的字符W
+W$        # 匹配出现在字符串的结尾的字符W
+\bW        # 匹配出现在单词的开头的字符W
+
+(Wed).*(Reg)    # 匹配以字符Wed开头，字符Reg结尾的一段字符串，其间没有换行符
+[\w\.]+@[\w\.]    # 匹配邮件地址
+</code></pre>
+<p>写法可以有很多。</p>
+<p><br></p>
+<h3 id="2-验证工具"><a href="#2-验证工具" class="headerlink" title="2. 验证工具"></a>2. 验证工具</h3><p>我们最喜爱的正则表达式在线验证工具之一是<a href="http://regexr.com/" target="_blank" rel="noopener">http://regexr.com/</a></p>
+<p><br></p>
+<p>谁用谁知道，用过一次以后欲罢不能。 （<code>g</code>表示所有的，验证的时候，你输入的正则表达式在//之间写入）</p>
+<p><img src="https://i.loli.net/2018/04/17/5ad5f40641824.jpeg" alt=""></p>
+<p><br></p>
+<h3 id="3-挑战与提升"><a href="#3-挑战与提升" class="headerlink" title="3. 挑战与提升"></a>3. 挑战与提升</h3><p>长期做自然语言处理的同学正则表达式都非常熟，曾经有半年写了大量的正则表达式，以至于同事间开玩笑说，只要是符合某种规律或者模式的串，肯定分分钟能匹配出来。</p>
+<p><br></p>
+<p>对于想练习正则表达式，或者短期内快速get复杂技能，or想挑战更复杂的正则表达式的同学们。 请戳<a href="https://alf.nu/RegexGolf" target="_blank" rel="noopener">正则表达式进阶练习</a></p>
+<p><br></p>
+<p>so, 各位宝宝 enjoy yourself！</p>
+<p><img src="https://i.loli.net/2018/04/17/5ad5f4184ce89.jpeg" alt=""></p>
+<p><br></p>
+<h3 id="4-Python案例"><a href="#4-Python案例" class="headerlink" title="4.Python案例"></a>4.Python案例</h3><p><br></p>
+<h4 id="re模块"><a href="#re模块" class="headerlink" title="re模块"></a>re模块</h4><p>Python通过re模块提供对正则表达式的支持。</p>
+<p><br></p>
+<p>使用re的一般步骤是：</p>
+<ul>
+<li>1.将正则表达式的字符串形式编译为Pattern实例</li>
+<li>2.使用Pattern实例处理文本并获得匹配结果（一个Match实例）</li>
+<li>3.使用Match实例获得信息，进行其他的操作。</li>
+</ul>
+<pre><code class="python"># encoding: UTF-8
+import re
+
+# 将正则表达式编译成Pattern对象
+pattern = re.compile(r&#39;hello.*\!&#39;)
+
+# 使用Pattern匹配文本，获得匹配结果，无法匹配时将返回None
+match = pattern.match(&#39;hello, hanxiaoyang! How are you?&#39;)
+
+if match:
+    # 使用Match获得分组信息
+    print match.group()        # 打印结果： hello, hanxiaoyang!
+</code></pre>
+<ul>
+<li>re.compile(strPattern[, flag]):</li>
+</ul>
+<p>这个方法是Pattern类的工厂方法，用于将字符串形式的正则表达式编译为Pattern对象。 </p>
+<p><br></p>
+<p>第二个参数flag是匹配模式，取值可以使用按位或运算符’|’表示同时生效，比如re.I | re.M。</p>
+<p><br></p>
+<p>当然，你也可以在regex字符串中指定模式，比如<strong>re.compile(‘pattern’, re.I | re.M)</strong>等价于<strong>re.compile(‘(?im)pattern’)</strong></p>
+<p><br></p>
+<p>flag可选值有：</p>
+<ul>
+<li>re.I(re.IGNORECASE): 忽略大小写（括号内是完整写法，下同）</li>
+<li>re.M(MULTILINE): 多行模式，改变’^’和’$’的行为（参见上图）</li>
+<li>re.S(DOTALL): 点任意匹配模式，改变’.’的行为</li>
+<li>re.L(LOCALE): 使预定字符类 \w \W \b \B \s \S 取决于当前区域设定</li>
+<li>re.U(UNICODE): 使预定字符类 \w \W \b \B \s \S \d \D 取决于unicode定义的字符属性</li>
+<li>re.X(VERBOSE): 详细模式。这个模式下正则表达式可以是多行，忽略空白字符，并可以加入注释。以下两个正则表达式是等价的：</li>
+</ul>
+<pre><code class="python">regex_1 = re.compile(r&quot;&quot;&quot;\d +  # 数字部分
+                         \.    # 小数点部分
+                         \d *  # 小数的数字部分&quot;&quot;&quot;, re.X)
+regex_2 = re.compile(r&quot;\d+\.\d*&quot;)
+</code></pre>
+<p><br></p>
+<h4 id="Match"><a href="#Match" class="headerlink" title="Match"></a>Match</h4><p>Match对象是一次匹配的结果，包含了很多关于此次匹配的信息，可以使用Match提供的可读属性或方法来获取这些信息。</p>
+<ul>
+<li>match属性：<ul>
+<li>string: 匹配时使用的文本。</li>
+<li>re: 匹配时使用的Pattern对象。</li>
+<li>pos: 文本中正则表达式开始搜索的索引。值与Pattern.match()和Pattern.seach()方法的同名参数相同。</li>
+<li>endpos: 文本中正则表达式结束搜索的索引。值与Pattern.match()和Pattern.seach()方法的同名参数相同。</li>
+<li>lastindex: 最后一个被捕获的分组在文本中的索引。如果没有被捕获的分组，将为None。</li>
+<li>lastgroup: 最后一个被捕获的分组的别名。如果这个分组没有别名或者没有被捕获的分组，将为None。</li>
+</ul>
+</li>
+</ul>
+<h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><ul>
+<li>group([group1, …]):<br>获得一个或多个分组截获的字符串；指定多个参数时将以元组形式返回。group1可以使用编号也可以使用别名；编号0代表整个匹配的子串；不填写参数时，返回group(0)；没有截获字符串的组返回None；截获了多次的组返回最后一次截获的子串。</li>
+<li>groups([default]):<br>以元组形式返回全部分组截获的字符串。相当于调用group(1,2,…last)。default表示没有截获字符串的组以这个值替代，默认为None。</li>
+<li>groupdict([default]):<br>返回以有别名的组的别名为键、以该组截获的子串为值的字典，没有别名的组不包含在内。default含义同上。</li>
+<li>start([group]):<br>返回指定的组截获的子串在string中的起始索引（子串第一个字符的索引）。group默认值为0。</li>
+<li>end([group]):<br>返回指定的组截获的子串在string中的结束索引（子串最后一个字符的索引+1）。group默认值为0。</li>
+<li>span([group]):<br>返回(start(group), end(group))。</li>
+<li>expand(template):<br>将匹配到的分组代入template中然后返回。template中可以使用\id或\g、\g引用分组，但不能使用编号0。\id与\g是等价的；但\10将被认为是第10个分组，如果你想表达\1之后是字符’0’，只能使用\g0。</li>
+</ul>
+<pre><code class="python">import re
+m = re.match(r&#39;(\w+) (\w+)(?P&lt;sign&gt;.*)&#39;, &#39;hello hanxiaoyang!&#39;)
+
+print &quot;m.string:&quot;, m.string
+print &quot;m.re:&quot;, m.re
+print &quot;m.pos:&quot;, m.pos
+print &quot;m.endpos:&quot;, m.endpos
+print &quot;m.lastindex:&quot;, m.lastindex
+print &quot;m.lastgroup:&quot;, m.lastgroup
+
+print &quot;m.group(1,2):&quot;, m.group(1, 2)
+print &quot;m.groups():&quot;, m.groups()
+print &quot;m.groupdict():&quot;, m.groupdict()
+print &quot;m.start(2):&quot;, m.start(2)
+print &quot;m.end(2):&quot;, m.end(2)
+print &quot;m.span(2):&quot;, m.span(2)
+print r&quot;m.expand(r&#39;\2 \1\3&#39;):&quot;, m.expand(r&#39;\2 \1\3&#39;)
+
+# 打印结果：
+# m.string: hello hanxiaoyang!
+# m.re: &lt;_sre.SRE_Pattern object at 0x10b111be0&gt;
+# m.pos: 0
+# m.endpos: 18
+# m.lastindex: 3
+# m.lastgroup: sign
+# m.group(1,2): (&#39;hello&#39;, &#39;hanxiaoyang&#39;)
+# m.groups(): (&#39;hello&#39;, &#39;hanxiaoyang&#39;, &#39;!&#39;)
+# m.groupdict(): {&#39;sign&#39;: &#39;!&#39;}
+# m.start(2): 6
+# m.end(2): 17
+# m.span(2): (6, 17)
+# m.expand(r&#39;\2 \1\3&#39;): hanxiaoyang hello!
+</code></pre>
+<p><br></p>
+<h4 id="Pattern"><a href="#Pattern" class="headerlink" title="Pattern"></a>Pattern</h4><p>Pattern对象是一个编译好的正则表达式，通过Pattern提供的一系列方法可以对文本进行匹配查找。</p>
+<p><br></p>
+<p>Pattern不能直接实例化，必须使用re.compile()进行构造。</p>
+<p><br></p>
+<p>Pattern提供了几个可读属性用于获取表达式的相关信息：</p>
+<ul>
+<li>pattern: 编译时用的表达式字符串。</li>
+<li>flags: 编译时用的匹配模式。数字形式。</li>
+<li>groups: 表达式中分组的数量。</li>
+<li>groupindex: 以表达式中有别名的组的别名为键、以该组对应的编号为值的字典，没有别名的组不包含在内。</li>
+</ul>
+<pre><code class="python">import re
+p = re.compile(r&#39;(\w+) (\w+)(?P&lt;sign&gt;.*)&#39;, re.DOTALL)
+
+print &quot;p.pattern:&quot;, p.pattern
+print &quot;p.flags:&quot;, p.flags
+print &quot;p.groups:&quot;, p.groups
+print &quot;p.groupindex:&quot;, p.groupindex
+
+# 打印结果：
+# p.pattern: (\w+) (\w+)(?P&lt;sign&gt;.*)
+# p.flags: 16
+# p.groups: 3
+# p.groupindex: {&#39;sign&#39;: 3}
+</code></pre>
+<p><br></p>
+<h4 id="使用pattern"><a href="#使用pattern" class="headerlink" title="使用pattern"></a>使用pattern</h4><ul>
+<li><p><strong>match(string[, pos[, endpos]]) | re.match(pattern, string[, flags])</strong>:<br><strong>这个方法将从string的pos下标处起尝试匹配pattern</strong>:</p>
+<p>如果pattern结束时仍可匹配，则返回一个Match对象如果匹配过程中pattern无法匹配，或者匹配未结束就已到达endpos，则返回None。 pos和endpos的默认值分别为0和len(string)。<br><strong>注意：这个方法并不是完全匹配。当pattern结束时若string还有剩余字符，仍然视为成功。想要完全匹配，可以在表达式末尾加上边界匹配符’$’。 </strong></p>
+</li>
+</ul>
+<ul>
+<li><p><strong>search(string[, pos[, endpos]]) | re.search(pattern, string[, flags])</strong>:<br><strong>这个方法从string的pos下标处起尝试匹配pattern</strong></p>
+<p>如果pattern结束时仍可匹配，则返回一个Match对象若无法匹配，则将pos加1后重新尝试匹配，直到pos=endpos时仍无法匹配则返回None。 pos和endpos的默认值分别为0和len(string))</p>
+</li>
+</ul>
+<pre><code class="python"># encoding: UTF-8 
+import re 
+
+# 将正则表达式编译成Pattern对象 
+pattern = re.compile(r&#39;H.*g&#39;) 
+
+# 使用search()查找匹配的子串，不存在能匹配的子串时将返回None 
+# 这个例子中使用match()无法成功匹配 
+match = pattern.search(&#39;hello Hanxiaoyang!&#39;) 
+
+if match: 
+    # 使用Match获得分组信息 
+    print match.group()                # 打印结果： Hanxiaoyang
+</code></pre>
+<ul>
+<li><p><strong>split(string[, maxsplit]) | re.split(pattern, string[, maxsplit]):</strong></p>
+<p>按照能够匹配的子串将string分割后返回列表。maxsplit用于指定最大分割次数，不指定将全部分割。</p>
+</li>
+</ul>
+<pre><code class="python">import re
+
+p = re.compile(r&#39;\d+&#39;)
+print p.split(&#39;one12306two2three3four4&#39;)    # 打印结果： [&#39;one&#39;, &#39;two&#39;, &#39;three&#39;, &#39;four&#39;, &#39;&#39;]
+</code></pre>
+<ul>
+<li><p><strong>findall(string[, pos[, endpos]]) | re.findall(pattern, string[, flags])</strong>: </p>
+<p>搜索string，以列表形式返回全部能匹配的子串。</p>
+</li>
+</ul>
+<pre><code class="python">import re
+
+p = re.compile(r&#39;\d+&#39;)
+print p.findall(&#39;one12306two2three3four4&#39;)        # 打印结果： [&#39;12306&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]
+</code></pre>
+<ul>
+<li><p><strong>finditer(string[, pos[, endpos]]) | re.finditer(pattern, string[, flags]): </strong></p>
+<p>搜索string，返回一个顺序访问每一个匹配结果（Match对象）的迭代器。</p>
+</li>
+</ul>
+<pre><code class="python">import re
+
+p = re.compile(r&#39;\d+&#39;)
+for m in p.finditer(&#39;one1two2three3four4&#39;):
+    print m.group()
+
+# 打印结果：
+1
+2
+3
+4
+</code></pre>
+<ul>
+<li><p><strong>sub(repl, string[, count]) | re.sub(pattern, repl, string[, count]): </strong></p>
+<p>使用repl替换string中每一个匹配的子串后返回替换后的字符串。 当repl是一个字符串时，可以使用\id或\g、\g引用分组，但不能使用编号0。 当repl是一个方法时，这个方法应当只接受一个参数（Match对象），并返回一个字符串用于替换（返回的字符串中不能再引用分组）。 count用于指定最多替换次数，不指定时全部替换。</p>
+</li>
+</ul>
+<pre><code class="python">import re
+
+p = re.compile(r&#39;(\w+) (\w+)&#39;)
+s = &#39;i say, hello hanxiaoyang!&#39;
+
+print p.sub(r&#39;\2 \1&#39;, s)
+
+def func(m):
+    return m.group(1).title() + &#39; &#39; + m.group(2).title()
+
+print p.sub(func, s)
+
+# 打印结果：
+# say i, hanxiaoyang hello!
+# I Say, Hello Hanxiaoyang!
+</code></pre>
+<ul>
+<li><p><strong>subn(repl, string[, count]) | re.sub(pattern, repl, string[, count]): </strong></p>
+<p>返回 (sub(repl, string[, count]), 替换次数)。</p>
+</li>
+</ul>
+<pre><code class="python">import re
+
+p = re.compile(r&#39;(\w+) (\w+)&#39;)
+s = &#39;i say, hello hanxiaoyang!&#39;
+
+print p.subn(r&#39;\2 \1&#39;, s)
+
+def func(m):
+    return m.group(1).title() + &#39; &#39; + m.group(2).title()
+
+print p.subn(func, s)
+
+# 打印结果：
+# (&#39;say i, hanxiaoyang hello!&#39;, 2)
+# (&#39;I Say, Hello Hanxiaoyang!&#39;, 2)
+</code></pre>
+<p><br></p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>Python 编程语言还有很多骚操作和神操作，比如如何debug检查异常，如何提高运行效率等等。</p>
+<p><br></p>
+<p>数据科学从 Python 起步后，接下来就是必须熟练一些库了：</p>
+<ul>
+<li>numpy</li>
+<li>pandas</li>
+<li>matplotlib / seaborn</li>
+<li>sklearn</li>
+<li>。。。</li>
+</ul>
+</section>
+      <br>
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+      <br>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#数据科学实训基础" >
+    <span class="tag-code">数据科学实训基础</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/04/S_Dbw/">
+        <span class="nav-arrow">← </span>
+        
+          S_Dbw 聚类评估指标（代码全解析）
+        
+      </a>
+    
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#0-选择Python的理由："><span class="toc-nav-text">0. 选择Python的理由：</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-终端（terminal）下的文件操作"><span class="toc-nav-text">1. 终端（terminal）下的文件操作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-论Jupyter-Notebook的入门与提高"><span class="toc-nav-text">2. 论Jupyter Notebook的入门与提高</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Jupyter-Notebook的优点"><span class="toc-nav-text">Jupyter Notebook的优点</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-Python编程基础中的基础"><span class="toc-nav-text">3. Python编程基础中的基础</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#“简单的”数据类型"><span class="toc-nav-text">“简单的”数据类型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-整数（int）"><span class="toc-nav-text">1. 整数（int）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-浮点数（float）"><span class="toc-nav-text">2. 浮点数（float）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-字符串（str／string）"><span class="toc-nav-text">3. 字符串（str／string）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-布尔值（bool）"><span class="toc-nav-text">4. 布尔值（bool）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#5-空值（None）"><span class="toc-nav-text">5. 空值（None）</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#变量与赋值"><span class="toc-nav-text">变量与赋值</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#“复杂点”的数据类型（容器）"><span class="toc-nav-text">“复杂点”的数据类型（容器）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#6-列表（list）"><span class="toc-nav-text">6. 列表（list）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#7-元组（tuple）"><span class="toc-nav-text">7. 元组（tuple）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#8-字典（dict）"><span class="toc-nav-text">8. 字典（dict）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#9-集合（set）（略）"><span class="toc-nav-text">9. 集合（set）（略）</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#列表推导式／字典推导式（重点）"><span class="toc-nav-text">列表推导式／字典推导式（重点）</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#学无尽之路。。。。"><span class="toc-nav-text">学无尽之路。。。。</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-loop／循环-和-判断"><span class="toc-nav-text">4. loop／循环 和 判断</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-函数"><span class="toc-nav-text">5. 函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-文件读写"><span class="toc-nav-text">6. 文件读写</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#7-类／Class"><span class="toc-nav-text">7. 类／Class</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#8-正则表达式"><span class="toc-nav-text">8. 正则表达式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-语法"><span class="toc-nav-text">1. 语法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-验证工具"><span class="toc-nav-text">2. 验证工具</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-挑战与提升"><span class="toc-nav-text">3. 挑战与提升</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-Python案例"><span class="toc-nav-text">4.Python案例</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#re模块"><span class="toc-nav-text">re模块</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Match"><span class="toc-nav-text">Match</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#方法"><span class="toc-nav-text">方法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Pattern"><span class="toc-nav-text">Pattern</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#使用pattern"><span class="toc-nav-text">使用pattern</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#后记"><span class="toc-nav-text">后记</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://iphysresearch.github.io/2018/04/DS_Python/';
+    var banner = 'https://i.loli.net/2018/04/17/5ad5f8debfd0f.png'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "iphysresearch";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "数据科学实训基础之 Python",
+        owner: "iphysresearch",
+        repo: "iphysresearch.github.io",
+        oauth: {
+          client_id: "6b978dc207dc30e58ec8",
+          client_secret: "2bc56895d0221e8c27ab87b072f8f18523231e22"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
