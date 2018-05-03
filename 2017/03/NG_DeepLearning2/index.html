@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Machine Learning, Deep Learning, Physics">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      品读 A. Ng 的 DeepLearning.ai 之“改善深层神经网络” | Teaching is Learning
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <script src="https://hypothes.is/embed.js" async></script>
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Teaching is Learning</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>品读 A. Ng 的 DeepLearning.ai 之“改善深层神经网络”</h2>
+  <p class="post-date">2017-03-03</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+      <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>此文是吴恩达 DeepLearning.ai 课程第二课——”改善深层神经网络：超参数调试、正则化以及优化“部分的自学笔记。</p>
+<p><br></p>
+<p>内含自己的学习历程和从其他信息渠道获取的归纳与总结，并不会细致的罗列所有内容，仅摘取对个人有一定价值的信息。</p>
+<p><br></p>
+<p>Under construction。。。。</p>
+<a id="more"></a>
+<hr>
+<p><br></p>
+<p>黄兄组织整理了Ng的 <a href="http://www.ai-start.com/dl2017/" target="_blank" rel="noopener">深度学习（DeepLearning.ai）学习笔记</a> 是最全面的中文文本讲义资料。我这里将全面借鉴和引用其中内容和信息，不过此文背后更大程度上记录的是我个人的学习历程和从其他信息渠道获取的归纳与总结，以自述的方式“教自己”。</p>
+<p><br></p>
+<p>相关官方资源：<a href="http://mooc.study.163.com/learn/2001281002?tid=2001392029#/learn/content" target="_blank" rel="noopener">网易云微专业</a>、<a href="https://www.coursera.org/specializations/deep-learning" target="_blank" rel="noopener">Coursera</a></p>
+<p><br></p>
+<h1 id="一、深度学习的实用层面"><a href="#一、深度学习的实用层面" class="headerlink" title="一、深度学习的实用层面"></a>一、深度学习的实用层面</h1><p><br></p>
+<h2 id="1-1-训练，验证，测试集"><a href="#1-1-训练，验证，测试集" class="headerlink" title="1.1 训练，验证，测试集"></a>1.1 训练，验证，测试集</h2><p>对于很多应用系统，即使是经验丰富的深度学习行家也不太可能一开始就预设出最匹配的超级参数。所以需要多次循环往复，才能找到一个称心的神经网络，因此循环该过程的效率是决定项目进展速度的一个关键因素，而创建<strong>高质量的训练数据集，验证集和测试集</strong>也有助于提高循环效率。</p>
+<ul>
+<li>那么如何构建训练集、验证机和测试集呢？</li>
+</ul>
+<p>对于小数据量（100、1000或者1w条）来说，通常会将所有数据三七分，就是70%验证集，30%测试集。当然也可以按照60%训练，20%验证和20%测试集来划分。</p>
+<p><br></p>
+<p>如果对于大数据量来说，验证集和测试集要小于数据总量的20%或10%。事实上，数据量越大，这个比例会越小，毕竟分布的评估只要够数就好，而验证/测试集的存在只是用来评估分类器性能。</p>
+<blockquote>
+<p>除了数量的考量，还要有质量的考量：</p>
+<p>训练和测试集的分布应该来自同一分布，相互匹配。</p>
+</blockquote>
+<p>这很容易理解，毕竟机器学习的出发点是以独立同分布为假设前提的。如果都来自同一分布，那么对于深度学习来说，性能和效果肯定会很好。</p>
+<p><br></p>
+<p>关于测试集的价值是在于对模型做无偏估计。所以即使没有测试集也不伤大雅，验证集上迭代评估模型即可。</p>
+<p><br></p>
+<h2 id="1-2-偏差，方差"><a href="#1-2-偏差，方差" class="headerlink" title="1.2 偏差，方差"></a>1.2 偏差，方差</h2><p>区分和理解透<strong>偏差</strong>和<strong>方差</strong>这两个概念，可谓易学难精。</p>
+<blockquote>
+<p>首先，假设基本误差（最优误差）是已知的，训练集和验证集数据来自相同分布。</p>
+<p>那么，训练误差与基本误差之间的比较可以判断模型的偏差情况，进而可以给出是否欠拟合的结论；</p>
+<p>训练误差与验证误差之间的比较可以判断模型的方差情况，进而可以给出是否过拟合的结论。</p>
+</blockquote>
+<p>最后，根据算法偏差和方差的具体情况决定接下来要运用哪些方法来优化算法性能。</p>
+<p><br></p>
+<h2 id="1-3-机器学习基础"><a href="#1-3-机器学习基础" class="headerlink" title="1.3 机器学习基础"></a>1.3 机器学习基础</h2><p>在机器学习中，通常无脑的处理高偏差和高方差的优化方案：</p>
+<blockquote>
+<p>偏差高，甚至模型无法拟合训练数据，那就修改模型算法等，直到解决掉偏差问题。</p>
+<p>高方差，最好的解决办法是采用更多数据。也可以正则化来减少过拟合，也可能是是更合适的神经网络框架。</p>
+</blockquote>
+<p><br></p>
+<h2 id="1-4-正则化"><a href="#1-4-正则化" class="headerlink" title="1.4 正则化"></a>1.4 正则化</h2><p>过拟合问题（高方差）通常有两种解决方法：正则化 or more data。</p>
+<p>如果有条件，准备更多数据无疑是更靠谱的办法，好处多多，不过不见得让人如愿以偿。所以通常是利用正则化来避免过度拟合，以减少神经网络的误差。</p>
+<p>简单说来，就是给损失函数加上一个$L^2$正则化项：<br>$$<br>J(\boldsymbol{w},b) = \frac{1}{m}\sum^m_{i=1}\mathscr{L}(\hat{y}^{(i)},y^{(i)}) + \frac{\lambda}{2m}||\boldsymbol{w}||^2<br>$$<br>其中，$||\boldsymbol{w}||^2=\sum^{n_x}_{i=1}=\boldsymbol{w}^T\boldsymbol{w}$ 是欧几里德范数（2范数）的平方。（越来越常用的 L2）</p>
+<p>这里解答了我以前一直有的疑问，问啥参数的正则项并不包含偏置，原来它是可以忽略不计的。</p>
+<p>之后是反向传播部分，暂且略过。。。</p>
+<p><br></p>
+<h2 id="1-5-为什么正则化有利于预防过拟合呢？"><a href="#1-5-为什么正则化有利于预防过拟合呢？" class="headerlink" title="1.5 为什么正则化有利于预防过拟合呢？"></a>1.5 为什么正则化有利于预防过拟合呢？</h2><blockquote>
+<p>如果正则化参数变得很大，参数$W$很小，z也会相对变小，此时忽略b的影响，z会相对变小，实际上，z的取值范围很小，这个激活函数，也就是曲线函数$\tanh$会相对呈线性，整个神经网络会计算离线性函数近的值，这个线性函数非常简单，并不是一个极复杂的高度非线性函数，不会发生过拟合。</p>
+</blockquote>
+<p>一句话说，正则化有效的原因不是简单的说让网络中的部分参数稀疏，关键是正则化的程度可以调整神经网络的”线性程度“。</p>
+<p><br></p>
+<h2 id="1-6-dropout-正则化"><a href="#1-6-dropout-正则化" class="headerlink" title="1.6 dropout 正则化"></a>1.6 dropout 正则化</h2><p>目前用<strong>dropout</strong>最常用的方法就是<strong>Inverted dropout</strong></p>
+<p><br></p>
+<p>详情见我的另一个笔记：<a href="https://iphysresearch.github.io/2018/02/cs231n_MLP4/#就是这么任性！——Dropout">就是这么任性！—— Dropout</a></p>
+<p><br></p>
+<h2 id="1-7-理解-dropout"><a href="#1-7-理解-dropout" class="headerlink" title="1.7 理解 dropout"></a>1.7 理解 dropout</h2><ul>
+<li><strong>dropout</strong>的功能类似于正则化</li>
+<li>“除非算法过拟合，不然我是不会使用<strong>dropout</strong>的” —— A. Ng</li>
+<li><strong>dropout</strong>一大缺点就是代价函数$J$不再被明确定义</li>
+</ul>
+<p><br></p>
+<h2 id="1-8-其他正则化方法"><a href="#1-8-其他正则化方法" class="headerlink" title="1.8 其他正则化方法"></a>1.8 其他正则化方法</h2><h3 id="数据扩增"><a href="#数据扩增" class="headerlink" title="数据扩增"></a>数据扩增</h3><h3 id="Early-stopping"><a href="#Early-stopping" class="headerlink" title="Early stopping"></a>Early stopping</h3><ul>
+<li><strong>Early stopping</strong>的优点是，只运行一次梯度下降</li>
+</ul>
+<p><br></p>
+<h2 id="1-9-归一化输入"><a href="#1-9-归一化输入" class="headerlink" title="1.9 归一化输入"></a>1.9 归一化输入</h2><p>归一化需要两个步骤：</p>
+<ol>
+<li>零均值</li>
+<li>归一化方差；</li>
+</ol>
+<blockquote>
+<p>为了让代价函数平均起来看更对称，梯度下降效率更高</p>
+</blockquote>
+<p><br></p>
+<h2 id="1-10-梯度消失-梯度爆炸"><a href="#1-10-梯度消失-梯度爆炸" class="headerlink" title="1.10 梯度消失/梯度爆炸"></a>1.10 梯度消失/梯度爆炸</h2><p>在深度神经网络中，激活函数将以指数级递减。训练神经网络的时候，导数或坡度有时会变得非常大，或者非常小，甚至于以指数方式变小，这加大了训练的难度。</p>
+<p><br></p>
+<h2 id="1-11-神经网络的权重初始化"><a href="#1-11-神经网络的权重初始化" class="headerlink" title="1.11 神经网络的权重初始化"></a>1.11 神经网络的权重初始化</h2><ul>
+<li>虽然调优该参数能起到一定作用，但考虑到相比调优，其它超级参数的重要性，通常把它的优先级放得比较低。</li>
+</ul>
+<p><br></p>
+<h2 id="1-12-梯度的数值逼近"><a href="#1-12-梯度的数值逼近" class="headerlink" title="1.12 梯度的数值逼近"></a>1.12 梯度的数值逼近</h2><blockquote>
+<p>传说的“梯度检验”！</p>
+</blockquote>
+<p>这相关的部分就暂时略过了，现在基本用的都是自动求导。。。。</p>
+<p><br></p>
+<h2 id="1-13-梯度检验"><a href="#1-13-梯度检验" class="headerlink" title="1.13 梯度检验"></a>1.13 梯度检验</h2><blockquote>
+<p>梯度检验的工作原理</p>
+</blockquote>
+<p><br></p>
+<h2 id="1-14-梯度检验应用的注意事项"><a href="#1-14-梯度检验应用的注意事项" class="headerlink" title="1.14 梯度检验应用的注意事项"></a>1.14 梯度检验应用的注意事项</h2><blockquote>
+<p>梯度检验不能与<strong>dropout</strong>同时使用！</p>
+</blockquote>
+<p><br></p>
+<h1 id="二、优化算法"><a href="#二、优化算法" class="headerlink" title="二、优化算法"></a>二、优化算法</h1><h2 id="2-1-Mini-batch-梯度下降"><a href="#2-1-Mini-batch-梯度下降" class="headerlink" title="2.1 Mini-batch 梯度下降"></a>2.1 Mini-batch 梯度下降</h2><p>方法：</p>
+<blockquote>
+<p>使用<strong>batch</strong>梯度下降法，一次遍历训练集只能让你做一个梯度下降，使用<strong>mini-batch</strong>梯度下降法，一次遍历训练集。。。</p>
+</blockquote>
+<p><br></p>
+<h3 id="2-2-理解mini-batch梯度下降法"><a href="#2-2-理解mini-batch梯度下降法" class="headerlink" title="2.2 理解mini-batch梯度下降法"></a>2.2 理解mini-batch梯度下降法</h3><p>取 batch size方法：</p>
+<blockquote>
+<p>如果训练集较小，直接使用<strong>batch</strong>梯度下降法，样本集较小就没必要使用<strong>mini-batch</strong>梯度下降法，你可以快速处理整个训练集，所以使用<strong>batch</strong>梯度下降法也很好，这里的少是说小于2000个样本，这样比较适合使用<strong>batch</strong>梯度下降法。不然，样本数目较大的话，一般的<strong>mini-batch</strong>大小为<strong>64到512</strong>，考虑到电脑内存设置和使用的方式，如果<strong>mini-batch</strong>大小是2的次方，代码会运行地快一些，64就是2的6次方，以此类推，128是2的7次方，256是2的8次方，512是2的9次方。所以我经常把<strong>mini-batch</strong>大小设成2的次方。</p>
+</blockquote>
+<p><br></p>
+<h2 id="2-3-指数加权平均数"><a href="#2-3-指数加权平均数" class="headerlink" title="2.3 指数加权平均数"></a>2.3 指数加权平均数</h2><p><img src="https://i.loli.net/2018/03/07/5a9ffbc3eb356.png" alt=""></p>
+<p>指数加权平均数经常被使用，它在统计学中被称为<strong>指数加权移动平均值</strong>，我们就简称为<strong>指数加权平均数</strong>。通过调整这个参数（$\beta$），或者说后面的算法学习，你会发现这是一个很重要的参数，可以取得稍微不同的效果，往往中间有某个值效果最好，为中间值时得到的红色曲线，比起绿线和黄线更好地平均了温度。</p>
+<p>$\beta$ 这个值究竟如何确定，貌似只能靠试验了。</p>
+<p><br></p>
+<h2 id="2-4-理解指数加权平均数"><a href="#2-4-理解指数加权平均数" class="headerlink" title="2.4 理解指数加权平均数"></a>2.4 理解指数加权平均数</h2><p>指数加权平均数公式的好处之一在于，它占用极少内存。</p>
+<p><br></p>
+<h2 id="2-5-指数加权平均的偏差修正"><a href="#2-5-指数加权平均的偏差修正" class="headerlink" title="2.5 指数加权平均的偏差修正"></a>2.5 指数加权平均的偏差修正</h2><blockquote>
+<p>在机器学习中，在计算指数加权平均数的大部分时候，大家不在乎执行偏差修正，因为大部分人宁愿熬过初始时期，拿到具有偏差的估测，然后继续计算下去。如果你关心初始时期的偏差，在刚开始计算指数加权移动平均数的时候，偏差修正能帮助你在早期获取更好的估测。</p>
+</blockquote>
+<p><br></p>
+<h2 id="2-6-动量梯度下降法"><a href="#2-6-动量梯度下降法" class="headerlink" title="2.6 动量梯度下降法"></a>2.6 动量梯度下降法</h2><blockquote>
+<p>动量梯度下降法的本质是最小化碗状函数。</p>
+</blockquote>
+<p>一个物理角度的解释：想象你有一个碗，你拿一个球，微分项给了这个球一个加速度，此时球正向山下滚，球因为加速度越滚越快，而因为 稍小于1，表现出一些摩擦力，所以球不会无限加速下去，所以不像梯度下降法，每一步都独立于之前的步骤，你的球可以向下滚，获得动量，可以从碗向下加速获得动量。</p>
+<p><br></p>
+<h2 id="2-7-RMSprop"><a href="#2-7-RMSprop" class="headerlink" title="2.7 RMSprop"></a>2.7 RMSprop</h2><p>（略）</p>
+<p><br></p>
+<h2 id="2-8-Adam-优化算法"><a href="#2-8-Adam-优化算法" class="headerlink" title="2.8 Adam 优化算法"></a>2.8 Adam 优化算法</h2><blockquote>
+<p> <strong>RMSprop</strong>以及<strong>Adam</strong>优化算法（<strong>Adam</strong>优化算法也是本视频的内容），就是少有的经受住人们考验的两种算法，已被证明适用于不同的深度学习结构。</p>
+</blockquote>
+<p><img src="https://i.loli.net/2018/03/08/5aa145a3d92ad.png" alt=""></p>
+<p><br></p>
+<h2 id="2-9-学习率衰减"><a href="#2-9-学习率衰减" class="headerlink" title="2.9 学习率衰减"></a>2.9 学习率衰减</h2><p>这个东西嘛。。。刚开始的时候不会使用的。超参数调参的时候才会真正考虑。</p>
+<blockquote>
+<p>一会之后，学习率减少了一半，一会儿减少一半，一会儿又一半，这就是离散下降（<strong>discrete stair cease</strong>）</p>
+</blockquote>
+<p><br></p>
+<h2 id="2-10-局部最优的问题"><a href="#2-10-局部最优的问题" class="headerlink" title="2.10 局部最优的问题"></a>2.10 局部最优的问题</h2><p>局部最优不是问题，为啥？因为遇到的几率太小啦！所以，不太可能困在极差的局部最优中，条件是你在训练较大的神经网络，存在大量参数，并且成本函数被定义在较高的维度空间。</p>
+<p>怕的是什么？平稳段。。。。 训练太慢啦</p>
+<p><br></p>
+<h1 id="三、超参数调试、Batch正则化和程序框架"><a href="#三、超参数调试、Batch正则化和程序框架" class="headerlink" title="三、超参数调试、Batch正则化和程序框架"></a>三、超参数调试、Batch正则化和程序框架</h1><h2 id="3-1-调试处理（Tuning-process）"><a href="#3-1-调试处理（Tuning-process）" class="headerlink" title="3.1 调试处理（Tuning process）"></a>3.1 调试处理（Tuning process）</h2><ul>
+<li>学习速率是调试时重要的超参数！</li>
+<li><strong>Momentum</strong>参数，0.9就是个很好的默认值。</li>
+<li>用<strong>Adam</strong>算法时，事实上，我从不调试$\beta_1,\beta_2$和$\epsilon$，我总是选定其分别为0.9，0.999和$10^{-8}$</li>
+<li>调试隐藏单元/层数</li>
+<li>学习率衰减</li>
+<li><strong>mini-batch</strong>的大小</li>
+</ul>
+<blockquote>
+<p>超参数搜索过程：</p>
+<ul>
+<li>随机取值和精确搜索</li>
+<li>采用由粗糙到精细的策略</li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="3-2-为超参数选择合适的范围"><a href="#3-2-为超参数选择合适的范围" class="headerlink" title="3.2 为超参数选择合适的范围"></a>3.2 为超参数选择合适的范围</h2><ul>
+<li>对于学习速率，通常用对数均匀取值法。（指数标尺）</li>
+<li>计算指数的加权平均值的参数 $\beta$，通常是对 $1-\beta$ 做对数随机取值法。（指数标尺）</li>
+</ul>
+<p><br></p>
+<h2 id="3-3-超参数训练的实践：Pandas-VS-Caviar"><a href="#3-3-超参数训练的实践：Pandas-VS-Caviar" class="headerlink" title="3.3 超参数训练的实践：Pandas VS Caviar"></a>3.3 超参数训练的实践：Pandas VS Caviar</h2><p>由拥有的计算资源决定：</p>
+<ol>
+<li>Babysitting one model</li>
+<li>Training many models in parallel</li>
+</ol>
+<p><br></p>
+<h2 id="3-4-归一化网络的激活函数"><a href="#3-4-归一化网络的激活函数" class="headerlink" title="3.4 归一化网络的激活函数"></a>3.4 归一化网络的激活函数</h2><blockquote>
+<p>并不是对所有的神经网络都适用，但当适用时，它可以使超参数搜索变得容易许多并加速试验过程</p>
+</blockquote>
+<p><br></p>
+<h2 id="3-5-将-Batch-Norm-拟合进神经网络"><a href="#3-5-将-Batch-Norm-拟合进神经网络" class="headerlink" title="3.5 将 Batch Norm 拟合进神经网络"></a>3.5 将 Batch Norm 拟合进神经网络</h2><p>这是对上一节的一个一般性推广。留意以下几件事情：</p>
+<ul>
+<li><strong>Batch</strong>归一化是发生在“线性”和“非线性”之间的操作。</li>
+<li>~~</li>
+</ul>
+<p><br></p>
+<h2 id="3-6-Batch-Norm-为什么奏效？"><a href="#3-6-Batch-Norm-为什么奏效？" class="headerlink" title="3.6 Batch Norm 为什么奏效？"></a>3.6 Batch Norm 为什么奏效？</h2><p>原因列举如下：</p>
+<ol>
+<li>归一化输入特征值，使其均值为0，方差1</li>
+<li>使权重比网络更滞后或更深层。减弱了前层参数的作用与后层参数的作用之间的联系，使得网络每层都可以自己学习，稍稍独立于其它层</li>
+<li>有轻微的正则化效果</li>
+<li>将<strong>Batch</strong>归一化和<strong>dropout</strong>一起使用，如果你想得到<strong>dropout</strong>更强大的正则化效果。</li>
+</ol>
+<p><br></p>
+<h2 id="3-7-测试时的-Batch-Norm"><a href="#3-7-测试时的-Batch-Norm" class="headerlink" title="3.7 测试时的 Batch Norm"></a>3.7 测试时的 Batch Norm</h2><blockquote>
+<p>训练时，通常是用指数加权平均来估算$\mu$ 和$\sigma^2$。而测试时，对单个样本使用的$\mu$ 和$\sigma^2$，不管用什么方法估算的，结果都是比较稳健的。</p>
+</blockquote>
+<p><br></p>
+<h2 id="3-8-Softmax-回归"><a href="#3-8-Softmax-回归" class="headerlink" title="3.8 Softmax 回归"></a>3.8 Softmax 回归</h2><p>这是一个从二分类推广到多分类的故事。</p>
+<p><br></p>
+<p>关于决策边界的例子很有趣。</p>
+<p><br></p>
+<h2 id="3-9-训练一个-Softmax-分类器"><a href="#3-9-训练一个-Softmax-分类器" class="headerlink" title="3.9 训练一个 Softmax 分类器"></a>3.9 训练一个 Softmax 分类器</h2><blockquote>
+<p>概括来讲，损失函数所做的就是它找到你的训练集中的真实类别，然后试图使该类别相应的概率尽可能地高，如果你熟悉统计学中最大似然估计，这其实就是最大似然估计的一种形式。</p>
+</blockquote>
+<p><br></p>
+<h2 id="3-10-深度学习框架"><a href="#3-10-深度学习框架" class="headerlink" title="3.10 深度学习框架"></a>3.10 深度学习框架</h2><p>选择框架的标准：</p>
+<ul>
+<li>便于编程</li>
+<li>运行速度快</li>
+<li>是否开源</li>
+</ul>
+<p><br></p>
+<h2 id="3-11-TensorFlow"><a href="#3-11-TensorFlow" class="headerlink" title="3.11 TensorFlow"></a>3.11 TensorFlow</h2><p>目前我只对 MXNet 感兴趣。。。。。</p>
+</section>
+      <br>
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+      <br>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#品味DeepLearning.ai" >
+    <span class="tag-code">品味DeepLearning.ai</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2017/02/CS231n_MXNet9/">
+        <span class="nav-arrow">← </span>
+        
+          CS231n 讲义笔记：循环神经网络
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2017/03/ML_ZHOU2/">
+        
+          《机器学习》(周志华)——要点笔记2
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一、深度学习的实用层面"><span class="toc-nav-text">一、深度学习的实用层面</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-1-训练，验证，测试集"><span class="toc-nav-text">1.1 训练，验证，测试集</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-2-偏差，方差"><span class="toc-nav-text">1.2 偏差，方差</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-3-机器学习基础"><span class="toc-nav-text">1.3 机器学习基础</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-4-正则化"><span class="toc-nav-text">1.4 正则化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-5-为什么正则化有利于预防过拟合呢？"><span class="toc-nav-text">1.5 为什么正则化有利于预防过拟合呢？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-6-dropout-正则化"><span class="toc-nav-text">1.6 dropout 正则化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-7-理解-dropout"><span class="toc-nav-text">1.7 理解 dropout</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-8-其他正则化方法"><span class="toc-nav-text">1.8 其他正则化方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#数据扩增"><span class="toc-nav-text">数据扩增</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Early-stopping"><span class="toc-nav-text">Early stopping</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-9-归一化输入"><span class="toc-nav-text">1.9 归一化输入</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-10-梯度消失-梯度爆炸"><span class="toc-nav-text">1.10 梯度消失/梯度爆炸</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-11-神经网络的权重初始化"><span class="toc-nav-text">1.11 神经网络的权重初始化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-12-梯度的数值逼近"><span class="toc-nav-text">1.12 梯度的数值逼近</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-13-梯度检验"><span class="toc-nav-text">1.13 梯度检验</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-14-梯度检验应用的注意事项"><span class="toc-nav-text">1.14 梯度检验应用的注意事项</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#二、优化算法"><span class="toc-nav-text">二、优化算法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-1-Mini-batch-梯度下降"><span class="toc-nav-text">2.1 Mini-batch 梯度下降</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-2-理解mini-batch梯度下降法"><span class="toc-nav-text">2.2 理解mini-batch梯度下降法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-3-指数加权平均数"><span class="toc-nav-text">2.3 指数加权平均数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-4-理解指数加权平均数"><span class="toc-nav-text">2.4 理解指数加权平均数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-5-指数加权平均的偏差修正"><span class="toc-nav-text">2.5 指数加权平均的偏差修正</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-6-动量梯度下降法"><span class="toc-nav-text">2.6 动量梯度下降法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-7-RMSprop"><span class="toc-nav-text">2.7 RMSprop</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-8-Adam-优化算法"><span class="toc-nav-text">2.8 Adam 优化算法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-9-学习率衰减"><span class="toc-nav-text">2.9 学习率衰减</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-10-局部最优的问题"><span class="toc-nav-text">2.10 局部最优的问题</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#三、超参数调试、Batch正则化和程序框架"><span class="toc-nav-text">三、超参数调试、Batch正则化和程序框架</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-1-调试处理（Tuning-process）"><span class="toc-nav-text">3.1 调试处理（Tuning process）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-2-为超参数选择合适的范围"><span class="toc-nav-text">3.2 为超参数选择合适的范围</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-3-超参数训练的实践：Pandas-VS-Caviar"><span class="toc-nav-text">3.3 超参数训练的实践：Pandas VS Caviar</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-4-归一化网络的激活函数"><span class="toc-nav-text">3.4 归一化网络的激活函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-5-将-Batch-Norm-拟合进神经网络"><span class="toc-nav-text">3.5 将 Batch Norm 拟合进神经网络</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-6-Batch-Norm-为什么奏效？"><span class="toc-nav-text">3.6 Batch Norm 为什么奏效？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-7-测试时的-Batch-Norm"><span class="toc-nav-text">3.7 测试时的 Batch Norm</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-8-Softmax-回归"><span class="toc-nav-text">3.8 Softmax 回归</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-9-训练一个-Softmax-分类器"><span class="toc-nav-text">3.9 训练一个 Softmax 分类器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-10-深度学习框架"><span class="toc-nav-text">3.10 深度学习框架</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-11-TensorFlow"><span class="toc-nav-text">3.11 TensorFlow</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://iphysresearch.github.io/2017/03/NG_DeepLearning2/';
+    var banner = 'https://i.loli.net/2018/02/15/5a852c10adc97.png'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "iphysresearch";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "品读 A. Ng 的 DeepLearning.ai 之“改善深层神经网络”",
+        owner: "iphysresearch",
+        repo: "iphysresearch.github.io",
+        oauth: {
+          client_id: "6b978dc207dc30e58ec8",
+          client_secret: "2bc56895d0221e8c27ab87b072f8f18523231e22"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

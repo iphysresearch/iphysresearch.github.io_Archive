@@ -10,7 +10,7 @@
   
   <title>
     
-      Hexo 建站记录 | Teaching is Learning
+      CS231n 讲义笔记：循环神经网络 | Teaching is Learning
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -139,8 +139,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>Hexo 建站记录</h2>
-  <p class="post-date">2017-02-15</p>
+  <h2>CS231n 讲义笔记：循环神经网络</h2>
+  <p class="post-date">2017-02-22</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -148,92 +148,20 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-      <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>调试了好久 Github+Hexo 建站，总算是基本稳定下来了，趟过了无数的坑。。。</p>
+      <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>CS231n 的学习。</p>
+<p>有待整理中。。。</p>
 <p><br></p>
-<p>今天在这里简单的记录下，为了方便自己以后查阅。</p>
-<p><br></p>
-<p>MathJax 的启用和解决与 Markdown 渲染的冲突：<a href="https://segmentfault.com/q/1010000003987383" target="_blank" rel="noopener">Ref</a></p>
-<p>下划线的麻烦。。。。</p>
-<p><br></p>
-<h2 id="Hexo-的标签插件（Tag-Plugins）"><a href="#Hexo-的标签插件（Tag-Plugins）" class="headerlink" title="Hexo 的标签插件（Tag Plugins）"></a>Hexo 的标签插件（Tag Plugins）</h2><p>REF：<a href="https://hexo.io/zh-cn/docs/tag-plugins.html" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/tag-plugins.html</a></p>
-<h3 id="引用块"><a href="#引用块" class="headerlink" title="引用块"></a>引用块</h3><p>在文章中插入引言，可包含作者、来源和标题。</p>
-<pre><code class="markdown">{% blockquote [author[, source]] [link] [source_link_title] %}
-content
-{% endblockquote %}
-</code></pre>
-<ul>
-<li>样例</li>
-</ul>
-<p><strong>没有提供参数，则只输出普通的 blockquote</strong>：</p>
-<pre><code class="markdown">{% blockquote %}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.
-{% endblockquote %}
-</code></pre>
-<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</p>
-</blockquote>
-<p><strong>引用书上的句子</strong>：</p>
-<pre><code class="markdown">{% blockquote David Levithan, Wide Awake %}
-Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.
-{% endblockquote %}
-</code></pre>
-<blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p>
-<footer><strong>David Levithan</strong><cite>Wide Awake</cite></footer></blockquote>
-<p><strong>引用 Twitter</strong>：</p>
-<pre><code class="markdown">{% blockquote @DevDocs https://twitter.com/devdocs/status/356095192085962752 %}
-NEW: DevDocs now comes with syntax highlighting. http://devdocs.io
-{% endblockquote %}
-</code></pre>
-<blockquote><p>NEW: DevDocs now comes with syntax highlighting. <a href="http://devdocs.io" target="_blank" rel="noopener">http://devdocs.io</a></p>
-<footer><strong>@DevDocs</strong><cite><a href="https://twitter.com/devdocs/status/356095192085962752" target="_blank" rel="noopener">twitter.com/devdocs/status/356095192085962752</a></cite></footer></blockquote>
-<p><strong>引用网络上的文章</strong>：</p>
-<pre><code class="markdown">{% blockquote Seth Godin http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html Welcome to Island Marketing %}
-Every interaction is both precious and an opportunity to delight.
-{% endblockquote %}
-</code></pre>
-<blockquote><p>Every interaction is both precious and an opportunity to delight.</p>
-<footer><strong>Seth Godin</strong><cite><a href="http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html" target="_blank" rel="noopener">Welcome to Island Marketing</a></cite></footer></blockquote>
-<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><p>在文章中插入代码。</p>
-<p><strong>别名：</strong> code</p>
-<pre><code class="markdown">{% codeblock [title] [lang:language] [url] [link text] %}
-code snippet
-{% endcodeblock %}
-</code></pre>
-<ul>
-<li>样例</li>
-</ul>
-<p><strong>普通的代码块</strong>：</p>
-<pre><code class="markdown">{% codeblock %}
-alert('Hello World!');
-{% endcodeblock %}
-</code></pre>
-<pre><code>alert(&#39;Hello World!&#39;);</code></pre>
-<p><strong>指定语言</strong>：Python 语言的注释仍存 Bug</p>
-<pre><code class="markdown">{% codeblock lang:python %}
-import pandas as pd  # Import Libs
-print('Hello World! My name is %s' %'Herb')
-{% endcodeblock %}
-</code></pre>
-<pre><code>import pandas as pd  # Import Libs
-print(&#39;Hello World! My name is %s&#39; %&#39;Herb&#39;)</code></pre>
-<p><strong>附加说明</strong>：</p>
-<pre><code class="markdown">{% codeblock Array.map %}
-array.map(callback[, thisArg])
-{% endcodeblock %}
-</code></pre>
-<pre><code>array.map(callback[, thisArg])</code></pre>
-<p><strong>附加说明和网址</strong>：</p>
-<pre><code class="markdown">{% codeblock _.compact http://underscorejs.org/#compact Underscore.js %}
-_.compact([0, 1, false, 2, '', 3]);
-=> [1, 2, 3]
-{% endcodeblock %}
-</code></pre>
-<pre><code>_.compact([0, 1, false, 2, &#39;&#39;, 3]);
-=&gt; [1, 2, 3]</code></pre>
-<h3 id="反引号代码块"><a href="#反引号代码块" class="headerlink" title="反引号代码块"></a>反引号代码块</h3><p>另一种形式的代码块，不同的是它使用三个反引号来包裹。</p>
-<pre><code class="markdown">​``` [language] [title] [url] [link text] code snippet
-</code></pre>
-<p>```</p>
-<h2 id="Markdown-样例"><a href="#Markdown-样例" class="headerlink" title="Markdown 样例"></a>Markdown 样例</h2></section>
+<a id="more"></a>
+<p>循环神经网络核心的观念其实是“顺序”，或者说“有序性”。</p>
+<p><img src="https://i.loli.net/2018/05/03/5aea83ce3527e.png" alt=""></p>
+<p>其他内容，基本都是介绍性的了。唯一的干货就是：<code>Minimal character-level language model with a Vanilla Recurrent Neural Network, in Python/numpy</code></p>
+<p>（值得注意的是，这是 python2版本的代码）</p>
+<script src="https://gist.github.com/iphysresearch/19970d1bad2df368688e2d07e0022d04.js"></script>
+
+
+
+<p>在这里，自己有一个想法，那就是可以去搜寻一些物理学家的 paper，如狄拉克，爱因斯坦，杨振宁等，用他们的 paper 做训练，然后美化我的 paper 草稿的写作风格。这个项目肯定会很牛逼的！</p>
+</section>
       <br>
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
       <br>
@@ -242,8 +170,8 @@ _.compact([0, 1, false, 2, '', 3]);
       <div class="tags">
         <span>Tags:</span>
         
-  <a href="/tags#uncategorized" >
-    <span class="tag-code">uncategorized</span>
+  <a href="/tags#漫游CS231n" >
+    <span class="tag-code">漫游CS231n</span>
   </a>
 
       </div>
@@ -254,10 +182,17 @@ _.compact([0, 1, false, 2, '', 3]);
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-    
-      <a class="nav-right" href="/2017/02/CS231n_MXNet9/">
+      <a class="nav-left" href="/2017/02/HelloWorld/">
+        <span class="nav-arrow">← </span>
         
-          CS231n 讲义笔记：循环神经网络
+          Hexo 建站记录
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2017/03/NG_DeepLearning2/">
+        
+          品读 A. Ng 的 DeepLearning.ai 之“改善深层神经网络”
         
         <span class="nav-arrow"> →</span>
       </a>
@@ -306,7 +241,7 @@ _.compact([0, 1, false, 2, '', 3]);
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Hexo-的标签插件（Tag-Plugins）"><span class="toc-nav-text">Hexo 的标签插件（Tag Plugins）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#引用块"><span class="toc-nav-text">引用块</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#代码块"><span class="toc-nav-text">代码块</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#反引号代码块"><span class="toc-nav-text">反引号代码块</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Markdown-样例"><span class="toc-nav-text">Markdown 样例</span></a></li></ol>
+      <ol class="nav">none</ol>
     
   </div>
 </aside>
@@ -316,8 +251,8 @@ _.compact([0, 1, false, 2, '', 3]);
 
 <script>
   (function () {
-    var url = 'http://iphysresearch.github.io/2017/02/HelloWorld/';
-    var banner = 'https://i.loli.net/2018/02/16/5a8681cecf8e0.png'
+    var url = 'http://iphysresearch.github.io/2017/02/CS231n_MXNet9/';
+    var banner = 'https://i.loli.net/2018/02/15/5a855eaf63ccd.png'
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
         'background-image': 'url(' + banner + ')'
@@ -372,7 +307,7 @@ _.compact([0, 1, false, 2, '', 3]);
     var gitmentConfig = "iphysresearch";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "Hexo 建站记录",
+        id: "CS231n 讲义笔记：循环神经网络",
         owner: "iphysresearch",
         repo: "iphysresearch.github.io",
         oauth: {
