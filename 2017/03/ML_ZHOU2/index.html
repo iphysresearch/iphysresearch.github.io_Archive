@@ -340,6 +340,92 @@
 <h2 id="7-6-EM-算法"><a href="#7-6-EM-算法" class="headerlink" title="7.6 EM 算法"></a>7.6 EM 算法</h2><p>在上述基础上，这里探讨的如果有“未观测”变量该如何估计的问题，是一种非梯度优化算法。</p>
 <p><br></p>
 <p>再说白了，就是用“有观测”变量去迭代估计“未观测”变量的未知。</p>
+<h1 id="第8章-集成学习"><a href="#第8章-集成学习" class="headerlink" title="第8章 集成学习"></a>第8章 集成学习</h1><p> <br></p>
+<h2 id="8-1-个体与集成"><a href="#8-1-个体与集成" class="headerlink" title="8.1 个体与集成"></a>8.1 个体与集成</h2><p>这一节概述了集成学习的概念和主要的前提假设。</p>
+<blockquote>
+<p>获得比最好的单一学习器更好的集成学习器，首先要保证学习器间具有差异，所谓“好而不同”，有“多样性”。此外，如果假设基学习器的误差相互独立，可从理论上证明集成的错误率将随着个体分类器数目的增大，呈指数级下降，最终趋向于零。</p>
+</blockquote>
+<p>集成学习方法可分为两类：</p>
+<ol>
+<li>个体学习器间存在强依赖关系且必须串行生成的序列化方法（Boosting）</li>
+<li>个体学习器间不存在强依赖关系且可同时生成的并行化方法（Bagging 和“随机森林”）</li>
+</ol>
+<p><br></p>
+<h2 id="8-2-Boosting"><a href="#8-2-Boosting" class="headerlink" title="8.2 Boosting"></a>8.2 Boosting</h2><p>算法要点：</p>
+<ul>
+<li>一族弱学习器提升为强学习器的算法。</li>
+<li>每次根据前一个基学习器的表现对训练样本分布进行调整，使得做错的训练样本在后续循环重复中得到更多的关注，最后将序列化的基学习器们加权结合。</li>
+<li>算法代表：AdaBoost</li>
+<li>算法主要关注降低偏差。</li>
+</ul>
+<p><br></p>
+<h2 id="8-3-Bagging-与随机森林"><a href="#8-3-Bagging-与随机森林" class="headerlink" title="8.3 Bagging 与随机森林"></a>8.3 Bagging 与随机森林</h2><blockquote>
+<p>为了让个体学习器尽可能相互独立，即尽可能具有较大的差异，可对训练样本集合考虑使用相互有交叠的采样子集。</p>
+</blockquote>
+<ul>
+<li>Bagging 算法要点：<ul>
+<li>自助采样法（bootstrap sampling）：约63.2%的样本出现在采样集中。</li>
+<li>对每个基学习器使用相同权重的投票（分类）、平均（回归）。</li>
+<li>算法高效。因其与基学习算法复杂度同阶。</li>
+<li>剩余36.8%的样本可以对泛化性能进行“包外估计”等辅助用途。</li>
+<li>算法主要关注方差。</li>
+</ul>
+</li>
+<li>随机森林算法要点：<ul>
+<li>是 Bagging 的一个扩展变体。</li>
+<li>算法简单、容易实现、计算开销小，训练效率高于 Bagging。</li>
+<li>不仅样本扰动，还进行属性扰动，个体学习器之间差异度进一步的增加。</li>
+<li>个体学习器的数目增加，通常会比 Bagging 收敛到更低的泛化误差。</li>
+</ul>
+</li>
+</ul>
+<h2 id="8-4-结合策略"><a href="#8-4-结合策略" class="headerlink" title="8.4 结合策略"></a>8.4 结合策略</h2><p>这一小节并不是从以算法为单位讨论集成学习，而是从集成方法逻辑的角度讨论，也就是说讨论个体学习器的结合。</p>
+<ul>
+<li><p>学习器结合的三方面好处：</p>
+<ol>
+<li><p>（统计）避免单学习器的选取对应具有同等性能的假设，而导致泛化性能不佳。</p>
+</li>
+<li><p>（计算）降低单学习器陷入糟糕局部极小点的风险。</p>
+</li>
+<li>（表示）减少单学习器考虑的假设空间中不包含真实假设的可能性。</li>
+</ol>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li><p>平均法（回归）</p>
+<blockquote>
+<p>一般而言，在个体学习器性能相差较大时宜使用加权平均法，性能相近时用简单平均法。</p>
+</blockquote>
+</li>
+<li><p>投票法（分类）</p>
+<ul>
+<li>方式有三种：“绝对多数投票法”，“相对多数投票法”，“加权投票法”。</li>
+<li>输出值类型有两种：类标记，类概率。</li>
+<li>注：分类置信度可转化为类概率使用，但需要规范化。</li>
+<li>注：虽然类概率一般都不太准确，但是进行结合后往往比类标记结合后的性能更好。</li>
+<li>注：类型不同的个体分类器输出的类概率值不能直接比较，需要转化为类标记再比较。</li>
+</ul>
+</li>
+<li><p>学习法（训练数据较多）</p>
+<ul>
+<li>简而言之，利用学习器来进行结合。</li>
+<li>典型代表：Stacking</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h2 id="8-5-多样性"><a href="#8-5-多样性" class="headerlink" title="8.5 多样性"></a>8.5 多样性</h2><ul>
+<li><p>误差-分歧分解（error-ambiguity decomposition）：</p>
+<blockquote>
+<p>个体学习器准确性越高、多样性越大，则集成越好。</p>
+</blockquote>
+</li>
+<li><p>多样性的度量（略）</p>
+</li>
+<li><p>多样性的增强（略）</p>
+</li>
+</ul>
 </section>
       <br>
       <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
@@ -420,7 +506,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#第4章-决策树"><span class="toc-nav-text">第4章 决策树</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-1-基本流程"><span class="toc-nav-text">4.1 基本流程</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-2-划分选择"><span class="toc-nav-text">4.2 划分选择</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-2-1-信息增益"><span class="toc-nav-text">4.2.1 信息增益</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-2-2-增益率"><span class="toc-nav-text">4.2.2 增益率</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-2-3-基尼指数"><span class="toc-nav-text">4.2.3 基尼指数</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-3-剪枝处理"><span class="toc-nav-text">4.3 剪枝处理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-3-1-预剪枝"><span class="toc-nav-text">4.3.1 预剪枝</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-3-2-后剪枝"><span class="toc-nav-text">4.3.2 后剪枝</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-4-连续与缺失值"><span class="toc-nav-text">4.4 连续与缺失值</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-4-1-连续值处理"><span class="toc-nav-text">4.4.1 连续值处理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-4-2-缺失值处理"><span class="toc-nav-text">4.4.2 缺失值处理</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-5-多变量决策树"><span class="toc-nav-text">4.5 多变量决策树</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#第5章-神经网络"><span class="toc-nav-text">第5章 神经网络</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-1-神经元模型"><span class="toc-nav-text">5.1 神经元模型</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-2-感知机与多层网络"><span class="toc-nav-text">5.2 感知机与多层网络</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-3-误差逆传播算法"><span class="toc-nav-text">5.3 误差逆传播算法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-4-全局最小与局部最小"><span class="toc-nav-text">5.4 全局最小与局部最小</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-5-其他常见神经网络"><span class="toc-nav-text">5.5 其他常见神经网络</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-5-1-RBF-网络"><span class="toc-nav-text">5.5.1 RBF 网络</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-5-2-ART-网络"><span class="toc-nav-text">5.5.2 ART 网络</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-5-3-SOM网络"><span class="toc-nav-text">5.5.3 SOM网络</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-5-4-级联相关网络"><span class="toc-nav-text">5.5.4 级联相关网络</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-5-5-Elman-网络"><span class="toc-nav-text">5.5.5 Elman 网络</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-5-6-Boltzmann-机"><span class="toc-nav-text">5.5.6 Boltzmann 机</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-6-深度学习"><span class="toc-nav-text">5.6 深度学习</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#第6章-支持向量机"><span class="toc-nav-text">第6章 支持向量机</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-1-间隔与支持向量"><span class="toc-nav-text">6.1 间隔与支持向量</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-2-对偶问题"><span class="toc-nav-text">6.2 对偶问题</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-3-核函数"><span class="toc-nav-text">6.3 核函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-4-软间隔与正则化"><span class="toc-nav-text">6.4 软间隔与正则化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-5-支持向量回归"><span class="toc-nav-text">6.5 支持向量回归</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-6-核方法"><span class="toc-nav-text">6.6 核方法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#第7章-贝叶斯分类器"><span class="toc-nav-text">第7章 贝叶斯分类器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#7-1-贝叶斯决策论"><span class="toc-nav-text">7.1 贝叶斯决策论</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#7-2-极大似然估计"><span class="toc-nav-text">7.2 极大似然估计</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#7-3-朴素贝叶斯分类器"><span class="toc-nav-text">7.3 朴素贝叶斯分类器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#7-4-半朴素贝叶斯分类器"><span class="toc-nav-text">7.4 半朴素贝叶斯分类器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#7-5-贝叶斯网"><span class="toc-nav-text">7.5 贝叶斯网</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#7-6-EM-算法"><span class="toc-nav-text">7.6 EM 算法</span></a></li></ol></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#第4章-决策树"><span class="toc-nav-text">第4章 决策树</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-1-基本流程"><span class="toc-nav-text">4.1 基本流程</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-2-划分选择"><span class="toc-nav-text">4.2 划分选择</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-2-1-信息增益"><span class="toc-nav-text">4.2.1 信息增益</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-2-2-增益率"><span class="toc-nav-text">4.2.2 增益率</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-2-3-基尼指数"><span class="toc-nav-text">4.2.3 基尼指数</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-3-剪枝处理"><span class="toc-nav-text">4.3 剪枝处理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-3-1-预剪枝"><span class="toc-nav-text">4.3.1 预剪枝</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-3-2-后剪枝"><span class="toc-nav-text">4.3.2 后剪枝</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-4-连续与缺失值"><span class="toc-nav-text">4.4 连续与缺失值</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-4-1-连续值处理"><span class="toc-nav-text">4.4.1 连续值处理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-4-2-缺失值处理"><span class="toc-nav-text">4.4.2 缺失值处理</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-5-多变量决策树"><span class="toc-nav-text">4.5 多变量决策树</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#第5章-神经网络"><span class="toc-nav-text">第5章 神经网络</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-1-神经元模型"><span class="toc-nav-text">5.1 神经元模型</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-2-感知机与多层网络"><span class="toc-nav-text">5.2 感知机与多层网络</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-3-误差逆传播算法"><span class="toc-nav-text">5.3 误差逆传播算法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-4-全局最小与局部最小"><span class="toc-nav-text">5.4 全局最小与局部最小</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-5-其他常见神经网络"><span class="toc-nav-text">5.5 其他常见神经网络</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-5-1-RBF-网络"><span class="toc-nav-text">5.5.1 RBF 网络</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-5-2-ART-网络"><span class="toc-nav-text">5.5.2 ART 网络</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-5-3-SOM网络"><span class="toc-nav-text">5.5.3 SOM网络</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-5-4-级联相关网络"><span class="toc-nav-text">5.5.4 级联相关网络</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-5-5-Elman-网络"><span class="toc-nav-text">5.5.5 Elman 网络</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-5-6-Boltzmann-机"><span class="toc-nav-text">5.5.6 Boltzmann 机</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-6-深度学习"><span class="toc-nav-text">5.6 深度学习</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#第6章-支持向量机"><span class="toc-nav-text">第6章 支持向量机</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-1-间隔与支持向量"><span class="toc-nav-text">6.1 间隔与支持向量</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-2-对偶问题"><span class="toc-nav-text">6.2 对偶问题</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-3-核函数"><span class="toc-nav-text">6.3 核函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-4-软间隔与正则化"><span class="toc-nav-text">6.4 软间隔与正则化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-5-支持向量回归"><span class="toc-nav-text">6.5 支持向量回归</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-6-核方法"><span class="toc-nav-text">6.6 核方法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#第7章-贝叶斯分类器"><span class="toc-nav-text">第7章 贝叶斯分类器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#7-1-贝叶斯决策论"><span class="toc-nav-text">7.1 贝叶斯决策论</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#7-2-极大似然估计"><span class="toc-nav-text">7.2 极大似然估计</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#7-3-朴素贝叶斯分类器"><span class="toc-nav-text">7.3 朴素贝叶斯分类器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#7-4-半朴素贝叶斯分类器"><span class="toc-nav-text">7.4 半朴素贝叶斯分类器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#7-5-贝叶斯网"><span class="toc-nav-text">7.5 贝叶斯网</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#7-6-EM-算法"><span class="toc-nav-text">7.6 EM 算法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#第8章-集成学习"><span class="toc-nav-text">第8章 集成学习</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#8-1-个体与集成"><span class="toc-nav-text">8.1 个体与集成</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#8-2-Boosting"><span class="toc-nav-text">8.2 Boosting</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#8-3-Bagging-与随机森林"><span class="toc-nav-text">8.3 Bagging 与随机森林</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#8-4-结合策略"><span class="toc-nav-text">8.4 结合策略</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#8-5-多样性"><span class="toc-nav-text">8.5 多样性</span></a></li></ol></li></ol>
     
   </div>
 </aside>
