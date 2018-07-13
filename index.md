@@ -28,8 +28,6 @@ I'm a PhD candidate majoring in theoretical physics. I love to share knowledge a
 
 Most of blog posts and notes here are written in **Chinese** and any future updates for *completion*.
 
-This blog is still under construction.
-
 This site is currently under construction and I will make updates weekly and look forward to resuming blog posts in the fall.
 
 ## How to comment
