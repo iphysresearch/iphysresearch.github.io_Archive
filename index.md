@@ -24,17 +24,17 @@ date: 2018-07-10
 
 Thanks for visiting！
 
-I'm a PhD candidate majoring in theoretical physics. I love to share knowledge and have a keen passion for scientific research on data analysis of *gravitational-wave*(GW) detection and *deep learning (DL) technologies*.
+I'm a PhD candidate majoring in theoretical physics. I love to share knowledge and have a keen passion for scientific research on data analysis of ***gravitational-wave***(GW) detection and ***deep learning*** (DL) technologies.
 
 Most of blog posts and notes here are written in **Chinese** and any future updates for *completion*.
 
-This site is currently under construction and I will make updates weekly and look forward to resuming blog posts in the fall.
+This site is currently **under construction** and I will make updates weekly and look forward to resuming blog posts in the fall.
 
 ## How to comment
 
-With use of the [hypothes.is](https://hypothes.is/) extension (*right*-sided), you can highlight, annote any comments and discuss these notes inline*at any pages*and *posts*.
+With use of the [hypothes.is](https://hypothes.is/) extension (right-sided), you can highlight, annote any comments and discuss these notes inline*at any pages*and *posts*.
 
-*Please Feel Free* to Let Me Know and *Share* it here.
+*Please Feel Free* to Let Me Know and *Share* it Here.
 
 
 
