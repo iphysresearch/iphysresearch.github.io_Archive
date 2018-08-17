@@ -1,0 +1,889 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>cs231n_1</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; padding-bottom: 70px; white-space: pre-wrap; overflow-x: visible; }
+.first-line-indent #write p .md-line { text-indent: 0px; }
+.first-line-indent #write li, .first-line-indent #write p, .first-line-indent #write p .md-line:first-child { text-indent: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write > blockquote:first-child, #write > div:first-child, #write > figure:first-child, #write > ol:first-child, #write > p:first-child, #write > pre:first-child, #write > ul:first-child { margin-top: 30px; }
+#write li > figure:first-child { margin-top: -20px; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+h1, h2, h3, h4, h5, h6 { margin-top: 1rem; margin-bottom: 1rem; }
+p { -webkit-margin-before: 1rem; -webkit-margin-after: 1rem; -webkit-margin-start: 0px; -webkit-margin-end: 0px; }
+.mathjax-block { margin-top: 0px; margin-bottom: 0px; -webkit-margin-before: 0px; -webkit-margin-after: 0px; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.701961); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 80px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+pre { white-space: pre-wrap; }
+pre.contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+.md-fences.mock-cm { white-space: pre-wrap; }
+.show-fences-line-number .md-fences { padding-left: 0px; }
+.show-fences-line-number .md-fences.mock-cm { padding-left: 40px; }
+.CodeMirror-line { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+.footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; }
+  #write { margin-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 1cm; padding-right: 1cm; padding-bottom: 0px; break-after: avoid-page; }
+  .typora-export #write::after { height: 0px; }
+  @page { margin: 20mm 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > img:only-child { display: block; margin: auto; }
+.md-line > .md-image:only-child, p > .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.mathjax-block { white-space: pre; overflow: hidden; width: 100%; }
+p + .mathjax-block { margin-top: -1.143rem; }
+.mathjax-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: '.'; }
+code, pre, tt { font-family: var(--monospace); }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.mathjax-block .MathJax_SVG_Display { text-align: center; margin: 1em 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: monospace; }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.os-windows.monocolor-emoji .md-emoji { font-family: 'Segoe UI Symbol', sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+
+
+:root {
+    --side-bar-bg-color: #fff;
+    --control-text-color: #777;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhGq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhPq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhHq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhIq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhEq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhFq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhLq3-cXbKD.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmhduz8A.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwkxduz8A.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmxduz8A.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlBduz8A.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmBduz8A.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmRduz8A.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lqDY.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qPK7lqDY.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNK7lqDY.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qO67lqDY.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qN67lqDY.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNq7lqDY.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmhduz8A.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwkxduz8A.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmxduz8A.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlBduz8A.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmBduz8A.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmRduz8A.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: Source Sans Pro, Helvetica Neue, Arial, sans-serif !important;
+    color: #34495e;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6rem;
+    letter-spacing: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#write {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 30px 40px 30px;
+    padding-top: 20px;
+    padding-bottom: 100px;
+}
+
+#write p {
+    /* text-indent: 2rem; */
+    line-height: 1.6rem;
+    word-spacing: .05rem;
+}
+
+#write ol li {
+    padding-left: 0.5rem;
+}
+
+#write>ul:first-child,
+#write>ol:first-child {
+    margin-top: 30px;
+}
+
+body>*:first-child {
+    margin-top: 0 !important;
+}
+
+body>*:last-child {
+    margin-bottom: 0 !important;
+}
+
+a {
+    color: #42b983;
+    font-weight: 600;
+    padding: 0px 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+
+h1 {
+    padding-bottom: .4rem;
+    font-size: 2.2rem;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 1.75rem;
+    line-height: 1.225;
+    margin: 35px 0px 15px 0px;
+}
+
+h3 {
+    font-size: 1.4rem;
+    line-height: 1.43;
+    margin: 20px 0px 7px 0px;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+    color: #777;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
+}
+
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+body>h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h1:first-child+h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h3:first-child,
+body>h4:first-child,
+body>h5:first-child,
+body>h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+    margin-top: 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul,
+ol {
+    padding-left: 30px;
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+blockquote {
+    border-left: 4px solid #42b983;
+    padding: 10px 0px 10px 15px;
+    color: #777;
+    background-color: rgba(66, 185, 131, .1);
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #fafafa;
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr td {
+    border: 1px solid #dfe2e5;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+#write strong {
+    padding: 0px 1px 0 1px;
+}
+
+#write em {
+    padding: 0px 5px 0 2px;
+}
+
+#write table thead th {
+    background-color: #f2f2f2;
+}
+
+#write .CodeMirror-gutters {
+    border-right: none;
+}
+
+#write .md-fences {
+    border: 1px solid #F4F4F4;
+    -webkit-font-smoothing: initial;
+    margin: 0.8rem 0 !important;
+    padding: 0.3rem 0rem !important;
+    line-height: 1.43rem;
+    background-color: #F8F8F8 !important;
+    border-radius: 2px;
+    font-family: Roboto Mono, Source Sans Pro, Monaco, courier, monospace !important;
+    font-size: 0.85rem;
+    word-wrap: normal;
+}
+
+#write .CodeMirror-wrap .CodeMirror-code pre {
+    padding-left: 12px;
+}
+
+#write code, tt {
+    margin: 0 2px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-family: Source Sans Pro, Roboto Mono, Monaco, courier, monospace !important;
+    font-size: 0.92rem;
+    color: #e96900;
+    background-color: #f8f8f8;
+}
+
+#write .md-footnote {
+    background-color: #f8f8f8;
+    color: #e96900;
+}
+
+/* heighlight. */
+#write mark {
+    background-color:#EBFFEB;
+    border-radius: 2px;
+    padding: 2px 4px;
+    margin: 0 2px;
+    color: #222;
+    font-weight: 500;
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+.cm-s-inner .cm-link,
+.cm-s-inner.cm-link {
+    color: #22a2c9;
+}
+
+.cm-s-inner .cm-string {
+    color: #22a2c9;
+}
+
+.md-task-list-item>input {
+    margin-left: -1.3em;
+}
+
+@media screen and (min-width: 914px) {
+    /*body {
+        width: 854px;
+        margin: 0 auto;
+    }*/
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+    background-color: #f8f8f8;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+    bottom: .375rem;
+}
+
+#write>h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write>h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+
+</style>
+</head>
+<body class='typora-export' >
+<div  id='write'  class = 'is-mac show-fences-line-number'><p><a href='../index.html'>返回到首页</a></p><hr /><div class='md-toc' mdtype='toc'><p class="md-toc-content"><span class="md-toc-item md-toc-h1" data-ref="n1586"><a class="md-toc-inner" style="" href="#header-n1586">Lecture 1. Computer vision overview &amp; Historical context</a></span><span class="md-toc-item md-toc-h2" data-ref="n1591"><a class="md-toc-inner" style="" href="#header-n1591">1.1 What is Computer Vision?</a></span><span class="md-toc-item md-toc-h2" data-ref="n1618"><a class="md-toc-inner" style="" href="#header-n1618">1.2 A brief history of computer vision</a></span><span class="md-toc-item md-toc-h2" data-ref="n1649"><a class="md-toc-inner" style="" href="#header-n1649">1.3 CS231n Overview</a></span><span class="md-toc-item md-toc-h2" data-ref="n1684"><a class="md-toc-inner" style="" href="#header-n1684">References</a></span></p></div><blockquote><p>CS231n 课程的官方地址：<a href='http://cs231n.stanford.edu/index.html' target='_blank' class='url'>http://cs231n.stanford.edu/index.html</a></p><p>该笔记根据的视频课程版本是 <a href='https://www.bilibili.com/video/av17204303'>Spring 2017</a>(BiliBili)，PPt 资源版本是 <a href='http://cs231n.stanford.edu/syllabus.html'>Spring 2018</a>.、</p></blockquote><p>&nbsp;</p><h1><a name='header-n1586' class='md-header-anchor '></a>Lecture 1. Computer vision overview &amp; Historical context</h1><p> </p><p>首先，我们针对 CS231n 这个课程，我们先回答下面一个问题：</p><h2><a name='header-n1591' class='md-header-anchor '></a>1.1 What is Computer Vision?</h2><blockquote><p>有这样的一个事实：到2017年，互联网上大约80%的流量都是视频（CISCO）。<span>	</span>可见利用算法或模型去开发和理解这些视觉数据是很有必要的。然而，视觉数据存在着问题，那就是其很不容易被理解。讲师把视觉数据比作了物理学中的“暗物质”，是因为其占据了宇宙中的很大一部分，但是我们不能直接观测它们，去探知和理解它们。 </p></blockquote><blockquote><p>又一个事实来自 YouTube：大概每秒钟就会有长达5小时的内容会被上传到 YouTube 上。显然，若给这些视频做标签，分类，发放广告等处理，YouTube 的员工人手不够的。</p></blockquote><ul><li><p>计算机视觉是一个<strong>跨学科</strong>的领域：</p><p>请自行从下图中体会一二。。。。</p></li></ul><p><img src='https://i.loli.net/2018/05/04/5aec356511d0c.png' alt='' referrerPolicy='no-referrer' /></p><ul><li><p>扩展材料：</p><p><a href='https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89'>维基百科：计算机视觉</a></p><p><a href='https://en.wikipedia.org/wiki/Computer_vision'>Wikipedia：Computer_vision</a></p><p><a href='https://hayo.io/computer-vision/'>What is Computer Vision?</a></p></li></ul><p>&nbsp;</p><h2><a name='header-n1618' class='md-header-anchor '></a>1.2 A brief history of computer vision</h2><p>视觉的历史可以追溯到大约5亿4千3百万年前。简单说，那个时候的生物就一个字：low！连眼睛都没有！但是偏偏有那么短短的一千万年间（zoologists 说的，别找我。。。），物种指数级爆炸增长！为啥呢？？一个帅哥给出了一个很有说服力的理论：因为有眼睛了啊！你说神奇不神奇！</p><p>现在，可以说<strong>有智慧</strong>的生物都是有视觉感知的（毫不谦虚的暗示了我们人类自己哈~）。人脑皮层里据说有一半的神经元都是和视觉有关呢！谁敢说视觉不重要啊？</p><p>扯完了生物的视觉，那机器的视觉算什么鬼呢？不好意思，我们继续飞到最原始的理解为好，来聊聊最早的&quot;机器视觉&quot;——相机。最早的相机乃是17世纪文艺复兴时期的一种暗箱（利用小孔成像原理）。其实这个原理和我们生物的眼睛没有本质的区别，当然也包括我们现代到处可见的手机摄像头等等。。。</p><p>生物学家最开始研究了生物视觉的原理，算是启发了计算机视觉的一项研究（<a href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1363130/'>Hubel&amp;Wiesel, 1959</a>），他们想知道哺乳动物的视觉处理机制是怎样的？于是，他们在猫脑子里管视觉的神经处查电极看反应。结果，视觉神经在不同层对不同的视觉影响有着不同的反应，其中复杂细胞对边界信息敏感。</p><p>计算机视觉的历史从60年代初开始。Block world 是其相关的第一篇工作，也是一篇 PhD 论文（ <a href='https://dspace.mit.edu/handle/1721.1/11589'>Larry Roberts, 1963</a>），其中视觉世界被简化为简单的几何形状，视觉以重建的方式识别。在1966年，一个现已非常著名且在当时颇有野心的 MIT 暑期项目——<a href='https://dspace.mit.edu/handle/1721.1/6125'>The Summer Vision Project</a> 。50多年过去了，这个项目仍在持续的研究与视觉相关的根本性问题。<a href='https://zh.wikipedia.org/zh-hans/%E5%A4%A7%E5%8D%AB%C2%B7%E9%A9%AC%E5%B0%94'>David Marr</a> 此人在70年代写了一本很有影响力的书《<a href='http://kryakin.site/David%20Marr-Vision.pdf'>Vision</a>》，书中都是他的对于视觉的个人理解以及对如何利用计算机开发和处理视觉的算法等等问题。这里视频里提到了一点细节，说白了就是想说理解视觉是一种”分层“、”分工“、”分步“的思维方式。70年代还有一个开创性的工作就是：我们如何越过简单的块状世界，开始识别或表示现实世界的对象？（<a href='https://dl.acm.org/citation.cfm?id=1624890'>Brooks&amp;Binford, 1979</a>; <a href='https://ieeexplore.ieee.org/abstract/document/1672195/'>Fischler and Elschlager, 1973</a>），其中的基本思想，说白了就是每个对象都是由简单的几何图像构成。80年代的 <a href='https://scholar.google.com/citations?user=8vs5HGYAAAAJ&hl=zh-CN'>David Lowe</a> 尝试了简单的线条重建视觉图像。总之，上述这些和现在相比，还是一个字：low！都还停留在 toy example 的阶段，没啥大的进展。</p><p>后来的发展，图像识别既然搞不成，那就从图像分割开始搞事情好了。于是，出现了 Normalized Cut（<a href='https://www2.eecs.berkeley.edu/Pubs/TechRpts/1997/CSD-97-940.pdf'>Shi&amp;Malik, 1997</a>）的图算法来像素级上进行分割。有一个应用的发展特别受到瞩目，那就是面部检测（<a href='http://wearables.cc.gatech.edu/paper_of_week/viola01rapid.pdf'>Viola&amp;Jones, 2001</a>），在当时那股统计机器学习方法的浪潮下，这个用Adaboost算法实现的实时面部检测相当令人称赞。2000年以前10年里，重要思想是基于特征的目标识别，其中一个非常有影响力的工作是 <a href='http://www.cs.ubc.ca/~lowe/papers/iccv99.pdf'>”SIFT“&amp;Object Recognition</a>（David Lowe, 1999）。这样相同构成要素特征去识别图片，使得我们可以在识别整幅图像有了进展，这里有个例子就是”空间金字塔匹配“（<a href='http://mplab.ucsd.edu/~marni/Igert/Lazebnik_06.pdf'>Spatial Pyramid Matching</a>, Lazebnik, Schmid &amp; Ponce, 2006），算法思想就不说了。。。类似的还有设计人体姿态（<a href='https://lear.inrialpes.fr/people/triggs/pubs/Dalal-cvpr05.pdf'>Histogram of Gradients,(HoG), Dalal&amp;Triggs, 2005</a>）和辨别人体姿态（<a href='http://cs.brown.edu/people/pfelzens/papers/lsvm-pami.pdf'>Deformable Part Model</a>, Felzenswalb, McAllester, Ramanan, 2009）。</p><p>进入21世纪以来，图片质量逐渐的越来越好。还有互联网的发展，相机硬件以及计算机视觉研究等等的进步。数据变得越来越多，越来越好，那么目标识别这个重要问题终于重回到人们的视野。于是，21世纪早期才开始有了真正有标签的数据集（<a href='http://host.robots.ox.ac.uk/pascal/VOC/'>PASCAL Visual Object Challenge</a>），以供我们去对目标识别问题进行研究。这毕竟才20个类别的数据集。很快一个更加真实的数据集出现了（<a href='http://www.image-net.org'>ImageNet</a>），好家伙，有2.2万个标签，1400多万个图片！搞这么大的数据其实也和机器学习的问题有关，那就是数据量要是小了，会太容易过拟合的。为此花了3年搞出了这么个大数据集，从2009年开始组织了国际比赛，经过更严格筛选的测试集，1000种目标类别，140万个目标图像。于是，从2010年到2017年以来，每年的获胜队伍的算法错误率在不断的下降：</p><p><img src='https://i.loli.net/2018/05/04/5aec5153127c8.png' alt='Russakovsky et al. IJCV 2015' referrerPolicy='no-referrer' /></p><p>显然，很牛逼的一年是2012年！之前几年还徘徊在20%错误率，然而2012年一下子降了好多百分点，这就是卷积神经网络（CNN） 算法成名的一年啊！从此，神经网络以及深度学习等等概念都开始快速风靡起来。</p><p>&nbsp;</p><ul><li><p>扩展材料：</p><p><a href='https://zh.wikipedia.org/wiki/%E5%A4%A7%E8%A1%9B%C2%B7%E4%BC%91%E4%BC%AF%E7%88%BE'>维基百科：Hubel</a></p><p><a href='https://en.wikipedia.org/wiki/Viola%E2%80%93Jones_object_detection_framework'>Wikipedia：Viola–Jones_object_detection_framework</a></p></li></ul><p>&nbsp;</p><h2><a name='header-n1649' class='md-header-anchor '></a>1.3 CS231n Overview</h2><p>首先要说的是，这门课程主要就是针对”图像分类“来搞事情的。不要小瞧这件事情看似很没意思，或者不够酷，其实所有的高深算法和让人惊讶的图像任务，都是基于，甚至源于”图像分类“技术的，比如说什么图像分割或者图像摘要生成等等。</p><p>CNN 卷积神经网络是我们主要讨论的东西，用来目标识别，有时也叫做 convnets。</p><p>自从2012年开始，ImageNet 的夺冠都是神经网路模型，并且深度越来越深。下图小窥一下：</p><p><img src='https://i.loli.net/2018/05/04/5aec5703ec992.png' alt='' referrerPolicy='no-referrer' /></p><p>其实90年代时候，CNN 就已经被发明了，下图是当年的模型与2012年名声大噪的 AlexNet 的对比，在结构上也诸多的相似之处：</p><p><img src='https://i.loli.net/2018/05/04/5aec57c6a4c8a.png' alt='' referrerPolicy='no-referrer' /></p><p>那么，你肯定狐疑了，为啥早就发明了，但是直到2012年才会突然大展拳脚，让大家满地找下巴呢？这是因为这些年以来以下深度学习三个方面的发展和进步导致的：</p><ol start='' ><li>计算能力（<strong>computation</strong>）。根据摩尔定律，计算机的速度每年都在提高。何况我们还有 GPU 进行高效的并行运算。</li><li>数据（<strong>data</strong>）。这些算法需要庞大的数据才得以实现非常好的泛化效果，且避免了过拟合。</li><li>算法（<strong>algorithms</strong>）。正是深度神经网络的崛起，传统机器学习算法的落寞。</li></ol><p>和人的视觉系统相比，我们的计算机视觉还有很大的潜力和进步空间。那么你晓得计算机视觉的圣杯是什么么？那就是仅仅根据一张图片，计算机就能写出一部小说来。。。。（个人认为这不仅仅是记忆力只是储存的问题，这是一个想象力的问题，不过记忆力的本质本来就是想象力，所以可能还是一个问题）。当然，对于一张图片的深刻理解也是很重要的，诸如暗喻，讽刺，幽默等等。</p><ul><li>花书是课程推荐选读用书。</li></ul><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n1684' class='md-header-anchor '></a>References</h2><ul><li><p>Hubel, David H., and Torsten N. Wiesel. &quot;Receptive fields, binocular interaction and functionalarchitecture in the cat&#39;s visual cortex.&quot; The Journal of physiology 160.1 (1962): 106. [PDF]</p></li><li><p>Roberts, Lawrence Gilman. &quot;Machine Perception of Three-dimensional Solids.&quot; Diss. MassachusettsInstitute of Technology, 1963. [PDF]</p></li><li><p>Marr, David. &quot;Vision.” The MIT Press, 1982. [PDF]</p></li><li><p>Brooks, Rodney A., and Creiner, Russell and Binford, Thomas O. &quot;The ACRONYM model-based vision system. &quot; In Proceedings of the 6th International Joint Conference on Artificial Intelligence (1979): 105-113. [PDF]</p></li><li><p>Fischler, Martin A., and Robert A. Elschlager. &quot;The representation and matching of pictorial structures.&quot; IEEE Transactions on Computers 22.1 (1973): 67-92. [PDF]</p></li><li><p>Lowe, David G., &quot;Three-dimensional object recognition from single two-dimensional images,&quot; Artificial</p><p>Intelligence, 31, 3 (1987), pp. 355-395. [PDF]</p></li><li><p>Shi, Jianbo, and Jitendra Malik. &quot;Normalized cuts and image segmentation.&quot; Pattern Analysis and</p><p>Machine Intelligence, IEEE Transactions on 22.8 (2000): 888-905. [PDF]</p></li><li><p>Viola, Paul, and Michael Jones. &quot;Rapid object detection using a boosted cascade of simple features.&quot; Computer Vision and Pattern Recognition, 2001. CVPR 2001. Proceedings of the 2001 IEEE Computer Society Conference on. Vol. 1. IEEE, 2001. [PDF]</p></li><li><p>Lowe, David G. &quot;Distinctive image features from scale-invariant keypoints.&quot; International Journal of</p><p>Computer Vision 60.2 (2004): 91-110. [PDF]</p></li><li><p>Lazebnik, Svetlana, Cordelia Schmid, and Jean Ponce. &quot;Beyond bags of features: Spatial pyramid</p><p>matching for recognizing natural scene categories.&quot; Computer Vision and Pattern Recognition, 2006IEEE Computer Society Conference on. Vol. 2. IEEE, 2006. [PDF]</p></li></ul><ul><li><p>Dalal, Navneet, and Bill Triggs. &quot;Histograms of oriented gradients for human detection.&quot; ComputerVision and Pattern Recognition, 2005. CVPR 2005. IEEE Computer Society Conference on. Vol. 1. IEEE,2005. [PDF]</p></li><li><p>Felzenszwalb, Pedro, David McAllester, and Deva Ramanan. &quot;A discriminatively trained, multiscale,deformable part model.&quot; Computer Vision and Pattern Recognition, 2008. CVPR 2008. IEEEConference on. IEEE, 2008 [PDF]</p></li><li><p>Everingham, Mark, et al. &quot;The pascal visual object classes (VOC) challenge.&quot; International Journal ofComputer Vision 88.2 (2010): 303-338. [PDF]</p></li><li><p>Deng, Jia, et al. &quot;Imagenet: A large-scale hierarchical image database.&quot; Computer Vision and PatternRecognition, 2009. CVPR 2009. IEEE Conference on. IEEE, 2009. [PDF]</p></li><li><p>Russakovsky, Olga, et al. &quot;Imagenet Large Scale Visual Recognition Challenge.&quot; arXiv:1409.0575. [PDF]</p></li><li><p>Lin, Yuanqing, et al. &quot;Large-scale image classification: fast feature extraction and SVM training.&quot;</p><p>Computer Vision and Pattern Recognition (CVPR), 2011 IEEE Conference on. IEEE, 2011. [PDF]</p></li><li><p>Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E. Hinton. &quot;Imagenet classification with deep</p><p>convolutional neural networks.&quot; Advances in neural information processing systems. 2012. [PDF]</p></li><li><p>Szegedy, Christian, et al. &quot;Going deeper with convolutions.&quot; arXiv preprint arXiv:1409.4842 (2014).</p><p>[PDF]</p></li><li><p>Simonyan, Karen, and Andrew Zisserman. &quot;Very deep convolutional networks for large-scale imagerecognition.&quot; arXiv preprint arXiv:1409.1556 (2014). [PDF]</p></li><li><p>He, Kaiming, et al. &quot;Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition.&quot;arXiv preprint arXiv:1406.4729 (2014). [PDF]</p></li><li><p>LeCun, Yann, et al. &quot;Gradient-based learning applied to document recognition.&quot; Proceedings of theIEEE 86.11 (1998): 2278-2324. [PDF]</p></li><li><p>Fei-Fei, Li, et al. &quot;What do we perceive in a glance of a real-world scene?.&quot; Journal of vision 7.1 (2007):10. [PDF]</p></li></ul><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><hr /><p><a href='../index.html'>返回到首页</a> | <a href='./cs231n_1.html'>返回到顶部</a></p><hr /><p><br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+<br>
+<script type="application/json" class="js-hypothesis-config">
+  {
+    &quot;openSidebar&quot;: false,
+    &quot;showHighlights&quot;: true,
+    &quot;theme&quot;: classic,
+    &quot;enableExperimentalNewNoteButton&quot;: true
+  }
+</script>
+<script async src="https://hypothes.is/embed.js"></script></p></div>
+</body>
+</html>

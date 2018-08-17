@@ -1,0 +1,878 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>Mixed_Precision_Training</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; padding-bottom: 70px; white-space: pre-wrap; overflow-x: visible; }
+.first-line-indent #write p .md-line { text-indent: 0px; }
+.first-line-indent #write li, .first-line-indent #write p, .first-line-indent #write p .md-line:first-child { text-indent: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write > blockquote:first-child, #write > div:first-child, #write > figure:first-child, #write > ol:first-child, #write > p:first-child, #write > pre:first-child, #write > ul:first-child { margin-top: 30px; }
+#write li > figure:first-child { margin-top: -20px; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+h1, h2, h3, h4, h5, h6 { margin-top: 1rem; margin-bottom: 1rem; }
+p { -webkit-margin-before: 1rem; -webkit-margin-after: 1rem; -webkit-margin-start: 0px; -webkit-margin-end: 0px; }
+.mathjax-block { margin-top: 0px; margin-bottom: 0px; -webkit-margin-before: 0px; -webkit-margin-after: 0px; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.701961); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 80px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+pre { white-space: pre-wrap; }
+pre.contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+.md-fences.mock-cm { white-space: pre-wrap; }
+.show-fences-line-number .md-fences { padding-left: 0px; }
+.show-fences-line-number .md-fences.mock-cm { padding-left: 40px; }
+.CodeMirror-line { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+.footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; }
+  #write { margin-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 1cm; padding-right: 1cm; padding-bottom: 0px; break-after: avoid-page; }
+  .typora-export #write::after { height: 0px; }
+  @page { margin: 20mm 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > img:only-child { display: block; margin: auto; }
+.md-line > .md-image:only-child, p > .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.mathjax-block { white-space: pre; overflow: hidden; width: 100%; }
+p + .mathjax-block { margin-top: -1.143rem; }
+.mathjax-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: '.'; }
+code, pre, tt { font-family: var(--monospace); }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.mathjax-block .MathJax_SVG_Display { text-align: center; margin: 1em 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: monospace; }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.os-windows.monocolor-emoji .md-emoji { font-family: 'Segoe UI Symbol', sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+
+
+:root {
+    --side-bar-bg-color: #fff;
+    --control-text-color: #777;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhGq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhPq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhHq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhIq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhEq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhFq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhLq3-cXbKD.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmhduz8A.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwkxduz8A.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmxduz8A.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlBduz8A.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmBduz8A.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmRduz8A.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lqDY.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qPK7lqDY.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNK7lqDY.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qO67lqDY.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qN67lqDY.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNq7lqDY.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmhduz8A.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwkxduz8A.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmxduz8A.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlBduz8A.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmBduz8A.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmRduz8A.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: Source Sans Pro, Helvetica Neue, Arial, sans-serif !important;
+    color: #34495e;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6rem;
+    letter-spacing: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#write {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 30px 40px 30px;
+    padding-top: 20px;
+    padding-bottom: 100px;
+}
+
+#write p {
+    /* text-indent: 2rem; */
+    line-height: 1.6rem;
+    word-spacing: .05rem;
+}
+
+#write ol li {
+    padding-left: 0.5rem;
+}
+
+#write>ul:first-child,
+#write>ol:first-child {
+    margin-top: 30px;
+}
+
+body>*:first-child {
+    margin-top: 0 !important;
+}
+
+body>*:last-child {
+    margin-bottom: 0 !important;
+}
+
+a {
+    color: #42b983;
+    font-weight: 600;
+    padding: 0px 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+
+h1 {
+    padding-bottom: .4rem;
+    font-size: 2.2rem;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 1.75rem;
+    line-height: 1.225;
+    margin: 35px 0px 15px 0px;
+}
+
+h3 {
+    font-size: 1.4rem;
+    line-height: 1.43;
+    margin: 20px 0px 7px 0px;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+    color: #777;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
+}
+
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+body>h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h1:first-child+h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h3:first-child,
+body>h4:first-child,
+body>h5:first-child,
+body>h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+    margin-top: 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul,
+ol {
+    padding-left: 30px;
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+blockquote {
+    border-left: 4px solid #42b983;
+    padding: 10px 0px 10px 15px;
+    color: #777;
+    background-color: rgba(66, 185, 131, .1);
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #fafafa;
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr td {
+    border: 1px solid #dfe2e5;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+#write strong {
+    padding: 0px 1px 0 1px;
+}
+
+#write em {
+    padding: 0px 5px 0 2px;
+}
+
+#write table thead th {
+    background-color: #f2f2f2;
+}
+
+#write .CodeMirror-gutters {
+    border-right: none;
+}
+
+#write .md-fences {
+    border: 1px solid #F4F4F4;
+    -webkit-font-smoothing: initial;
+    margin: 0.8rem 0 !important;
+    padding: 0.3rem 0rem !important;
+    line-height: 1.43rem;
+    background-color: #F8F8F8 !important;
+    border-radius: 2px;
+    font-family: Roboto Mono, Source Sans Pro, Monaco, courier, monospace !important;
+    font-size: 0.85rem;
+    word-wrap: normal;
+}
+
+#write .CodeMirror-wrap .CodeMirror-code pre {
+    padding-left: 12px;
+}
+
+#write code, tt {
+    margin: 0 2px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-family: Source Sans Pro, Roboto Mono, Monaco, courier, monospace !important;
+    font-size: 0.92rem;
+    color: #e96900;
+    background-color: #f8f8f8;
+}
+
+#write .md-footnote {
+    background-color: #f8f8f8;
+    color: #e96900;
+}
+
+/* heighlight. */
+#write mark {
+    background-color:#EBFFEB;
+    border-radius: 2px;
+    padding: 2px 4px;
+    margin: 0 2px;
+    color: #222;
+    font-weight: 500;
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+.cm-s-inner .cm-link,
+.cm-s-inner.cm-link {
+    color: #22a2c9;
+}
+
+.cm-s-inner .cm-string {
+    color: #22a2c9;
+}
+
+.md-task-list-item>input {
+    margin-left: -1.3em;
+}
+
+@media screen and (min-width: 914px) {
+    /*body {
+        width: 854px;
+        margin: 0 auto;
+    }*/
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+    background-color: #f8f8f8;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+    bottom: .375rem;
+}
+
+#write>h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write>h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+
+</style>
+</head>
+<body class='typora-export' >
+<div  id='write'  class = 'is-mac show-fences-line-number'><div class='md-toc' mdtype='toc'><p class="md-toc-content"><span class="md-toc-item md-toc-h1" data-ref="n20"><a class="md-toc-inner" style="" href="#header-n20">Mixed Precision Training</a></span><span class="md-toc-item md-toc-h2" data-ref="n49"><a class="md-toc-inner" style="" href="#header-n49">What is Mixed Precision Training?</a></span><span class="md-toc-item md-toc-h2" data-ref="n106"><a class="md-toc-inner" style="" href="#header-n106">Benefits of Mixed Precision Training</a></span><span class="md-toc-item md-toc-h2" data-ref="n178"><a class="md-toc-inner" style="" href="#header-n178">Volta TensorCores</a></span><span class="md-toc-item md-toc-h2" data-ref="n273"><a class="md-toc-inner" style="" href="#header-n273">Training results with mixed precision</a></span><span class="md-toc-item md-toc-h2" data-ref="n279"><a class="md-toc-inner" style="" href="#header-n279">Considerations for Mixed Precision Training</a></span><span class="md-toc-item md-toc-h2" data-ref="n447"><a class="md-toc-inner" style="" href="#header-n447">Guideline #1 for mixed precision: weight update</a></span><span class="md-toc-item md-toc-h2" data-ref="n583"><a class="md-toc-inner" style="" href="#header-n583">Guideline #2 for mixed precision: pointwise</a></span><span class="md-toc-item md-toc-h2" data-ref="n718"><a class="md-toc-inner" style="" href="#header-n718">DNN Operations: Reductions</a></span><span class="md-toc-item md-toc-h2" data-ref="n848"><a class="md-toc-inner" style="" href="#header-n848">A Note on Normalization and Loss Layers</a></span><span class="md-toc-item md-toc-h2" data-ref="n957"><a class="md-toc-inner" style="" href="#header-n957">DNN operation: Convolution, Matrix Multiply</a></span><span class="md-toc-item md-toc-h2" data-ref="n1037"><a class="md-toc-inner" style="" href="#header-n1037">Summary so far</a></span><span class="md-toc-item md-toc-h2" data-ref="n1165"><a class="md-toc-inner" style="" href="#header-n1165">Loss Scaling</a></span><span class="md-toc-item md-toc-h2" data-ref="n1329"><a class="md-toc-inner" style="" href="#header-n1329">Automatic Loss Scaling</a></span><span class="md-toc-item md-toc-h2" data-ref="n1537"><a class="md-toc-inner" style="" href="#header-n1537">Update Skipping</a></span><span class="md-toc-item md-toc-h2" data-ref="n1507"><a class="md-toc-inner" style="" href="#header-n1507">Automatic Loss Scaling Parameters</a></span><span class="md-toc-item md-toc-h2" data-ref="n1755"><a class="md-toc-inner" style="" href="#header-n1755">Language Translation</a></span><span class="md-toc-item md-toc-h2" data-ref="n1884"><a class="md-toc-inner" style="" href="#header-n1884">Speech</a></span><span class="md-toc-item md-toc-h2" data-ref="n1937"><a class="md-toc-inner" style="" href="#header-n1937">Progressive Growing of GANs</a></span><span class="md-toc-item md-toc-h2" data-ref="n2007"><a class="md-toc-inner" style="" href="#header-n2007">Sentiment Analysis</a></span><span class="md-toc-item md-toc-h2" data-ref="n2048"><a class="md-toc-inner" style="" href="#header-n2048">Image Inpainting</a></span><span class="md-toc-item md-toc-h2" data-ref="n2146"><a class="md-toc-inner" style="" href="#header-n2146">Text to speech synthesis</a></span><span class="md-toc-item md-toc-h2" data-ref="n2187"><a class="md-toc-inner" style="" href="#header-n2187">Wavenet</a></span><span class="md-toc-item md-toc-h2" data-ref="n2273"><a class="md-toc-inner" style="" href="#header-n2273">Speedups</a></span><span class="md-toc-item md-toc-h2" data-ref="n2382"><a class="md-toc-inner" style="" href="#header-n2382">TensorCore Performance Guidance</a></span></p></div><p>&nbsp;</p><p>&nbsp;</p><h1><a name='header-n20' class='md-header-anchor '></a>Mixed Precision Training</h1><p>by Paulius Micikevicius </p><p>Ref: <a href='http://on-demand.gputechconf.com/gtc/2018/video/S8923/'>S8923-Training Neural Networks with Mixed Precision: Theory and Practice</a></p><p>&nbsp;</p><h2><a name='header-n49' class='md-header-anchor '></a>What is Mixed Precision Training?</h2><ul><li><p><strong>Reduced precision tensor math with FP32 accumulation, FP16 storage</strong></p></li><li><p><strong>Successfully used to train a variety of:</strong></p><ul><li>Well nown public networks</li><li>Variety of NVIDIA research networks</li><li>Variety of NVIDIA automotive networks</li></ul></li></ul><p>&nbsp;</p><h2><a name='header-n106' class='md-header-anchor '></a>Benefits of Mixed Precision Training</h2><ul><li><p><strong>Accelerates math</strong></p><ul><li>TensorCores have 8x higher throughput than FP32</li><li>125 TFlops theory</li></ul></li><li><p><strong>Reduces memory bandwidth pressure:</strong></p><ul><li>FP16 halves the memory traffic compared to FP32</li></ul></li><li><p><strong>Reduces memory consumption</strong></p><ul><li>Halve the size of activation and gradient tensors</li><li>Enables larger minibatches or larger input sizes</li></ul></li></ul><p>&nbsp;</p><h2><a name='header-n178' class='md-header-anchor '></a>Volta TensorCores</h2><ul><li><p><a href='https://devblogs.nvidia.com/programming-tensor-cores-cuda-9/' target='_blank' class='url'>https://devblogs.nvidia.com/programming-tensor-cores-cuda-9/</a></p></li><li><p><strong>Used by cuDNN and CUBLAS libraries</strong></p></li><li><p><strong>Exposed in CUDA as WMMA</strong></p><ul><li><a href='http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#wmma' target='_blank' class='url'>http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#wmma</a></li></ul></li><li><p><strong>Accelerate convolutions and matrix multiplication</strong></p><ul><li>A single instruction multiply-accumulates matrices</li><li>Think: computes many dot-products in parallel</li></ul></li></ul><p><img src='https://i.loli.net/2018/08/11/5b6e6546836d6.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n273' class='md-header-anchor '></a>Training results with mixed precision</h2><ul><li><p><strong>Successfully applied to a wide variety of networks including:</strong></p><ul><li>Imagenet CNNs</li><li>Detection</li><li>Language Translation</li><li>Speech</li><li>Text to Speech</li><li>GAN</li><li>Image enhancement (inpainting, upscaling, pix2pix, etc.)</li><li>Wavenet</li></ul></li><li><p><strong>More details later in this talk</strong></p></li></ul><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n279' class='md-header-anchor '></a>Considerations for Mixed Precision Training</h2><ul><li><p><strong>Which precision to use for storage, for math?</strong></p></li><li><p>Instructive to walk through by DNN operation type:</p><ul><li>Weight update</li><li>Point-wise</li><li>Reduction</li><li>Convolution, Matrix multiply</li></ul></li></ul><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n447' class='md-header-anchor '></a>Guideline #1 for mixed precision: weight update</h2><ul><li><p><strong>FP16 mantissa is sufficient for some networks, some require FP32</strong></p></li><li><p><strong>Sum of FP16 values whose ratio is greater than <span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-9-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="3.036ex" height="2.322ex" viewBox="0 -942.4 1307.1 999.7" role="img" focusable="false" style="vertical-align: -0.133ex;"><defs><path stroke-width="0" id="E17-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E17-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E17-MJMAIN-32" x="0" y="0"></use><g transform="translate(500,392)"><use transform="scale(0.707)" xlink:href="#E17-MJMAIN-31"></use><use transform="scale(0.707)" xlink:href="#E17-MJMAIN-31" x="500" y="0"></use></g></g></svg></span><script type="math/tex" id="MathJax-Element-9">2^{11}</script> is just the large value</strong></p><ul><li><p>FP16 has a 10-bit mantissa, binary points have to be aligned for addition</p></li><li><p>Weight update: if <a href=''>w &gt;&gt; lr * dw</a> then update doesn&#39;t change <a href=''>w</a></p><ul><li>Examples multiplying a value by 0.01 leads to ~<span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-16-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.215ex" height="2.322ex" viewBox="0 -942.4 953.6 999.7" role="img" focusable="false" style="vertical-align: -0.133ex;"><defs><path stroke-width="0" id="E28-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E28-MJMAIN-37" d="M55 458Q56 460 72 567L88 674Q88 676 108 676H128V672Q128 662 143 655T195 646T364 644H485V605L417 512Q408 500 387 472T360 435T339 403T319 367T305 330T292 284T284 230T278 162T275 80Q275 66 275 52T274 28V19Q270 2 255 -10T221 -22Q210 -22 200 -19T179 0T168 40Q168 198 265 368Q285 400 349 489L395 552H302Q128 552 119 546Q113 543 108 522T98 479L95 458V455H55V458Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E28-MJMAIN-32" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E28-MJMAIN-37" x="707" y="555"></use></g></svg></span><script type="math/tex" id="MathJax-Element-16">2^7</script> ratio, 0.001 leads to ~<span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-20-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="3.036ex" height="2.322ex" viewBox="0 -942.4 1307.1 999.7" role="img" focusable="false" style="vertical-align: -0.133ex;"><defs><path stroke-width="0" id="E38-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E38-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E38-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E38-MJMAIN-32" x="0" y="0"></use><g transform="translate(500,392)"><use transform="scale(0.707)" xlink:href="#E38-MJMAIN-31"></use><use transform="scale(0.707)" xlink:href="#E38-MJMAIN-30" x="500" y="0"></use></g></g></svg></span><script type="math/tex" id="MathJax-Element-20">2^{10}</script> ratio</li></ul></li></ul></li><li><p><strong>Conservative recommendation:</strong></p><ul><li><p>FP32 update:</p><ul><li>Compute weight update in FP32</li><li>Keep a master copy of weights in FP32, make an FP16 copy for fwd/bwd passes</li></ul></li></ul></li><li><p><strong>If FP32 storage is a burden, try FP16 — it does work for some nets</strong></p><ul><li>i.e. convnets</li></ul></li></ul><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n583' class='md-header-anchor '></a>Guideline #2 for mixed precision: pointwise</h2><ul><li><p><strong>FP16 is safe for most of these: ReLU, Sigmoid, Tanh, Scale, Add, ...</strong></p><ul><li>Inputs and outputs to these are value in a narrow range around 0</li><li>FP16 storage saves bandwidth -&gt; reduces time</li></ul></li><li><p><strong>FP32 math and storage is recommended for:</strong></p><ul><li><p>operations <a href=''>f</a> where <a href=''>| f(x) | &gt;&gt; | x |</a></p><ul><li>Example: Exp, Square, Log, Cross-entropy</li></ul></li><li><p>FP32 accumulation ensures high precision, no pref impact since bandwidth limited</p></li><li><p>These typically occur as part of a normalization or loss layer that is unfused</p></li></ul></li><li><p><strong>Conservative recommendation:</strong></p><ul><li>Leave pointwise ops in FP32 (math and storage) unless they are known types</li><li>NVIDIA has a library of efficient fused pointwise ops for common types (eg BN)</li><li>Pointwise op fusion is a good next step for performance</li></ul></li></ul><p>&nbsp;</p><h2><a name='header-n718' class='md-header-anchor '></a>DNN Operations: Reductions</h2><ul><li><p><strong>Examples:</strong></p><ul><li>Large sums of values: L1 norm, L2 norm, Softmax</li></ul></li><li><p><strong>FP32 Math:</strong></p><ul><li>Avoids overflows</li><li>Does not affect speed — these operations are memory limited</li></ul></li><li><p><strong>Storage:</strong></p><ul><li><p>FP32 output</p></li><li><p>Input can be FP16 if the preceding operation outputs FP16</p><ul><li>If your training frameworks supports different input and output types for an op</li><li>Save badwidth -&gt; some speedup</li></ul></li></ul></li></ul><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n848' class='md-header-anchor '></a>A Note on Normalization and Loss Layers</h2><ul><li><p><strong>Normalizations:</strong></p><ul><li><p>Usually constructed from primitive ops (reductions, squares, exp, scale)</p></li><li><p>Storage:</p><ul><li>Input and normalized output can be in FP16</li><li>Intermediate results should be stored in FP32</li></ul></li><li><p>Ideally should by fused in a single op:</p><ul><li>Avoids round-trips to memory -&gt; faster</li><li>Avoids intermediate storage</li></ul></li></ul></li><li><p><strong>Loss, probability layers:</strong></p><ul><li>Softmax, cross-entropy, attention modules</li><li>FP32 math, FP32 output</li></ul></li></ul><p>&nbsp;</p><h2><a name='header-n957' class='md-header-anchor '></a>DNN operation: Convolution, Matrix Multiply</h2><ul><li><p><strong>Fundamentally these are collections of dot-products</strong></p></li><li><p><strong>Math: Tensor Cores starting with Volta GPUs</strong></p><ul><li><p>Training: use FP32 accumulation</p></li><li><p>Inference: FP16 accumulation can be used</p></li><li><p>Many frameworks have integrated libraries with TensorCore support</p><ul><li><a href='http://doc.nvidia.com/deeplearning/sdk/mixed-precision-training/' target='_blank' class='url'>http://doc.nvidia.com/deeplearning/sdk/mixed-precision-training/</a></li></ul></li></ul></li><li><p>FP16 Storage (input and output)</p></li></ul><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n1037' class='md-header-anchor '></a>Summary so far</h2><ul><li><p><strong>FP32 Master weights and update</strong></p></li><li><p><strong>Math: FP32 and TensorCores</strong></p></li><li><p><strong>Storage:</strong></p><ul><li><p>Use FP16 for most layers</p></li><li><p>Use FP32 for layers that output probabilities or large magnitude values</p><ul><li>Fuse to optimize speed and storage</li></ul></li></ul></li><li><p><strong>Example layer time breakdowns for FP32-only training:</strong></p><ul><li>Resnet50: ~73% convolutions, 27% other</li><li>DS2: ~90% convolutions and matrix multiplies (LSTM), ~10% other</li></ul></li><li><p><strong>One more mixed-precision consideration: Loss Scaling</strong></p><ul><li>Scale the loss, unscale the weight gradients before update/clipping/etc.</li><li>Preserves small gradient values</li></ul></li></ul><p>&nbsp;</p><p>&nbsp;</p><p><img src='https://i.loli.net/2018/08/11/5b6e6da55e6c8.png' alt='' referrerPolicy='no-referrer' /></p><h2><a name='header-n1165' class='md-header-anchor '></a>Loss Scaling</h2><ul><li><p><strong>Algorithm</strong></p><ul><li><p><a href=''>Pick a scaling factor</a> <a href=''><em>s</em></a></p></li><li><p>for each training iteration</p><ul><li>Make an fp16 copy of weights</li><li>Fwd prop                                     (fp16 weights and activations)</li><li><a href=''>Scale the loss by</a> <a href=''><em>s</em></a></li><li>Bwd prop</li><li><a href=''>Scale dW by</a> <a href='1/s'><em>1/s</em></a>                        (fp16 weights, activations, and gradients)</li><li>Update W</li></ul></li></ul></li><li><p><strong>For simplicity:</strong></p><ul><li><p>Apply gradient clipping and similar operations on gradients after 1/s scaling</p><ul><li>Avoids the need to change hyperparameters to account for scaling</li></ul></li></ul></li><li><p><strong>For maximum performance: fuse unscaling and update</strong></p><ul><li>Reduces memory accesses</li><li>Avoids storing weight gradients in fp32</li></ul></li></ul><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n1329' class='md-header-anchor '></a><a href=''>Automatic</a> Loss Scaling</h2><ul><li><p><strong>Frees users from choosing a scaling factor</strong></p><ul><li>Too small a factor doesn&#39;t retain enough small values</li><li>Too large a factor causes overflows</li></ul></li><li><p><strong>Algorithm</strong></p><ul><li><p><a href=''>Start with a large scaling factor</a> <a href=''><em>s</em></a></p></li><li><p>for each training iteration</p><ul><li><p>Make an fp16 copy of weights</p></li><li><p>Fwd prop</p></li><li><p><a href=''>Scale the loss by</a> <a href=''><em>s</em></a></p></li><li><p>Bwd prop</p></li><li><p><a href=''>Update scaling factor</a> <a href=''><em>s</em></a>   (<strong>The automatic part</strong>)</p><ul><li><a href=''>If <em>dW</em> contains <code>Inf/NaN</code> then reduce <em>s</em>, <strong>skip the update</strong></a></li><li><a href=''>If no <code>Inf/NaN</code> were detected for <em>N</em> updates then increase <em>s</em></a></li></ul></li><li><p><a href=''>Scale <em>dW</em> by <em>1/s</em></a></p></li><li><p>Update <em>W</em></p></li></ul></li></ul></li></ul><p><img src='https://i.loli.net/2018/08/11/5b6e7402149fe.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n1537' class='md-header-anchor '></a>Update Skipping</h2><ul><li><p><strong>Must skip updating:</strong></p><ul><li>Weights</li><li>Momenta</li></ul></li><li><p><strong>Additional considerations:</strong></p><ul><li><p>Iteration count:</p><ul><li><p>Always increments: may result in fewer updates than iterations </p></li><li><p>Don&#39;t increment when skipping:</p><ul><li>Ensures the same number of updates as without skipping enabled</li><li>Ensures the same number of updates with a given learning rate</li></ul></li><li><p>Input minibatch: just &quot;move on&quot;</p></li></ul></li></ul></li></ul><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n1507' class='md-header-anchor '></a>Automatic Loss Scaling Parameters</h2><ul><li><p><strong>Factor for increasing/decreasing loss-scaling</strong></p><ul><li>In all our experiments we use <a href=''>2</a></li></ul></li><li><p><strong>Number of iterations without overflow</strong></p><ul><li>In all our expreiments we use <strong><em>N</em></strong> = <a href=''>2,000</a></li><li>Separate study showed that randomly skipping 0.1% of updates didn&#39;t affect result</li><li><strong><em>N</em></strong> = <a href=''>2,000</a> gives extra margin by skipping at most 0.05% of updates in steady state</li></ul></li><li><p><strong>Iteration count:</strong></p><ul><li>We did not observe model accuracy difference between invrementing and not incrementing iteration count on skips</li></ul></li></ul><p><img src='https://i.loli.net/2018/08/11/5b6e76015c6ca.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n1755' class='md-header-anchor '></a>Language Translation</h2><ul><li><p><strong>GNMT:</strong></p><ul><li><p><a href='https://github.com/tensorflow/nmt' target='_blank' class='url'>https://github.com/tensorflow/nmt</a></p></li><li><p>German -&gt; English (train on WMT, test on newstest2015)</p></li><li><p>8 layer encoder, 8 layer decoder, 1024x LSTM cells, attention</p></li><li><p><a href=''>FP32 and Mixed Precision: ~29 BLEU using SGD</a></p><ul><li>Both equally lower with Adam, match the paper</li></ul></li></ul></li><li><p><strong>FairSeq:</strong></p><ul><li><a href='https://github.com/facebookresearch/fairseq' target='_blank' class='url'>https://github.com/facebookresearch/fairseq</a></li><li>Convolutional net for translation, English - French</li><li><a href=''>FP32 and Mixed Precision: ~40.5 BLEU</a> after 12 epochs</li></ul></li></ul><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n1884' class='md-header-anchor '></a>Speech</h2><ul><li><p><strong>Courtesy of Baidu</strong></p><ul><li>2 2D-conv layers, 3 GRU layers, 1D conv</li><li>Baidu internal datasets</li></ul></li></ul><p><img src='https://i.loli.net/2018/08/11/5b6e7761dfd51.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><h2><a name='header-n1937' class='md-header-anchor '></a>Progressive Growing of GANs</h2><ul><li><p><strong>Generates 1024x1024 face images</strong></p><ul><li><a href='http://research.nvidia.com/publication/2017-10_Progressive-Growing-of' target='_blank' class='url'>http://research.nvidia.com/publication/2017-10_Progressive-Growing-of</a></li></ul></li><li><p><strong>No preceptible difference between FP32 and mixed-precision training</strong></p></li><li><p><strong>Loss-scaling:</strong></p><ul><li>Separate scaling factors for generator and discriminator (you are training 2 networks)</li><li><u>Automatic loss scaling greatly simplified training</u> — gradient stats shift drastically when image resolution is increased</li></ul></li></ul><p><img src='https://i.loli.net/2018/08/11/5b6e783ca32d0.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n2007' class='md-header-anchor '></a>Sentiment Analysis</h2><ul><li><strong>Multiplicative LSTM, based on <a href='https://arxiv.org/abs/16704.01444' target='_blank' class='url'>https://arxiv.org/abs/16704.01444</a></strong></li></ul><p><img src='https://i.loli.net/2018/08/11/5b6e788f57948.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n2048' class='md-header-anchor '></a>Image Inpainting</h2><ul><li><p><strong>Fill in arbitrary holes</strong></p></li><li><p><strong>Network Architecture:</strong></p><ul><li><strong>U-Net with partial convolution</strong></li><li><strong>VGG16 based Perceptual loss + Style loss</strong></li></ul></li><li><p><strong>Speedup: 3x, at 2x bigger batch size</strong></p><ul><li>We can increase batch size only in mixed precision</li></ul></li></ul><p><img src='https://i.loli.net/2018/08/11/5b6e7949b3d6e.png' alt='' referrerPolicy='no-referrer' /></p><p><img src='https://i.loli.net/2018/08/11/5b6e79d741f20.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n2146' class='md-header-anchor '></a>Text to speech synthesis</h2><p><img src='https://i.loli.net/2018/08/11/5b6e7a28c3d68.png' alt='' referrerPolicy='no-referrer' /></p><p><img src='https://i.loli.net/2018/08/11/5b6e7a58cfe0f.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n2187' class='md-header-anchor '></a>Wavenet</h2><ul><li>12 Layers of dilated convolutions</li><li>Dilations reset every 6 layers</li><li>128 channels for dilated convs. (64 per nonlinearity)</li><li>64 channels for residual convs.</li><li>256 channels for skip convs.</li></ul><p><img src='https://i.loli.net/2018/08/11/5b6e7b04c8a82.png' alt='' referrerPolicy='no-referrer' /></p><p><img src='https://i.loli.net/2018/08/11/5b6e7b1eb2e67.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n2273' class='md-header-anchor '></a>Speedups</h2><ul><li><p><strong>Memory limiited ops: should see <a href=''>~2x</a> speedup</strong></p></li><li><p><strong>Math limited ops: will vary based on arithmetic intensity</strong></p></li><li><p><strong>Some examples, mixed precision vs FP32 on GV100:</strong></p><ul><li>Resnet50: <a href=''>~3.3x</a></li><li>DeepSpeech2: <a href=''>~4.5x</a></li><li>FairSeq: <a href=''>~4.0x</a></li><li>Sentiment prediction: <a href=''>~4.0x</a></li></ul></li><li><p><strong>Speedups to increase further:</strong></p><ul><li>libraries are continuously optimized</li><li>TensorCore paths are being added to more operation varieties</li></ul></li></ul><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n2382' class='md-header-anchor '></a>TensorCore Performance Guidance</h2><ul><li><p><strong>Requirements to trigger TensorCore operations</strong></p><ul><li><p>Convolutions:</p><ul><li>Number of input channels a multiple of 8</li><li>Number of output channels a multiple of 8</li></ul></li><li><p>Matrix Multiplies:</p><ul><li>M, N, K sizes should be multiples of 8</li><li>Larger K sizes make multiplications more efficient (amortize the write overhead)</li><li>Makes wider recurrent cells more practical (K is input layer width)</li></ul></li></ul></li><li><p><strong>If you&#39;re designing models</strong></p><ul><li><p>Make sure to choose layer widths that are multiples of 8</p></li><li><p>Pad input/output dictionaries to multiples of 8</p><ul><li>Speeds up embedding/projection operations</li></ul></li></ul></li><li><p><strong>If you&#39;re developing new cells</strong></p><ul><li>Concatenate cell matrix ops into a single cell</li></ul></li></ul><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p></div>
+</body>
+</html>
