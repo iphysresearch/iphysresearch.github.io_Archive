@@ -1,3 +1,10 @@
+---
+title: Training Neural Networks with Mixed Precision: Theory and Practice
+date: 2018-08-01
+---
+
+
+
 [返回到首页](../index.html)
 
 ---

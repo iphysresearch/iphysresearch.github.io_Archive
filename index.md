@@ -1,6 +1,6 @@
 ---
 title: IPhysResearch
-date: 2018-07-10
+date: 2018-08-17
 ---
 <div align="center"><a href="http://iphysresearch.github.io"><img src="https://i.loli.net/2018/07/11/5b44e3a6a798a.jpg" alt="Background" /></a></div>
 <h1 align="center">🍺 Teaching is Learning,   Writing is Thinking 🍺 </h1>
@@ -8,7 +8,7 @@ date: 2018-07-10
 ---
 
 <div align="center"><strong>Physics | Gravitational Waves | Machine Learning | Deep Learning</strong></div>
-<div align="center"><a href="http://iphysresearch.github.io"><img src="https://img.shields.io/badge/Update-2018.7.14-green.svg?style=plastic" alt="Update" /></a><a href="https://github.com/iphysresearch"><img src="https://img.shields.io/github/followers/iphysresearch.svg?style=social&label=Follow" alt="GITHUB" /></a><a href="http://weibo.com/IPhysresearch"><img src="https://img.shields.io/badge/Weibo-@iPHYSresearch-blue.svg?style=plastic" alt="Tweet" /></a><a href="https://twitter.com/Herb_hewang"><img src="https://img.shields.io/twitter/url/https/github.com/iphysresearch/iphysresearch.github.io.svg?style=social" alt="Tweet" /></a></div>
+<div align="center"><a href="http://iphysresearch.github.io"><img src="https://img.shields.io/badge/Update-2018.8.17-green.svg?style=plastic" alt="Update" /></a><a href="https://github.com/iphysresearch"><img src="https://img.shields.io/github/followers/iphysresearch.svg?style=social&label=Follow" alt="GITHUB" /></a><a href="http://weibo.com/IPhysresearch"><img src="https://img.shields.io/badge/Weibo-@iPHYSresearch-blue.svg?style=plastic" alt="Tweet" /></a><a href="https://twitter.com/Herb_hewang"><img src="https://img.shields.io/twitter/url/https/github.com/iphysresearch/iphysresearch.github.io.svg?style=social" alt="Tweet" /></a></div>
 
 
 
