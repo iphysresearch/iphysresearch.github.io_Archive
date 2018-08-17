@@ -3,7 +3,7 @@ title: IPhysResearch
 date: 2018-07-10
 ---
 <div align="center"><a href="http://iphysresearch.github.io"><img src="https://i.loli.net/2018/07/11/5b44e3a6a798a.jpg" alt="Background" /></a></div>
-<h1 align="center">🍺 Teaching is Learning 🍺</h1>
+<h1 align="center">🍺 Teaching is Learning,   Writing is Thinking 🍺 </h1>
 
 ---
 
@@ -16,17 +16,18 @@ date: 2018-07-10
 
 
 
-
-
 # Welcome！
 
 ## About
 
 Thanks for visiting！
 
-I'm a PhD candidate majoring in theoretical physics. I love to share knowledge and have a keen passion for scientific research on data analysis of ***gravitational-wave***(GW) detection and ***deep learning*** (DL) technologies.
+I'm a PhD candidate majoring in theoretical physics. I love to share knowledge and have a keen passion for scientific research on data analysis of ***gravitational-wave***(GW) detection and ***deep learning*** (DL) technologies. 
 
-Most of blog posts and notes here are written in **Chinese** and any future updates for *completion*.
+Most of blog posts and notes here are written in **Chinese** and any future updates for *completion*. After some years of study, I wish I could accumulate a sufficient body of knowledge and achieve a view of my own on. Thus, as *S. Chandrasekhar* notes, "I have the urge to present my point of view *ab initio*, in a coherent account with order, form, and structure."
+
+
+> "My scientific work has followed a certain pattern motivated, principally, by *a quest after perspectives*"—— S. Chandrasekhar
 
 This site is currently **under construction** and I will make updates weekly and look forward to resuming blog posts in the fall.
 
@@ -40,7 +41,7 @@ With use of the [hypothes.is](https://hypothes.is/) extension (right-sided), y
 
 ---
 
-# My Learning Notes
+# My Notes on ...
 
 > “*Men Learn While They Teach*” —— Seneca.
 
@@ -48,14 +49,20 @@ With use of the [hypothes.is](https://hypothes.is/) extension (right-sided), y
 
 ### CS231n
 
-- [一段关于神经网络的故事](./cs231n/cs231n_story_MLP.html)（30671字 + 多图）
-- 
+- [Lecture 1. Computer vision overview & Historical context](./cs231n/cs231n_1.html)
+
+
+
+
+
+> [一段关于神经网络的故事](./cs231n/cs231n_story_MLP.html)（**Original**，30671字 + 多图）
 
 
 
 ## Books
 
-- [Python 基础教程（第3版）](./books/Python.html)
+- [Python 基础教程（第3版）](./books/Beginning_Python.html)（**Annotations**）
+- 
 
 
 
@@ -69,7 +76,9 @@ With use of the [hypothes.is](https://hypothes.is/) extension (right-sided), y
 
 ---
 
-# Paper Summary
+# APaperADay Reading Challenge
+
+> Read a paper a day with [Nurture.AI](https://apaperaday.nurture.ai) to discover the latest breakthroughs and hidden gems across domains in Artificial Intelligence. 
 
 
 
@@ -78,11 +87,10 @@ With use of the [hypothes.is](https://hypothes.is/) extension (right-sided), y
 ---
 
 # My Posts
-- [2018年个人计划和目标](./post/2018_flag.html)
-- [数据科学入门之我谈(2017)](./post/MyWay2017.html)
-- [S_Dbw 聚类评估指标（代码全解析）](./post/S_Dbw.html)
-
-
+- [2018年个人计划和目标](./posts/2018_flag.html)
+- [数据科学入门之我谈(2017)](./posts/MyWay2017.html)
+- [S_Dbw 聚类评估指标（代码全解析）](./posts/S_Dbw.html)
+- [Training Neural Networks with Mixed Precision: Theory and Practice](./posts/Training_Neural_Networks_with_Mixed_Precision_Theory_and_Practice.html)
 
 
 
