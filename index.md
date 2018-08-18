@@ -3,7 +3,7 @@ title: IPhysResearch
 date: 2018-08-17
 ---
 <div align="center"><a href="http://iphysresearch.github.io"><img src="https://i.loli.net/2018/07/11/5b44e3a6a798a.jpg" alt="Background" /></a></div>
-<h1 align="center">🍺 Teaching is Learning,   Writing is Thinking 🍺 </h1>
+<h1 align="center">🍺 Teaching is Learning,  Writing is Thinking 🍺 </h1>
 
 ---
 
@@ -49,13 +49,39 @@ With use of the [hypothes.is](https://hypothes.is/) extension (right-sided), y
 
 ### CS231n
 
-- [Lecture 1. Computer vision overview & Historical context](./cs231n/cs231n_1.html)
+- From lecture video and slices
 
+  - [Lecture 1. Computer vision overview & Historical context](./cs231n/cs231n_1.html)
+  - [Lecture 2. Image Classification & K-nearest neighbor](./cs231n/cs231n_2.html)
+  - Lecture 3. Loss Functions and Optimization
+  - Lecture 4. Introduction to Neural Networks
+  - Lecture 5. Convolutional Neural Networks
+  - Lecture 6. Training Neural Networks, part I
+  - Lecture 7. Training Neural Networks, part II
+  - Lecture 8. Deep Learning Hardware and Software
+  - Lecture 9. CNN Architectures
+  - Lecture 10. Recurrent Neural Networks
+  - Lecture 11. Detection and Segmentation
+  - Lecture 12. Generative Models
+  - Lecture 13. Visualizing and Understanding
+  - Lecture 14. Deep Reinforcement Learning 
+  - Lecture 15. 
 
+- From course notes
 
+  - [图像分类笔记](./cs231n/CS231n_image_classification_note.html)
 
+    > L1/L2 distances, hyperparameter search, cross-validation
 
-> [一段关于神经网络的故事](./cs231n/cs231n_story_MLP.html)（**Original**，30671字 + 多图）
+  - [线性分类笔记](./cs231n/CS231n_linear_classification_note.html)
+
+    > parameteric approach, bias trick, hinge loss, cross-entropy loss, L2 regularization, web demo
+
+  - 
+
+- Others
+
+  - [一段关于神经网络的故事](./cs231n/cs231n_story_MLP.html)（**Original**，30671字 + 多图）
 
 
 
