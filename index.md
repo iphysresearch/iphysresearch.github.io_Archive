@@ -53,7 +53,7 @@ With use of the [hypothes.is](https://hypothes.is/) extension (right-sided), y
 
   - [Lecture 1. Computer vision overview & Historical context](./cs231n/cs231n_1.html)
   - [Lecture 2. Image Classification & K-nearest neighbor](./cs231n/cs231n_2.html)
-  - Lecture 3. Loss Functions and Optimization
+  - [Lecture 3. Loss Functions and Optimization](./cs231n/cs231n_3.html)
   - Lecture 4. Introduction to Neural Networks
   - Lecture 5. Convolutional Neural Networks
   - Lecture 6. Training Neural Networks, part I
