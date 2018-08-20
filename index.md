@@ -77,7 +77,9 @@ With use of the [hypothes.is](https://hypothes.is/) extension (right-sided), y
 
     > parameteric approach, bias trick, hinge loss, cross-entropy loss, L2 regularization, web demo
 
-  - 
+  - [最优化笔记](./cs231n/CS231n_optimization_note.html)
+
+    > optimization landscapes, local search, learning rate, analytic/numerical gradient
 
 - Others
 
