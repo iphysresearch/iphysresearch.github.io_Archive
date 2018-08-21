@@ -1,0 +1,890 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>IPhysResearch</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: 'Lucida Console',Consolas,'Courier',monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; padding-bottom: 70px; overflow-x: visible; }
+.first-line-indent #write div, .first-line-indent #write li, .first-line-indent #write p { text-indent: 2em; }
+.first-line-indent #write div :not(p):not(div) .first-line-indent #write div.md-htmlblock-container, .first-line-indent #write p * { text-indent: 0px; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write > blockquote:first-child, #write > div:first-child, #write > figure:first-child, #write > ol:first-child, #write > p:first-child, #write > pre:first-child, #write > ul:first-child { margin-top: 30px; }
+#write li > figure:first-child { margin-top: -20px; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.701961); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 80px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; }
+  #write { margin-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 1cm; padding-right: 1cm; padding-bottom: 0px; break-after: avoid-page; }
+  .typora-export #write::after { height: 0px; }
+  @page { margin: 20mm 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: '.'; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: monospace; }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.os-windows.monocolor-emoji .md-emoji { font-family: 'Segoe UI Symbol', sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+
+
+:root {
+    --side-bar-bg-color: #fff;
+    --control-text-color: #777;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhGq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhPq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhHq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhIq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhEq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhFq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhLq3-cXbKD.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmhduz8A.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwkxduz8A.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmxduz8A.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlBduz8A.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmBduz8A.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmRduz8A.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lqDY.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qPK7lqDY.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNK7lqDY.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qO67lqDY.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qN67lqDY.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNq7lqDY.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmhduz8A.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwkxduz8A.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmxduz8A.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlBduz8A.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmBduz8A.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmRduz8A.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: Source Sans Pro, Helvetica Neue, Arial, sans-serif !important;
+    color: #34495e;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6rem;
+    letter-spacing: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#write {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 30px 40px 30px;
+    padding-top: 20px;
+    padding-bottom: 100px;
+}
+
+#write p {
+    /* text-indent: 2rem; */
+    line-height: 1.6rem;
+    word-spacing: .05rem;
+}
+
+#write ol li {
+    padding-left: 0.5rem;
+}
+
+#write>ul:first-child,
+#write>ol:first-child {
+    margin-top: 30px;
+}
+
+body>*:first-child {
+    margin-top: 0 !important;
+}
+
+body>*:last-child {
+    margin-bottom: 0 !important;
+}
+
+a {
+    color: #42b983;
+    font-weight: 600;
+    padding: 0px 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+
+h1 {
+    padding-bottom: .4rem;
+    font-size: 2.2rem;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 1.75rem;
+    line-height: 1.225;
+    margin: 35px 0px 15px 0px;
+}
+
+h3 {
+    font-size: 1.4rem;
+    line-height: 1.43;
+    margin: 20px 0px 7px 0px;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+    color: #777;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
+}
+
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+body>h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h1:first-child+h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h3:first-child,
+body>h4:first-child,
+body>h5:first-child,
+body>h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+    margin-top: 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul,
+ol {
+    padding-left: 30px;
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+blockquote {
+    border-left: 4px solid #42b983;
+    padding: 10px 0px 10px 15px;
+    color: #777;
+    background-color: rgba(66, 185, 131, .1);
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #fafafa;
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr td {
+    border: 1px solid #dfe2e5;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+#write strong {
+    padding: 0px 1px 0 1px;
+}
+
+#write em {
+    padding: 0px 5px 0 2px;
+}
+
+#write table thead th {
+    background-color: #f2f2f2;
+}
+
+#write .CodeMirror-gutters {
+    border-right: none;
+}
+
+#write .md-fences {
+    border: 1px solid #F4F4F4;
+    -webkit-font-smoothing: initial;
+    margin: 0.8rem 0 !important;
+    padding: 0.3rem 0rem !important;
+    line-height: 1.43rem;
+    background-color: #F8F8F8 !important;
+    border-radius: 2px;
+    font-family: Roboto Mono, Source Sans Pro, Monaco, courier, monospace !important;
+    font-size: 0.85rem;
+    word-wrap: normal;
+}
+
+#write .CodeMirror-wrap .CodeMirror-code pre {
+    padding-left: 12px;
+}
+
+#write code, tt {
+    margin: 0 2px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-family: Source Sans Pro, Roboto Mono, Monaco, courier, monospace !important;
+    font-size: 0.92rem;
+    color: #e96900;
+    background-color: #f8f8f8;
+}
+
+#write .md-footnote {
+    background-color: #f8f8f8;
+    color: #e96900;
+}
+
+/* heighlight. */
+#write mark {
+    background-color:#EBFFEB;
+    border-radius: 2px;
+    padding: 2px 4px;
+    margin: 0 2px;
+    color: #222;
+    font-weight: 500;
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+.cm-s-inner .cm-link,
+.cm-s-inner.cm-link {
+    color: #22a2c9;
+}
+
+.cm-s-inner .cm-string {
+    color: #22a2c9;
+}
+
+.md-task-list-item>input {
+    margin-left: -1.3em;
+}
+
+@media screen and (min-width: 914px) {
+    /*body {
+        width: 854px;
+        margin: 0 auto;
+    }*/
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+    background-color: #f8f8f8;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+    bottom: .375rem;
+}
+
+#write>h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write>h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+
+</style>
+</head>
+<body class='typora-export' >
+<div  id='write'  class = 'is-mac'><div align="center"><a href="http://iphysresearch.github.io"><img src="https://i.loli.net/2018/07/11/5b44e3a6a798a.jpg" alt="Background" onerror="this.style.display = 'none';"></a></div>
+<h1 align="center">🍺 Teaching is Learning,  Writing is Thinking 🍺 </h1><hr /><div align="center"><strong>Physics | Gravitational Waves | Machine Learning | Deep Learning</strong></div>
+<div align="center"><a href="http://iphysresearch.github.io"><img src="https://img.shields.io/badge/Update-2018.8.17-green.svg?style=plastic" alt="Update" onerror="this.style.display = 'none';"></a><a href="https://github.com/iphysresearch"><img src="https://img.shields.io/github/followers/iphysresearch.svg?style=social&amp;label=Follow" alt="GITHUB" onerror="this.style.display = 'none';"></a><a href="http://weibo.com/IPhysresearch"><img src="https://img.shields.io/badge/Weibo-@iPHYSresearch-blue.svg?style=plastic" alt="Tweet" onerror="this.style.display = 'none';"></a><a href="https://twitter.com/Herb_hewang"><img src="https://img.shields.io/twitter/url/https/github.com/iphysresearch/iphysresearch.github.io.svg?style=social" alt="Tweet" onerror="this.style.display = 'none';"></a></div><p>&nbsp;</p><div class='md-toc' mdtype='toc'><p class="md-toc-content"><span class="md-toc-item md-toc-h1" data-ref="n332"><a class="md-toc-inner" style="" href="#header-n332">Welcome！</a></span><span class="md-toc-item md-toc-h2" data-ref="n333"><a class="md-toc-inner" style="" href="#header-n333">About</a></span><span class="md-toc-item md-toc-h2" data-ref="n341"><a class="md-toc-inner" style="" href="#header-n341">How to comment</a></span><span class="md-toc-item md-toc-h1" data-ref="n346"><a class="md-toc-inner" style="" href="#header-n346">My Learning Notes on ...</a></span><span class="md-toc-item md-toc-h2" data-ref="n349"><a class="md-toc-inner" style="" href="#header-n349">Data Science Courses</a></span><span class="md-toc-item md-toc-h3" data-ref="n350"><a class="md-toc-inner" style="" href="#header-n350">CS231n</a></span><span class="md-toc-item md-toc-h2" data-ref="n409"><a class="md-toc-inner" style="" href="#header-n409">Books</a></span><span class="md-toc-item md-toc-h2" data-ref="n416"><a class="md-toc-inner" style="" href="#header-n416">Data Analysis in Gravitational Wave Detection</a></span><span class="md-toc-item md-toc-h1" data-ref="n424"><a class="md-toc-inner" style="" href="#header-n424">Paper Summary</a></span><span class="md-toc-item md-toc-h2" data-ref="n431"><a class="md-toc-inner" style="" href="#header-n431">🌈 GW astronomy</a></span><span class="md-toc-item md-toc-h2" data-ref="n436"><a class="md-toc-inner" style="" href="#header-n436">🏄 Survey &amp; Review</a></span><span class="md-toc-item md-toc-h2" data-ref="n442"><a class="md-toc-inner" style="" href="#header-n442">🏃 ImageNet Evolution</a></span><span class="md-toc-item md-toc-h2" data-ref="n454"><a class="md-toc-inner" style="" href="#header-n454">🥅 Model</a></span><span class="md-toc-item md-toc-h2" data-ref="n473"><a class="md-toc-inner" style="" href="#header-n473">⛷ Optimization</a></span><span class="md-toc-item md-toc-h1" data-ref="n490"><a class="md-toc-inner" style="" href="#header-n490">My Blog Posts</a></span><span class="md-toc-item md-toc-h1" data-ref="n502"><a class="md-toc-inner" style="" href="#header-n502">My Github Projects</a></span></p></div><p>&nbsp;</p><h1><a name='header-n332' class='md-header-anchor '></a>Welcome！</h1><h2><a name='header-n333' class='md-header-anchor '></a>About</h2><p>Thanks for visiting！</p><p>I&#39;m a PhD candidate majoring in theoretical physics. I love to share knowledge and have a keen passion for scientific research on data analysis of <strong><em>gravitational-wave</em></strong>(GW) detection and <strong><em>deep learning</em></strong> (DL) technologies. </p><p>Most of blog posts and notes here are written in <strong>Chinese</strong> and any future updates for <em>completion</em>. After some years of study, I wish I could accumulate a sufficient body of knowledge and achieve a view of my own on. Thus, as <em>S. Chandrasekhar</em> notes, &quot;I have the urge to present my point of view <em>ab initio</em>, in a coherent account with order, form, and structure.&quot;</p><blockquote><p>&quot;My scientific work has followed a certain pattern motivated, principally, by <em>a quest after perspectives</em>&quot;—— S. Chandrasekhar</p></blockquote><p>This site is currently <strong>under construction</strong> and I will make updates weekly and look forward to resuming blog posts in the fall.</p><h2><a name='header-n341' class='md-header-anchor '></a>How to comment</h2><p>With use of the <a href='https://hypothes.is/'>hypothes.is</a> extension (right-sided), you can highlight, annote any comments and discuss these notes inline<em>at any pages</em>and <em>posts</em>.</p><p><em>Please Feel Free</em> to Let Me Know and <em>Share</em> it Here.</p><p>&nbsp;</p><hr /><h1><a name='header-n346' class='md-header-anchor '></a>My Learning Notes on ...</h1><blockquote><p>“<em>Men Learn While They Teach</em>” —— Seneca.</p></blockquote><h2><a name='header-n349' class='md-header-anchor '></a>Data Science Courses</h2><h3><a name='header-n350' class='md-header-anchor '></a>CS231n</h3><ul><li><p>From lecture video and slices</p><ul><li><a href='./cs231n/cs231n_1.html'>Lecture 1. Computer vision overview &amp; Historical context</a></li><li><a href='./cs231n/cs231n_2.html'>Lecture 2. Image Classification &amp; K-nearest neighbor</a></li><li><a href='./cs231n/cs231n_3.html'>Lecture 3. Loss Functions and Optimization</a></li><li>Lecture 4. Introduction to Neural Networks</li><li>Lecture 5. Convolutional Neural Networks</li><li>Lecture 6. Training Neural Networks, part I</li><li>Lecture 7. Training Neural Networks, part II</li><li>Lecture 8. Deep Learning Hardware and Software</li><li>Lecture 9. CNN Architectures</li><li>Lecture 10. Recurrent Neural Networks</li><li>Lecture 11. Detection and Segmentation</li><li>Lecture 12. Generative Models</li><li>Lecture 13. Visualizing and Understanding</li><li>Lecture 14. Deep Reinforcement Learning </li><li>Lecture 15. </li></ul></li><li><p>From course notes</p><figure><table><thead><tr><th>讲义笔记</th><th style='text-align:center;' >简介</th></tr></thead><tbody><tr><td><a href='./cs231n/CS231n_image_classification_note.html'>图像分类</a></td><td style='text-align:center;' >L1/L2 distances, hyperparameter search, cross-validation</td></tr><tr><td><a href='./cs231n/CS231n_linear_classification_note.html'>线性分类</a></td><td style='text-align:center;' >parameteric approach, bias trick, hinge loss, cross-entropy loss, L2 regularization, web demo</td></tr><tr><td><a href='./cs231n/CS231n_optimization_note.html'>最优化</a></td><td style='text-align:center;' >optimization landscapes, local search, learning rate, analytic/numerical gradient</td></tr><tr><td>&nbsp;</td><td style='text-align:center;' >&nbsp;</td></tr></tbody></table></figure></li><li><p>Others</p><ul><li><a href='./cs231n/cs231n_story_MLP.html'>一段关于神经网络的故事</a>（<strong>Original</strong>，30671字 + 多图）</li></ul></li></ul><p>&nbsp;</p><h2><a name='header-n409' class='md-header-anchor '></a>Books</h2><ul><li><a href='./books/Beginning_Python.html'>Python 基础教程（第3版）</a>（<strong>Annotations</strong>）</li><li></li></ul><p>&nbsp;</p><h2><a name='header-n416' class='md-header-anchor '></a>Data Analysis in Gravitational Wave Detection</h2><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><!-- I am some comments
+not end, not end...
+here the comment ends --><p>&nbsp;</p><p>&nbsp;</p><hr /><h1><a name='header-n424' class='md-header-anchor '></a>Paper Summary</h1><blockquote><p><strong>Please note that these posts are for my future self to review the materials on these papers without reading them all over again.</strong> (Inspired by <a href='https://jaedukseo.me'>Jae Duk Seo </a> and also refering to <a href='https://github.com/floodsung/Deep-Learning-Papers-Reading-Roadmap'>Deep Learning Papers Reading Roadmap</a> &amp; <a href='https://github.com/terryum/awesome-deep-learning-papers'>Awesome - Most Cited Deep Learning Papers</a>)</p></blockquote><p>&nbsp;</p><details>
+  <summary>I have keys but no locks. I have space but no room. You can enter but can't leave. What am I?</summary>
+      A keyboard.
+  </details><p>&nbsp;</p><h2><a name='header-n431' class='md-header-anchor '></a>🌈 GW astronomy</h2><ul><li></li></ul><p>&nbsp;</p><h2><a name='header-n436' class='md-header-anchor '></a>🏄 Survey &amp; Review</h2><ul><li>[Paper Summary] LeCun, Yann, Yoshua Bengio, and Geoffrey Hinton. &quot;<strong>Deep learning</strong>.&quot; <strong>(Three Giants&#39; Survey)</strong></li><li></li></ul><h2><a name='header-n442' class='md-header-anchor '></a>🏃 ImageNet Evolution</h2><blockquote><p>Deep Learning broke out from here</p></blockquote><ul><li>[Paper Summary] Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E. Hinton. &quot;<strong>Imagenet classification with deep convolutional neural networks</strong>.&quot; (2012). <strong>(AlexNet, Deep Learning Breakthrough)</strong></li><li>[Paper Summary] Simonyan, Karen, and Andrew Zisserman. &quot;<strong>Very deep convolutional networks for large-scale image recognition</strong>.&quot; (2014).<strong>(VGGNet,Neural Networks become very deep!)</strong></li><li>[Paper Summary] Szegedy, Christian, et al. &quot;<strong>Going deeper with convolutions</strong>.&quot; (2015).<strong>(GoogLeNet)</strong></li><li>[Paper Summary] He, Kaiming, et al. &quot;<strong>Deep residual learning for image recognition</strong>.&quot; (2015).<strong>(ResNet,Very very deep networks, CVPR best paper)</strong></li></ul><h2><a name='header-n454' class='md-header-anchor '></a>🥅 Model</h2><ul><li>[Paper Summary] Hinton, Geoffrey E., et al. &quot;<strong>Improving neural networks by preventing co-adaptation of feature detectors</strong>.&quot; (2012). <strong>(Dropout)</strong></li><li>[Paper Summary] Srivastava, Nitish, et al. &quot;<strong>Dropout: a simple way to prevent neural networks from overfitting</strong>.&quot; (2014)</li><li>[Paper Summary] Ioffe, Sergey, and Christian Szegedy. &quot;<strong>Batch normalization: Accelerating deep network training by reducing internal covariate shift</strong>.&quot; (2015).<strong>(An outstanding Work in 2015)</strong></li><li>[Paper Summary] Ba, Jimmy Lei, Jamie Ryan Kiros, and Geoffrey E. Hinton. &quot;<strong>Layer normalization</strong>.&quot; (2016).<strong>(Update of Batch Normalization)</strong></li><li>[Paper Summary] Courbariaux, Matthieu, et al. &quot;<strong>Binarized Neural Networks: Training Neural Networks with Weights and Activations Constrained to+ 1 or−1</strong>.&quot; <strong>(New Model,Fast)</strong></li><li>[Paper Summary] Jaderberg, Max, et al. &quot;<strong>Decoupled neural interfaces using synthetic gradients</strong>.&quot; (2016). <strong>(Innovation of Training Method,Amazing Work)</strong></li><li>[Paper Summary] Chen, Tianqi, Ian Goodfellow, and Jonathon Shlens. &quot;Net2net: Accelerating learning via knowledge transfer.&quot;(2015).<strong>(Modify previously trained network to reduce training epochs)</strong></li><li>[Paper Summary] Wei, Tao, et al. &quot;<strong>Network Morphism.</strong>&quot; (2016). <strong>(Modify previously trained network to reduce training epochs)</strong></li></ul><p>&nbsp;</p><h2><a name='header-n473' class='md-header-anchor '></a>⛷ Optimization</h2><ul><li>[Paper Summary] Sutskever, Ilya, et al. &quot;<strong>On the importance of initialization and momentum in deep learning</strong>.&quot; (2013) <strong>(Momentum optimizer)</strong></li><li>[Paper Summary] Kingma, Diederik, and Jimmy Ba. &quot;<strong>Adam: A method for stochastic optimization</strong>.&quot; (2014). <strong>(Maybe used most often currently)</strong></li><li>[Paper Summary] Andrychowicz, Marcin, et al. &quot;<strong>Learning to learn by gradient descent by gradient descent</strong>.&quot; (2016).<strong>(Neural Optimizer,Amazing Work)</strong></li><li>[Paper Summary] Han, Song, Huizi Mao, and William J. Dally. &quot;<strong>Deep compression: Compressing deep neural network with pruning, trained quantization and huffman coding</strong>.&quot; (2015). <strong>(ICLR best paper, new direction to make NN running fast,DeePhi Tech Startup)</strong></li><li>[Paper Summary] Iandola, Forrest N., et al. &quot;<strong>SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and&lt; 1MB model size</strong>.&quot; (2016).<strong>(Also a new direction to optimize NN,DeePhi Tech Startup)</strong></li></ul><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><hr /><h1><a name='header-n490' class='md-header-anchor '></a>My Blog Posts</h1><ul><li><a href='./posts/2018_flag.html'>2018年个人计划和目标</a></li><li><a href='./posts/MyWay2017.html'>数据科学入门之我谈(2017)</a></li><li><a href='./posts/S_Dbw.html'>S_Dbw 聚类评估指标（代码全解析）</a></li><li><a href='./posts/Training_Neural_Networks_with_Mixed_Precision_Theory_and_Practice.html'>Training Neural Networks with Mixed Precision: Theory and Practice</a></li></ul><p>&nbsp;</p><hr /><h1><a name='header-n502' class='md-header-anchor '></a>My Github Projects</h1><div align="left"><a href="https://github.com/iphysresearch/DataSciComp/"></a><h4 align="left"><a href="https://github.com/iphysresearch/DataSciComp/">DataSciComp</a> 
+<a href="https://github.com/iphysresearch/DataSciComp/watchers"><img src="https://img.shields.io/github/watchers/iphysresearch/DataSciComp.svg?style=social" alt="Github Watch Badge" onerror="this.style.display = 'none';"></a><a href="https://github.com/iphysresearch/DataSciComp/stargazers"><img src="https://img.shields.io/github/stars/iphysresearch/DataSciComp.svg?style=social" alt="Github Star Badge" onerror="this.style.display = 'none';"></a> </h4></div><blockquote><p>A collection of popular Data Science Competitions</p></blockquote><div align="left"><a href="https://github.com/iphysresearch/TOP250movie_douban"></a><h4 align="left"><a href="https://github.com/iphysresearch/TOP250movie_douban">TOP250movie_douban</a> 
+<a href="https://github.com/iphysresearch/TOP250movie_douban/watchers"><img src="https://img.shields.io/github/watchers/iphysresearch/TOP250movie_douban.svg?style=social" alt="Github Watch Badge" onerror="this.style.display = 'none';"></a><a href="https://github.com/iphysresearch/TOP250movie_douban/stargazers"><img src="https://img.shields.io/github/stars/iphysresearch/TOP250movie_douban.svg?style=social" alt="Github Star Badge" onerror="this.style.display = 'none';"></a> </h4></div><blockquote><p>TOP250豆瓣电影短评：Scrapy 爬虫+数据清理/分析+构建中文文本情感分析模型</p></blockquote><div align="left"><a href="https://github.com/iphysresearch/S_Dbw_validity_index"></a><h4 align="left"><a href="https://github.com/iphysresearch/S_Dbw_validity_index">S_Dbw_validity_index</a>
+<a href="https://github.com/iphysresearch/S_Dbw_validity_index/watchers"><img src="https://img.shields.io/github/watchers/iphysresearch/S_Dbw_validity_index.svg?style=social" alt="Github Watch Badge" onerror="this.style.display = 'none';"></a><a href="https://github.com/iphysresearch/S_Dbw_validity_index/stargazers"><img src="https://img.shields.io/github/stars/iphysresearch/S_Dbw_validity_index.svg?style=social" alt="Github Star Badge" onerror="this.style.display = 'none';"></a> </h4></div><blockquote><p>S_Dbw validity index | 代码全解析，可另见<a href='./post/S_Dbw.html'>博文</a>。</p></blockquote><p>&nbsp;</p><p>&nbsp;</p><hr /><div align="center"><a href="http://iphysresearch.github.io"><img src="https://i.loli.net/2018/07/11/5b44d8c9d094f.jpeg" alt="Background" onerror="this.style.display = 'none';"></a></div><blockquote><p>本站点内容系本作者原创，如有任何知识产权、版权问题或理论错误，还请指正。</p><p>转载请注明原作者及出处，谢谢配合。<footer><div align="left"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a></div><div align="left"><a rel="copyright" align="right" href="http://iphysresearch.github.io">IPhysResearch</a>·<a rel="copyright" href="http://iphysresearch.github.io">土豆</a>·<a rel="copyright" href="http://iphysresearch.github.io">Herb</a>·<a rel="copyright" href="http://iphysresearch.github.io">He Wang</a> © 2018        (under construction)<div></footer></p></blockquote><script type="application/json" class="js-hypothesis-config">  {    "openSidebar": false,    "showHighlights": true,    "theme": classic,    "enableExperimentalNewNoteButton": true  }</script><script async="" src="https://hypothes.is/embed.js"></script><p>&nbsp;</p></div>
+</body>
+</html>

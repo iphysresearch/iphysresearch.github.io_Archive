@@ -1,6 +1,6 @@
 ---
 title: IPhysResearch
-date: 2018-08-17
+date: 2018-08-21
 ---
 <div align="center"><a href="http://iphysresearch.github.io"><img src="https://i.loli.net/2018/07/11/5b44e3a6a798a.jpg" alt="Background" /></a></div>
 <h1 align="center">🍺 Teaching is Learning,  Writing is Thinking 🍺 </h1>
@@ -41,7 +41,7 @@ With use of the [hypothes.is](https://hypothes.is/) extension (right-sided), y
 
 ---
 
-# My Notes on ...
+# My Learning Notes on ...
 
 > “*Men Learn While They Teach*” —— Seneca.
 
@@ -69,17 +69,12 @@ With use of the [hypothes.is](https://hypothes.is/) extension (right-sided), y
 
 - From course notes
 
-  - [图像分类笔记](./cs231n/CS231n_image_classification_note.html)
-
-    > L1/L2 distances, hyperparameter search, cross-validation
-
-  - [线性分类笔记](./cs231n/CS231n_linear_classification_note.html)
-
-    > parameteric approach, bias trick, hinge loss, cross-entropy loss, L2 regularization, web demo
-
-  - [最优化笔记](./cs231n/CS231n_optimization_note.html)
-
-    > optimization landscapes, local search, learning rate, analytic/numerical gradient
+  | 讲义笔记                                                    |                             简介                             |
+  | ----------------------------------------------------------- | :----------------------------------------------------------: |
+  | [图像分类](./cs231n/CS231n_image_classification_note.html)  |   L1/L2 distances, hyperparameter search, cross-validation   |
+  | [线性分类](./cs231n/CS231n_linear_classification_note.html) | parameteric approach, bias trick, hinge loss, cross-entropy loss, L2 regularization, web demo |
+  | [最优化](./cs231n/CS231n_optimization_note.html)            | optimization landscapes, local search, learning rate, analytic/numerical gradient |
+  |                                                             |                                                              |
 
 - Others
 
@@ -98,15 +93,79 @@ With use of the [hypothes.is](https://hypothes.is/) extension (right-sided), y
 
 
 
+<section class="links">
+  <!-- you can include the HTML from other pens in your pen -->
+  [[[https://codepen.io/team/codepen/pen/PZOVdL/]]]
+</section>
+
+
+
+<!-- I am some comments
+not end, not end...
+here the comment ends -->
+
 
 
 
 
 ---
 
-# APaperADay Reading Challenge
+# Paper Summary
 
-> Read a paper a day with [Nurture.AI](https://apaperaday.nurture.ai) to discover the latest breakthroughs and hidden gems across domains in Artificial Intelligence. 
+> **Please note that these posts are for my future self to review the materials on these papers without reading them all over again.** (Inspired by [Jae Duk Seo ](https://jaedukseo.me) and also refering to [Deep Learning Papers Reading Roadmap](https://github.com/floodsung/Deep-Learning-Papers-Reading-Roadmap) & [Awesome - Most Cited Deep Learning Papers](https://github.com/terryum/awesome-deep-learning-papers))
+
+
+
+<details>
+  <summary>I have keys but no locks. I have space but no room. You can enter but can't leave. What am I?</summary>
+      A keyboard.
+  </details>
+
+
+
+## :rainbow: GW astronomy
+
+- 
+
+
+
+## :surfer: Survey & Review
+
+- [Paper Summary] LeCun, Yann, Yoshua Bengio, and Geoffrey Hinton. "**Deep learning**." **(Three Giants' Survey)**
+
+## :running_man: ImageNet Evolution
+
+> Deep Learning broke out from here
+
+- [Paper Summary] Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E. Hinton. "**Imagenet classification with deep convolutional neural networks**." (2012). **(AlexNet, Deep Learning Breakthrough)**
+- [Paper Summary] Simonyan, Karen, and Andrew Zisserman. "**Very deep convolutional networks for large-scale image recognition**." (2014).**(VGGNet,Neural Networks become very deep!)**
+- [Paper Summary] Szegedy, Christian, et al. "**Going deeper with convolutions**." (2015).**(GoogLeNet)**
+- [Paper Summary] He, Kaiming, et al. "**Deep residual learning for image recognition**." (2015).**(ResNet,Very very deep networks, CVPR best paper)**
+
+## :goal_net: Model
+
+- [Paper Summary] Hinton, Geoffrey E., et al. "**Improving neural networks by preventing co-adaptation of feature detectors**." (2012). **(Dropout)**
+- [Paper Summary] Srivastava, Nitish, et al. "**Dropout: a simple way to prevent neural networks from overfitting**." (2014)
+- [Paper Summary] Ioffe, Sergey, and Christian Szegedy. "**Batch normalization: Accelerating deep network training by reducing internal covariate shift**." (2015).**(An outstanding Work in 2015)**
+- [Paper Summary] Ba, Jimmy Lei, Jamie Ryan Kiros, and Geoffrey E. Hinton. "**Layer normalization**." (2016).**(Update of Batch Normalization)**
+- [Paper Summary] Courbariaux, Matthieu, et al. "**Binarized Neural Networks: Training Neural Networks with Weights and Activations Constrained to+ 1 or−1**." **(New Model,Fast)**
+- [Paper Summary] Jaderberg, Max, et al. "**Decoupled neural interfaces using synthetic gradients**." (2016). **(Innovation of Training Method,Amazing Work)**
+- [Paper Summary] Chen, Tianqi, Ian Goodfellow, and Jonathon Shlens. "Net2net: Accelerating learning via knowledge transfer."(2015).**(Modify previously trained network to reduce training epochs)**
+- [Paper Summary] Wei, Tao, et al. "**Network Morphism.**" (2016). **(Modify previously trained network to reduce training epochs)**
+
+
+
+## :skier: Optimization
+
+- [Paper Summary] Sutskever, Ilya, et al. "**On the importance of initialization and momentum in deep learning**." (2013) **(Momentum optimizer)**
+- [Paper Summary] Kingma, Diederik, and Jimmy Ba. "**Adam: A method for stochastic optimization**." (2014). **(Maybe used most often currently)**
+- [Paper Summary] Andrychowicz, Marcin, et al. "**Learning to learn by gradient descent by gradient descent**." (2016).**(Neural Optimizer,Amazing Work)**
+- [Paper Summary] Han, Song, Huizi Mao, and William J. Dally. "**Deep compression: Compressing deep neural network with pruning, trained quantization and huffman coding**." (2015). **(ICLR best paper, new direction to make NN running fast,DeePhi Tech Startup)**
+- [Paper Summary] Iandola, Forrest N., et al. "**SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and< 1MB model size**." (2016).**(Also a new direction to optimize NN,DeePhi Tech Startup)**
+
+
+
+
 
 
 
@@ -114,7 +173,8 @@ With use of the [hypothes.is](https://hypothes.is/) extension (right-sided), y
 
 ---
 
-# My Posts
+# My Blog Posts
+
 - [2018年个人计划和目标](./posts/2018_flag.html)
 - [数据科学入门之我谈(2017)](./posts/MyWay2017.html)
 - [S_Dbw 聚类评估指标（代码全解析）](./posts/S_Dbw.html)
@@ -126,28 +186,34 @@ With use of the [hypothes.is](https://hypothes.is/) extension (right-sided), y
 
 # My Github Projects
 
-<div align="left"><a href="https://github.com/iphysresearch/DataSciComp/"><h4 align="left">**DataSciComp**</a> 
+
+
+<script>
+    new GitHubCalendar(".calendar", "your-username");
+</script>
+
+
+<div align="left"><a href="https://github.com/iphysresearch/DataSciComp/"><h4 align="left">DataSciComp</a> 
 <a href="https://github.com/iphysresearch/DataSciComp/watchers"><img src="https://img.shields.io/github/watchers/iphysresearch/DataSciComp.svg?style=social" alt="Github Watch Badge" /></a><a href="https://github.com/iphysresearch/DataSciComp/stargazers"><img src="https://img.shields.io/github/stars/iphysresearch/DataSciComp.svg?style=social" alt="Github Star Badge" /></a> </h4 >
 
 > A collection of popular Data Science Competitions
 
-<div align="left"><a href="https://github.com/iphysresearch/TOP250movie_douban"><h4 align="left">**TOP250movie_douban**</a> 
+<div align="left"><a href="https://github.com/iphysresearch/TOP250movie_douban"><h4 align="left">TOP250movie_douban</a> 
 <a href="https://github.com/iphysresearch/TOP250movie_douban/watchers"><img src="https://img.shields.io/github/watchers/iphysresearch/TOP250movie_douban.svg?style=social" alt="Github Watch Badge" /></a><a href="https://github.com/iphysresearch/TOP250movie_douban/stargazers"><img src="https://img.shields.io/github/stars/iphysresearch/TOP250movie_douban.svg?style=social" alt="Github Star Badge" /></a> </h4 >
-
 > TOP250豆瓣电影短评：Scrapy 爬虫+数据清理/分析+构建中文文本情感分析模型
 
-<div align="left"><a href="https://github.com/iphysresearch/S_Dbw_validity_index"><h4 align="left">**S_Dbw_validity_index**</a>
+<div align="left"><a href="https://github.com/iphysresearch/S_Dbw_validity_index"><h4 align="left">S_Dbw_validity_index</a>
 <a href="https://github.com/iphysresearch/S_Dbw_validity_index/watchers"><img src="https://img.shields.io/github/watchers/iphysresearch/S_Dbw_validity_index.svg?style=social" alt="Github Watch Badge" /></a><a href="https://github.com/iphysresearch/S_Dbw_validity_index/stargazers"><img src="https://img.shields.io/github/stars/iphysresearch/S_Dbw_validity_index.svg?style=social" alt="Github Star Badge" /></a> </h4 >
-
 > S_Dbw validity index | 代码全解析，可另见[博文](./post/S_Dbw.html)。
 
 
+<iframe width="600" height="600" src="https://ionicabizau.github.io/github-profile-languages/api.html?iphysresearch" frameborder="0"></iframe>
 
 
 
 ---
 <div align="center"><a href="http://iphysresearch.github.io"><img src="https://i.loli.net/2018/07/11/5b44d8c9d094f.jpeg" alt="Background" /></a></div>
-> 本文系本作者原创，如有任何知识产权、版权问题或理论错误，还请指正。
+> 本站点内容系本作者原创，如有任何知识产权、版权问题或理论错误，还请指正。
 >
 > 转载请注明原作者及出处，谢谢配合。<footer><div align="left"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a></div><div align="left"><a rel="copyright" align="right" href="http://iphysresearch.github.io">IPhysResearch</a>·<a rel="copyright" href="http://iphysresearch.github.io">土豆</a>·<a rel="copyright" href="http://iphysresearch.github.io">Herb</a>·<a rel="copyright" href="http://iphysresearch.github.io">He Wang</a> © 2018        (under construction)<div></footer>
 

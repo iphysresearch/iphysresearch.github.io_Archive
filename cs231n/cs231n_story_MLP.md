@@ -27,7 +27,6 @@ date: 2017-09-10
 
   不涉及艰深的算法原理，忽略绝大多数数学细节，也尽量不扯任何生涩的专业术语，也不会对算法和优化处理技术做任何横向对比。
 
-  
 
 CS231n课程讲师Andrej Karpathy在他的博客上写过一篇文章[Hacker's guide to Neural Networks](http://karpathy.github.io/neuralnets/)，其中的精神是我最欣赏的一种教程写作方式：“<u>My exposition will center around code and physical intuitions instead of mathematical derivations. Basically, I will strive to present the algorithms in a way that I wish I had come across when I was starting out.</u>”
 
