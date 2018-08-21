@@ -3,7 +3,7 @@ title: 一段关于神经网络的故事
 date: 2017-09-10
 ---
 
-[返回到首页](../index.html)
+[返回到首页](./index.html)
 
 ---
 
@@ -2240,7 +2240,7 @@ $$
 
 ---
 
-[返回到首页](../index.html) | [返回到顶部](./cs231n_story_MLP.html#header-n2041)
+[返回到首页](./index.html) | [返回到顶部](./cs231n_story_MLP.html#header-n2041)
 
 ---
 <br>

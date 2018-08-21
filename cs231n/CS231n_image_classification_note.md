@@ -3,7 +3,7 @@ title: CS231n - Image Classification Note
 date: 2018-08-19
 ---
 
-[返回到首页](../index.html)
+[返回到首页](./index.html)
 
 ---
 
@@ -1034,7 +1034,7 @@ class KNearestNeighbor(object):
 
 ---
 
-[返回到首页](../index.html) | [返回到顶部](./CS231n_image_classification_note.html)
+[返回到首页](./index.html) | [返回到顶部](./CS231n_image_classification_note.html)
 
 ---
 <br>
