@@ -24,7 +24,7 @@ date: 2018-08-22
 - [Lecture 1. Computer vision overview & Historical context](./cs231n_1.html)
 - [Lecture 2. Image Classification & K-nearest neighbor](./cs231n_2.html)
 - [Lecture 3. Loss Functions and Optimization](./cs231n_3.html)
-- Lecture 4. Introduction to Neural Networks
+- [Lecture 4. Introduction to Neural Networks](./cs231n_4.html)
 - Lecture 5. Convolutional Neural Networks
 - Lecture 6. Training Neural Networks, part I
 - Lecture 7. Training Neural Networks, part II
@@ -53,7 +53,9 @@ date: 2018-08-22
 
   > optimization landscapes, local search, learning rate, analytic/numerical gradient
 
+- [反向传播笔记](./CS231n_backprop_notes.html)
 
+  > chain rule interpretation, real-valued circuits, patterns in gradient flow
 
 ## Original posts
 
