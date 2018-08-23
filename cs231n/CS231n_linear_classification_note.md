@@ -3,7 +3,7 @@ title: CS231n - Linear Classification Note
 date: 2018-08-19
 ---
 
-[返回到首页](./index.html)
+[返回到上一页](./index.html)
 
 ---
 
@@ -389,7 +389,7 @@ The IPython Notebook **softmax.ipynb** will walk you through implementing the So
 
 ---
 
-[返回到首页](./index.html) | [返回到顶部](./CS231n_linear_classification_note.html)
+[返回到上一页](./index.html) | [返回到顶部](./CS231n_linear_classification_note.html)
 
 ---
 <br>

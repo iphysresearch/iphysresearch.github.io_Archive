@@ -3,7 +3,7 @@ title: CS231n - Optimization Note
 date: 2018-08-20
 ---
 
-[返回到首页](./index.html)
+[返回到上一页](./index.html)
 
 ---
 
@@ -358,7 +358,7 @@ while True:
 
 ---
 
-[返回到首页](./index.html) | [返回到顶部](./CS231n_optimization_note.html)
+[返回到上一页](./index.html) | [返回到顶部](./CS231n_optimization_note.html)
 
 ---
 <br>

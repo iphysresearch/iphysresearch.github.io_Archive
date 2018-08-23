@@ -3,7 +3,7 @@ title: CS231n - Backpro Note
 date: 2018-08-23
 ---
 
-[返回到首页](./index.html)
+[返回到上一页](./index.html)
 
 ---
 
@@ -285,7 +285,7 @@ dX = W.T.dot(dD)					# dX是10*3的矩阵
 
 ---
 
-[返回到首页](./index.html) | [返回到顶部](./CS231n_backprop_notes.html)
+[返回到上一页](./index.html) | [返回到顶部](./CS231n_backprop_notes.html)
 
 ---
 <br>
