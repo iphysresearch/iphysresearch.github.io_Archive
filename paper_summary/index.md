@@ -7,39 +7,45 @@ date: 2018-08-22
 
 ---
 
-[TOC]
+![](https://i.loli.net/2018/08/24/5b7fffecd8d1d.png)
 
 
 
----
-
-# Paper Summary
 
 > **Please note that these posts are for my future self to review the materials on these papers without reading them all over again.** (Inspired by [Jae Duk Seo ](https://jaedukseo.me) and also refering to [Deep Learning Papers Reading Roadmap](https://github.com/floodsung/Deep-Learning-Papers-Reading-Roadmap) & [Awesome - Most Cited Deep Learning Papers](https://github.com/terryum/awesome-deep-learning-papers))
 
 
 
 
-## :rainbow: GW astronomy
 
-- 
-
+[TOC]
 
 
-## :surfer: Survey & Review
+
+---
+
+
+
+# :rainbow: GW astronomy
+
+- Rotation-invariant convolutional neural networks for galaxy morphology prediction
+
+
+
+# :surfer: Survey & Review
 
 - [Paper Summary] LeCun, Yann, Yoshua Bengio, and Geoffrey Hinton. "**Deep learning**." **(Three Giants' Survey)**
 
-## :running_man: ImageNet Evolution
+# :running_man: ImageNet Evolution
 
 > Deep Learning broke out from here
 
-- [Paper Summary] Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E. Hinton. "**Imagenet classification with deep convolutional neural networks**." (2012). **(AlexNet, Deep Learning Breakthrough)**
+- [[Paper Summary](./ImageNet Classification with Deep Convolutional Neural Networks.html)] Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E. Hinton. "**Imagenet classification with deep convolutional neural networks**." (2012). **(AlexNet, Deep Learning Breakthrough)**
 - [Paper Summary] Simonyan, Karen, and Andrew Zisserman. "**Very deep convolutional networks for large-scale image recognition**." (2014).**(VGGNet,Neural Networks become very deep!)**
 - [Paper Summary] Szegedy, Christian, et al. "**Going deeper with convolutions**." (2015).**(GoogLeNet)**
 - [Paper Summary] He, Kaiming, et al. "**Deep residual learning for image recognition**." (2015).**(ResNet,Very very deep networks, CVPR best paper)**
 
-## :goal_net: Model
+# :goal_net: Model
 
 - [Paper Summary] Hinton, Geoffrey E., et al. "**Improving neural networks by preventing co-adaptation of feature detectors**." (2012). **(Dropout)**
 - [Paper Summary] Srivastava, Nitish, et al. "**Dropout: a simple way to prevent neural networks from overfitting**." (2014)
@@ -52,7 +58,7 @@ date: 2018-08-22
 
 
 
-## :skier: Optimization
+# :skier: Optimization
 
 - [Paper Summary] Sutskever, Ilya, et al. "**On the importance of initialization and momentum in deep learning**." (2013) **(Momentum optimizer)**
 - [Paper Summary] Kingma, Diederik, and Jimmy Ba. "**Adam: A method for stochastic optimization**." (2014). **(Maybe used most often currently)**
@@ -62,7 +68,7 @@ date: 2018-08-22
 
 
 
-## How to comment
+# How to comment
 
 With use of the [hypothes.is](https://hypothes.is/) extension (right-sided), you can highlight, annote any comments and discuss these notes inline*at any pages*and *posts*.
 
