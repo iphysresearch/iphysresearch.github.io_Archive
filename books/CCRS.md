@@ -18,9 +18,9 @@ Introduction_to_Algorithms
 
 
 
-# 第一部分 基础知识
+# [第一部分 基础知识](./CCRS_1.html)
 
-第1章 算法在计算中的作用
+## 第1章 算法在计算中的作用
 
 
 
