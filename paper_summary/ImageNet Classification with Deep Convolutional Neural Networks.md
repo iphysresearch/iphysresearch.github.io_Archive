@@ -9,7 +9,7 @@ date: 2018-08-24
 
 ![](https://i.loli.net/2018/08/24/5b7fffecd8d1d.png)
 
-# ImageNet Classification with Deep Convolutional Neural Networks
+# ImageNet Classification with Deep Convolutional Neural Networks (2012)
 
 > Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E. Hinton. "Imagenet classification with deep convolutional neural networks." Advances in neural information processing systems. 2012.
 

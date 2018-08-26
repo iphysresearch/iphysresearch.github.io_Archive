@@ -26,7 +26,7 @@ date: 2018-08-22
 - [Lecture 3. Loss Functions and Optimization](./cs231n_3.html)
 - [Lecture 4. Introduction to Neural Networks](./cs231n_4.html)
 - [Lecture 5. Convolutional Neural Networks](./cs231n_5.html)
-- Lecture 6. Training Neural Networks, part I
+- [Lecture 6. Training Neural Networks, part I](./cs231n_6.html)
 - Lecture 7. Training Neural Networks, part II
 - Lecture 8. Deep Learning Hardware and Software
 - Lecture 9. CNN Architectures
@@ -60,6 +60,18 @@ date: 2018-08-22
 - [卷积神经网络笔记](./CS231n_ConvNet_notes.html)
 
   > layers, spatial arrangement, layer patterns, layer sizing patterns, AlexNet/ZFNet/VGGNet case studies, computational considerations
+
+- [神经网络笔记1](./CS231n_Neural_Nets_notes_1.html)
+
+  > model of a biological neuron, activation functions, neural net architecture, representational power
+
+- [神经网络笔记2](./CS231n_Neural_Nets_notes_2.html)
+
+  > preprocessing, weight initialization, batch normalization, regularization (L2/dropout), loss functions
+
+- [神经网络笔记3](./CS231n_Neural_Nets_notes_3.html)
+
+  > gradient checks, sanity checks, babysitting the learning process, momentum (+nesterov), second-order methods, Adagrad/RMSprop, hyperparameter optimization, model ensembles
 
 ## Original posts
 

@@ -43,7 +43,31 @@ graph LR
 
 ### 练习
 
+<iframe src="http://nbviewer.jupyter.org/github/iphysresearch/Introduction_to_Algorithms_solution/blob/master/CLRS_1.ipynb" width="850" height="500"></iframe>
+
+Ref: [solutions of Ch1  to "*Introduction to Algorithms*"](http://sites.math.rutgers.edu/~ajl213/CLRS/Ch1.pdf)
 
 
-<iframe src="https://nbviewer.jupyter.org/github/iphysresearch/Introduction_to_Algorithms_solution/blob/master/CCRS1.2-2.ipynb" width="850" height="1500"></iframe>
+
+
+
+
+
+
+
+## 第2章 算法基础
+
+
+
+### 2.1 插入排序
+
+
+
+
+
+
+
+
+
+
 
