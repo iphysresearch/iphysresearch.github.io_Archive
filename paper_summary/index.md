@@ -43,7 +43,7 @@ date: 2018-08-22
 > - by Bihan Wen
 > - by Wenhan Yang
 
-- [Paper Summary] K He, J Sun, X Tang. "**Single image haze removal using dark channel prior**" (2009)(**CVPR best paper**)([pdf](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.672.3815&rep=rep1&type=pdf))(**何凯明！**)
+- [Paper Summary] K He, J Sun, X Tang. "**Single image haze removal using dark channel prior**" (2009)(**CVPR best paper**)([pdf](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.672.3815&rep=rep1&type=pdf))(**何凯明博士的第一篇！**)
 - [Paper Summary] Olaf Ronneberger, Philipp Fischer, and Thomas Brox "**U-Net: Convolutional Networks for Biomedical Image Segmentation**" arXiv:1505.04597 (2015) **(U-Net)** ([Website](https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/)) ([code](https://github.com/xuyuting45/DSB2018-mx-unet)) ([code](https://github.com/chinakook/U-Net))
 - [Paper Summary] Xiao-Jiao Mao, Chunhua Shen, Yu-Bin Yang. "**Image Restoration Using Convolutional Auto-encoders with Symmetric Skip Connections**" arXiv:1606.08921 (2016) **(Skip connections)** ([code](https://github.com/7wik/convolutional-auto-encoders-with-skip-connections))
 - [Paper Summary] F Zhu, G Chen, PA Heng. "**From Noise Modeling to Blind Image Denoising**" CVPR (2016) ([Website](https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Zhu_From_Noise_Modeling_CVPR_2016_paper.html))
@@ -80,6 +80,8 @@ date: 2018-08-22
 - [Paper Summary] Szegedy, Christian, et al. "**Going deeper with convolutions**." (2015).**(GoogLeNet)**
 - [Paper Summary] He, Kaiming, et al. "**Deep residual learning for image recognition**." (2015).**(ResNet, Very very deep networks, CVPR best paper)**
 
+
+
 # :goal_net: Model Configurations
 
 - [Paper Summary] Hinton, Geoffrey E., et al. "**Improving neural networks by preventing co-adaptation of feature detectors**." (2012). **(Dropout)**
@@ -102,13 +104,21 @@ date: 2018-08-22
 
 # :skier: Optimization
 
+- [Paper Summary] Nesterov, “**A method of solving a convex programming problem with convergence rate O(1/k^2)**”, (1983) **(Nesterov Momentum)**
+
+- [Paper Summary] Nesterov, “**Introductory lectures on convex optimization: a basic course**”, (2004) **(Nesterov Momentum)**
+- [Paper Summary] Duchi et al, “**Adaptive subgradient methods for online learning and stochastic optimization**”, JMLR (2011) **(AdaGrad)**
+- Tieleman and Hinton, 2012 **(RMSProp)**
+
 - [Paper Summary] J Bergstra, Y Bengio. "**Random search for hyper-parameter optimization**" Journal of Machine Learning Research, (2012) **(Hyperparameter Optimization: Random search)**
 
-- [Paper Summary] Sutskever, Ilya, et al. "**On the importance of initialization and momentum in deep learning**." (2013) **(Momentum optimizer)**
-- [Paper Summary] Kingma, Diederik, and Jimmy Ba. "**Adam: A method for stochastic optimization**." (2014). **(Maybe used most often currently)**
+- [Paper Summary] Sutskever, Ilya, et al. "**On the importance of initialization and momentum in deep learning**." (2013) **(SGD + Momentum optimizer)**
+- [Paper Summary] Kingma, Diederik, and Jimmy Ba. "**Adam: A method for stochastic optimization**." (2014). **(Adam)(Maybe used most often currently)**
+- [Paper Summary] Dauphin, Yann N., et al. "**Identifying and attacking the saddle point problem in high-dimensional non-convex optimization**" (2014) 
 - [Paper Summary] Andrychowicz, Marcin, et al. "**Learning to learn by gradient descent by gradient descent**." (2016).**(Neural Optimizer,Amazing Work)**
 - [Paper Summary] Han, Song, Huizi Mao, and William J. Dally. "**Deep compression: Compressing deep neural network with pruning, trained quantization and huffman coding**." (2015). **(ICLR best paper, new direction to make NN running fast,DeePhi Tech Startup)**
 - [Paper Summary] Iandola, Forrest N., et al. "**SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and< 1MB model size**." (2016).**(Also a new direction to optimize NN,DeePhi Tech Startup)**
+- 
 
 
 
