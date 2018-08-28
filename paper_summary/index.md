@@ -32,9 +32,13 @@ date: 2018-08-22
 
 # :rainbow: GW Astronomy
 
+
+
+Maybe helpful:
+
 - Rotation-invariant convolutional neural networks for galaxy morphology prediction
 
-
+- 《Learning Confidence for Out-of-Distribution Detection in Neural Networks》T DeVries, G W. Taylor [University of Guelph & Vector Institute] (2018) http://t.cn/RFPZvFB 
 
 # :cloud_with_rain: Denoising & Noise Modeling
 
@@ -44,7 +48,7 @@ date: 2018-08-22
 > - by Wenhan Yang
 
 - [Paper Summary] K He, J Sun, X Tang. "**Single image haze removal using dark channel prior**" (2009)(**CVPR best paper**)([pdf](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.672.3815&rep=rep1&type=pdf))(**何凯明博士的第一篇！**)
-- [Paper Summary] Olaf Ronneberger, Philipp Fischer, and Thomas Brox "**U-Net: Convolutional Networks for Biomedical Image Segmentation**" arXiv:1505.04597 (2015) **(U-Net)** ([Website](https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/)) ([code](https://github.com/xuyuting45/DSB2018-mx-unet)) ([code](https://github.com/chinakook/U-Net))
+- [Paper Summary] Olaf Ronneberger, Philipp Fischer, and Thomas Brox "**U-Net: Convolutional Networks for Biomedical Image Segmentation**" arXiv:1505.04597 (2015) **(U-Net)** ([Website](https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/)) ([code](https://github.com/xuyuting45/DSB2018-mx-unet)) ([code](https://github.com/chinakook/U-Net)) ([code](https://github.com/divamgupta/image-segmentation-keras/tree/master/Models))
 - [Paper Summary] Xiao-Jiao Mao, Chunhua Shen, Yu-Bin Yang. "**Image Restoration Using Convolutional Auto-encoders with Symmetric Skip Connections**" arXiv:1606.08921 (2016) **(Skip connections)** ([code](https://github.com/7wik/convolutional-auto-encoders-with-skip-connections))
 - [Paper Summary] F Zhu, G Chen, PA Heng. "**From Noise Modeling to Blind Image Denoising**" CVPR (2016) ([Website](https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Zhu_From_Noise_Modeling_CVPR_2016_paper.html))
 
@@ -63,6 +67,10 @@ date: 2018-08-22
 
 
 
+
+# :heavy_heart_exclamation: Confidence Estimation
+
+- DeVries T, Taylor G W. "**Learning Confidence for Out-of-Distribution Detection in Neural Networks**"[J]. arXiv:1802.04865, (2018).
 
 # ---
 
@@ -103,12 +111,6 @@ date: 2018-08-22
 
 
 # :skier: Optimization
-
-- [Paper Summary] Nesterov, “**A method of solving a convex programming problem with convergence rate O(1/k^2)**”, (1983) **(Nesterov Momentum)**
-
-- [Paper Summary] Nesterov, “**Introductory lectures on convex optimization: a basic course**”, (2004) **(Nesterov Momentum)**
-- [Paper Summary] Duchi et al, “**Adaptive subgradient methods for online learning and stochastic optimization**”, JMLR (2011) **(AdaGrad)**
-- Tieleman and Hinton, 2012 **(RMSProp)**
 
 - [Paper Summary] J Bergstra, Y Bengio. "**Random search for hyper-parameter optimization**" Journal of Machine Learning Research, (2012) **(Hyperparameter Optimization: Random search)**
 
