@@ -1,0 +1,971 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>CS231n Lecture.7</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; padding-bottom: 70px; overflow-x: visible; }
+.first-line-indent #write div, .first-line-indent #write li, .first-line-indent #write p { text-indent: 2em; }
+.first-line-indent #write div :not(p):not(div), .first-line-indent #write div.md-htmlblock-container, .first-line-indent #write p *, .first-line-indent pre { text-indent: 0px; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write > blockquote:first-child, #write > div:first-child, #write > figure:first-child, #write > ol:first-child, #write > p:first-child, #write > pre:first-child, #write > ul:first-child { margin-top: 30px; }
+#write li > figure:first-child { margin-top: -20px; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.701961); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 80px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; }
+  #write { margin-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 1cm; padding-right: 1cm; padding-bottom: 0px; break-after: avoid-page; }
+  .typora-export #write::after { height: 0px; }
+  @page { margin: 20mm 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror-scroll { overflow-y: hidden; overflow-x: auto; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; white-space: nowrap; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; border: none !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-width: 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; word-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; background-position: 0px 0px; background-repeat: initial initial; }
+.CodeMirror-wrap pre { word-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-style: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-style: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background-color: rgba(255, 255, 0, 0.4); background-position: initial initial; background-repeat: initial initial; }
+@media print { 
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fff;
+    --control-text-color: #777;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhGq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhPq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhHq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhIq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhEq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhFq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhLq3-cXbKD.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmhduz8A.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwkxduz8A.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmxduz8A.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlBduz8A.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmBduz8A.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmRduz8A.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lqDY.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qPK7lqDY.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNK7lqDY.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qO67lqDY.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qN67lqDY.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNq7lqDY.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmhduz8A.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwkxduz8A.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmxduz8A.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlBduz8A.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmBduz8A.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmRduz8A.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: Source Sans Pro, Helvetica Neue, Arial, sans-serif !important;
+    color: #34495e;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6rem;
+    letter-spacing: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#write {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 30px 40px 30px;
+    padding-top: 20px;
+    padding-bottom: 100px;
+}
+
+#write p {
+    /* text-indent: 2rem; */
+    line-height: 1.6rem;
+    word-spacing: .05rem;
+}
+
+#write ol li {
+    padding-left: 0.5rem;
+}
+
+#write>ul:first-child,
+#write>ol:first-child {
+    margin-top: 30px;
+}
+
+body>*:first-child {
+    margin-top: 0 !important;
+}
+
+body>*:last-child {
+    margin-bottom: 0 !important;
+}
+
+a {
+    color: #42b983;
+    font-weight: 600;
+    padding: 0px 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+
+h1 {
+    padding-bottom: .4rem;
+    font-size: 2.2rem;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 1.75rem;
+    line-height: 1.225;
+    margin: 35px 0px 15px 0px;
+}
+
+h3 {
+    font-size: 1.4rem;
+    line-height: 1.43;
+    margin: 20px 0px 7px 0px;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+    color: #777;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
+}
+
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+body>h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h1:first-child+h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h3:first-child,
+body>h4:first-child,
+body>h5:first-child,
+body>h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+    margin-top: 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul,
+ol {
+    padding-left: 30px;
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+blockquote {
+    border-left: 4px solid #42b983;
+    padding: 10px 0px 10px 15px;
+    color: #777;
+    background-color: rgba(66, 185, 131, .1);
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #fafafa;
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr td {
+    border: 1px solid #dfe2e5;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+#write strong {
+    padding: 0px 1px 0 1px;
+}
+
+#write em {
+    padding: 0px 5px 0 2px;
+}
+
+#write table thead th {
+    background-color: #f2f2f2;
+}
+
+#write .CodeMirror-gutters {
+    border-right: none;
+}
+
+#write .md-fences {
+    border: 1px solid #F4F4F4;
+    -webkit-font-smoothing: initial;
+    margin: 0.8rem 0 !important;
+    padding: 0.3rem 0rem !important;
+    line-height: 1.43rem;
+    background-color: #F8F8F8 !important;
+    border-radius: 2px;
+    font-family: Roboto Mono, Source Sans Pro, Monaco, courier, monospace !important;
+    font-size: 0.85rem;
+    word-wrap: normal;
+}
+
+#write .CodeMirror-wrap .CodeMirror-code pre {
+    padding-left: 12px;
+}
+
+#write code, tt {
+    margin: 0 2px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-family: Source Sans Pro, Roboto Mono, Monaco, courier, monospace !important;
+    font-size: 0.92rem;
+    color: #e96900;
+    background-color: #f8f8f8;
+}
+
+#write .md-footnote {
+    background-color: #f8f8f8;
+    color: #e96900;
+}
+
+/* heighlight. */
+#write mark {
+    background-color:#EBFFEB;
+    border-radius: 2px;
+    padding: 2px 4px;
+    margin: 0 2px;
+    color: #222;
+    font-weight: 500;
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+.cm-s-inner .cm-link,
+.cm-s-inner.cm-link {
+    color: #22a2c9;
+}
+
+.cm-s-inner .cm-string {
+    color: #22a2c9;
+}
+
+.md-task-list-item>input {
+    margin-left: -1.3em;
+}
+
+@media screen and (min-width: 914px) {
+    /*body {
+        width: 854px;
+        margin: 0 auto;
+    }*/
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+    background-color: #f8f8f8;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+    bottom: .375rem;
+}
+
+#write>h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write>h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+
+</style>
+</head>
+<body class='typora-export' >
+<div  id='write'  class = 'is-mac'><p><a href='./index.html'>返回到上一页</a></p><hr /><div class='md-toc' mdtype='toc'><p class="md-toc-content"><span class="md-toc-item md-toc-h1" data-ref="n85"><a class="md-toc-inner" style="" href="#header-n85">Lecture 7. Training Neural Networks, part 2</a></span><span class="md-toc-item md-toc-h2" data-ref="n147"><a class="md-toc-inner" style="" href="#header-n147">More normalization (new topic in Spring 2018)</a></span><span class="md-toc-item md-toc-h3" data-ref="n149"><a class="md-toc-inner" style="" href="#header-n149">Batch Normalization</a></span><span class="md-toc-item md-toc-h3" data-ref="n621"><a class="md-toc-inner" style="" href="#header-n621">Batch Normalization for ConvNets</a></span><span class="md-toc-item md-toc-h3" data-ref="n624"><a class="md-toc-inner" style="" href="#header-n624">Layer Normalization</a></span><span class="md-toc-item md-toc-h3" data-ref="n627"><a class="md-toc-inner" style="" href="#header-n627">Instance Normalization</a></span><span class="md-toc-item md-toc-h3" data-ref="n630"><a class="md-toc-inner" style="" href="#header-n630">Group Normalization</a></span><span class="md-toc-item md-toc-h3" data-ref="n143"><a class="md-toc-inner" style="" href="#header-n143">Decorrelated Batch Normalization</a></span><span class="md-toc-item md-toc-h2" data-ref="n96"><a class="md-toc-inner" style="" href="#header-n96">Fancier optimization</a></span><span class="md-toc-item md-toc-h3" data-ref="n207"><a class="md-toc-inner" style="" href="#header-n207">Problems with SGD</a></span><span class="md-toc-item md-toc-h3" data-ref="n223"><a class="md-toc-inner" style="" href="#header-n223">SGD + Momentum</a></span><span class="md-toc-item md-toc-h3" data-ref="n263"><a class="md-toc-inner" style="" href="#header-n263">Nesterov Momentum</a></span><span class="md-toc-item md-toc-h3" data-ref="n269"><a class="md-toc-inner" style="" href="#header-n269">AdaGrad</a></span><span class="md-toc-item md-toc-h3" data-ref="n394"><a class="md-toc-inner" style="" href="#header-n394">RMSProp</a></span><span class="md-toc-item md-toc-h3" data-ref="n406"><a class="md-toc-inner" style="" href="#header-n406">Adam</a></span><span class="md-toc-item md-toc-h3" data-ref="n366"><a class="md-toc-inner" style="" href="#header-n366">Learning rate</a></span><span class="md-toc-item md-toc-h3" data-ref="n343"><a class="md-toc-inner" style="" href="#header-n343">First-Order/Second-Order Optimization</a></span><span class="md-toc-item md-toc-h2" data-ref="n545"><a class="md-toc-inner" style="" href="#header-n545">Beyond Training Error</a></span><span class="md-toc-item md-toc-h3" data-ref="n551"><a class="md-toc-inner" style="" href="#header-n551">Early Stopping (new topic in Spring 2018)</a></span><span class="md-toc-item md-toc-h3" data-ref="n535"><a class="md-toc-inner" style="" href="#header-n535">Model Ensembles</a></span><span class="md-toc-item md-toc-h2" data-ref="n611"><a class="md-toc-inner" style="" href="#header-n611">Regularization</a></span><span class="md-toc-item md-toc-h3" data-ref="n646"><a class="md-toc-inner" style="" href="#header-n646">Add term to loss</a></span><span class="md-toc-item md-toc-h3" data-ref="n655"><a class="md-toc-inner" style="" href="#header-n655">Dropout</a></span><span class="md-toc-item md-toc-h3" data-ref="n786"><a class="md-toc-inner" style="" href="#header-n786">Regularization：A common pattern</a></span><span class="md-toc-item md-toc-h2" data-ref="n126"><a class="md-toc-inner" style="" href="#header-n126">Transfer Learning</a></span></p></div><blockquote><p>CS231n 课程的官方地址：<a href='http://cs231n.stanford.edu/index.html' target='_blank' class='url'>http://cs231n.stanford.edu/index.html</a></p><p>该笔记根据的视频课程版本是 <a href='https://www.bilibili.com/video/av17204303/?p=16'>Spring 2017</a>(BiliBili)，PPt 资源版本是 <a href='http://cs231n.stanford.edu/syllabus.html'>Spring 2018</a>.</p><p>另有该 Lecture 7. 扩展讲义资料：</p><ul><li><strong>Tips and tricks for tuning NNs</strong> <a href='https://docs.google.com/presentation/d/183aCHcSq-YsaokZrqI3khuy_zPbehG-XgkyA6L5W4t4/edit?usp=sharing'>slides</a> (Discussion Section)</li><li><a href='http://cs231n.github.io/neural-networks-3/'>Neural Nets notes 3</a> (<a href='./CS231n_Neural_Nets_notes_3.html'>中译版</a>)</li><li><a href='http://cs231n.stanford.edu/project.html'>proposal description</a> (Project Proposal) 有很多很不错的顶会/领域/papers/datasets等</li></ul></blockquote><p>&nbsp;</p><h1><a name='header-n85' class='md-header-anchor '></a>Lecture 7. Training Neural Networks, part 2</h1><p>&nbsp;</p><h2><a name='header-n147' class='md-header-anchor '></a>More normalization (new topic in Spring 2018)</h2><h3><a name='header-n149' class='md-header-anchor '></a>Batch Normalization</h3><h3><a name='header-n621' class='md-header-anchor '></a>Batch Normalization for ConvNets</h3><h3><a name='header-n624' class='md-header-anchor '></a>Layer Normalization</h3><h3><a name='header-n627' class='md-header-anchor '></a>Instance Normalization</h3><h3><a name='header-n630' class='md-header-anchor '></a>Group Normalization</h3><h3><a name='header-n143' class='md-header-anchor '></a>Decorrelated Batch Normalization</h3><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n96' class='md-header-anchor '></a>Fancier optimization</h2><p>之前学的 SGD 优化算法似乎很容易理解，但是它有很多问题：</p><p>&nbsp;</p><h3><a name='header-n207' class='md-header-anchor '></a>Problems with SGD</h3><ol><li><p>损失函数对于不同参数梯度的敏感程度差异很大的话，损失值的变化在这种情况下会表现很坏：</p><blockquote><p>Loss function has high <strong>condition number</strong>: ratio of largest to smallest singular value of the <strong>Hessian</strong> matrix is large. (海森矩阵中最大奇异值和最小奇异值之比)</p></blockquote><p>直观来看，损失函数像是个玉米🌽。梯度的方向并不是与局部最小值的直线，而是走 nasty zigzagging，所谓<strong>之字形</strong>运动。事实上，在高维参数空间中，这种情况很普遍。</p><p><img src='https://i.loli.net/2018/08/27/5b8401d7d3290.png' alt='' referrerPolicy='no-referrer' /></p></li><li><p>存在<strong>局部极小值</strong>或<strong>鞍点</strong>（非凸优化问题）。</p><ul><li><p>梯度下降会 stuck 在局部极小值。</p><p><img src='https://i.loli.net/2018/08/27/5b840313db264.png' alt='' referrerPolicy='no-referrer' /></p></li></ul><ul><li><p>在高维参数空间上，鞍点远比局部极小值麻烦的多。这意味着在鞍点处，某些方向上损失会增加，某些方向上会减小。这种情况在高维参数空间中会发生得更加频繁，基本上几乎在任何点上都会发生。然而在局部极小值点上，任何一个方向前进损失都会变大。事实上在考虑这种很高维的问题时，看起来似乎这种情况非常稀少。</p></li><li><p>有时候问题并非恰好在鞍点上，也可能在鞍点附近。因为梯度实在太小，学习的前进会非常缓慢。</p><p><img src='https://i.loli.net/2018/08/27/5b84032545c86.png' alt='' referrerPolicy='no-referrer' /></p></li></ul><p>此处可引一篇 paper：Dauphin et al, “Identifying and attacking the saddle point problem in high-dimensional non-convex optimization”, NIPS 2014</p></li></ol><ol start='3' ><li><p><strong>Stochastic</strong>（随机性）是 SGD 的另一个问题。</p><p>通常我们并不会在实践中真的一个一个实例的扔到网络中跑损失值和梯度估计，毕竟太慢了~ 而是通常用 mini-batch 方法来对梯度进行有噪声估计。可以实验，带有均匀噪声的 SGD 会对当前的附近损失空间造成一定扭曲，从而可能实际上需要花费很长时间才能得到极小值。</p></li></ol><ul><li><p>Q：使用 GD （也就是 full batch gradient descent）的话，可以解决上述三大问题么？</p><ul><li>不会。有时候网络本身就存在明确的随机性，所以仍是一个问题；鞍点问题也仍会存在。</li></ul></li></ul><p>&nbsp;</p><h3><a name='header-n223' class='md-header-anchor '></a>SGD + Momentum</h3><p>作为对比，先贴出 SGD：</p><p><img src='https://i.loli.net/2018/08/27/5b840e0b85137.png' alt='' referrerPolicy='no-referrer' /></p><p>然后，作为对比，贴出 SGD+Momentum 的两种等价表示：</p><p><img src='https://i.loli.net/2018/08/27/5b840e411ba53.png' alt='' referrerPolicy='no-referrer' /></p><p>在 SGD+Momentum 算法中，<span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-46-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="3.36ex" height="1.936ex" viewBox="0 -555.2 1446.7 833.8" role="img" focusable="false" style="vertical-align: -0.647ex;"><defs><path stroke-width="0" id="E66-MJMATHI-76" d="M173 380Q173 405 154 405Q130 405 104 376T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Q21 294 29 316T53 368T97 419T160 441Q202 441 225 417T249 361Q249 344 246 335Q246 329 231 291T200 202T182 113Q182 86 187 69Q200 26 250 26Q287 26 319 60T369 139T398 222T409 277Q409 300 401 317T383 343T365 361T357 383Q357 405 376 424T417 443Q436 443 451 425T467 367Q467 340 455 284T418 159T347 40T241 -11Q177 -11 139 22Q102 54 102 117Q102 148 110 181T151 298Q173 362 173 380Z"></path><path stroke-width="0" id="E66-MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path stroke-width="0" id="E66-MJMATHI-3C1" d="M58 -216Q25 -216 23 -186Q23 -176 73 26T127 234Q143 289 182 341Q252 427 341 441Q343 441 349 441T359 442Q432 442 471 394T510 276Q510 219 486 165T425 74T345 13T266 -10H255H248Q197 -10 165 35L160 41L133 -71Q108 -168 104 -181T92 -202Q76 -216 58 -216ZM424 322Q424 359 407 382T357 405Q322 405 287 376T231 300Q217 269 193 170L176 102Q193 26 260 26Q298 26 334 62Q367 92 389 158T418 266T424 322Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E66-MJMATHI-76" x="0" y="0"></use><use xlink:href="#E66-MJMAIN-2C" x="485" y="0"></use><use xlink:href="#E66-MJMATHI-3C1" x="929" y="0"></use></g></svg></span><script type="math/tex" id="MathJax-Element-46">v, \rho</script> 分别作为“速度”和“摩擦系数”一般的存在，其中 <span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-40-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.201ex" height="1.808ex" viewBox="0 -499.9 517 778.4" role="img" focusable="false" style="vertical-align: -0.647ex;"><defs><path stroke-width="0" id="E60-MJMATHI-3C1" d="M58 -216Q25 -216 23 -186Q23 -176 73 26T127 234Q143 289 182 341Q252 427 341 441Q343 441 349 441T359 442Q432 442 471 394T510 276Q510 219 486 165T425 74T345 13T266 -10H255H248Q197 -10 165 35L160 41L133 -71Q108 -168 104 -181T92 -202Q76 -216 58 -216ZM424 322Q424 359 407 382T357 405Q322 405 287 376T231 300Q217 269 193 170L176 102Q193 26 260 26Q298 26 334 62Q367 92 389 158T418 266T424 322Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E60-MJMATHI-3C1" x="0" y="0"></use></g></svg></span><script type="math/tex" id="MathJax-Element-40">\rho</script> 是一个新的超参数。</p><p>之前提到过，SGD方法的一个缺点是其更新方向完全依赖于当前batch计算出的梯度，因而十分不稳定。Momentum算法借用了物理中的动量概念，它模拟的是物体运动时的惯性，即更新的时候在一定程度上保留之前更新的方向，同时利用当前batch的梯度微调最终的更新方向。这样一来，可以在一定程度上增加稳定性，从而学习地更快，并且还有一定摆脱局部最优的能力。</p><ul><li>Build up &quot;velocity&quot; as a running mean of gradients，是一个最近梯度加权平均的平滑移动，会随着最近的梯度权重越来越大。</li><li><span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-40-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.201ex" height="1.808ex" viewBox="0 -499.9 517 778.4" role="img" focusable="false" style="vertical-align: -0.647ex;"><defs><path stroke-width="0" id="E60-MJMATHI-3C1" d="M58 -216Q25 -216 23 -186Q23 -176 73 26T127 234Q143 289 182 341Q252 427 341 441Q343 441 349 441T359 442Q432 442 471 394T510 276Q510 219 486 165T425 74T345 13T266 -10H255H248Q197 -10 165 35L160 41L133 -71Q108 -168 104 -181T92 -202Q76 -216 58 -216ZM424 322Q424 359 407 382T357 405Q322 405 287 376T231 300Q217 269 193 170L176 102Q193 26 260 26Q298 26 334 62Q367 92 389 158T418 266T424 322Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E60-MJMATHI-3C1" x="0" y="0"></use></g></svg></span><script type="math/tex" id="MathJax-Element-40">\rho</script> gives &quot;friction&quot; ; typically <span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-93-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="14.629ex" height="2.45ex" viewBox="0 -776.4 6298.6 1055" role="img" focusable="false" style="vertical-align: -0.647ex;"><defs><path stroke-width="0" id="E114-MJMATHI-3C1" d="M58 -216Q25 -216 23 -186Q23 -176 73 26T127 234Q143 289 182 341Q252 427 341 441Q343 441 349 441T359 442Q432 442 471 394T510 276Q510 219 486 165T425 74T345 13T266 -10H255H248Q197 -10 165 35L160 41L133 -71Q108 -168 104 -181T92 -202Q76 -216 58 -216ZM424 322Q424 359 407 382T357 405Q322 405 287 376T231 300Q217 269 193 170L176 102Q193 26 260 26Q298 26 334 62Q367 92 389 158T418 266T424 322Z"></path><path stroke-width="0" id="E114-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E114-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E114-MJMAIN-2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path><path stroke-width="0" id="E114-MJMAIN-39" d="M352 287Q304 211 232 211Q154 211 104 270T44 396Q42 412 42 436V444Q42 537 111 606Q171 666 243 666Q245 666 249 666T257 665H261Q273 665 286 663T323 651T370 619T413 560Q456 472 456 334Q456 194 396 97Q361 41 312 10T208 -22Q147 -22 108 7T68 93T121 149Q143 149 158 135T173 96Q173 78 164 65T148 49T135 44L131 43Q131 41 138 37T164 27T206 22H212Q272 22 313 86Q352 142 352 280V287ZM244 248Q292 248 321 297T351 430Q351 508 343 542Q341 552 337 562T323 588T293 615T246 625Q208 625 181 598Q160 576 154 546T147 441Q147 358 152 329T172 282Q197 248 244 248Z"></path><path stroke-width="0" id="E114-MJMAIN-6F" d="M28 214Q28 309 93 378T250 448Q340 448 405 380T471 215Q471 120 407 55T250 -10Q153 -10 91 57T28 214ZM250 30Q372 30 372 193V225V250Q372 272 371 288T364 326T348 362T317 390T268 410Q263 411 252 411Q222 411 195 399Q152 377 139 338T126 246V226Q126 130 145 91Q177 30 250 30Z"></path><path stroke-width="0" id="E114-MJMAIN-72" d="M36 46H50Q89 46 97 60V68Q97 77 97 91T98 122T98 161T98 203Q98 234 98 269T98 328L97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 60 434T96 436Q112 437 131 438T160 441T171 442H174V373Q213 441 271 441H277Q322 441 343 419T364 373Q364 352 351 337T313 322Q288 322 276 338T263 372Q263 381 265 388T270 400T273 405Q271 407 250 401Q234 393 226 386Q179 341 179 207V154Q179 141 179 127T179 101T180 81T180 66V61Q181 59 183 57T188 54T193 51T200 49T207 48T216 47T225 47T235 46T245 46H276V0H267Q249 3 140 3Q37 3 28 0H20V46H36Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E114-MJMATHI-3C1" x="0" y="0"></use><use xlink:href="#E114-MJMAIN-3D" x="794" y="0"></use><g transform="translate(1850,0)"><use xlink:href="#E114-MJMAIN-30"></use><use xlink:href="#E114-MJMAIN-2E" x="500" y="0"></use><use xlink:href="#E114-MJMAIN-39" x="778" y="0"></use></g><g transform="translate(3128,0)"><use xlink:href="#E114-MJMAIN-6F" x="250" y="0"></use><use xlink:href="#E114-MJMAIN-72" x="750" y="0"></use></g><g transform="translate(4520,0)"><use xlink:href="#E114-MJMAIN-30"></use><use xlink:href="#E114-MJMAIN-2E" x="500" y="0"></use><use xlink:href="#E114-MJMAIN-39" x="778" y="0"></use><use xlink:href="#E114-MJMAIN-39" x="1278" y="0"></use></g></g></svg></span><script type="math/tex" id="MathJax-Element-93">\rho=0.9 \text{ or } 0.99</script></li><li>可以较好的解决局部最小和鞍点的问题；效果表现明显比 SGD 更要好。</li></ul><p>此处有 paper 一篇：Sutskever et al, “On the importance of initialization and momentum in deep learning”, ICML 2013</p><ul><li><p>Q：“速度”的初始值一般怎么取？</p><ul><li>基本上都是初始化到 0，它不算是超参数。</li></ul></li></ul><p>&nbsp;</p><p>&nbsp;</p><h3><a name='header-n263' class='md-header-anchor '></a>Nesterov Momentum</h3><p>这是在 SGD+Momentum 的基础上一个轻微变化，叫做 Nesterov accelerated gradient 或者 Nesterov momentum。</p><p>此处有 paper 2 篇：Nesterov, “A method of solving a convex programming problem with convergence rate O(1/k^2)”, 1983 和 Nesterov, “Introductory lectures on convex optimization: a basic course”, 2004 。</p><p><img src='https://i.loli.net/2018/08/28/5b854c2324689.png' alt='' referrerPolicy='no-referrer' /></p><p>梯度动量更新都是在红色点处，把历史梯度信息综合而成的“速度”在当前点与梯度结合，然后做出实际的更新运动。而 Nesterov 加速梯度下降是先在当前的 step 处用历史梯度信息综合而成的“速度”进行一次模拟更新运动，用运动后的梯度再与之前的“速度”结合做出实际当前 step 处的梯度更新运动。</p><p>公式就是这样的：</p><p><img src='https://i.loli.net/2018/08/28/5b854ea097bca.png' alt='' referrerPolicy='no-referrer' /></p><p>从后一个经过换元的新公式来看，我们可以说 Nesterov 动量包含了当前速度向量和先前速度向量的误差修正。</p><p>而且，你可以看到带动量的 SGD 和 Nesternov 动量的一个不同就是：由于 Nesternov 有校正因子的存在，与常规方法相比它不会那么剧烈的越过局部极小值点。</p><p>小哥开始了自问自答：</p><ul><li><p>Q：实际情况是如果你的局部极小点在一个非常窄的盆地里呢？上述的两种优化方法带来的“速度”能否让你越过这个局部极小点呢？</p><ul><li><p>最近这方面的理论研究有一些。但事实上这些非常极端的局部极值（所谓的坏点）我们的算法甚至不会经过这些点。因为实际上如果你遇到了一个非常极端的极值点，那么事实上你的训练很有可能已经过拟合了。如果我们能够扩大我们的训练数据集到两倍，那么整个优化函数的形状都会改变，以至于这个非常极端的极值点会消失，前提是如果我们收集更多的训练数据的话，我们可以得到的一个直觉判断就是我们愿意去靠近一个相对平缓的极值点，因为这样的极值点往往随着训练数据的变化有更好的鲁棒性。这样的平缓极值点往往针对测试数据有更好的泛化能力。</p><p>某种意义上来说，跳过这些非常尖锐的极值点，这实际上是带动量的 SGD 的一个特性，而不是一个 bug。</p></li></ul></li></ul><p>&nbsp;</p><h3><a name='header-n269' class='md-header-anchor '></a>AdaGrad</h3><p>AdaGrad 的核心思想是：在优化的过程中，需要保持一个在训练过程中的每一部梯度的平方和的持续估计。</p><p>与速度项不同的是，现在我们有了一个梯度平方项。在训练时，我们会一直累加当前梯度的平方到这个梯度平方项（历史上所有参数维度的梯度平方和）。当我们在更新我们的参数向量时，我们会除以这个梯度平方项。</p><p><img src='https://i.loli.net/2018/08/28/5b8554e338f33.png' alt='' referrerPolicy='no-referrer' /></p><ul><li><p>Q：对于 high condition number 时（如上图），AdaGrad 是如何缓解问题的呢？</p><ul><li>这个思想就是如果我们有两个坐标轴，沿其中一个轴我们有很高的梯度，而另一个轴方向却有很小的梯度，那么我们随着我们累加小梯度的平方，我们会在最后更新参数向量时除以一个很小的数字，从而加速了在小梯度对应的一个维度上的学习速度。然后在另一个维度方向上，由于梯度变得特别大，我们会除以一个非常大的数，所以我们会降低这个维度方向（Zigzaging 方向）上的训练速度。</li></ul></li><li><p>Q：当 t（时间）越来越大的时候，在训练过程中使用 AdaGrad 会发生什么问题？</p><ul><li>步长会变得越来越小。在学习目标是一个凸函数的情况下，有理论证明这个AdaGrad优化策略效果很好。因为当你接近极值点时，你会逐渐的慢下来最后达到收敛。这点是AdaGrad在凸函数情况下的一个很好的特性。但是在非凸函数的情况下，事情会变得复杂，因为当你到达一个局部的极值点时，使用 AdaGrad 会让你在这里被困住，从而使得训练过程无法再进行下去。</li><li>所以，对 AdaGrad 有一个变体叫做 RMSProp。</li></ul></li></ul><p>&nbsp;</p><h3><a name='header-n394' class='md-header-anchor '></a>RMSProp</h3><p>在这个算法中，我们依然计算梯度的平方，但是我们并不是仅仅简单的在训练中累加梯度平方，而是我们会让平方梯度按照一定比率下降。</p><p><img src='https://i.loli.net/2018/08/28/5b855a040b834.png' alt='' referrerPolicy='no-referrer' /></p><p>此处引用的是Tieleman and Hinton, 2012。</p><p>它看起来就和动量优化法很像，除了我们是给梯度的平方加上动量，而不是给梯度本身。 </p><p>所以说。。总之啦。。。我们不倾向于使用 AdaGrad。。。</p><p>&nbsp;</p><h3><a name='header-n406' class='md-header-anchor '></a>Adam</h3><p><img src='assets/image-20180829203534507.png' alt='image-20180829203534507' referrerPolicy='no-referrer' /></p><p>用 Adam 企图将上面优化算法的有点综合起来，我们让第一动量的估计值等于我们梯度的加权和，让第二动量的动态估计值，像 AdaGrad 和 RMSProp 一样，就是一个梯度平方的动态近似值。</p><p>假如不用 Bias correction（偏置校正项），经过第一次迭代的第一二的动量在最后的参数更新式子中，很可能会分母接近0，而使得更新步长太大。因为我们回去初始动量都为0，但是 <code>beta1</code> 和 <code>beta2</code> 为0.9或0.99。所以我们构造了第一和第二动量的无偏估计，通过使用当前时间步 <code>t</code> 。现在我们实际上在使用无偏估计来做每一部更新，而不是初始的第一和第二动量的估计值。（虽然是有可能第一动量和第二动量都比较小，使得第一步参数更新的步长可以抵消掉很多）</p><p>（式子中的 <code>1e-7</code> 实际上在 AdaGrad 或 RMSProp 中会出现，之所有有这一项是因为我们除以一个不会为0的数。理论上讲，这也是一个超参数）</p><p>&nbsp;</p><p>&nbsp;</p><ul><li>现在我们综合一下前面的优化算法，看在一个鞍点附近的行为：</li><li><img src='https://media.giphy.com/media/SJVFO3IcVC0M0/giphy.gif' alt='&quot;adam gif optimization&quot;的图片搜索结果' referrerPolicy='no-referrer' /></li><li><img src='http://ruder.io/content/images/2016/09/saddle_point_evaluation_optimizers.gif' alt='&quot;adam gif optimization&quot;的图片搜索结果' referrerPolicy='no-referrer' /></li></ul><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h3><a name='header-n366' class='md-header-anchor '></a>Learning rate</h3><ul><li><p>Q：上面这么多优化算法中，都有学习率这个超参数。那么该如何调它呢？</p><ul><li><p><img src='assets/image-20180829211734018.png' alt='image-20180829211734018' referrerPolicy='no-referrer' /></p></li><li><p>要学习率衰减！</p></li><li><p>在 <strong>ResNet</strong> 那篇 paper 中，你会经常看到像下面这样的曲线：</p><p><img src='assets/image-20180829212117784.png' alt='image-20180829212117784' referrerPolicy='no-referrer' /></p><p>可以看到损失先一直下降，然后骤降，再然后平坦，接着又骤降。这些曲线背后其实是他们在用步长衰减的学习率。这些曲线出现骤降的地方是在迭代时把学习率乘上了一个因子。<strong>降低学习率的想法</strong>是说：<u>假设模型已经接近一个比较不错的取值区域，但是此时的梯度已经很小了，保持原有学习速率只能在最优点附近来回徘徊，如果我们降低了学习率，目标函数仍然能够进一步降低，即在损失函数上进一步取得进步</u>。有时候这很有用。</p></li><li><p>带动量 SGD 的学习率衰减很常见，但是像 <u>Adam 的优化算法就很少用学习率的衰减</u>。</p></li><li><p>学习率衰减是一种二阶的超参数，通常不应该一开始就用上。学习率衰减这样的事情，一般只有通常你想要让神经网络开始工作，你想要挑选一个不带学习率衰减的不错的学习率来作为开始，尝试在交叉验证中同时调学习率衰减和初始学习率等等其他的事情，你会一头雾水的。所以，<strong>设置学习率衰减的方法</strong>是：<u>先尝试不用衰减，看看会发生什么，然后仔细观察损失函数，看看你希望在哪个地方开始衰减。</u></p></li></ul></li></ul><p>&nbsp;</p><p>&nbsp;</p><h3><a name='header-n343' class='md-header-anchor '></a>First-Order/Second-Order Optimization</h3><p>我们之前谈过的优化算法都是一阶优化算法，如下图：</p><p><img src='assets/image-20180829213438074.png' alt='image-20180829213438074' referrerPolicy='no-referrer' /></p><p>我们在上面的一个点上求一个梯度，我们用梯度信息来计算这个函数逇线性逼近，这个相当于是对我们的函数进行的一阶泰勒逼近。于是，现在我们假设我们的一阶逼近就是实际的函数，然后我们想要迈出一步来找到逼近的最小值。但是这个逼近在稍大的区间内并不成立，所以我们不能朝哪个方向一下走太多。事实上，这里的梯度的想法用上了函数的一阶偏导，完全可以有二阶逼近：</p><p><img src='assets/image-20180829213939507.png' alt='image-20180829213939507' referrerPolicy='no-referrer' /></p><p>这里同时考虑了一阶和二阶偏导信息，现在我们对函数做一个二阶泰勒逼近，就是用一个二次函数来局部逼近我们的函数。因为是二次函数，可以直接跳到最小值点，这就很开心了。这个就是二阶优化的思想了。</p><p>进一步推广这个想法，于是就会得到一个叫做 Newton step（牛顿步长）的东西。计算下面这个 Hessian matrix（海森矩阵），即二阶偏导矩阵，接着求这个海森矩阵的逆，以便直接走到对你的函数用二次逼近后的最小值的地方。</p><p><img src='assets/image-20180829214509670.png' alt='image-20180829214509670' referrerPolicy='no-referrer' /></p><p>这个原始版本的牛顿法带来的好处，首先就是没有学习率这个超参数。不过很不好的地方是，Hessian 矩阵有用 O(N^2) 的元素，对它求逆的话，内存会疯掉。所以就有了下面的 quasi-Newton methods（拟牛顿法）来代替牛顿法，而不是直接地去求完整的 Hessian 矩阵的逆，而是去逼近这个矩阵的逆。常见的是低阶逼近。</p><p><img src='assets/image-20180829214921546.png' alt='image-20180829214921546' referrerPolicy='no-referrer' /></p><ul><li>L-BFGS 就是一个二阶优化器，它是二阶逼近，用 Hessian 来逼近。实际中你可能会看到很多深度学习的问题并不适应这个算法，因为这些二阶逼近的方法对随机的情况处理的并不是很多很好，而且在非凸问题上表现不是很好。</li></ul><p><img src='assets/image-20180829214934320.png' alt='image-20180829214934320' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><ul><li><blockquote><p>所以说。。。总之呢。。。</p><ul><li><strong>Adam</strong> is a good default choice in most cases</li><li>If you can afford to do full batch updates then try out <strong>L-BFGS</strong> (and don&#39;t forget to disable all sources of noise)</li></ul></blockquote></li></ul><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n545' class='md-header-anchor '></a>Beyond Training Error</h2><p>上述的内容，都是目标要减小训练的错误率。不过事实上，我们并不真的很在乎训练误差是怎样的，而是在没有见过的数据上的表现。</p><p><img src='assets/image-20180829215935248.png' alt='image-20180829215935248' referrerPolicy='no-referrer' /></p><h3><a name='header-n551' class='md-header-anchor '></a>Early Stopping (new topic in Spring 2018)</h3><p><img src='assets/image-20180829220200510.png' alt='image-20180829220200510' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h3><a name='header-n535' class='md-header-anchor '></a>Model Ensembles</h3><ul><li>Way 1</li></ul><p>模型集成在机器学习的很多领域应用广泛。点子其实很简单，比起使用一个模型，我们选择从不同的随机初始值上训练10个不同的模型，到了测试时，我们就会在10个模型上运行测试数据，然后平均10个模型的预测结果。把这些多个模型加到一起，能够缓解一点过拟合，从而提高一些性能，通常会提高几个百分点，这不是很巨大的提升，但是确实很固定的提升。</p><p><img src='assets/image-20180829221207076.png' alt='image-20180829221207076' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><ul><li>Way 2</li></ul><p>有时候可以不用独立地训练不同的模型，你可以在训练的过程中保留多个模型的快照，然后用这些模型来做集成学习。然后再测试阶段，你仍然需要把这些多个快照的预测结果做平均，但是你可以在训练的过程中收集这些快照。可以用一个“疯狂”的学习率计划，其开始时很慢，然后非常快，接着又很慢，再然后又特别快。这样的学习率会使得训练过程中模型会收敛到目标函数不同的区域，但是结果仍然还不错。如果你对这些不同的快照做集成以后，就能够大幅提高最后的性能，虽然你只进行了一次训练。 </p><p><img src='assets/image-20180829222313793.png' alt='image-20180829222313793' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><blockquote><p>小哥在此回答了一个问题谈到：我们真正在意的并不是训练集有多么好的表现，也不是训练集与测试集之间的 gap 要小，而是<strong>验证集上得到最优的结果。</strong>至于，之前讲了这么多，就是在告诉我们如何通过模型的表现，给我们能够进一步得到最优模型的暗示。</p></blockquote><p>顺道一提的是：集成模型中的各种模型中，他们的超参数一般都不太一样。</p><p>&nbsp;</p><ul><li>Way 3</li></ul><p>另外一个可能会用到的的小技巧是：在训练模型的时候，对不同时刻的每个模型参数，求指数衰减平均值。从而得到网络训练中一个比较平滑的集成模型，之后使用这些平滑衰减的平均后的模型参数，而不是截至在某一时刻的模型参数，这个方法叫做 <strong>Polyak 平均</strong>。有时候能有一点效果，但并不常见。</p><p><img src='assets/image-20180829224044792.png' alt='image-20180829224044792' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n611' class='md-header-anchor '></a>Regularization</h2><p>刚刚的模型集成是通过在测试阶段中考虑多个模型的手段，从而提高模型表现，降低过拟合。</p><p>那么如果只有单一模型，如何提高模型表现，降低过拟合呢？那就是 <strong>Regularization</strong>!</p><p>&nbsp;</p><h3><a name='header-n646' class='md-header-anchor '></a>Add term to loss</h3><p><img src='assets/image-20180829224943042.png' alt='image-20180829224943042' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><h3><a name='header-n655' class='md-header-anchor '></a>Dropout</h3><p><img src='assets/image-20180829225624531.png' alt='image-20180829225624531' referrerPolicy='no-referrer' /></p><ul><li><p>Q：在哪些层使用 dropout？</p><ul><li>一般是在全连接层。但有时候你在卷积层也能看到。当你使用卷积层时，有时候你可能并不是随机把某个神经元上激活函数的结果置为0，而是随机把正而过特征映射置为0。在卷积神经网络里，有一个维度表示通道，你可能要把某几条通道整个置零，而不是某几个元素。</li></ul></li></ul><ul><li><p>代码的实现并不复杂：（还不完整，下文会进一步说明）</p><pre spellcheck="false" class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" lang="python" style="page-break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 47px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 35px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre>x</pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -35px; width: 35px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 27px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">p</span> = <span class="cm-number">0.5</span> <span class="cm-comment"># probability of keeping a unit active. higher = less dropout</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;" class=""><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">def</span> <span class="cm-def">train_step</span>(<span class="cm-variable">X</span>):</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-string">"""X contain the data"""</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># forward pass for example 3-layer neural network</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">H1</span> = <span class="cm-variable">np</span>.<span class="cm-property">maximum</span>(<span class="cm-number">0</span>, <span class="cm-variable">np</span>.<span class="cm-property">dot</span>(<span class="cm-variable">W1</span>, <span class="cm-variable">X</span>) <span class="cm-operator">+</span> <span class="cm-variable">b1</span>)</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">U1</span> = <span class="cm-variable">np</span>.<span class="cm-property">random</span>.<span class="cm-property">rand</span>(<span class="cm-operator">*</span><span class="cm-variable">H1</span>.<span class="cm-property">shape</span>) <span class="cm-operator">&lt;</span> <span class="cm-variable">p</span> <span class="cm-comment"># first dropout mask</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">H1</span> *= <span class="cm-variable">U1</span> <span class="cm-comment"># drop!</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 27px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">H2</span> = <span class="cm-variable">np</span>.<span class="cm-property">maximum</span>(<span class="cm-number">0</span>, <span class="cm-variable">np</span>.<span class="cm-property">dot</span>(<span class="cm-variable">W2</span>, <span class="cm-variable">H1</span>) <span class="cm-operator">+</span> <span class="cm-variable">b2</span>)</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">U2</span> = <span class="cm-variable">np</span>.<span class="cm-property">random</span>.<span class="cm-property">rand</span>(<span class="cm-operator">*</span><span class="cm-variable">H2</span>.<span class="cm-property">shape</span>) <span class="cm-operator">&lt;</span> <span class="cm-variable">p</span> <span class="cm-comment"># second dropout mask</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">12</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">H2</span> *= <span class="cm-variable">U2</span> <span class="cm-comment"># drop!</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">out</span> = <span class="cm-variable">np</span>.<span class="cm-property">dot</span>(<span class="cm-variable">W3</span>, <span class="cm-variable">H2</span>) <span class="cm-operator">+</span> <span class="cm-variable">b3</span></span></pre></div><div style="position: relative;" class=""><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">14</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">15</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># backward pass: compute gradients... (not shown)</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 27px;">16</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># perform parameter update... (not shown)</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 352px;"></div><div class="CodeMirror-gutters" style="height: 352px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 35px;"></div></div></div></div></pre></li><li><p>解释一（勉强）</p><ul><li>dropout 避免了特征间的相互适应。假设我们要分类判断是不是猫，可能在网络里一个神经元学到了“有一只耳朵”，一个学到了“尾巴”，一个学到了“输入图像有毛”，然后这些特征被组合到一起来判断是否有猫。但现在加入 dropout 后判断是不是猫时，网络就不能依赖这些特征组合在一起给出的结果，而是要通过不同的零散的特征来判断，这也许某种程度上抑制了过拟合。</li><li>Forces the network to have a redundant representation; Prevents co-adaptation of features.</li></ul></li><li><p>解释二</p><ul><li>这是在单一模型中进行的集成学习。如果你们观察左图，在 dropout 之后，我们是在一个子网络中用所有神经元的子集进行运算，每一种可能的 dropout 方式都可以产生一个不同的子网络。所以，dropout 像是同时对一群共享参数的网络进行集成学习。顺便说一下，因为 dropout 的可能性随神经元个数呈指数倍增长，你不可能穷举每种情况，这可以看做是一个超级无比巨大的网络集合在同时被训练。</li><li>Dropout is training a large ensemble of models (that share parameters). Each binary mask is one model.</li><li>An FC layer with 4096 units has <span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-102-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.678ex" height="2.322ex" viewBox="0 -942.4 2014.2 999.7" role="img" focusable="false" style="vertical-align: -0.133ex;"><defs><path stroke-width="0" id="E126-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E126-MJMAIN-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path><path stroke-width="0" id="E126-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E126-MJMAIN-39" d="M352 287Q304 211 232 211Q154 211 104 270T44 396Q42 412 42 436V444Q42 537 111 606Q171 666 243 666Q245 666 249 666T257 665H261Q273 665 286 663T323 651T370 619T413 560Q456 472 456 334Q456 194 396 97Q361 41 312 10T208 -22Q147 -22 108 7T68 93T121 149Q143 149 158 135T173 96Q173 78 164 65T148 49T135 44L131 43Q131 41 138 37T164 27T206 22H212Q272 22 313 86Q352 142 352 280V287ZM244 248Q292 248 321 297T351 430Q351 508 343 542Q341 552 337 562T323 588T293 615T246 625Q208 625 181 598Q160 576 154 546T147 441Q147 358 152 329T172 282Q197 248 244 248Z"></path><path stroke-width="0" id="E126-MJMAIN-36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E126-MJMAIN-32" x="0" y="0"></use><g transform="translate(500,392)"><use transform="scale(0.707)" xlink:href="#E126-MJMAIN-34"></use><use transform="scale(0.707)" xlink:href="#E126-MJMAIN-30" x="500" y="0"></use><use transform="scale(0.707)" xlink:href="#E126-MJMAIN-39" x="1000" y="0"></use><use transform="scale(0.707)" xlink:href="#E126-MJMAIN-36" x="1499" y="0"></use></g></g></svg></span><script type="math/tex" id="MathJax-Element-102">2^{4096}</script> ~ <span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-108-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="5.839ex" height="2.45ex" viewBox="0 -942.4 2514.2 1055" role="img" focusable="false" style="vertical-align: -0.262ex;"><defs><path stroke-width="0" id="E132-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E132-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E132-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E132-MJMAIN-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E132-MJMAIN-31"></use><use xlink:href="#E132-MJMAIN-30" x="500" y="0"></use><g transform="translate(1000,392)"><use transform="scale(0.707)" xlink:href="#E132-MJMAIN-31"></use><use transform="scale(0.707)" xlink:href="#E132-MJMAIN-32" x="500" y="0"></use><use transform="scale(0.707)" xlink:href="#E132-MJMAIN-33" x="1000" y="0"></use><use transform="scale(0.707)" xlink:href="#E132-MJMAIN-33" x="1499" y="0"></use></g></g></svg></span><script type="math/tex" id="MathJax-Element-108">10^{1233}</script> possible masks! Only ~ <span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-114-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.197ex" height="2.45ex" viewBox="0 -942.4 1807.1 1055" role="img" focusable="false" style="vertical-align: -0.262ex;"><defs><path stroke-width="0" id="E138-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E138-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E138-MJMAIN-38" d="M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z"></path><path stroke-width="0" id="E138-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E138-MJMAIN-31"></use><use xlink:href="#E138-MJMAIN-30" x="500" y="0"></use><g transform="translate(1000,392)"><use transform="scale(0.707)" xlink:href="#E138-MJMAIN-38"></use><use transform="scale(0.707)" xlink:href="#E138-MJMAIN-32" x="500" y="0"></use></g></g></svg></span><script type="math/tex" id="MathJax-Element-114">10^{82}</script> atoms in the universe...</li></ul></li></ul><ul><li><p>测试的时候，如何处理？如何消除 dropout 带来的随机性？</p><ul><li><p>我们可以平均这个随机性，也就是需要通过一些积分来边缘化随机性。</p><p class='md-math-block'><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n744" cid="n744" mdtype="math_block">
+			
+		<div class="md-rawblock-container md-math-container" tabindex="-1"><span style="white-space:pre;"><span class="MathJax_Preview"></span><span class="MathJax_SVG_Display" style="text-align: center;"><span class="MathJax_SVG" id="MathJax-Element-163-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="40.874ex" height="5.534ex" viewBox="0 -1440.3 17598.6 2382.6" role="img" focusable="false" style="vertical-align: -2.189ex;"><defs><path stroke-width="0" id="E195-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E195-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E195-MJMATHI-66" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path><path stroke-width="0" id="E195-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path stroke-width="0" id="E195-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E195-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path stroke-width="0" id="E195-MJMATHI-45" d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z"></path><path stroke-width="0" id="E195-MJMATHI-7A" d="M347 338Q337 338 294 349T231 360Q211 360 197 356T174 346T162 335T155 324L153 320Q150 317 138 317Q117 317 117 325Q117 330 120 339Q133 378 163 406T229 440Q241 442 246 442Q271 442 291 425T329 392T367 375Q389 375 411 408T434 441Q435 442 449 442H462Q468 436 468 434Q468 430 463 420T449 399T432 377T418 358L411 349Q368 298 275 214T160 106L148 94L163 93Q185 93 227 82T290 71Q328 71 360 90T402 140Q406 149 409 151T424 153Q443 153 443 143Q443 138 442 134Q425 72 376 31T278 -11Q252 -11 232 6T193 40T155 57Q111 57 76 -3Q70 -11 59 -11H54H41Q35 -5 35 -2Q35 13 93 84Q132 129 225 214T340 322Q352 338 347 338Z"></path><path stroke-width="0" id="E195-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E195-MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path stroke-width="0" id="E195-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path><path stroke-width="0" id="E195-MJSZ2-222B" d="M114 -798Q132 -824 165 -824H167Q195 -824 223 -764T275 -600T320 -391T362 -164Q365 -143 367 -133Q439 292 523 655T645 1127Q651 1145 655 1157T672 1201T699 1257T733 1306T777 1346T828 1360Q884 1360 912 1325T944 1245Q944 1220 932 1205T909 1186T887 1183Q866 1183 849 1198T832 1239Q832 1287 885 1296L882 1300Q879 1303 874 1307T866 1313Q851 1323 833 1323Q819 1323 807 1311T775 1255T736 1139T689 936T633 628Q574 293 510 -5T410 -437T355 -629Q278 -862 165 -862Q125 -862 92 -831T55 -746Q55 -711 74 -698T112 -685Q133 -685 150 -700T167 -741Q167 -789 114 -798Z"></path><path stroke-width="0" id="E195-MJMATHI-70" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path><path stroke-width="0" id="E195-MJMATHI-64" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E195-MJMATHI-79" x="0" y="0"></use><use xlink:href="#E195-MJMAIN-3D" x="774" y="0"></use><use xlink:href="#E195-MJMATHI-66" x="1830" y="0"></use><use xlink:href="#E195-MJMAIN-28" x="2380" y="0"></use><use xlink:href="#E195-MJMATHI-78" x="2769" y="0"></use><use xlink:href="#E195-MJMAIN-29" x="3341" y="0"></use><use xlink:href="#E195-MJMAIN-3D" x="4008" y="0"></use><g transform="translate(5064,0)"><use xlink:href="#E195-MJMATHI-45" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E195-MJMATHI-7A" x="1043" y="-213"></use></g><use xlink:href="#E195-MJMAIN-5B" x="6233" y="0"></use><use xlink:href="#E195-MJMATHI-66" x="6511" y="0"></use><use xlink:href="#E195-MJMAIN-28" x="7061" y="0"></use><use xlink:href="#E195-MJMATHI-78" x="7450" y="0"></use><use xlink:href="#E195-MJMAIN-2C" x="8022" y="0"></use><use xlink:href="#E195-MJMATHI-7A" x="8466" y="0"></use><use xlink:href="#E195-MJMAIN-29" x="8934" y="0"></use><use xlink:href="#E195-MJMAIN-5D" x="9323" y="0"></use><use xlink:href="#E195-MJMAIN-3D" x="9879" y="0"></use><use xlink:href="#E195-MJSZ2-222B" x="10935" y="0"></use><use xlink:href="#E195-MJMATHI-70" x="12045" y="0"></use><use xlink:href="#E195-MJMAIN-28" x="12548" y="0"></use><use xlink:href="#E195-MJMATHI-7A" x="12937" y="0"></use><use xlink:href="#E195-MJMAIN-29" x="13405" y="0"></use><use xlink:href="#E195-MJMATHI-66" x="13794" y="0"></use><use xlink:href="#E195-MJMAIN-28" x="14344" y="0"></use><use xlink:href="#E195-MJMATHI-78" x="14733" y="0"></use><use xlink:href="#E195-MJMAIN-2C" x="15305" y="0"></use><use xlink:href="#E195-MJMATHI-7A" x="15750" y="0"></use><use xlink:href="#E195-MJMAIN-29" x="16218" y="0"></use><use xlink:href="#E195-MJMATHI-64" x="16607" y="0"></use><use xlink:href="#E195-MJMATHI-7A" x="17130" y="0"></use></g></svg></span></span><script type="math/tex; mode=display" id="MathJax-Element-163">y = f(x) = E_z[f(x,z)]=\int p(z)f(x,z)dz</script></span></div></div></p></li><li><p>但在实践中，这个积分是完全难以处理的，我们不知道怎样对这进行求解，你会一脸懵逼。</p></li><li><p>有种通过采样来逼近这个积分的办法。你可以对 z 的多次取样，然后在测试的时候把它们平均化。但是这仍然会引入一些随机性，这不好。</p></li><li><p>还好，我们可以做一个简易地局部逼近这个积分：</p><p><img src='https://i.loli.net/2018/08/30/5b875ae75c1f6.png' alt='' referrerPolicy='no-referrer' /></p><p>可见，测试的时候只要输出层的输出乘以 dropout 的概率值就可以了。</p></li></ul><ul><li>更常见的手段是 inverted dropout。测试的时候，你可能更关心效率。所以测试的时候，不用动，让训练的时候除以概率值 p 就好，下面就是真正完整版的 dropout：</li></ul><pre spellcheck="false" class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" lang="python" style="page-break-inside: unset;"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 47px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 35px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre>x</pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div style="position: relative;" class="CodeMirror-activeline"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -35px; width: 35px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 27px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">p</span> = <span class="cm-number">0.5</span> <span class="cm-comment"># probability of keeping a unit active. higher = less dropout</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">def</span> <span class="cm-def">train_step</span>(<span class="cm-variable">X</span>):</span></pre></div><div class="" style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># forward pass for example 3-layer neural network</span></span></pre></div><div style="position: relative;" class=""><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">H1</span> = <span class="cm-variable">np</span>.<span class="cm-property">maximum</span>(<span class="cm-number">0</span>, <span class="cm-variable">np</span>.<span class="cm-property">dot</span>(<span class="cm-variable">W1</span>, <span class="cm-variable">X</span>) <span class="cm-operator">+</span> <span class="cm-variable">b1</span>)</span></pre></div><div style="position: relative;" class=""><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">U1</span> = (<span class="cm-variable">np</span>.<span class="cm-property">random</span>.<span class="cm-property">rand</span>(<span class="cm-operator">*</span><span class="cm-variable">H1</span>.<span class="cm-property">shape</span>) <span class="cm-operator">&lt;</span> <span class="cm-variable">p</span>) <span class="cm-operator">/</span> <span class="cm-variable">p</span> <span class="cm-comment"># first dropout mask. Notice /p !</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">H1</span> *= <span class="cm-variable">U1</span> <span class="cm-comment"># drop!</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 27px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">H2</span> = <span class="cm-variable">np</span>.<span class="cm-property">maximum</span>(<span class="cm-number">0</span>, <span class="cm-variable">np</span>.<span class="cm-property">dot</span>(<span class="cm-variable">W2</span>, <span class="cm-variable">H1</span>) <span class="cm-operator">+</span> <span class="cm-variable">b2</span>)</span></pre></div><div style="position: relative;" class=""><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">U2</span> = (<span class="cm-variable">np</span>.<span class="cm-property">random</span>.<span class="cm-property">rand</span>(<span class="cm-operator">*</span><span class="cm-variable">H2</span>.<span class="cm-property">shape</span>) <span class="cm-operator">&lt;</span> <span class="cm-variable">p</span>) <span class="cm-operator">/</span> <span class="cm-variable">p</span> <span class="cm-comment"># second dropout mask. Notice /p !</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">H2</span> *= <span class="cm-variable">U2</span> <span class="cm-comment"># drop!</span></span></pre></div><div style="position: relative;" class=""><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">out</span> = <span class="cm-variable">np</span>.<span class="cm-property">dot</span>(<span class="cm-variable">W3</span>, <span class="cm-variable">H2</span>) <span class="cm-operator">+</span> <span class="cm-variable">b3</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">12</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># backward pass: compute gradients... (not shown)</span></span></pre></div><div class="" style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -35px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 27px;">14</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># perform parameter update... (not shown)</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 308px;"></div><div class="CodeMirror-gutters" style="height: 308px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 35px;"></div></div></div></div></pre></li></ul><ul><li><p>Q：dropout 会对训练时的参数梯度更新有什么影响？</p><ul><li>通常训练需要更长的时间，因为在每一步，你只是更新网络的一些子部分。但是收敛后，模型的鲁棒性更好。</li></ul></li></ul><p>&nbsp;</p><h3><a name='header-n786' class='md-header-anchor '></a>Regularization：A common pattern</h3><blockquote><p><strong>Training</strong>：Add some kind of randomness</p><p class='md-math-block'><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n799" cid="n799" mdtype="math_block">
+			
+		<div class="md-rawblock-container md-math-container" tabindex="-1"><span class="MathJax_Preview"></span><span class="MathJax_SVG_Display" style="text-align: center;"><span class="MathJax_SVG" id="MathJax-Element-180-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="12.598ex" height="2.707ex" viewBox="0 -831.8 5424.3 1165.7" role="img" focusable="false" style="vertical-align: -0.776ex;"><defs><path stroke-width="0" id="E213-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E213-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E213-MJMATHI-66" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path><path stroke-width="0" id="E213-MJMATHI-57" d="M436 683Q450 683 486 682T553 680Q604 680 638 681T677 682Q695 682 695 674Q695 670 692 659Q687 641 683 639T661 637Q636 636 621 632T600 624T597 615Q597 603 613 377T629 138L631 141Q633 144 637 151T649 170T666 200T690 241T720 295T759 362Q863 546 877 572T892 604Q892 619 873 628T831 637Q817 637 817 647Q817 650 819 660Q823 676 825 679T839 682Q842 682 856 682T895 682T949 681Q1015 681 1034 683Q1048 683 1048 672Q1048 666 1045 655T1038 640T1028 637Q1006 637 988 631T958 617T939 600T927 584L923 578L754 282Q586 -14 585 -15Q579 -22 561 -22Q546 -22 542 -17Q539 -14 523 229T506 480L494 462Q472 425 366 239Q222 -13 220 -15T215 -19Q210 -22 197 -22Q178 -22 176 -15Q176 -12 154 304T131 622Q129 631 121 633T82 637H58Q51 644 51 648Q52 671 64 683H76Q118 680 176 680Q301 680 313 683H323Q329 677 329 674T327 656Q322 641 318 637H297Q236 634 232 620Q262 160 266 136L501 550L499 587Q496 629 489 632Q483 636 447 637Q428 637 422 639T416 648Q416 650 418 660Q419 664 420 669T421 676T424 680T428 682T436 683Z"></path><path stroke-width="0" id="E213-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path stroke-width="0" id="E213-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E213-MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path stroke-width="0" id="E213-MJMATHI-7A" d="M347 338Q337 338 294 349T231 360Q211 360 197 356T174 346T162 335T155 324L153 320Q150 317 138 317Q117 317 117 325Q117 330 120 339Q133 378 163 406T229 440Q241 442 246 442Q271 442 291 425T329 392T367 375Q389 375 411 408T434 441Q435 442 449 442H462Q468 436 468 434Q468 430 463 420T449 399T432 377T418 358L411 349Q368 298 275 214T160 106L148 94L163 93Q185 93 227 82T290 71Q328 71 360 90T402 140Q406 149 409 151T424 153Q443 153 443 143Q443 138 442 134Q425 72 376 31T278 -11Q252 -11 232 6T193 40T155 57Q111 57 76 -3Q70 -11 59 -11H54H41Q35 -5 35 -2Q35 13 93 84Q132 129 225 214T340 322Q352 338 347 338Z"></path><path stroke-width="0" id="E213-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E213-MJMATHI-79" x="0" y="0"></use><use xlink:href="#E213-MJMAIN-3D" x="774" y="0"></use><g transform="translate(1830,0)"><use xlink:href="#E213-MJMATHI-66" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E213-MJMATHI-57" x="692" y="-213"></use></g><use xlink:href="#E213-MJMAIN-28" x="3161" y="0"></use><use xlink:href="#E213-MJMATHI-78" x="3550" y="0"></use><use xlink:href="#E213-MJMAIN-2C" x="4122" y="0"></use><use xlink:href="#E213-MJMATHI-7A" x="4567" y="0"></use><use xlink:href="#E213-MJMAIN-29" x="5035" y="0"></use></g></svg></span></span><script type="math/tex; mode=display" id="MathJax-Element-180">y = f_W(x,z)</script></div></div></p><p><strong>Testing</strong>：Average out randomness (sometimes approximate)</p><p class='md-math-block'><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n807" cid="n807" mdtype="math_block">
+			
+		<div class="md-rawblock-container md-math-container" tabindex="-1"><span class="MathJax_Preview"></span><span class="MathJax_SVG_Display" style="text-align: center;"><span class="MathJax_SVG" id="MathJax-Element-230-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="41.33ex" height="2.707ex" viewBox="0 -831.8 17794.6 1165.7" role="img" focusable="false" style="vertical-align: -0.776ex;"><defs><path stroke-width="0" id="E265-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E265-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E265-MJMATHI-66" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path><path stroke-width="0" id="E265-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path stroke-width="0" id="E265-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E265-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path stroke-width="0" id="E265-MJMATHI-45" d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z"></path><path stroke-width="0" id="E265-MJMATHI-7A" d="M347 338Q337 338 294 349T231 360Q211 360 197 356T174 346T162 335T155 324L153 320Q150 317 138 317Q117 317 117 325Q117 330 120 339Q133 378 163 406T229 440Q241 442 246 442Q271 442 291 425T329 392T367 375Q389 375 411 408T434 441Q435 442 449 442H462Q468 436 468 434Q468 430 463 420T449 399T432 377T418 358L411 349Q368 298 275 214T160 106L148 94L163 93Q185 93 227 82T290 71Q328 71 360 90T402 140Q406 149 409 151T424 153Q443 153 443 143Q443 138 442 134Q425 72 376 31T278 -11Q252 -11 232 6T193 40T155 57Q111 57 76 -3Q70 -11 59 -11H54H41Q35 -5 35 -2Q35 13 93 84Q132 129 225 214T340 322Q352 338 347 338Z"></path><path stroke-width="0" id="E265-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E265-MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path stroke-width="0" id="E265-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path><path stroke-width="0" id="E265-MJMAIN-69" d="M69 609Q69 637 87 653T131 669Q154 667 171 652T188 609Q188 579 171 564T129 549Q104 549 87 564T69 609ZM247 0Q232 3 143 3Q132 3 106 3T56 1L34 0H26V46H42Q70 46 91 49Q100 53 102 60T104 102V205V293Q104 345 102 359T88 378Q74 385 41 385H30V408Q30 431 32 431L42 432Q52 433 70 434T106 436Q123 437 142 438T171 441T182 442H185V62Q190 52 197 50T232 46H255V0H247Z"></path><path stroke-width="0" id="E265-MJMAIN-6E" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q450 438 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path stroke-width="0" id="E265-MJMAIN-66" d="M273 0Q255 3 146 3Q43 3 34 0H26V46H42Q70 46 91 49Q99 52 103 60Q104 62 104 224V385H33V431H104V497L105 564L107 574Q126 639 171 668T266 704Q267 704 275 704T289 705Q330 702 351 679T372 627Q372 604 358 590T321 576T284 590T270 627Q270 647 288 667H284Q280 668 273 668Q245 668 223 647T189 592Q183 572 182 497V431H293V385H185V225Q185 63 186 61T189 57T194 54T199 51T206 49T213 48T222 47T231 47T241 46T251 46H282V0H273Z"></path><path stroke-width="0" id="E265-MJMATHI-70" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path><path stroke-width="0" id="E265-MJMATHI-64" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E265-MJMATHI-79" x="0" y="0"></use><use xlink:href="#E265-MJMAIN-3D" x="774" y="0"></use><use xlink:href="#E265-MJMATHI-66" x="1830" y="0"></use><use xlink:href="#E265-MJMAIN-28" x="2380" y="0"></use><use xlink:href="#E265-MJMATHI-78" x="2769" y="0"></use><use xlink:href="#E265-MJMAIN-29" x="3341" y="0"></use><use xlink:href="#E265-MJMAIN-3D" x="4008" y="0"></use><g transform="translate(5064,0)"><use xlink:href="#E265-MJMATHI-45" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E265-MJMATHI-7A" x="1043" y="-213"></use></g><use xlink:href="#E265-MJMAIN-5B" x="6233" y="0"></use><use xlink:href="#E265-MJMATHI-66" x="6511" y="0"></use><use xlink:href="#E265-MJMAIN-28" x="7061" y="0"></use><use xlink:href="#E265-MJMATHI-78" x="7450" y="0"></use><use xlink:href="#E265-MJMAIN-2C" x="8022" y="0"></use><use xlink:href="#E265-MJMATHI-7A" x="8466" y="0"></use><use xlink:href="#E265-MJMAIN-29" x="8934" y="0"></use><use xlink:href="#E265-MJMAIN-5D" x="9323" y="0"></use><use xlink:href="#E265-MJMAIN-3D" x="9879" y="0"></use><g transform="translate(10935,0)"><use xlink:href="#E265-MJMAIN-69"></use><use xlink:href="#E265-MJMAIN-6E" x="278" y="0"></use><use xlink:href="#E265-MJMAIN-66" x="834" y="0"></use></g><use xlink:href="#E265-MJMATHI-70" x="12241" y="0"></use><use xlink:href="#E265-MJMAIN-28" x="12744" y="0"></use><use xlink:href="#E265-MJMATHI-7A" x="13133" y="0"></use><use xlink:href="#E265-MJMAIN-29" x="13601" y="0"></use><use xlink:href="#E265-MJMATHI-66" x="13990" y="0"></use><use xlink:href="#E265-MJMAIN-28" x="14540" y="0"></use><use xlink:href="#E265-MJMATHI-78" x="14929" y="0"></use><use xlink:href="#E265-MJMAIN-2C" x="15501" y="0"></use><use xlink:href="#E265-MJMATHI-7A" x="15946" y="0"></use><use xlink:href="#E265-MJMAIN-29" x="16414" y="0"></use><use xlink:href="#E265-MJMATHI-64" x="16803" y="0"></use><use xlink:href="#E265-MJMATHI-7A" x="17326" y="0"></use></g></svg></span></span><script type="math/tex; mode=display" id="MathJax-Element-230">y = f(x) = E_z[f(x,z)] = \inf p(z)f(x,z)dz</script></div></div></p></blockquote><p><strong>在训练的时候，都随机引入某种随机性或者噪声，但是又在测试的时候抵消掉它们。</strong></p><p>实际上，当你使用 batch normalization 来训练神经网络的时候，有时你一点儿都不会使用 dropout，仅仅是 batch normalization 给你的网络增加了足够的正则化效果。但 dropout 某种程度上更好，是因为你实际上可以通过改变参数 p 调整正则化的力度，但是在 batch normalization 中并没有这种控制机制。</p><p>另一种符合这种范式的策略就是<strong>数据增强</strong>的想法。比如说：</p><ol><li><p>Random crops and scales</p><p><img src='https://i.loli.net/2018/08/30/5b8761c326ac8.png' alt='' referrerPolicy='no-referrer' /></p></li><li><p>Color Jitter</p><p><img src='https://i.loli.net/2018/08/30/5b87621e83ef0.png' alt='' referrerPolicy='no-referrer' /></p></li><li><p>Random mix/combinations of :</p><ul><li>translation</li><li>rotation</li><li>stretching</li><li>shearing</li><li>lens distortions, ... (go crazy)</li></ul></li></ol><p>总的来说，数据增强就是让这些随机转换应用于你的输入数据，这种方式对网络有正则化效果。因为在训练的时候，你又增加了某种随机性，然后再测试的时候将它们淡化。</p><p>&nbsp;</p><ul><li><p>总结一下</p><blockquote><p><strong>Trainning</strong>：add random noise</p><p><strong>Testing</strong>：Marginalize over the noise</p><p> </p><p><strong>Examples:</strong></p><ul><li><p>Dropout</p></li><li><p>Batch Normalization</p></li><li><p>Data Augmentation</p></li><li><p>DropConnect（随机将权重矩阵的一些值置为0）</p><ul><li>Wan et al, “Regularization of Neural Networks using DropConnect”, ICML 2013</li></ul></li><li><p>Fractional Max Pooling</p><ul><li>Graham, “Fractional Max Pooling”, arXiv 2014</li></ul></li><li><p>Stochastic Depth（随机丢弃一些层）</p><ul><li>Huang et al, “Deep Networks with Stochastic Depth”, ECCV 2016</li></ul></li></ul></blockquote></li></ul><ul><li><p>Q：经常会用超过1个的正则化方法么？</p><ul><li>通常使用 batch normalization。它是一个现在大多数网络使用的方法，因为它的确帮助收敛，特别是非常深的网络，大多数情况下，单独使用 batch normalization 就够了。有时当你发现网络过拟合，如果 batch normalization 单独使用不太够，你可以增加 dropout 或一些其他的东西。你一般不要盲目地交叉验证这些方法，而是有的放矢，在网络过拟合时，把它们加进去。</li></ul></li></ul><p>&nbsp;</p><h2><a name='header-n126' class='md-header-anchor '></a>Transfer Learning</h2><p>我们已经看到正则化可以减小训练误差和测试误差的间隙，所谓过拟合问题。</p><p>不过有时候过拟合的原因，是由于数据不够。你希望得到一个功能很大的网络模型。但大而强的网络在小数据集合时很容易过拟合。正则化是一种处理的方式，另一种方式就是使用迁移学习。</p><p>二图几乎说明一切：</p><p><img src='https://i.loli.net/2018/08/30/5b8769a002d4f.png' alt='' referrerPolicy='no-referrer' /></p><p><img src='https://i.loli.net/2018/08/30/5b876b0a328d5.png' alt='' referrerPolicy='no-referrer' /></p><p>迁移学习的运用是相当普遍的，大家的 paper 甚至都不怎么细致的提及这件事情。</p><p>（It&#39;s the norm, not an exception）</p><p><img src='https://i.loli.net/2018/08/30/5b876c25b1c06.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><ul><li><p>最后的FYI：</p><ul><li><p><strong>Takeaway for your projects and beyond:</strong> </p><p>Have some dataset of interest but it has &lt; ~1M images? </p><ol><li>Find a very large dataset that has similar data, train a big ConvNet there </li><li>Transfer learn to your dataset </li></ol><p>Deep learning frameworks provide a “Model Zoo” of pretrained models so you don’t need to train your own </p><ul><li>Caffe: <a href='https://github.com/BVLC/caffe/wiki/Model-Zoo' target='_blank' class='url'>https://github.com/BVLC/caffe/wiki/Model-Zoo</a> </li><li>TensorFlow: <a href='https://github.com/tensorflow/models' target='_blank' class='url'>https://github.com/tensorflow/models</a> </li><li>PyTorch: <a href='https://github.com/pytorch/vision' target='_blank' class='url'>https://github.com/pytorch/vision</a> </li><li>MXNet: <a href='https://mxnet.incubator.apache.org/model_zoo/' target='_blank' class='url'>https://mxnet.incubator.apache.org/model_zoo/</a></li></ul></li></ul></li></ul><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><hr /><p><a href='./index.html'>返回到上一页</a> | <a href='./cs231n_7.html'>返回到顶部</a></p><hr /><p><br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+<br></p><script type="application/json" class="js-hypothesis-config">
+  {
+    "openSidebar": false,
+    "showHighlights": true,
+    "theme": classic,
+    "enableExperimentalNewNoteButton": true
+  }
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script><p>&nbsp;</p></div>
+</body>
+</html>

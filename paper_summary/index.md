@@ -92,12 +92,10 @@ Maybe helpful:
 
 # :goal_net: Model Configurations
 
-- [Paper Summary] Hinton, Geoffrey E., et al. "**Improving neural networks by preventing co-adaptation of feature detectors**." (2012). **(Dropout)**
 - [Paper Summary] Maas, Andrew L, Hannun, Awni Y, and Ng, Andrew Y. "**Rectifier nonlinearities improve neural network acoustic models.**" Proc. ICML, 30, (2013). **(Leaky ReLU)**
 - [Paper Summary] Goodfellow, Ian J., Warde-Farley, David, Mirza, Mehdi, Courville, Aaron C., and Bengio, Yoshua.
   "**Maxout networks.**" In Proceedings of the 30th International Conference on Machine Learning, ICML (2013) **(Maxout "Neuron")**
 - [Paper Summary] Graham, Ben. "**Spatially-sparse convolutional neural networks.**" ArXiv e-prints, September 2014c. **(very leaky ReLU)**
-- [Paper Summary] Srivastava, Nitish, et al. "**Dropout: a simple way to prevent neural networks from overfitting**." (2014)
 - [Paper Summary] X Glorot, Y Bengio. "**Understanding the difficulty of training deep feedforward neural networks**" Proceedings of the thirteenth international conference on artificial intelligence and statistics. (2010) **(Xavier initialization)** 
 - [Paper Summary] K He, X Zhang, S Ren, J Sun. "**Delving deep into rectifiers: Surpassing human-level performance on imagenet classification**" Proceedings of the IEEE international conference on computer vision. (2015) **(Leaky ReLU & Xavier initialization with additional factor)**
 - [Paper Summary] Ioffe, Sergey, and Christian Szegedy. "**Batch normalization: Accelerating deep network training by reducing internal covariate shift**." (2015).**(An outstanding Work in 2015)**
@@ -107,6 +105,33 @@ Maybe helpful:
 - [Paper Summary] Jaderberg, Max, et al. "**Decoupled neural interfaces using synthetic gradients**." (2016). **(Innovation of Training Method,Amazing Work)**
 - [Paper Summary] Chen, Tianqi, Ian Goodfellow, and Jonathon Shlens. "Net2net: Accelerating learning via knowledge transfer."(2015).**(Modify previously trained network to reduce training epochs)**
 - [Paper Summary] Wei, Tao, et al. "**Network Morphism.**" (2016). **(Modify previously trained network to reduce training epochs)**
+- Girshick, “Fast R-CNN”, ICCV 2015 Figure copyright Ross Girshick, 2015. Reproduced with permission
+- Karpathy and Fei-Fei, “Deep Visual-Semantic Alignments for Generating Image Descriptions”, CVPR 2015 
+  - Figure copyright IEEE, 2015. Reproduced for educational purposes.
+
+
+
+# Regularization
+
+
+
+Ba, Kiros, and Hinton, “Layer Normalization”, arXiv 2016 **(Layer Normalization)**
+
+Ulyanov et al, Improved Texture Networks: Maximizing Quality and Diversity in Feed-forward Stylization and Texture Synthesis, CVPR 2017 **(Instance Normalization)**
+
+Wu and He, “Group Normalization”, arXiv 2018 (Appeared 3/22/2018) **(Group Normalization)**
+
+Huang et al, “Decorrelated Batch Normalization”, arXiv 2018 (Appeared 4/23/2018) **(Decorrelated Batch Normalization)**
+
+
+
+- **Dropout**
+  - [Paper Summary] Hinton, Geoffrey E., et al. "**Improving neural networks by preventing co-adaptation of feature detectors**." (2012). 
+  - [Paper Summary] Srivastava, Nitish, et al. "**Dropout: a simple way to prevent neural networks from overfitting**." (2014)
+
+- Wan et al, “Regularization of Neural Networks using DropConnect”, ICML 2013 **(DropConnect)**
+- Graham, “Fractional Max Pooling”, arXiv 2014 **(Fractional Max Pooling)**
+- Huang et al, “Deep Networks with Stochastic Depth”, ECCV 2016 **(Stochastic Depth)**
 
 
 
@@ -120,7 +145,15 @@ Maybe helpful:
 - [Paper Summary] Andrychowicz, Marcin, et al. "**Learning to learn by gradient descent by gradient descent**." (2016).**(Neural Optimizer,Amazing Work)**
 - [Paper Summary] Han, Song, Huizi Mao, and William J. Dally. "**Deep compression: Compressing deep neural network with pruning, trained quantization and huffman coding**." (2015). **(ICLR best paper, new direction to make NN running fast,DeePhi Tech Startup)**
 - [Paper Summary] Iandola, Forrest N., et al. "**SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and< 1MB model size**." (2016).**(Also a new direction to optimize NN,DeePhi Tech Startup)**
-- 
+- **(L-BFGS)**
+  - Le et al, “On optimization methods for deep learning, ICML 2011” 
+  - Ba et al, “Distributed second-order optimization using Kronecker-factored approximations”, ICLR 2017
+
+- **(Model Ensembles)**
+  - Loshchilov and Hutter, “SGDR: Stochastic gradient descent with restarts”, arXiv 2016 
+  - Huang et al, “Snapshot ensembles: train 1, get M for free”, ICLR 2017 
+  - Figures copyright Yixuan Li and Geoff Pleiss, 2017. Reproduced with permission.
+  - Polyak and Juditsky, “Acceleration of stochastic approximation by averaging”, SIAM Journal on Control and Optimization, 1992. **(Polyak averaging)**
 
 
 
@@ -129,10 +162,11 @@ Maybe helpful:
 - **Distilling the knowledge in a neural network** (2015), G. Hinton et al. [[pdf\]](http://arxiv.org/pdf/1503.02531)
 - **Deep neural networks are easily fooled: High confidence predictions for unrecognizable images** (2015), A. Nguyen et al. [[pdf\]](http://arxiv.org/pdf/1412.1897)
 - **How transferable are features in deep neural networks?** (2014), J. Yosinski et al. [[pdf\]](http://papers.nips.cc/paper/5347-how-transferable-are-features-in-deep-neural-networks.pdf)
-- **CNN features off-the-Shelf: An astounding baseline for recognition** (2014), A. Razavian et al. [[pdf\]](http://www.cv-foundation.org//openaccess/content_cvpr_workshops_2014/W15/papers/Razavian_CNN_Features_Off-the-Shelf_2014_CVPR_paper.pdf)
 - **Learning and transferring mid-Level image representations using convolutional neural networks** (2014), M. Oquab et al. [[pdf\]](http://www.cv-foundation.org/openaccess/content_cvpr_2014/papers/Oquab_Learning_and_Transferring_2014_CVPR_paper.pdf)
 - **Visualizing and understanding convolutional networks** (2014), M. Zeiler and R. Fergus [[pdf\]](http://arxiv.org/pdf/1311.2901)
-- **Decaf: A deep convolutional activation feature for generic visual recognition** (2014), J. Donahue et al. [[pdf\]](http://arxiv.org/pdf/1310.1531)
+- Transfer Learning
+  - **Decaf: A deep convolutional activation feature for generic visual recognition** (2014), J. Donahue et al. [[pdf\]](http://arxiv.org/pdf/1310.1531)
+  - **CNN features off-the-Shelf: An astounding baseline for recognition** (2014), A. Razavian et al. [[pdf\]](http://www.cv-foundation.org//openaccess/content_cvpr_workshops_2014/W15/papers/Razavian_CNN_Features_Off-the-Shelf_2014_CVPR_paper.pdf)
 
 
 

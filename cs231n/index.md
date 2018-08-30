@@ -27,7 +27,7 @@ date: 2018-08-22
 - [Lecture 4. Introduction to Neural Networks](./cs231n_4.html)
 - [Lecture 5. Convolutional Neural Networks](./cs231n_5.html)
 - [Lecture 6. Training Neural Networks, part I](./cs231n_6.html)
-- Lecture 7. Training Neural Networks, part II
+- [Lecture 7. Training Neural Networks, part II](./cs231n_7.html)
 - Lecture 8. Deep Learning Hardware and Software
 - Lecture 9. CNN Architectures
 - Lecture 10. Recurrent Neural Networks
