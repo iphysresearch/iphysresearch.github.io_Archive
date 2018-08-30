@@ -19,7 +19,7 @@ date: 2018-08-22
 
 
 
-## From lecture video and slices
+## Notes from lecture video and slices
 
 - [Lecture 1. Computer vision overview & Historical context](./cs231n_1.html)
 - [Lecture 2. Image Classification & K-nearest neighbor](./cs231n_2.html)
@@ -39,7 +39,7 @@ date: 2018-08-22
 
 
 
-## From course notes
+## Course notes
 
 - [图像分类笔记](./CS231n_image_classification_note.html)
 
@@ -72,6 +72,8 @@ date: 2018-08-22
 - [神经网络笔记3](./CS231n_Neural_Nets_notes_3.html)
 
   > gradient checks, sanity checks, babysitting the learning process, momentum (+nesterov), second-order methods, Adagrad/RMSprop, hyperparameter optimization, model ensembles
+
+
 
 ## Original posts
 
