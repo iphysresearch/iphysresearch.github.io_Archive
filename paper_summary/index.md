@@ -32,6 +32,18 @@ date: 2018-08-22
 
 # :rainbow: GW Astronomy
 
+Glitch			LIGO PRL 119 161101 (2017)
+
+Current Searches  			LIGO PRX 6 041015 2016    LIGO PRL 116 241103
+
+Current Parameter Estimation  			LIGO PRL 116, 241103 2016
+
+Current Challedge			Zevin CQG 34 6 064003 2017
+
+CONV.			Zevin CQG 34 6 064003
+
+
+
 
 
 Maybe helpful:
@@ -80,13 +92,24 @@ Maybe helpful:
 
 # :running_man: ImageNet Evolution
 
-> Deep Learning broke out from here
+> ![](https://i.loli.net/2018/08/31/5b88fe77f16e6.png)
+>
+> ![](https://i.loli.net/2018/08/31/5b89001a12508.png)
+>
+> ![](https://i.loli.net/2018/08/31/5b890a2ae3742.png)
+>
+> [From: Alfredo Canziani, Adam Paszke, Eugenio Culurciello, An Analysis of Deep Neural Network Models for Practical Applications, 2017.]
+>
+> *Deep Learning broke out from here！*
 
 - [[Paper Summary](./ImageNet Classification with Deep Convolutional Neural Networks.html)] Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E. Hinton. "**Imagenet classification with deep convolutional neural networks**." (2012). **(AlexNet, Deep Learning Breakthrough!)**
 - [Paper Summary] Pierre Sermanet, David Eigen, Xiang Zhang, Michael Mathieu, Rob Fergus, Yann LeCun. "**OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks**" (2013). **(winner of the localization task of ILSVRC2013)**
+- [Zeiler and Fergus, 2013] **(ZFNet)**
 - [Paper Summary] Simonyan, Karen, and Andrew Zisserman. "**Very deep convolutional networks for large-scale image recognition**." (2014).**(VGGNet,Neural Networks become very deep!)**
-- [Paper Summary] Szegedy, Christian, et al. "**Going deeper with convolutions**." (2015).**(GoogLeNet)**
-- [Paper Summary] He, Kaiming, et al. "**Deep residual learning for image recognition**." (2015).**(ResNet, Very very deep networks, CVPR best paper)**
+- [Paper Summary] Szegedy, Christian, et al. "**Going deeper with convolutions**." (2015).**(GoogLeNet, Deeper networks, computational efficiency)**
+- [Paper Summary] He, Kaiming, et al. "**Deep residual learning for image recognition**." (2015).**(ResNet, Very very deep networks using residual connections, CVPR best paper)**
+
+- From: Alfredo Canziani, Adam Paszke, Eugenio Culurciello, 2017.
 
 
 

@@ -29,7 +29,7 @@ date: 2018-08-22
 - [Lecture 6. Training Neural Networks, part I](./cs231n_6.html)
 - [Lecture 7. Training Neural Networks, part II](./cs231n_7.html)
 - [Lecture 8. Deep Learning Hardware and Software](./cs231n_8.html)
-- Lecture 9. CNN Architectures
+- [Lecture 9. CNN Architectures](./cs231n_9.html)
 - Lecture 10. Recurrent Neural Networks
 - Lecture 11. Detection and Segmentation
 - Lecture 12. Generative Models
