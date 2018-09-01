@@ -90,7 +90,7 @@ Maybe helpful:
 
 - [Paper Summary] LeCun, Yann, Yoshua Bengio, and Geoffrey Hinton. "**Deep learning**." **(Three Giants' Survey)**
 
-# :running_man: ImageNet Evolution
+# :running_man: ImageNet Evolution & Models
 
 > ![](https://i.loli.net/2018/08/31/5b88fe77f16e6.png)
 >
