@@ -73,6 +73,10 @@ date: 2018-08-22
 
   > gradient checks, sanity checks, babysitting the learning process, momentum (+nesterov), second-order methods, Adagrad/RMSprop, hyperparameter optimization, model ensembles
 
+- [循环神经网络惊人的有效性](./The Unreasonable Effectiveness of Recurrent Neural Networks.html)
+
+  > From: [Andrej Karpathy blog](http://karpathy.github.io/)'s 《The Unreasonable Effectiveness of Recurrent Neural Networks (2015)》
+
 
 
 ## Original posts
