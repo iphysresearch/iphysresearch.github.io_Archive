@@ -110,6 +110,7 @@ Maybe helpful:
 - [Paper Summary] He, Kaiming, et al. "**Deep residual learning for image recognition**." (2015).**(ResNet, Very very deep networks using residual connections, CVPR best paper)**
 
 - From: Alfredo Canziani, Adam Paszke, Eugenio Culurciello, 2017.
+- Mahajan et al, “Exploring the Limits of Weakly Supervised Pretraining”, arXiv 2018
 
 
 
@@ -203,6 +204,32 @@ Huang et al, “Decorrelated Batch Normalization”, arXiv 2018 (Appeared 4/23/2
 - **All you need is a good init**, Mishkin and Matas, 2015 [[PDF](https://arxiv.org/pdf/1511.06422)]
 
 
+
+
+
+RNN
+
+Ba, Mnih, and Kavukcuoglu, “Multiple Object Recognition with Visual Attention”, ICLR 2015. 
+
+Gregor et al, “DRAW: A Recurrent Neural Network For Image Generation”, ICML 2015 
+
+Sutskever et al, “Sequence to Sequence Learning with Neural Networks”, NIPS 2014
+
+Karpathy, Johnson, and Fei-Fei: Visualizing and Understanding Recurrent Networks, ICLR Workshop 2016
+
+Bengio et al, “Learning long-term dependencies with gradient descent is difficult”, IEEE Transactions on Neural Networks, 1994 
+
+Pascanu et al, “On the difficulty of training recurrent neural networks”, ICML 2013
+
+Hochreiter and Schmidhuber, “Long Short Term Memory”, Neural Computation 1997
+
+Srivastava et al, “Highway Networks”, ICML DL Workshop 2015
+
+Learning phrase representations using rnn encoder-decoder for statistical machine translation, Cho et al. 2014 **(GRU)**
+
+LSTM: A Search Space Odyssey, Greff et al., 2015
+
+An Empirical Exploration of Recurrent Network Architectures, Jozefowicz et al., 2015
 
 
 
