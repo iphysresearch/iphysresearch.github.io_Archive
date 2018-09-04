@@ -207,6 +207,39 @@ Huang et al, “Decorrelated Batch Normalization”, arXiv 2018 (Appeared 4/23/2
 
 
 
+
+
+Detection and Segmentation
+
+Sliding Window:
+
+Farabet et al, “Learning Hierarchical Features for Scene Labeling,” TPAMI 2013 
+
+Pinheiro and Collobert, “Recurrent Convolutional Neural Networks for Scene Labeling”, ICML 2014
+
+Fully convolutional：
+
+Long, Shelhamer, and Darrell, “Fully Convolutional Networks for Semantic Segmentation”, CVPR 2015
+
+Noh et al, “Learning Deconvolution Network for Semantic Segmentation”, ICCV 2015
+
+Multi-view 3D Reconstruction：
+
+Choy, C. B., Xu, D., Gwak, J., Chen, K., & Savarese, S. (2016, October). 3d-r2n2: A unified approach for single and multi-view
+3d object reconstruction. In European Conference on Computer Vision (pp. 628-644). Springer, Cham.
+
+Human Pose Estimation:
+
+Johnson and Everingham, "Clustered Pose and Nonlinear Appearance Models for Human Pose Estimation", BMVC 2010
+
+Toshev and Szegedy, “DeepPose: Human Pose Estimation via Deep Neural Networks”, CVPR 2014
+
+
+
+
+
+
+
 RNN
 
 Ba, Mnih, and Kavukcuoglu, “Multiple Object Recognition with Visual Attention”, ICLR 2015. 
