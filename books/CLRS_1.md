@@ -49,19 +49,47 @@ Ref: [solutions of Ch1  to "*Introduction to Algorithms*"](http://sites.math.rut
 
 
 
-
-
-
-
-
-
 ## 第2章 算法基础
 
 
 
 ### 2.1 插入排序
 
+- 插入排序算法是一种**就地算法**，顾名思义，就是指空间用量是一个常数 $O(1)$
+- 我们希望排序的数也称为**关键词**（key），也就是说对一系列 key 进行排序。
+- 该算法对小规模数据的效率比较高。
+- 伪代码与真码的区别在于：
+  1. 伪代码用最清晰、最简洁的表示方法来说明给定的算法；
+  2. 伪代码通常不关心软件工程的问题。
 
+- 插入排序的伪代码：【INSERTION-SORT】
+
+  ```pseudocode
+  for j = 2 to A.length
+  	key = A[j]
+  	// Insert A[j] into the sorted sequence A[1..j-1].
+  	i = j-1
+  	while i > 0 and A[i] > key
+  		A[i+1] = A[i]
+  		i = i -1
+  	A[i+1] = key
+  ```
+
+- Python 版本：
+
+  ```python
+  for j in range(1, len(A)):
+      key = A[j]
+      i = j - 1
+      while i >= 0 and A[i] > key:
+          A[i+1] = A[i]
+          i -= 1
+      A[i+1] = key
+  ```
+
+- **循环不等式**：其主要是用来帮助我们理解算法的正确性。
+
+  - 对于插入排序来说，所谓循环不等式的特点，即【当前已排序】+【保留其他原有数据】，其中【保留其他原有数据】是尚未处理的序列。
 
 
 
