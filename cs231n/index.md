@@ -31,7 +31,7 @@ date: 2018-08-22
 - [Lecture 8. Deep Learning Hardware and Software](./cs231n_8.html)
 - [Lecture 9. CNN Architectures](./cs231n_9.html)
 - [Lecture 10. Recurrent Neural Networks](./cs231n_10.html)
-- Lecture 11. Detection and Segmentation
+- [Lecture 11. Detection and Segmentation](./cs231n_11.html)
 - Lecture 12. Generative Models
 - Lecture 13. Visualizing and Understanding
 - Lecture 14. Deep Reinforcement Learning 

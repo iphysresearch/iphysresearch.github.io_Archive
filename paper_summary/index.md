@@ -49,8 +49,8 @@ CONV.			Zevin CQG 34 6 064003
 Maybe helpful:
 
 - Rotation-invariant convolutional neural networks for galaxy morphology prediction
-
 - 《Learning Confidence for Out-of-Distribution Detection in Neural Networks》T DeVries, G W. Taylor [University of Guelph & Vector Institute] (2018) http://t.cn/RFPZvFB 
+- GAN: https://arxiv.org/pdf/1701.00160.pdf
 
 # :cloud_with_rain: Denoising & Noise Modeling
 
