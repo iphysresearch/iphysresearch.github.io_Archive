@@ -1,5 +1,5 @@
 ---
-OpenLatexEditor('examplebox','latex','fr-fr',true,'1+sin(x)','full');title: Latex 所有常用数学符号整理
+title: Latex 所有常用数学符号整理
 date: 2018-08-25
 ---
 
