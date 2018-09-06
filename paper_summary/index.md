@@ -181,7 +181,34 @@ Huang et al, “Decorrelated Batch Normalization”, arXiv 2018 (Appeared 4/23/2
 
 
 
-# :tv: Understanding / Generalization / Transfer
+# :tv: Visualization / Understanding / Generalization / Transfer
+
+- Virsualization
+
+  Krizhevsky, “One weird trick for parallelizing convolutional neural networks”, arXiv 2014（first layer）
+  He et al, “Deep Residual Learning for Image Recognition”, CVPR 2016（first layer）
+  Huang et al, “Densely Connected Convolutional Networks”, CVPR 2017（first layer）
+
+  Van der Maaten and Hinton, “Visualizing Data using t-SNE”, JMLR 2008 （t-sne）
+
+  Yosinski et al, “Understanding Neural Networks Through Deep Visualization”, ICML DL Workshop 2014（visualizing activations, Gradient Ascent - better regularizer）
+
+  Springenberg et al, “Striving for Simplicity: The All Convolutional Net”, ICLR Workshop 2015（Maximally Activation Patches）
+
+  Zeiler and Fergus, “Visualizing and Understanding Convolutional Networks”, ECCV 2014（Occlusion, Intermediate features via (guided) backprop）
+
+  Simonyan, Vedaldi, and Zisserman, “Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps”, ICLR Workshop 2014.（Saliency, Gradient Ascent）
+
+  Springenberg et al, “Striving for Simplicity: The All Convolutional Net”, ICLR Workshop 2015 (Intermediate features via (guided) backprop)
+
+  Nguyen et al, “Multifaceted Feature Visualization: Uncovering the Different Types of Features Learned By Each Neuron in Deep Neural Networks”, ICML Visualization for Deep Learning Workshop 2016. (Gradient Ascent adding “multi-faceted” visualization )
+
+  Nguyen et al, “Synthesizing the preferred inputs for neurons in neural networks via deep generator networks,” NIPS 2016（Gradient Ascent Optimize in FC6 latent space）
+
+
+
+
+Understanding deep learning requires rethinking generalization
 
 - **Distilling the knowledge in a neural network** (2015), G. Hinton et al. [[pdf\]](http://arxiv.org/pdf/1503.02531)
 - **Deep neural networks are easily fooled: High confidence predictions for unrecognizable images** (2015), A. Nguyen et al. [[pdf\]](http://arxiv.org/pdf/1412.1897)
@@ -284,6 +311,7 @@ An Empirical Exploration of Recurrent Network Architectures, Jozefowicz et al., 
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 <br>
+
 <script type="application/json" class="js-hypothesis-config">
   {
     "openSidebar": false,
