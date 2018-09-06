@@ -11,7 +11,7 @@ date: 2018-08-25
 
 [TOC]
 
-> 点击下面👇链接，可打开在线 $\LaTeX$ 编辑器(所见即所得)，最终点击 `copy to document` 可在下方编辑框中获得对应的 latex 输出代码。
+> 点击下面👇链接，可打开在线 $\LaTeX$ 编辑器(所见即所得)，最终点击 `copy to document` 可在下方编辑框中获得对应的 latex 输出代码。(若下面链接打不开，可直接点[这里](http://www.codecogs.com/latex/eqneditor.php))
 
 <head>
 <script type="text/javascript" src="http://latex.codecogs.com/editor3.js"></script>

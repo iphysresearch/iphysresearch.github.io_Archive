@@ -11,7 +11,7 @@ date: 2018-08-22
 
 # CS231n: Convolutional Neural Networks for Visual Recognition
 
-> ## Course Description
+> ### Course Description
 >
 > Computer Vision has become ubiquitous in our society, with applications in search, image understanding, apps, mapping, medicine, drones, and self-driving cars. Core to many of these applications are visual recognition tasks such as image classification, localization and detection. Recent developments in neural network (aka “deep learning”) approaches have greatly advanced the performance of these state-of-the-art visual recognition systems. This course is a deep dive into details of the deep learning architectures with a focus on learning end-to-end models for these tasks, particularly image classification. During the 10-week course, students will learn to implement, train and debug their own neural networks and gain a detailed understanding of cutting-edge research in computer vision. The final assignment will involve training a multi-million parameter convolutional neural network and applying it on the largest image classification dataset (ImageNet). We will focus on teaching how to set up the problem of image recognition, the learning algorithms (e.g. backpropagation), practical engineering tricks for training and fine-tuning the networks and guide the students through hands-on assignments and a final course project. Much of the background and materials of this course will be drawn from the [ImageNet Challenge](http://image-net.org/challenges/LSVRC/2014/index).
 >
@@ -19,7 +19,7 @@ date: 2018-08-22
 
 
 
-## Notes from lecture video and slices
+## Notes from Lecture Video and Slices
 
 - [Lecture 1. Computer vision overview & Historical context](./cs231n_1.html)
 - [Lecture 2. Image Classification & K-nearest neighbor](./cs231n_2.html)
@@ -39,7 +39,7 @@ date: 2018-08-22
 
 
 
-## Course notes
+## Course Notes
 
 - [图像分类笔记](./CS231n_image_classification_note.html)
 
@@ -79,7 +79,7 @@ date: 2018-08-22
 
 
 
-## Original posts
+## Original Posts
 
 - [一段关于神经网络的故事](./cs231n_story_MLP.html)（**Original**，30671字 + 多图）
 
@@ -87,11 +87,22 @@ date: 2018-08-22
 
 
 
-## How to comment
+## How to Comment
 
 With use of the [hypothes.is](https://hypothes.is/) extension (right-sided), you can highlight, annote any comments and discuss these notes inline*at any pages*and *posts*.
 
 *Please Feel Free* to Let Me Know and *Share* it Here.
+
+
+
+
+
+> ### Memo to Myself
+>
+> - [ ] 根据英文字母更新 Spring 2018 视频内的课程内容
+> - [ ] 
+
+
 
 
 
