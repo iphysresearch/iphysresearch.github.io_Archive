@@ -1,6 +1,11 @@
+---
+title: 第1章 算法在计算中的作用
+date: 2018-09-06
+---
 
+[返回到首页](./CLRS.html)
 
-
+---
 
 
 
@@ -52,5 +57,24 @@ Ref: [solutions of Ch1  to "*Introduction to Algorithms*"](http://sites.math.rut
 
 
 
+
+
+---
+
+[返回到首页](./CLRS.html) | [返回到顶部](./CLRS_1.html)
+
+---
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+<br>
+<script type="application/json" class="js-hypothesis-config">
+  {
+    "openSidebar": false,
+    "showHighlights": true,
+    "theme": classic,
+    "enableExperimentalNewNoteButton": true
+  }
+</script>
+<script async src="https://hypothes.is/embed.js"></script>
 
 

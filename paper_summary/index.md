@@ -32,6 +32,14 @@ date: 2018-08-22
 
 # :rainbow: GW Astronomy
 
+## General
+
+[Summary] Brügmann B. Fundamentals of numerical relativity for gravitational wave sources[J]. Science, 2018, 361(6400): 366-371.
+
+
+
+## Machine Learning
+
 Glitch			LIGO PRL 119 161101 (2017)
 
 Current Searches  			LIGO PRX 6 041015 2016    LIGO PRL 116 241103
@@ -46,7 +54,7 @@ CONV.			Zevin CQG 34 6 064003
 
 
 
-Maybe helpful:
+## Maybe helpful:
 
 - Rotation-invariant convolutional neural networks for galaxy morphology prediction
 - 《Learning Confidence for Out-of-Distribution Detection in Neural Networks》T DeVries, G W. Taylor [University of Guelph & Vector Institute] (2018) http://t.cn/RFPZvFB 

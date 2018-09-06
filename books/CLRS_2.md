@@ -1,4 +1,13 @@
+---
+title: 第2章 算法基础
+date: 2018-09-06
+---
 
+[返回到首页](./CLRS.html)
+
+---
+
+[TOC]
 
 ## 第2章 算法基础
 
@@ -138,20 +147,106 @@
 #### 2.3.1 分治法
 
 - 算法在结构上是**递归的**：为了解决一个给定的问题，苏散发一次或多次递归地调用其自身以解决紧密相关的若干子问题。
+
 - 结构上递归的算法典型地遵循**分治法**的思想：将原问题分解为几个规模较小但类似于原问题的子问题，递归地求解这些子问题，然后合并这些子问题的解来建立原问题的解。
+
 - 分治模式在每层递归时都有三个步骤：
   1. 分解；
   2. 解决；
   3. 合并。
+
 - 归并排序算法就是如此三个步骤。
+
 - 归并排序算法的**关键操作**时：**“合并”步骤中两个已排序序列的合并。**
-- 
+  - 归并排序中子程序的伪代码：【MERGE】
+
+    ```pseudocode
+    n1 = q - p + 1
+    n2 = r - q
+    let L[1..n1+1] and R[1..n_2+1] be new arrays
+    for i=1 to n1
+    	L[i] = A[p + i -1]
+    for j=1 to n2
+    	R[i] = A[q + j] 
+    L[n1 + 1] = \infinty // 哨兵
+    R[n2 + 1] = \infinty  
+    i = 1
+    j = 1
+    for k = p to r
+    	if L[i] <= R[j]
+    		A[k] = L[i]
+    		i = i + 1
+    	else A[k] = R[j]
+    		j = j + 1
+    ```
+
+  - 上面的伪代码我已无力吐槽，还是看 Python 代码吧：
+
+    ```python
+    def MERGE(A, p, q, r):
+        L = [value for i, value in enumerate(A) if i in range(p, q+1)]
+        R = [value for j, value in enumerate(A) if j in range(q+1, r+1)]
+        L += [float('inf')]
+        R += [float('inf')]
+        i, j= 0, 0
+        for k in range(p, r+1):
+            if L[i] <= R[j]:
+                A[k] = L[i]
+                i += 1
+            else:
+                A[k] = R[j]
+                j += 1
+    >>> A = [2, 4, 5 ,7, 1, 2, 3, 6]
+    >>> MERGE(A, 0, 3, 7)
+    ```
+
+  - 【MERGE】 的运行时间是 $\Theta(n)$，其中 n=r-p+1。
+
+- 归并排序算法 Python 代码：【MERGE-SORT】
+
+  ```python
+  def MERGE_SORT(A, p, r):
+  	if p < r:
+          q = (p+r)//2
+          MERGE_SORT(A, p , q)
+          MERGE_SORT(A, q+1, r)
+          MERGE(A, p, q, r)
+  >>> A = [2, 4, 5 ,7, 1, 2, 3, 6]
+  >>> MERGE_SORT(A, 0, len(A)-1)
+  ```
 
 
 
 
 
-#### 2.3.2
+
+#### 2.3.2 分析分治算法
+
+- **递归方程**或**递归式**
+
+  规模为 n 的一个问题的运行时间：
+  $$
+  T(n) = \Big\{\begin{align}
+  &\Theta(1) &n\leq c \\
+  & aT(n/b) + D(n) + C(n) & others
+  \end{align}
+  $$
+
+  - 问题规模足够小 $n\leq c$，直接求解需要常量时间：$\Theta(1)$
+  - 把原问题分解为 a 个子问题，每个子问题的规模是原问题的 1/b，求解规模为 n/b 的子问题需要时间 T(n/b)。
+  - 分解问题成子问题需要时间 $D(n)$，合并子问题为原问题需要时间 $C(n)$
+
+-  归并算法的递归式（最坏情况）：
+  $$
+  T(n) = \Big\{\begin{align}
+  &\Theta(1) &n=1 \\
+  & 2T(n/b) +\Theta(n) & n>1
+  \end{align}
+  $$
+
+  - 主定理可证明：$T(n) = \Theta(n\lg n)$
+
+
 
 
 
@@ -162,5 +257,27 @@
 
 
 Ref: [solutions of Ch2  to "*Introduction to Algorithms*"](http://sites.math.rutgers.edu/~ajl213/CLRS/Ch2.pdf)
+
+
+
+
+
+---
+
+[返回到首页](./CLRS.html) | [返回到顶部](./CLRS_2.html)
+
+---
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+<br>
+<script type="application/json" class="js-hypothesis-config">
+  {
+    "openSidebar": false,
+    "showHighlights": true,
+    "theme": classic,
+    "enableExperimentalNewNoteButton": true
+  }
+</script>
+<script async src="https://hypothes.is/embed.js"></script>
 
 
