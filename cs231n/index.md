@@ -33,7 +33,7 @@ date: 2018-08-22
 - [Lecture 10. Recurrent Neural Networks](./cs231n_10.html)
 - [Lecture 11. Detection and Segmentation](./cs231n_11.html)
 - Lecture 12. Generative Models
-- Lecture 13. Visualizing and Understanding
+- [Lecture 13. Visualizing and Understanding](./cs231n_13.html)
 - Lecture 14. Deep Reinforcement Learning 
 - Lecture 15. 
 
@@ -99,8 +99,8 @@ With use of the [hypothes.is](https://hypothes.is/) extension (right-sided), y
 
 > ### Memo to Myself
 >
-> - [ ] 根据英文字母更新 Spring 2018 视频内的课程内容
-> - [ ] 
+> - [ ] 根据英文字幕更新 Spring 2018 视频内的课程内容
+> - [ ] 完善和更新所有提及的文献 paper
 
 
 

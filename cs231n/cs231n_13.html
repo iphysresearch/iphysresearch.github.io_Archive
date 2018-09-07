@@ -1,0 +1,897 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>CS231n Lecture.13</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; padding-bottom: 70px; overflow-x: visible; }
+.first-line-indent #write div, .first-line-indent #write li, .first-line-indent #write p { text-indent: 2em; }
+.first-line-indent #write div :not(p):not(div), .first-line-indent #write div.md-htmlblock-container, .first-line-indent #write p *, .first-line-indent pre { text-indent: 0px; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write > blockquote:first-child, #write > div:first-child, #write > figure:first-child, #write > ol:first-child, #write > p:first-child, #write > pre:first-child, #write > ul:first-child { margin-top: 30px; }
+#write li > figure:first-child { margin-top: -20px; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.701961); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 80px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; }
+  #write { margin-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 1cm; padding-right: 1cm; padding-bottom: 0px; break-after: avoid-page; }
+  .typora-export #write::after { height: 0px; }
+  @page { margin: 20mm 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+
+
+:root {
+    --side-bar-bg-color: #fff;
+    --control-text-color: #777;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhGq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhPq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhHq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhIq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhEq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhFq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhLq3-cXbKD.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmhduz8A.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwkxduz8A.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmxduz8A.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlBduz8A.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmBduz8A.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmRduz8A.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lqDY.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qPK7lqDY.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNK7lqDY.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qO67lqDY.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qN67lqDY.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNq7lqDY.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmhduz8A.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwkxduz8A.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmxduz8A.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlBduz8A.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmBduz8A.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmRduz8A.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: Source Sans Pro, Helvetica Neue, Arial, sans-serif !important;
+    color: #34495e;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6rem;
+    letter-spacing: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#write {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 30px 40px 30px;
+    padding-top: 20px;
+    padding-bottom: 100px;
+}
+
+#write p {
+    /* text-indent: 2rem; */
+    line-height: 1.6rem;
+    word-spacing: .05rem;
+}
+
+#write ol li {
+    padding-left: 0.5rem;
+}
+
+#write>ul:first-child,
+#write>ol:first-child {
+    margin-top: 30px;
+}
+
+body>*:first-child {
+    margin-top: 0 !important;
+}
+
+body>*:last-child {
+    margin-bottom: 0 !important;
+}
+
+a {
+    color: #42b983;
+    font-weight: 600;
+    padding: 0px 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+
+h1 {
+    padding-bottom: .4rem;
+    font-size: 2.2rem;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 1.75rem;
+    line-height: 1.225;
+    margin: 35px 0px 15px 0px;
+}
+
+h3 {
+    font-size: 1.4rem;
+    line-height: 1.43;
+    margin: 20px 0px 7px 0px;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+    color: #777;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
+}
+
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+body>h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h1:first-child+h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h3:first-child,
+body>h4:first-child,
+body>h5:first-child,
+body>h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+    margin-top: 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul,
+ol {
+    padding-left: 30px;
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+blockquote {
+    border-left: 4px solid #42b983;
+    padding: 10px 0px 10px 15px;
+    color: #777;
+    background-color: rgba(66, 185, 131, .1);
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #fafafa;
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr td {
+    border: 1px solid #dfe2e5;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+#write strong {
+    padding: 0px 1px 0 1px;
+}
+
+#write em {
+    padding: 0px 5px 0 2px;
+}
+
+#write table thead th {
+    background-color: #f2f2f2;
+}
+
+#write .CodeMirror-gutters {
+    border-right: none;
+}
+
+#write .md-fences {
+    border: 1px solid #F4F4F4;
+    -webkit-font-smoothing: initial;
+    margin: 0.8rem 0 !important;
+    padding: 0.3rem 0rem !important;
+    line-height: 1.43rem;
+    background-color: #F8F8F8 !important;
+    border-radius: 2px;
+    font-family: Roboto Mono, Source Sans Pro, Monaco, courier, monospace !important;
+    font-size: 0.85rem;
+    word-wrap: normal;
+}
+
+#write .CodeMirror-wrap .CodeMirror-code pre {
+    padding-left: 12px;
+}
+
+#write code, tt {
+    margin: 0 2px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-family: Source Sans Pro, Roboto Mono, Monaco, courier, monospace !important;
+    font-size: 0.92rem;
+    color: #e96900;
+    background-color: #f8f8f8;
+}
+
+#write .md-footnote {
+    background-color: #f8f8f8;
+    color: #e96900;
+}
+
+/* heighlight. */
+#write mark {
+    background-color:#EBFFEB;
+    border-radius: 2px;
+    padding: 2px 4px;
+    margin: 0 2px;
+    color: #222;
+    font-weight: 500;
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+.cm-s-inner .cm-link,
+.cm-s-inner.cm-link {
+    color: #22a2c9;
+}
+
+.cm-s-inner .cm-string {
+    color: #22a2c9;
+}
+
+.md-task-list-item>input {
+    margin-left: -1.3em;
+}
+
+@media screen and (min-width: 914px) {
+    /*body {
+        width: 854px;
+        margin: 0 auto;
+    }*/
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+    background-color: #f8f8f8;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+    bottom: .375rem;
+}
+
+#write>h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write>h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+
+</style>
+</head>
+<body class='typora-export' >
+<div  id='write'  class = 'is-mac'><p><a href='./index.html'>返回到上一页</a></p><hr /><div class='md-toc' mdtype='toc'><p class="md-toc-content"><span class="md-toc-item md-toc-h1" data-ref="n290"><a class="md-toc-inner" style="" href="#header-n290">Lecture 13. Visualizing and Understanding</a></span><span class="md-toc-item md-toc-h2" data-ref="n294"><a class="md-toc-inner" style="" href="#header-n294">First Layer: Visualize Filters</a></span><span class="md-toc-item md-toc-h2" data-ref="n312"><a class="md-toc-inner" style="" href="#header-n312">Last Layer</a></span><span class="md-toc-item md-toc-h2" data-ref="n324"><a class="md-toc-inner" style="" href="#header-n324">Visualizing Activations</a></span><span class="md-toc-item md-toc-h2" data-ref="n333"><a class="md-toc-inner" style="" href="#header-n333">Maximally Activation Patches</a></span><span class="md-toc-item md-toc-h2" data-ref="n343"><a class="md-toc-inner" style="" href="#header-n343">Which pixels matter: Saliency vs Occlusion</a></span><span class="md-toc-item md-toc-h2" data-ref="n379"><a class="md-toc-inner" style="" href="#header-n379">Intermediate Features via (guided) backprop</a></span><span class="md-toc-item md-toc-h2" data-ref="n435"><a class="md-toc-inner" style="" href="#header-n435">Visualizing CNN features: Gradient Ascent</a></span><span class="md-toc-item md-toc-h2" data-ref="n532"><a class="md-toc-inner" style="" href="#header-n532">Fooling Images / Adversarial Examples</a></span><span class="md-toc-item md-toc-h2" data-ref="n558"><a class="md-toc-inner" style="" href="#header-n558">DeepDream: Amplify existing features</a></span><span class="md-toc-item md-toc-h2" data-ref="n611"><a class="md-toc-inner" style="" href="#header-n611">Feature Inversion</a></span><span class="md-toc-item md-toc-h2" data-ref="n622"><a class="md-toc-inner" style="" href="#header-n622">Texture Synthesis</a></span><span class="md-toc-item md-toc-h2" data-ref="n589"><a class="md-toc-inner" style="" href="#header-n589">Neural Style Transfer: Feature + Gram Reconstruction</a></span><span class="md-toc-item md-toc-h2" data-ref="n704"><a class="md-toc-inner" style="" href="#header-n704">Neural Style Transfer: Problem &amp; Solution</a></span></p></div><blockquote><p>CS231n 课程的官方地址：<a href='http://cs231n.stanford.edu/index.html' target='_blank' class='url'>http://cs231n.stanford.edu/index.html</a></p><p>该笔记根据的视频课程版本是 <a href='https://www.bilibili.com/video/av17204303/?p=27'>Spring 2017</a>(BiliBili)，PPt 资源版本是 <a href='http://cs231n.stanford.edu/syllabus.html'>Spring 2018</a>.</p><p>另有该 Lecture 13. 扩展讲义资料：</p><ul><li><a href='https://github.com/google/deepdream'>DeepDream</a></li><li><a href='https://github.com/jcjohnson/neural-style'>neural-style</a></li><li><a href='https://github.com/jcjohnson/fast-neural-style'>fast-neural-style</a></li></ul></blockquote><p>&nbsp;</p><h1><a name='header-n290' class='md-header-anchor '></a>Lecture 13. Visualizing and Understanding</h1><p>&nbsp;</p><p>ConvNets 的内部究竟是怎样的呢？</p><p>&nbsp;</p><h2><a name='header-n294' class='md-header-anchor '></a>First Layer: Visualize Filters</h2><p>此处有三篇 papers：</p><blockquote><p>Krizhevsky, “One weird trick for parallelizing convolutional neural networks”, arXiv 2014
+He et al, “Deep Residual Learning for Image Recognition”, CVPR 2016
+Huang et al, “Densely Connected Convolutional Networks”, CVPR 2017</p></blockquote><p>观察第一层的卷积核。你可以看到它们都在寻找有向边（oriented edges），比如明暗线条。从不同的角度和位置来观察输入图像，我们可以看到完全相反的颜色，比如绿色和粉色，或者橙色和蓝色灯相反的颜色。</p><p><img src='assets/image-20180906094354703.png' alt='image-20180906094354703' referrerPolicy='no-referrer' /></p><ul><li><p>Q：为什么要可视化卷积核的权重是为了让你知道卷积核在寻找什么？</p><ul><li>这个直觉来源于模板匹配和内积。想象一下，如果你有些模板向量，然后你通过模板向量和一些任意的数据之间的点积得到了标量输出。然后当这两个向量相互匹配输入将在范数约束的条件下被最大化。所以，不管你在什么时候进行内积，你正在进行内积的对象是内积的结果最大化的因素。所以这就是为什么我们要可视化权重以及它们能够提供给我们第一卷积层寻找的东西的原因。 </li></ul></li></ul><p>中间层权重可视化后的可解释性就差很多了。</p><ul><li>所有的可视化图像，我们都把权值设定在 0 到 255 这个区间内。实际上，那些权值可以是无限的（任意的），它们可以在任意范围之内。但是为了得到比较好的可视化效果，并且（没有限定权值范围的）可视化也没有考虑到这些层的偏置，所以我们需要对它们进行缩放。所以你们应该记住模型可视化的恰当时机。</li></ul><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n312' class='md-header-anchor '></a>Last Layer</h2><ul><li>可以考虑用 L2 Nearest neighbors in feature space 来可视化。</li><li>t-sne 非线性降维方法（不同于主成分分析 PCA）</li></ul><p>此处一篇 paper：</p><blockquote><p>Van der Maaten and Hinton, “Visualizing Data using t-SNE”, JMLR 2008</p></blockquote><p><img src='assets/image-20180906101211034.png' alt='image-20180906101211034' referrerPolicy='no-referrer' /></p><p>See high-resolution versions at <a href='http://cs.stanford.edu/people/karpathy/cnnembed/' target='_blank' class='url'>http://cs.stanford.edu/people/karpathy/cnnembed/</a></p><p>&nbsp;</p><h2><a name='header-n324' class='md-header-anchor '></a>Visualizing Activations</h2><p>虽然中间层的权重可视化可解释性很不好。但实际上，可视化中间层的激活映射图（activation maps），在某些情况下是具备可解释性的。</p><p>此处一篇 paper：</p><blockquote><p>Yosinski et al, “Understanding Neural Networks Through Deep Visualization”, ICML DL Workshop 2014</p><p><a href='http://yosinski.com/deepvis' target='_blank' class='url'>http://yosinski.com/deepvis</a></p></blockquote><p><img src='assets/image-20180906103404102.png' alt='image-20180906103404102' referrerPolicy='no-referrer' /></p><p><img src='assets/ezgif.com-video-to-gif-2.gif' alt='ezgif.com-video-to-gif-2' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><h2><a name='header-n333' class='md-header-anchor '></a>Maximally Activation Patches</h2><ul><li>可视化输入图像中什么类型的图像块可以最大限度地激活？</li></ul><p>此处一篇 paper：</p><blockquote><p>Springenberg et al, “Striving for Simplicity: The All Convolutional Net”, ICLR Workshop 2015</p></blockquote><p>选取卷积层中的某个通道。通过卷积神经网络运行很多的图像，对于每一个图像，记录它们的卷积特征，然后可以观察到那个特征映射图的部分，已经被我们图像的数据集最大地激活。因为这是卷积层，卷积层中的每个神经元在输入部分都有一些小的感受野，每个神经元的（管辖部分）并不是整个图像，它们只针对于这个图像的子集合，然后我们要做的是，从这个庞大的图像数据集中，可视化来自该特顶层特定特征的最大激活的图像块。然后我们可以根据这些激活块，在特定层的激活程度来解决这个问题。</p><p><img src='assets/image-20180906110005206.png' alt='image-20180906110005206' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><h2><a name='header-n343' class='md-header-anchor '></a>Which pixels matter: Saliency vs Occlusion</h2><ul><li><p>弄清楚究竟是输入图像的哪个部分，导致神经网络做出分类的决定。</p><ol start='' ><li>排除实验！（Occlusion）</li></ol><p>此处一篇 paper：</p><blockquote><p>Zeiler and Fergus, “Visualizing and Understanding Convolutional Networks”, ECCV 2014</p></blockquote></li></ul><p><img src='assets/image-20180906110703406.png' alt='image-20180906110703406' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>&nbsp;</p><ol start='2' ><li><p>显著图（Saliency）</p><blockquote><p>Simonyan, Vedaldi, and Zisserman, “Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps”, ICLR Workshop 2014.</p></blockquote><p>计算相对于输入图像中各像素对应的类预测值的梯度。在一阶近似意义上，对于每个输入图像的每个像素，如果我们进行小小的扰动，那么相应类的分类分值会有多大的变化。这是另一种用来解决输入图像的哪个部分的像素用于分类。</p><p><img src='assets/image-20180906120619768.png' alt='image-20180906120619768' referrerPolicy='no-referrer' /></p><p><img src='assets/image-20180906120629403.png' alt='image-20180906120629403' referrerPolicy='no-referrer' /></p></li></ol><p>&nbsp;</p><h2><a name='header-n379' class='md-header-anchor '></a>Intermediate Features via (guided) backprop</h2><p>引导式反向传播</p><p>这里有两篇 papers：</p><blockquote><p>Zeiler and Fergus, “Visualizing and Understanding Convolutional Networks”, ECCV 2014
+Springenberg et al, “Striving for Simplicity: The All Convolutional Net”, ICLR Workshop 2015</p></blockquote><p><img src='assets/image-20180906120954176.png' alt='image-20180906120954176' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p><img src='assets/image-20180906121127951.png' alt='image-20180906121127951' referrerPolicy='no-referrer' /></p><p><img src='assets/image-20180906121153534.png' alt='image-20180906121153534' referrerPolicy='no-referrer' /></p><ul><li>关于引导式反向传播或计算显著图的意见非常有趣的事情是：总有一个固定输入图像的函数，这个函数告诉我们对于一个固定输入的图像，输入图像的哪个像素或哪个部分影响了神经元的分值。</li></ul><p>&nbsp;</p><h2><a name='header-n435' class='md-header-anchor '></a>Visualizing CNN features: Gradient Ascent</h2><p>另一个你可能会问的问题是：如果我们在一些输入图像上移除这种依赖性，那什么类型的输入会激活这个神经元。</p><p>我们可以通过<strong>梯度上升（Gradient Ascent）</strong>算法来解决这个问题。记住我们总是在训练卷积神经网络时，使用梯度下降来使（函数）损失最小化。而现在，我们想要固定训练的卷积神经网络的权重，并且在图像的像素上执行梯度上升来合成图像，以尝试和最大化某些中间神经元和类的分值。</p><p>在执行梯度上升的过程中，我们不再优化神经网路中保持不变的权重。相反，我们试图改变一些图像的像素，使这个神经元的值或这个类的分值最大化。除此之外，我们需要一些正则项。在看到正则项尝试阻止神经网络权重过拟合训练数据之前，我们需要类似的东西来防止我们生成的图像过拟合特定网络的特性。所以，这里我们经常会加入一些正则项，我们需要具备两个特定属性的生成图像：</p><ol><li>我们想要最大程度地激活一些分值或神经元的值；</li><li>我们希望这个生成图像看起来是自然的，即我们想要生成图像具备在自然图像中的统计数据。这些主管的正则项是强制生成图像看起来像是自然图像的东西。</li></ol><p><img src='https://i.loli.net/2018/09/06/5b90ab8865c42.png' alt='' referrerPolicy='no-referrer' /></p><p>步骤通常来说很简单：</p><p><img src='assets/image-20180906122928554.png' alt='image-20180906122928554' referrerPolicy='no-referrer' /></p><ul><li><p>Q：如果不使用任何的正则化会怎样？</p><ul><li>那么你将很有可能得到分值最大化并且已经分好的类，但是通常它看起来不像任何事物，就像随机噪声。</li></ul></li></ul><p><img src='assets/image-20180906123941510.png' alt='image-20180906123941510' referrerPolicy='no-referrer' /></p><p>有人增加了一些令人印象深刻的正则化，在下面的 paper 中：</p><blockquote><p>Yosinski et al, “Understanding Neural Networks Through Deep Visualization”, ICML DL Workshop 2014.</p></blockquote><p>除了 L2 范数约束之外。另外我们还定义在优化过程中，对图像进行高速模糊处理，我们同时也将一些低梯度的小的像素值修改为 0。可以看到这是一个投射梯度上升算法，我们定期投射具备良好属性的生成图像到更好的图像集中。举个例子，进行高斯模糊处理后，图像获得特殊平滑性。所以，对图像进行高斯模糊处理后，更容易获得清晰的图像。</p><p><img src='https://i.loli.net/2018/09/06/5b90afb2e9430.png' alt='' referrerPolicy='no-referrer' /></p><p>除了对最后分值，我们也可以最大化某个中间层的其中一个神经元的分值：</p><p><img src='assets/image-20180906124622572.png' alt='image-20180906124622572' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>下面是一个针对性解决多模态问题的 paper：</p><blockquote><p>Nguyen et al, “Multifaceted Feature Visualization: Uncovering the Different Types of Features Learned By Each Neuron in Deep Neural Networks”, ICML Visualization for Deep Learning Workshop 2016.</p></blockquote><p>在这篇论文中，他们尝试在优化的过程中考虑多模态问题，即对每一个类运行聚类算法以使这些类分成不同的模型，然后用接近这些模型其中之一的类进行初始化。那么当你这么做的事情，你就可能考虑多模态形式。</p><p><img src='https://i.loli.net/2018/09/06/5b90b2b08a8e1.png' alt='' referrerPolicy='no-referrer' /></p><p><img src='assets/image-20180906125530125.png' alt='image-20180906125530125' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>你还可以添加更加强大的先验图像，然后生成非常漂亮的图像。这些生成图像都是通过最大化一些图像类的分值得到的。一般的想法是，尝试优化图像在 FC6 潜在空间中的表示，而不是直接优化输入图像的像素。他们需要使用特征反演网络。</p><p>多说无益，给你 paper：</p><blockquote><p>Nguyen et al, “Synthesizing the preferred inputs for neurons in neural networks via deep generator networks,” NIPS 2016</p></blockquote><p>重点是：当你开始在自然图像建模时，添加先验图像，你最终可以得到一些非常真实的图像，它们让你了解到神经网络究竟在寻找什么（特征）。</p><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n532' class='md-header-anchor '></a>Fooling Images / Adversarial Examples</h2><ol><li>Start from an arbitrary image </li><li>Pick an arbitrary class </li><li>Modify the image to maximize the class </li><li>Repeat until network is fooled </li></ol><p>多说无益，自己看 Goodfellow 的讲座：</p><blockquote><p>Check out <a href='https://www.youtube.com/watch?v=CIfsB_EYsVI'>Ian Goodfellow’s lecture</a> from last year （<a href='https://www.bilibili.com/video/av17204303/?p=35&spm_id_from=333.788.multi_page.5'>Bilibili</a>）</p></blockquote><p>&nbsp;</p><ul><li><p>Q：了解中间神经元，对我们了解最终的分类有什么帮助？</p><ul><li>实际上，试图对中间神经元进行可视化是深度学习里备受批评的领域。比如，你有一个大的黑盒子神经网络，你通过梯度上升来训练它并且得到了一个很好的值，那很好，但是我们并不信任这个神经网络，因为我们作为人类并不理解，它是如何作出决策的。很多这种类型的可视化技术被开发来试图从人类的角度来理解并解决，比如为什么这些网络分类的类别在逐渐地增多的问题，因为如果将深层神经网络与其他机器运行技术进行对比，（你会发现）线性模型更容易被解释，因为你可以观察权值并且理解每个特征对决策的影响程度，比如随机森林或决策树，一些其他的机器学习模型可以通过它们本身的特性，变得比这个黑盒子卷积神经网络更具有可解释性。很多回应这种质疑的声音认为，虽然它们是大型复杂的模型，但是它们仍然在做一些有趣的具备可解释性的事情，它们不是完全随意地分类事物，相反，它们在做有意义的事情。</li></ul></li></ul><p>&nbsp;</p><h2><a name='header-n558' class='md-header-anchor '></a>DeepDream: Amplify existing features</h2><p>另一种基于梯度的图像优化是 DeepDream。只是 for fun。。。。。</p><p>我们做的是提取我们的输入图像，通过神经网络运行到某一层，接着进行反向传播，并且设置该层的梯度等于激活值，然后反向传播到图像，并不断地更新图像。</p><p><img src='https://i.loli.net/2018/09/07/5b91d25bd6ef3.png' alt='' referrerPolicy='no-referrer' /></p><p>关于（上述步骤的）解释是试图放大神经网络在这张图像中检测到的特征，因为无论那层上存在什么样的特征，现在我们设置梯度等于特征值，以使神经网络放大它在图像中所检测到的特征。这种办法同样适用于最大化图像在该层的 L2 范数。</p><p>直接来看代码：</p><p><img src='assets/image-20180907092445305.png' alt='image-20180907092445305' referrerPolicy='no-referrer' /></p><p>其中一个技巧是在计算梯度之前抖动图像，即不是通过神经网络运行完全和原图像相同的图像，而是将图像移动两个像素，并将其他两个像素包裹在这里。这是一种使用正则化以使图像更加得平滑。同样地，他们使用梯度的 L1 归一化，这在对待图像生成问题上，有时候也是一个有用的技巧。你也可以看到他们有时候修改像素值。再强调一遍，像素值应该被限定在 0 到 255 之间，这是一种投影梯度下降，即投影到实际有效图像的空间上。</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n611' class='md-header-anchor '></a>Feature Inversion</h2><p>特征反演。</p><p>此处 paper 两篇：</p><blockquote><p>Mahendran and Vedaldi, “Understanding Deep Image Representations by Inverting Them”, CVPR 2015</p><p>Johnson, Alahi, and Fei-Fei, “Perceptual Losses for Real-Time Style Transfer and Super-Resolution”, ECCV 2016. Copyright Springer, 2016.</p></blockquote><p>我们将要做的是，选取一张图像，通过神经网络运行该图像，记录其中一个图像的特征值，然后根据它的特征表示重构那个图像。基于重建图像的样子，这将给我们一些关于在该特征向量中捕获的图像类型的信息。我们可以通过梯度上升和正则化来做到这一点，与其最大化某些分值，不如最小化捕获到的特征向量之间的距离，并且在生成图像的特征之间尝试合成一个新的与之前计算过的图像特征相匹配的图像。</p><p><img src='https://i.loli.net/2018/09/07/5b91d59525c55.png' alt='' referrerPolicy='no-referrer' /></p><p>另一个经常见到的是正则化是全变差正则化（Total Variationregularizer）。全变差正则化是将左右相邻像素之间的差异拼凑成上下相邻，以尝试增加生成图像中特殊的平滑度。</p><p><img src='assets/image-20180907094553365.png' alt='image-20180907094553365' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><h2><a name='header-n622' class='md-header-anchor '></a>Texture Synthesis</h2><p>纹理合成 —— 计算机图形学中的老问题</p><p>给定一些纹理的输入图像块，像下面左边的小尺度，现在我们想要构建某个模型以使其生成更大快的相同的纹理图像。举个例子，我们想要在这里生成包含许多与输入图像相同尺度的更大的图像。</p><p>此处一篇 paper：</p><blockquote><p>Gatys, Ecker, and Bethge, “Texture Synthesis Using Convolutional Neural Networks”, NIPS 2015</p></blockquote><p>为了在神经网络上进行纹理合成，他们使用了格拉姆矩阵（gram matrix）。我们将要做的是，在这个实例中，选取我们输入的石头纹理，把它传递给卷积神经网络，抽取它们在卷积神经网络某层的卷积特征。假设我们正在讨论的卷积特征体积是 C x H x W，你可以把它看做 H x W 的空间网格，在网络上的每一点都有 C 维的特征向量来描述图像在这点的外观。我们将会使用激活映射图（activation map）来计算输入纹理图像的映射符，然后选取输入特征的两个不同列，每个特征列都是 C 维的向量，然后通过这两个向量得到 C x C 的矩阵。这个告诉我们图像中两个点代表的不同特征的同现关系（co-occurrence）。如果 C x C 矩阵中，位置索引为 i j 的元素值非常大，这意味着这两个输入向量的位置索引为 i 和 j 的元素值非常大。这以某种方式捕获了一些二阶统计量，即特特征映射图中的哪些特征，倾向于在空间的不同位置一起激活。</p><p><img src='https://i.loli.net/2018/09/07/5b91dc3bb9a82.png' alt='' referrerPolicy='no-referrer' /></p><p><img src='https://i.loli.net/2018/09/07/5b91dd16eefee.png' alt='' referrerPolicy='no-referrer' /></p><p>我们将通过使用 H x W 网格中不同点所对应的特征向量，取它们的平均值，那么我们会得到 C x C 的格拉姆矩阵，然后使用描述符（descriptor）来描述输入图像的纹理结构。</p><p>关于格拉姆矩阵的有趣的一点是，它丢弃了特征体积中的所有空间信息，因为我们对图像中的每一点所对应的特征向量对取平均值，它只是捕获特征间的二阶同现统计量。这最终是一个很好的纹理描述符。</p><p>顺便提及一点，这里的计算你效率非常高。你可能会思考：为什么不使用协方差矩阵或类似的方法，而是使用有趣的格拉姆矩阵。这个问题的答案是使用协方差矩阵同样有效，但是计算成本要高一些。在实际中，人们只是使用格拉姆矩阵描述符。</p><p><img src='https://i.loli.net/2018/09/07/5b91e04d7cdbb.png' alt='' referrerPolicy='no-referrer' /></p><p><img src='https://i.loli.net/2018/09/07/5b91e11b50a5b.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n589' class='md-header-anchor '></a>Neural Style Transfer: Feature + Gram Reconstruction</h2><p><img src='https://i.loli.net/2018/09/07/5b91e26c2ba86.png' alt='' referrerPolicy='no-referrer' /></p><p>小哥贴出了他的 github 哈：<a href='https://github.com/jcjohnson/neural-style' target='_blank' class='url'>https://github.com/jcjohnson/neural-style</a></p><p><img src='assets/image-20180907103111634.png' alt='image-20180907103111634' referrerPolicy='no-referrer' /></p><ul><li><p> 如果平衡内容和风格图像之间的权重以及损失，然后就可以控制内容和风格之间在生成图像的比重：</p><p><img src='assets/image-20180907103330712.png' alt='image-20180907103330712' referrerPolicy='no-referrer' /></p></li><li><p>在计算格拉姆矩阵之前，重新调整风格图像的尺寸大小，就可以让你控制从特征图像中重构的特征的尺度。可以看到我们已经完成了相同的重构，唯一的区别是在我们计算格拉姆矩阵之前，风格图像的比重大小：</p><p><img src='https://i.loli.net/2018/09/07/5b91e3d9486a3.png' alt='' referrerPolicy='no-referrer' /></p></li><li><p>对多重风格图像进行风格迁移，并且同时匹配多重格拉姆矩阵，效果会非常棒。</p><p><img src='https://i.loli.net/2018/09/07/5b91e474282b6.png' alt='' referrerPolicy='no-referrer' /></p></li><li><p>对图像可以执行类似Deepdream相同的多尺度处理，生成高分辨率的风格图像。</p><p><img src='https://i.loli.net/2018/09/07/5b91e4a26fd8a.png' alt='' referrerPolicy='no-referrer' /></p></li></ul><h2><a name='header-n704' class='md-header-anchor '></a>Neural Style Transfer: Problem &amp; Solution</h2><ul><li>Problem：Style transfer requires many forword / backward passes through VGG; very slow!</li><li>Solution：Train <em>another</em> neural network to perform style transfer for us!</li></ul><p> <img src='assets/image-20180907104337932.png' alt='image-20180907104337932' referrerPolicy='no-referrer' /></p><p>效果惊艳！速度快了1000倍，小哥提供了代码：<a href='https://github.com/jcjohnson/fast-neural-style' target='_blank' class='url'>https://github.com/jcjohnson/fast-neural-style</a></p><p><img src='https://i.loli.net/2018/09/07/5b91e6888daad.png' alt='' referrerPolicy='no-referrer' /></p><p><img src='assets/webcam.gif' alt='webcam' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>俄罗斯的组也有做加速风格转换的：</p><blockquote><p>Ulyanov et al, “Texture Networks: Feed-forward Synthesis of Textures and Stylized Images”, ICML 2016
+Ulyanov et al, “Instance Normalization: The Missing Ingredient for Fast Stylization”, arXiv 2016</p></blockquote><p><img src='https://i.loli.net/2018/09/07/5b91e78755c50.png' alt='' referrerPolicy='no-referrer' /></p><p><img src='https://i.loli.net/2018/09/07/5b91e7a5f10d8.png' alt='' referrerPolicy='no-referrer' /></p><p>Google 搞出了一个 one network, many styles:</p><p><img src='assets/image-20180907105257166.png' alt='image-20180907105257166' referrerPolicy='no-referrer' /></p><p><img src='assets/image-20180907105337333.png' alt='image-20180907105337333' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>最后总结下：</p><p><img src='assets/image-20180907105440113.png' alt='image-20180907105440113' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><hr /><p><a href='./index.html'>返回到上一页</a> | <a href='./cs231n_13.html'>返回到顶部</a></p><hr /><p><br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+<br></p><script type="application/json" class="js-hypothesis-config">
+  {
+    "openSidebar": false,
+    "showHighlights": true,
+    "theme": classic,
+    "enableExperimentalNewNoteButton": true
+  }
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script><p>&nbsp;</p></div>
+</body>
+</html>

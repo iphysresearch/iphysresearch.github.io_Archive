@@ -213,6 +213,17 @@ Huang et al, “Decorrelated Batch Normalization”, arXiv 2018 (Appeared 4/23/2
 
   Nguyen et al, “Synthesizing the preferred inputs for neurons in neural networks via deep generator networks,” NIPS 2016（Gradient Ascent Optimize in FC6 latent space）
 
+  Mahendran and Vedaldi, “Understanding Deep Image Representations by Inverting Them”, CVPR 2015（feature inversion）
+
+  Johnson, Alahi, and Fei-Fei, “Perceptual Losses for Real-Time Style Transfer and Super-Resolution”, ECCV 2016. (feature inversion, Fast Style Transfer)
+  Gatys, Ecker, and Bethge, “Texture Synthesis Using Convolutional Neural Networks”, NIPS 2015 (neural texture synthesis)
+
+  Gatys, Ecker, and Bethge, “Image style transfer using convolutional neural networks”, CVPR 2016 (neural style transfer)
+
+  Ulyanov et al, “Texture Networks: Feed-forward Synthesis of Textures and Stylized Images”, ICML 2016 (Fast Style Transfer)
+  Ulyanov et al, “Instance Normalization: The Missing Ingredient for Fast Stylization”, arXiv 2016 (Fast Style Transfer)
+
+  Dumoulin, Shlens, and Kudlur, “A Learned Representation for Artistic Style”, ICLR 2017. (one network, many styles)
 
 
 

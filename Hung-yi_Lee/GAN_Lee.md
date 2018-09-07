@@ -35,7 +35,9 @@ https://www.youtube.com/playlist?list=PLJV_el3uVTsMq6JEFPW35BCiOQTsoqwNw
   - Application to Speech (by Dr. Yu Tsao) [pdf](http://speech.ee.ntu.edu.tw/~tlkagk/courses/MLDS_2018/Lecture/ICASSP%202018%20audio.pdf),[pptx](http://speech.ee.ntu.edu.tw/~tlkagk/courses/MLDS_2018/Lecture/ICASSP%202018%20audio.pptx) (2018/06/01) 
   - Evaluation of GAN [pdf](http://speech.ee.ntu.edu.tw/~tlkagk/courses/MLDS_2018/Lecture/GANEvaluation.pdf),[pptx](http://speech.ee.ntu.edu.tw/~tlkagk/courses/MLDS_2018/Lecture/GANEvaluation.pptx),[video](https://youtu.be/IB_ADssBomk) (2018/05/25)
 
-
+- HW3-1: [link](https://docs.google.com/presentation/d/1UdLXHcu-pvvYkNvZIWT7tFbuGO2HzHuAZhcA0Xdrtd8/edit#slide=id.p3) (2018/05/04) 
+- HW3-2: [link](https://docs.google.com/presentation/d/1P5ToVdC_FaFzqC-wD6al6RoLseOgzoyaYESyJasef2E/edit#slide=id.p3),[tips](http://speech.ee.ntu.edu.tw/~tlkagk/courses/MLDS_2018/Lecture/CGANtip.pdf) (2018/05/11) 
+- HW3-3: [link](https://docs.google.com/presentation/d/1Xc07oRuS2aSENvepSBE_tyuf52ikxFIrUTVOAMA-dZk/edit#slide=id.p3) (2018/05/18)
 
 
 
@@ -49,7 +51,7 @@ https://www.youtube.com/playlist?list=PLJV_el3uVTsMq6JEFPW35BCiOQTsoqwNw
 
 https://github.com/hindupuravinash/the-gan-zoo
 
-![](https://github.com/hindupuravinash/the-gan-zoo/raw/master/cumulative_gans.jpg)
+![](https://i.loli.net/2018/09/06/5b912affd048b.png)
 
 
 
@@ -63,9 +65,9 @@ https://github.com/hindupuravinash/the-gan-zoo
 
 ![](https://i.loli.net/2018/09/04/5b8e7cc0b0e69.png)
 
-​	与此同时，我们会训练出来一个 **NN Discriminator**。
+	与此同时，我们会训练出来一个 **NN Discriminator**。
 
-​	![](https://i.loli.net/2018/09/04/5b8e7d175d956.png)
+	![](https://i.loli.net/2018/09/04/5b8e7d175d956.png)
 
 
 
@@ -257,17 +259,106 @@ https://github.com/hindupuravinash/the-gan-zoo
 
 
 
+# Unsupervised Conditional Generation
+
+- 非监督的G 就是没有 label。
+
+![](https://i.loli.net/2018/09/06/5b912e0141bef.png)
+
+
+
+一般有两种方向做法：
+
+![](https://i.loli.net/2018/09/06/5b912e4a5f8e2.png)
 
 
 
 
 
+## Direct Transformation（CycleGAN, StarGAN）
+
+1. 第一种做法就是忽视掉 Generator 的输入输出之间的相似性要求。
+
+   ![](https://i.loli.net/2018/09/06/5b91300ec1aa3.png)
+
+2. CycleGAN（不忽略）
+
+   ![](https://i.loli.net/2018/09/06/5b9130d3861de.png)
 
 
 
+   这里有个例子：Cycle GAN – Silver Hair https://github.com/Aixile/chainer-cyclegan 
+
+   可以将动漫人物的头发转换成银色。。。。。
 
 
 
+   - Issue os Cycle Consistency 
+
+     ![](https://i.loli.net/2018/09/06/5b91321d6fee0.png)
+
+   - 好些 GAN 其实都是 Cycle GAN：
+
+3. 还有多个 domain 之间互相转换的 StarGAN
+
+   ![](https://i.loli.net/2018/09/06/5b9132f16362c.png)
+
+   ![](https://i.loli.net/2018/09/06/5b91331821d97.png)
+
+
+
+## Projection to Common Space
+
+思路大体如下图，两个自编码器是独立进行的。不过很可能的问题就会出现，那就是中间的 latent space 难以相互对应上。。。
+
+![](https://i.loli.net/2018/09/06/5b91361f2c10c.png)
+
+有些人想了各种办法解决这种问题，比如：
+
+1. 共享一部分参数。
+
+   ![](https://i.loli.net/2018/09/06/5b913678566fc.png)
+
+2. 一种类似 VAE 的办法。
+
+   ![](https://i.loli.net/2018/09/06/5b9136e9ca864.png)
+
+3. 利用 Cycle Consistency
+
+   ![](https://i.loli.net/2018/09/06/5b913763d184b.png)
+
+4. 利用 Semantic Consistency
+
+   ![](https://i.loli.net/2018/09/06/5b9137fd724a5.png)
+
+
+
+来看看应用吧：世界二次元化
+
+Using the code: https://github.com/Hi-king/kawaii_creator 
+
+- It is not cycle GAN, Disco GAN 
+
+
+
+还有一个应用：Voice Conversion
+
+
+
+最后还给你文献：
+
+- Jun-Yan Zhu, Taesung Park, Phillip Isola, Alexei A. Efros, Unpaired Image-to- Image Translation using Cycle-Consistent Adversarial Networks, ICCV, 2017 
+- Zili Yi, Hao Zhang, Ping Tan, Minglun Gong, DualGAN: Unsupervised Dual Learning for Image-to-Image Translation, ICCV, 2017 
+- Tomer Galanti, Lior Wolf, Sagie Benaim, The Role of Minimal Complexity Functions in Unsupervised Learning of Semantic Mappings, ICLR, 2018 
+- Yaniv Taigman, Adam Polyak, Lior Wolf, Unsupervised Cross-Domain Image Generation, ICLR, 2017 
+- Asha Anoosheh, Eirikur Agustsson, Radu Timofte, Luc Van Gool, ComboGAN: Unrestrained Scalability for Image Domain Translation, arXiv, 2017 
+- Amélie Royer, Konstantinos Bousmalis, Stephan Gouws, Fred Bertsch, Inbar Mosseri, Forrester Cole, Kevin Murphy, XGAN: Unsupervised Image-to-Image Translation for Many-to-Many Mappings, arXiv, 2017 
+
+- Guillaume Lample, Neil Zeghidour, Nicolas Usunier, Antoine Bordes, Ludovic Denoyer, Marc'Aurelio Ranzato, Fader Networks: Manipulating Images by Sliding Attributes, NIPS, 2017 
+- Taeksoo Kim, Moonsu Cha, Hyunsoo Kim, Jung Kwon Lee, Jiwon Kim, Learning to Discover Cross-Domain Relations with Generative Adversarial Networks, ICML, 2017 
+- Ming-Yu Liu, Oncel Tuzel, “Coupled Generative Adversarial Networks”, NIPS, 2016 
+- Ming-Yu Liu, Thomas Breuel, Jan Kautz, Unsupervised Image-to-Image Translation Networks, NIPS, 2017 
+- Yunjey Choi, Minje Choi, Munyoung Kim, Jung-Woo Ha, Sunghun Kim, Jaegul Choo, StarGAN: Unified Generative Adversarial Networks for Multi-Domain Image-to-Image Translation, arXiv, 2017 
 
 
 
