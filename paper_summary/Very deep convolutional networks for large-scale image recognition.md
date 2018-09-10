@@ -65,9 +65,29 @@ date: 2018-08-24
 
 ### Discussion
 
-- 作者提及到：两个 3x3 卷积计算层堆叠的效果与一个 5x5 的卷积计算层是等效的。（需要验证这件事情！写一篇感受野的文章支撑一下！）
+- 作者提及到：两个 3x3 卷积计算层堆叠的效果与一个 5x5 的卷积计算层是等效的。计算的证明可参考：[关于感受野 (Receptive field) 你该知道的事](../posts/receptive_field.html)
+
+  - 好处1：可以让决策边界更加的 discriminative.
+
+  - 好处2：减少参数数量：三个 3x3 卷积核 C 通道的参数有 $3(3^2C^2)=27C^2$，而一个 7x7 卷积核就是有参数 $7^2C^2=49C^2$。
+
+  - 作者对小卷积核的理解很深刻独到：正则化效果
+
+    > This can be seen as imposing a regularisation on the 7 × 7 conv. filters, forcing them to have a decomposition through the 3 × 3 filters (with non-linearity injected in between).
+
+- 1x1 卷积核的作用是在不影响感受野的情况下，提升决策边界的**非线性性**。还有  “Network in Network” architecture of Lin et al. (2014) 也有此类卷积核的运用。
 
 
+
+## Classification Framework
+
+
+
+## Classification Experiments
+
+
+
+## Conclusion
 
 
 

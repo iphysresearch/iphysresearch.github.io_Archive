@@ -50,7 +50,7 @@ Current Challedge			Zevin CQG 34 6 064003 2017
 
 CONV.			Zevin CQG 34 6 064003
 
-
+https://arxiv.org/pdf/1807.09787.pdf
 
 
 
@@ -113,7 +113,7 @@ CONV.			Zevin CQG 34 6 064003
 - [[Paper Summary](./ImageNet Classification with Deep Convolutional Neural Networks.html)] Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E. Hinton. "**Imagenet classification with deep convolutional neural networks**." (2012). **(AlexNet, Deep Learning Breakthrough!)**
 - [Paper Summary] Pierre Sermanet, David Eigen, Xiang Zhang, Michael Mathieu, Rob Fergus, Yann LeCun. "**OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks**" (2013). **(winner of the localization task of ILSVRC2013)**
 - [Zeiler and Fergus, 2013] **(ZFNet)**
-- [Paper Summary] Simonyan, Karen, and Andrew Zisserman. "**Very deep convolutional networks for large-scale image recognition**." (2014).**(VGGNet,Neural Networks become very deep!)**
+- [[Paper Summary](./Very deep convolutional networks for large-scale image recognition.html)] Simonyan, Karen, and Andrew Zisserman. "**Very deep convolutional networks for large-scale image recognition**." (2014).**(VGGNet,Neural Networks become very deep!)**
 - [Paper Summary] Szegedy, Christian, et al. "**Going deeper with convolutions**." (2015).**(GoogLeNet, Deeper networks, computational efficiency)**
 - [Paper Summary] He, Kaiming, et al. "**Deep residual learning for image recognition**." (2015).**(ResNet, Very very deep networks using residual connections, CVPR best paper)**
 
@@ -186,6 +186,10 @@ Huang et al, “Decorrelated Batch Normalization”, arXiv 2018 (Appeared 4/23/2
   - Huang et al, “Snapshot ensembles: train 1, get M for free”, ICLR 2017 
   - Figures copyright Yixuan Li and Geoff Pleiss, 2017. Reproduced with permission.
   - Polyak and Juditsky, “Acceleration of stochastic approximation by averaging”, SIAM Journal on Control and Optimization, 1992. **(Polyak averaging)**
+
+
+
+
 
 
 
