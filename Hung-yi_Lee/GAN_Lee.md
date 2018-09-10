@@ -66,7 +66,7 @@ https://github.com/hindupuravinash/the-gan-zoo
 ![](https://i.loli.net/2018/09/04/5b8e7cc0b0e69.png)
 
 	与此同时，我们会训练出来一个 **NN Discriminator**。
-
+	
 	![](https://i.loli.net/2018/09/04/5b8e7d175d956.png)
 
 

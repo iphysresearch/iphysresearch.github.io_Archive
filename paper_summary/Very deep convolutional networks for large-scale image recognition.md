@@ -15,7 +15,7 @@ date: 2018-08-24
 
 
 
-<iframe src="Very deep convolutional networks for large-scale image recognition.pdf" style="width:1000px; height:1000px;" width="100%" height=100%>This browser does not support PDFs. Please download the PDF to view it: <a href="https://arxiv.org/pdf/1409.1556.pdf">Download PDF</a></iframe>
+<iframe src="Very deep convolutional networks for large-scale image recognition、" style="width:1000px; height:1000px;" width="100%" height=100%>This browser does not support PDFs. Please download the PDF to view it: <a href="https://arxiv.org/pdf/1409.1556.pdf">Download PDF</a></iframe>
 
 
 
@@ -105,14 +105,12 @@ date: 2018-08-24
 
 
 
----
+# ---
 
-[返回到上一页](./index.html) | [返回到顶部](./Very deep convolutional networks for large-scale image recognition.html)
-
----
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 <br>
+
 <script type="application/json" class="js-hypothesis-config">
   {
     "openSidebar": false,
