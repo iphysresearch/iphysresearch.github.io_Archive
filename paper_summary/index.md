@@ -52,6 +52,9 @@ CONV.			Zevin CQG 34 6 064003
 
 https://arxiv.org/pdf/1807.09787.pdf
 
+BayesLine: Bayesian Inference for Spectral Estimation of Gravitational Wave Detector
+Noise
+
 
 
 ## Maybe helpful:
