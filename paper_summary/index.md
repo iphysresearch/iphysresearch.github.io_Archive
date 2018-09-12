@@ -65,7 +65,7 @@ Noise
 
 # :cloud_with_rain: Denoising & Noise Modeling
 
-> **Collection of popular and reproducible image denoising works**【最新可复现图像去噪算法汇总】
+> 【最新可复现图像去噪算法汇总】’Collection of popular and reproducible image denoising works.' by Bihan Wen GitHub: http://t.cn/RkREnEk another by Wenhan Yang http://t.cn/RkREeyJ 
 >
 > - by Bihan Wen
 > - by Wenhan Yang

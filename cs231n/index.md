@@ -32,9 +32,9 @@ date: 2018-08-22
 - [Lecture 9. CNN Architectures](./cs231n_9.html)
 - [Lecture 10. Recurrent Neural Networks](./cs231n_10.html)
 - [Lecture 11. Detection and Segmentation](./cs231n_11.html)
-- Lecture 12. Generative Models
+- [Lecture 12. Generative Models](./cs231n_12.html)
 - [Lecture 13. Visualizing and Understanding](./cs231n_13.html)
-- Lecture 14. Deep Reinforcement Learning 
+- Lecture 14. Deep Reinforcement Learning
 - Lecture 15. 
 
 
