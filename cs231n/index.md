@@ -19,6 +19,14 @@ date: 2018-08-22
 
 
 
+## Original Posts
+
+- [一段关于神经网络的故事](./cs231n_story_MLP.html)（**Original**，30671字 + 多图）
+
+
+
+
+
 ## Notes from Lecture Video and Slices
 
 - [Lecture 1. Computer vision overview & Historical context](./cs231n_1.html)
@@ -76,14 +84,6 @@ date: 2018-08-22
 - [循环神经网络惊人的有效性](./The Unreasonable Effectiveness of Recurrent Neural Networks.html)
 
   > From: [Andrej Karpathy blog](http://karpathy.github.io/)'s 《The Unreasonable Effectiveness of Recurrent Neural Networks (2015)》
-
-
-
-## Original Posts
-
-- [一段关于神经网络的故事](./cs231n_story_MLP.html)（**Original**，30671字 + 多图）
-
-
 
 
 
