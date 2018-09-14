@@ -40,6 +40,14 @@ date: 2018-08-22
 
 ## Machine Learning
 
+[[Paper Summary](./Deep neural networks to enable real-time multimessenger astrophysics.html)] George D, Huerta E A. "**Deep neural networks to enable real-time multimessenger astrophysics**"[J]. Physical Review D, 2018, 97(4): 044039. (**First attempt**)
+
+
+
+
+
+
+
 Glitch			LIGO PRL 119 161101 (2017)
 
 Current Searches  			LIGO PRX 6 041015 2016    LIGO PRL 116 241103
