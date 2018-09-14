@@ -1,0 +1,893 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>CS231n Lecture.14</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; padding-bottom: 70px; overflow-x: visible; }
+.first-line-indent #write div, .first-line-indent #write li, .first-line-indent #write p { text-indent: 2em; }
+.first-line-indent #write div :not(p):not(div), .first-line-indent #write div.md-htmlblock-container, .first-line-indent #write p *, .first-line-indent pre { text-indent: 0px; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write > blockquote:first-child, #write > div:first-child, #write > figure:first-child, #write > ol:first-child, #write > p:first-child, #write > pre:first-child, #write > ul:first-child { margin-top: 30px; }
+#write li > figure:first-child { margin-top: -20px; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.701961); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 80px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; }
+  #write { margin-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 1cm; padding-right: 1cm; padding-bottom: 0px; break-after: avoid-page; }
+  .typora-export #write::after { height: 0px; }
+  @page { margin: 20mm 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+
+
+:root {
+    --side-bar-bg-color: #fff;
+    --control-text-color: #777;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhGq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhPq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhHq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhIq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhEq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhFq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhLq3-cXbKD.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmhduz8A.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwkxduz8A.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmxduz8A.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlBduz8A.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmBduz8A.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmRduz8A.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lqDY.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qPK7lqDY.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNK7lqDY.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qO67lqDY.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qN67lqDY.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNq7lqDY.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmhduz8A.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwkxduz8A.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmxduz8A.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlBduz8A.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmBduz8A.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmRduz8A.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: Source Sans Pro, Helvetica Neue, Arial, sans-serif !important;
+    color: #34495e;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6rem;
+    letter-spacing: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#write {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 30px 40px 30px;
+    padding-top: 20px;
+    padding-bottom: 100px;
+}
+
+#write p {
+    /* text-indent: 2rem; */
+    line-height: 1.6rem;
+    word-spacing: .05rem;
+}
+
+#write ol li {
+    padding-left: 0.5rem;
+}
+
+#write>ul:first-child,
+#write>ol:first-child {
+    margin-top: 30px;
+}
+
+body>*:first-child {
+    margin-top: 0 !important;
+}
+
+body>*:last-child {
+    margin-bottom: 0 !important;
+}
+
+a {
+    color: #42b983;
+    font-weight: 600;
+    padding: 0px 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+
+h1 {
+    padding-bottom: .4rem;
+    font-size: 2.2rem;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 1.75rem;
+    line-height: 1.225;
+    margin: 35px 0px 15px 0px;
+}
+
+h3 {
+    font-size: 1.4rem;
+    line-height: 1.43;
+    margin: 20px 0px 7px 0px;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+    color: #777;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
+}
+
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+body>h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h1:first-child+h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h3:first-child,
+body>h4:first-child,
+body>h5:first-child,
+body>h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+    margin-top: 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul,
+ol {
+    padding-left: 30px;
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+blockquote {
+    border-left: 4px solid #42b983;
+    padding: 10px 0px 10px 15px;
+    color: #777;
+    background-color: rgba(66, 185, 131, .1);
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #fafafa;
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr td {
+    border: 1px solid #dfe2e5;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+#write strong {
+    padding: 0px 1px 0 1px;
+}
+
+#write em {
+    padding: 0px 5px 0 2px;
+}
+
+#write table thead th {
+    background-color: #f2f2f2;
+}
+
+#write .CodeMirror-gutters {
+    border-right: none;
+}
+
+#write .md-fences {
+    border: 1px solid #F4F4F4;
+    -webkit-font-smoothing: initial;
+    margin: 0.8rem 0 !important;
+    padding: 0.3rem 0rem !important;
+    line-height: 1.43rem;
+    background-color: #F8F8F8 !important;
+    border-radius: 2px;
+    font-family: Roboto Mono, Source Sans Pro, Monaco, courier, monospace !important;
+    font-size: 0.85rem;
+    word-wrap: normal;
+}
+
+#write .CodeMirror-wrap .CodeMirror-code pre {
+    padding-left: 12px;
+}
+
+#write code, tt {
+    margin: 0 2px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-family: Source Sans Pro, Roboto Mono, Monaco, courier, monospace !important;
+    font-size: 0.92rem;
+    color: #e96900;
+    background-color: #f8f8f8;
+}
+
+#write .md-footnote {
+    background-color: #f8f8f8;
+    color: #e96900;
+}
+
+/* heighlight. */
+#write mark {
+    background-color:#EBFFEB;
+    border-radius: 2px;
+    padding: 2px 4px;
+    margin: 0 2px;
+    color: #222;
+    font-weight: 500;
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+.cm-s-inner .cm-link,
+.cm-s-inner.cm-link {
+    color: #22a2c9;
+}
+
+.cm-s-inner .cm-string {
+    color: #22a2c9;
+}
+
+.md-task-list-item>input {
+    margin-left: -1.3em;
+}
+
+@media screen and (min-width: 914px) {
+    /*body {
+        width: 854px;
+        margin: 0 auto;
+    }*/
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+    background-color: #f8f8f8;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+    bottom: .375rem;
+}
+
+#write>h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write>h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+
+</style>
+</head>
+<body class='typora-export' >
+<div  id='write'  class = 'is-mac'><p><a href='./index.html'>返回到上一页</a></p><hr /><div class='md-toc' mdtype='toc'><p class="md-toc-content"><span class="md-toc-item md-toc-h1" data-ref="n84"><a class="md-toc-inner" style="" href="#header-n84">Lecture 14. Deep Reinforcement Learning</a></span><span class="md-toc-item md-toc-h2" data-ref="n98"><a class="md-toc-inner" style="" href="#header-n98">What is Reinforcement Learning?</a></span><span class="md-toc-item md-toc-h2" data-ref="n113"><a class="md-toc-inner" style="" href="#header-n113">Markov Decision Processes (MDP)</a></span><span class="md-toc-item md-toc-h3" data-ref="n214"><a class="md-toc-inner" style="" href="#header-n214">A simple MDP: Grid World</a></span><span class="md-toc-item md-toc-h3" data-ref="n269"><a class="md-toc-inner" style="" href="#header-n269">Definitions: Value function and Q-value function</a></span><span class="md-toc-item md-toc-h3" data-ref="n271"><a class="md-toc-inner" style="" href="#header-n271">Bellman equation</a></span><span class="md-toc-item md-toc-h3" data-ref="n273"><a class="md-toc-inner" style="" href="#header-n273">Solving for the optimal policy</a></span><span class="md-toc-item md-toc-h2" data-ref="n120"><a class="md-toc-inner" style="" href="#header-n120">Q-Learning</a></span><span class="md-toc-item md-toc-h3" data-ref="n311"><a class="md-toc-inner" style="" href="#header-n311">Q-network Architecture</a></span><span class="md-toc-item md-toc-h3" data-ref="n309"><a class="md-toc-inner" style="" href="#header-n309">（暂时放弃治疗。。。。。）</a></span><span class="md-toc-item md-toc-h2" data-ref="n127"><a class="md-toc-inner" style="" href="#header-n127">Policy Gradients</a></span></p></div><blockquote><p>CS231n 课程的官方地址：<a href='http://cs231n.stanford.edu/index.html' target='_blank' class='url'>http://cs231n.stanford.edu/index.html</a></p><p>该笔记根据的视频课程版本是 <a href='https://www.bilibili.com/video/av17204303/?p=32'>Spring 2017</a>(BiliBili)，PPt 资源版本是 <a href='http://cs231n.stanford.edu/syllabus.html'>Spring 2018</a>.</p></blockquote><h1><a name='header-n84' class='md-header-anchor '></a>Lecture 14. Deep Reinforcement Learning</h1><p>&nbsp;</p><h2><a name='header-n98' class='md-header-anchor '></a>What is Reinforcement Learning?</h2><p><img src='https://i.loli.net/2018/09/14/5b9b09623a6be.png' alt='' referrerPolicy='no-referrer' /></p><p>我们有一个代理和一个环境，环境赋予代理一个状态，反过来，代理将采取行动，然后环境将回馈一个奖励。下一个状态也是如此。这一过程将会继续循环下去，一次一次进行，直到环境给出一个终端状态，结束这个环节。</p><ul><li><p>例子1：Cart-Pole Problem</p><p><img src='https://i.loli.net/2018/09/14/5b9b0a1e0076e.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p></li></ul><ul><li><p>例子2：Robot Locomotion</p><p><img src='https://i.loli.net/2018/09/14/5b9b0a4806aaa.png' alt='' referrerPolicy='no-referrer' /></p></li></ul><ul><li><p>例子3：Atari Games</p><p><img src='https://i.loli.net/2018/09/14/5b9b0a657974d.png' alt='' referrerPolicy='no-referrer' /></p></li><li><p>例子4：Go</p><p><img src='https://i.loli.net/2018/09/14/5b9b0a81e96c5.png' alt='' referrerPolicy='no-referrer' /></p></li></ul><p>&nbsp;</p><h2><a name='header-n113' class='md-header-anchor '></a>Markov Decision Processes (MDP)</h2><p><img src='https://i.loli.net/2018/09/14/5b9b0b65c3c13.png' alt='' referrerPolicy='no-referrer' /></p><p>事实上，一个马尔科夫决策过程就是强化学习问题的数学表达。马尔科夫决策过程满足 <strong>Markov</strong> 性，即当前状态完全刻画了世界的状态。MDP 由一组对象定义，这个对象元组中有 S，也就是所有可能状态的集合；元组中还有 A，所有运动的集合；同时还有 R，也就是奖励的分布函数，给定一个状态一组行动，于是它就是一个从状态行为到奖励的函数映射；还有 P，表示下一个状态的转移概率密度分布是给定一个状态行为组将采取的动作；最后有一个 gamma，折扣因子，它是用来对近期奖励以及远期奖励分配权重的。</p><hr /><p><img src='https://i.loli.net/2018/09/14/5b9b0c3883be5.png' alt='' referrerPolicy='no-referrer' /></p><p>因此，马尔科夫决策过程的工作方式是：令我们的初试时间步骤 t 等于零，然后环境会从初始状态分布 <span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-77-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.155ex" height="2.707ex" viewBox="-39 -831.8 1789 1165.7" role="img" focusable="false" style="vertical-align: -0.776ex; margin-left: -0.091ex;"><defs><path stroke-width="0" id="E79-MJMATHI-70" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path><path stroke-width="0" id="E79-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path stroke-width="0" id="E79-MJMATHI-73" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path><path stroke-width="0" id="E79-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E79-MJMATHI-70" x="0" y="0"></use><use xlink:href="#E79-MJMAIN-28" x="503" y="0"></use><use xlink:href="#E79-MJMATHI-73" x="892" y="0"></use><use xlink:href="#E79-MJMAIN-29" x="1361" y="0"></use></g></svg></span><script type="math/tex" id="MathJax-Element-77">p(s)</script> 中采样，并将一些初始状态设为 0，然后从时间 t 等于零直到完成，我们将遍历这个循环，代理将选择一个动作 <span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-82-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.054ex" height="1.68ex" viewBox="0 -499.9 884.3 723.1" role="img" focusable="false" style="vertical-align: -0.519ex;"><defs><path stroke-width="0" id="E84-MJMATHI-61" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path stroke-width="0" id="E84-MJMATHI-74" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E84-MJMATHI-61" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E84-MJMATHI-74" x="748" y="-213"></use></g></svg></span><script type="math/tex" id="MathJax-Element-82">a_t</script>，环境将从这里获得奖励，也就是给定状态，以及刚刚采取的行动的条件下所获得的奖励，这也是抽样下一个在时间 t+1 给定你的概率分布的状态。然后代理人将收到奖励，进入下一个状态，继续通过这个过程再次循环，选择下一个动作，以此类推，直到结束。</p><p>基于这个，我们可以定义一个策略 <span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-88-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.331ex" height="1.423ex" viewBox="0 -499.9 573 612.5" role="img" focusable="false" style="vertical-align: -0.262ex;"><defs><path stroke-width="0" id="E91-MJMATHI-3C0" d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E91-MJMATHI-3C0" x="0" y="0"></use></g></svg></span><script type="math/tex" id="MathJax-Element-88">\pi</script>，它是一个状态到行为的函数，它指定了在每个状态下要采取的行动，这可以使确定性的，也可以是随机的。而我们现在的目标是要找到你的最佳决策 <span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-94-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.386ex" height="2.065ex" viewBox="0 -776.4 1027.5 889.1" role="img" focusable="false" style="vertical-align: -0.262ex;"><defs><path stroke-width="0" id="E97-MJMATHI-3C0" d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z"></path><path stroke-width="0" id="E97-MJMAIN-2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E97-MJMATHI-3C0" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E97-MJMAIN-2217" x="811" y="513"></use></g></svg></span><script type="math/tex" id="MathJax-Element-94">\pi^*</script>，最大限度地提高你的配权之后的全部奖励之和。在这里可以看到有一些未来的奖励，也可以通过折扣因子来折扣。</p><p>&nbsp;</p><h3><a name='header-n214' class='md-header-anchor '></a>A simple MDP: Grid World</h3><p>让我们来看一个简单的 MDP 的例子：</p><p><img src='https://i.loli.net/2018/09/14/5b9b0e777027d.png' alt='' referrerPolicy='no-referrer' /></p><p>这里有网格世界，里面有网格任务的状态，你可以在网格的任意单元格中，这就是你的状态。根据你的状态采取行动，而这些行动会是简单的动作，比如向右、向左、向上或向下等。而且，每次转换或每个时间步骤都会得到一个负的奖励，你采取的每一个动作都会发生，就像 r 等于 -1。而你的目标是用最少的行动达到上面所示的灰色状态的最终状态之一。那么为了达到终端状态，所花费的时间越长，你将会积累这些负的奖励。</p><hr /><p><img src='https://i.loli.net/2018/09/14/5b9b0f76b5621.png' alt='' referrerPolicy='no-referrer' /></p><p>看一下这里的一个随机策略，一个随机策略将基本上包含在任何给定的状态或者单元格中，你只是随机抽样将要移动的方向，所有方向都有相同的概率。另一方面，我们希望拥有的最优决策基本上是采取行动，把我们推向最进阶终端状态的方向。如上图，如果我们恰好在最终的状态之一，我们应该总是朝着让我们到达这个终点的方向前进，否则，如果你在其他状态，你想要采取的方向会是将使你最接近这些状态之一。</p><hr /><p><img src='https://i.loli.net/2018/09/14/5b9b108e53d65.png' alt='' referrerPolicy='no-referrer' /></p><p>至此，我们已经给出了 MDP 的描述，我们的目的在于找出最佳策略 <span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-94-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.386ex" height="2.065ex" viewBox="0 -776.4 1027.5 889.1" role="img" focusable="false" style="vertical-align: -0.262ex;"><defs><path stroke-width="0" id="E97-MJMATHI-3C0" d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z"></path><path stroke-width="0" id="E97-MJMAIN-2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E97-MJMATHI-3C0" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E97-MJMAIN-2217" x="811" y="513"></use></g></svg></span><script type="math/tex" id="MathJax-Element-94">\pi^*</script>，最佳策略是能够最大化奖励综合的策略。最佳策略所提供的信息是在任意的给定状态下，我们应该采取什么行动来最大化我们将得到的奖励总和。</p><p>那么就有一个问题，我们如何处理 MDP 中的随机性呢？初始状态的抽样转移概率分布都是随机的，而转移概率分布会给我们下一个状态的分布等等。</p><p>我们所要做的就是最大化预期的奖励总和。比较正式地，我们可以写出最优决策 <span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-94-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.386ex" height="2.065ex" viewBox="0 -776.4 1027.5 889.1" role="img" focusable="false" style="vertical-align: -0.262ex;"><defs><path stroke-width="0" id="E97-MJMATHI-3C0" d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z"></path><path stroke-width="0" id="E97-MJMAIN-2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E97-MJMATHI-3C0" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E97-MJMAIN-2217" x="811" y="513"></use></g></svg></span><script type="math/tex" id="MathJax-Element-94">\pi^*</script>，作为这个未来奖励决策的预期总和 <span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-88-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.331ex" height="1.423ex" viewBox="0 -499.9 573 612.5" role="img" focusable="false" style="vertical-align: -0.262ex;"><defs><path stroke-width="0" id="E91-MJMATHI-3C0" d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E91-MJMATHI-3C0" x="0" y="0"></use></g></svg></span><script type="math/tex" id="MathJax-Element-88">\pi</script> 的最大化，其中我们有初始状态，它是采样于状态分布的，我们有行为，这些行为是根据我们的决策和给定状态采样的，然后我们从转移概率分布中抽取下一个状态。</p><p>&nbsp;</p><h3><a name='header-n269' class='md-header-anchor '></a>Definitions: Value function and Q-value function</h3><p><img src='https://i.loli.net/2018/09/14/5b9b121395398.png' alt='' referrerPolicy='no-referrer' /> </p><p>在我们讨论如何找到这个决策之前，我们先来谈谈一些对我们有帮助的定义。具体地说，是有值函数（value function）和 Q 值函数。所以，当我们遵循这个决策的时候，每次迭代都要采取一组行为轨迹，而且我们将把我们的初始状态设为零，<span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-109-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="18.215ex" height="1.936ex" viewBox="0 -555.2 7842.7 833.8" role="img" focusable="false" style="vertical-align: -0.647ex;"><defs><path stroke-width="0" id="E143-MJMATHI-73" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path><path stroke-width="0" id="E143-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E143-MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path stroke-width="0" id="E143-MJMATHI-61" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path stroke-width="0" id="E143-MJMATHI-72" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E143-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E143-MJMATHI-73" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E143-MJMAIN-30" x="663" y="-213"></use><use xlink:href="#E143-MJMAIN-2C" x="922" y="0"></use><g transform="translate(1367,0)"><use xlink:href="#E143-MJMATHI-61" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E143-MJMAIN-30" x="748" y="-213"></use></g><use xlink:href="#E143-MJMAIN-2C" x="2349" y="0"></use><g transform="translate(2794,0)"><use xlink:href="#E143-MJMATHI-72" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E143-MJMAIN-30" x="637" y="-213"></use></g><use xlink:href="#E143-MJMAIN-2C" x="3698" y="0"></use><g transform="translate(4143,0)"><use xlink:href="#E143-MJMATHI-73" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E143-MJMAIN-31" x="663" y="-213"></use></g><use xlink:href="#E143-MJMAIN-2C" x="5066" y="0"></use><g transform="translate(5510,0)"><use xlink:href="#E143-MJMATHI-61" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E143-MJMAIN-31" x="748" y="-213"></use></g><use xlink:href="#E143-MJMAIN-2C" x="6493" y="0"></use><g transform="translate(6938,0)"><use xlink:href="#E143-MJMATHI-72" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E143-MJMAIN-31" x="637" y="-213"></use></g></g></svg></span><script type="math/tex" id="MathJax-Element-109">s_0,a_0,r_0,s_1,a_1,r_1</script> 等等，这样我们就会得到状态、行动和奖励的轨迹。</p><p>那么我们目前的所处的状态有多好呢？任何状态下的价值函数都是从状态 s 的决策到现在的决策之后的预期积累回馈。这是从当前状态开始，期望累积奖励的期望值。</p><p>一个状态+行动组有多好呢？在状态 s 时采取行动 a 有多好呢？我们用一个 Q 值函数来定义这个问题，遵守决策的期望累积奖励，这个函数是在状态 s 下采取行动 a。</p><p>&nbsp;</p><h3><a name='header-n271' class='md-header-anchor '></a>Bellman equation</h3><p><img src='https://i.loli.net/2018/09/14/5b9b139adfb2b.png' alt='' referrerPolicy='no-referrer' /></p><p>那么可以得到最优 Q 值函数就是 Q*，这是我们从给定的状态动作组下得到的最大期望累积奖励。它的定义在上面面。</p><p>接下来我们将看到强化学习中的一个重要的东西，就是 Bellman 等式。我们来考虑一下这个 Q 值函数的最优策略 Q*，这个最优策略 Q* 要满足 Bellman 等式，上面就是它的定义，可以看到这也意味着给定任何状态动作组 s 和 a，这一对的价值就是你将要得到的回馈 r，再加上你最终进入的任何状态的价值，也就是 s&#39;。既然我们知道了最佳决策，也知道要在 s‘ 状态下执行我们能做的最好的行动，那么在状态 s’ 上的值就会成为我们行动上的最大值 Q* 在 s&#39; 转改下的 a&#39;。然后，我们就得到了上面的最佳 Q 值的表达式。一如既往，我们在这里有这样的期望，因为对我们将要结束的状态具有随机性。</p><p>我们也可以从这里推断出我们的最优策略就是在任何状态下按照具体的 Q* 采取最好的行动，Q* 将会告诉我们可以从我们的任何行动中获得最大的未来回馈，所以我们应该采取一个遵循这一方针的决策，然后只采取这个行为就可以带来最佳奖励。</p><p>&nbsp;</p><h3><a name='header-n273' class='md-header-anchor '></a>Solving for the optimal policy</h3><p><img src='https://i.loli.net/2018/09/14/5b9b169637738.png' alt='' referrerPolicy='no-referrer' /></p><p>那么我们该如何求解这个最优策略？解决这个问题的一种方法就是所谓的值迭代算法，我们将通过 Bellman 方程作为迭代更新，在每一步中，我们将通过试图强化 Bellman 方程来改进我们对 Q* 的近似。在一些数学条件下，我们也知道这个序列 Q 和函数 <span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-113-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.636ex" height="2.45ex" viewBox="0 -776.4 1135 1055" role="img" focusable="false" style="vertical-align: -0.647ex;"><defs><path stroke-width="0" id="E149-MJMATHI-51" d="M399 -80Q399 -47 400 -30T402 -11V-7L387 -11Q341 -22 303 -22Q208 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435Q740 255 592 107Q529 47 461 16L444 8V3Q444 2 449 -24T470 -66T516 -82Q551 -82 583 -60T625 -3Q631 11 638 11Q647 11 649 2Q649 -6 639 -34T611 -100T557 -165T481 -194Q399 -194 399 -87V-80ZM636 468Q636 523 621 564T580 625T530 655T477 665Q429 665 379 640Q277 591 215 464T153 216Q153 110 207 59Q231 38 236 38V46Q236 86 269 120T347 155Q372 155 390 144T417 114T429 82T435 55L448 64Q512 108 557 185T619 334T636 468ZM314 18Q362 18 404 39L403 49Q399 104 366 115Q354 117 347 117Q344 117 341 117T337 118Q317 118 296 98T274 52Q274 18 314 18Z"></path><path stroke-width="0" id="E149-MJMATHI-69" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E149-MJMATHI-51" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E149-MJMATHI-69" x="1118" y="-213"></use></g></svg></span><script type="math/tex" id="MathJax-Element-113">Q_i</script> 将收敛到我们的最优 Q* 在 i 趋近于无穷的时候。</p><p>但存在什么问题呢？一个重要问题是：它是不可扩展的（not scalable）。我们必须计算每个状态动作组的 s 值，以便进行迭代更新，但这就有一个问题了，如果你看一下这些游戏的状态，比如我们谈过的 Atari 游戏，将是像素屏幕，这是一个巨大的状态空间。去计算整个状态空间是不可行的。那有什么解决办法呢？我们可以使用函数逼近器来估计 Q 的 s, a，例如，一个神经网络。之前我们已经看到，如果我们要估计一些真正的不知道的复杂函数，那么神经网络就是一个很好的估计方法。</p><p>&nbsp;</p><h2><a name='header-n120' class='md-header-anchor '></a>Q-Learning</h2><p>接下来看看 Q-learning 的形式：</p><p><img src='https://i.loli.net/2018/09/14/5b9b1883a9d6b.png' alt='' referrerPolicy='no-referrer' /></p><p>我们要做的是使用函数逼近器来估计我们的动作值函数。如果这个函数逼近器是最近被使用过的，比如深度神经网络，那么这就被称为 deep Q-learning！</p><p>在这种情况下，我们也有我们的函数参数 <span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-23-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.089ex" height="2.065ex" viewBox="0 -776.4 469 889.1" role="img" focusable="false" style="vertical-align: -0.262ex;"><defs><path stroke-width="0" id="E23-MJMATHI-3B8" d="M35 200Q35 302 74 415T180 610T319 704Q320 704 327 704T339 705Q393 701 423 656Q462 596 462 495Q462 380 417 261T302 66T168 -10H161Q125 -10 99 10T60 63T41 130T35 200ZM383 566Q383 668 330 668Q294 668 260 623T204 521T170 421T157 371Q206 370 254 370L351 371Q352 372 359 404T375 484T383 566ZM113 132Q113 26 166 26Q181 26 198 36T239 74T287 161T335 307L340 324H145Q145 321 136 286T120 208T113 132Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E23-MJMATHI-3B8" x="0" y="0"></use></g></svg></span><script type="math/tex" id="MathJax-Element-23">\theta</script>，所以我们的 Q 值函数是由我们的神经网络的这些权重 <span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-23-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.089ex" height="2.065ex" viewBox="0 -776.4 469 889.1" role="img" focusable="false" style="vertical-align: -0.262ex;"><defs><path stroke-width="0" id="E23-MJMATHI-3B8" d="M35 200Q35 302 74 415T180 610T319 704Q320 704 327 704T339 705Q393 701 423 656Q462 596 462 495Q462 380 417 261T302 66T168 -10H161Q125 -10 99 10T60 63T41 130T35 200ZM383 566Q383 668 330 668Q294 668 260 623T204 521T170 421T157 371Q206 370 254 370L351 371Q352 372 359 404T375 484T383 566ZM113 132Q113 26 166 26Q181 26 198 36T239 74T287 161T335 307L340 324H145Q145 321 136 286T120 208T113 132Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E23-MJMATHI-3B8" x="0" y="0"></use></g></svg></span><script type="math/tex" id="MathJax-Element-23">\theta</script>  决定的。</p><hr /><p><img src='https://i.loli.net/2018/09/14/5b9b194b3f47c.png' alt='' referrerPolicy='no-referrer' /></p><p>好，给出这个函数近似后，我们如何求解我们的最优策略？记得我们要找一个满足 Bellman 方程的 Q 函数，所以我们想要强制使这个 Bellman 方程成立了，当我们有这个神经网络逼近我们的 Q 函数时，我们可以做的是可以尝试训练这个损失函数并最小化 Bellman 方程式的误差，或者 Q(s, a) 离目标的距离（右边的 <span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-128-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.937ex" height="1.936ex" viewBox="0 -555.2 834 833.8" role="img" focusable="false" style="vertical-align: -0.647ex;"><defs><path stroke-width="0" id="E167-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E167-MJMATHI-69" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E167-MJMATHI-79" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E167-MJMATHI-69" x="692" y="-213"></use></g></svg></span><script type="math/tex" id="MathJax-Element-128">y_i</script> ），这就是之前看到的 Bellman 方程。</p><p>我们要用这些损失函数的前向传播来试图最小化这个误差，然后进行后向传递，梯度更新只会是采取中损失的梯度，就我们的网络参数的 <span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-23-Frame" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.089ex" height="2.065ex" viewBox="0 -776.4 469 889.1" role="img" focusable="false" style="vertical-align: -0.262ex;"><defs><path stroke-width="0" id="E23-MJMATHI-3B8" d="M35 200Q35 302 74 415T180 610T319 704Q320 704 327 704T339 705Q393 701 423 656Q462 596 462 495Q462 380 417 261T302 66T168 -10H161Q125 -10 99 10T60 63T41 130T35 200ZM383 566Q383 668 330 668Q294 668 260 623T204 521T170 421T157 371Q206 370 254 370L351 371Q352 372 359 404T375 484T383 566ZM113 132Q113 26 166 26Q181 26 198 36T239 74T287 161T335 307L340 324H145Q145 321 136 286T120 208T113 132Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E23-MJMATHI-3B8" x="0" y="0"></use></g></svg></span><script type="math/tex" id="MathJax-Element-23">\theta</script>。所以我们的目标是产生像我们正在逐步尝试迭代使 Q 函数更接近我的目标值的效果。</p><p>来看个例子：Case Study: Playing Atari Games</p><p><img src='https://i.loli.net/2018/09/14/5b9b1adad3963.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><h3><a name='header-n311' class='md-header-anchor '></a>Q-network Architecture</h3><h3><a name='header-n309' class='md-header-anchor '></a>（暂时放弃治疗。。。。。）</h3><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n127' class='md-header-anchor '></a>Policy Gradients</h2><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><hr /><p><a href='./index.html'>返回到上一页</a> | <a href='./cs231n_14.html'>返回到顶部</a></p><hr /><p><br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+<br></p><script type="application/json" class="js-hypothesis-config">
+  {
+    "openSidebar": false,
+    "showHighlights": true,
+    "theme": classic,
+    "enableExperimentalNewNoteButton": true
+  }
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script><p>&nbsp;</p></div>
+</body>
+</html>
