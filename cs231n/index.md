@@ -19,7 +19,7 @@ date: 2018-08-22
 
 
 
-## Original Posts
+## Original Works
 
 - [一段关于神经网络的故事](./cs231n_story_MLP.html)（**Original**，30671字 + 多图）
 
@@ -43,7 +43,10 @@ date: 2018-08-22
 - [Lecture 12. Generative Models](./cs231n_12.html)
 - [Lecture 13. Visualizing and Understanding](./cs231n_13.html)
 - [Lecture 14. Deep Reinforcement Learning](./cs231n_14.html)
-- Lecture 15. 
+
+---
+
+- [Guest Lecture. Efficient Methods and Hardware for Deep Learning](./cs231n_Efficient Methods and Hardware for Deep Learning.html)(Spring 2017)
 
 
 
