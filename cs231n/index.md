@@ -23,9 +23,7 @@ date: 2018-08-22
 
 - [一段关于神经网络的故事](./cs231n_story_MLP.html)（**Original**，30671字 + 多图）
 
-
-
-
+---
 
 ## Notes from Lecture Video and Slices
 
@@ -46,7 +44,10 @@ date: 2018-08-22
 
 ---
 
-- [Guest Lecture. Efficient Methods and Hardware for Deep Learning](./cs231n_Efficient Methods and Hardware for Deep Learning.html)(Spring 2017)
+- [Guest Lecture. Efficient Methods and Hardware for Deep Learning](./cs231n_Efficient Methods and Hardware for Deep Learning.html) by [**Song Han**](https://stanford.edu/~songhan/) (Spring 2017)
+- [Guest Lecture. Adversarial Examples and Adversarial Training](./cs231n_Guest Lecture. Adversarial Examples and Adversarial Training.html) by [**Ian Goodfellow**](http://www.iangoodfellow.com/) (Spring 2017)
+
+---
 
 
 
@@ -88,6 +89,8 @@ date: 2018-08-22
 
   > From: [Andrej Karpathy blog](http://karpathy.github.io/)'s 《The Unreasonable Effectiveness of Recurrent Neural Networks (2015)》
 
+---
+
 
 
 ## How to Comment
@@ -105,6 +108,7 @@ With use of the [hypothes.is](https://hypothes.is/) extension (right-sided), y
 > - [ ] 根据英文字幕更新 Spring 2018 视频内的课程内容
 > - [ ] 完善和更新所有提及的文献 paper
 > - [ ] 尽可能将图片化内容信息改写为文本 markdown
+> - [ ] 需要细致，完整的给出插图以及 Slide 等来源或作者信息。
 
 
 
