@@ -35,6 +35,26 @@ By [Sebastian Thrun](http://robots.stanford.edu/) 《[Probabilistic Robotics](ht
 
 
 
+易获得：
+
+先验概率  离散
+
+样本分布概率密度（总体概率密度）  不考虑类别的情况下
+
+类条件概率密度    似然函数
+
+
+
+
+
+后验概率  对决策有意义
+
+条件错误概率
+
+平均错误概率
+
+正确率 
+
 
 
 
