@@ -5,9 +5,6 @@ date: 2018-08-22
 
 [返回到首页](../index.html)
 
-<script id="dsq-count-scr" src="//iphysresearch.disqus.com/count.js" async></script>
-<a href="http://foo.com/bar.html#disqus_thread">Link</a>
-
 ---
 
 [TOC]
@@ -123,7 +120,6 @@ With use of the [hypothes.is](https://hypothes.is/) extension (right-sided), y
 
 [返回到首页](../index.html) | [返回到顶部](./index.html)
 
----
 
 <div id="disqus_thread"></div>
 <script>
@@ -145,7 +141,7 @@ s.setAttribute('data-timestamp', +new Date());
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
----
+
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 <br>
