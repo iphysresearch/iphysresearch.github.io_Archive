@@ -38,6 +38,16 @@ date: 2018-08-22
 
 [Summary] Samir A Hamouda and Salima Y Alwarfaliy. "**Gravitational Waves: The Physics of Space and Time**"[PDF](https://s3.amazonaws.com/academia.edu.documents/57199376/Gravitational_waves__1.pdf?AWSAccessKeyId=AKIAIWOWYYGZ2Y53UL3A&Expires=1537374292&Signature=umZx0ZmQYXLM9%2Fb2bu1kl5T5hN0%3D&response-content-disposition=inline%3B%20filename%3DGravitational_Waves_The_Physics_of_Space.pdf)
 
+- What reading would you recommend for new grad students working on gravitational waves and compact object astrophysics?
+  - "**Physics, Astrophysics and Cosmology with Gravitational Waves**" https://arxiv.org/pdf/0903.0338.pdf
+  - "**Gravitational-wave sensitivity curves**" https://arxiv.org/pdf/1408.0740.pdf
+  - "**Theory of Gravitational Waves**" https://arxiv.org/pdf/1607.04202.pdf
+  - "**Gravitational wave sources in the era of multi-frequency gravitational wave astronomy**" https://arxiv.org/pdf/1610.05309.pdf
+  - "**Merging stellar-mass binary black holes**" https://arxiv.org/pdf/1806.05820.pdf
+  - **gravitational-wave resources** http://hosting.astro.cornell.edu/~favata/gwresources.html
+  - https://gr-asp.net | Serving last 13984 papers from gr-qc and related categories
+  - 
+
 ## Machine Learning
 
 [[Paper Summary](./Deep neural networks to enable real-time multimessenger astrophysics.html)] George D, Huerta E A. "**Deep neural networks to enable real-time multimessenger astrophysics**"[J]. Physical Review D, 2018, 97(4): 044039. (**First attempt**)
