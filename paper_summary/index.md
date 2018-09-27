@@ -22,7 +22,11 @@ date: 2018-08-22
 
 
 
+# :racing_car: **A Paper A day**
 
+Felt like I wasn’t reading enough – and what I was reading wasn’t sinking in enough. I also wanted to keep track of my sources in a more controlled manner. As a part of adding everything to my JabRef (maybe…), I figured I would write up my comments on papers. 
+
+The goal is to read and comment once a day. and this [post](./APaperADay.html) will be updated day by day according to the reading process.
 
 
 
@@ -46,18 +50,11 @@ date: 2018-08-22
   - "**Merging stellar-mass binary black holes**" https://arxiv.org/pdf/1806.05820.pdf
   - **gravitational-wave resources** http://hosting.astro.cornell.edu/~favata/gwresources.html
   - https://gr-asp.net | Serving last 13984 papers from gr-qc and related categories
-  - 
+  - https://www.black-holes.org <u>S</u>imulating E<u>x</u>treme <u>S</u>pacetimes (SXS)
 
 ## Machine Learning
 
 [[Paper Summary](./Deep neural networks to enable real-time multimessenger astrophysics.html)] George D, Huerta E A. "**Deep neural networks to enable real-time multimessenger astrophysics**"[J]. Physical Review D, 2018, 97(4): 044039. (**First attempt**)
-
-
-
-```
-:msg:archivefetch --->  Attempting to fetch p5.26-net-ssleay-1.850.0_0.darwin_17.x86_64.tbz2 from https://pek.cn.packages.macports.org/macports/packages/p5.26-net-ssleay
-:debug:archivefetch Fetching archive failed: The requested URL returned error: 404 Not Found
-```
 
 
 
@@ -81,9 +78,12 @@ Noise
 ## Maybe helpful:
 
 - Rotation-invariant convolutional neural networks for galaxy morphology prediction
+- Deep learning for time series classification
 - 《Learning Confidence for Out-of-Distribution Detection in Neural Networks》T DeVries, G W. Taylor [University of Guelph & Vector Institute] (2018) http://t.cn/RFPZvFB 
+- 【流形学习与谱方法】《Manifold Learning and Spectral Methods》by David Pfau [DeepMind][*O*网页链接](http://t.cn/RdzYMu9) 
 - GAN: https://arxiv.org/pdf/1701.00160.pdf
 - 《Anomaly Detection with Generative Adversarial Networks for Multivariate Time Series》D Li, D Chen, J Goh, S Ng [National University of Singapore] (2018) http://t.cn/EvXuiAS 
+- 【最新可复现图像去噪算法汇总】’Collection of popular and reproducible image denoising works.' by Bihan Wen GitHub: [*O*网页链接](http://t.cn/RkREnEk) another by Wenhan Yang [*O*网页链接](http://t.cn/RkREeyJ) 
 
 # :cloud_with_rain: Denoising & Noise Modeling
 
