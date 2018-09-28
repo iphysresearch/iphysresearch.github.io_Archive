@@ -29,6 +29,8 @@ date: 2018-09-28
 
 **Identifying Generalization Properties in Neural Networks**. H Wang, N S Keskar, C Xiong, R Socher [Salesforce Research] (2018) [arXiv:1809.07402](https://arxiv.org/abs/1809.07402) [comment]
 
+**ClusterGAN : Latent Space Clustering in Generative Adversarial Networks**. S Mukherjee, H Asnani, E Lin, S Kannan [University of Washington] (2018) [arXiv:1809.03627](https://arxiv.org/abs/1809.03627) [comment]
+
 **Are adversarial examples inevitable?**. A Shafahi, W. R Huang, C Studer, S Feizi, T Goldstein (2018) [arXiv:1809.02104](https://arxiv.org/abs/1809.02104) [comment]
 
 **Accelerating Natural Gradient with Higher-Order Invariance**. by Yang Song [Post](https://ermongroup.github.io/blog/geo/) [paper](http://proceedings.mlr.press/v80/song18a/song18a.pdf) [comment]
