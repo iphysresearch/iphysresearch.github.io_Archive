@@ -93,7 +93,7 @@ date: 2018-09-28
 
 **Understanding Convolutional Neural Network Training with Information Theory**. S Yu, R Jenssen, J C. Principe [University of Florida & University of Tromsø] (2018) [arXiv:1804.06537](https://arxiv.org/abs/1804.06537) [comment]
 
-
+**Learning Confidence for Out-of-Distribution Detection in Neural Networks**. T DeVries, G W. Taylor [University of Guelph & Vector Institute] (2018) [arXiv:1802.04865](https://arxiv.org/abs/1802.04865) [comment]
 
 **Generating Natural Adversarial Examples**. Z Zhao, D Dua, S Singh [University of California, Irvine] (2017) [arXiv:1710.11342](https://arxiv.org/abs/1710.11342) [Github](https://github.com/zhengliz/natural-adversary) [comment]
 
