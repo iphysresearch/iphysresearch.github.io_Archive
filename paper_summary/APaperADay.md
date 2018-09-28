@@ -29,6 +29,8 @@ date: 2018-09-28
 
 **Identifying Generalization Properties in Neural Networks**. H Wang, N S Keskar, C Xiong, R Socher [Salesforce Research] (2018) [arXiv:1809.07402](https://arxiv.org/abs/1809.07402) [comment]
 
+**Deep learning for time series classification: a review**. H I Fawaz, G Forestier, J Weber, L Idoumghar, P Muller [Université Haute Alsace] (2018) [arXiv:1809.04356](https://arxiv.org/abs/1809.04356) [comment]
+
 **ClusterGAN : Latent Space Clustering in Generative Adversarial Networks**. S Mukherjee, H Asnani, E Lin, S Kannan [University of Washington] (2018) [arXiv:1809.03627](https://arxiv.org/abs/1809.03627) [comment]
 
 **Are adversarial examples inevitable?**. A Shafahi, W. R Huang, C Studer, S Feizi, T Goldstein (2018) [arXiv:1809.02104](https://arxiv.org/abs/1809.02104) [comment]
