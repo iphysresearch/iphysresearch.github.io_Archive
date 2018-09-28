@@ -1,8 +1,23 @@
+---
+title: A Paper A Day
+date: 2018-09-28
+---
+
+[返回到首页](../index.html) | [返回到 Paper Summary](./index.html)
+
+---
+
+![](https://i.loli.net/2018/09/28/5bad80bf9e4bf.png)
+
+---
 
 
 
+# A Paper A Day
 
-
+> Felt like I wasn’t reading enough – and what I was reading wasn’t sinking in enough. I also wanted to keep track of my sources in a more controlled manner. As a part of adding everything to my JabRef (maybe…), I figured I would write up my comments on papers. 
+>
+> The goal is to read and comment once a day. and this [post](./APaperADay.html) will be updated day by day according to the reading process.
 
 
 
@@ -83,6 +98,47 @@
 
 
 
+
+
+
+---
+
+[返回到首页](../index.html) | [返回到顶部](./APaperADay.html)
+
+
+<div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://iphysresearch.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+<br>
+
+<script type="application/json" class="js-hypothesis-config">
+  {
+    "openSidebar": false,
+    "showHighlights": true,
+    "theme": classic,
+    "enableExperimentalNewNoteButton": true
+  }
+</script>
+<script async src="https://hypothes.is/embed.js"></script>
 
 
 
