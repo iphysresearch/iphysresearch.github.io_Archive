@@ -21,6 +21,8 @@ date: 2018-09-28
 
 
 
+**An analytic theory of generalization dynamics and transfer learning in deep linear networks**. A K. Lampinen, S Ganguli [Stanford University] (2018) [arXiv:1809.10374](https://arxiv.org/abs/1809.10374) [comment]
+
 **Why scatter plots suggest causality, and what we can do about it**. C T. Bergstrom, J D. West [University of Washington] (2018) [arXiv:1809.09328](https://arxiv.org/abs/1809.09328) [comment] 
 
 **Human activity recognition based on time series analysis using U-Net**. Y Zhang, Y Zhang, Z Zhang, J Bao, Y Song [Beijing University of Posts and Telecommunications & AIdong Super AI] (2018). [arXiv:1809.08113](https://arxiv.org/abs/1809.08113) [comment] 
