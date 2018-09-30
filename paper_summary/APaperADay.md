@@ -21,6 +21,8 @@ date: 2018-09-28
 
 
 
+**Large Scale GAN Training for High Fidelity Natural Image Synthesis** | [OpenReview](https://openreview.net/forum?id=B1xsqj09Fm). (2018)  [comment]
+
 **An analytic theory of generalization dynamics and transfer learning in deep linear networks**. A K. Lampinen, S Ganguli [Stanford University] (2018) [arXiv:1809.10374](https://arxiv.org/abs/1809.10374) [comment]
 
 **Why scatter plots suggest causality, and what we can do about it**. C T. Bergstrom, J D. West [University of Washington] (2018) [arXiv:1809.09328](https://arxiv.org/abs/1809.09328) [comment] 
