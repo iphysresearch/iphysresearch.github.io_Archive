@@ -21,6 +21,8 @@ date: 2018-09-28
 
 
 
+**Over-Optimization of Academic Publishing Metrics: Observing Goodhart's Law in Action**. M Fire, C Guestrin [University of Washington] (2018) [arXiv:1809.07841](https://arxiv.org/abs/1809.07841) [comment]
+
 **On the loss landscape of a class of deep neural networks with no bad local valleys**. Q Nguyen, M C Mukkamala, M Hein [Saarland University & University of Tübingen] (2018) [arXiv:1809.10749](https://arxiv.org/abs/1809.10749) [comment]
 
 **Large Scale GAN Training for High Fidelity Natural Image Synthesis** | [OpenReview](https://openreview.net/forum?id=B1xsqj09Fm). (2018)  [comment]
