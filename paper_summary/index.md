@@ -46,13 +46,15 @@ The goal is to read and comment once a day. and this [post](./APaperADay.html) w
 
 - What reading would you recommend for new grad students working on gravitational waves and compact object astrophysics?
   - "**Physics, Astrophysics and Cosmology with Gravitational Waves**" https://arxiv.org/pdf/0903.0338.pdf
+  - "**The Geometry of Gravitational Wave Detection**" https://dcc.ligo.org/public/0106/T1300666/003/Whelan_geometry.pdf
   - "**Gravitational-wave sensitivity curves**" https://arxiv.org/pdf/1408.0740.pdf
   - "**Theory of Gravitational Waves**" https://arxiv.org/pdf/1607.04202.pdf
   - "**Gravitational wave sources in the era of multi-frequency gravitational wave astronomy**" https://arxiv.org/pdf/1610.05309.pdf
+  - "**Gravitational waves from orbiting binaries without general relativity: a tutorial**" https://arxiv.org/pdf/1710.04635.pdf
   - "**Merging stellar-mass binary black holes**" https://arxiv.org/pdf/1806.05820.pdf
   - **gravitational-wave resources** http://hosting.astro.cornell.edu/~favata/gwresources.html
   - https://gr-asp.net | Serving last 13984 papers from gr-qc and related categories
-  - https://www.black-holes.org <u>S</u>imulating E<u>x</u>treme <u>S</u>pacetimes (SXS)
+  - https://www.black-holes.org <u>S</u>imulating E<u>x</u>tremef <u>S</u>pacetimes (SXS)
 
 ## Machine Learning
 
