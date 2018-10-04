@@ -21,6 +21,12 @@ date: 2018-09-28
 
 
 
+
+
+**Taming VAEs**. D J Rezende, F Viola [DeepMind] (2018) [arXiv:1810.00597](https://arxiv.org/abs/1810.00597) [comment]
+
+**Adversarial Attacks and Defences: A Survey**. A Chakraborty, M Alam, V Dey, A Chattopadhyay, D Mukhopadhyay [Indian Institute of Technology & The Ohio State University & Nanyang Technological University] (2018) [arXiv:1810.00069](https://arxiv.org/abs/1810.00069) [comment]
+
 **Over-Optimization of Academic Publishing Metrics: Observing Goodhart's Law in Action**. M Fire, C Guestrin [University of Washington] (2018) [arXiv:1809.07841](https://arxiv.org/abs/1809.07841) [comment]
 
 **On the loss landscape of a class of deep neural networks with no bad local valleys**. Q Nguyen, M C Mukkamala, M Hein [Saarland University & University of Tübingen] (2018) [arXiv:1809.10749](https://arxiv.org/abs/1809.10749) [comment]
