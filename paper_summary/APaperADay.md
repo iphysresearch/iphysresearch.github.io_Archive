@@ -21,7 +21,11 @@ date: 2018-09-28
 
 
 
+**Spurious samples in deep generative models: bug or feature?**. B Kégl, M Cherti, A Kazakçı [CNRS/Universite Paris-Saclay & PSL Research University] (2018) [arXiv:1810.01876](https://arxiv.org/abs/1810.01876) [comment]
 
+**Inhibited Softmax for Uncertainty Estimation in Neural Networks**. M Możejko, M Susik, R Karczewski [Sigmoidal] (2018)  [arXiv:1810.01861](https://arxiv.org/abs/1810.01861) [GitHub](https://github.com/MSusik/Inhibited-softmax) [comment]
+
+**Deep processing of structured data**. Ł Maziarka, M Śmieja, A Nowak, J Tabor, Ł Struski, P Spurek [Jagiellonian University] (2018) [arXiv:1810.01989](https://arxiv.org/abs/1810.01989) [comment]
 
 **Taming VAEs**. D J Rezende, F Viola [DeepMind] (2018) [arXiv:1810.00597](https://arxiv.org/abs/1810.00597) [comment]
 
