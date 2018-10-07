@@ -21,6 +21,8 @@ date: 2018-09-28
 
 
 
+**Interpreting Adversarial Robustness: A View from Decision Surface in Input Space**. F Yu, C Liu, Y Wang, X Chen [George Mason University & Clarkson University & Northeastern University] (2018) [arXiv:1810.00144](https://arxiv.org/abs/1810.00144) [comment]
+
 **Spurious samples in deep generative models: bug or feature?**. B Kégl, M Cherti, A Kazakçı [CNRS/Universite Paris-Saclay & PSL Research University] (2018) [arXiv:1810.01876](https://arxiv.org/abs/1810.01876) [comment]
 
 **Inhibited Softmax for Uncertainty Estimation in Neural Networks**. M Możejko, M Susik, R Karczewski [Sigmoidal] (2018)  [arXiv:1810.01861](https://arxiv.org/abs/1810.01861) [GitHub](https://github.com/MSusik/Inhibited-softmax) [comment]
