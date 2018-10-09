@@ -125,7 +125,7 @@ date: 2018-09-28
 
 **Time Series Classification Using Multi-Channels Deep Convolutional Neural Networks**. Yi Zheng, Qi Liu, Enhong Chen, Yong Ge, and J. Leon Zhao [USTC, et al.] (2014) [WAIM2014](http://staff.ustc.edu.cn/~cheneh/paper_pdf/2014/Yi-Zheng-WAIM2014.pdf) [comment]
 
-
+**Deep Learning in Neural Networks: An Overview**. Ju ̈rgen Schmidhuber [University of Lugano & SUPSI, Switzerland] (2014) [arXiv:1404.7828](https://arxiv.org/abs/1404.7828) [comment]
 
 
 
