@@ -119,7 +119,11 @@ date: 2018-09-28
 
 **Generating Natural Adversarial Examples**. Z Zhao, D Dua, S Singh [University of California, Irvine] (2017) [arXiv:1710.11342](https://arxiv.org/abs/1710.11342) [Github](https://github.com/zhengliz/natural-adversary) [comment]
 
+**Deep Learning for Time-Series Analysis**. John Gamboa [University of Kaiserslautern, Germany] (2017) [arXiv:1701.01887](https://arxiv.org/abs/1701.01887) [comment]
 
+**Deep Convolutional Neural Networks On Multichannel Time Series For Human Activity Recognition**. Jian Bo Yang, Minh Nhut Nguyen, Phyo Phyo San, Xiao Li Li, Shonali Krishnaswamy (2015) [IJCAI2015](http://www.aaai.org/ocs/index.php/IJCAI/IJCAI15/paper/download/10710/11297) [comment]
+
+**Time Series Classification Using Multi-Channels Deep Convolutional Neural Networks**. Yi Zheng, Qi Liu, Enhong Chen, Yong Ge, and J. Leon Zhao [USTC, et al.] (2014) [WAIM2014](http://staff.ustc.edu.cn/~cheneh/paper_pdf/2014/Yi-Zheng-WAIM2014.pdf) [comment]
 
 
 

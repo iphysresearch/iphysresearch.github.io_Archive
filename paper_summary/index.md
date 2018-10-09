@@ -121,7 +121,7 @@ Noise
 
 - DeVries T, Taylor G W. "**Learning Confidence for Out-of-Distribution Detection in Neural Networks**"[J]. arXiv:1802.04865, (2018).
 
-# ---
+---
 
 # :surfer: Survey & Review
 
