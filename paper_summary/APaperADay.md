@@ -21,6 +21,8 @@ date: 2018-09-28
 
 
 
+**Deep convolutional Gaussian processes**. K Blomqvist, S Kaski, M Heinonen [Aalto university] (2018) [arXiv:1810.03052](https://arxiv.org/abs/1810.03052) [GitHub](https://github.com/kekeblom/DeepCGP) [comment]
+
 **Learning Confidence Sets using Support Vector Machines**. W Wang, X Qiao [Binghamton University] (2018) [arXiv:1809.10818](https://arxiv.org/abs/1809.10818) [comment]
 
 **Interpreting Adversarial Robustness: A View from Decision Surface in Input Space**. F Yu, C Liu, Y Wang, X Chen [George Mason University & Clarkson University & Northeastern University] (2018) [arXiv:1810.00144](https://arxiv.org/abs/1810.00144) [comment]

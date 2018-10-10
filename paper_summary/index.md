@@ -56,6 +56,11 @@ The goal is to read and comment once a day. and this [post](./APaperADay.html) w
   - https://gr-asp.net | Serving last 13984 papers from gr-qc and related categories
   - https://www.black-holes.org <u>S</u>imulating E<u>x</u>tremef <u>S</u>pacetimes (SXS)
 
+1. Jaranowski, Piotr, Andrzej Krolak, and Bernard F. Schutz. "Data analysis of gravitational-wave signals from spinning neutron stars: The signal and its detection." *Physical Review D* 58.6 (1998): 063001.
+2. Jaranowski, Piotr, and Andrzej Krolak. "Data analysis of gravitational-wave signals from spinning neutron stars. II. Accuracy of estimation of parameters." *Physical Review D*59.6 (1999): 063003.
+3. Jaranowski, Piotr, and Andrzej Krolak. "Data analysis of gravitational-wave signals from spinning neutron stars. III. Detection statistics and computational requirements." *Physical Review D* 61.6 (2000): 062001.
+4. Astone P, Borkowski K M, Jaranowski P, et al. Data analysis of gravitational-wave signals from spinning neutron stars. IV. An all-sky search[J]. Physical Review D, 2002, 65(4): 042003.
+
 ## Machine Learning
 
 [[Paper Summary](./Deep neural networks to enable real-time multimessenger astrophysics.html)] George D, Huerta E A. "**Deep neural networks to enable real-time multimessenger astrophysics**"[J]. Physical Review D, 2018, 97(4): 044039. (**First attempt**)
