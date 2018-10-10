@@ -21,9 +21,15 @@ date: 2018-09-28
 
 
 
+**Local Explanation Methods for Deep Neural Networks Lack Sensitivity to Parameter Values**. J Adebayo, J Gilmer, I Goodfellow, B Kim [Google Brain] (2018) [arXiv:1810.03307](https://arxiv.org/abs/1810.03307) [comment]
+
+**Sanity Checks for Saliency Maps**. J Adebayo, J Gilmer, M Muelly, I Goodfellow, M Hardt, B Kim [Google Brain] (2018) [arXiv:1810.03292](https://arxiv.org/abs/1810.03292) [comment]
+
 **Deep convolutional Gaussian processes**. K Blomqvist, S Kaski, M Heinonen [Aalto university] (2018) [arXiv:1810.03052](https://arxiv.org/abs/1810.03052) [GitHub](https://github.com/kekeblom/DeepCGP) [comment]
 
 **Learning Confidence Sets using Support Vector Machines**. W Wang, X Qiao [Binghamton University] (2018) [arXiv:1809.10818](https://arxiv.org/abs/1809.10818) [comment]
+
+**Learning with Random Learning Rates**. L Blier, P Wolinski, Y Ollivier [Facebook AI Research & Universite Paris Sud] (2018) [arXiv:1810.01322](https://arxiv.org/abs/1810.01322) [Github](https://github.com/leonardblier/alrao) [comment]
 
 **Interpreting Adversarial Robustness: A View from Decision Surface in Input Space**. F Yu, C Liu, Y Wang, X Chen [George Mason University & Clarkson University & Northeastern University] (2018) [arXiv:1810.00144](https://arxiv.org/abs/1810.00144) [comment]
 
