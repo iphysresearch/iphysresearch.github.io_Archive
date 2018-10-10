@@ -119,6 +119,8 @@ date: 2018-09-28
 
 **Learning Confidence for Out-of-Distribution Detection in Neural Networks**. T DeVries, G W. Taylor [University of Guelph & Vector Institute] (2018) [arXiv:1802.04865](https://arxiv.org/abs/1802.04865) [comment]
 
+**UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction**. Leland McInnes and John Healy [Tutte Institute for Mathematics and Computing] (2018) [arXiv:1802.03426](https://arxiv.org/abs/1802.03426) [Github](https://github.com/lmcinnes/umap) [comment]
+
 **Generating Natural Adversarial Examples**. Z Zhao, D Dua, S Singh [University of California, Irvine] (2017) [arXiv:1710.11342](https://arxiv.org/abs/1710.11342) [Github](https://github.com/zhengliz/natural-adversary) [comment]
 
 **Deep Learning for Time-Series Analysis**. John Gamboa [University of Kaiserslautern, Germany] (2017) [arXiv:1701.01887](https://arxiv.org/abs/1701.01887) [comment]
