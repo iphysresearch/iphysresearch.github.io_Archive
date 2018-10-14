@@ -21,7 +21,7 @@ date: 2018-09-28
 
 
 
-**A Survey on Deep Learning: Algorithms, Techniques, and Applications**. Pouyanfar S, Sadiq S, Yan Y, et al [ACM Computing Surveys (CSUR)] (2018) ([pdf](https://dl.acm.org/citation.cfm?id=3234150)) ([专知](https://mp.weixin.qq.com/s/AQrgvjFPXUpqfqQQgOFN9A)) [comment]
+
 
 **A Tale of Three Probabilistic Families: Discriminative, Descriptive and Generative Models**. Y N Wu, R Gao, T Han, S Zhu [UCLA] (2018) [arXiv:1810.04261](https://arxiv.org/abs/1810.04261) [comment]
 
