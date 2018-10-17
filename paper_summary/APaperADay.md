@@ -21,6 +21,8 @@ date: 2018-09-28
 
 
 
+**Refacing: reconstructing anonymized facial features using GANs**. D Abramian, A Eklund [Linkoping University] (2018) [arXiv:1810.06455](https://arxiv.org/abs/1810.06455) [comment]
+
 **Quaternion Convolutional Neural Networks**. Xuanyu Zhu / Yi Xu / Hongteng Xu / Changjian Chen. [Shanghai Jiao Tong University & Duke University] (ECCV2018) ([pdf](http://openaccess.thecvf.com/content_ECCV_2018/html/Xuanyu_Zhu_Quaternion_Convolutional_Neural_ECCV_2018_paper.html)) [comment]
 
 **A Survey on Deep Learning: Algorithms, Techniques, and Applications**. Pouyanfar S, Sadiq S, Yan Y, et al [ACM Computing Surveys (CSUR)] (2018) ([pdf](https://dl.acm.org/citation.cfm?id=3234150)) ([专知](https://mp.weixin.qq.com/s/AQrgvjFPXUpqfqQQgOFN9A)) [comment]
