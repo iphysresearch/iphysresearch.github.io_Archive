@@ -23,13 +23,13 @@ date: 2018-09-28
 
 **Approximate Fisher Information Matrix to Characterise the Training of Deep Neural Networks**. Z Liao, T Drummond, I Reid, G Carneiro [University of Adelaide & Monash University] (2018) [arXiv:1810.06767](https://arxiv.org/abs/1810.06767)  [GitHub](https://github.com/zhibinliao89/fisher.info.mat.torch) 
 
-**Discriminator Rejection Sampling**. Samaneh Azadi, Catherine Olsson, Trevor Darrell, Ian Goodfellow, Augustus Odena   [UC Berkeley & Google Brain]. [arXiv:1810.06758](https://arxiv.org/abs/1810.06758) [comment]
+**Discriminator Rejection Sampling**. Samaneh Azadi, Catherine Olsson, Trevor Darrell, Ian Goodfellow, Augustus Odena   [UC Berkeley & Google Brain]. [arXiv:1810.06758](https://arxiv.org/abs/1810.06758)
 
-**Refacing: reconstructing anonymized facial features using GANs**. D Abramian, A Eklund [Linkoping University] (2018) [arXiv:1810.06455](https://arxiv.org/abs/1810.06455) [comment]
+**Refacing: reconstructing anonymized facial features using GANs**. D Abramian, A Eklund [Linkoping University] (2018) [arXiv:1810.06455](https://arxiv.org/abs/1810.06455)
 
-**Quaternion Convolutional Neural Networks**. Xuanyu Zhu / Yi Xu / Hongteng Xu / Changjian Chen. [Shanghai Jiao Tong University & Duke University] (ECCV2018) ([pdf](http://openaccess.thecvf.com/content_ECCV_2018/html/Xuanyu_Zhu_Quaternion_Convolutional_Neural_ECCV_2018_paper.html)) [comment]
+**Quaternion Convolutional Neural Networks**. Xuanyu Zhu / Yi Xu / Hongteng Xu / Changjian Chen. [Shanghai Jiao Tong University & Duke University] (ECCV2018) ([pdf](http://openaccess.thecvf.com/content_ECCV_2018/html/Xuanyu_Zhu_Quaternion_Convolutional_Neural_ECCV_2018_paper.html))
 
-**A Survey on Deep Learning: Algorithms, Techniques, and Applications**. Pouyanfar S, Sadiq S, Yan Y, et al [ACM Computing Surveys (CSUR)] (2018) ([pdf](https://dl.acm.org/citation.cfm?id=3234150)) ([专知](https://mp.weixin.qq.com/s/AQrgvjFPXUpqfqQQgOFN9A)) [comment]
+**A Survey on Deep Learning: Algorithms, Techniques, and Applications**. Pouyanfar S, Sadiq S, Yan Y, et al [ACM Computing Surveys (CSUR)] (2018) ([pdf](https://dl.acm.org/citation.cfm?id=3234150)) ([专知](https://mp.weixin.qq.com/s/AQrgvjFPXUpqfqQQgOFN9A))
 
 **A Tale of Three Probabilistic Families: Discriminative, Descriptive and Generative Models**. Y N Wu, R Gao, T Han, S Zhu [UCLA] (2018) [arXiv:1810.04261](https://arxiv.org/abs/1810.04261) [comment]
 
