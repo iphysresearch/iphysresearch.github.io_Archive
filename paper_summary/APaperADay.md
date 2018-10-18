@@ -21,6 +21,8 @@ date: 2018-09-28
 
 
 
+**Approximate Fisher Information Matrix to Characterise the Training of Deep Neural Networks**. Z Liao, T Drummond, I Reid, G Carneiro [University of Adelaide & Monash University] (2018) [arXiv:1810.06767](https://arxiv.org/abs/1810.06767)  [GitHub](https://github.com/zhibinliao89/fisher.info.mat.torch) 
+
 **Discriminator Rejection Sampling**. Samaneh Azadi, Catherine Olsson, Trevor Darrell, Ian Goodfellow, Augustus Odena   [UC Berkeley & Google Brain]. [arXiv:1810.06758](https://arxiv.org/abs/1810.06758) [comment]
 
 **Refacing: reconstructing anonymized facial features using GANs**. D Abramian, A Eklund [Linkoping University] (2018) [arXiv:1810.06455](https://arxiv.org/abs/1810.06455) [comment]
