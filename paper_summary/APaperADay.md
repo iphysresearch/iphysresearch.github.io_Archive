@@ -21,7 +21,7 @@ date: 2018-09-28
 
 
 
-**Discriminator Rejection Sampling**. Samaneh Azadi, Catherine Olsson, Trevor Darrell, Ian Goodfellow, Augustus Odena  [arXiv:1810.06758](https://arxiv.org/abs/1810.06758) [comment]
+**Discriminator Rejection Sampling**. Samaneh Azadi, Catherine Olsson, Trevor Darrell, Ian Goodfellow, Augustus Odena   [UC Berkeley & Google Brain]. [arXiv:1810.06758](https://arxiv.org/abs/1810.06758) [comment]
 
 **Refacing: reconstructing anonymized facial features using GANs**. D Abramian, A Eklund [Linkoping University] (2018) [arXiv:1810.06455](https://arxiv.org/abs/1810.06455) [comment]
 
