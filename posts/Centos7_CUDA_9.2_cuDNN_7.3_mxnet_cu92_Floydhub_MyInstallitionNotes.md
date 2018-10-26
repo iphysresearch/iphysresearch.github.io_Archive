@@ -9,7 +9,7 @@ date: 2018-10-26
 
 
 
-# Centos7/CUDA-9.2/cuDNN-7.3/mxnet-cu92/Floydhub 安装配置笔记
+# Centos7/CUDA-9.2/cuDNN-7.3/MXNet-cu92/Floydhub 深度学习环境配置日志
 
 
 
