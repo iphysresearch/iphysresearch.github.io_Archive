@@ -21,6 +21,14 @@ date: 2018-09-28
 
 
 
+**Model Selection Techniques -- An Overview**. J Ding, V Tarokh, Y Yang [University of Minnesota & Duke University] (2018) [arXiv:1810.09583](https://arxiv.org/abs/1810.09583)
+
+**Deep Learning with the Random Neural Network and its Applications**. Y Yin [Imperial College] (2018) [arXiv:1810.08653](https://arxiv.org/abs/1810.08653)
+
+**The Frontiers of Fairness in Machine Learning**. A Chouldechova, A Roth [CMU & University of Pennsylvania] (2018) [arXiv:1810.08810](https://arxiv.org/abs/1810.08810)
+
+**Do Deep Generative Models Know What They Don't Know?**. E Nalisnick, A Matsukawa, Y W Teh, D Gorur, B Lakshminarayanan [DeepMind] (2018) [arXiv:1810.09136](https://arxiv.org/abs/1810.09136)
+
 **Approximate Fisher Information Matrix to Characterise the Training of Deep Neural Networks**. Z Liao, T Drummond, I Reid, G Carneiro [University of Adelaide & Monash University] (2018) [arXiv:1810.06767](https://arxiv.org/abs/1810.06767)  [GitHub](https://github.com/zhibinliao89/fisher.info.mat.torch) 
 
 **Discriminator Rejection Sampling**. Samaneh Azadi, Catherine Olsson, Trevor Darrell, Ian Goodfellow, Augustus Odena   [UC Berkeley & Google Brain]. [arXiv:1810.06758](https://arxiv.org/abs/1810.06758)

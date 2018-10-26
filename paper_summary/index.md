@@ -61,9 +61,19 @@ The goal is to read and comment once a day. and this [post](./APaperADay.html) w
 3. Jaranowski, Piotr, and Andrzej Krolak. "Data analysis of gravitational-wave signals from spinning neutron stars. III. Detection statistics and computational requirements." *Physical Review D* 61.6 (2000): 062001.
 4. Astone P, Borkowski K M, Jaranowski P, et al. Data analysis of gravitational-wave signals from spinning neutron stars. IV. An all-sky search[J]. Physical Review D, 2002, 65(4): 042003.
 
+
+
+[How do we know LIGO detected gravitational waves?](https://cqgplus.com/2016/06/06/how-do-we-know-ligo-detected-gravitational-waves/) Posted on [June 6, 2016](https://cqgplus.com/2016/06/06/how-do-we-know-ligo-detected-gravitational-waves/) by [Adam Day](https://cqgplus.com/author/publisherad/)
+
 ## Machine Learning
 
 [[Paper Summary](./Deep neural networks to enable real-time multimessenger astrophysics.html)] George D, Huerta E A. "**Deep neural networks to enable real-time multimessenger astrophysics**"[J]. Physical Review D, 2018, 97(4): 044039. (**First attempt**)
+
+Classifying Lensed Gravitational Waves in the Geometrical Optics Limit with Machine Learning.  arXiv:1810.07888
+
+
+
+
 
 
 
