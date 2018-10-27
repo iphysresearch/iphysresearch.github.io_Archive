@@ -159,8 +159,34 @@ $ sudo ldconfig
 
 ## 6. Git
 
+升级 git，参考：[ref](https://www.cnblogs.com/kevingrace/p/8252517.html)
+
 ```shell
-$ sudo yum install git   # git version 1.8.3.1
+# 安装依赖软件
+$ sudo yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel asciidoc
+$ sudo yum install  gcc perl-ExtUtils-MakeMaker
+
+# 拆卸系统自带的 git 版本
+$ git --version
+$ sudo yum remove git
+
+# 编译安装最新的 git 版本
+$ su
+root$ cd /usr/local/src/
+root$ wget https://www.kernel.org/pub/software/scm/git/git-2.19.1.tar.xz
+root$ tar -vxf git-2.19.1.tar.xz
+root$ cd git-2.19.1
+root$ make prefix=/usr/local/git all
+root$ make prefix=/usr/local/git install
+root$ echo "export PATH=$PATH:/usr/local/git/bin" >> /etc/profile
+root$ source /etc/profile
+
+root$ git --version
+
+# 如果是非root用户使用git，则需要配置下该用户下的环境变量
+$ echo "export PATH=$PATH:/usr/local/git/bin" >> ~/.bashrc
+$ source ~/.bashrc
+$ git --version
 ```
 
 
@@ -324,6 +350,86 @@ $ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ## 13. Visual Studio Code
 
 > 安装 Visual Studio Code  （官网 [rpm](https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions)）（在 `anaconda3-5.3.0` 环境下安装）
+
+1. ```shell
+   # Install the key and repository
+   $ sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+   $ sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+   # Update the package cache and install the package
+   $ yum check-update
+   $ sudo yum install code
+   ```
+
+
+## 14. 坚果云
+
+- 通过源码安装。（[ref](https://www.jianguoyun.com/s/downloads/linux)）
+
+1. 解决软件包依赖关系
+
+坚果云Linux客户端依赖于这些包: `glib2.0-dev`, `gtk2.0-dev`, `libnautilus-extension-dev`, `gvfs-bin`, `JRE`。 
+
+```shell
+$ sudo yum install glib2-devel gtk2-devel nautilus-devel gvfs java-1.7.0-openjdk-headless
+```
+
+2. 下载Nautilus插件源代码包: [nutstore_linux_src_installer.tar.gz](https://www.jianguoyun.com/static/exe/installer/nutstore_linux_src_installer.tar.gz)
+
+```shell
+$ wget http://www.jianguoyun.com/static/exe/installer/nutstore_linux_src_installer.tar.gz
+```
+
+3. 解压缩，编译和安装Nautilus插件
+
+```shell
+$ tar zxf nutstore_linux_src_installer.tar.gz
+$ cd nutstore_linux_src_installer && ./configure && make
+$ sudo make install
+```
+
+4. 重启Nautilus
+
+```shell
+$ nautilus -q
+```
+
+5. 运行以下命令，自动下载和安装坚果云其他二进制组件
+
+```shell
+$ ./runtime_bootstrap
+```
+
+
+
+## 15. Synergy
+
+ 自己有 Synergy1 pro 的账号 ($19)，访问官网下载客户端并安装：https://symless.com/download
+
+1. 先安装依赖（[ref](https://github.com/symless/synergy-core/wiki/Compiling#centos-7)）
+
+   ```shell
+   $ sudo yum groupinstall "Development Tools"
+   $ sudo yum -y install epel-release cmake3 boost-static git libXtst-devel qt5-qtbase-devel qt5-qtdeclarative-devel libcurl-devel openssl-devel
+   ```
+
+2. 下载 rpm 包（如 `synergy_1.10.1-91.stable.8941241e.centos.el7.x86_64.rpm` ）后，在相应目录中执行下方代码：
+
+   ```shell
+   $ sudo rpm -ivh synergy_1.10.1-91.stable.8941241e.centos.el7.x86_64.rpm
+   ```
+
+3. 第一次打开 Synergy 会需要输出 Synergy 1 的 serial key。（在自己的账户(*hewang@mail.bnu.edu.cn*)中可查询）
+
+4. Centos 作为客户端的配置注意事项：
+
+   - 服务器端和客户端都要关闭 `TLS Encrption`。
+
+   - 服务器端先要“设置服务端”，添加新客户端到网格中，并且设置其"名称"；在客户端中设定该“屏幕名称”要与“名称”一致。
+
+   - 客户端的设置中，关闭 `Auto Config`，并且填写的服务器端 ip 地址要和服务器上的 Synergy 的 IP 地址一致（或要与服务器端上的 `$ ifconfig` 查询的 ip 地址一致）
+
+   - 先开始运行服务器端的 Synergy，然后再运行客户端的 Synergy。
+
 
 
 
