@@ -132,6 +132,7 @@ $ yum install gcc-c++
 
 - 查看 GPU 状态：`$ nvidia-smi`
 
+  ![](https://i.loli.net/2018/10/29/5bd6a3eb29bab.png)
 
 
 ## 5. cuDNN-9.2
@@ -317,6 +318,26 @@ $ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
   4. 激活/不激活：`pyenv activate venv` / `pyenv deactivate`
 
   5. 删除：`pyenv uninstall venv`
+
+
+
+
+
+## pipenv
+
+```shell
+$ pip install pipenv
+```
+
+
+
+
+
+gpustat
+
+```shell
+$ sudo yum install python-devel
+```
 
 
 
