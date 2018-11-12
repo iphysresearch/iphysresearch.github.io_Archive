@@ -17,9 +17,57 @@ date: 2018-09-28
 
 > Felt like I wasn’t reading enough – and what I was reading wasn’t sinking in enough. I also wanted to keep track of my sources in a more controlled manner. As a part of adding everything to my JabRef (maybe…), I figured I would write up my comments on papers. 
 >
-> The goal is to read and comment once a day. and this [post](./APaperADay.html) will be updated day by day according to the reading process.
+> The goal is to read and comment once a day and this [post](./APaperADay.html) will be updated day by day according to the reading process.
+
+[TOC]
+
+## Generative Models
+
+**Bias and Generalization in Deep Generative Models: An Empirical Study**. S Zhao, H Ren, A Yuan, J Song, N Goodman, S Ermon [Stanford University] (2018) [arXiv:1811.03259](https://arxiv.org/abs/1811.03259) [GitHub](https://github.com/ermongroup/BiasAndGeneralization)
+
+**The relativistic discriminator: a key element missing from standard GAN**. Alexia Jolicoeur-Martineau [Lady Davis Institute Montreal, Canada] (2018) [arXiv:1807.00734](https://arxiv.org/abs/1807.00734)
 
 
+
+
+
+## Sound & Signal Processing
+
+**Unifying Probabilistic Models for Time-Frequency Analysis**. W J. Wilkinson, M R Andersen, J D. Reiss, D Stowell, A Solin [Queen Mary University of London & Aalto University] (2018) [arXiv:1811.02489](https://arxiv.org/abs/1811.02489) [GitHub](https://github.com/wil-j-wil/unifying-prob-time-freq)
+
+**Training neural audio classifiers with few data**. J Pons, J Serrà, X Serra [Telefonica Research & Universitat Pompeu Fabra] (2018) [arXiv:1810.10274](https://arxiv.org/abs/1810.10274) [Github](https://github.com/jordipons/neural-classifiers-with-few-audio/)
+
+
+
+
+
+
+
+
+
+
+
+---
+
+> Need to be reviewed.....
+
+**How deep is deep enough? - Optimizing deep neural network architecture**. A Schilling, J Rietsch, R Gerum, H Schulze, C Metzner, P Krauss [University Hospital Erlangen & Friedrich-Alexander University Erlangen-N¨urnberg (FAU)] (2018) [arXiv:1811.01753](https://arxiv.org/abs/1811.01753)
+
+**Toward an AI Physicist for Unsupervised Learning**. T Wu, M Tegmark [MIT] (2018) [arXiv:1810.10525](https://arxiv.org/abs/1810.10525)
+
+**Analyzing biological and artificial neural networks: challenges with opportunities for synergy?**. David G.T. Barrett, Ari S. Morcos, Jakob H. Macke [DeepMind; Technical University of Munich, Germany] (2018) [arXiv:1810.13373](https://arxiv.org/abs/1810.13373)
+
+**DeepSphere: Efficient spherical Convolutional Neural Network with HEALPix sampling for cosmological applications**. N Perraudin, M Defferrard, T Kacprzak, R Sgier [aSwiss Data Science Center (SDSC) & EPFL & ETH Zurich] (2018) [arXiv:1810.12186](https://arxiv.org/abs/1810.12186)
+
+**End-to-end music source separation: is it possible in the waveform domain?**. F Lluís, J Pons, X Serra [Universitat Pompeu Fabra] (2018) [arXiv:1810.12187](https://arxiv.org/abs/1810.12187)
+
+**Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift**. S Rabanser, S Günnemann, Z C. Lipton [CMU & Technical University of Munich] (2018) [arXiv:1810.11953](https://arxiv.org/abs/1810.11953)
+
+**Using Machine Learning to Predict the Evolution of Physics Research**. W Liu, S Saganowski, P Kazienko, S A Cheong [Nanyang Technological University & Wrocław University of Science and Technology] (2018) [arXiv:1810.12116](https://arxiv.org/abs/1810.12116)
+
+**Applications of Deep Reinforcement Learning in Communications and Networking: A Survey**. N C Luong, D T Hoang, S Gong, D Niyato, P Wang, Y Liang, D I Kim [Nanyang Technological University & University of Technology Sydney & Chinese Academy of Sciences] (2018) [arXiv:1810.07862](https://arxiv.org/abs/1810.07862)
+
+**Generative adversarial networks and adversarial methods in biomedical image analysis**. J M. Wolterink, K Kamnitsas, C Ledig, I Išgum [University Medical Center Utrecht & Imperial College London & Imagen Technologies] (2018) [arXiv:1810.10352](https://arxiv.org/abs/1810.10352)
 
 **Model Selection Techniques -- An Overview**. J Ding, V Tarokh, Y Yang [University of Minnesota & Duke University] (2018) [arXiv:1810.09583](https://arxiv.org/abs/1810.09583)
 
@@ -70,6 +118,8 @@ date: 2018-09-28
 **Over-Optimization of Academic Publishing Metrics: Observing Goodhart's Law in Action**. M Fire, C Guestrin [University of Washington] (2018) [arXiv:1809.07841](https://arxiv.org/abs/1809.07841) [comment]
 
 **On the loss landscape of a class of deep neural networks with no bad local valleys**. Q Nguyen, M C Mukkamala, M Hein [Saarland University & University of Tübingen] (2018) [arXiv:1809.10749](https://arxiv.org/abs/1809.10749) [comment]
+
+**Conditional WaveGAN**. Chae Young Lee, Anoop Toffy, Gue Jun Jung, Woo-Jin Han (2018) [GitHub](https://github.com/acheketa/cwavegan) [arXiv:1809.10636](https://arxiv.org/abs/1809.10636)
 
 **Large Scale GAN Training for High Fidelity Natural Image Synthesis** | [OpenReview](https://openreview.net/forum?id=B1xsqj09Fm). (2018)  [comment]
 

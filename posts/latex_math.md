@@ -295,6 +295,10 @@ Launch CodeCogs Equation Editor
 
 
 
+
+
+补：关于latex插入图片的文章 [Side-by-side figures in LaTex](https://tug.org/TUGboat/tb34-1/tb106thurnherr.pdf)
+
 ---
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.

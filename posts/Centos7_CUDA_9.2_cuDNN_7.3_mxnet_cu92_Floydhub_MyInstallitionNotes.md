@@ -9,7 +9,7 @@ date: 2018-10-26
 
 
 
-# Centos7/CUDA-9.2/cuDNN-7.3/MXNet-cu92/Floydhub 深度学习环境配置日志
+# Centos7/CUDA-9.2/cuDNN-7.3/MXNet-cu92/Floydhub 深度学习环境配置手册
 
 
 
@@ -109,9 +109,9 @@ $ yum install gcc-c++
 - 配置环境变量：`vim /etc/profile`， 键入：
 
   ```bash
-  PATH=$PATH:/usr/local/cuda-9.1/bin
+  PATH=$PATH:/usr/local/cuda-9.2/bin
   export PATH
-  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/usr/local/cuda-9.1/lib64
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/usr/local/cuda-9.2/lib64
   ```
 
   保存，退出，执行：`$ source /etc/profile`。在查看环境变量：`$ echo $PATH` （[ref](https://www.jianshu.com/p/73399a4c9114)）
@@ -134,6 +134,11 @@ $ yum install gcc-c++
 
   ![](https://i.loli.net/2018/10/29/5bd6a3eb29bab.png)
 
+  ```shell
+  # 可用如下代码实时监控
+  $ watch -n 1 -d nvidia-smi
+  ```
+
 
 ## 5. cuDNN-9.2
 
@@ -151,6 +156,22 @@ $ sudo ldconfig
 
 
 
+## 6. pip [PyPi]
+
+```shell
+$ sudo yum -y install epel-release  # 安装 EPEL 扩展源
+$ sudo yum -y install python-pip   # pip 8.1.2 (python 2.7)
+
+# 先临时使用清华的源更新 pypi 到最新
+$ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip
+# 把清华的源设为默认
+$ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+
+
+
+
 ---
 
 > 从此处开始往后，都登陆系统管理员用户配置，非 root 用户。
@@ -158,7 +179,7 @@ $ sudo ldconfig
 
 ---
 
-## 6. Git
+## 7. Git
 
 升级 git，参考：[ref](https://www.cnblogs.com/kevingrace/p/8252517.html)
 
@@ -192,7 +213,7 @@ $ git --version
 
 
 
-## 7. Zip
+## 8. Zip
 
 ```shell
 $ sudo yum -y install zlib*
@@ -200,21 +221,9 @@ $ sudo yum -y install zlib*
 
 
 
-## 8. Emacs & Spacemacs
+## 9. Emacs & Spacemacs
 
 
-
-## 9. pip [PyPi]
-
-```shell
-$ sudo yum -y install epel-release  # 安装 EPEL 扩展源
-$ sudo yum -y install python-pip   # pip 8.1.2 (python 2.7)
-
-# 先临时使用清华的源更新 pypi 到最新
-$ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip
-# 把清华的源设为默认
-$ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
-```
 
 
 
@@ -232,9 +241,9 @@ $ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
   eval "$(pyenv virtualenv-init -)"
   ```
 
-   环境激活生效：`source ~/.bashrc`
+   环境激活生效：`$ source ~/.bashrc`
 
-- 查看可安装的环境版本列表：`$ pyenv install --list`
+- 查看可安装的 Python 版本列表：`$ pyenv install --list`
 
 - 使用国内镜像加速 `pyenv`，不然下载速度死慢。。。。解决办法如下：（[ref](https://www.jianshu.com/p/228cd025a368)+[ref](https://blog.csdn.net/l1216766050/article/details/77526455)）
 
@@ -293,6 +302,19 @@ $ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
      $ pyenv local 3.6.7        # 在某目录下执行局部环境的切换
      ```
 
+  4. Python 的优先级 （[ref](http://einverne.github.io/post/2017/04/pyenv.html)）
+
+     - shell > local > global
+
+     `pyenv` 会从当前目录开始向上逐级查找 .python-version 文件，直到根目录为止。若找不到，就用 global 版本。
+
+     ```shell
+     $ pyenv shell 2.7.3 # 设置面向 shell 的 Python 版本，通过设置当前 shell 的 PYENV_VERSION 环境变量的方式。这个版本的优先级比 local 和 global 都要高。–unset 参数可以用于取消当前 shell 设定的版本。
+     $ pyenv shell --unset
+     
+     $ pyenv rehash  # 创建垫片路径（为所有已安装的可执行文件创建 shims，如：~/.pyenv/versions/*/bin/*，因此，每当你增删了 Python 版本或带有可执行文件的包（如 pip）以后，都应该执行一次本命令）
+     ```
+
 - 使用 `pyenv-virtualenv` （官方 [repo](https://github.com/pyenv/pyenv-virtualenv), [ref](https://www.jianshu.com/p/861f9a474f70), [ref](https://amaral.northwestern.edu/resources/guides/pyenv-tutorial)）
 
   本来这是一个单独的软件用来虚拟一个python版本环境，让每个工作环境都有一套独立的python各自的第三方插件互不影响。然而在 pyenv 下有一个插件 pyenv-virtualenv 他可以在 pyenv 的环境下担负起 virtualenv 的事情。（如果使用的是原生python可以用这个工具，如果用的是anaconda则不用这个，用conda工具来完成虚拟环境）
@@ -327,16 +349,6 @@ $ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
 ```shell
 $ pip install pipenv
-```
-
-
-
-
-
-gpustat
-
-```shell
-$ sudo yum install python-devel
 ```
 
 

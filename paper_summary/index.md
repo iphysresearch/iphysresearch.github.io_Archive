@@ -92,6 +92,10 @@ https://arxiv.org/pdf/1807.09787.pdf
 BayesLine: Bayesian Inference for Spectral Estimation of Gravitational Wave Detector
 Noise
 
+https://arxiv.org/pdf/1811.01380.pdf
+
+https://arxiv.org/pdf/1810.12186.pdf
+
 
 
 ## Maybe helpful:
