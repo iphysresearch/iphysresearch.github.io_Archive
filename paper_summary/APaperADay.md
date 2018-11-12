@@ -23,7 +23,7 @@ date: 2018-09-28
 
 ## Generative Models
 
-**Bias and Generalization in Deep Generative Models: An Empirical Study**. S Zhao, H Ren, A Yuan, J Song, N Goodman, S Ermon [Stanford University] (2018) [arXiv:1811.03259](https://arxiv.org/abs/1811.03259) [GitHub](https://github.com/ermongroup/BiasAndGeneralization)
+**Bias and Generalization in Deep Generative Models: An Empirical Study**. S Zhao, H Ren, A Yuan, J Song, N Goodman, S Ermon [Stanford University] ([ICML2018](https://sites.google.com/view/tadgm/home?authuser=0)) [arXiv:1811.03259](https://arxiv.org/abs/1811.03259) [GitHub](https://github.com/ermongroup/BiasAndGeneralization)
 
 **The relativistic discriminator: a key element missing from standard GAN**. Alexia Jolicoeur-Martineau [Lady Davis Institute Montreal, Canada] (2018) [arXiv:1807.00734](https://arxiv.org/abs/1807.00734)
 
