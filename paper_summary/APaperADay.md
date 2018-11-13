@@ -13,7 +13,7 @@ date: 2018-09-28
 
 
 
-# A Paper A Day
+# :pencil2: A Paper A Day
 
 > Felt like I wasn’t reading enough – and what I was reading wasn’t sinking in enough. I also wanted to keep track of my sources in a more controlled manner. As a part of adding everything to my JabRef (maybe…), I figured I would write up my comments on papers. 
 >
@@ -21,7 +21,7 @@ date: 2018-09-28
 
 [TOC]
 
-## Generative Models
+## :repeat: Generative Models
 
 **Bias and Generalization in Deep Generative Models: An Empirical Study**. S Zhao, H Ren, A Yuan, J Song, N Goodman, S Ermon [Stanford University] ([ICML2018](https://sites.google.com/view/tadgm/home?authuser=0)) [arXiv:1811.03259](https://arxiv.org/abs/1811.03259) [GitHub](https://github.com/ermongroup/BiasAndGeneralization)
 
@@ -31,7 +31,7 @@ date: 2018-09-28
 
 
 
-## Sound & Signal Processing
+## :musical_note: Sound & Signal Processing
 
 **Unifying Probabilistic Models for Time-Frequency Analysis**. W J. Wilkinson, M R Andersen, J D. Reiss, D Stowell, A Solin [Queen Mary University of London & Aalto University] (2018) [arXiv:1811.02489](https://arxiv.org/abs/1811.02489) [GitHub](https://github.com/wil-j-wil/unifying-prob-time-freq)
 
@@ -40,6 +40,36 @@ date: 2018-09-28
 
 
 
+
+## :chart_with_downwards_trend: Optimization
+
+**A Convergence Theory for Deep Learning via Over-Parameterization**. Z Allen-Zhu, Y Li, Z Song [Microsoft Research AI & Stanford University & UT-Austin] (2018) [arXiv:1811.03962](https://arxiv.org/abs/1811.03962)
+
+**Gradient Descent Finds Global Minima of Deep Neural Networks**. S S. Du, J D. Lee, H Li, L Wang, X Zhai [CMU & University of Southern California & Peking University & MIT] (2018) [arXiv:1811.03804](https://arxiv.org/abs/1811.03804)
+
+
+
+
+
+## :+1: Model Evaluation
+
+**How deep is deep enough? - Optimizing deep neural network architecture**. A Schilling, J Rietsch, R Gerum, H Schulze, C Metzner, P Krauss [University Hospital Erlangen & Friedrich-Alexander University Erlangen-N¨urnberg (FAU)] (2018) [arXiv:1811.01753](https://arxiv.org/abs/1811.01753)
+
+
+
+
+
+## :atom_symbol: Physics Related
+
+**Toward an AI Physicist for Unsupervised Learning**. T Wu, M Tegmark [MIT] (2018) [arXiv:1810.10525](https://arxiv.org/abs/1810.10525)
+
+
+
+
+
+## :books: Review
+
+**Analyzing biological and artificial neural networks: challenges with opportunities for synergy?**. David G.T. Barrett, Ari S. Morcos, Jakob H. Macke [DeepMind; Technical University of Munich, Germany] (2018) [arXiv:1810.13373](https://arxiv.org/abs/1810.13373)
 
 
 
@@ -50,12 +80,6 @@ date: 2018-09-28
 ---
 
 > Need to be reviewed.....
-
-**How deep is deep enough? - Optimizing deep neural network architecture**. A Schilling, J Rietsch, R Gerum, H Schulze, C Metzner, P Krauss [University Hospital Erlangen & Friedrich-Alexander University Erlangen-N¨urnberg (FAU)] (2018) [arXiv:1811.01753](https://arxiv.org/abs/1811.01753)
-
-**Toward an AI Physicist for Unsupervised Learning**. T Wu, M Tegmark [MIT] (2018) [arXiv:1810.10525](https://arxiv.org/abs/1810.10525)
-
-**Analyzing biological and artificial neural networks: challenges with opportunities for synergy?**. David G.T. Barrett, Ari S. Morcos, Jakob H. Macke [DeepMind; Technical University of Munich, Germany] (2018) [arXiv:1810.13373](https://arxiv.org/abs/1810.13373)
 
 **DeepSphere: Efficient spherical Convolutional Neural Network with HEALPix sampling for cosmological applications**. N Perraudin, M Defferrard, T Kacprzak, R Sgier [aSwiss Data Science Center (SDSC) & EPFL & ETH Zurich] (2018) [arXiv:1810.12186](https://arxiv.org/abs/1810.12186)
 
@@ -110,6 +134,8 @@ date: 2018-09-28
 **Inhibited Softmax for Uncertainty Estimation in Neural Networks**. M Możejko, M Susik, R Karczewski [Sigmoidal] (2018)  [arXiv:1810.01861](https://arxiv.org/abs/1810.01861) [GitHub](https://github.com/MSusik/Inhibited-softmax) [comment]
 
 **Deep processing of structured data**. Ł Maziarka, M Śmieja, A Nowak, J Tabor, Ł Struski, P Spurek [Jagiellonian University] (2018) [arXiv:1810.01989](https://arxiv.org/abs/1810.01989) [comment]
+
+**Variational Discriminator Bottleneck: Improving Imitation Learning, Inverse RL, and GANs by Constraining Information Flow**. Xue Bin Peng, Angjoo Kanazawa, Sam Toyer, Pieter Abbeel, Sergey Levine [University of California, Berkeley] (2018) [arXiv:1810.00821](https://arxiv.org/abs/1810.00821)
 
 **Taming VAEs**. D J Rezende, F Viola [DeepMind] (2018) [arXiv:1810.00597](https://arxiv.org/abs/1810.00597) [comment]
 

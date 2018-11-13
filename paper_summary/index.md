@@ -96,6 +96,8 @@ https://arxiv.org/pdf/1811.01380.pdf
 
 https://arxiv.org/pdf/1810.12186.pdf
 
+Bilby: A user-friendly Bayesian inference library for gravitational-wave astronomy
+
 
 
 ## Maybe helpful:
