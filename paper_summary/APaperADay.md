@@ -37,6 +37,8 @@ date: 2018-09-28
 
 **Training neural audio classifiers with few data**. J Pons, J Serrà, X Serra [Telefonica Research & Universitat Pompeu Fabra] (2018) [arXiv:1810.10274](https://arxiv.org/abs/1810.10274) [Github](https://github.com/jordipons/neural-classifiers-with-few-audio/)
 
+**End-to-end music source separation: is it possible in the waveform domain?**. F Lluís, J Pons, X Serra [Universitat Pompeu Fabra] (2018) [arXiv:1810.12187](https://arxiv.org/abs/1810.12187)
+
 
 
 
@@ -61,7 +63,11 @@ date: 2018-09-28
 
 ## :atom_symbol: Physics Related
 
+**DeepSphere: Efficient spherical Convolutional Neural Network with HEALPix sampling for cosmological applications**. N Perraudin, M Defferrard, T Kacprzak, R Sgier [aSwiss Data Science Center (SDSC) & EPFL & ETH Zurich] (2018) [arXiv:1810.12186](https://arxiv.org/abs/1810.12186)
+
 **Toward an AI Physicist for Unsupervised Learning**. T Wu, M Tegmark [MIT] (2018) [arXiv:1810.10525](https://arxiv.org/abs/1810.10525)
+
+**Using Machine Learning to Predict the Evolution of Physics Research**. W Liu, S Saganowski, P Kazienko, S A Cheong [Nanyang Technological University & Wrocław University of Science and Technology] (2018) [arXiv:1810.12116](https://arxiv.org/abs/1810.12116)
 
 
 
@@ -75,19 +81,19 @@ date: 2018-09-28
 
 
 
+## :framed_picture: Figure Design
+
+**Improving Generalization for Abstract Reasoning Tasks Using Disentangled Feature Representations**. X Steenbrugge, S Leroux, T Verbelen, B Dhoedt [Ghent University] (2018) [arXiv:1811.04784](https://arxiv.org/abs/1811.04784)
+
+
+
 
 
 ---
 
 > Need to be reviewed.....
 
-**DeepSphere: Efficient spherical Convolutional Neural Network with HEALPix sampling for cosmological applications**. N Perraudin, M Defferrard, T Kacprzak, R Sgier [aSwiss Data Science Center (SDSC) & EPFL & ETH Zurich] (2018) [arXiv:1810.12186](https://arxiv.org/abs/1810.12186)
-
-**End-to-end music source separation: is it possible in the waveform domain?**. F Lluís, J Pons, X Serra [Universitat Pompeu Fabra] (2018) [arXiv:1810.12187](https://arxiv.org/abs/1810.12187)
-
 **Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift**. S Rabanser, S Günnemann, Z C. Lipton [CMU & Technical University of Munich] (2018) [arXiv:1810.11953](https://arxiv.org/abs/1810.11953)
-
-**Using Machine Learning to Predict the Evolution of Physics Research**. W Liu, S Saganowski, P Kazienko, S A Cheong [Nanyang Technological University & Wrocław University of Science and Technology] (2018) [arXiv:1810.12116](https://arxiv.org/abs/1810.12116)
 
 **Applications of Deep Reinforcement Learning in Communications and Networking: A Survey**. N C Luong, D T Hoang, S Gong, D Niyato, P Wang, Y Liang, D I Kim [Nanyang Technological University & University of Technology Sydney & Chinese Academy of Sciences] (2018) [arXiv:1810.07862](https://arxiv.org/abs/1810.07862)
 
