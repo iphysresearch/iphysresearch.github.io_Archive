@@ -27,6 +27,10 @@ date: 2018-09-28
 
 **The relativistic discriminator: a key element missing from standard GAN**. Alexia Jolicoeur-Martineau [Lady Davis Institute Montreal, Canada] (2018) [arXiv:1807.00734](https://arxiv.org/abs/1807.00734)
 
+**DeepMasterPrints: Generating MasterPrints for Dictionary Attacks via Latent Variable Evolution**. P Bontrager, A Roy, J Togelius, N Memon, A Ross [New York University Tandon & Michigan State University] (2018) [arXiv:1705.07386](https://arxiv.org/abs/1705.07386)
+
+**Generative adversarial networks and adversarial methods in biomedical image analysis**. J M. Wolterink, K Kamnitsas, C Ledig, I Išgum [University Medical Center Utrecht & Imperial College London & Imagen Technologies] (2018) [arXiv:1810.10352](https://arxiv.org/abs/1810.10352)
+
 
 
 
@@ -53,9 +57,11 @@ date: 2018-09-28
 
 
 
-## :+1: Model Evaluation
+## :+1: Model Evaluation & Performance
 
 **How deep is deep enough? - Optimizing deep neural network architecture**. A Schilling, J Rietsch, R Gerum, H Schulze, C Metzner, P Krauss [University Hospital Erlangen & Friedrich-Alexander University Erlangen-N¨urnberg (FAU)] (2018) [arXiv:1811.01753](https://arxiv.org/abs/1811.01753)
+
+**Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift**. S Rabanser, S Günnemann, Z C. Lipton [CMU & Technical University of Munich] (2018) [arXiv:1810.11953](https://arxiv.org/abs/1810.11953)
 
 
 
@@ -77,6 +83,10 @@ date: 2018-09-28
 
 **Analyzing biological and artificial neural networks: challenges with opportunities for synergy?**. David G.T. Barrett, Ari S. Morcos, Jakob H. Macke [DeepMind; Technical University of Munich, Germany] (2018) [arXiv:1810.13373](https://arxiv.org/abs/1810.13373)
 
+**Model Selection Techniques -- An Overview**. J Ding, V Tarokh, Y Yang [University of Minnesota & Duke University] (2018) [arXiv:1810.09583](https://arxiv.org/abs/1810.09583)
+
+**Applications of Deep Reinforcement Learning in Communications and Networking: A Survey**. N C Luong, D T Hoang, S Gong, D Niyato, P Wang, Y Liang, D I Kim [Nanyang Technological University & University of Technology Sydney & Chinese Academy of Sciences] (2018) [arXiv:1810.07862](https://arxiv.org/abs/1810.07862)
+
 
 
 
@@ -89,17 +99,17 @@ date: 2018-09-28
 
 
 
+
+
+## :part_alternation_mark: ODE & PDE
+
+**Neural Ordinary Differential Equations**. Ricky T. Q. Chen, Yulia Rubanova, Jesse Bettencourt, David Duvenaud [University of Toronto, Canada] (2018) [arXiv:1806.07366](https://arxiv.org/abs/1806.07366) [Github](https://github.com/rtqichen/torchdiffeq)
+
+
+
 ---
 
 > Need to be reviewed.....
-
-**Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift**. S Rabanser, S Günnemann, Z C. Lipton [CMU & Technical University of Munich] (2018) [arXiv:1810.11953](https://arxiv.org/abs/1810.11953)
-
-**Applications of Deep Reinforcement Learning in Communications and Networking: A Survey**. N C Luong, D T Hoang, S Gong, D Niyato, P Wang, Y Liang, D I Kim [Nanyang Technological University & University of Technology Sydney & Chinese Academy of Sciences] (2018) [arXiv:1810.07862](https://arxiv.org/abs/1810.07862)
-
-**Generative adversarial networks and adversarial methods in biomedical image analysis**. J M. Wolterink, K Kamnitsas, C Ledig, I Išgum [University Medical Center Utrecht & Imperial College London & Imagen Technologies] (2018) [arXiv:1810.10352](https://arxiv.org/abs/1810.10352)
-
-**Model Selection Techniques -- An Overview**. J Ding, V Tarokh, Y Yang [University of Minnesota & Duke University] (2018) [arXiv:1810.09583](https://arxiv.org/abs/1810.09583)
 
 **Deep Learning with the Random Neural Network and its Applications**. Y Yin [Imperial College] (2018) [arXiv:1810.08653](https://arxiv.org/abs/1810.08653)
 
@@ -177,7 +187,7 @@ date: 2018-09-28
 
 **Dropout is a special case of the stochastic delta rule: faster and more accurate deep learning**. N Frazier-Logue, S J Hanson [Rutgers University] (2018) [arXiv:1808.03578](https://arxiv.org/abs/1808.03578) [comment]
 
-**A Survey on Deep Transfer Learning**. C Tan, F Sun, T Kong, W Zhang, C Yang, C Liu [Tsinghua University] (2018) [comment]
+**A Survey on Deep Transfer Learning**. C Tan, F Sun, T Kong, W Zhang, C Yang, C Liu [Tsinghua University] (2018) [arXiv:1808.01974](https://arxiv.org/abs/1808.01974)
 
 **Backprop Evolution**. M Alber, I Bello, B Zoph, P Kindermans, P Ramachandran, Q Le [TU Berlin & Google Brain] (2018) [arXiv:1808.01974](https://arxiv.org/abs/1808.01974) [comment]
 
