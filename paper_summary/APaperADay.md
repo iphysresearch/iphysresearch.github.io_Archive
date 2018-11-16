@@ -27,9 +27,15 @@ date: 2018-09-28
 
 **The relativistic discriminator: a key element missing from standard GAN**. Alexia Jolicoeur-Martineau [Lady Davis Institute Montreal, Canada] (2018) [arXiv:1807.00734](https://arxiv.org/abs/1807.00734)
 
-**DeepMasterPrints: Generating MasterPrints for Dictionary Attacks via Latent Variable Evolution**. P Bontrager, A Roy, J Togelius, N Memon, A Ross [New York University Tandon & Michigan State University] (2018) [arXiv:1705.07386](https://arxiv.org/abs/1705.07386)
-
 **Generative adversarial networks and adversarial methods in biomedical image analysis**. J M. Wolterink, K Kamnitsas, C Ledig, I Išgum [University Medical Center Utrecht & Imperial College London & Imagen Technologies] (2018) [arXiv:1810.10352](https://arxiv.org/abs/1810.10352)
+
+**Do Deep Generative Models Know What They Don't Know?**. E Nalisnick, A Matsukawa, Y W Teh, D Gorur, B Lakshminarayanan [DeepMind] (2018) [arXiv:1810.09136](https://arxiv.org/abs/1810.09136)
+
+**Discriminator Rejection Sampling**. Samaneh Azadi, Catherine Olsson, Trevor Darrell, Ian Goodfellow, Augustus Odena   [UC Berkeley & Google Brain]. [arXiv:1810.06758](https://arxiv.org/abs/1810.06758)
+
+**Whispered-to-voiced Alaryngeal Speech Conversion with Generative Adversarial Networks**. Santiago Pascual, Antonio Bonafonte, Joan Serrà, Jose A. Gonzalez [Universitat Polite`cnica de Catalunya & Telefo ́nica Research & Universidad de Ma ́laga, Spain] (2018) [arXiv:1808.10687](https://arxiv.org/abs/1808.10687)
+
+**Refacing: reconstructing anonymized facial features using GANs**. D Abramian, A Eklund [Linkoping University] (2018) [arXiv:1810.06455](https://arxiv.org/abs/1810.06455)
 
 
 
@@ -63,6 +69,14 @@ date: 2018-09-28
 
 **Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift**. S Rabanser, S Günnemann, Z C. Lipton [CMU & Technical University of Munich] (2018) [arXiv:1810.11953](https://arxiv.org/abs/1810.11953)
 
+**Approximate Fisher Information Matrix to Characterise the Training of Deep Neural Networks**. Z Liao, T Drummond, I Reid, G Carneiro [University of Adelaide & Monash University] (2018) [arXiv:1810.06767](https://arxiv.org/abs/1810.06767)  [GitHub](https://github.com/zhibinliao89/fisher.info.mat.torch) 
+
+
+
+## :control_knobs: Model Configuration
+
+**Quaternion Convolutional Neural Networks**. Xuanyu Zhu / Yi Xu / Hongteng Xu / Changjian Chen. [Shanghai Jiao Tong University & Duke University] (ECCV2018) ([pdf](http://openaccess.thecvf.com/content_ECCV_2018/html/Xuanyu_Zhu_Quaternion_Convolutional_Neural_ECCV_2018_paper.html))
+
 
 
 
@@ -85,7 +99,15 @@ date: 2018-09-28
 
 **Model Selection Techniques -- An Overview**. J Ding, V Tarokh, Y Yang [University of Minnesota & Duke University] (2018) [arXiv:1810.09583](https://arxiv.org/abs/1810.09583)
 
+**Deep Learning with the Random Neural Network and its Applications**. Y Yin [Imperial College] (2018) [arXiv:1810.08653](https://arxiv.org/abs/1810.08653)
+
+**The Frontiers of Fairness in Machine Learning**. A Chouldechova, A Roth [CMU & University of Pennsylvania] (2018) [arXiv:1810.08810](https://arxiv.org/abs/1810.08810)
+
 **Applications of Deep Reinforcement Learning in Communications and Networking: A Survey**. N C Luong, D T Hoang, S Gong, D Niyato, P Wang, Y Liang, D I Kim [Nanyang Technological University & University of Technology Sydney & Chinese Academy of Sciences] (2018) [arXiv:1810.07862](https://arxiv.org/abs/1810.07862)
+
+**A Survey on Deep Learning: Algorithms, Techniques, and Applications**. Pouyanfar S, Sadiq S, Yan Y, et al [ACM Computing Surveys (CSUR)] (2018) ([pdf](https://dl.acm.org/citation.cfm?id=3234150)) ([专知](https://mp.weixin.qq.com/s/AQrgvjFPXUpqfqQQgOFN9A))
+
+**A Tale of Three Probabilistic Families: Discriminative, Descriptive and Generative Models**. Y N Wu, R Gao, T Han, S Zhu [UCLA] (2018) [arXiv:1810.04261](https://arxiv.org/abs/1810.04261)
 
 
 
@@ -110,24 +132,6 @@ date: 2018-09-28
 ---
 
 > Need to be reviewed.....
-
-**Deep Learning with the Random Neural Network and its Applications**. Y Yin [Imperial College] (2018) [arXiv:1810.08653](https://arxiv.org/abs/1810.08653)
-
-**The Frontiers of Fairness in Machine Learning**. A Chouldechova, A Roth [CMU & University of Pennsylvania] (2018) [arXiv:1810.08810](https://arxiv.org/abs/1810.08810)
-
-**Do Deep Generative Models Know What They Don't Know?**. E Nalisnick, A Matsukawa, Y W Teh, D Gorur, B Lakshminarayanan [DeepMind] (2018) [arXiv:1810.09136](https://arxiv.org/abs/1810.09136)
-
-**Approximate Fisher Information Matrix to Characterise the Training of Deep Neural Networks**. Z Liao, T Drummond, I Reid, G Carneiro [University of Adelaide & Monash University] (2018) [arXiv:1810.06767](https://arxiv.org/abs/1810.06767)  [GitHub](https://github.com/zhibinliao89/fisher.info.mat.torch) 
-
-**Discriminator Rejection Sampling**. Samaneh Azadi, Catherine Olsson, Trevor Darrell, Ian Goodfellow, Augustus Odena   [UC Berkeley & Google Brain]. [arXiv:1810.06758](https://arxiv.org/abs/1810.06758)
-
-**Refacing: reconstructing anonymized facial features using GANs**. D Abramian, A Eklund [Linkoping University] (2018) [arXiv:1810.06455](https://arxiv.org/abs/1810.06455)
-
-**Quaternion Convolutional Neural Networks**. Xuanyu Zhu / Yi Xu / Hongteng Xu / Changjian Chen. [Shanghai Jiao Tong University & Duke University] (ECCV2018) ([pdf](http://openaccess.thecvf.com/content_ECCV_2018/html/Xuanyu_Zhu_Quaternion_Convolutional_Neural_ECCV_2018_paper.html))
-
-**A Survey on Deep Learning: Algorithms, Techniques, and Applications**. Pouyanfar S, Sadiq S, Yan Y, et al [ACM Computing Surveys (CSUR)] (2018) ([pdf](https://dl.acm.org/citation.cfm?id=3234150)) ([专知](https://mp.weixin.qq.com/s/AQrgvjFPXUpqfqQQgOFN9A))
-
-**A Tale of Three Probabilistic Families: Discriminative, Descriptive and Generative Models**. Y N Wu, R Gao, T Han, S Zhu [UCLA] (2018) [arXiv:1810.04261](https://arxiv.org/abs/1810.04261) [comment]
 
 **Entropic GANs meet VAEs: A Statistical Approach to Compute Sample Likelihoods in GANs**. Y Balaji, H Hassani, R Chellappa, S Feizi [University of Maryland & University of Pennsylvania] (2018) [arXiv:1810.04147](https://arxiv.org/abs/1810.04147) [comment]
 
