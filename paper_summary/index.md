@@ -98,7 +98,9 @@ https://arxiv.org/pdf/1810.12186.pdf
 
 Bilby: A user-friendly Bayesian inference library for gravitational-wave astronomy
 
+Investigating the noise residuals around the gravitational wave event GW150914
 
+Probabilistic Random Forest: A machine learning algorithm for noisy datasets
 
 ## Maybe helpful:
 

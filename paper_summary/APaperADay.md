@@ -53,7 +53,9 @@ date: 2018-09-28
 
 
 
-## :chart_with_downwards_trend: Optimization
+## :chart_with_downwards_trend: Optimization & Generalization
+
+**Learning and Generalization in Overparameterized Neural Networks, Going Beyond Two Layers**. Z Allen-Zhu, Y Li, Y Liang [Microsoft Research AI & Stanford University & University of Wisconsin-Madison] (2018) [arXiv:1811.04918](https://arxiv.org/abs/1811.04918)
 
 **A Convergence Theory for Deep Learning via Over-Parameterization**. Z Allen-Zhu, Y Li, Z Song [Microsoft Research AI & Stanford University & UT-Austin] (2018) [arXiv:1811.03962](https://arxiv.org/abs/1811.03962)
 
