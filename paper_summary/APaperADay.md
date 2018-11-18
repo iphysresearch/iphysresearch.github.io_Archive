@@ -39,6 +39,10 @@ date: 2018-09-28
 
 
 
+## :facepunch: Adversarial Examples/Attacks
+
+**Defensive Dropout for Hardening Deep Neural Networks under Adversarial Attacks**. S Wang, X Wang, P Zhao, W Wen, D Kaeli, P Chin, X Lin [Northeastern University & Boston university & Florida International University] (2018) [arXiv:1809.05165](https://arxiv.org/abs/1809.05165)
+
 
 
 ## :musical_note: Sound & Signal Processing
@@ -65,13 +69,21 @@ date: 2018-09-28
 
 
 
-## :+1: Model Evaluation & Performance
+## :+1: Model Evaluation & Performance & Interpretion & Visualization 
+
+**Explaining Deep Learning Models - A Bayesian Non-parametric Approach**. W Guo, S Huang, Y Tao, X Xing, L Lin [The Pennsylvania State University & Netflix Inc & Columbia University] (2018) [arXiv:1811.03422](https://arxiv.org/abs/1811.03422)
 
 **How deep is deep enough? - Optimizing deep neural network architecture**. A Schilling, J Rietsch, R Gerum, H Schulze, C Metzner, P Krauss [University Hospital Erlangen & Friedrich-Alexander University Erlangen-N¨urnberg (FAU)] (2018) [arXiv:1811.01753](https://arxiv.org/abs/1811.01753)
 
 **Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift**. S Rabanser, S Günnemann, Z C. Lipton [CMU & Technical University of Munich] (2018) [arXiv:1810.11953](https://arxiv.org/abs/1810.11953)
 
 **Approximate Fisher Information Matrix to Characterise the Training of Deep Neural Networks**. Z Liao, T Drummond, I Reid, G Carneiro [University of Adelaide & Monash University] (2018) [arXiv:1810.06767](https://arxiv.org/abs/1810.06767)  [GitHub](https://github.com/zhibinliao89/fisher.info.mat.torch) 
+
+**Local Explanation Methods for Deep Neural Networks Lack Sensitivity to Parameter Values**. J Adebayo, J Gilmer, I Goodfellow, B Kim [Google Brain] (2018) [arXiv:1810.03307](https://arxiv.org/abs/1810.03307) 
+
+**Sanity Checks for Saliency Maps**. J Adebayo, J Gilmer, M Muelly, I Goodfellow, M Hardt, B Kim [Google Brain] (2018) [arXiv:1810.03292](https://arxiv.org/abs/1810.03292)
+
+
 
 
 
@@ -96,6 +108,8 @@ date: 2018-09-28
 
 
 ## :books: Review
+
+**Learning From Positive and Unlabeled Data: A Survey**. J Bekker, J Davis [KU Leuven] (2018) [arXiv:1811.04820](https://arxiv.org/abs/1811.04820)
 
 **Analyzing biological and artificial neural networks: challenges with opportunities for synergy?**. David G.T. Barrett, Ari S. Morcos, Jakob H. Macke [DeepMind; Technical University of Munich, Germany] (2018) [arXiv:1810.13373](https://arxiv.org/abs/1810.13373)
 
@@ -139,10 +153,6 @@ date: 2018-09-28
 
 **Analyzing the Noise Robustness of Deep Neural Networks**. M Liu, S Liu, H Su, K Cao, J Zhu [Tsinghua University] (2018) [arXiv:1810.03913](https://arxiv.org/abs/1810.03913) [comment]
 
-**Local Explanation Methods for Deep Neural Networks Lack Sensitivity to Parameter Values**. J Adebayo, J Gilmer, I Goodfellow, B Kim [Google Brain] (2018) [arXiv:1810.03307](https://arxiv.org/abs/1810.03307) [comment]
-
-**Sanity Checks for Saliency Maps**. J Adebayo, J Gilmer, M Muelly, I Goodfellow, M Hardt, B Kim [Google Brain] (2018) [arXiv:1810.03292](https://arxiv.org/abs/1810.03292) [comment]
-
 **Deep convolutional Gaussian processes**. K Blomqvist, S Kaski, M Heinonen [Aalto university] (2018) [arXiv:1810.03052](https://arxiv.org/abs/1810.03052) [GitHub](https://github.com/kekeblom/DeepCGP) [comment]
 
 **Learning Confidence Sets using Support Vector Machines**. W Wang, X Qiao [Binghamton University] (2018) [arXiv:1809.10818](https://arxiv.org/abs/1809.10818) [comment]
@@ -176,8 +186,6 @@ date: 2018-09-28
 **Why scatter plots suggest causality, and what we can do about it**. C T. Bergstrom, J D. West [University of Washington] (2018) [arXiv:1809.09328](https://arxiv.org/abs/1809.09328) [comment] 
 
 **Human activity recognition based on time series analysis using U-Net**. Y Zhang, Y Zhang, Z Zhang, J Bao, Y Song [Beijing University of Posts and Telecommunications & AIdong Super AI] (2018). [arXiv:1809.08113](https://arxiv.org/abs/1809.08113) [comment] 
-
-**Defensive Dropout for Hardening Deep Neural Networks under Adversarial Attacks**. S Wang, X Wang, P Zhao, W Wen, D Kaeli, P Chin, X Lin [Northeastern University & Boston university & Florida International University] (2018) [arXiv:1809.05165](https://arxiv.org/abs/1809.05165) [comment] 
 
 **Identifying Generalization Properties in Neural Networks**. H Wang, N S Keskar, C Xiong, R Socher [Salesforce Research] (2018) [arXiv:1809.07402](https://arxiv.org/abs/1809.07402) [comment]
 
