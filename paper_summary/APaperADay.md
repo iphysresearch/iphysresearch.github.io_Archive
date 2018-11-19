@@ -23,6 +23,8 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
+**NEMGAN: Noise Engineered Mode-matching GAN**. D Mishra, P AP, A J, P Pandey, S Chaudhury [Indian Institute of Technology Delhi] (2018) [arXiv:1811.03692](https://arxiv.org/abs/1811.03692) [GitHub](https://github.com/NEMGAN/NEMGAN)
+
 **Bias and Generalization in Deep Generative Models: An Empirical Study**. S Zhao, H Ren, A Yuan, J Song, N Goodman, S Ermon [Stanford University] ([ICML2018](https://sites.google.com/view/tadgm/home?authuser=0)) [arXiv:1811.03259](https://arxiv.org/abs/1811.03259) [GitHub](https://github.com/ermongroup/BiasAndGeneralization)
 
 **The relativistic discriminator: a key element missing from standard GAN**. Alexia Jolicoeur-Martineau [Lady Davis Institute Montreal, Canada] (2018) [arXiv:1807.00734](https://arxiv.org/abs/1807.00734)
@@ -53,6 +55,8 @@ date: 2018-09-28
 
 **End-to-end music source separation: is it possible in the waveform domain?**. F Lluís, J Pons, X Serra [Universitat Pompeu Fabra] (2018) [arXiv:1810.12187](https://arxiv.org/abs/1810.12187)
 
+**Multilevel Wavelet Decomposition Network for Interpretable Time Series Analysis**. Jingyuan Wang, Ze Wang, Jianfeng Li, Junjie Wu.[Beihang University] (2018) [arXiv:1806.08946](https://arxiv.org/abs/1806.08946)
+
 
 
 
@@ -70,6 +74,8 @@ date: 2018-09-28
 
 
 ## :+1: Model Evaluation & Performance & Interpretion & Visualization 
+
+**Efficient Identification of Approximate Best Configuration of Training in Large Datasets**. S Huang, C Wang, B Ding, S Chaudhuri [University of Illinois & Microsoft Research & Alibaba Group] (2018) [arXiv:1811.03250](https://arxiv.org/abs/1811.03250)
 
 **Explaining Deep Learning Models - A Bayesian Non-parametric Approach**. W Guo, S Huang, Y Tao, X Xing, L Lin [The Pennsylvania State University & Netflix Inc & Columbia University] (2018) [arXiv:1811.03422](https://arxiv.org/abs/1811.03422)
 
@@ -91,7 +97,25 @@ date: 2018-09-28
 
 **Quaternion Convolutional Neural Networks**. Xuanyu Zhu / Yi Xu / Hongteng Xu / Changjian Chen. [Shanghai Jiao Tong University & Duke University] (ECCV2018) ([pdf](http://openaccess.thecvf.com/content_ECCV_2018/html/Xuanyu_Zhu_Quaternion_Convolutional_Neural_ECCV_2018_paper.html))
 
+**Backprop Evolution**. M Alber, I Bello, B Zoph, P Kindermans, P Ramachandran, Q Le [TU Berlin & Google Brain] (2018) [arXiv:1808.01974](https://arxiv.org/abs/1808.01974)
 
+
+
+
+
+
+
+## 〽️ ODE & PDE
+
+**Neural Ordinary Differential Equations**. Ricky T. Q. Chen, Yulia Rubanova, Jesse Bettencourt, David Duvenaud [University of Toronto, Canada] (2018) [arXiv:1806.07366](https://arxiv.org/abs/1806.07366) [Github](https://github.com/rtqichen/torchdiffeq)
+
+**Forward-Backward Stochastic Neural Networks: Deep Learning of High-dimensional Partial Differential Equations**. M Raissi [Brown University] (2018) [arXiv:1804.07010](https://arxiv.org/abs/1804.07010)
+
+
+
+
+
+---
 
 
 
@@ -125,6 +149,15 @@ date: 2018-09-28
 
 **A Tale of Three Probabilistic Families: Discriminative, Descriptive and Generative Models**. Y N Wu, R Gao, T Han, S Zhu [UCLA] (2018) [arXiv:1810.04261](https://arxiv.org/abs/1810.04261)
 
+**A Survey on Deep Transfer Learning**. C Tan, F Sun, T Kong, W Zhang, C Yang, C Liu [Tsinghua University] (2018) [arXiv:1808.01974](https://arxiv.org/abs/1808.01974)
+
+**How convolutional neural network see the world - A survey of convolutional neural network visualization methods**. Z Qin, F Yu, C Liu, X Chen [George Mason University & Clarkson University] (2018) [arXiv:1804.11191](https://arxiv.org/abs/1804.11191)
+
+**Deep Learning for Time-Series Analysis**. John Gamboa [University of Kaiserslautern, Germany] (2017) [arXiv:1701.01887](https://arxiv.org/abs/1701.01887)
+
+**Deep Learning in Neural Networks: An Overview**. Ju ̈rgen Schmidhuber [University of Lugano & SUPSI, Switzerland] (2014) [arXiv:1404.7828](https://arxiv.org/abs/1404.7828)
+
+
 
 
 
@@ -134,14 +167,6 @@ date: 2018-09-28
 **Improving Generalization for Abstract Reasoning Tasks Using Disentangled Feature Representations**. X Steenbrugge, S Leroux, T Verbelen, B Dhoedt [Ghent University] (2018) [arXiv:1811.04784](https://arxiv.org/abs/1811.04784)
 
 
-
-
-
-
-
-## :part_alternation_mark: ODE & PDE
-
-**Neural Ordinary Differential Equations**. Ricky T. Q. Chen, Yulia Rubanova, Jesse Bettencourt, David Duvenaud [University of Toronto, Canada] (2018) [arXiv:1806.07366](https://arxiv.org/abs/1806.07366) [Github](https://github.com/rtqichen/torchdiffeq)
 
 
 
@@ -201,10 +226,6 @@ date: 2018-09-28
 
 **Dropout is a special case of the stochastic delta rule: faster and more accurate deep learning**. N Frazier-Logue, S J Hanson [Rutgers University] (2018) [arXiv:1808.03578](https://arxiv.org/abs/1808.03578) [comment]
 
-**A Survey on Deep Transfer Learning**. C Tan, F Sun, T Kong, W Zhang, C Yang, C Liu [Tsinghua University] (2018) [arXiv:1808.01974](https://arxiv.org/abs/1808.01974)
-
-**Backprop Evolution**. M Alber, I Bello, B Zoph, P Kindermans, P Ramachandran, Q Le [TU Berlin & Google Brain] (2018) [arXiv:1808.01974](https://arxiv.org/abs/1808.01974) [comment]
-
 **Grassmannian Learning: Embedding Geometry Awareness in Shallow and Deep Learning**. J Zhang, G Zhu, R W. H Jr., a K Huang [The University of Hong Kong] (2018) [arXiv:1808.02229](https://arxiv.org/abs/1808.02229) [comment]
 
 **Is Robustness the Cost of Accuracy? -- A Comprehensive Study on the Robustness of 18 Deep Image Classification Models**. D Su, H Zhang... [IBM Research & University of California, Davis & MIT] (2018) [arXiv:1808.01688](https://arxiv.org/abs/1808.01688) [GitHub](https://github.com/huanzhang12/Adversarial_Survey) [comment]
@@ -227,8 +248,6 @@ date: 2018-09-28
 
 **On the Spectral Bias of Deep Neural Networks**. N Rahaman, D Arpit, A Baratin, F Draxler, M Lin, F A. Hamprecht, Y Bengio, A Courville [Heidelberg University & MILA] (2018) [arXiv:1806.08734](https://arxiv.org/abs/1806.08734) [comment]
 
-**Multilevel Wavelet Decomposition Network for Interpretable Time Series Analysis**. Jingyuan Wang, Ze Wang, Jianfeng Li, Junjie Wu.[Beihang University] (2018) [arXiv:1806.08946](https://arxiv.org/abs/1806.08946) [comment]
-
 **Opening the black box of deep learning**. D Lei, X Chen, J Zhao [Shanghai University] (2018) [arXiv:1805.08355](https://arxiv.org/abs/1805.08355) [comment]
 
 **A Performance Evaluation of Convolutional Neural Networks for Face Anti Spoofing**. Chaitanya Nagpal, Shiv Ram Dubey (2018) [arXiv:1805.04176](https://arxiv.org/abs/1805.04176) [comment]
@@ -239,8 +258,6 @@ date: 2018-09-28
 
 **Local Explanation Methods for Deep Neural Networks Lack Sensitivity to Parameter Values**. J Adebayo, J Gilmer, I Goodfellow, B Kim [Google Brain] (2018) [OpenReview](https://openreview.net/forum?id=SJOYTK1vM) [comment]
 
-**How convolutional neural network see the world - A survey of convolutional neural network visualization methods**. Z Qin, F Yu, C Liu, X Chen [George Mason University & Clarkson University] (2018) [arXiv:1804.11191](https://arxiv.org/abs/1804.11191) [comment]
-
 **An Information-Theoretic View for Deep Learning**. J Zhang, T Liu, D Tao [UBTECH Sydney AI Centre] (2018) [arXiv:1804.09060](https://arxiv.org/abs/1804.09060) [comment]
 
 **Revisiting Small Batch Training for Deep Neural Networks**. Dominic Masters, Carlo Luschi. (2018) [arXiv:1804.07612](https://arxiv.org/abs/1804.07612) [comment]
@@ -248,8 +265,6 @@ date: 2018-09-28
 **A disciplined approach to neural network hyper-parameters: Part 1 -- learning rate, batch size, momentum, and weight decay**. Leslie N. Smith. [arXiv:1803.09820](https://arxiv.org/abs/1803.09820) [comment]
 
 **Understanding Individual Neuron Importance Using Information Theory**. K Liu, R A Amjad, B C. Geiger [Technical University of Munich & Graz University of Technology] (2018) [arXiv:1804.06679](https://arxiv.org/abs/1804.06679) [comment]
-
-**Forward-Backward Stochastic Neural Networks: Deep Learning of High-dimensional Partial Differential Equations**. M Raissi [Brown University] (2018) [arXiv:1804.07010](https://arxiv.org/abs/1804.07010) [comment]
 
 **Understanding Convolutional Neural Network Training with Information Theory**. S Yu, R Jenssen, J C. Principe [University of Florida & University of Tromsø] (2018) [arXiv:1804.06537](https://arxiv.org/abs/1804.06537) [comment]
 
@@ -259,15 +274,9 @@ date: 2018-09-28
 
 **Generating Natural Adversarial Examples**. Z Zhao, D Dua, S Singh [University of California, Irvine] (2017) [arXiv:1710.11342](https://arxiv.org/abs/1710.11342) [Github](https://github.com/zhengliz/natural-adversary) [comment]
 
-**Deep Learning for Time-Series Analysis**. John Gamboa [University of Kaiserslautern, Germany] (2017) [arXiv:1701.01887](https://arxiv.org/abs/1701.01887) [comment]
-
 **Deep Convolutional Neural Networks On Multichannel Time Series For Human Activity Recognition**. Jian Bo Yang, Minh Nhut Nguyen, Phyo Phyo San, Xiao Li Li, Shonali Krishnaswamy (2015) [IJCAI2015](http://www.aaai.org/ocs/index.php/IJCAI/IJCAI15/paper/download/10710/11297) [comment]
 
 **Time Series Classification Using Multi-Channels Deep Convolutional Neural Networks**. Yi Zheng, Qi Liu, Enhong Chen, Yong Ge, and J. Leon Zhao [USTC, et al.] (2014) [WAIM2014](http://staff.ustc.edu.cn/~cheneh/paper_pdf/2014/Yi-Zheng-WAIM2014.pdf) [comment]
-
-**Deep Learning in Neural Networks: An Overview**. Ju ̈rgen Schmidhuber [University of Lugano & SUPSI, Switzerland] (2014) [arXiv:1404.7828](https://arxiv.org/abs/1404.7828) [comment]
-
-
 
 
 
