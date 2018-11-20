@@ -49,6 +49,8 @@ date: 2018-09-28
 
 ## :musical_note: Sound & Signal Processing
 
+**Stochastic Adaptive Neural Architecture Search for Keyword Spotting**. T Véniat, O Schwander, L Denoyer [Sorbonne Université & Facebook AI Research] (2018) [arXiv:1811.06753](https://arxiv.org/abs/1811.06753) [GitHub](https://github.com/TomVeniat/SANAS)
+
 **Unifying Probabilistic Models for Time-Frequency Analysis**. W J. Wilkinson, M R Andersen, J D. Reiss, D Stowell, A Solin [Queen Mary University of London & Aalto University] (2018) [arXiv:1811.02489](https://arxiv.org/abs/1811.02489) [GitHub](https://github.com/wil-j-wil/unifying-prob-time-freq)
 
 **Training neural audio classifiers with few data**. J Pons, J Serrà, X Serra [Telefonica Research & Universitat Pompeu Fabra] (2018) [arXiv:1810.10274](https://arxiv.org/abs/1810.10274) [Github](https://github.com/jordipons/neural-classifiers-with-few-audio/)
