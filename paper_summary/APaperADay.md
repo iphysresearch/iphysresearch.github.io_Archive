@@ -39,11 +39,17 @@ date: 2018-09-28
 
 **Refacing: reconstructing anonymized facial features using GANs**. D Abramian, A Eklund [Linkoping University] (2018) [arXiv:1810.06455](https://arxiv.org/abs/1810.06455)
 
+**ClusterGAN : Latent Space Clustering in Generative Adversarial Networks**. S Mukherjee, H Asnani, E Lin, S Kannan [University of Washington] (2018) [arXiv:1809.03627](https://arxiv.org/abs/1809.03627)
+
 
 
 ## :facepunch: Adversarial Examples/Attacks
 
 **Defensive Dropout for Hardening Deep Neural Networks under Adversarial Attacks**. S Wang, X Wang, P Zhao, W Wen, D Kaeli, P Chin, X Lin [Northeastern University & Boston university & Florida International University] (2018) [arXiv:1809.05165](https://arxiv.org/abs/1809.05165)
+
+**Are adversarial examples inevitable?**. A Shafahi, W. R Huang, C Studer, S Feizi, T Goldstein (2018) [arXiv:1809.02104](https://arxiv.org/abs/1809.02104)
+
+
 
 
 
@@ -52,6 +58,8 @@ date: 2018-09-28
 **Stochastic Adaptive Neural Architecture Search for Keyword Spotting**. T Véniat, O Schwander, L Denoyer [Sorbonne Université & Facebook AI Research] (2018) [arXiv:1811.06753](https://arxiv.org/abs/1811.06753) [GitHub](https://github.com/TomVeniat/SANAS)
 
 **Unifying Probabilistic Models for Time-Frequency Analysis**. W J. Wilkinson, M R Andersen, J D. Reiss, D Stowell, A Solin [Queen Mary University of London & Aalto University] (2018) [arXiv:1811.02489](https://arxiv.org/abs/1811.02489) [GitHub](https://github.com/wil-j-wil/unifying-prob-time-freq)
+
+**WaveGlow: A Flow-based Generative Network for Speech Synthesis**. Ryan Prenger, Rafael Valle, Bryan Catanzaro [NVIDIA Corporation] (2018) [arXiv:1811.00002](https://arxiv.org/abs/1811.00002) [Github](https://github.com/NVIDIA/waveglow)
 
 **Training neural audio classifiers with few data**. J Pons, J Serrà, X Serra [Telefonica Research & Universitat Pompeu Fabra] (2018) [arXiv:1810.10274](https://arxiv.org/abs/1810.10274) [Github](https://github.com/jordipons/neural-classifiers-with-few-audio/)
 
@@ -70,6 +78,10 @@ date: 2018-09-28
 **A Convergence Theory for Deep Learning via Over-Parameterization**. Z Allen-Zhu, Y Li, Z Song [Microsoft Research AI & Stanford University & UT-Austin] (2018) [arXiv:1811.03962](https://arxiv.org/abs/1811.03962)
 
 **Gradient Descent Finds Global Minima of Deep Neural Networks**. S S. Du, J D. Lee, H Li, L Wang, X Zhai [CMU & University of Southern California & Peking University & MIT] (2018) [arXiv:1811.03804](https://arxiv.org/abs/1811.03804)
+
+**Identifying Generalization Properties in Neural Networks**. H Wang, N S Keskar, C Xiong, R Socher [Salesforce Research] (2018) [arXiv:1809.07402](https://arxiv.org/abs/1809.07402)
+
+**Accelerating Natural Gradient with Higher-Order Invariance**. by Yang Song [Post](https://ermongroup.github.io/blog/geo/) [paper](http://proceedings.mlr.press/v80/song18a/song18a.pdf)
 
 
 
@@ -99,9 +111,13 @@ date: 2018-09-28
 
 **Quaternion Convolutional Neural Networks**. Xuanyu Zhu / Yi Xu / Hongteng Xu / Changjian Chen. [Shanghai Jiao Tong University & Duke University] (ECCV2018) ([pdf](http://openaccess.thecvf.com/content_ECCV_2018/html/Xuanyu_Zhu_Quaternion_Convolutional_Neural_ECCV_2018_paper.html))
 
+**Why scatter plots suggest causality, and what we can do about it**. C T. Bergstrom, J D. West [University of Washington] (2018) [arXiv:1809.09328](https://arxiv.org/abs/1809.09328)
+
+**Human activity recognition based on time series analysis using U-Net**. Y Zhang, Y Zhang, Z Zhang, J Bao, Y Song [Beijing University of Posts and Telecommunications & AIdong Super AI] (2018). [arXiv:1809.08113](https://arxiv.org/abs/1809.08113)
+
+**Don't Use Large Mini-Batches, Use Local SGD**. T Lin, S U. Stich, M Jaggi [EPFL] (2018) [arXiv:1808.07217](https://arxiv.org/abs/1808.07217)
+
 **Backprop Evolution**. M Alber, I Bello, B Zoph, P Kindermans, P Ramachandran, Q Le [TU Berlin & Google Brain] (2018) [arXiv:1808.01974](https://arxiv.org/abs/1808.01974)
-
-
 
 
 
@@ -151,6 +167,8 @@ date: 2018-09-28
 
 **A Tale of Three Probabilistic Families: Discriminative, Descriptive and Generative Models**. Y N Wu, R Gao, T Han, S Zhu [UCLA] (2018) [arXiv:1810.04261](https://arxiv.org/abs/1810.04261)
 
+**Deep learning for time series classification: a review**. H I Fawaz, G Forestier, J Weber, L Idoumghar, P Muller [Université Haute Alsace] (2018) [arXiv:1809.04356](https://arxiv.org/abs/1809.04356)
+
 **A Survey on Deep Transfer Learning**. C Tan, F Sun, T Kong, W Zhang, C Yang, C Liu [Tsinghua University] (2018) [arXiv:1808.01974](https://arxiv.org/abs/1808.01974)
 
 **How convolutional neural network see the world - A survey of convolutional neural network visualization methods**. Z Qin, F Yu, C Liu, X Chen [George Mason University & Clarkson University] (2018) [arXiv:1804.11191](https://arxiv.org/abs/1804.11191)
@@ -167,6 +185,10 @@ date: 2018-09-28
 ## :framed_picture: Figure Design
 
 **Improving Generalization for Abstract Reasoning Tasks Using Disentangled Feature Representations**. X Steenbrugge, S Leroux, T Verbelen, B Dhoedt [Ghent University] (2018) [arXiv:1811.04784](https://arxiv.org/abs/1811.04784)
+
+
+
+
 
 
 
@@ -209,22 +231,6 @@ date: 2018-09-28
 **Large Scale GAN Training for High Fidelity Natural Image Synthesis** | [OpenReview](https://openreview.net/forum?id=B1xsqj09Fm). (2018)  [comment]
 
 **An analytic theory of generalization dynamics and transfer learning in deep linear networks**. A K. Lampinen, S Ganguli [Stanford University] (2018) [arXiv:1809.10374](https://arxiv.org/abs/1809.10374) [comment]
-
-**Why scatter plots suggest causality, and what we can do about it**. C T. Bergstrom, J D. West [University of Washington] (2018) [arXiv:1809.09328](https://arxiv.org/abs/1809.09328) [comment] 
-
-**Human activity recognition based on time series analysis using U-Net**. Y Zhang, Y Zhang, Z Zhang, J Bao, Y Song [Beijing University of Posts and Telecommunications & AIdong Super AI] (2018). [arXiv:1809.08113](https://arxiv.org/abs/1809.08113) [comment] 
-
-**Identifying Generalization Properties in Neural Networks**. H Wang, N S Keskar, C Xiong, R Socher [Salesforce Research] (2018) [arXiv:1809.07402](https://arxiv.org/abs/1809.07402) [comment]
-
-**Deep learning for time series classification: a review**. H I Fawaz, G Forestier, J Weber, L Idoumghar, P Muller [Université Haute Alsace] (2018) [arXiv:1809.04356](https://arxiv.org/abs/1809.04356) [comment]
-
-**ClusterGAN : Latent Space Clustering in Generative Adversarial Networks**. S Mukherjee, H Asnani, E Lin, S Kannan [University of Washington] (2018) [arXiv:1809.03627](https://arxiv.org/abs/1809.03627) [comment]
-
-**Are adversarial examples inevitable?**. A Shafahi, W. R Huang, C Studer, S Feizi, T Goldstein (2018) [arXiv:1809.02104](https://arxiv.org/abs/1809.02104) [comment]
-
-**Accelerating Natural Gradient with Higher-Order Invariance**. by Yang Song [Post](https://ermongroup.github.io/blog/geo/) [paper](http://proceedings.mlr.press/v80/song18a/song18a.pdf) [comment]
-
-**Don't Use Large Mini-Batches, Use Local SGD**. T Lin, S U. Stich, M Jaggi [EPFL] (2018) [arXiv:1808.07217](https://arxiv.org/abs/1808.07217) [comment]
 
 **Dropout is a special case of the stochastic delta rule: faster and more accurate deep learning**. N Frazier-Logue, S J Hanson [Rutgers University] (2018) [arXiv:1808.03578](https://arxiv.org/abs/1808.03578) [comment]
 
