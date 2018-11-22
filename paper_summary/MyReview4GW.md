@@ -60,3 +60,15 @@ From Fig.2 in [Physics, Astrophysics and Cosmology with Gravitational Waves](htt
 
 ---
 
+
+
+![](https://i.loli.net/2018/11/22/5bf61e99ecbc1.png)
+
+https://arxiv.org/pdf/1811.08079.pdf
+
+
+
+
+
+---
+

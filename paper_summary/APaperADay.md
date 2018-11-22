@@ -45,17 +45,23 @@ date: 2018-09-28
 
 
 
+
+
 ## :facepunch: Adversarial Examples/Attacks
 
 **Defensive Dropout for Hardening Deep Neural Networks under Adversarial Attacks**. S Wang, X Wang, P Zhao, W Wen, D Kaeli, P Chin, X Lin [Northeastern University & Boston university & Florida International University] (2018) [arXiv:1809.05165](https://arxiv.org/abs/1809.05165)
 
 **Are adversarial examples inevitable?**. A Shafahi, W. R Huang, C Studer, S Feizi, T Goldstein (2018) [arXiv:1809.02104](https://arxiv.org/abs/1809.02104)
 
+**Generating Natural Adversarial Examples**. Z Zhao, D Dua, S Singh [University of California, Irvine] (2017) [arXiv:1710.11342](https://arxiv.org/abs/1710.11342) [Github](https://github.com/zhengliz/natural-adversary) [comment]
+
 
 
 
 
 ## :musical_note: Sound & Signal Processing
+
+**A Deep Neural Network for Unsupervised Anomaly Detection and Diagnosis in Multivariate Time Series Data**. C Zhang, D Song, Y Chen, X Feng, C Lumezanu, W Cheng, J Ni, B Zong, H Chen, N V. Chawla [University of Notre Dame & NEC Laboratories America & Columbia University] (2018) [arXiv:1811.08055](https://arxiv.org/abs/1811.08055)
 
 **Stochastic Adaptive Neural Architecture Search for Keyword Spotting**. T Véniat, O Schwander, L Denoyer [Sorbonne Université & Facebook AI Research] (2018) [arXiv:1811.06753](https://arxiv.org/abs/1811.06753) [GitHub](https://github.com/TomVeniat/SANAS)
 
@@ -68,6 +74,10 @@ date: 2018-09-28
 **End-to-end music source separation: is it possible in the waveform domain?**. F Lluís, J Pons, X Serra [Universitat Pompeu Fabra] (2018) [arXiv:1810.12187](https://arxiv.org/abs/1810.12187)
 
 **Multilevel Wavelet Decomposition Network for Interpretable Time Series Analysis**. Jingyuan Wang, Ze Wang, Jianfeng Li, Junjie Wu.[Beihang University] (2018) [arXiv:1806.08946](https://arxiv.org/abs/1806.08946)
+
+**Deep Convolutional Neural Networks On Multichannel Time Series For Human Activity Recognition**. Jian Bo Yang, Minh Nhut Nguyen, Phyo Phyo San, Xiao Li Li, Shonali Krishnaswamy (2015) [IJCAI2015](http://www.aaai.org/ocs/index.php/IJCAI/IJCAI15/paper/download/10710/11297)
+
+**Time Series Classification Using Multi-Channels Deep Convolutional Neural Networks**. Yi Zheng, Qi Liu, Enhong Chen, Yong Ge, and J. Leon Zhao [USTC, et al.] (2014) [WAIM2014](http://staff.ustc.edu.cn/~cheneh/paper_pdf/2014/Yi-Zheng-WAIM2014.pdf)
 
 
 
@@ -105,6 +115,18 @@ date: 2018-09-28
 
 **Sanity Checks for Saliency Maps**. J Adebayo, J Gilmer, M Muelly, I Goodfellow, M Hardt, B Kim [Google Brain] (2018) [arXiv:1810.03292](https://arxiv.org/abs/1810.03292)
 
+**Local Explanation Methods for Deep Neural Networks Lack Sensitivity to Parameter Values**. J Adebayo, J Gilmer, I Goodfellow, B Kim [Google Brain] (2018) [OpenReview](https://openreview.net/forum?id=SJOYTK1vM)
+
+**An Information-Theoretic View for Deep Learning**. J Zhang, T Liu, D Tao [UBTECH Sydney AI Centre] (2018) [arXiv:1804.09060](https://arxiv.org/abs/1804.09060)
+
+**Revisiting Small Batch Training for Deep Neural Networks**. Dominic Masters, Carlo Luschi. (2018) [arXiv:1804.07612](https://arxiv.org/abs/1804.07612)
+
+**A disciplined approach to neural network hyper-parameters: Part 1 -- learning rate, batch size, momentum, and weight decay**. Leslie N. Smith. [arXiv:1803.09820](https://arxiv.org/abs/1803.09820)
+
+**Understanding Individual Neuron Importance Using Information Theory**. K Liu, R A Amjad, B C. Geiger [Technical University of Munich & Graz University of Technology] (2018) [arXiv:1804.06679](https://arxiv.org/abs/1804.06679)
+
+**Understanding Convolutional Neural Network Training with Information Theory**. S Yu, R Jenssen, J C. Principe [University of Florida & University of Tromsø] (2018) [arXiv:1804.06537](https://arxiv.org/abs/1804.06537)
+
 
 
 
@@ -121,7 +143,7 @@ date: 2018-09-28
 
 **Backprop Evolution**. M Alber, I Bello, B Zoph, P Kindermans, P Ramachandran, Q Le [TU Berlin & Google Brain] (2018) [arXiv:1808.01974](https://arxiv.org/abs/1808.01974)
 
-
+**Learning Confidence for Out-of-Distribution Detection in Neural Networks**. T DeVries, G W. Taylor [University of Guelph & Vector Institute] (2018) [arXiv:1802.04865](https://arxiv.org/abs/1802.04865)
 
 
 
@@ -184,11 +206,11 @@ date: 2018-09-28
 
 
 
-## :framed_picture: Figure Design
+## :framed_picture: Figure Design & Dimension Reduction
 
 **Improving Generalization for Abstract Reasoning Tasks Using Disentangled Feature Representations**. X Steenbrugge, S Leroux, T Verbelen, B Dhoedt [Ghent University] (2018) [arXiv:1811.04784](https://arxiv.org/abs/1811.04784)
 
-
+**UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction**. Leland McInnes and John Healy [Tutte Institute for Mathematics and Computing] (2018) [arXiv:1802.03426](https://arxiv.org/abs/1802.03426) [Github](https://github.com/lmcinnes/umap)
 
 
 
@@ -264,29 +286,11 @@ date: 2018-09-28
 
 **Towards a universal neural network encoder for time series**. J Serrà, S Pascual, A Karatzoglou [Telefonica Research & Universitat Politecnica de Catalunya] (2018) [comment]
 
-**Foundations of Sequence-to-Sequence Modeling for Time Series**. V Kuznetsov, Z Mariet [Google Research & MIT] (2018) [arXiv:1805.03714](https://arxiv.org/abs/1805.03714) [comment]
+**Foundations of Sequence-to-Sequence Modeling for Time Series**. V Kuznetsov, Z Mariet [Google Research & MIT] (2018) [arXiv:1805.03714](https://arxiv.org/abs/1805.03714)
 
-**Local Explanation Methods for Deep Neural Networks Lack Sensitivity to Parameter Values**. J Adebayo, J Gilmer, I Goodfellow, B Kim [Google Brain] (2018) [OpenReview](https://openreview.net/forum?id=SJOYTK1vM) [comment]
 
-**An Information-Theoretic View for Deep Learning**. J Zhang, T Liu, D Tao [UBTECH Sydney AI Centre] (2018) [arXiv:1804.09060](https://arxiv.org/abs/1804.09060) [comment]
 
-**Revisiting Small Batch Training for Deep Neural Networks**. Dominic Masters, Carlo Luschi. (2018) [arXiv:1804.07612](https://arxiv.org/abs/1804.07612) [comment]
 
-**A disciplined approach to neural network hyper-parameters: Part 1 -- learning rate, batch size, momentum, and weight decay**. Leslie N. Smith. [arXiv:1803.09820](https://arxiv.org/abs/1803.09820) [comment]
-
-**Understanding Individual Neuron Importance Using Information Theory**. K Liu, R A Amjad, B C. Geiger [Technical University of Munich & Graz University of Technology] (2018) [arXiv:1804.06679](https://arxiv.org/abs/1804.06679) [comment]
-
-**Understanding Convolutional Neural Network Training with Information Theory**. S Yu, R Jenssen, J C. Principe [University of Florida & University of Tromsø] (2018) [arXiv:1804.06537](https://arxiv.org/abs/1804.06537) [comment]
-
-**Learning Confidence for Out-of-Distribution Detection in Neural Networks**. T DeVries, G W. Taylor [University of Guelph & Vector Institute] (2018) [arXiv:1802.04865](https://arxiv.org/abs/1802.04865) [comment]
-
-**UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction**. Leland McInnes and John Healy [Tutte Institute for Mathematics and Computing] (2018) [arXiv:1802.03426](https://arxiv.org/abs/1802.03426) [Github](https://github.com/lmcinnes/umap) [comment]
-
-**Generating Natural Adversarial Examples**. Z Zhao, D Dua, S Singh [University of California, Irvine] (2017) [arXiv:1710.11342](https://arxiv.org/abs/1710.11342) [Github](https://github.com/zhengliz/natural-adversary) [comment]
-
-**Deep Convolutional Neural Networks On Multichannel Time Series For Human Activity Recognition**. Jian Bo Yang, Minh Nhut Nguyen, Phyo Phyo San, Xiao Li Li, Shonali Krishnaswamy (2015) [IJCAI2015](http://www.aaai.org/ocs/index.php/IJCAI/IJCAI15/paper/download/10710/11297) [comment]
-
-**Time Series Classification Using Multi-Channels Deep Convolutional Neural Networks**. Yi Zheng, Qi Liu, Enhong Chen, Yong Ge, and J. Leon Zhao [USTC, et al.] (2014) [WAIM2014](http://staff.ustc.edu.cn/~cheneh/paper_pdf/2014/Yi-Zheng-WAIM2014.pdf) [comment]
 
 
 

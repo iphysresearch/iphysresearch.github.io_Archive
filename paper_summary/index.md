@@ -102,6 +102,8 @@ Investigating the noise residuals around the gravitational wave event GW150914
 
 Probabilistic Random Forest: A machine learning algorithm for noisy datasets
 
+https://vijayvarma392.github.io/
+
 ## Maybe helpful:
 
 - Rotation-invariant convolutional neural networks for galaxy morphology prediction
