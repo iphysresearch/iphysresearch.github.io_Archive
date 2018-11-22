@@ -111,11 +111,9 @@ date: 2018-09-28
 
 **Approximate Fisher Information Matrix to Characterise the Training of Deep Neural Networks**. Z Liao, T Drummond, I Reid, G Carneiro [University of Adelaide & Monash University] (2018) [arXiv:1810.06767](https://arxiv.org/abs/1810.06767)  [GitHub](https://github.com/zhibinliao89/fisher.info.mat.torch) 
 
-**Local Explanation Methods for Deep Neural Networks Lack Sensitivity to Parameter Values**. J Adebayo, J Gilmer, I Goodfellow, B Kim [Google Brain] (2018) [arXiv:1810.03307](https://arxiv.org/abs/1810.03307) 
+**Local Explanation Methods for Deep Neural Networks Lack Sensitivity to Parameter Values**. J Adebayo, J Gilmer, I Goodfellow, B Kim [Google Brain] (2018) [arXiv:1810.03307](https://arxiv.org/abs/1810.03307)  [OpenReview](https://openreview.net/forum?id=SJOYTK1vM)
 
 **Sanity Checks for Saliency Maps**. J Adebayo, J Gilmer, M Muelly, I Goodfellow, M Hardt, B Kim [Google Brain] (2018) [arXiv:1810.03292](https://arxiv.org/abs/1810.03292)
-
-**Local Explanation Methods for Deep Neural Networks Lack Sensitivity to Parameter Values**. J Adebayo, J Gilmer, I Goodfellow, B Kim [Google Brain] (2018) [OpenReview](https://openreview.net/forum?id=SJOYTK1vM)
 
 **An Information-Theoretic View for Deep Learning**. J Zhang, T Liu, D Tao [UBTECH Sydney AI Centre] (2018) [arXiv:1804.09060](https://arxiv.org/abs/1804.09060)
 
@@ -144,6 +142,8 @@ date: 2018-09-28
 **Backprop Evolution**. M Alber, I Bello, B Zoph, P Kindermans, P Ramachandran, Q Le [TU Berlin & Google Brain] (2018) [arXiv:1808.01974](https://arxiv.org/abs/1808.01974)
 
 **Learning Confidence for Out-of-Distribution Detection in Neural Networks**. T DeVries, G W. Taylor [University of Guelph & Vector Institute] (2018) [arXiv:1802.04865](https://arxiv.org/abs/1802.04865)
+
+
 
 
 
