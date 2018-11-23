@@ -77,6 +77,8 @@ date: 2018-09-28
 
 **Deep Convolutional Neural Networks On Multichannel Time Series For Human Activity Recognition**. Jian Bo Yang, Minh Nhut Nguyen, Phyo Phyo San, Xiao Li Li, Shonali Krishnaswamy (2015) [IJCAI2015](http://www.aaai.org/ocs/index.php/IJCAI/IJCAI15/paper/download/10710/11297)
 
+**Towards a universal neural network encoder for time series**. J Serrà, S Pascual, A Karatzoglou [Telefonica Research & Universitat Politecnica de Catalunya] (2018)
+
 **Time Series Classification Using Multi-Channels Deep Convolutional Neural Networks**. Yi Zheng, Qi Liu, Enhong Chen, Yong Ge, and J. Leon Zhao [USTC, et al.] (2014) [WAIM2014](http://staff.ustc.edu.cn/~cheneh/paper_pdf/2014/Yi-Zheng-WAIM2014.pdf)
 
 
@@ -101,6 +103,8 @@ date: 2018-09-28
 
 ## :+1: Model Evaluation & Performance & Interpretion & Visualization 
 
+**Rethinking ImageNet Pre-training**. K He, R Girshick, P Dollár [Facebook AI Research (FAIR)] (2018) [arXiv:1811.08883](https://arxiv.org/abs/1811.08883)
+
 **Efficient Identification of Approximate Best Configuration of Training in Large Datasets**. S Huang, C Wang, B Ding, S Chaudhuri [University of Illinois & Microsoft Research & Alibaba Group] (2018) [arXiv:1811.03250](https://arxiv.org/abs/1811.03250)
 
 **Explaining Deep Learning Models - A Bayesian Non-parametric Approach**. W Guo, S Huang, Y Tao, X Xing, L Lin [The Pennsylvania State University & Netflix Inc & Columbia University] (2018) [arXiv:1811.03422](https://arxiv.org/abs/1811.03422)
@@ -115,21 +119,27 @@ date: 2018-09-28
 
 **Sanity Checks for Saliency Maps**. J Adebayo, J Gilmer, M Muelly, I Goodfellow, M Hardt, B Kim [Google Brain] (2018) [arXiv:1810.03292](https://arxiv.org/abs/1810.03292)
 
+**A Performance Evaluation of Convolutional Neural Networks for Face Anti Spoofing**. Chaitanya Nagpal, Shiv Ram Dubey (2018) [arXiv:1805.04176](https://arxiv.org/abs/1805.04176)
+
 **An Information-Theoretic View for Deep Learning**. J Zhang, T Liu, D Tao [UBTECH Sydney AI Centre] (2018) [arXiv:1804.09060](https://arxiv.org/abs/1804.09060)
 
 **Revisiting Small Batch Training for Deep Neural Networks**. Dominic Masters, Carlo Luschi. (2018) [arXiv:1804.07612](https://arxiv.org/abs/1804.07612)
 
-**A disciplined approach to neural network hyper-parameters: Part 1 -- learning rate, batch size, momentum, and weight decay**. Leslie N. Smith. [arXiv:1803.09820](https://arxiv.org/abs/1803.09820)
-
 **Understanding Individual Neuron Importance Using Information Theory**. K Liu, R A Amjad, B C. Geiger [Technical University of Munich & Graz University of Technology] (2018) [arXiv:1804.06679](https://arxiv.org/abs/1804.06679)
 
 **Understanding Convolutional Neural Network Training with Information Theory**. S Yu, R Jenssen, J C. Principe [University of Florida & University of Tromsø] (2018) [arXiv:1804.06537](https://arxiv.org/abs/1804.06537)
+
+**A disciplined approach to neural network hyper-parameters: Part 1 -- learning rate, batch size, momentum, and weight decay**. Leslie N. Smith. [arXiv:1803.09820](https://arxiv.org/abs/1803.09820)
+
+**Focal Loss for Dense Object Detection**. Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, Piotr Dollár [Facebook AI Research] (2017) [arXiv:1708.02002](https://arxiv.org/abs/1708.02002) [Github](https://github.com/facebookresearch/Detectron)
 
 
 
 
 
 ## :control_knobs: Model Configuration
+
+**Retina U-Net: Embarrassingly Simple Exploitation of Segmentation Supervision for Medical Object Detection**. P F. Jaeger, S A. A. Kohl, S Bickelhaupt, F Isensee, T A Kuder, H Schlemmer, K H. Maier-Hein [German Cancer Research Center] (2018) [arXiv:1811.08661](https://arxiv.org/abs/1811.08661) [GitHub](https://github.com/pfjaeger/medicaldetectiontoolkit)
 
 **Quaternion Convolutional Neural Networks**. Xuanyu Zhu / Yi Xu / Hongteng Xu / Changjian Chen. [Shanghai Jiao Tong University & Duke University] (ECCV2018) ([pdf](http://openaccess.thecvf.com/content_ECCV_2018/html/Xuanyu_Zhu_Quaternion_Convolutional_Neural_ECCV_2018_paper.html))
 
@@ -169,6 +179,8 @@ date: 2018-09-28
 
 **Using Machine Learning to Predict the Evolution of Physics Research**. W Liu, S Saganowski, P Kazienko, S A Cheong [Nanyang Technological University & Wrocław University of Science and Technology] (2018) [arXiv:1810.12116](https://arxiv.org/abs/1810.12116)
 
+**hep-th**. Y He, V Jejjala, B D. Nelson [University of London & Nankai University & Northeastern University] (2018) [arXiv:1807.00735](https://arxiv.org/abs/1807.00735) [comment]
+
 
 
 
@@ -194,6 +206,8 @@ date: 2018-09-28
 **Deep learning for time series classification: a review**. H I Fawaz, G Forestier, J Weber, L Idoumghar, P Muller [Université Haute Alsace] (2018) [arXiv:1809.04356](https://arxiv.org/abs/1809.04356)
 
 **A Survey on Deep Transfer Learning**. C Tan, F Sun, T Kong, W Zhang, C Yang, C Liu [Tsinghua University] (2018) [arXiv:1808.01974](https://arxiv.org/abs/1808.01974)
+
+**Generalization Error in Deep Learning**. D Jakubovitz, R Giryes, M R. D. Rodrigues [Tel Aviv University & University College London] (2018) [arXiv:1808.01174](https://arxiv.org/abs/1808.01174)
 
 **How convolutional neural network see the world - A survey of convolutional neural network visualization methods**. Z Qin, F Yu, C Liu, X Chen [George Mason University & Clarkson University] (2018) [arXiv:1804.11191](https://arxiv.org/abs/1804.11191)
 
@@ -262,8 +276,6 @@ date: 2018-09-28
 
 **Is Robustness the Cost of Accuracy? -- A Comprehensive Study on the Robustness of 18 Deep Image Classification Models**. D Su, H Zhang... [IBM Research & University of California, Davis & MIT] (2018) [arXiv:1808.01688](https://arxiv.org/abs/1808.01688) [GitHub](https://github.com/huanzhang12/Adversarial_Survey) [comment]
 
-**Generalization Error in Deep Learning**. D Jakubovitz, R Giryes, M R. D. Rodrigues [Tel Aviv University & University College London] (2018) [arXiv:1808.01174](https://arxiv.org/abs/1808.01174) [comment]
-
 **Recurrent Squeeze-and-Excitation Context Aggregation Net for Single Image Deraining**. Xia Li, Jianlong Wu, Zhouchen Lin, Hong Liu, Hongbin Zha. [Peking University] (2018) [arXiv:1807.05698](https://arxiv.org/abs/1807.05698) [GitHub](https://github.com/XiaLiPKU/RESCAN) [comment]
 
 **Toward Convolutional Blind Denoising of Real Photographs**. S Guo, Z Yan, K Zhang, W Zuo, L Zhang [Harbin Institute of Technology & The Hong Kong Polytechnic University] (2018) [arXiv:1807.04686](https://arxiv.org/abs/1807.04686) [Github](https://github.com/GuoShi28/CBDNet) [comment]
@@ -276,15 +288,9 @@ date: 2018-09-28
 
 **Troubling Trends in Machine Learning Scholarship**. Z C. Lipton, J Steinhardt [Stanford University] (2018) [arXiv:1807.03341](https://arxiv.org/abs/1807.03341) [comment]
 
-**hep-th**. Y He, V Jejjala, B D. Nelson [University of London & Nankai University & Northeastern University] (2018) [arXiv:1807.00735](https://arxiv.org/abs/1807.00735) [comment]
-
 **On the Spectral Bias of Deep Neural Networks**. N Rahaman, D Arpit, A Baratin, F Draxler, M Lin, F A. Hamprecht, Y Bengio, A Courville [Heidelberg University & MILA] (2018) [arXiv:1806.08734](https://arxiv.org/abs/1806.08734) [comment]
 
 **Opening the black box of deep learning**. D Lei, X Chen, J Zhao [Shanghai University] (2018) [arXiv:1805.08355](https://arxiv.org/abs/1805.08355) [comment]
-
-**A Performance Evaluation of Convolutional Neural Networks for Face Anti Spoofing**. Chaitanya Nagpal, Shiv Ram Dubey (2018) [arXiv:1805.04176](https://arxiv.org/abs/1805.04176) [comment]
-
-**Towards a universal neural network encoder for time series**. J Serrà, S Pascual, A Karatzoglou [Telefonica Research & Universitat Politecnica de Catalunya] (2018) [comment]
 
 **Foundations of Sequence-to-Sequence Modeling for Time Series**. V Kuznetsov, Z Mariet [Google Research & MIT] (2018) [arXiv:1805.03714](https://arxiv.org/abs/1805.03714)
 
