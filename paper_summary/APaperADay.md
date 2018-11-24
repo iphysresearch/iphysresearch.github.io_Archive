@@ -141,6 +141,8 @@ date: 2018-09-28
 
 **Retina U-Net: Embarrassingly Simple Exploitation of Segmentation Supervision for Medical Object Detection**. P F. Jaeger, S A. A. Kohl, S Bickelhaupt, F Isensee, T A Kuder, H Schlemmer, K H. Maier-Hein [German Cancer Research Center] (2018) [arXiv:1811.08661](https://arxiv.org/abs/1811.08661) [GitHub](https://github.com/pfjaeger/medicaldetectiontoolkit)
 
+**Rethinking floating point for deep learning**. Jeff Johnson [Facebook AI Research] (2018) [arXiv:1811.01721](https://arxiv.org/abs/1811.01721) [Github](https://github.com/facebookresearch/deepfloat) [Blog](https://code.fb.com/ai-research/floating-point-math/)
+
 **Quaternion Convolutional Neural Networks**. Xuanyu Zhu / Yi Xu / Hongteng Xu / Changjian Chen. [Shanghai Jiao Tong University & Duke University] (ECCV2018) ([pdf](http://openaccess.thecvf.com/content_ECCV_2018/html/Xuanyu_Zhu_Quaternion_Convolutional_Neural_ECCV_2018_paper.html))
 
 **Why scatter plots suggest causality, and what we can do about it**. C T. Bergstrom, J D. West [University of Washington] (2018) [arXiv:1809.09328](https://arxiv.org/abs/1809.09328)

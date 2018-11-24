@@ -36,6 +36,10 @@ The goal is to read and comment once a day. and this [post](./APaperADay.html) w
 
 
 
+[机器学习与深度学习经典论文整理](https://mp.weixin.qq.com/s/jKK6AwmCMGWgVK0vPX359w)
+
+
+
 # :rainbow: GW Astronomy
 
 ## General
