@@ -103,7 +103,7 @@ date: 2018-09-28
 
 
 
-## :+1: Model Evaluation & Performance & Interpretion & Visualization 
+## :+1: Model Evaluation & Performance & Interpretion & Visualization
 
 **Rethinking ImageNet Pre-training**. K He, R Girshick, P Dollár [Facebook AI Research (FAIR)] (2018) [arXiv:1811.08883](https://arxiv.org/abs/1811.08883)
 

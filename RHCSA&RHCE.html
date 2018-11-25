@@ -1,0 +1,968 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>RHCSA&amp;RHCE</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:first-child { margin-top: -20px; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.701961); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 80px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; }
+  #write { margin-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 1cm; padding-right: 1cm; padding-bottom: 0px; break-after: avoid-page; }
+  .typora-export #write::after { height: 0px; }
+  @page { margin: 20mm 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; text-align: center; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+
+
+:root {
+    --side-bar-bg-color: #fff;
+    --control-text-color: #777;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhGq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhPq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhHq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhIq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhEq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhFq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhLq3-cXbKD.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmhduz8A.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwkxduz8A.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmxduz8A.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlBduz8A.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmBduz8A.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmRduz8A.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lqDY.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qPK7lqDY.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNK7lqDY.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qO67lqDY.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qN67lqDY.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNq7lqDY.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmhduz8A.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwkxduz8A.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmxduz8A.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlBduz8A.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmBduz8A.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmRduz8A.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: Source Sans Pro, Helvetica Neue, Arial, sans-serif !important;
+    color: #34495e;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6rem;
+    letter-spacing: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#write {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 30px 40px 30px;
+    padding-top: 20px;
+    padding-bottom: 100px;
+}
+
+#write p {
+    /* text-indent: 2rem; */
+    line-height: 1.6rem;
+    word-spacing: .05rem;
+}
+
+#write ol li {
+    padding-left: 0.5rem;
+}
+
+#write>ul:first-child,
+#write>ol:first-child {
+    margin-top: 30px;
+}
+
+body>*:first-child {
+    margin-top: 0 !important;
+}
+
+body>*:last-child {
+    margin-bottom: 0 !important;
+}
+
+a {
+    color: #42b983;
+    font-weight: 600;
+    padding: 0px 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+
+h1 {
+    padding-bottom: .4rem;
+    font-size: 2.2rem;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 1.75rem;
+    line-height: 1.225;
+    margin: 35px 0px 15px 0px;
+}
+
+h3 {
+    font-size: 1.4rem;
+    line-height: 1.43;
+    margin: 20px 0px 7px 0px;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+    color: #777;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
+}
+
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+body>h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h1:first-child+h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h3:first-child,
+body>h4:first-child,
+body>h5:first-child,
+body>h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+    margin-top: 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul,
+ol {
+    padding-left: 30px;
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+blockquote {
+    border-left: 4px solid #42b983;
+    padding: 10px 0px 10px 15px;
+    color: #777;
+    background-color: rgba(66, 185, 131, .1);
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #fafafa;
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr td {
+    border: 1px solid #dfe2e5;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+#write strong {
+    padding: 0px 1px 0 1px;
+}
+
+#write em {
+    padding: 0px 5px 0 2px;
+}
+
+#write table thead th {
+    background-color: #f2f2f2;
+}
+
+#write .CodeMirror-gutters {
+    border-right: none;
+}
+
+#write .md-fences {
+    border: 1px solid #F4F4F4;
+    -webkit-font-smoothing: initial;
+    margin: 0.8rem 0 !important;
+    padding: 0.3rem 0rem !important;
+    line-height: 1.43rem;
+    background-color: #F8F8F8 !important;
+    border-radius: 2px;
+    font-family: Roboto Mono, Source Sans Pro, Monaco, courier, monospace !important;
+    font-size: 0.85rem;
+    word-wrap: normal;
+}
+
+#write .CodeMirror-wrap .CodeMirror-code pre {
+    padding-left: 12px;
+}
+
+#write code, tt {
+    margin: 0 2px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-family: Source Sans Pro, Roboto Mono, Monaco, courier, monospace !important;
+    font-size: 0.92rem;
+    color: #e96900;
+    background-color: #f8f8f8;
+}
+
+#write .md-footnote {
+    background-color: #f8f8f8;
+    color: #e96900;
+}
+
+/* heighlight. */
+#write mark {
+    background-color:#EBFFEB;
+    border-radius: 2px;
+    padding: 2px 4px;
+    margin: 0 2px;
+    color: #222;
+    font-weight: 500;
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+.cm-s-inner .cm-link,
+.cm-s-inner.cm-link {
+    color: #22a2c9;
+}
+
+.cm-s-inner .cm-string {
+    color: #22a2c9;
+}
+
+.md-task-list-item>input {
+    margin-left: -1.3em;
+}
+
+@media screen and (min-width: 914px) {
+    /*body {
+        width: 854px;
+        margin: 0 auto;
+    }*/
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+    background-color: #f8f8f8;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+    bottom: .375rem;
+}
+
+#write>h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write>h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+
+</style>
+</head>
+<body class='typora-export' >
+<div  id='write'  class = 'is-mac'><p>&nbsp;</p><div class='md-toc' mdtype='toc'><p class="md-toc-content"><span class="md-toc-item md-toc-h1" data-ref="n4"><a class="md-toc-inner" href="#header-n4">RHCSA</a></span><span class="md-toc-item md-toc-h1" data-ref="n65"><a class="md-toc-inner" href="#header-n65">RHCE</a></span></p></div><p>&nbsp;</p><h1><a name='header-n4' class='md-header-anchor '></a>RHCSA</h1><p>您的机器是 domain1.example.com 域的一个成员。 domain1.example.com 域内的所有系统在 172.24.1.0/255.255.255.0 子网内，并且所有在这个子网内的系统都属于 domain1.example.com 域。</p><blockquote><p>虚拟机的网络配置应该如下：
+主机名： station.domain1.example.com
+IP地址： 172.24.1.5
+子网掩码： 255.255.255.0
+网关 172.24.1.254
+名称服务： 172.24.1.250
+虚拟机的 root 密码是 flectrag</p></blockquote><p>&nbsp;</p><ul><li><p><strong>配置网卡及主机名</strong></p></li><li><p><strong>Linux 必须运行在 Enforcing 模式</strong></p></li><li><p><strong>YUM 的软件库源为 <a href='http://rhgls.domain1.example.com/rhel' target='_blank' class='url'>http://rhgls.domain1.example.com/rhel</a>. 将此配置为您的系统的默认软件仓库。</strong></p></li><li><p><strong>将逻辑卷 vo 和其文件系统大小调整到 300 MiB。要确保文件系统中的内容保持完整。</strong></p></li><li><p><strong>创建下列用户，组，和组的成员关系：</strong></p><blockquote><p>一个名为 adminuser 的组
+一个名为 natasha 的用户，其属于 adminuser ，这个组是该用户的从属组
+一个名为 harry 的用户，属于 adminuser ，这个组是该用户的从属组
+一个名为 sarah 的用户，其在系统中没有可交互的 shell，并且该用户不是 adminuser 组的成员
+用户 natasha ， harry ，和 sarah 的密码都要设置为 flectrag</p></blockquote></li><li><p><strong>拷贝文件 /etc/fstab 到 /var/tmp/fstab。 配置文件 /var/tmp/fstab 的权限：</strong></p><blockquote><p>文件 /var/tmp/fstab 的拥有者是 root 用户
+文件 /var/tmp/fstab 属于 root 组
+文件 /var/tmp/fstab 对任何人都不可执行
+用户 natasha 能够对文件 /var/tmp/fstab 具有读和写的权限
+用户 harry 对文件 /var/tmp/fstab 既不能读，也不能写
+所有其他用户（当前的和将来的）能够对文件 /var/tmp/fstab 进行读操作</p></blockquote></li><li><p><strong>用户 natasha 必须配置一个定时执行任务，每天在本地时间 14:23 时执行命令。</strong></p><blockquote><p>/bin/echo hiya</p></blockquote></li><li><p><strong>创建一个共享目录 /home/admins ，特性如下：</strong></p><blockquote><p>/home/admins 目录的组所有权是 adminuser
+adminuser 组的成员对目录有读写和执行的权限。除此之外的其他所有用户没有任何权限（root 用户能够访问系统中的所有文件和目录）
+在 /home/admins 目录中创建的文件，其组所有权会自动设置为属于 adminuser 组</p></blockquote></li><li><p><strong>从<a href='http://rhgls.domain1.example.com/updates' target='_blank' class='url'>http://rhgls.domain1.example.com/updates</a> 升级正确的内核 同时要满足下列要求：</strong></p><blockquote><p>当系统重新启动之后升级的内核要作为默认的内核
+原来的内核要被保留，并且仍然可以正常启动</p></blockquote></li><li><p><strong>系统 host.domain1.example.com 提供了一个 LDAP 验证服务。您的系统需要按照以下要求绑定到这个服务上：</strong></p><blockquote><p>验证服务器的基本 DN 是： dc=domain1,dc=example,dc=com.
+帐户信息和验证信息都是由 LDAP 提供的。
+连接需要使用证书进行加密，证书可以在下面的链接中下载： ftp://host.domain1.example.com/pub/domain1.crt</p></blockquote></li><li><p><strong>让其作为一个 rhgls.domain1.example.com 的 NTP 客户端</strong></p></li><li><p><strong>让用户可自动挂载由主机 host.domain1.example.com 提供的家目录： /home/guests/ldapuser1。</strong>（<strong>nfs版本是3</strong>）</p></li><li><p><strong>创建一个UID为2000的用户，用户名称是jack。</strong></p></li><li><p><strong>创建一个512M的SWAP分区，开机需要自动挂载</strong>。</p></li><li><p><strong>查找所有属于ronny用户的文件，并复制到/findfiles目录中。</strong></p></li><li><p><strong>查看/usr/share/dict/words文件中所有包含seismic关键词的行，并将找到的行写入到/root/filelist文件中。</strong></p></li><li><p><strong>将/etc目录打包成压缩包后放置在/root/backup.tar.bz2.</strong></p></li><li><p><strong>创建指定大小的逻辑卷，需要自己创建分区、物理卷、逻辑卷组和逻辑卷。</strong></p><blockquote><p>创建一个名称为database的逻辑卷，卷组名称为datastore。
+逻辑卷大小为160M，PE大小为16M。
+要求开机后自动挂载到/mnt/database目录中。</p></blockquote></li></ul><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h1><a name='header-n65' class='md-header-anchor '></a>RHCE</h1><p>您的机器是 domain1.example.com 域的一个成员。 domain1.example.com 域内的所有系统在 172.24.1.0/255.255.255.0 子网内，并且所有在这个子网内的系统都属于 domain1.example.com 域。</p><blockquote><p>虚拟机的网络配置应该如下：</p><p>主机名： system1.domain1.example.com
+IP地址： 172.24.1.5
+子网掩码： 255.255.255.0
+网关 172.24.1.254
+名称服务： 172.24.1.250
+虚拟机的 root 密码是 flectrag</p></blockquote><p>&nbsp;</p><ul><li><p><strong>SELinux 必须在两个系统system1和system2中运行于 Enforcing 模式</strong></p></li><li><p><strong>按以下要求配置SSH访问:</strong></p><blockquote><p>用户能够从域 domain1.example.com 内的客户端通过SSH远程访问您的两个虚拟机系统
+在域 my133t.org 内的客户端不能访问您的两个虚拟机系统</p></blockquote></li><li><p><strong>在系统 system1 和 system2上创建自定义命令名为 qstat 此自定义命令将执行以下命令: /bin/ps -Ao pid,tt,user,fname,rsz此命令对系统中所有用户有效。</strong></p></li><li><p><strong>在系统system1配置端口转发，要求如下：在 172.24.1.0/24 网络中的系统，访问 system1 的本地端口 5423 将被转发到80 此设置必须永久有效</strong></p></li><li><p><strong>在 system1.domain1.example.com 和 system2.domain1.example.com 之间按以下要求配置一个链路：</strong></p><blockquote><p>此链路使用接口 eth1 和 eth2
+此链路在一个接口失效时仍然能工作
+此链路在 system1 使用下面的地址 172.16.1.25/255.255.255.0
+此链路在 system2 使用下面的地址 172.16.1.35/255.255.255.0
+此链路在系统重启之后依然保持正常状态</p></blockquote></li><li><p><strong>在您的考试系统上配置接口 eth0 使用下列IPv6地址：</strong></p><blockquote><p>system1 上的地址应该是 2001:ac18::10a/64
+system2 上的地址应该是 2001:ac18::114/64
+两个系统必须能与网络 2001:ac18/64 内的系统通信。
+地址必须在重启后依旧生效。
+两个系统必须保持当前的IPv4地址并能通信。</p></blockquote></li><li><p><strong>在系统system1 和 system2 上 配置邮件服务，满足以下要求：</strong></p><blockquote><p>这些系统不接收外部发送来的邮件
+在这些系统上本地发送的任何邮件都会自动路由到 rhgls.domain1.example.com
+从这些系统上发送的邮件显示来自于 domain1.example.com
+您可以通过发送邮件到本地用户 &#39;dave&#39; 来测试您的配置， 系统 rhgls.domain1.example.com 已经配置把此用户的邮件转到下列URL <a href='http://rhgls.domain1.example.com/received_mail/1' target='_blank' class='url'>http://rhgls.domain1.example.com/received_mail/1</a></p></blockquote></li><li><p><strong>在system1上配置SMB服务</strong></p><blockquote><p>您的 SMB 服务器必须是 STAFF 工作组的一个成员
+共享 /common 目录 共享名必须为 common
+只有 domain1.example.com 域内的客户端可以访问 common 共享
+common 必须是可以浏览的
+用户 andy 必须能够读取共享中的内容，如果需要的话，验证的密码是 flectrag</p></blockquote></li><li><p><strong>在system1 共享通过SMB目录 /miscellaneous 满足以下要求：</strong></p><blockquote><p>共享名为 miscellaneous
+共享目录 miscellaneous 只能被 domain1.example.com 域中的客户端使用
+共享目录 miscellaneous 必须可以被浏览
+用户 silene 必须能以读的方式访问此共享， 访问密码是 flectrag
+用户 akira 必须能以读写的方式访问此共享， 访问密码是 flectrag
+此共享永久挂载在 system2.domain1.example.com 上的 /mnt/multi 目录, 并使用用户 silene 作为认证</p><p>任何用户可以通过用户 akira 来临时获取写的权限</p></blockquote></li><li><p><strong>在 system1 配置NFS服务，要求如下:</strong></p><blockquote><p>以只读的方式共享目录 /public 同时只能被 domain1.example.com 域中的系统访问
+以读写的方式共享目录 /protected 能被 domain1.example.com 域中的系统访问
+访问 /protected 需要通过Kerberos安全加密， 您可以使用下面URL提供的密钥 <a href='http://host.domain1.example.com/materials/nfs_server.keytab' target='_blank' class='url'>http://host.domain1.example.com/materials/nfs_server.keytab</a>
+目录 /protected 应该包含名为 confidential 拥有人为deepak 的子目录
+用户 deepak 能以读写方式访问 /protected/confidential</p></blockquote></li><li><p><strong>在 system2 上挂载一个来自 system1.domain1.example.com 的NFS共享， 并符合下列要求：</strong></p><blockquote><p>/public 挂载在下面的目录上 /mnt/nfsmount
+/protected 挂载在下面的目录上 /mnt/nfssecure 并使用安全的方式，密钥下载URL如下： <a href='http://host.domain1.example.com/materials/nfs_client.keytab' target='_blank' class='url'>http://host.domain1.example.com/materials/nfs_client.keytab</a>
+用户 deepak 能够在 /mnt/nfssecure/confidential 上创建文件
+这些文件系统在系统启动时自动挂载</p></blockquote></li><li><p><strong>在 system1 上配置一个站点 <a href='http://system1.domain1.example.com' target='_blank' class='url'>http://system1.domain1.example.com</a> 然后执行下述步骤：</strong></p><blockquote><p>从 <a href='http://rhgls.domain1.example.com/materials/station.html' target='_blank' class='url'>http://rhgls.domain1.example.com/materials/station.html</a> 下载文件，并且将文件重命名为 index.html 不要修改此文件的内容
+将文件 index.html 拷贝到您的 web 服务器的 DocumentRoot 目录下
+来自于 domain1.example.com 域的客户端可以访问此Web服务
+来自于 my133t.org 域的客户端拒绝访问此Web服务</p></blockquote></li><li><p><strong>为站点 <a href='http://system1.domain1.example.com' target='_blank' class='url'>http://system1.domain1.example.com</a> 配置TLS加密 一个已签名证书从 <a href='http://host.domain1.example.com/materials/system1.crt' target='_blank' class='url'>http://host.domain1.example.com/materials/system1.crt</a> 获取 此证书的密钥从 <a href='http://host.domain1.example.com/materials/system1.key' target='_blank' class='url'>http://host.domain1.example.com/materials/system1.key</a> 获取 此证书的签名授权信息从 <a href='http://host.domain1.example.com/materials/domain1.crt' target='_blank' class='url'>http://host.domain1.example.com/materials/domain1.crt</a> 获取</strong></p></li><li><p><strong>在 system1 上扩展您的 web 服务器，为站点 <a href='http://www.domain1.example.com' target='_blank' class='url'>http://www.domain1.example.com</a>创建一个虚拟主机，然后执行下述步骤：</strong></p><blockquote><p>设置 DocumentRoot 为 /var/www/virtual
+从 <a href='http://rhgls.domain1.example.com/materials/www.html' target='_blank' class='url'>http://rhgls.domain1.example.com/materials/www.html</a>
+下载文件并重命名为 index.html 不要对文件 index.html 的内容做任何修改
+将文件 index.html 放到虚拟主机的 DocumentRoot 目录下
+确保 andy 用户能够在 /var/www/virtual 目录下创建文件</p></blockquote><p>注意：原始站点 <a href='http://system1.domain1.example.com' target='_blank' class='url'>http://system1.domain1.example.com</a> 必须仍然能够访问， 名称服务器 domain1.example.com 提供对主机名 <a href='http://www.domain1.example.com' target='_blank' class='url'>www.domain1.example.com</a> 的域名解析</p></li><li><p><strong>在您的system1 上的 web 服务器的 DocumentRoot 目录下 创建一个名为 secret 的目录，要求如下：</strong></p><blockquote><p>从 <a href='http://rhgls.domain1.example.com/materials/private.html' target='_blank' class='url'>http://rhgls.domain1.example.com/materials/private.html</a> 下载一个文件副本到这个目录，并且重命名为 index.html。
+不要对这个文件的内容做任何修改。
+从 system1 上，任何人都可以浏览 secret 的内容， 但是从其它系统不能访问这个目录的内容</p></blockquote></li><li><p><strong>在 system1 上配置提供动态Web内容，要求如下：</strong></p><blockquote><p>动态内容由名为dynamic.domain1.example.com的虚拟主机提供
+虚拟主机侦听在端口 8998
+从 <a href='http://rhgls.domain1.example.com/materials/webapp.wsgi' target='_blank' class='url'>http://rhgls.domain1.example.com/materials/webapp.wsgi</a> 下载一个脚本，然后放在适当的位置， 无论如何不要求修改此文件的内容
+客户端访问 <a href='http://dynamic.domain1.example.com:8998/' target='_blank' class='url'>http://dynamic.domain1.example.com:8998/</a> 时 应该接收到动态生成的web页面
+此 <a href='http://dynamic.domain1.example.com:8998/' target='_blank' class='url'>http://dynamic.domain1.example.com:8998/</a> 必须能被 domain1.example.com 域内的所有系统访问</p></blockquote></li><li><p><strong>在system1上创建一个名为 /root/script 的脚本， 让其提供下列特性：</strong></p><blockquote><p>当运行 /root/script foo，输出为 bar
+当运行 /root/script bar，输出为 foo
+当没有任何参数或者参数不是 foo 或者 bar时， 其错误输出产生以下的信息：
+/root/script foo|bar</p></blockquote></li><li><p><strong>在 system1 上创建一个脚本，名为 /root/mkusers , 此脚本能实现为系统 system1 创建本地用户, 并且这些用户 的用户名来自一个包含用户名列表的文件。同时满足下列要求：</strong></p><blockquote><p>此脚本要求提供一个参数，此参数就是包含用户名列表的文件
+如果没有提供参数，此脚本应该给出下面的提示信息 Usage: /root/mkusers userfile 然后退出并返回相应的值
+如果提供一个不存在的文件名，此脚本应该给出下面的提示信息 Input file not found 然后退出并返回相应的值
+创建的用户登录shell为 /bin/false
+此脚本不需要为用户设置密码
+您可以从下面的URL获取用户名列表作为测试用 <a href='http://rhgls.domain1.example.com/materials/userlist' target='_blank' class='url'>http://rhgls.domain1.example.com/materials/userlist</a></p></blockquote></li><li><p><strong>配置 system1 提供一个 iSCSI 服务 磁盘名为 iqn.2014-12.com.example.domain1:system1 ，并符合下列要求：</strong></p><blockquote><p>服务端口为 3260
+使用 iscsi_vol 作其后端卷 其大小为 3G
+此服务只能被 system2.domain1.example.com 访问</p></blockquote></li><li><p><strong>配置 system2 使其能连接 在 system1 的上提供的 iqn.2014-12.com.example.domain1:system1 并符合以下要求：</strong></p><blockquote><p>iSCSI 设备在系统启动的期间自动加载
+块设备 iSCSI 上包含一个大小为 1700 MiB 的分区，并格式化为 xfs
+此分区挂载在 /mnt/data 上 同时在系统启动的期间自动挂载</p></blockquote></li><li><p><strong>在 system1 上创建一个 MariaDB 数据库, 名为 Contacts ，并符合以下条件：</strong></p><blockquote><p>数据库应该包含来自数据库复制的内容，复制文件的URL为 <a href='http://rhgls.domain1.example.com/materials/users.mdb' target='_blank' class='url'>http://rhgls.domain1.example.com/materials/users.mdb</a> 。
+数据库只能被 localhost 访问。
+除了root用户, 此数据库只能被用户 Luigi 查询。 此用户密码为 flectrag 。
+root 用户的密码为 flectrag ， 同时不允许空密码登录。</p></blockquote></li><li><p><strong>数据库查询，在系统 system1上使用数据库 Contacts， 并使用相应的SQL查询以回答下列问题：</strong></p><blockquote><p>密码是 tangerine 的人的名字?
+用户ID号码为4654的用户名成是？</p></blockquote></li></ul><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p></div>
+</body>
+</html>
