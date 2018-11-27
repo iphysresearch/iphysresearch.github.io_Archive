@@ -23,6 +23,8 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
+**Do GAN Loss Functions Really Matter?**. Yipeng Qin, Niloy Mitra, Peter Wonka [KAUST & UCL] (2018) [arXiv:1811.09567](https://arxiv.org/abs/1811.09567) [Reddit](https://www.reddit.com/r/MachineLearning/comments/a0p9wg/r_do_gan_loss_functions_really_matter/)
+
 **NEMGAN: Noise Engineered Mode-matching GAN**. D Mishra, P AP, A J, P Pandey, S Chaudhury [Indian Institute of Technology Delhi] (2018) [arXiv:1811.03692](https://arxiv.org/abs/1811.03692) [GitHub](https://github.com/NEMGAN/NEMGAN)
 
 **Bias and Generalization in Deep Generative Models: An Empirical Study**. S Zhao, H Ren, A Yuan, J Song, N Goodman, S Ermon [Stanford University] ([ICML2018](https://sites.google.com/view/tadgm/home?authuser=0)) [arXiv:1811.03259](https://arxiv.org/abs/1811.03259) [GitHub](https://github.com/ermongroup/BiasAndGeneralization)
