@@ -23,7 +23,11 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
-**Do GAN Loss Functions Really Matter?**. Yipeng Qin, Niloy Mitra, Peter Wonka [KAUST & UCL] (2018) [arXiv:1811.09567](https://arxiv.org/abs/1811.09567) [Reddit](https://www.reddit.com/r/MachineLearning/comments/a0p9wg/r_do_gan_loss_functions_really_matter/)
+**Do GAN Loss Functions Really Matter?**. Y Qin, N Mitra, P Wonka [KAUST & UCL] (2018) [arXiv:1811.09567](https://arxiv.org/abs/1811.09567) [Reddit](https://www.reddit.com/r/MachineLearning/comments/a0p9wg/r_do_gan_loss_functions_really_matter/)
+
+**Copy the Old or Paint Anew? An Adversarial Framework for (non-) Parametric Image Stylization**. N Jetchev, U Bergmann, G Yildirim [Zalando Research] (2018) [arXiv:1811.09236](https://arxiv.org/abs/1811.09236) [GitHub](https://github.com/zalandoresearch/famos)
+
+**Guiding the One-to-one Mapping in CycleGAN via Optimal Transport**. G Lu, Z Zhou, Y Song, K Ren, Y Yu [Shanghai Jiao Tong University] (2018) [arXiv:1811.06284](https://arxiv.org/abs/1811.06284)
 
 **NEMGAN: Noise Engineered Mode-matching GAN**. D Mishra, P AP, A J, P Pandey, S Chaudhury [Indian Institute of Technology Delhi] (2018) [arXiv:1811.03692](https://arxiv.org/abs/1811.03692) [GitHub](https://github.com/NEMGAN/NEMGAN)
 
@@ -89,6 +93,8 @@ date: 2018-09-28
 
 ## :chart_with_downwards_trend: Optimization & Generalization
 
+**A Sufficient Condition for Convergences of Adam and RMSProp**. F Zou, L Shen, Z Jie, W Zhang, W Liu [Stony Brook University & Tencent AI Lab] (2018) [arXiv:1811.09358](https://arxiv.org/abs/1811.09358)
+
 **Stochastic Gradient Descent Optimizes Over-parameterized Deep ReLU Networks**. D Zou, Y Cao, D Zhou, Q Gu [University of California, Los Angeles] (2018) [arXiv:1811.08888](https://arxiv.org/abs/1811.08888)
 
 **Learning and Generalization in Overparameterized Neural Networks, Going Beyond Two Layers**. Z Allen-Zhu, Y Li, Y Liang [Microsoft Research AI & Stanford University & University of Wisconsin-Madison] (2018) [arXiv:1811.04918](https://arxiv.org/abs/1811.04918)
@@ -122,6 +128,8 @@ date: 2018-09-28
 **Local Explanation Methods for Deep Neural Networks Lack Sensitivity to Parameter Values**. J Adebayo, J Gilmer, I Goodfellow, B Kim [Google Brain] (2018) [arXiv:1810.03307](https://arxiv.org/abs/1810.03307)  [OpenReview](https://openreview.net/forum?id=SJOYTK1vM)
 
 **Sanity Checks for Saliency Maps**. J Adebayo, J Gilmer, M Muelly, I Goodfellow, M Hardt, B Kim [Google Brain] (2018) [arXiv:1810.03292](https://arxiv.org/abs/1810.03292)
+
+**How Many Samples are Needed to Learn a Convolutional Neural Network?**. S S. Du, Y Wang, X Zhai, S Balakrishnan, R Salakhutdinov, A Singh [CMU & University of Cambridge] (2018) [arXiv:1805.07883](https://arxiv.org/abs/1805.07883)
 
 **A Performance Evaluation of Convolutional Neural Networks for Face Anti Spoofing**. Chaitanya Nagpal, Shiv Ram Dubey (2018) [arXiv:1805.04176](https://arxiv.org/abs/1805.04176)
 
@@ -157,6 +165,8 @@ date: 2018-09-28
 
 **Backprop Evolution**. M Alber, I Bello, B Zoph, P Kindermans, P Ramachandran, Q Le [TU Berlin & Google Brain] (2018) [arXiv:1808.01974](https://arxiv.org/abs/1808.01974)
 
+**Smooth Loss Functions for Deep Top-k Classification**. L Berrada, A Zisserman, M. P Kumar [University of Oxford] (2018) [arXiv:1802.07595](https://arxiv.org/abs/1802.07595) [Github](https://github.com/oval-group/smooth-topk)
+
 **Learning Confidence for Out-of-Distribution Detection in Neural Networks**. T DeVries, G W. Taylor [University of Guelph & Vector Institute] (2018) [arXiv:1802.04865](https://arxiv.org/abs/1802.04865)
 
 
@@ -164,6 +174,8 @@ date: 2018-09-28
 
 
 ## 〽️ ODE & PDE
+
+**Data Driven Governing Equations Approximation Using Deep Neural Networks**. T Qin, K Wu, D Xiu [The Ohio State University] (2018) [arXiv:1811.05537](https://arxiv.org/abs/1811.05537)
 
 **Neural Ordinary Differential Equations**. Ricky T. Q. Chen, Yulia Rubanova, Jesse Bettencourt, David Duvenaud [University of Toronto, Canada] (2018) [arXiv:1806.07366](https://arxiv.org/abs/1806.07366) [Github](https://github.com/rtqichen/torchdiffeq)
 
