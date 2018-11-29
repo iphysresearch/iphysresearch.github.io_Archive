@@ -35,7 +35,7 @@ date: 2018-09-28
 
 **Language GANs Falling Short**. Massimo Caccia, Lucas Caccia, William Fedus, Hugo Larochelle, Joelle Pineau, Laurent Charlin [MILA, Université de Montréal & MILA, McGill University & MILA, HEC Montréal & Google Brain & Facebook AI Research] (2018) [arXiv:1811.02549](https://arxiv.org/abs/1811.02549v3)
 
-**The relativistic discriminator: a key element missing from standard GAN**. Alexia Jolicoeur-Martineau [Lady Davis Institute Montreal, Canada] (2018) [arXiv:1807.00734](https://arxiv.org/abs/1807.00734)
+**Large Scale GAN Training for High Fidelity Natural Image Synthesis** | [OpenReview](https://openreview.net/forum?id=B1xsqj09Fm). (2018)  [comment]
 
 **Generative adversarial networks and adversarial methods in biomedical image analysis**. J M. Wolterink, K Kamnitsas, C Ledig, I Išgum [University Medical Center Utrecht & Imperial College London & Imagen Technologies] (2018) [arXiv:1810.10352](https://arxiv.org/abs/1810.10352)
 
@@ -43,11 +43,13 @@ date: 2018-09-28
 
 **Discriminator Rejection Sampling**. Samaneh Azadi, Catherine Olsson, Trevor Darrell, Ian Goodfellow, Augustus Odena   [UC Berkeley & Google Brain]. [arXiv:1810.06758](https://arxiv.org/abs/1810.06758)
 
-**Whispered-to-voiced Alaryngeal Speech Conversion with Generative Adversarial Networks**. Santiago Pascual, Antonio Bonafonte, Joan Serrà, Jose A. Gonzalez [Universitat Polite`cnica de Catalunya & Telefo ́nica Research & Universidad de Ma ́laga, Spain] (2018) [arXiv:1808.10687](https://arxiv.org/abs/1808.10687)
-
 **Refacing: reconstructing anonymized facial features using GANs**. D Abramian, A Eklund [Linkoping University] (2018) [arXiv:1810.06455](https://arxiv.org/abs/1810.06455)
 
 **ClusterGAN : Latent Space Clustering in Generative Adversarial Networks**. S Mukherjee, H Asnani, E Lin, S Kannan [University of Washington] (2018) [arXiv:1809.03627](https://arxiv.org/abs/1809.03627)
+
+**Whispered-to-voiced Alaryngeal Speech Conversion with Generative Adversarial Networks**. Santiago Pascual, Antonio Bonafonte, Joan Serrà, Jose A. Gonzalez [Universitat Polite`cnica de Catalunya & Telefo ́nica Research & Universidad de Ma ́laga, Spain] (2018) [arXiv:1808.10687](https://arxiv.org/abs/1808.10687)
+
+**The relativistic discriminator: a key element missing from standard GAN**. Alexia Jolicoeur-Martineau [Lady Davis Institute Montreal, Canada] (2018) [arXiv:1807.00734](https://arxiv.org/abs/1807.00734)
 
 
 
@@ -58,6 +60,8 @@ date: 2018-09-28
 **Defensive Dropout for Hardening Deep Neural Networks under Adversarial Attacks**. S Wang, X Wang, P Zhao, W Wen, D Kaeli, P Chin, X Lin [Northeastern University & Boston university & Florida International University] (2018) [arXiv:1809.05165](https://arxiv.org/abs/1809.05165)
 
 **Are adversarial examples inevitable?**. A Shafahi, W. R Huang, C Studer, S Feizi, T Goldstein (2018) [arXiv:1809.02104](https://arxiv.org/abs/1809.02104)
+
+**Obfuscated Gradients Give a False Sense of Security: Circumventing Defenses to Adversarial Examples**. Anish Athalye, Nicholas Carlini, David Wagner [MIT & Berkeley] (2018) [arXiv:1802.00420](https://arxiv.org/abs/1802.00420) [Github](https://github.com/anishathalye/obfuscated-gradients)
 
 **Generating Natural Adversarial Examples**. Z Zhao, D Dua, S Singh [University of California, Irvine] (2017) [arXiv:1710.11342](https://arxiv.org/abs/1710.11342) [Github](https://github.com/zhengliz/natural-adversary) [comment]
 
@@ -150,6 +154,8 @@ date: 2018-09-28
 
 
 ## :control_knobs: Model Configuration
+
+**Dataset Distillation**. T Wang, J Zhu, A Torralba, A A. Efros [Facebook AI Research & MIT & UC Berkeley] (2018) [arXiv:1811.10959](https://arxiv.org/abs/1811.10959)
 
 **Retina U-Net: Embarrassingly Simple Exploitation of Segmentation Supervision for Medical Object Detection**. P F. Jaeger, S A. A. Kohl, S Bickelhaupt, F Isensee, T A Kuder, H Schlemmer, K H. Maier-Hein [German Cancer Research Center] (2018) [arXiv:1811.08661](https://arxiv.org/abs/1811.08661) [GitHub](https://github.com/pfjaeger/medicaldetectiontoolkit)
 
@@ -283,8 +289,6 @@ date: 2018-09-28
 **On the loss landscape of a class of deep neural networks with no bad local valleys**. Q Nguyen, M C Mukkamala, M Hein [Saarland University & University of Tübingen] (2018) [arXiv:1809.10749](https://arxiv.org/abs/1809.10749) [comment]
 
 **Conditional WaveGAN**. Chae Young Lee, Anoop Toffy, Gue Jun Jung, Woo-Jin Han (2018) [GitHub](https://github.com/acheketa/cwavegan) [arXiv:1809.10636](https://arxiv.org/abs/1809.10636)
-
-**Large Scale GAN Training for High Fidelity Natural Image Synthesis** | [OpenReview](https://openreview.net/forum?id=B1xsqj09Fm). (2018)  [comment]
 
 **An analytic theory of generalization dynamics and transfer learning in deep linear networks**. A K. Lampinen, S Ganguli [Stanford University] (2018) [arXiv:1809.10374](https://arxiv.org/abs/1809.10374) [comment]
 
