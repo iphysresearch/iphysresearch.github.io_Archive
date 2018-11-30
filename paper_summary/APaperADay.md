@@ -23,6 +23,8 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
+**Label-Noise Robust Generative Adversarial Networks**. Takuhiro Kaneko, Yoshitaka Ushiku, Tatsuya Harada [The University of Tokyo & RIKEN] (2018) [arXiv:1811.11165](https://arxiv.org/abs/1811.11165)
+
 **Do GAN Loss Functions Really Matter?**. Y Qin, N Mitra, P Wonka [KAUST & UCL] (2018) [arXiv:1811.09567](https://arxiv.org/abs/1811.09567) [Reddit](https://www.reddit.com/r/MachineLearning/comments/a0p9wg/r_do_gan_loss_functions_really_matter/)
 
 **Copy the Old or Paint Anew? An Adversarial Framework for (non-) Parametric Image Stylization**. N Jetchev, U Bergmann, G Yildirim [Zalando Research] (2018) [arXiv:1811.09236](https://arxiv.org/abs/1811.09236) [GitHub](https://github.com/zalandoresearch/famos)
@@ -70,6 +72,8 @@ date: 2018-09-28
 
 
 ## :musical_note: Sound & Signal Processing
+
+**Interpretable Convolutional Filters with SincNet**. M Ravanelli, Y Bengio [Université de Montréal] (2018) [arXiv:1811.09725](https://arxiv.org/abs/1811.09725)  [GitHub](https://github.com/mravanelli/SincNet/)
 
 **A Deep Neural Network for Unsupervised Anomaly Detection and Diagnosis in Multivariate Time Series Data**. C Zhang, D Song, Y Chen, X Feng, C Lumezanu, W Cheng, J Ni, B Zong, H Chen, N V. Chawla [University of Notre Dame & NEC Laboratories America & Columbia University] (2018) [arXiv:1811.08055](https://arxiv.org/abs/1811.08055)
 
