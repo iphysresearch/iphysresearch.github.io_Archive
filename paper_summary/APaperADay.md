@@ -23,6 +23,8 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
+**Metropolis-Hastings Generative Adversarial Networks**. R Turner, J Hung, Y Saatci, J Yosinski [Uber AI Labs] (2018) [arXiv:1811.11357](https://arxiv.org/abs/1811.11357) [Github](https://github.com/uber-research/metropolis-hastings-gans) [Blog](https://eng.uber.com/mh-gan/)
+
 **Label-Noise Robust Generative Adversarial Networks**. Takuhiro Kaneko, Yoshitaka Ushiku, Tatsuya Harada [The University of Tokyo & RIKEN] (2018) [arXiv:1811.11165](https://arxiv.org/abs/1811.11165)
 
 **Do GAN Loss Functions Really Matter?**. Y Qin, N Mitra, P Wonka [KAUST & UCL] (2018) [arXiv:1811.09567](https://arxiv.org/abs/1811.09567) [Reddit](https://www.reddit.com/r/MachineLearning/comments/a0p9wg/r_do_gan_loss_functions_really_matter/)
@@ -158,6 +160,8 @@ date: 2018-09-28
 
 
 ## :control_knobs: Model Configuration
+
+**Seeing in the dark with recurrent convolutional neural networks**. T S. Hartmann [Harvard Medical School] (2018) [arXiv:1811.08537](https://arxiv.org/abs/1811.08537)
 
 **Dataset Distillation**. T Wang, J Zhu, A Torralba, A A. Efros [Facebook AI Research & MIT & UC Berkeley] (2018) [arXiv:1811.10959](https://arxiv.org/abs/1811.10959)
 
