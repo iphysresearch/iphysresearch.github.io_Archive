@@ -38,7 +38,8 @@ The goal is to read and comment once a day. and this [post](./APaperADay.html) w
 
 ---
 
-
+<blockquote class="reddit-card" data-card-created="1543907974"><a href="https://www.reddit.com/r/MachineLearning/comments/a21d0q/what_are_the_must_read_papers_for_a_beginner_in/">What are the must read papers for a beginner in the field of Machine Learning and Artificial Intelligence? [Discussion]</a> from <a href="http://www.reddit.com/r/MachineLearning">r/MachineLearning</a></blockquote>
+<script async src="//embed.redditmedia.com/widgets/platform.js" charset="UTF-8"></script>
 
 [机器学习与深度学习经典论文整理](https://mp.weixin.qq.com/s/jKK6AwmCMGWgVK0vPX359w)
 

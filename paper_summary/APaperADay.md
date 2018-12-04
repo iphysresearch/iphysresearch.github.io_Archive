@@ -123,6 +123,8 @@ date: 2018-09-28
 
 ## :+1: Model Evaluation & Performance & Interpretion & Visualization
 
+**Are All Training Examples Created Equal? An Empirical Study**. K Vodrahalli, K Li, J Malik [UC Berkeley] (2018) [arXiv:1811.12569](https://arxiv.org/abs/1811.12569)
+
 **Rethinking ImageNet Pre-training**. K He, R Girshick, P Dollár [Facebook AI Research (FAIR)] (2018) [arXiv:1811.08883](https://arxiv.org/abs/1811.08883)
 
 **Efficient Identification of Approximate Best Configuration of Training in Large Datasets**. S Huang, C Wang, B Ding, S Chaudhuri [University of Illinois & Microsoft Research & Alibaba Group] (2018) [arXiv:1811.03250](https://arxiv.org/abs/1811.03250)
