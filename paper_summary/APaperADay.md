@@ -123,8 +123,6 @@ date: 2018-09-28
 
 ## :+1: Model Evaluation & Performance & Interpretion & Visualization
 
-**Linear Backprop in non-linear networks**. Mehrdad Yazdani [University of California San Diego] (NIPS 2018) [OpenReview](https://openreview.net/forum?id=ByfPDyrYim) [机器之心](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2650753228&idx=2&sn=fad16dfb7e96c4301ac3838f058ecaae)
-
 **Are All Training Examples Created Equal? An Empirical Study**. K Vodrahalli, K Li, J Malik [UC Berkeley] (2018) [arXiv:1811.12569](https://arxiv.org/abs/1811.12569)
 
 **Rethinking ImageNet Pre-training**. K He, R Girshick, P Dollár [Facebook AI Research (FAIR)] (2018) [arXiv:1811.08883](https://arxiv.org/abs/1811.08883)
@@ -164,6 +162,8 @@ date: 2018-09-28
 
 
 ## :control_knobs: Model Configuration
+
+**Linear Backprop in non-linear networks**. Mehrdad Yazdani [University of California San Diego] (NIPS 2018) [OpenReview](https://openreview.net/forum?id=ByfPDyrYim) [机器之心](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2650753228&idx=2&sn=fad16dfb7e96c4301ac3838f058ecaae)
 
 **Seeing in the dark with recurrent convolutional neural networks**. T S. Hartmann [Harvard Medical School] (2018) [arXiv:1811.08537](https://arxiv.org/abs/1811.08537)
 
