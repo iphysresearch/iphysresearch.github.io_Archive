@@ -112,27 +112,29 @@ Biswas R, Blackburn L, Cao J, et al. "**Application of machine learning algorith
 
 **Total-variation methods for gravitational-wave denoising: performance tests on Advanced LIGO data**. Alejandro Torres-Forné, Elena Cuoco, Antonio Marquina, José A. Font, José M. Ibáñez [Universitat de Vale`ncia & EGO & SNS & INFN] (2018) [arXiv:1806.07329](https://arxiv.org/abs/1806.07329)
 
-
+[Paper Summary] **Applying deep neural networks to the detection and space parameter estimation of compact binary coalescence with a network of gravitational wave detectors**. Xilong Fan, Jin Li, Xin Li, Yuanhong Zhong, Junwei Cao [Hubei University of Education & Chongqing U. & Tsinghua U.] (2018) [arXiv:1811.01380](https://arxiv.org/abs/1811.01380)
 
 ---
 
 - **GW not related**
 
-**Fusing numerical relativity and deep learning to detect higher-order multipole waveforms from eccentric binary black hole mergers**. Adam Rebei, <u>E. A. Huerta</u>, Sibo Wang, Sarah Habib, Roland Haas, Daniel Johnson, <u>Daniel George</u> [Urbana]  (2018) [arXiv:1807.09787](https://arxiv.org/abs/1807.09787)
-
-**Classifying Lensed Gravitational Waves in the Geometrical Optics Limit with Machine Learning**. Amit Jit Singh, Ivan S.C. Li, Otto A. Hannuksela, Tjonnie G.F. Li, Kyungmin Kim [The Chinese University of Hong Kong & Imperial College London] (2018) [arXiv:1810.07888](https://arxiv.org/abs/1810.07888)
+**Exploring galaxy evolution with generative models**. Kevin Schawinski, M. Dennis Turp, Ce Zhang [ETH Zurich] (2018) [arXiv:1812.01114](https://arxiv.org/abs/1812.01114)
 
 **Probabilistic Random Forest: A machine learning algorithm for noisy datasets**. Itamar Reis, Dalya Baron, Sahar Shahaf [Tel-Aviv U.] (2018) [arXiv:1811.05994](https://arxiv.org/abs/1811.05994)
 
+**Classifying Lensed Gravitational Waves in the Geometrical Optics Limit with Machine Learning**. Amit Jit Singh, Ivan S.C. Li, Otto A. Hannuksela, Tjonnie G.F. Li, Kyungmin Kim [The Chinese University of Hong Kong & Imperial College London] (2018) [arXiv:1810.07888](https://arxiv.org/abs/1810.07888)
+
+**DeepSphere: Efficient spherical Convolutional Neural Network with HEALPix sampling for cosmological applications**. Nathanaël Perraudin, Michaël Defferrard, Tomasz Kacprzak, Raphael Sgier [Swiss Data Science Center & EPFL & ETH Zurich] (2018) [arXiv:1810.12186](https://arxiv.org/abs/1810.12186)
+
+**Fusing numerical relativity and deep learning to detect higher-order multipole waveforms from eccentric binary black hole mergers**. Adam Rebei, <u>E. A. Huerta</u>, Sibo Wang, Sarah Habib, Roland Haas, Daniel Johnson, <u>Daniel George</u> [Urbana]  (2018) [arXiv:1807.09787](https://arxiv.org/abs/1807.09787)
 
 
 
 
 
 
-https://arxiv.org/pdf/1811.01380.pdf
 
-https://arxiv.org/pdf/1810.12186.pdf
+
 
 Bilby: A user-friendly Bayesian inference library for gravitational-wave astronomy
 
@@ -159,7 +161,7 @@ https://vijayvarma392.github.io/
 > - by Bihan Wen
 > - by Wenhan Yang
 
-- [Paper Summary] K He, J Sun, X Tang. "**Single image haze removal using dark channel prior**" (2009)(**CVPR best paper**)([pdf](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.672.3815&rep=rep1&type=pdf))(**何凯明博士的第一篇！**)
+- [Paper Summary] K He, J Sun, X Tang. "**Single image haze removal using dark channel prior**" (2009)(**CVPR best paper**)([pdf](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.672.3815&rep=rep1&type=pdf))(**何凯明博士的第一篇paper！**)
 - [Paper Summary] Olaf Ronneberger, Philipp Fischer, and Thomas Brox "**U-Net: Convolutional Networks for Biomedical Image Segmentation**" arXiv:1505.04597 (2015) **(U-Net)** ([Website](https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/)) ([code](https://github.com/xuyuting45/DSB2018-mx-unet)) ([code](https://github.com/chinakook/U-Net)) ([code](https://github.com/divamgupta/image-segmentation-keras/tree/master/Models)) ([code](https://github.com/chinakook/U-Net/blob/master/unet_gluon.ipynb)) ([code](https://gluon.mxnet.io/chapter14_generative-adversarial-networks/pixel2pixel.html?highlight=unet)) ([code](https://github.com/bckenstler/unet-nerve-segmentation-mxnet/blob/master/U-Net%20MXNet.ipynb))
 - [Paper Summary] Xiao-Jiao Mao, Chunhua Shen, Yu-Bin Yang. "**Image Restoration Using Convolutional Auto-encoders with Symmetric Skip Connections**" arXiv:1606.08921 (2016) **(Skip connections)** ([code](https://github.com/7wik/convolutional-auto-encoders-with-skip-connections))
 - [Paper Summary] F Zhu, G Chen, PA Heng. "**From Noise Modeling to Blind Image Denoising**" CVPR (2016) ([Website](https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Zhu_From_Noise_Modeling_CVPR_2016_paper.html))
