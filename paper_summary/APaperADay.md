@@ -39,7 +39,7 @@ date: 2018-09-28
 
 **Language GANs Falling Short**. Massimo Caccia, Lucas Caccia, William Fedus, Hugo Larochelle, Joelle Pineau, Laurent Charlin [MILA, Université de Montréal & MILA, McGill University & MILA, HEC Montréal & Google Brain & Facebook AI Research] (2018) [arXiv:1811.02549](https://arxiv.org/abs/1811.02549v3)
 
-**Large Scale GAN Training for High Fidelity Natural Image Synthesis** | [OpenReview](https://openreview.net/forum?id=B1xsqj09Fm). (2018)  [comment]
+**Large Scale GAN Training for High Fidelity Natural Image Synthesis** | [OpenReview](https://openreview.net/forum?id=B1xsqj09Fm). (2018) 
 
 **Generative adversarial networks and adversarial methods in biomedical image analysis**. J M. Wolterink, K Kamnitsas, C Ledig, I Išgum [University Medical Center Utrecht & Imperial College London & Imagen Technologies] (2018) [arXiv:1810.10352](https://arxiv.org/abs/1810.10352)
 
@@ -55,7 +55,7 @@ date: 2018-09-28
 
 **The relativistic discriminator: a key element missing from standard GAN**. Alexia Jolicoeur-Martineau [Lady Davis Institute Montreal, Canada] (2018) [arXiv:1807.00734](https://arxiv.org/abs/1807.00734)
 
-
+**Improved Techniques for Training GANs**. Tim Salimans, Ian Goodfellow, Wojciech Zaremba, Vicki Cheung, Alec Radford, Xi Chen [OpenAI] (2016) [arXiv:1606.03498](https://arxiv.org/abs/1606.03498) [Github](https://github.com/openai/improved-gan) [Reddit](https://www.reddit.com/r/MachineLearning/comments/4o0aj9/160603498_improved_techniques_for_training_gans/)
 
 
 
@@ -141,8 +141,6 @@ date: 2018-09-28
 
 **Sanity Checks for Saliency Maps**. J Adebayo, J Gilmer, M Muelly, I Goodfellow, M Hardt, B Kim [Google Brain] (2018) [arXiv:1810.03292](https://arxiv.org/abs/1810.03292)
 
-**How Many Samples are Needed to Learn a Convolutional Neural Network?**. S S. Du, Y Wang, X Zhai, S Balakrishnan, R Salakhutdinov, A Singh [CMU & University of Cambridge] (2018) [arXiv:1805.07883](https://arxiv.org/abs/1805.07883)
-
 **A Performance Evaluation of Convolutional Neural Networks for Face Anti Spoofing**. Chaitanya Nagpal, Shiv Ram Dubey (2018) [arXiv:1805.04176](https://arxiv.org/abs/1805.04176)
 
 **An Information-Theoretic View for Deep Learning**. J Zhang, T Liu, D Tao [UBTECH Sydney AI Centre] (2018) [arXiv:1804.09060](https://arxiv.org/abs/1804.09060)
@@ -157,6 +155,11 @@ date: 2018-09-28
 
 **Focal Loss for Dense Object Detection**. Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, Piotr Dollár [Facebook AI Research] (2017) [arXiv:1708.02002](https://arxiv.org/abs/1708.02002) [Github](https://github.com/facebookresearch/Detectron)
 
+- Samples & Datasets
+
+  **Image Score: How to Select Useful Samples**. Simiao Zuo, Jialin Wu [University of Texas at Austin] (2018) [arXiv:1812.00334](https://arxiv.org/abs/1812.00334) [Reddit](https://www.reddit.com/r/MachineLearning/comments/a30cuw/181200334_image_score_how_to_select_useful_samples/)
+
+  **How Many Samples are Needed to Learn a Convolutional Neural Network?**. S S. Du, Y Wang, X Zhai, S Balakrishnan, R Salakhutdinov, A Singh [CMU & University of Cambridge] (2018) [arXiv:1805.07883](https://arxiv.org/abs/1805.07883)
 
 
 
