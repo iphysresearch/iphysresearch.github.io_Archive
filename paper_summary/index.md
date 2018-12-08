@@ -130,7 +130,7 @@ Biswas R, Blackburn L, Cao J, et al. "**Application of machine learning algorith
 
 
 
-
+**Why does deep and cheap learning work so well?**. Henry W. Lin (Harvard), Max Tegmark (MIT), David Rolnick (MIT) (2016) [arXiv:1608.08225](https://arxiv.org/abs/1608.08225)
 
 
 
