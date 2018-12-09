@@ -166,6 +166,8 @@ date: 2018-09-28
 
 ## :control_knobs: Model Configuration
 
+**Bag of Tricks for Image Classification with Convolutional Neural Networks**. Tong He, Zhi Zhang, Hang Zhang, Zhongyue Zhang, Junyuan Xie, Mu Li [AWS] (2018) [arXiv:1812.01187](https://arxiv.org/abs/1812.01187)
+
 **Linear Backprop in non-linear networks**. Mehrdad Yazdani [University of California San Diego] (NIPS 2018) [OpenReview](https://openreview.net/forum?id=ByfPDyrYim) [机器之心](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2650753228&idx=2&sn=fad16dfb7e96c4301ac3838f058ecaae)
 
 **Seeing in the dark with recurrent convolutional neural networks**. T S. Hartmann [Harvard Medical School] (2018) [arXiv:1811.08537](https://arxiv.org/abs/1811.08537)
