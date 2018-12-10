@@ -23,6 +23,8 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
+**Intra-class Variation Isolation in Conditional GANs**. R T. Marriott, S Romdhani, L Chen [Ecole Centrale de Lyon & IDEMIA] (2018) [arXiv:1811.11296](https://arxiv.org/abs/1811.11296)
+
 **Metropolis-Hastings Generative Adversarial Networks**. R Turner, J Hung, Y Saatci, J Yosinski [Uber AI Labs] (2018) [arXiv:1811.11357](https://arxiv.org/abs/1811.11357) [Github](https://github.com/uber-research/metropolis-hastings-gans) [Blog](https://eng.uber.com/mh-gan/)
 
 **Label-Noise Robust Generative Adversarial Networks**. Takuhiro Kaneko, Yoshitaka Ushiku, Tatsuya Harada [The University of Tokyo & RIKEN] (2018) [arXiv:1811.11165](https://arxiv.org/abs/1811.11165)
@@ -54,6 +56,12 @@ date: 2018-09-28
 **Whispered-to-voiced Alaryngeal Speech Conversion with Generative Adversarial Networks**. Santiago Pascual, Antonio Bonafonte, Joan Serrà, Jose A. Gonzalez [Universitat Polite`cnica de Catalunya & Telefo ́nica Research & Universidad de Ma ́laga, Spain] (2018) [arXiv:1808.10687](https://arxiv.org/abs/1808.10687)
 
 **The relativistic discriminator: a key element missing from standard GAN**. Alexia Jolicoeur-Martineau [Lady Davis Institute Montreal, Canada] (2018) [arXiv:1807.00734](https://arxiv.org/abs/1807.00734)
+
+**Do GANs learn the distribution? Some Theory and Empirics**. Sanjeev Arora, Andrej Risteski, Yi Zhang [Princeton University & MIT] (ICLR 2018) [OpenReview.net](https://openreview.net/forum?id=BJehNfW0-)
+
+**Do GANs actually learn the distribution? An empirical study**. Sanjeev Arora, Yi Zhang [] (2017) [arXiv:1706.08224](https://arxiv.org/abs/1706.08224) [Reddit](https://www.reddit.com/r/MachineLearning/comments/6jxes2/r_170608224_do_gans_actually_learn_the/) [Blog](http://www.offconvex.org/2017/07/06/GANs3/)
+
+**Generalization and Equilibrium in Generative Adversarial Nets (GANs)**. S Arora, R Ge, Y Liang, T Ma, Y Zhang [Princeton University & Duke University] (2017) [arXiv:1703.00573](https://arxiv.org/abs/1703.00573) [Blog](http://www.offconvex.org/2017/03/30/GANs2/) [Reddit](https://www.reddit.com/r/MachineLearning/comments/637u1l/r_generalization_and_equilibrium_in_generative/)
 
 **Improved Techniques for Training GANs**. Tim Salimans, Ian Goodfellow, Wojciech Zaremba, Vicki Cheung, Alec Radford, Xi Chen [OpenAI] (2016) [arXiv:1606.03498](https://arxiv.org/abs/1606.03498) [Github](https://github.com/openai/improved-gan) [Reddit](https://www.reddit.com/r/MachineLearning/comments/4o0aj9/160603498_improved_techniques_for_training_gans/)
 
