@@ -69,6 +69,8 @@ date: 2018-09-28
 
 ## :facepunch: Adversarial Examples/Attacks
 
+**Adversarial Transfer Learning**. G Wilson, D J. Cook [Washington State University] (2018) [arXiv:1812.02849](https://arxiv.org/abs/1812.02849)
+
 **Defensive Dropout for Hardening Deep Neural Networks under Adversarial Attacks**. S Wang, X Wang, P Zhao, W Wen, D Kaeli, P Chin, X Lin [Northeastern University & Boston university & Florida International University] (2018) [arXiv:1809.05165](https://arxiv.org/abs/1809.05165)
 
 **Are adversarial examples inevitable?**. A Shafahi, W. R Huang, C Studer, S Feizi, T Goldstein (2018) [arXiv:1809.02104](https://arxiv.org/abs/1809.02104)
@@ -226,6 +228,8 @@ date: 2018-09-28
 
 ## :atom_symbol: Physics Related
 
+**The Calabi-Yau Landscape: from Geometry, to Physics, to Machine-Learning**. Y He (2018) [arXiv:1812.02893](https://arxiv.org/abs/1812.02893)
+
 **DeepSphere: Efficient spherical Convolutional Neural Network with HEALPix sampling for cosmological applications**. N Perraudin, M Defferrard, T Kacprzak, R Sgier [aSwiss Data Science Center (SDSC) & EPFL & ETH Zurich] (2018) [arXiv:1810.12186](https://arxiv.org/abs/1810.12186)
 
 **Toward an AI Physicist for Unsupervised Learning**. T Wu, M Tegmark [MIT] (2018) [arXiv:1810.10525](https://arxiv.org/abs/1810.10525)
@@ -234,7 +238,7 @@ date: 2018-09-28
 
 **hep-th**. Y He, V Jejjala, B D. Nelson [University of London & Nankai University & Northeastern University] (2018) [arXiv:1807.00735](https://arxiv.org/abs/1807.00735) [comment]
 
-
+**Physics-guided Neural Networks (PGNNs)**. Anuj Karpatne, William Watkins, Jordan Read, Vipin Kumar [University of Minnesota] (2017) [arXiv:1710.11431](https://arxiv.org/abs/1710.11431)
 
 
 
