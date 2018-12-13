@@ -368,8 +368,8 @@ $ pip install pipenv
 
 ```shell
 ~/py4GW$ pyenv local anconda3-5.3.0
-(anaconda3-5.3.0) ~/py4GW$ pip install mxnet-cu92
-
+(anaconda3-5.3.0) ~/py4GW$ pip install -U --pre mxnet-cu92
+(anaconda3-5.3.0) ~/py4GW$ sudo ldconfig /usr/local/cuda-9.2/lib64
 # 启动 anaconda3
 (anaconda3-5.3.0) ~/py4GW$ anaconda-navigator
 ```
