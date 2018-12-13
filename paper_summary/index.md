@@ -118,6 +118,8 @@ Biswas R, Blackburn L, Cao J, et al. "**Application of machine learning algorith
 
 - **GW not related**
 
+**Unsupervised learning and data clustering for the construction of Galaxy Catalogs in the Dark Energy Survey**. Asad Khan, E. A. Huerta, Sibo Wang, Robert Gruendl [University of Illinois at Urbana-Champaign, Urbana] (2018) [arXiv:1812.02183](https://arxiv.org/abs/1812.02183)
+
 **Exploring galaxy evolution with generative models**. Kevin Schawinski, M. Dennis Turp, Ce Zhang [ETH Zurich] (2018) [arXiv:1812.01114](https://arxiv.org/abs/1812.01114)
 
 **Probabilistic Random Forest: A machine learning algorithm for noisy datasets**. Itamar Reis, Dalya Baron, Sahar Shahaf [Tel-Aviv U.] (2018) [arXiv:1811.05994](https://arxiv.org/abs/1811.05994)
@@ -210,9 +212,10 @@ https://vijayvarma392.github.io/
 - [[Paper Summary](./Very deep convolutional networks for large-scale image recognition.html)] Simonyan, Karen, and Andrew Zisserman. "**Very deep convolutional networks for large-scale image recognition**." (2014).**(VGGNet,Neural Networks become very deep!)**
 - [Paper Summary] Szegedy, Christian, et al. "**Going deeper with convolutions**." (2015).**(GoogLeNet, Deeper networks, computational efficiency)**
 - [Paper Summary] He, Kaiming, et al. "**Deep residual learning for image recognition**." (2015).**(ResNet, Very very deep networks using residual connections, CVPR best paper)**
-
+- Xception: Deep Learning with Depthwise Separable Convolutions. F Chollet (2016) 
 - From: Alfredo Canziani, Adam Paszke, Eugenio Culurciello, 2017.
 - Mahajan et al, “Exploring the Limits of Weakly Supervised Pretraining”, arXiv 2018
+- 
 
 【(Colab Notebooks)AlexNet/VGG/GoogleNet/Inception/MobileNet/ShuffleNet/ResNet/DenseNet的Keras参考实现(及速查)】’Material used for Deep Learning related workshops for Machine Learning Tokyo (MLT)' by Machine-Learning-Tokyo GitHub: http://t.cn/ELtfypS Cheat Sheet:http://t.cn/ELtfypo 
 

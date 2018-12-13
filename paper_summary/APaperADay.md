@@ -244,6 +244,8 @@ date: 2018-09-28
 
 ## :books: Review
 
+**Deep Learning on Graphs: A Survey**. Z Zhang, P Cui, W Zhu [Tsinghua University] (2018) [arXiv:1812.04202](https://arxiv.org/abs/1812.04202)
+
 **Learning From Positive and Unlabeled Data: A Survey**. J Bekker, J Davis [KU Leuven] (2018) [arXiv:1811.04820](https://arxiv.org/abs/1811.04820)
 
 **Analyzing biological and artificial neural networks: challenges with opportunities for synergy?**. David G.T. Barrett, Ari S. Morcos, Jakob H. Macke [DeepMind; Technical University of Munich, Germany] (2018) [arXiv:1810.13373](https://arxiv.org/abs/1810.13373)
