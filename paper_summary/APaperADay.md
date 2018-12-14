@@ -119,6 +119,8 @@ date: 2018-09-28
 
 ## :chart_with_downwards_trend: Optimization & Generalization
 
+**Gradient Descent Happens in a Tiny Subspace**. G Gur-Ari, D A. Roberts, E Dyer [Institute for Advanced Study & Facebook AI Research & Johns Hopkins University] (2018) [arXiv:1812.04754](https://arxiv.org/abs/1812.04754)
+
 **A Sufficient Condition for Convergences of Adam and RMSProp**. F Zou, L Shen, Z Jie, W Zhang, W Liu [Stony Brook University & Tencent AI Lab] (2018) [arXiv:1811.09358](https://arxiv.org/abs/1811.09358)
 
 **Stochastic Gradient Descent Optimizes Over-parameterized Deep ReLU Networks**. D Zou, Y Cao, D Zhou, Q Gu [University of California, Los Angeles] (2018) [arXiv:1811.08888](https://arxiv.org/abs/1811.08888)
