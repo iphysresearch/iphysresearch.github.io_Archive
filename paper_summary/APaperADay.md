@@ -23,6 +23,8 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
+**A Style-Based Generator Architecture for Generative Adversarial Networks**. T Karras, S Laine, T Aila [NVIDIA] (2018) [arXiv:1812.04948](https://arxiv.org/abs/1812.04948) [Code](https://docs.google.com/document/d/1SDbnM1nxLZNuwD8fQkIigUve_SlihgoCmvjN3e388Us/edit) [YouTube](https://www.youtube.com/watch?v=kSLJriaOumA)
+
 **Intra-class Variation Isolation in Conditional GANs**. R T. Marriott, S Romdhani, L Chen [Ecole Centrale de Lyon & IDEMIA] (2018) [arXiv:1811.11296](https://arxiv.org/abs/1811.11296)
 
 **Metropolis-Hastings Generative Adversarial Networks**. R Turner, J Hung, Y Saatci, J Yosinski [Uber AI Labs] (2018) [arXiv:1811.11357](https://arxiv.org/abs/1811.11357) [Github](https://github.com/uber-research/metropolis-hastings-gans) [Blog](https://eng.uber.com/mh-gan/)
@@ -40,6 +42,8 @@ date: 2018-09-28
 **Bias and Generalization in Deep Generative Models: An Empirical Study**. S Zhao, H Ren, A Yuan, J Song, N Goodman, S Ermon [Stanford University] ([ICML2018](https://sites.google.com/view/tadgm/home?authuser=0)) [arXiv:1811.03259](https://arxiv.org/abs/1811.03259) [GitHub](https://github.com/ermongroup/BiasAndGeneralization)
 
 **Language GANs Falling Short**. Massimo Caccia, Lucas Caccia, William Fedus, Hugo Larochelle, Joelle Pineau, Laurent Charlin [MILA, Université de Montréal & MILA, McGill University & MILA, HEC Montréal & Google Brain & Facebook AI Research] (2018) [arXiv:1811.02549](https://arxiv.org/abs/1811.02549v3)
+
+**CariGANs: Unpaired Photo-to-Caricature Translation**. K Cao, J Liao, L Yuan [Tsinghua University & Microsoft Research] (2018) [arXiv:1811.00222](https://arxiv.org/abs/1811.00222) [Blog](https://cari-gan.github.io) [App](https://ai.stanford.edu/~kaidicao/cari-gan/index.html) [YouTube](https://www.youtube.com/watch?v=V6G717ewUuw)
 
 **Large Scale GAN Training for High Fidelity Natural Image Synthesis** | [OpenReview](https://openreview.net/forum?id=B1xsqj09Fm). (2018) 
 
@@ -104,6 +108,8 @@ date: 2018-09-28
 **Deep Convolutional Neural Networks On Multichannel Time Series For Human Activity Recognition**. Jian Bo Yang, Minh Nhut Nguyen, Phyo Phyo San, Xiao Li Li, Shonali Krishnaswamy (2015) [IJCAI2015](http://www.aaai.org/ocs/index.php/IJCAI/IJCAI15/paper/download/10710/11297)
 
 **Towards a universal neural network encoder for time series**. J Serrà, S Pascual, A Karatzoglou [Telefonica Research & Universitat Politecnica de Catalunya] (2018)
+
+**Sound Event Detection Using Spatial Features and Convolutional Recurrent Neural Network**. Sharath Adavanne, Pasi Pertilä, Tuomas Virtanen [Tampere University of Technology] (DCASE 2017) [arXiv:1706.02291](https://arxiv.org/abs/1706.02291) [Github](https://github.com/sharathadavanne/multichannel-sed-crnn)
 
 **Time Series Classification Using Multi-Channels Deep Convolutional Neural Networks**. Yi Zheng, Qi Liu, Enhong Chen, Yong Ge, and J. Leon Zhao [USTC, et al.] (2014) [WAIM2014](http://staff.ustc.edu.cn/~cheneh/paper_pdf/2014/Yi-Zheng-WAIM2014.pdf)
 
@@ -243,6 +249,8 @@ date: 2018-09-28
 
 
 ## :books: Review
+
+**Recent Advances in Autoencoder-Based Representation Learning**. M Tschannen, O Bachem, M Lucic [ETH Zurich & Google AI] (2018) [arXiv:1812.05069](https://arxiv.org/abs/1812.05069)
 
 **Deep Learning on Graphs: A Survey**. Z Zhang, P Cui, W Zhu [Tsinghua University] (2018) [arXiv:1812.04202](https://arxiv.org/abs/1812.04202)
 
