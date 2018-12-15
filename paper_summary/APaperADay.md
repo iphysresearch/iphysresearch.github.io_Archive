@@ -163,8 +163,6 @@ date: 2018-09-28
 
 **An Information-Theoretic View for Deep Learning**. J Zhang, T Liu, D Tao [UBTECH Sydney AI Centre] (2018) [arXiv:1804.09060](https://arxiv.org/abs/1804.09060)
 
-**Revisiting Small Batch Training for Deep Neural Networks**. Dominic Masters, Carlo Luschi. (2018) [arXiv:1804.07612](https://arxiv.org/abs/1804.07612)
-
 **Understanding Individual Neuron Importance Using Information Theory**. K Liu, R A Amjad, B C. Geiger [Technical University of Munich & Graz University of Technology] (2018) [arXiv:1804.06679](https://arxiv.org/abs/1804.06679)
 
 **Understanding Convolutional Neural Network Training with Information Theory**. S Yu, R Jenssen, J C. Principe [University of Florida & University of Tromsø] (2018) [arXiv:1804.06537](https://arxiv.org/abs/1804.06537)
@@ -179,7 +177,13 @@ date: 2018-09-28
 
   **How Many Samples are Needed to Learn a Convolutional Neural Network?**. S S. Du, Y Wang, X Zhai, S Balakrishnan, R Salakhutdinov, A Singh [CMU & University of Cambridge] (2018) [arXiv:1805.07883](https://arxiv.org/abs/1805.07883)
 
+- Batch-size
 
+  **An Empirical Model of Large-Batch Training**. Sam McCandlish, Jared Kaplan, Dario Amodei [OpenAI] (DECEMBER 14, 2018) [PDF](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/science-of-ai/An+Empirical+Model+of+Large-Batch+Training.pdf) [BLOG](https://blog.openai.com/science-of-ai/)
+
+  **Don't Use Large Mini-Batches, Use Local SGD**. T Lin, S U. Stich, M Jaggi [EPFL] (2018) [arXiv:1808.07217](https://arxiv.org/abs/1808.07217)
+
+  **Revisiting Small Batch Training for Deep Neural Networks**. Dominic Masters, Carlo Luschi. (2018) [arXiv:1804.07612](https://arxiv.org/abs/1804.07612)
 
 
 ## :control_knobs: Model Configuration
@@ -201,8 +205,6 @@ date: 2018-09-28
 **Why scatter plots suggest causality, and what we can do about it**. C T. Bergstrom, J D. West [University of Washington] (2018) [arXiv:1809.09328](https://arxiv.org/abs/1809.09328)
 
 **Human activity recognition based on time series analysis using U-Net**. Y Zhang, Y Zhang, Z Zhang, J Bao, Y Song [Beijing University of Posts and Telecommunications & AIdong Super AI] (2018). [arXiv:1809.08113](https://arxiv.org/abs/1809.08113)
-
-**Don't Use Large Mini-Batches, Use Local SGD**. T Lin, S U. Stich, M Jaggi [EPFL] (2018) [arXiv:1808.07217](https://arxiv.org/abs/1808.07217)
 
 **Backprop Evolution**. M Alber, I Bello, B Zoph, P Kindermans, P Ramachandran, Q Le [TU Berlin & Google Brain] (2018) [arXiv:1808.01974](https://arxiv.org/abs/1808.01974)
 
