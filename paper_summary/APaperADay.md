@@ -119,6 +119,8 @@ date: 2018-09-28
 
 ## :chart_with_downwards_trend: Optimization & Generalization
 
+**Visualizing the Loss Landscape of Neural Nets**. H Li, Z Xu, G Taylor, T Goldstein [University of Maryland & United States Naval Academy] (NIPS 2018) [arXiv:1712.09913](https://arxiv.org/abs/1712.09913) [Github](https://github.com/tomgoldstein/loss-landscape) [Reddit](https://www.reddit.com/r/MachineLearning/comments/7mr7j5/r_171209913_visualizing_the_loss_landscape_of/)
+
 **Gradient Descent Happens in a Tiny Subspace**. G Gur-Ari, D A. Roberts, E Dyer [Institute for Advanced Study & Facebook AI Research & Johns Hopkins University] (2018) [arXiv:1812.04754](https://arxiv.org/abs/1812.04754)
 
 **A Sufficient Condition for Convergences of Adam and RMSProp**. F Zou, L Shen, Z Jie, W Zhang, W Liu [Stony Brook University & Tencent AI Lab] (2018) [arXiv:1811.09358](https://arxiv.org/abs/1811.09358)
@@ -134,8 +136,6 @@ date: 2018-09-28
 **Identifying Generalization Properties in Neural Networks**. H Wang, N S Keskar, C Xiong, R Socher [Salesforce Research] (2018) [arXiv:1809.07402](https://arxiv.org/abs/1809.07402)
 
 **Accelerating Natural Gradient with Higher-Order Invariance**. by Yang Song [Post](https://ermongroup.github.io/blog/geo/) [paper](http://proceedings.mlr.press/v80/song18a/song18a.pdf)
-
-
 
 
 
@@ -187,7 +187,7 @@ date: 2018-09-28
 
 ## :control_knobs: Model Configuration
 
-**Bag of Tricks for Image Classification with Convolutional Neural Networks**. Tong He, Zhi Zhang, Hang Zhang, Zhongyue Zhang, Junyuan Xie, Mu Li [AWS] (2018) [arXiv:1812.01187](https://arxiv.org/abs/1812.01187)
+**Bag of Tricks for Image Classification with Convolutional Neural Networks**. Tong He, Zhi Zhang, Hang Zhang, Zhongyue Zhang, Junyuan Xie, Mu Li [AWS] (2018) [arXiv:1812.01187](https://arxiv.org/abs/1812.01187) [Reddit](https://www.reddit.com/r/MachineLearning/comments/a4dxna/r_bag_of_tricks_for_image_classification_with/) [Slides[Reddit]](https://www.reddit.com/r/MachineLearning/comments/a5s8pv/r_a_bags_of_tricks_which_may_improve_deep/)
 
 **Linear Backprop in non-linear networks**. Mehrdad Yazdani [University of California San Diego] (NIPS 2018) [OpenReview](https://openreview.net/forum?id=ByfPDyrYim) [机器之心](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2650753228&idx=2&sn=fad16dfb7e96c4301ac3838f058ecaae)
 
