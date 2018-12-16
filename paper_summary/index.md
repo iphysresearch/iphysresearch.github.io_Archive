@@ -104,15 +104,17 @@ Creswell, James, et al. "**On the time lags of the LIGO signals**." *[Journal of
 
 Biswas R, Blackburn L, Cao J, et al. "**Application of machine learning algorithms to the study of noise artifacts in gravitational-wave data**"[J]. [Physical Review D](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.88.062003), 2013, 88(6): 062003. [arXiv:1303.6984](https://arxiv.org/abs/1303.6984) (**ANN & SVM & RF**)
 
-[[Paper Summary](./Deep neural networks to enable real-time multimessenger astrophysics.html)] George D, Huerta E A. "**Deep neural networks to enable real-time multimessenger astrophysics**"[J]. Physical Review D, 2018, 97(4): 044039. (**First attempt using DNN!**)
+[[Paper Summary](./Deep neural networks to enable real-time multimessenger astrophysics.html)] <u>George D</u>, <u>Huerta E A</u>. "**Deep neural networks to enable real-time multimessenger astrophysics**"[J]. Physical Review D, 2018, 97(4): 044039. (**First attempt using DNN!**)
 
 
 
-[Paper Summary] Gabbard, H., Williams, M., Hayes, F., & Messenger, C. (2018). "**Matching matched filtering with deep networks for gravitational-wave astronomy**". *[Physical review letters](https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.120.141103)*, *120*(14), 141103.
+[Paper Summary] <u>Gabbard, H.</u>, Williams, M., Hayes, F., & <u>Messenger, C.</u> (2018). "**Matching matched filtering with deep networks for gravitational-wave astronomy**". *[Physical review letters](https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.120.141103)*, *120*(14), 141103.
 
-**Total-variation methods for gravitational-wave denoising: performance tests on Advanced LIGO data**. Alejandro Torres-Forné, Elena Cuoco, Antonio Marquina, José A. Font, José M. Ibáñez [Universitat de Vale`ncia & EGO & SNS & INFN] (2018) [arXiv:1806.07329](https://arxiv.org/abs/1806.07329)
+**Total-variation methods for gravitational-wave denoising: performance tests on Advanced LIGO data**. Alejandro Torres-Forné, <u>Elena Cuoco</u>, Antonio Marquina, José A. Font, José M. Ibáñez [Universitat de Vale`ncia & EGO & SNS & INFN] (2018) [arXiv:1806.07329](https://arxiv.org/abs/1806.07329)
 
-[Paper Summary] **Applying deep neural networks to the detection and space parameter estimation of compact binary coalescence with a network of gravitational wave detectors**. Xilong Fan, Jin Li, Xin Li, Yuanhong Zhong, Junwei Cao [Hubei University of Education & Chongqing U. & Tsinghua U.] (2018) [arXiv:1811.01380](https://arxiv.org/abs/1811.01380)
+[Paper Summary] **Applying deep neural networks to the detection and space parameter estimation of compact binary coalescence with a network of gravitational wave detectors**. <u>Xilong Fan</u>, <u>Jin Li</u>, Xin Li, Yuanhong Zhong, Junwei Cao [Hubei University of Education & Chongqing U. & Tsinghua U.] (2018) [arXiv:1811.01380](https://arxiv.org/abs/1811.01380)
+
+**Predicting surface wave velocities at gravitational wave observatories using archival seismic data**. Nikhil Mukund, Michael Coughlin, Jan Harms, Sebastien Biscans, Jim Warner, Arnaud Pele, Keith Thorne, David Barker, Nicolas Arnaud, Fred Donovan, Irene Fiori, <u>Hunter Gabbard</u>, Brian Lantz, Richard Mittleman, Hugh Radkins, Bas Swinkels [...] (2018) [arXiv:1812.05185](https://arxiv.org/abs/1812.05185)
 
 ---
 
