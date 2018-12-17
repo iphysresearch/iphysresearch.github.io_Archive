@@ -151,13 +151,7 @@ date: 2018-09-28
 
 **How deep is deep enough? - Optimizing deep neural network architecture**. A Schilling, J Rietsch, R Gerum, H Schulze, C Metzner, P Krauss [University Hospital Erlangen & Friedrich-Alexander University Erlangen-N¨urnberg (FAU)] (2018) [arXiv:1811.01753](https://arxiv.org/abs/1811.01753)
 
-**Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift**. S Rabanser, S Günnemann, Z C. Lipton [CMU & Technical University of Munich] (2018) [arXiv:1810.11953](https://arxiv.org/abs/1810.11953)
-
 **Approximate Fisher Information Matrix to Characterise the Training of Deep Neural Networks**. Z Liao, T Drummond, I Reid, G Carneiro [University of Adelaide & Monash University] (2018) [arXiv:1810.06767](https://arxiv.org/abs/1810.06767)  [GitHub](https://github.com/zhibinliao89/fisher.info.mat.torch) 
-
-**Local Explanation Methods for Deep Neural Networks Lack Sensitivity to Parameter Values**. J Adebayo, J Gilmer, I Goodfellow, B Kim [Google Brain] (2018) [arXiv:1810.03307](https://arxiv.org/abs/1810.03307)  [OpenReview](https://openreview.net/forum?id=SJOYTK1vM)
-
-**Sanity Checks for Saliency Maps**. J Adebayo, J Gilmer, M Muelly, I Goodfellow, M Hardt, B Kim [Google Brain] (2018) [arXiv:1810.03292](https://arxiv.org/abs/1810.03292)
 
 **A Performance Evaluation of Convolutional Neural Networks for Face Anti Spoofing**. Chaitanya Nagpal, Shiv Ram Dubey (2018) [arXiv:1805.04176](https://arxiv.org/abs/1805.04176)
 
@@ -175,6 +169,8 @@ date: 2018-09-28
 
   **Image Score: How to Select Useful Samples**. Simiao Zuo, Jialin Wu [University of Texas at Austin] (2018) [arXiv:1812.00334](https://arxiv.org/abs/1812.00334) [Reddit](https://www.reddit.com/r/MachineLearning/comments/a30cuw/181200334_image_score_how_to_select_useful_samples/)
 
+  **Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift**. S Rabanser, S Günnemann, Z C. Lipton [CMU & Technical University of Munich] (2018) [arXiv:1810.11953](https://arxiv.org/abs/1810.11953)
+
   **How Many Samples are Needed to Learn a Convolutional Neural Network?**. S S. Du, Y Wang, X Zhai, S Balakrishnan, R Salakhutdinov, A Singh [CMU & University of Cambridge] (2018) [arXiv:1805.07883](https://arxiv.org/abs/1805.07883)
 
 - Batch-size
@@ -184,6 +180,15 @@ date: 2018-09-28
   **Don't Use Large Mini-Batches, Use Local SGD**. T Lin, S U. Stich, M Jaggi [EPFL] (2018) [arXiv:1808.07217](https://arxiv.org/abs/1808.07217)
 
   **Revisiting Small Batch Training for Deep Neural Networks**. Dominic Masters, Carlo Luschi. (2018) [arXiv:1804.07612](https://arxiv.org/abs/1804.07612)
+
+- Saliency
+
+  **Understanding Individual Decisions of CNNs via Contrastive Backpropagation**. J Gu, Y Yang, V Tresp [the University of Munich & Siemens AG] (2018) [arXiv:1812.02100](https://arxiv.org/abs/1812.02100)
+
+  **Local Explanation Methods for Deep Neural Networks Lack Sensitivity to Parameter Values**. J Adebayo, J Gilmer, I Goodfellow, B Kim [Google Brain] (2018) [arXiv:1810.03307](https://arxiv.org/abs/1810.03307)  [OpenReview](https://openreview.net/forum?id=SJOYTK1vM)
+
+  **Sanity Checks for Saliency Maps**. J Adebayo, J Gilmer, M Muelly, I Goodfellow, M Hardt, B Kim [Google Brain] (2018) [arXiv:1810.03292](https://arxiv.org/abs/1810.03292)
+
 
 ## :control_knobs: Model Configuration
 
