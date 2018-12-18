@@ -23,7 +23,9 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
-**A Style-Based Generator Architecture for Generative Adversarial Networks**. T Karras, S Laine, T Aila [NVIDIA] (2018) [arXiv:1812.04948](https://arxiv.org/abs/1812.04948) [Code](https://docs.google.com/document/d/1SDbnM1nxLZNuwD8fQkIigUve_SlihgoCmvjN3e388Us/edit) [YouTube](https://www.youtube.com/watch?v=kSLJriaOumA)
+**A Probe into Understanding GAN and VAE models**. J Zhang, L Mi, M Shen [MIT] (2018) [arXiv:1812.05676](https://arxiv.org/abs/1812.05676)
+
+**A Style-Based Generator Architecture for Generative Adversarial Networks**. T Karras, S Laine, T Aila [NVIDIA] (2018) [arXiv:1812.04948](https://arxiv.org/abs/1812.04948) [Code](https://docs.google.com/document/d/1SDbnM1nxLZNuwD8fQkIigUve_SlihgoCmvjN3e388Us/edit) [YouTube](https://www.youtube.com/watch?v=kSLJriaOumA) [机器之心](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2650753854&idx=4&sn=683d862b174cb26c01c1e4d7541498d7)
 
 **Intra-class Variation Isolation in Conditional GANs**. R T. Marriott, S Romdhani, L Chen [Ecole Centrale de Lyon & IDEMIA] (2018) [arXiv:1811.11296](https://arxiv.org/abs/1811.11296)
 
@@ -296,8 +298,9 @@ date: 2018-09-28
 
 
 
-
 ## :framed_picture: Figure Design & Dimension Reduction
+
+**A Tutorial on Distance Metric Learning: Mathematical Foundations, Algorithms and Software**. J L Suárez, S García, F Herrera [University of Granada] (2018) [arXiv:1812.05944](https://arxiv.org/abs/1812.05944)
 
 **Improving Generalization for Abstract Reasoning Tasks Using Disentangled Feature Representations**. X Steenbrugge, S Leroux, T Verbelen, B Dhoedt [Ghent University] (2018) [arXiv:1811.04784](https://arxiv.org/abs/1811.04784)
 
