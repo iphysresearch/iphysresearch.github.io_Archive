@@ -13,6 +13,16 @@ date: 2018-08-22
 
 
 
+# How to comment
+
+> With use of the [hypothes.is](https://hypothes.is/) extension (right-sided), you can highlight, annote any comments and discuss these notes inline*at any pages*and *posts*.
+>
+> *Please Feel Free* to Let Me Know and *Share* it Here.
+
+
+
+---
+
 
 > **Please note that these posts are for my future self to review the materials on these papers without reading them all over again.** 
 >
@@ -26,11 +36,21 @@ date: 2018-08-22
 
 # :racing_car: **A Paper A Day**
 
+
 Felt like I wasn’t reading enough – and what I was reading wasn’t sinking in enough. I also wanted to keep track of my sources in a more controlled manner. As a part of adding everything to my JabRef (maybe…), I figured I would write up my comments on papers. 
 
 The goal is to read and comment once a day. and this [post](./APaperADay.html) will be updated day by day according to the reading process.
 
 
+<details>
+  <summary>Table of Contents</summary>
+  <li><a href="#about">About</a></li>
+  <li><a href="#install">Install</a></li>
+  <li><a href="#usage">Usage</a></li>
+  <li><a href="#update">Update</a></li>
+  <li><a href="#contribute">Contribute</a></li>
+  <li><a href="#license">License</a></li>
+</details>
 
 > Documentation is a love letter that you write to your future self.
 >
@@ -72,27 +92,39 @@ The goal is to read and comment once a day. and this [post](./APaperADay.html) w
 
 [How do we know LIGO detected gravitational waves?](https://cqgplus.com/2016/06/06/how-do-we-know-ligo-detected-gravitational-waves/) Posted on [June 6, 2016](https://cqgplus.com/2016/06/06/how-do-we-know-ligo-detected-gravitational-waves/) by [Adam Day](https://cqgplus.com/author/publisherad/)
 
-## Data Analysis in GW Physics
+[The O2 Catalogue—It goes up to 11](https://cplberry.com/2018/12/07/o2-catalogue/) | An awesome review on O2 Catalogue posted by [CHRISTOPHER BERRY](https://cplberry.com/)
 
-**BayesLine: Bayesian Inference for Spectral Estimation of Gravitational Wave Detector Noise**. Tyson B. Littenberg, Neil J. Cornish [Northwestern U. & Montana State U.] (2018) [Phys. Rev. D 91, 084034](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.91.084034) (2015) [arXiv:1410.3852](https://arxiv.org/abs/1410.3852)
+## Data Analysis & Signal Processing in GW Astronomy
 
-[Paper Summary] Abbott, Benjamin P., et al. "**Characterization of transient noise in Advanced LIGO relevant to gravitational wave signal GW150914**." *[Classical and Quantum Gravity](http://iopscience.iop.org/article/10.1088/0264-9381/33/13/134001/meta)* 33.13 (2016): 134001. [arXiv:1602.03844](https://arxiv.org/abs/1602.03844)
+**The GstLAL template bank for spinning compact binary mergers in the second observation run of Advanced LIGO and Virgo**. Debnandini Mukherjee, etc. [etc.] (2018) [arXiv:1812.05121](https://arxiv.org/abs/1812.05121)
 
-[Paper Summary] Abbott, Benjamin P., et al. "**GW151226: Observation of gravitational waves from a 22-solar-mass binary black hole coalescence**." *[Physical review letters](https://link.aps.org/pdf/10.1103/PhysRevLett.116.241103)* 116.24 (2016): 241103. [arXiv:1606.04855](https://arxiv.org/abs/1606.04855) (**Current Searches & Current Parameter Estimation**)
+**Wavelet-based classification of transient signals for Gravitational Wave detectors**. <u>Elena Cuoco</u>, Massimiliano Razzano, Andrei Utina [EGO and Scuola Normale Superiore, Pisa University and INFN Pisa, Glasgow University] (2018 EUSIPCO) [PDF](https://ieeexplore.ieee.org/abstract/document/8553393)
 
-[Paper Summary] Abbott, B. P., et al. "**Binary black hole mergers in the first advanced LIGO observing run**." *[Physical Review X](https://link.aps.org/pdf/10.1103/PhysRevX.6.041015)* 6.4 (2016): 041015. [arXiv:1606.04856](https://arxiv.org/abs/1606.04856) (**Current Searches**)
+**Structured sparsity regularization for gravitational-wave polarization reconstruction**. Fangchen Feng, Eric Chassande-Mottin and Philippe Bacon, Aure ́lia Fraysse [Univ. Paris Diderot & Univ. Paris-Sud] (2018 EUSIPCO) [PDF](https://ieeexplore.ieee.org/abstract/document/8553009)
 
-[Paper Summary] Abbott, Benjamin P., et al. "**GW170817: Observation of Gravitational Waves from a Binary Neutron Star Inspiral**." *[Physical Review Letters](https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.119.161101)* 119.16 (2017): 161101. (**Glitch!**)
+**Detection and Estimation of Unmodeled Chirps**. Soumya D. Mohanty [The University of Texas Rio Grande Valley] (2018 EUSIPCO) [PDF](https://ieeexplore.ieee.org/abstract/document/8553248)
 
-[Paper Summary] Zevin, Michael, et al. "**Gravity Spy: integrating advanced LIGO detector characterization, <u>machine learning</u>, and citizen science**." *[Classical and quantum gravity](http://iopscience.iop.org/0264-9381/34/6/064003/)* 34.6 (2017): 064003. [arXiv:1611.04596](https://arxiv.org/abs/1611.04596) (**Current Challenge & CONV.**)
+**GPU-Optimised Low-Latency Online Search for Gravitational Waves from Binary Coalescences**. Xiaoyang Guo, Qi Chu, Zhihui Du, Linqing Wen [Tsinghua University & University of Western Australia] (2018 EUSIPCO) [PDF](https://ieeexplore.ieee.org/abstract/document/8553574)
 
-Creswell, James, et al. "**On the time lags of the LIGO signals**." *[Journal of Cosmology and Astroparticle Physics](http://iopscience.iop.org/article/10.1088/1475-7516/2017/08/013/meta)* 2017.08 (2017): 013. [arXiv:1706.04191](https://arxiv.org/abs/1706.04191)
-
-**Investigating the noise residuals around the gravitational wave event GW150914**. Alex B. Nielsen, Alexander H. Nitz, Collin D. Capano, Duncan A. Brown [MPI Germany & Hannover Germany & Syracuse U.] (2018) [arXiv:1811.04071](https://arxiv.org/abs/1811.04071) [Github](https://github.com/gwastro/gw150914_investigation)
+**Techniques for gravitational-wave detection of compact binary coalescence**. Sarah Caudill for the LIGO Scientific Collaboration and the Virgo Collaboration [1098 XG Amsterdam, The Netherlands] (2018 EUSIPCO) [PDF](https://ieeexplore.ieee.org/abstract/document/8553549)
 
 **Posterior samples of the parameters of black hole mergers released to date in the second Advanced LIGO--Virgo observing run**. Soumi De, Collin D. Capano, Christopher M. Biwer, Alexander H. Nitz, Duncan A. Brown [Syracuse U. & MPI Germany & Hannover & Los Alamos National Laboratory] (2018) [arXiv:1811.09232](https://arxiv.org/abs/1811.09232) [Github](https://github.com/gwastro/o2-bbh-pe)
 
+**Investigating the noise residuals around the gravitational wave event GW150914**. Alex B. Nielsen, Alexander H. Nitz, Collin D. Capano, Duncan A. Brown [MPI Germany & Hannover Germany & Syracuse U.] (2018) [arXiv:1811.04071](https://arxiv.org/abs/1811.04071) [Github](https://github.com/gwastro/gw150914_investigation)
 
+Creswell, James, et al. "**On the time lags of the LIGO signals**." *[Journal of Cosmology and Astroparticle Physics](http://iopscience.iop.org/article/10.1088/1475-7516/2017/08/013/meta)* 2017.08 (2017): 013. [arXiv:1706.04191](https://arxiv.org/abs/1706.04191)
+
+[Paper Summary] Zevin, Michael, et al. "**Gravity Spy: integrating advanced LIGO detector characterization, <u>machine learning</u>, and citizen science**." *[Classical and quantum gravity](http://iopscience.iop.org/0264-9381/34/6/064003/)* 34.6 (2017): 064003. [arXiv:1611.04596](https://arxiv.org/abs/1611.04596) (**Current Challenge & CONV.**)
+
+[Paper Summary] Abbott, Benjamin P., et al. "**GW170817: Observation of Gravitational Waves from a Binary Neutron Star Inspiral**." *[Physical Review Letters](https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.119.161101)* 119.16 (2017): 161101. (**Glitch!**)
+
+[Paper Summary] Abbott, B. P., et al. "**Binary black hole mergers in the first advanced LIGO observing run**." *[Physical Review X](https://link.aps.org/pdf/10.1103/PhysRevX.6.041015)* 6.4 (2016): 041015. [arXiv:1606.04856](https://arxiv.org/abs/1606.04856) (**Current Searches**)
+
+[Paper Summary] Abbott, Benjamin P., et al. "**GW151226: Observation of gravitational waves from a 22-solar-mass binary black hole coalescence**." *[Physical review letters](https://link.aps.org/pdf/10.1103/PhysRevLett.116.241103)* 116.24 (2016): 241103. [arXiv:1606.04855](https://arxiv.org/abs/1606.04855) (**Current Searches & Current Parameter Estimation**)
+
+[Paper Summary] Abbott, Benjamin P., et al. "**Characterization of transient noise in Advanced LIGO relevant to gravitational wave signal GW150914**." *[Classical and Quantum Gravity](http://iopscience.iop.org/article/10.1088/0264-9381/33/13/134001/meta)* 33.13 (2016): 134001. [arXiv:1602.03844](https://arxiv.org/abs/1602.03844)
+
+**BayesLine: Bayesian Inference for Spectral Estimation of Gravitational Wave Detector Noise**. Tyson B. Littenberg, Neil J. Cornish [Northwestern U. & Montana State U.] (2015) [Phys. Rev. D 91, 084034](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.91.084034) [arXiv:1410.3852](https://arxiv.org/abs/1410.3852)
 
 
 
@@ -102,19 +134,29 @@ Creswell, James, et al. "**On the time lags of the LIGO signals**." *[Journal of
 
 - **GW related**
 
-Biswas R, Blackburn L, Cao J, et al. "**Application of machine learning algorithms to the study of noise artifacts in gravitational-wave data**"[J]. [Physical Review D](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.88.062003), 2013, 88(6): 062003. [arXiv:1303.6984](https://arxiv.org/abs/1303.6984) (**ANN & SVM & RF**)
-
-[[Paper Summary](./Deep neural networks to enable real-time multimessenger astrophysics.html)] <u>George D</u>, <u>Huerta E A</u>. "**Deep neural networks to enable real-time multimessenger astrophysics**"[J]. Physical Review D, 2018, 97(4): 044039. (**First attempt using DNN!**)
 
 
-
-[Paper Summary] <u>Gabbard, H.</u>, Williams, M., Hayes, F., & <u>Messenger, C.</u> (2018). "**Matching matched filtering with deep networks for gravitational-wave astronomy**". *[Physical review letters](https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.120.141103)*, *120*(14), 141103.
-
-**Total-variation methods for gravitational-wave denoising: performance tests on Advanced LIGO data**. Alejandro Torres-Forné, <u>Elena Cuoco</u>, Antonio Marquina, José A. Font, José M. Ibáñez [Universitat de Vale`ncia & EGO & SNS & INFN] (2018) [arXiv:1806.07329](https://arxiv.org/abs/1806.07329)
+**Predicting surface wave velocities at gravitational wave observatories using archival seismic data**. Nikhil Mukund, Michael Coughlin, Jan Harms, Sebastien Biscans, Jim Warner, Arnaud Pele, Keith Thorne, David Barker, Nicolas Arnaud, Fred Donovan, Irene Fiori, <u>Hunter Gabbard</u>, Brian Lantz, Richard Mittleman, Hugh Radkins, Bas Swinkels [...] (2018) [arXiv:1812.05185](https://arxiv.org/abs/1812.05185)
 
 [Paper Summary] **Applying deep neural networks to the detection and space parameter estimation of compact binary coalescence with a network of gravitational wave detectors**. <u>Xilong Fan</u>, <u>Jin Li</u>, Xin Li, Yuanhong Zhong, Junwei Cao [Hubei University of Education & Chongqing U. & Tsinghua U.] (2018) [arXiv:1811.01380](https://arxiv.org/abs/1811.01380)
 
-**Predicting surface wave velocities at gravitational wave observatories using archival seismic data**. Nikhil Mukund, Michael Coughlin, Jan Harms, Sebastien Biscans, Jim Warner, Arnaud Pele, Keith Thorne, David Barker, Nicolas Arnaud, Fred Donovan, Irene Fiori, <u>Hunter Gabbard</u>, Brian Lantz, Richard Mittleman, Hugh Radkins, Bas Swinkels [...] (2018) [arXiv:1812.05185](https://arxiv.org/abs/1812.05185)
+**Total-variation methods for gravitational-wave denoising: performance tests on Advanced LIGO data**. Alejandro Torres-Forné, <u>Elena Cuoco</u>, Antonio Marquina, José A. Font, José M. Ibáñez [Universitat de Vale`ncia & EGO & SNS & INFN] (2018) [arXiv:1806.07329](https://arxiv.org/abs/1806.07329)
+
+[Paper Summary] <u>Gabbard, H.</u>, Williams, M., Hayes, F., & <u>Messenger, C.</u> (2018). "**Matching matched filtering with deep networks for gravitational-wave astronomy**". *[Physical review letters](https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.120.141103)*, *120*(14), 141103.
+
+
+
+[[Paper Summary](./Deep neural networks to enable real-time multimessenger astrophysics.html)] <u>George D</u>, <u>Huerta E A</u>. "**Deep neural networks to enable real-time multimessenger astrophysics**"[J]. Physical Review D, 2018, 97(4): 044039. (**First attempt using DNN!**)
+
+**Classification methods for noise transients in advanced gravitational-wave detectors II: performance tests on Advanced LIGO data**. Jade Powell, Alejandro Torres-Forné, Ryan Lynch, Daniele Trifirò, <u>Elena Cuoco</u>, Marco Cavaglià, Ik Siong Heng, José A. Font [University of Glasgow, Universitat de Val\`encia, Cambridge, Universit\`a di Pisa, EGO, INFN, The University of Mississippi] (2016) [arXiv:1609.06262](https://arxiv.org/abs/1609.06262)
+
+**Classification methods for noise transients in advanced gravitational-wave detectors**. Jade Powell, Daniele Trifiro, <u>Elena Cuoco</u>, Ik Siong Heng, Marco Cavaglia [University of Glasgow, EGO, INFN, The University of Mississippi] (2015) [arXiv:1505.01299](https://arxiv.org/abs/1505.01299)
+
+Biswas R, Blackburn L, Cao J, et al. "**Application of machine learning algorithms to the study of noise artifacts in gravitational-wave data**"[J]. [Physical Review D](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.88.062003), 2013, 88(6): 062003. [arXiv:1303.6984](https://arxiv.org/abs/1303.6984) (**ANN & SVM & RF**)
+
+
+
+
 
 ---
 
@@ -148,7 +190,13 @@ Probabilistic Random Forest: A machine learning algorithm for noisy datasets
 
 https://vijayvarma392.github.io/
 
-## Maybe helpful:
+## Might helpful:
+
+**Using Convolutional Neural Networks to Classify Audio Signal in Noisy Sound Scenes**. M.V. Gubin [South Ural State University] (2018 GloSIC) [PDF](https://ieeexplore.ieee.org/abstract/document/8570117) [Github](https://github.com/gubinmv/cnn_in_noisy_scenes)
+
+
+
+
 
 - Rotation-invariant convolutional neural networks for galaxy morphology prediction
 - Deep learning for time series classification
@@ -414,18 +462,6 @@ Learning phrase representations using rnn encoder-decoder for statistical machin
 LSTM: A Search Space Odyssey, Greff et al., 2015
 
 An Empirical Exploration of Recurrent Network Architectures, Jozefowicz et al., 2015
-
-
-
-# How to comment
-
-> With use of the [hypothes.is](https://hypothes.is/) extension (right-sided), you can highlight, annote any comments and discuss these notes inline*at any pages*and *posts*.
->
-> *Please Feel Free* to Let Me Know and *Share* it Here.
-
-
-
-
 
 ---
 

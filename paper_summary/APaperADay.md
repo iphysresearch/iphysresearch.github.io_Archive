@@ -143,7 +143,7 @@ date: 2018-09-28
 
 ## :+1: Model Evaluation & Performance & Interpretion & Visualization
 
-**Are All Training Examples Created Equal? An Empirical Study**. K Vodrahalli, K Li, J Malik [UC Berkeley] (2018) [arXiv:1811.12569](https://arxiv.org/abs/1811.12569)
+**Are All Training Examples Created Equal? An Empirical Study**. K Vodrahalli, K Li, J Malik [UC Berkeley] (2018) [arXiv:1811.12569](https://arxiv.org/abs/1811.12569) [知乎](https://zhuanlan.zhihu.com/p/52458512)
 
 **Rethinking ImageNet Pre-training**. K He, R Girshick, P Dollár [Facebook AI Research (FAIR)] (2018) [arXiv:1811.08883](https://arxiv.org/abs/1811.08883)
 
@@ -232,7 +232,7 @@ date: 2018-09-28
 
 **Data Driven Governing Equations Approximation Using Deep Neural Networks**. T Qin, K Wu, D Xiu [The Ohio State University] (2018) [arXiv:1811.05537](https://arxiv.org/abs/1811.05537)
 
-**Neural Ordinary Differential Equations**. Ricky T. Q. Chen, Yulia Rubanova, Jesse Bettencourt, David Duvenaud [University of Toronto, Canada] (2018) [arXiv:1806.07366](https://arxiv.org/abs/1806.07366) [Github](https://github.com/rtqichen/torchdiffeq)
+**Neural Ordinary Differential Equations**. Ricky T. Q. Chen, Yulia Rubanova, Jesse Bettencourt, David Duvenaud [University of Toronto, Canada] (NeurIPS 2018) [arXiv:1806.07366](https://arxiv.org/abs/1806.07366) [Github](https://github.com/rtqichen/torchdiffeq) [Blog](https://rkevingibson.github.io/blog/neural-networks-as-ordinary-differential-equations/)
 
 **Forward-Backward Stochastic Neural Networks: Deep Learning of High-dimensional Partial Differential Equations**. M Raissi [Brown University] (2018) [arXiv:1804.07010](https://arxiv.org/abs/1804.07010)
 
