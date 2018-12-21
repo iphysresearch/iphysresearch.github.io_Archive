@@ -24,11 +24,6 @@ date: 2018-08-22
 ---
 
 
-> **Please note that these posts are for my future self to review the materials on these papers without reading them all over again.** 
->
-> Therefore, the list of contents is only collected due to my own interests.
-
-
 
 [TOC]
 
@@ -41,8 +36,13 @@ Felt like I wasn’t reading enough – and what I was reading wasn’t sinking 
 
 The goal is to read and comment once a day. and this [post](./APaperADay.html) will be updated day by day according to the reading process.
 
+**Please note that these posts are for my future self to review the materials on these papers without reading them all over again.** 
 
-<details>
+Therefore, the list of contents is only collected due to my own interests.
+
+
+
+<!--<details>
   <summary>Table of Contents</summary>
   <li><a href="#about">About</a></li>
   <li><a href="#install">Install</a></li>
@@ -50,20 +50,23 @@ The goal is to read and comment once a day. and this [post](./APaperADay.html) w
   <li><a href="#update">Update</a></li>
   <li><a href="#contribute">Contribute</a></li>
   <li><a href="#license">License</a></li>
-</details>
+</details>-->
+
 
 > Documentation is a love letter that you write to your future self.
 >
 > —— Damian Conway
 
----
+
 
 <blockquote class="reddit-card" data-card-created="1543907974"><a href="https://www.reddit.com/r/MachineLearning/comments/a21d0q/what_are_the_must_read_papers_for_a_beginner_in/">What are the must read papers for a beginner in the field of Machine Learning and Artificial Intelligence? [Discussion]</a> from <a href="http://www.reddit.com/r/MachineLearning">r/MachineLearning</a></blockquote>
 <script async src="//embed.redditmedia.com/widgets/platform.js" charset="UTF-8"></script>
 
 [机器学习与深度学习经典论文整理](https://mp.weixin.qq.com/s/jKK6AwmCMGWgVK0vPX359w)
 
-
+<!-- I am some comments
+not end, not end...
+here the comment ends -->
 
 # :rainbow: GW Astronomy
 
@@ -132,13 +135,13 @@ Creswell, James, et al. "**On the time lags of the LIGO signals**." *[Journal of
 
 ## GW Astronomy with Machine Learning
 
-- **GW related**
-
-
+### GW related
 
 **Predicting surface wave velocities at gravitational wave observatories using archival seismic data**. Nikhil Mukund, Michael Coughlin, Jan Harms, Sebastien Biscans, Jim Warner, Arnaud Pele, Keith Thorne, David Barker, Nicolas Arnaud, Fred Donovan, Irene Fiori, <u>Hunter Gabbard</u>, Brian Lantz, Richard Mittleman, Hugh Radkins, Bas Swinkels [...] (2018) [arXiv:1812.05185](https://arxiv.org/abs/1812.05185)
 
 [Paper Summary] **Applying deep neural networks to the detection and space parameter estimation of compact binary coalescence with a network of gravitational wave detectors**. <u>Xilong Fan</u>, <u>Jin Li</u>, Xin Li, Yuanhong Zhong, Junwei Cao [Hubei University of Education & Chongqing U. & Tsinghua U.] (2018) [arXiv:1811.01380](https://arxiv.org/abs/1811.01380)
+
+**Bilby: A user-friendly Bayesian inference library for gravitational-wave astronomy**. etc. [etc.] (2018) [arXiv:1811.02042](https://arxiv.org/abs/1811.02042)
 
 **Total-variation methods for gravitational-wave denoising: performance tests on Advanced LIGO data**. Alejandro Torres-Forné, <u>Elena Cuoco</u>, Antonio Marquina, José A. Font, José M. Ibáñez [Universitat de Vale`ncia & EGO & SNS & INFN] (2018) [arXiv:1806.07329](https://arxiv.org/abs/1806.07329)
 
@@ -160,7 +163,7 @@ Biswas R, Blackburn L, Cao J, et al. "**Application of machine learning algorith
 
 ---
 
-- **GW not related**
+### GW not related
 
 **Unsupervised learning and data clustering for the construction of Galaxy Catalogs in the Dark Energy Survey**. Asad Khan, E. A. Huerta, Sibo Wang, Robert Gruendl [University of Illinois at Urbana-Champaign, Urbana] (2018) [arXiv:1812.02183](https://arxiv.org/abs/1812.02183)
 
@@ -176,23 +179,19 @@ Biswas R, Blackburn L, Cao J, et al. "**Application of machine learning algorith
 
 
 
+http://www.tapir.caltech.edu/~vvarma/
+
+# ❣️ Awesome Papers Related to My Interests
+
+## Others
+
+**Deep Neural Networks for Automatic Classification of Anesthetic-Induced Unconsciousness**. Konstantinos Patlatzoglou, etc. [etc.] (2018) [PDF](./2018Patlatzoglou-DeepNeuralNetworks.pdf)
+
+**Using Convolutional Neural Networks to Classify Audio Signal in Noisy Sound Scenes**. M.V. Gubin [South Ural State University] (2018 GloSIC) [PDF](https://ieeexplore.ieee.org/abstract/document/8570117) [Github](https://github.com/gubinmv/cnn_in_noisy_scenes)
+
 **Why does deep and cheap learning work so well?**. Henry W. Lin (Harvard), Max Tegmark (MIT), David Rolnick (MIT) (2016) [arXiv:1608.08225](https://arxiv.org/abs/1608.08225)
 
 
-
-
-
-Bilby: A user-friendly Bayesian inference library for gravitational-wave astronomy
-
-Investigating the noise residuals around the gravitational wave event GW150914
-
-Probabilistic Random Forest: A machine learning algorithm for noisy datasets
-
-https://vijayvarma392.github.io/
-
-## Might helpful:
-
-**Using Convolutional Neural Networks to Classify Audio Signal in Noisy Sound Scenes**. M.V. Gubin [South Ural State University] (2018 GloSIC) [PDF](https://ieeexplore.ieee.org/abstract/document/8570117) [Github](https://github.com/gubinmv/cnn_in_noisy_scenes)
 
 
 
@@ -206,7 +205,9 @@ https://vijayvarma392.github.io/
 - 《Anomaly Detection with Generative Adversarial Networks for Multivariate Time Series》D Li, D Chen, J Goh, S Ng [National University of Singapore] (2018) http://t.cn/EvXuiAS 
 - 【最新可复现图像去噪算法汇总】’Collection of popular and reproducible image denoising works.' by Bihan Wen GitHub: [*O*网页链接](http://t.cn/RkREnEk) another by Wenhan Yang [*O*网页链接](http://t.cn/RkREeyJ) 
 
-# :cloud_with_rain: Denoising & Noise Modeling
+
+
+## :cloud_with_rain: Denoising & Noise Modeling
 
 > 【最新可复现图像去噪算法汇总】’Collection of popular and reproducible image denoising works.' by Bihan Wen GitHub: http://t.cn/RkREnEk another by Wenhan Yang http://t.cn/RkREeyJ 
 >
@@ -234,17 +235,17 @@ https://vijayvarma392.github.io/
 
 
 
-# :heavy_heart_exclamation: Confidence Estimation
+
 
 - DeVries T, Taylor G W. "**Learning Confidence for Out-of-Distribution Detection in Neural Networks**"[J]. arXiv:1802.04865, (2018).
 
 ---
 
-# :surfer: Survey & Review
+## :surfer: Survey & Review
 
 - [Paper Summary] LeCun, Yann, Yoshua Bengio, and Geoffrey Hinton. "**Deep learning**." **(Three Giants' Survey)**
 
-# :running_man: ImageNet Evolution & Models
+## :running_man: ImageNet Evolution & Models
 
 > ![](https://i.loli.net/2018/08/31/5b88fe77f16e6.png)
 >
@@ -271,7 +272,7 @@ https://vijayvarma392.github.io/
 
 
 
-# :goal_net: Model Configurations
+## :goal_net: Model Configurations
 
 - [Paper Summary] Maas, Andrew L, Hannun, Awni Y, and Ng, Andrew Y. "**Rectifier nonlinearities improve neural network acoustic models.**" Proc. ICML, 30, (2013). **(Leaky ReLU)**
 - [Paper Summary] Goodfellow, Ian J., Warde-Farley, David, Mirza, Mehdi, Courville, Aaron C., and Bengio, Yoshua.
@@ -292,7 +293,7 @@ https://vijayvarma392.github.io/
 
 
 
-# Regularization
+## :straight_ruler: Regularization
 
 
 
@@ -316,7 +317,7 @@ Huang et al, “Decorrelated Batch Normalization”, arXiv 2018 (Appeared 4/23/2
 
 
 
-# :skier: Optimization
+## :skier: Optimization
 
 - [Paper Summary] J Bergstra, Y Bengio. "**Random search for hyper-parameter optimization**" Journal of Machine Learning Research, (2012) **(Hyperparameter Optimization: Random search)**
 
@@ -342,7 +343,7 @@ Huang et al, “Decorrelated Batch Normalization”, arXiv 2018 (Appeared 4/23/2
 
 
 
-# :tv: Visualization / Understanding / Generalization / Transfer
+## :tv: Visualization / Understanding / Generalization / Transfer
 
 - Virsualization
 
@@ -393,7 +394,7 @@ Understanding deep learning requires rethinking generalization
 
 
 
-# :beginner: Weight Initialization
+## :beginner: Weight Initialization
 
 - **Understanding the difficulty of training deep feedforward neural networks** by Glorot and Bengio, 2010 [[PDF](http://www.jmlr.org/proceedings/papers/v9/glorot10a/glorot10a.pdf?hc_location=ufi)]
 - **Exact solutions to the nonlinear dynamics of learning in deep linear neural networks** by Saxe et al, 2013 [[PDF](https://arxiv.org/pdf/1312.6120)]

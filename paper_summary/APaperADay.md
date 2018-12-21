@@ -91,6 +91,10 @@ date: 2018-09-28
 
 ## :musical_note: Sound & Signal Processing
 
+**Deep Neural Networks for Automatic Classification of Anesthetic-Induced Unconsciousness**. Konstantinos Patlatzoglou, etc. [etc.] (2018) [PDF](./2018Patlatzoglou-DeepNeuralNetworks.pdf)
+
+**Using Convolutional Neural Networks to Classify Audio Signal in Noisy Sound Scenes**. M.V. Gubin [South Ural State University] (2018 GloSIC) [PDF](https://ieeexplore.ieee.org/abstract/document/8570117) [Github](https://github.com/gubinmv/cnn_in_noisy_scenes)
+
 **Interpretable Convolutional Filters with SincNet**. M Ravanelli, Y Bengio [Université de Montréal] (2018) [arXiv:1811.09725](https://arxiv.org/abs/1811.09725)  [GitHub](https://github.com/mravanelli/SincNet/)
 
 **A Deep Neural Network for Unsupervised Anomaly Detection and Diagnosis in Multivariate Time Series Data**. C Zhang, D Song, Y Chen, X Feng, C Lumezanu, W Cheng, J Ni, B Zong, H Chen, N V. Chawla [University of Notre Dame & NEC Laboratories America & Columbia University] (2018) [arXiv:1811.08055](https://arxiv.org/abs/1811.08055)
