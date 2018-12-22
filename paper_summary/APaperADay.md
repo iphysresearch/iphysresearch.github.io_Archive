@@ -304,7 +304,7 @@ date: 2018-09-28
 
 ## :framed_picture: Figure Design & Dimension Reduction
 
-Deep Paper Gestalt》J Huang [Virginia Tech] (2018) [arXiv:1812.08775](https://arxiv.org/abs/1812.08775) [GitHub](https://github.com/vt-vl-lab/paper-gestalt) [YouTube](https://www.youtube.com/watch?v=yQLsZLf02yg)
+**Deep Paper Gestalt**. J Huang [Virginia Tech] (2018) [arXiv:1812.08775](https://arxiv.org/abs/1812.08775) [GitHub](https://github.com/vt-vl-lab/paper-gestalt) [YouTube](https://www.youtube.com/watch?v=yQLsZLf02yg)
 
 **A Tutorial on Distance Metric Learning: Mathematical Foundations, Algorithms and Software**. J L Suárez, S García, F Herrera [University of Granada] (2018) [arXiv:1812.05944](https://arxiv.org/abs/1812.05944)
 
