@@ -125,6 +125,8 @@ date: 2018-09-28
 
 ## :chart_with_downwards_trend: Optimization & Generalization
 
+**Towards Understanding the Role of Over-Parametrization in Generalization of Neural Networks**. B Neyshabur, Z Li... [Princeton & Toyota Technological Institute at Chicago & Facebook AI Research] (2018) [arXiv:1805.12076](https://arxiv.org/abs/1805.12076) [Github](https://github.com/bneyshabur/over-parametrization) [Reddit](https://www.reddit.com/r/MLEVN/comments/92u58v/towards_understanding_the_role_of/)
+
 **Visualizing the Loss Landscape of Neural Nets**. H Li, Z Xu, G Taylor, T Goldstein [University of Maryland & United States Naval Academy] (NIPS 2018) [arXiv:1712.09913](https://arxiv.org/abs/1712.09913) [Github](https://github.com/tomgoldstein/loss-landscape) [Reddit](https://www.reddit.com/r/MachineLearning/comments/7mr7j5/r_171209913_visualizing_the_loss_landscape_of/)
 
 **Gradient Descent Happens in a Tiny Subspace**. G Gur-Ari, D A. Roberts, E Dyer [Institute for Advanced Study & Facebook AI Research & Johns Hopkins University] (2018) [arXiv:1812.04754](https://arxiv.org/abs/1812.04754)
@@ -265,6 +267,8 @@ date: 2018-09-28
 
 
 ## :books: Review
+
+**Graph Neural Networks: A Review of Methods and Applications**. J Zhou, G Cui, Z Zhang, C Yang, Z Liu, M Sun [Tsinghua University] (2018) [arXiv:1812.08434](https://arxiv.org/abs/1812.08434)
 
 **Recent Advances in Autoencoder-Based Representation Learning**. M Tschannen, O Bachem, M Lucic [ETH Zurich & Google AI] (2018) [arXiv:1812.05069](https://arxiv.org/abs/1812.05069)
 

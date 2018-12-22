@@ -109,7 +109,7 @@ here the comment ends -->
 
 **GPU-Optimised Low-Latency Online Search for Gravitational Waves from Binary Coalescences**. Xiaoyang Guo, Qi Chu, Zhihui Du, Linqing Wen [Tsinghua University & University of Western Australia] (2018 EUSIPCO) [PDF](https://ieeexplore.ieee.org/abstract/document/8553574)
 
-**Techniques for gravitational-wave detection of compact binary coalescence**. Sarah Caudill for the LIGO Scientific Collaboration and the Virgo Collaboration [1098 XG Amsterdam, The Netherlands] (2018 EUSIPCO) [PDF](https://ieeexplore.ieee.org/abstract/document/8553549)
+[Paper Summary] **Techniques for gravitational-wave detection of compact binary coalescence**. Sarah Caudill for the LIGO Scientific Collaboration and the Virgo Collaboration [1098 XG Amsterdam, The Netherlands] (2018 EUSIPCO) [PDF](https://ieeexplore.ieee.org/abstract/document/8553549)
 
 **Posterior samples of the parameters of black hole mergers released to date in the second Advanced LIGO--Virgo observing run**. Soumi De, Collin D. Capano, Christopher M. Biwer, Alexander H. Nitz, Duncan A. Brown [Syracuse U. & MPI Germany & Hannover & Los Alamos National Laboratory] (2018) [arXiv:1811.09232](https://arxiv.org/abs/1811.09232) [Github](https://github.com/gwastro/o2-bbh-pe)
 
