@@ -1,0 +1,929 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>Paper Summary</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:first-child { margin-top: -20px; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.701961); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 80px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; }
+  #write { margin-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 1cm; padding-right: 1cm; padding-bottom: 0px; break-after: avoid-page; }
+  .typora-export #write::after { height: 0px; }
+  @page { margin: 20mm 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+
+
+:root {
+    --side-bar-bg-color: #fff;
+    --control-text-color: #777;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhGq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhPq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhHq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhIq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhEq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhFq3-cXbKDO1w.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Mono'), local('RobotoMono-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/L0x5DF4xlVMF-BfR8bXMIjhLq3-cXbKD.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmhduz8A.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwkxduz8A.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmxduz8A.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlBduz8A.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmBduz8A.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmRduz8A.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lqDY.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qPK7lqDY.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNK7lqDY.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qO67lqDY.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qN67lqDY.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNq7lqDY.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmhduz8A.woff2') format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwkxduz8A.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmxduz8A.woff2') format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlBduz8A.woff2') format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmBduz8A.woff2') format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmRduz8A.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/Herb/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: Source Sans Pro, Helvetica Neue, Arial, sans-serif !important;
+    color: #34495e;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6rem;
+    letter-spacing: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#write {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 30px 40px 30px;
+    padding-top: 20px;
+    padding-bottom: 100px;
+}
+
+#write p {
+    /* text-indent: 2rem; */
+    line-height: 1.6rem;
+    word-spacing: .05rem;
+}
+
+#write ol li {
+    padding-left: 0.5rem;
+}
+
+#write>ul:first-child,
+#write>ol:first-child {
+    margin-top: 30px;
+}
+
+body>*:first-child {
+    margin-top: 0 !important;
+}
+
+body>*:last-child {
+    margin-bottom: 0 !important;
+}
+
+a {
+    color: #42b983;
+    font-weight: 600;
+    padding: 0px 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+
+h1 {
+    padding-bottom: .4rem;
+    font-size: 2.2rem;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 1.75rem;
+    line-height: 1.225;
+    margin: 35px 0px 15px 0px;
+}
+
+h3 {
+    font-size: 1.4rem;
+    line-height: 1.43;
+    margin: 20px 0px 7px 0px;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+    color: #777;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
+}
+
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+body>h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h1:first-child+h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h3:first-child,
+body>h4:first-child,
+body>h5:first-child,
+body>h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+    margin-top: 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul,
+ol {
+    padding-left: 30px;
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+blockquote {
+    border-left: 4px solid #42b983;
+    padding: 10px 0px 10px 15px;
+    color: #777;
+    background-color: rgba(66, 185, 131, .1);
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #fafafa;
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr td {
+    border: 1px solid #dfe2e5;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+#write strong {
+    padding: 0px 1px 0 1px;
+}
+
+#write em {
+    padding: 0px 5px 0 2px;
+}
+
+#write table thead th {
+    background-color: #f2f2f2;
+}
+
+#write .CodeMirror-gutters {
+    border-right: none;
+}
+
+#write .md-fences {
+    border: 1px solid #F4F4F4;
+    -webkit-font-smoothing: initial;
+    margin: 0.8rem 0 !important;
+    padding: 0.3rem 0rem !important;
+    line-height: 1.43rem;
+    background-color: #F8F8F8 !important;
+    border-radius: 2px;
+    font-family: Roboto Mono, Source Sans Pro, Monaco, courier, monospace !important;
+    font-size: 0.85rem;
+    word-wrap: normal;
+}
+
+#write .CodeMirror-wrap .CodeMirror-code pre {
+    padding-left: 12px;
+}
+
+#write code, tt {
+    margin: 0 2px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-family: Source Sans Pro, Roboto Mono, Monaco, courier, monospace !important;
+    font-size: 0.92rem;
+    color: #e96900;
+    background-color: #f8f8f8;
+}
+
+#write .md-footnote {
+    background-color: #f8f8f8;
+    color: #e96900;
+}
+
+/* heighlight. */
+#write mark {
+    background-color:#EBFFEB;
+    border-radius: 2px;
+    padding: 2px 4px;
+    margin: 0 2px;
+    color: #222;
+    font-weight: 500;
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+.cm-s-inner .cm-link,
+.cm-s-inner.cm-link {
+    color: #22a2c9;
+}
+
+.cm-s-inner .cm-string {
+    color: #22a2c9;
+}
+
+.md-task-list-item>input {
+    margin-left: -1.3em;
+}
+
+@media screen and (min-width: 914px) {
+    /*body {
+        width: 854px;
+        margin: 0 auto;
+    }*/
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+    background-color: #f8f8f8;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+    bottom: .375rem;
+}
+
+#write>h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write>h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+
+</style>
+</head>
+<body class='typora-export' >
+<div  id='write'  class = 'is-mac'><p><a href='../index.html'>返回到首页</a></p><hr /><p><img src='https://i.loli.net/2018/08/24/5b7fffecd8d1d.png' alt='' referrerPolicy='no-referrer' /></p><hr /><p>&nbsp;</p><h1><a name='header-n7' class='md-header-anchor '></a>How to comment</h1><blockquote><p>With use of the <a href='https://hypothes.is/'>hypothes.is</a> extension (right-sided), you can highlight, annote any comments and discuss these notes inline<em>at any pages</em>and <em>posts</em>.</p><p><em>Please Feel Free</em> to Let Me Know and <em>Share</em> it Here.</p></blockquote><p>&nbsp;</p><hr /><p>&nbsp;</p><div class='md-toc' mdtype='toc'><p class="md-toc-content"><span class="md-toc-item md-toc-h1" data-ref="n7"><a class="md-toc-inner" style="" href="#header-n7">How to comment</a></span><span class="md-toc-item md-toc-h1" data-ref="n16"><a class="md-toc-inner" style="" href="#header-n16">🏎 <strong>A Paper A Day</strong></a></span><span class="md-toc-item md-toc-h1" data-ref="n32"><a class="md-toc-inner" style="" href="#header-n32">🌈 GW Astronomy</a></span><span class="md-toc-item md-toc-h2" data-ref="n33"><a class="md-toc-inner" style="" href="#header-n33">General</a></span><span class="md-toc-item md-toc-h2" data-ref="n71"><a class="md-toc-inner" style="" href="#header-n71">Data Analysis &amp; Signal Processing in GW Astronomy</a></span><span class="md-toc-item md-toc-h2" data-ref="n89"><a class="md-toc-inner" style="" href="#header-n89">GW Astronomy with Machine Learning</a></span><span class="md-toc-item md-toc-h3" data-ref="n90"><a class="md-toc-inner" style="" href="#header-n90">GW related</a></span><span class="md-toc-item md-toc-h3" data-ref="n104"><a class="md-toc-inner" style="" href="#header-n104">GW not related</a></span><span class="md-toc-item md-toc-h1" data-ref="n113"><a class="md-toc-inner" style="" href="#header-n113">❣️ Awesome Papers Related to My Interests</a></span><span class="md-toc-item md-toc-h2" data-ref="n114"><a class="md-toc-inner" style="" href="#header-n114">Others</a></span><span class="md-toc-item md-toc-h2" data-ref="n137"><a class="md-toc-inner" style="" href="#header-n137">🌧 Denoising &amp; Noise Modeling</a></span><span class="md-toc-item md-toc-h2" data-ref="n183"><a class="md-toc-inner" style="" href="#header-n183">🏄 Survey &amp; Review</a></span><span class="md-toc-item md-toc-h2" data-ref="n187"><a class="md-toc-inner" style="" href="#header-n187">🏃 ImageNet Evolution &amp; Models</a></span><span class="md-toc-item md-toc-h2" data-ref="n217"><a class="md-toc-inner" style="" href="#header-n217">🥅 Model Configurations</a></span><span class="md-toc-item md-toc-h2" data-ref="n251"><a class="md-toc-inner" style="" href="#header-n251">📏 Regularization</a></span><span class="md-toc-item md-toc-h2" data-ref="n273"><a class="md-toc-inner" style="" href="#header-n273">⛷ Optimization</a></span><span class="md-toc-item md-toc-h2" data-ref="n310"><a class="md-toc-inner" style="" href="#header-n310">📺 Visualization / Understanding / Generalization / Transfer</a></span><span class="md-toc-item md-toc-h2" data-ref="n349"><a class="md-toc-inner" style="" href="#header-n349">🔰 Weight Initialization</a></span></p></div><p>&nbsp;</p><h1><a name='header-n16' class='md-header-anchor '></a>🏎 <strong>A Paper A Day</strong></h1><p>Felt like I wasn’t reading enough – and what I was reading wasn’t sinking in enough. I also wanted to keep track of my sources in a more controlled manner. As a part of adding everything to my JabRef (maybe…), I figured I would write up my comments on papers. </p><p>The goal is to read and comment once a day. and this <a href='./APaperADay.html'>post</a> will be updated day by day according to the reading process.</p><p><strong>Please note that these posts are for my future self to review the materials on these papers without reading them all over again.</strong> </p><p>Therefore, the list of contents is only collected due to my own interests.</p><p>&nbsp;</p><!--<details>
+  <summary>Table of Contents</summary>
+  <li><a href="#about">About</a></li>
+  <li><a href="#install">Install</a></li>
+  <li><a href="#usage">Usage</a></li>
+  <li><a href="#update">Update</a></li>
+  <li><a href="#contribute">Contribute</a></li>
+  <li><a href="#license">License</a></li>
+</details>--><blockquote><p>Documentation is a love letter that you write to your future self.</p><p>—— Damian Conway</p></blockquote><p>&nbsp;</p><blockquote class="reddit-card" data-card-created="1543907974"><a href="https://www.reddit.com/r/MachineLearning/comments/a21d0q/what_are_the_must_read_papers_for_a_beginner_in/">What are the must read papers for a beginner in the field of Machine Learning and Artificial Intelligence? [Discussion]</a> from <a href="http://www.reddit.com/r/MachineLearning">r/MachineLearning</a></blockquote>
+<script async="" src="//embed.redditmedia.com/widgets/platform.js" charset="UTF-8"></script><p><a href='https://mp.weixin.qq.com/s/jKK6AwmCMGWgVK0vPX359w'>机器学习与深度学习经典论文整理</a></p><!-- I am some comments
+not end, not end...
+here the comment ends --><h1><a name='header-n32' class='md-header-anchor '></a>🌈 GW Astronomy</h1><h2><a name='header-n33' class='md-header-anchor '></a>General</h2><p>[Summary] Brügmann B. <strong>Fundamentals of numerical relativity for gravitational wave sources</strong>[J]. Science, 2018, 361(6400): 366-371.</p><p>[Summary] Samir A Hamouda and Salima Y Alwarfaliy. &quot;<strong>Gravitational Waves: The Physics of Space and Time</strong>&quot;<a href='https://s3.amazonaws.com/academia.edu.documents/57199376/Gravitational_waves__1.pdf?AWSAccessKeyId=AKIAIWOWYYGZ2Y53UL3A&Expires=1537374292&Signature=umZx0ZmQYXLM9%2Fb2bu1kl5T5hN0%3D&response-content-disposition=inline%3B%20filename%3DGravitational_Waves_The_Physics_of_Space.pdf'>PDF</a></p><ul><li><p>What reading would you recommend for new grad students working on gravitational waves and compact object astrophysics?</p><ul><li>&quot;<strong>Physics, Astrophysics and Cosmology with Gravitational Waves</strong>&quot; <a href='https://arxiv.org/pdf/0903.0338.pdf' target='_blank' class='url'>https://arxiv.org/pdf/0903.0338.pdf</a></li><li>&quot;<strong>The Geometry of Gravitational Wave Detection</strong>&quot; <a href='https://dcc.ligo.org/public/0106/T1300666/003/Whelan_geometry.pdf' target='_blank' class='url'>https://dcc.ligo.org/public/0106/T1300666/003/Whelan_geometry.pdf</a></li><li>&quot;<strong>Gravitational-wave sensitivity curves</strong>&quot; <a href='https://arxiv.org/pdf/1408.0740.pdf' target='_blank' class='url'>https://arxiv.org/pdf/1408.0740.pdf</a></li><li>&quot;<strong>Theory of Gravitational Waves</strong>&quot; <a href='https://arxiv.org/pdf/1607.04202.pdf' target='_blank' class='url'>https://arxiv.org/pdf/1607.04202.pdf</a></li><li>&quot;<strong>Gravitational wave sources in the era of multi-frequency gravitational wave astronomy</strong>&quot; <a href='https://arxiv.org/pdf/1610.05309.pdf' target='_blank' class='url'>https://arxiv.org/pdf/1610.05309.pdf</a></li><li>&quot;<strong>Gravitational waves from orbiting binaries without general relativity: a tutorial</strong>&quot; <a href='https://arxiv.org/pdf/1710.04635.pdf' target='_blank' class='url'>https://arxiv.org/pdf/1710.04635.pdf</a></li><li>&quot;<strong>Merging stellar-mass binary black holes</strong>&quot; <a href='https://arxiv.org/pdf/1806.05820.pdf' target='_blank' class='url'>https://arxiv.org/pdf/1806.05820.pdf</a></li><li><strong>gravitational-wave resources</strong> <a href='http://hosting.astro.cornell.edu/~favata/gwresources.html' target='_blank' class='url'>http://hosting.astro.cornell.edu/~favata/gwresources.html</a></li><li><a href='https://gr-asp.net' target='_blank' class='url'>https://gr-asp.net</a> | Serving last 13984 papers from gr-qc and related categories</li><li><a href='https://www.black-holes.org' target='_blank' class='url'>https://www.black-holes.org</a> <u>S</u>imulating E<u>x</u>tremef <u>S</u>pacetimes (SXS)</li></ul></li></ul><ol start='' ><li>Jaranowski, Piotr, Andrzej Krolak, and Bernard F. Schutz. &quot;Data analysis of gravitational-wave signals from spinning neutron stars: The signal and its detection.&quot; <em>Physical Review D</em> 58.6 (1998): 063001.</li><li>Jaranowski, Piotr, and Andrzej Krolak. &quot;Data analysis of gravitational-wave signals from spinning neutron stars. II. Accuracy of estimation of parameters.&quot; <em>Physical Review D</em>59.6 (1999): 063003.</li><li>Jaranowski, Piotr, and Andrzej Krolak. &quot;Data analysis of gravitational-wave signals from spinning neutron stars. III. Detection statistics and computational requirements.&quot; <em>Physical Review D</em> 61.6 (2000): 062001.</li><li>Astone P, Borkowski K M, Jaranowski P, et al. Data analysis of gravitational-wave signals from spinning neutron stars. IV. An all-sky search[J]. Physical Review D, 2002, 65(4): 042003.</li></ol><p><a href='https://cqgplus.com/2016/06/06/how-do-we-know-ligo-detected-gravitational-waves/'>How do we know LIGO detected gravitational waves?</a> Posted on <a href='https://cqgplus.com/2016/06/06/how-do-we-know-ligo-detected-gravitational-waves/'>June 6, 2016</a> by <a href='https://cqgplus.com/author/publisherad/'>Adam Day</a></p><p><a href='https://cplberry.com/2018/12/07/o2-catalogue/'>The O2 Catalogue—It goes up to 11</a> | An awesome review on O2 Catalogue posted by <a href='https://cplberry.com/'>CHRISTOPHER BERRY</a></p><h2><a name='header-n71' class='md-header-anchor '></a>Data Analysis &amp; Signal Processing in GW Astronomy</h2><p><strong>The GstLAL template bank for spinning compact binary mergers in the second observation run of Advanced LIGO and Virgo</strong>. Debnandini Mukherjee, etc. [etc.] (2018) <a href='https://arxiv.org/abs/1812.05121'>arXiv:1812.05121</a></p><p><strong>Wavelet-based classification of transient signals for Gravitational Wave detectors</strong>. <u>Elena Cuoco</u>, Massimiliano Razzano, Andrei Utina [EGO and Scuola Normale Superiore, Pisa University and INFN Pisa, Glasgow University] (2018 EUSIPCO) <a href='https://ieeexplore.ieee.org/abstract/document/8553393'>PDF</a></p><p><strong>Structured sparsity regularization for gravitational-wave polarization reconstruction</strong>. Fangchen Feng, Eric Chassande-Mottin and Philippe Bacon, Aure ́lia Fraysse [Univ. Paris Diderot &amp; Univ. Paris-Sud] (2018 EUSIPCO) <a href='https://ieeexplore.ieee.org/abstract/document/8553009'>PDF</a></p><p><strong>Detection and Estimation of Unmodeled Chirps</strong>. Soumya D. Mohanty [The University of Texas Rio Grande Valley] (2018 EUSIPCO) <a href='https://ieeexplore.ieee.org/abstract/document/8553248'>PDF</a></p><p><strong>GPU-Optimised Low-Latency Online Search for Gravitational Waves from Binary Coalescences</strong>. Xiaoyang Guo, Qi Chu, Zhihui Du, Linqing Wen [Tsinghua University &amp; University of Western Australia] (2018 EUSIPCO) <a href='https://ieeexplore.ieee.org/abstract/document/8553574'>PDF</a></p><p>[Paper Summary] <strong>Techniques for gravitational-wave detection of compact binary coalescence</strong>. Sarah Caudill for the LIGO Scientific Collaboration and the Virgo Collaboration [1098 XG Amsterdam, The Netherlands] (2018 EUSIPCO) <a href='https://ieeexplore.ieee.org/abstract/document/8553549'>PDF</a></p><p><strong>Posterior samples of the parameters of black hole mergers released to date in the second Advanced LIGO--Virgo observing run</strong>. Soumi De, Collin D. Capano, Christopher M. Biwer, Alexander H. Nitz, Duncan A. Brown [Syracuse U. &amp; MPI Germany &amp; Hannover &amp; Los Alamos National Laboratory] (2018) <a href='https://arxiv.org/abs/1811.09232'>arXiv:1811.09232</a> <a href='https://github.com/gwastro/o2-bbh-pe'>Github</a></p><p><strong>Investigating the noise residuals around the gravitational wave event GW150914</strong>. Alex B. Nielsen, Alexander H. Nitz, Collin D. Capano, Duncan A. Brown [MPI Germany &amp; Hannover Germany &amp; Syracuse U.] (2018) <a href='https://arxiv.org/abs/1811.04071'>arXiv:1811.04071</a> <a href='https://github.com/gwastro/gw150914_investigation'>Github</a></p><p>Creswell, James, et al. &quot;<strong>On the time lags of the LIGO signals</strong>.&quot; <em><a href='http://iopscience.iop.org/article/10.1088/1475-7516/2017/08/013/meta'>Journal of Cosmology and Astroparticle Physics</a></em> 2017.08 (2017): 013. <a href='https://arxiv.org/abs/1706.04191'>arXiv:1706.04191</a></p><p>[Paper Summary] Zevin, Michael, et al. &quot;<strong>Gravity Spy: integrating advanced LIGO detector characterization, <u>machine learning</u>, and citizen science</strong>.&quot; <em><a href='http://iopscience.iop.org/0264-9381/34/6/064003/'>Classical and quantum gravity</a></em> 34.6 (2017): 064003. <a href='https://arxiv.org/abs/1611.04596'>arXiv:1611.04596</a> (<strong>Current Challenge &amp; CONV.</strong>)</p><p>[Paper Summary] Abbott, Benjamin P., et al. &quot;<strong>GW170817: Observation of Gravitational Waves from a Binary Neutron Star Inspiral</strong>.&quot; <em><a href='https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.119.161101'>Physical Review Letters</a></em> 119.16 (2017): 161101. (<strong>Glitch!</strong>)</p><p>[Paper Summary] Abbott, B. P., et al. &quot;<strong>Binary black hole mergers in the first advanced LIGO observing run</strong>.&quot; <em><a href='https://link.aps.org/pdf/10.1103/PhysRevX.6.041015'>Physical Review X</a></em> 6.4 (2016): 041015. <a href='https://arxiv.org/abs/1606.04856'>arXiv:1606.04856</a> (<strong>Current Searches</strong>)</p><p>[Paper Summary] Abbott, Benjamin P., et al. &quot;<strong>GW151226: Observation of gravitational waves from a 22-solar-mass binary black hole coalescence</strong>.&quot; <em><a href='https://link.aps.org/pdf/10.1103/PhysRevLett.116.241103'>Physical review letters</a></em> 116.24 (2016): 241103. <a href='https://arxiv.org/abs/1606.04855'>arXiv:1606.04855</a> (<strong>Current Searches &amp; Current Parameter Estimation</strong>)</p><p>[Paper Summary] Abbott, Benjamin P., et al. &quot;<strong>Characterization of transient noise in Advanced LIGO relevant to gravitational wave signal GW150914</strong>.&quot; <em><a href='http://iopscience.iop.org/article/10.1088/0264-9381/33/13/134001/meta'>Classical and Quantum Gravity</a></em> 33.13 (2016): 134001. <a href='https://arxiv.org/abs/1602.03844'>arXiv:1602.03844</a></p><p><strong>BayesLine: Bayesian Inference for Spectral Estimation of Gravitational Wave Detector Noise</strong>. Tyson B. Littenberg, Neil J. Cornish [Northwestern U. &amp; Montana State U.] (2015) <a href='https://journals.aps.org/prd/abstract/10.1103/PhysRevD.91.084034'>Phys. Rev. D 91, 084034</a> <a href='https://arxiv.org/abs/1410.3852'>arXiv:1410.3852</a></p><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n89' class='md-header-anchor '></a>GW Astronomy with Machine Learning</h2><h3><a name='header-n90' class='md-header-anchor '></a>GW related</h3><p><strong>Predicting surface wave velocities at gravitational wave observatories using archival seismic data</strong>. Nikhil Mukund, Michael Coughlin, Jan Harms, Sebastien Biscans, Jim Warner, Arnaud Pele, Keith Thorne, David Barker, Nicolas Arnaud, Fred Donovan, Irene Fiori, <u>Hunter Gabbard</u>, Brian Lantz, Richard Mittleman, Hugh Radkins, Bas Swinkels [...] (2018) <a href='https://arxiv.org/abs/1812.05185'>arXiv:1812.05185</a></p><p>[Paper Summary] <strong>Applying deep neural networks to the detection and space parameter estimation of compact binary coalescence with a network of gravitational wave detectors</strong>. <u>Xilong Fan</u>, <u>Jin Li</u>, Xin Li, Yuanhong Zhong, Junwei Cao [Hubei University of Education &amp; Chongqing U. &amp; Tsinghua U.] (2018) <a href='https://arxiv.org/abs/1811.01380'>arXiv:1811.01380</a></p><p><strong>Bilby: A user-friendly Bayesian inference library for gravitational-wave astronomy</strong>. etc. [etc.] (2018) <a href='https://arxiv.org/abs/1811.02042'>arXiv:1811.02042</a></p><p><strong>Total-variation methods for gravitational-wave denoising: performance tests on Advanced LIGO data</strong>. Alejandro Torres-Forné, <u>Elena Cuoco</u>, Antonio Marquina, José A. Font, José M. Ibáñez [Universitat de Vale`ncia &amp; EGO &amp; SNS &amp; INFN] (2018) <a href='https://arxiv.org/abs/1806.07329'>arXiv:1806.07329</a></p><p>[Paper Summary] <u>Gabbard, H.</u>, Williams, M., Hayes, F., &amp; <u>Messenger, C.</u> (2018). &quot;<strong>Matching matched filtering with deep networks for gravitational-wave astronomy</strong>&quot;. <em><a href='https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.120.141103'>Physical review letters</a></em>, <em>120</em>(14), 141103.</p><p>&nbsp;</p><p>[<a href='./Deep%20neural%20networks%20to%20enable%20real-time%20multimessenger%20astrophysics.html'>Paper Summary</a>] <u>George D</u>, <u>Huerta E A</u>. &quot;<strong>Deep neural networks to enable real-time multimessenger astrophysics</strong>&quot;[J]. Physical Review D, 2018, 97(4): 044039. (<strong>First attempt using DNN!</strong>)</p><p><strong>Classification methods for noise transients in advanced gravitational-wave detectors II: performance tests on Advanced LIGO data</strong>. Jade Powell, Alejandro Torres-Forné, Ryan Lynch, Daniele Trifirò, <u>Elena Cuoco</u>, Marco Cavaglià, Ik Siong Heng, José A. Font [University of Glasgow, Universitat de Val`encia, Cambridge, Universit`a di Pisa, EGO, INFN, The University of Mississippi] (2016) <a href='https://arxiv.org/abs/1609.06262'>arXiv:1609.06262</a></p><p><strong>Classification methods for noise transients in advanced gravitational-wave detectors</strong>. Jade Powell, Daniele Trifiro, <u>Elena Cuoco</u>, Ik Siong Heng, Marco Cavaglia [University of Glasgow, EGO, INFN, The University of Mississippi] (2015) <a href='https://arxiv.org/abs/1505.01299'>arXiv:1505.01299</a></p><p>Biswas R, Blackburn L, Cao J, et al. &quot;<strong>Application of machine learning algorithms to the study of noise artifacts in gravitational-wave data</strong>&quot;[J]. <a href='https://journals.aps.org/prd/abstract/10.1103/PhysRevD.88.062003'>Physical Review D</a>, 2013, 88(6): 062003. <a href='https://arxiv.org/abs/1303.6984'>arXiv:1303.6984</a> (<strong>ANN &amp; SVM &amp; RF</strong>)</p><p>&nbsp;</p><p>&nbsp;</p><hr /><h3><a name='header-n104' class='md-header-anchor '></a>GW not related</h3><p><strong>Unsupervised learning and data clustering for the construction of Galaxy Catalogs in the Dark Energy Survey</strong>. Asad Khan, E. A. Huerta, Sibo Wang, Robert Gruendl [University of Illinois at Urbana-Champaign, Urbana] (2018) <a href='https://arxiv.org/abs/1812.02183'>arXiv:1812.02183</a></p><p><strong>Exploring galaxy evolution with generative models</strong>. Kevin Schawinski, M. Dennis Turp, Ce Zhang [ETH Zurich] (2018) <a href='https://arxiv.org/abs/1812.01114'>arXiv:1812.01114</a></p><p><strong>Probabilistic Random Forest: A machine learning algorithm for noisy datasets</strong>. Itamar Reis, Dalya Baron, Sahar Shahaf [Tel-Aviv U.] (2018) <a href='https://arxiv.org/abs/1811.05994'>arXiv:1811.05994</a></p><p>[<a href='./Classifying%20Lensed%20Gravitational%20Waves%20in%20the%20Geometrical%20Optics%20Limit%20with%20Machine%20Learning.html'>Paper Summary</a>] <strong>Classifying Lensed Gravitational Waves in the Geometrical Optics Limit with Machine Learning</strong>. Amit Jit Singh, Ivan S.C. Li, Otto A. Hannuksela, Tjonnie G.F. Li, Kyungmin Kim [The Chinese University of Hong Kong &amp; Imperial College London] (2018) <a href='https://arxiv.org/abs/1810.07888'>arXiv:1810.07888</a></p><p><strong>DeepSphere: Efficient spherical Convolutional Neural Network with HEALPix sampling for cosmological applications</strong>. Nathanaël Perraudin, Michaël Defferrard, Tomasz Kacprzak, Raphael Sgier [Swiss Data Science Center &amp; EPFL &amp; ETH Zurich] (2018) <a href='https://arxiv.org/abs/1810.12186'>arXiv:1810.12186</a></p><p><strong>Fusing numerical relativity and deep learning to detect higher-order multipole waveforms from eccentric binary black hole mergers</strong>. Adam Rebei, <u>E. A. Huerta</u>, Sibo Wang, Sarah Habib, Roland Haas, Daniel Johnson, <u>Daniel George</u> [Urbana]  (2018) <a href='https://arxiv.org/abs/1807.09787'>arXiv:1807.09787</a></p><p>&nbsp;</p><p><a href='http://www.tapir.caltech.edu/~vvarma/' target='_blank' class='url'>http://www.tapir.caltech.edu/~vvarma/</a></p><h1><a name='header-n113' class='md-header-anchor '></a>❣️ Awesome Papers Related to My Interests</h1><h2><a name='header-n114' class='md-header-anchor '></a>Others</h2><p><strong>Deep Neural Networks for Automatic Classification of Anesthetic-Induced Unconsciousness</strong>. Konstantinos Patlatzoglou, etc. [etc.] (2018) <a href='./2018Patlatzoglou-DeepNeuralNetworks.pdf'>PDF</a></p><p><strong>Using Convolutional Neural Networks to Classify Audio Signal in Noisy Sound Scenes</strong>. M.V. Gubin [South Ural State University] (2018 GloSIC) <a href='https://ieeexplore.ieee.org/abstract/document/8570117'>PDF</a> <a href='https://github.com/gubinmv/cnn_in_noisy_scenes'>Github</a></p><p><strong>Why does deep and cheap learning work so well?</strong>. Henry W. Lin (Harvard), Max Tegmark (MIT), David Rolnick (MIT) (2016) <a href='https://arxiv.org/abs/1608.08225'>arXiv:1608.08225</a></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><ul><li>Rotation-invariant convolutional neural networks for galaxy morphology prediction</li><li>Deep learning for time series classification</li><li>《Learning Confidence for Out-of-Distribution Detection in Neural Networks》T DeVries, G W. Taylor [University of Guelph &amp; Vector Institute] (2018) <a href='http://t.cn/RFPZvFB' target='_blank' class='url'>http://t.cn/RFPZvFB</a> </li><li>【流形学习与谱方法】《Manifold Learning and Spectral Methods》by David Pfau [DeepMind][*O*网页链接](<a href='http://t.cn/RdzYMu9' target='_blank' class='url'>http://t.cn/RdzYMu9</a>) </li><li>GAN: <a href='https://arxiv.org/pdf/1701.00160.pdf' target='_blank' class='url'>https://arxiv.org/pdf/1701.00160.pdf</a></li><li>《Anomaly Detection with Generative Adversarial Networks for Multivariate Time Series》D Li, D Chen, J Goh, S Ng [National University of Singapore] (2018) <a href='http://t.cn/EvXuiAS' target='_blank' class='url'>http://t.cn/EvXuiAS</a> </li><li>【最新可复现图像去噪算法汇总】’Collection of popular and reproducible image denoising works.&#39; by Bihan Wen GitHub: <a href='http://t.cn/RkREnEk'><em>O</em>网页链接</a> another by Wenhan Yang <a href='http://t.cn/RkREeyJ'><em>O</em>网页链接</a> </li></ul><p>&nbsp;</p><h2><a name='header-n137' class='md-header-anchor '></a>🌧 Denoising &amp; Noise Modeling</h2><blockquote><p>【最新可复现图像去噪算法汇总】’Collection of popular and reproducible image denoising works.&#39; by Bihan Wen GitHub: <a href='http://t.cn/RkREnEk' target='_blank' class='url'>http://t.cn/RkREnEk</a> another by Wenhan Yang <a href='http://t.cn/RkREeyJ' target='_blank' class='url'>http://t.cn/RkREeyJ</a> </p><ul><li>by Bihan Wen</li><li>by Wenhan Yang</li></ul></blockquote><ul><li>[Paper Summary] K He, J Sun, X Tang. &quot;<strong>Single image haze removal using dark channel prior</strong>&quot; (2009)(<strong>CVPR best paper</strong>)(<a href='http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.672.3815&rep=rep1&type=pdf'>pdf</a>)(<strong>何凯明博士的第一篇paper！</strong>)</li><li>[Paper Summary] Olaf Ronneberger, Philipp Fischer, and Thomas Brox &quot;<strong>U-Net: Convolutional Networks for Biomedical Image Segmentation</strong>&quot; arXiv:1505.04597 (2015) <strong>(U-Net)</strong> (<a href='https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/'>Website</a>) (<a href='https://github.com/xuyuting45/DSB2018-mx-unet'>code</a>) (<a href='https://github.com/chinakook/U-Net'>code</a>) (<a href='https://github.com/divamgupta/image-segmentation-keras/tree/master/Models'>code</a>) (<a href='https://github.com/chinakook/U-Net/blob/master/unet_gluon.ipynb'>code</a>) (<a href='https://gluon.mxnet.io/chapter14_generative-adversarial-networks/pixel2pixel.html?highlight=unet'>code</a>) (<a href='https://github.com/bckenstler/unet-nerve-segmentation-mxnet/blob/master/U-Net%20MXNet.ipynb'>code</a>)</li><li>[Paper Summary] Xiao-Jiao Mao, Chunhua Shen, Yu-Bin Yang. &quot;<strong>Image Restoration Using Convolutional Auto-encoders with Symmetric Skip Connections</strong>&quot; arXiv:1606.08921 (2016) <strong>(Skip connections)</strong> (<a href='https://github.com/7wik/convolutional-auto-encoders-with-skip-connections'>code</a>)</li><li>[Paper Summary] F Zhu, G Chen, PA Heng. &quot;<strong>From Noise Modeling to Blind Image Denoising</strong>&quot; CVPR (2016) (<a href='https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Zhu_From_Noise_Modeling_CVPR_2016_paper.html'>Website</a>)</li><li>[Paper Summary] Fu, X., Huang, J., Ding, X., Liao, Y., Paisley. J &quot;<strong>Clearing the skies: A deep network architecture for single-image rain removal</strong>&quot; arXiv:1609.02087 (2017) (<strong>DerainNet</strong>)(a low-pass filter)</li><li>[Paper Summary] Zhang, H., Sindagi, V., Patel. &quot;<strong>Image de-raining using a conditional generative adversarial network.</strong>&quot; arXiv:1701.05957 (2017) (去雨) (<strong>ID-CGAN</strong>)</li><li>[Paper Summary] R Qian, R T. Tan, W Yang, J Su, J Liu. &quot;<strong>Attentive Generative Adversarial Network for Raindrop Removal from a Single Image</strong>.&quot; arXiv:1711.10098 (2017) <strong>(单图去雨)</strong> (<a href='http://t.cn/RDfhFhN'>code</a>) (attentive GAN)</li><li>[Paper Summary] Dmitry Ulyanov, Andrea Vedaldi, Victor Lempitsky. &quot;<strong>Deep Image Prior</strong>&quot; arXiv:1711.10925 (2017) (<a href='https://dmitryulyanov.github.io/deep_image_prior'>Website</a>)</li><li>[Paper Summary] Li, R., Cheong, L.F., Tan, &quot;<strong>Single image deraining using scale-aware multi-stage recurrent network.</strong>&quot; arXiv:1712.06830 (2017)</li><li>[Paper Summary] Jaakko Lehtinen, Jacob Munkberg, Jon Hasselgren, Samuli Laine, Tero Karras, Miika Aittala, Timo Aila &quot;<strong>Noise2Noise: Learning Image Restoration without Clean Data</strong>&quot; arXiv:1803.04189 (2018) (ICML 2018) (<a href='https://mp.weixin.qq.com/s/JZaWJzVHXShgTQUuiJlDVA'>机器之心</a>) (<a href='https://news.developer.nvidia.com/ai-can-now-fix-your-grainy-photos-by-only-looking-at-grainy-photos/'>nvidia</a>) (<a href='https://github.com/NVlabs/noise2noise'>GitHub</a>)</li><li>[Paper Summary] C Chen, Q Chen, J Xu, V Koltun. &quot;<strong>Learning to See in the Dark</strong>&quot; arXiv:1805.01934 (CVPR)(2018)(<a href='https://www.youtube.com/watch?v=qWKUFK7MWvg&feature=youtu.be'>YouRube</a>)</li><li>[Paper Summary] D Stoller, S Ewert, S Dixon. &quot;<strong>Wave-U-Net: A Multi-Scale Neural Network for End-to-End Audio Source Separation</strong>&quot; arXiv:1806.03185 (<strong>Wave-U-Net</strong>)(<a href='https://github.com/f90/Wave-U-Net'>code</a>)(<a href='https://github.com/ShichengChen/WaveUNet'>code</a>)</li><li>[Paper Summary] Jingwen Chen, Jiawei Chen, Hongyang Chao, Ming Yang. &quot;<strong>Image Blind Denoising With Generative Adversarial Network Based Noise Modeling</strong>&quot; CVPR (2018) <strong>(GAN盲降噪)</strong>(<a href='http://openaccess.thecvf.com/content_cvpr_2018/html/Chen_Image_Blind_Denoising_CVPR_2018_paper.html'>Website</a>)(<a href='https://mp.weixin.qq.com/s/Vb0sIXC7s0yMRfhZFeC-wg'>将门创投</a>)</li><li>[Paper Summary] S Guo, Z Yan, K Zhang, W Zuo, L Zhang. &quot;<strong>Toward Convolutional Blind Denoising of Real Photographs</strong>&quot; arXiv:1807.04686 (2018) <strong>(CBDNet)</strong> (<a href='http://t.cn/Rgrv2Lr'>code</a>)</li><li>[Paper Summary] Xia Li, Jianlong Wu, Zhouchen Lin, Hong Liu1, and Hongbin Zha. &quot;<strong>Recurrent Squeeze-and-Excitation Context Aggregation Net for Single Image Deraining</strong>.&quot; arXiv:1807.05698 (2018) <strong>(单图去雨)</strong> (<a href='https://github.com/XiaLiPKU/RESCAN'>code</a>)(RESCAN)</li></ul><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><ul><li>DeVries T, Taylor G W. &quot;<strong>Learning Confidence for Out-of-Distribution Detection in Neural Networks</strong>&quot;[J]. arXiv:1802.04865, (2018).</li></ul><hr /><h2><a name='header-n183' class='md-header-anchor '></a>🏄 Survey &amp; Review</h2><ul><li>[Paper Summary] LeCun, Yann, Yoshua Bengio, and Geoffrey Hinton. &quot;<strong>Deep learning</strong>.&quot; <strong>(Three Giants&#39; Survey)</strong></li></ul><h2><a name='header-n187' class='md-header-anchor '></a>🏃 ImageNet Evolution &amp; Models</h2><blockquote><p><img src='https://i.loli.net/2018/08/31/5b88fe77f16e6.png' alt='' referrerPolicy='no-referrer' /></p><p><img src='https://i.loli.net/2018/08/31/5b89001a12508.png' alt='' referrerPolicy='no-referrer' /></p><p><img src='https://i.loli.net/2018/08/31/5b890a2ae3742.png' alt='' referrerPolicy='no-referrer' /></p><p>[From: Alfredo Canziani, Adam Paszke, Eugenio Culurciello, An Analysis of Deep Neural Network Models for Practical Applications, 2017.]</p><p><em>Deep Learning broke out from here！</em></p></blockquote><ul><li>[<a href='./ImageNet%20Classification%20with%20Deep%20Convolutional%20Neural%20Networks.html'>Paper Summary</a>] Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E. Hinton. &quot;<strong>Imagenet classification with deep convolutional neural networks</strong>.&quot; (2012). <strong>(AlexNet, Deep Learning Breakthrough!)</strong></li><li>[Paper Summary] Pierre Sermanet, David Eigen, Xiang Zhang, Michael Mathieu, Rob Fergus, Yann LeCun. &quot;<strong>OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks</strong>&quot; (2013). <strong>(winner of the localization task of ILSVRC2013)</strong></li><li>[Zeiler and Fergus, 2013] <strong>(ZFNet)</strong></li><li>[<a href='./Very%20deep%20convolutional%20networks%20for%20large-scale%20image%20recognition.html'>Paper Summary</a>] Simonyan, Karen, and Andrew Zisserman. &quot;<strong>Very deep convolutional networks for large-scale image recognition</strong>.&quot; (2014).<strong>(VGGNet,Neural Networks become very deep!)</strong></li><li>[Paper Summary] Szegedy, Christian, et al. &quot;<strong>Going deeper with convolutions</strong>.&quot; (2015).<strong>(GoogLeNet, Deeper networks, computational efficiency)</strong></li><li>[Paper Summary] He, Kaiming, et al. &quot;<strong>Deep residual learning for image recognition</strong>.&quot; (2015).<strong>(ResNet, Very very deep networks using residual connections, CVPR best paper)</strong></li><li>Xception: Deep Learning with Depthwise Separable Convolutions. F Chollet (2016) </li><li>From: Alfredo Canziani, Adam Paszke, Eugenio Culurciello, 2017.</li><li>Mahajan et al, “Exploring the Limits of Weakly Supervised Pretraining”, arXiv 2018</li><li></li></ul><p>【(Colab Notebooks)AlexNet/VGG/GoogleNet/Inception/MobileNet/ShuffleNet/ResNet/DenseNet的Keras参考实现(及速查)】’Material used for Deep Learning related workshops for Machine Learning Tokyo (MLT)&#39; by Machine-Learning-Tokyo GitHub: <a href='http://t.cn/ELtfypS' target='_blank' class='url'>http://t.cn/ELtfypS</a> Cheat Sheet:<a href='http://t.cn/ELtfypo' target='_blank' class='url'>http://t.cn/ELtfypo</a> </p><p>&nbsp;</p><h2><a name='header-n217' class='md-header-anchor '></a>🥅 Model Configurations</h2><ul><li><p>[Paper Summary] Maas, Andrew L, Hannun, Awni Y, and Ng, Andrew Y. &quot;<strong>Rectifier nonlinearities improve neural network acoustic models.</strong>&quot; Proc. ICML, 30, (2013). <strong>(Leaky ReLU)</strong></p></li><li><p>[Paper Summary] Goodfellow, Ian J., Warde-Farley, David, Mirza, Mehdi, Courville, Aaron C., and Bengio, Yoshua.
+&quot;<strong>Maxout networks.</strong>&quot; In Proceedings of the 30th International Conference on Machine Learning, ICML (2013) <strong>(Maxout &quot;Neuron&quot;)</strong></p></li><li><p>[Paper Summary] Graham, Ben. &quot;<strong>Spatially-sparse convolutional neural networks.</strong>&quot; ArXiv e-prints, September 2014c. <strong>(very leaky ReLU)</strong></p></li><li><p>[Paper Summary] X Glorot, Y Bengio. &quot;<strong>Understanding the difficulty of training deep feedforward neural networks</strong>&quot; Proceedings of the thirteenth international conference on artificial intelligence and statistics. (2010) <strong>(Xavier initialization)</strong> </p></li><li><p>[Paper Summary] K He, X Zhang, S Ren, J Sun. &quot;<strong>Delving deep into rectifiers: Surpassing human-level performance on imagenet classification</strong>&quot; Proceedings of the IEEE international conference on computer vision. (2015) <strong>(Leaky ReLU &amp; Xavier initialization with additional factor)</strong></p></li><li><p>[Paper Summary] Ioffe, Sergey, and Christian Szegedy. &quot;<strong>Batch normalization: Accelerating deep network training by reducing internal covariate shift</strong>.&quot; (2015).<strong>(An outstanding Work in 2015)</strong></p></li><li><p>[Paper Summary] DA Clevert, T Unterthiner, S Hochreiter. &quot;<strong>Fast and accurate deep network learning by exponential linear units (elus)</strong>&quot; arXiv:1511.07289 (2015)</p></li><li><p>[Paper Summary] Ba, Jimmy Lei, Jamie Ryan Kiros, and Geoffrey E. Hinton. &quot;<strong>Layer normalization</strong>.&quot; (2016).<strong>(Update of Batch Normalization)</strong></p></li><li><p>[Paper Summary] Courbariaux, Matthieu, et al. &quot;<strong>Binarized Neural Networks: Training Neural Networks with Weights and Activations Constrained to+ 1 or−1</strong>.&quot; <strong>(New Model,Fast)</strong></p></li><li><p>[Paper Summary] Jaderberg, Max, et al. &quot;<strong>Decoupled neural interfaces using synthetic gradients</strong>.&quot; (2016). <strong>(Innovation of Training Method,Amazing Work)</strong></p></li><li><p>[Paper Summary] Chen, Tianqi, Ian Goodfellow, and Jonathon Shlens. &quot;Net2net: Accelerating learning via knowledge transfer.&quot;(2015).<strong>(Modify previously trained network to reduce training epochs)</strong></p></li><li><p>[Paper Summary] Wei, Tao, et al. &quot;<strong>Network Morphism.</strong>&quot; (2016). <strong>(Modify previously trained network to reduce training epochs)</strong></p></li><li><p>Girshick, “Fast R-CNN”, ICCV 2015 Figure copyright Ross Girshick, 2015. Reproduced with permission</p></li><li><p>Karpathy and Fei-Fei, “Deep Visual-Semantic Alignments for Generating Image Descriptions”, CVPR 2015 </p><ul><li>Figure copyright IEEE, 2015. Reproduced for educational purposes.</li></ul></li></ul><p>&nbsp;</p><h2><a name='header-n251' class='md-header-anchor '></a>📏 Regularization</h2><p>&nbsp;</p><p>Ba, Kiros, and Hinton, “Layer Normalization”, arXiv 2016 <strong>(Layer Normalization)</strong></p><p>Ulyanov et al, Improved Texture Networks: Maximizing Quality and Diversity in Feed-forward Stylization and Texture Synthesis, CVPR 2017 <strong>(Instance Normalization)</strong></p><p>Wu and He, “Group Normalization”, arXiv 2018 (Appeared 3/22/2018) <strong>(Group Normalization)</strong></p><p>Huang et al, “Decorrelated Batch Normalization”, arXiv 2018 (Appeared 4/23/2018) <strong>(Decorrelated Batch Normalization)</strong></p><p>&nbsp;</p><ul><li><p><strong>Dropout</strong></p><ul><li>[Paper Summary] Hinton, Geoffrey E., et al. &quot;<strong>Improving neural networks by preventing co-adaptation of feature detectors</strong>.&quot; (2012). </li><li>[Paper Summary] Srivastava, Nitish, et al. &quot;<strong>Dropout: a simple way to prevent neural networks from overfitting</strong>.&quot; (2014)</li></ul></li><li><p>Wan et al, “Regularization of Neural Networks using DropConnect”, ICML 2013 <strong>(DropConnect)</strong></p></li><li><p>Graham, “Fractional Max Pooling”, arXiv 2014 <strong>(Fractional Max Pooling)</strong></p></li><li><p>Huang et al, “Deep Networks with Stochastic Depth”, ECCV 2016 <strong>(Stochastic Depth)</strong></p></li></ul><p>&nbsp;</p><h2><a name='header-n273' class='md-header-anchor '></a>⛷ Optimization</h2><ul><li><p>[Paper Summary] J Bergstra, Y Bengio. &quot;<strong>Random search for hyper-parameter optimization</strong>&quot; Journal of Machine Learning Research, (2012) <strong>(Hyperparameter Optimization: Random search)</strong></p></li><li><p>[Paper Summary] Sutskever, Ilya, et al. &quot;<strong>On the importance of initialization and momentum in deep learning</strong>.&quot; (2013) <strong>(SGD + Momentum optimizer)</strong></p></li><li><p>[Paper Summary] Kingma, Diederik, and Jimmy Ba. &quot;<strong>Adam: A method for stochastic optimization</strong>.&quot; (2014). <strong>(Adam)(Maybe used most often currently)</strong></p></li><li><p>[Paper Summary] Dauphin, Yann N., et al. &quot;<strong>Identifying and attacking the saddle point problem in high-dimensional non-convex optimization</strong>&quot; (2014) </p></li><li><p>[Paper Summary] Andrychowicz, Marcin, et al. &quot;<strong>Learning to learn by gradient descent by gradient descent</strong>.&quot; (2016).<strong>(Neural Optimizer,Amazing Work)</strong></p></li><li><p>[Paper Summary] Han, Song, Huizi Mao, and William J. Dally. &quot;<strong>Deep compression: Compressing deep neural network with pruning, trained quantization and huffman coding</strong>.&quot; (2015). <strong>(ICLR best paper, new direction to make NN running fast,DeePhi Tech Startup)</strong></p></li><li><p>[Paper Summary] Iandola, Forrest N., et al. &quot;<strong>SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and&lt; 1MB model size</strong>.&quot; (2016).<strong>(Also a new direction to optimize NN,DeePhi Tech Startup)</strong></p></li><li><p><strong>(L-BFGS)</strong></p><ul><li>Le et al, “On optimization methods for deep learning, ICML 2011” </li><li>Ba et al, “Distributed second-order optimization using Kronecker-factored approximations”, ICLR 2017</li></ul></li><li><p><strong>(Model Ensembles)</strong></p><ul><li>Loshchilov and Hutter, “SGDR: Stochastic gradient descent with restarts”, arXiv 2016 </li><li>Huang et al, “Snapshot ensembles: train 1, get M for free”, ICLR 2017 </li><li>Figures copyright Yixuan Li and Geoff Pleiss, 2017. Reproduced with permission.</li><li>Polyak and Juditsky, “Acceleration of stochastic approximation by averaging”, SIAM Journal on Control and Optimization, 1992. <strong>(Polyak averaging)</strong></li></ul></li></ul><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h2><a name='header-n310' class='md-header-anchor '></a>📺 Visualization / Understanding / Generalization / Transfer</h2><ul><li><p>Virsualization</p><p>Krizhevsky, “One weird trick for parallelizing convolutional neural networks”, arXiv 2014（first layer）
+He et al, “Deep Residual Learning for Image Recognition”, CVPR 2016（first layer）
+Huang et al, “Densely Connected Convolutional Networks”, CVPR 2017（first layer）</p><p>Van der Maaten and Hinton, “Visualizing Data using t-SNE”, JMLR 2008 （t-sne）</p><p>Yosinski et al, “Understanding Neural Networks Through Deep Visualization”, ICML DL Workshop 2014（visualizing activations, Gradient Ascent - better regularizer）</p><p>Springenberg et al, “Striving for Simplicity: The All Convolutional Net”, ICLR Workshop 2015（Maximally Activation Patches）</p><p>Zeiler and Fergus, “Visualizing and Understanding Convolutional Networks”, ECCV 2014（Occlusion, Intermediate features via (guided) backprop）</p><p>Simonyan, Vedaldi, and Zisserman, “Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps”, ICLR Workshop 2014.（Saliency, Gradient Ascent）</p><p>Springenberg et al, “Striving for Simplicity: The All Convolutional Net”, ICLR Workshop 2015 (Intermediate features via (guided) backprop)</p><p>Nguyen et al, “Multifaceted Feature Visualization: Uncovering the Different Types of Features Learned By Each Neuron in Deep Neural Networks”, ICML Visualization for Deep Learning Workshop 2016. (Gradient Ascent adding “multi-faceted” visualization )</p><p>Nguyen et al, “Synthesizing the preferred inputs for neurons in neural networks via deep generator networks,” NIPS 2016（Gradient Ascent Optimize in FC6 latent space）</p><p>Mahendran and Vedaldi, “Understanding Deep Image Representations by Inverting Them”, CVPR 2015（feature inversion）</p><p>Johnson, Alahi, and Fei-Fei, “Perceptual Losses for Real-Time Style Transfer and Super-Resolution”, ECCV 2016. (feature inversion, Fast Style Transfer)
+Gatys, Ecker, and Bethge, “Texture Synthesis Using Convolutional Neural Networks”, NIPS 2015 (neural texture synthesis)</p><p>Gatys, Ecker, and Bethge, “Image style transfer using convolutional neural networks”, CVPR 2016 (neural style transfer)</p><p>Ulyanov et al, “Texture Networks: Feed-forward Synthesis of Textures and Stylized Images”, ICML 2016 (Fast Style Transfer)
+Ulyanov et al, “Instance Normalization: The Missing Ingredient for Fast Stylization”, arXiv 2016 (Fast Style Transfer)</p><p>Dumoulin, Shlens, and Kudlur, “A Learned Representation for Artistic Style”, ICLR 2017. (one network, many styles)</p></li></ul><p>&nbsp;</p><p>Understanding deep learning requires rethinking generalization</p><ul><li><p><strong>Distilling the knowledge in a neural network</strong> (2015), G. Hinton et al. [<a href='http://arxiv.org/pdf/1503.02531'>pdf]</a></p></li><li><p><strong>Deep neural networks are easily fooled: High confidence predictions for unrecognizable images</strong> (2015), A. Nguyen et al. [<a href='http://arxiv.org/pdf/1412.1897'>pdf]</a></p></li><li><p><strong>How transferable are features in deep neural networks?</strong> (2014), J. Yosinski et al. [<a href='http://papers.nips.cc/paper/5347-how-transferable-are-features-in-deep-neural-networks.pdf'>pdf]</a></p></li><li><p><strong>Learning and transferring mid-Level image representations using convolutional neural networks</strong> (2014), M. Oquab et al. [<a href='http://www.cv-foundation.org/openaccess/content_cvpr_2014/papers/Oquab_Learning_and_Transferring_2014_CVPR_paper.pdf'>pdf]</a></p></li><li><p><strong>Visualizing and understanding convolutional networks</strong> (2014), M. Zeiler and R. Fergus [<a href='http://arxiv.org/pdf/1311.2901'>pdf]</a></p></li><li><p>Transfer Learning</p><ul><li><strong>Decaf: A deep convolutional activation feature for generic visual recognition</strong> (2014), J. Donahue et al. [<a href='http://arxiv.org/pdf/1310.1531'>pdf]</a></li><li><strong>CNN features off-the-Shelf: An astounding baseline for recognition</strong> (2014), A. Razavian et al. [<a href='http://www.cv-foundation.org//openaccess/content_cvpr_workshops_2014/W15/papers/Razavian_CNN_Features_Off-the-Shelf_2014_CVPR_paper.pdf'>pdf]</a></li></ul></li></ul><p>&nbsp;</p><h2><a name='header-n349' class='md-header-anchor '></a>🔰 Weight Initialization</h2><ul><li><strong>Understanding the difficulty of training deep feedforward neural networks</strong> by Glorot and Bengio, 2010 [<a href='http://www.jmlr.org/proceedings/papers/v9/glorot10a/glorot10a.pdf?hc_location=ufi'>PDF</a>]</li><li><strong>Exact solutions to the nonlinear dynamics of learning in deep linear neural networks</strong> by Saxe et al, 2013 [<a href='https://arxiv.org/pdf/1312.6120'>PDF</a>]</li><li><strong>Random walk initialization for training very deep feedforward networks</strong> by Sussillo and Abbott, 2014 [<a href='https://arxiv.org/pdf/1412.6558'>PDF</a>]</li><li><strong>Delving deep into rectifiers: Surpassing human-level performance on ImageNet classification</strong> by He et al., 2015 [<a href='https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/He_Delving_Deep_into_ICCV_2015_paper.pdf'>PDF</a>]</li><li><strong>Data-dependent Initializations of Convolutional Neural Networks</strong> by Krähenbühl et al., 2015 [<a href='https://arxiv.org/pdf/1511.06856'>PDF</a>]</li><li><strong>All you need is a good init</strong>, Mishkin and Matas, 2015 [<a href='https://arxiv.org/pdf/1511.06422'>PDF</a>]</li></ul><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>Detection and Segmentation</p><p>Sliding Window:</p><p>Farabet et al, “Learning Hierarchical Features for Scene Labeling,” TPAMI 2013 </p><p>Pinheiro and Collobert, “Recurrent Convolutional Neural Networks for Scene Labeling”, ICML 2014</p><p>Fully convolutional：</p><p>Long, Shelhamer, and Darrell, “Fully Convolutional Networks for Semantic Segmentation”, CVPR 2015</p><p>Noh et al, “Learning Deconvolution Network for Semantic Segmentation”, ICCV 2015</p><p>Multi-view 3D Reconstruction：</p><p>Choy, C. B., Xu, D., Gwak, J., Chen, K., &amp; Savarese, S. (2016, October). 3d-r2n2: A unified approach for single and multi-view
+3d object reconstruction. In European Conference on Computer Vision (pp. 628-644). Springer, Cham.</p><p>Human Pose Estimation:</p><p>Johnson and Everingham, &quot;Clustered Pose and Nonlinear Appearance Models for Human Pose Estimation&quot;, BMVC 2010</p><p>Toshev and Szegedy, “DeepPose: Human Pose Estimation via Deep Neural Networks”, CVPR 2014</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>RNN</p><p>Ba, Mnih, and Kavukcuoglu, “Multiple Object Recognition with Visual Attention”, ICLR 2015. </p><p>Gregor et al, “DRAW: A Recurrent Neural Network For Image Generation”, ICML 2015 </p><p>Sutskever et al, “Sequence to Sequence Learning with Neural Networks”, NIPS 2014</p><p>Karpathy, Johnson, and Fei-Fei: Visualizing and Understanding Recurrent Networks, ICLR Workshop 2016</p><p>Bengio et al, “Learning long-term dependencies with gradient descent is difficult”, IEEE Transactions on Neural Networks, 1994 </p><p>Pascanu et al, “On the difficulty of training recurrent neural networks”, ICML 2013</p><p>Hochreiter and Schmidhuber, “Long Short Term Memory”, Neural Computation 1997</p><p>Srivastava et al, “Highway Networks”, ICML DL Workshop 2015</p><p>Learning phrase representations using rnn encoder-decoder for statistical machine translation, Cho et al. 2014 <strong>(GRU)</strong></p><p>LSTM: A Search Space Odyssey, Greff et al., 2015</p><p>An Empirical Exploration of Recurrent Network Architectures, Jozefowicz et al., 2015</p><hr /><p><a href='../index.html'>返回到首页</a> | <a href='./index.html'>返回到顶部</a></p><div id="disqus_thread"></div>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://iphysresearch.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><p><br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+<br></p><script type="application/json" class="js-hypothesis-config">
+  {
+    "openSidebar": false,
+    "showHighlights": true,
+    "theme": classic,
+    "enableExperimentalNewNoteButton": true
+  }
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script><p>&nbsp;</p><p>&nbsp;</p></div>
+</body>
+</html>
