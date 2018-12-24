@@ -238,7 +238,7 @@ date: 2018-09-28
 
 **Data Driven Governing Equations Approximation Using Deep Neural Networks**. T Qin, K Wu, D Xiu [The Ohio State University] (2018) [arXiv:1811.05537](https://arxiv.org/abs/1811.05537)
 
-**Neural Ordinary Differential Equations**. Ricky T. Q. Chen, Yulia Rubanova, Jesse Bettencourt, David Duvenaud [University of Toronto, Canada] (NeurIPS 2018) [arXiv:1806.07366](https://arxiv.org/abs/1806.07366) [Github](https://github.com/rtqichen/torchdiffeq) [Blog](https://rkevingibson.github.io/blog/neural-networks-as-ordinary-differential-equations/) [机器之心](https://mp.weixin.qq.com/s/ZEIsyV-0aTvYn6K8GyANPA)
+**Neural Ordinary Differential Equations**. Ricky T. Q. Chen, Yulia Rubanova, Jesse Bettencourt, David Duvenaud [University of Toronto, Canada] (NeurIPS 2018 | best paper) [arXiv:1806.07366](https://arxiv.org/abs/1806.07366) [Github](https://github.com/rtqichen/torchdiffeq) [Blog](https://rkevingibson.github.io/blog/neural-networks-as-ordinary-differential-equations/) [机器之心](https://mp.weixin.qq.com/s/ZEIsyV-0aTvYn6K8GyANPA)(【硬核NeruIPS 2018最佳论文，一个神经了的常微分方程】这是一篇神奇的论文，以前一层一层叠加的神经网络似乎突然变得连续了，反向传播也似乎不再需要一点一点往前传、一层一层更新参数了。 )
 
 **Forward-Backward Stochastic Neural Networks: Deep Learning of High-dimensional Partial Differential Equations**. M Raissi [Brown University] (2018) [arXiv:1804.07010](https://arxiv.org/abs/1804.07010)
 
@@ -312,7 +312,7 @@ date: 2018-09-28
 
 **CFUN: Combining Faster R-CNN and U-net Network for Efficient Whole Heart Segmentation**. Z Xu, Z Wu, J Feng [Tsinghua University] (2018) [arXiv:1812.04914](https://arxiv.org/abs/1812.04914) [GitHub](https://github.com/Wuziyi616/CFUN)
 
-**Deep Paper Gestalt**. J Huang [Virginia Tech] (2018) [arXiv:1812.08775](https://arxiv.org/abs/1812.08775) [GitHub](https://github.com/vt-vl-lab/paper-gestalt) [YouTube](https://www.youtube.com/watch?v=yQLsZLf02yg)
+**Deep Paper Gestalt**. J Huang [Virginia Tech] (2018) [arXiv:1812.08775](https://arxiv.org/abs/1812.08775) [GitHub](https://github.com/vt-vl-lab/paper-gestalt) [YouTube](https://www.youtube.com/watch?v=yQLsZLf02yg) [机器之心](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2650754320&idx=1&sn=d6691ecd6adb98fa3c29986cf1efeebc&chksm=871a896eb06d00780f96e27b3ce3ee321c45ec21d30107f3e3778b5f674e172855a29fbcc70f&token=576114296&lang=zh_CN#rd)
 
 **A Tutorial on Distance Metric Learning: Mathematical Foundations, Algorithms and Software**. J L Suárez, S García, F Herrera [University of Granada] (2018) [arXiv:1812.05944](https://arxiv.org/abs/1812.05944)
 

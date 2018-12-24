@@ -99,6 +99,8 @@ here the comment ends -->
 
 ## Data Analysis & Signal Processing in GW Astronomy
 
+**Matched-filter study and energy budget suggest no detectable gravitational-wave ‘extended emission’ from GW170817**. Miquel Oliver, David Keitel, Andrew L. Miller, Hector Estelles, Alicia M. Sintes [etc.][arXiv:1812.06724](https://arxiv.org/abs/1812.06724)
+
 **The GstLAL template bank for spinning compact binary mergers in the second observation run of Advanced LIGO and Virgo**. Debnandini Mukherjee, etc. [etc.] (2018) [arXiv:1812.05121](https://arxiv.org/abs/1812.05121)
 
 **Wavelet-based classification of transient signals for Gravitational Wave detectors**. <u>Elena Cuoco</u>, Massimiliano Razzano, Andrei Utina [EGO and Scuola Normale Superiore, Pisa University and INFN Pisa, Glasgow University] (2018 EUSIPCO) [PDF](https://ieeexplore.ieee.org/abstract/document/8553393)
@@ -109,7 +111,7 @@ here the comment ends -->
 
 **GPU-Optimised Low-Latency Online Search for Gravitational Waves from Binary Coalescences**. Xiaoyang Guo, Qi Chu, Zhihui Du, Linqing Wen [Tsinghua University & University of Western Australia] (2018 EUSIPCO) [PDF](https://ieeexplore.ieee.org/abstract/document/8553574)
 
-[Paper Summary] **Techniques for gravitational-wave detection of compact binary coalescence**. Sarah Caudill for the LIGO Scientific Collaboration and the Virgo Collaboration [1098 XG Amsterdam, The Netherlands] (2018 EUSIPCO) [PDF](https://ieeexplore.ieee.org/abstract/document/8553549)
+[[Paper Summary](./Techniques for gravitational-wave detection of compact binary coalescence.html)] **Techniques for gravitational-wave detection of compact binary coalescence**. Sarah Caudill for the LIGO Scientific Collaboration and the Virgo Collaboration [1098 XG Amsterdam, The Netherlands] (2018 EUSIPCO) [PDF](https://ieeexplore.ieee.org/abstract/document/8553549)
 
 **Posterior samples of the parameters of black hole mergers released to date in the second Advanced LIGO--Virgo observing run**. Soumi De, Collin D. Capano, Christopher M. Biwer, Alexander H. Nitz, Duncan A. Brown [Syracuse U. & MPI Germany & Hannover & Los Alamos National Laboratory] (2018) [arXiv:1811.09232](https://arxiv.org/abs/1811.09232) [Github](https://github.com/gwastro/o2-bbh-pe)
 
