@@ -171,7 +171,7 @@ Biswas R, Blackburn L, Cao J, et al. "**Application of machine learning algorith
 
 **Probabilistic Random Forest: A machine learning algorithm for noisy datasets**. Itamar Reis, Dalya Baron, Sahar Shahaf [Tel-Aviv U.] (2018) [arXiv:1811.05994](https://arxiv.org/abs/1811.05994)
 
-**Classifying Lensed Gravitational Waves in the Geometrical Optics Limit with Machine Learning**. Amit Jit Singh, Ivan S.C. Li, Otto A. Hannuksela, Tjonnie G.F. Li, Kyungmin Kim [The Chinese University of Hong Kong & Imperial College London] (2018) [arXiv:1810.07888](https://arxiv.org/abs/1810.07888)
+[[Paper Summary](./Classifying Lensed Gravitational Waves in the Geometrical Optics Limit with Machine Learning.html)] **Classifying Lensed Gravitational Waves in the Geometrical Optics Limit with Machine Learning**. Amit Jit Singh, Ivan S.C. Li, Otto A. Hannuksela, Tjonnie G.F. Li, Kyungmin Kim [The Chinese University of Hong Kong & Imperial College London] (2018) [arXiv:1810.07888](https://arxiv.org/abs/1810.07888)
 
 **DeepSphere: Efficient spherical Convolutional Neural Network with HEALPix sampling for cosmological applications**. Nathanaël Perraudin, Michaël Defferrard, Tomasz Kacprzak, Raphael Sgier [Swiss Data Science Center & EPFL & ETH Zurich] (2018) [arXiv:1810.12186](https://arxiv.org/abs/1810.12186)
 
