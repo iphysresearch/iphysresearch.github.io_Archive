@@ -268,6 +268,8 @@ date: 2018-09-28
 
 ## :books: Review
 
+**Neural Approaches to Conversational AI**. J Gao, M Galley, L Li [Microsoft Research & Google Brain] (2018) [arXiv:1809.08267](https://arxiv.org/abs/1809.08267)
+
 **Graph Neural Networks: A Review of Methods and Applications**. J Zhou, G Cui, Z Zhang, C Yang, Z Liu, M Sun [Tsinghua University] (2018) [arXiv:1812.08434](https://arxiv.org/abs/1812.08434)
 
 **Recent Advances in Autoencoder-Based Representation Learning**. M Tschannen, O Bachem, M Lucic [ETH Zurich & Google AI] (2018) [arXiv:1812.05069](https://arxiv.org/abs/1812.05069)
