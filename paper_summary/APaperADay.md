@@ -197,7 +197,6 @@ date: 2018-09-28
 
   **Sanity Checks for Saliency Maps**. J Adebayo, J Gilmer, M Muelly, I Goodfellow, M Hardt, B Kim [Google Brain] (2018) [arXiv:1810.03292](https://arxiv.org/abs/1810.03292)
 
-
 ## :control_knobs: Model Configuration
 
 **Bag of Tricks for Image Classification with Convolutional Neural Networks**. Tong He, Zhi Zhang, Hang Zhang, Zhongyue Zhang, Junyuan Xie, Mu Li [AWS] (2018) [arXiv:1812.01187](https://arxiv.org/abs/1812.01187) [Reddit](https://www.reddit.com/r/MachineLearning/comments/a4dxna/r_bag_of_tricks_for_image_classification_with/) [Slides[Reddit]](https://www.reddit.com/r/MachineLearning/comments/a5s8pv/r_a_bags_of_tricks_which_may_improve_deep/)
@@ -219,6 +218,8 @@ date: 2018-09-28
 **Human activity recognition based on time series analysis using U-Net**. Y Zhang, Y Zhang, Z Zhang, J Bao, Y Song [Beijing University of Posts and Telecommunications & AIdong Super AI] (2018). [arXiv:1809.08113](https://arxiv.org/abs/1809.08113)
 
 **Backprop Evolution**. M Alber, I Bello, B Zoph, P Kindermans, P Ramachandran, Q Le [TU Berlin & Google Brain] (2018) [arXiv:1808.01974](https://arxiv.org/abs/1808.01974)
+
+**Learning Classifiers with Fenchel-Young Losses: Generalized Entropies, Margins, and Algorithms**. M Blondel, A F. T. Martins, V Niculae [NTT Communication Science Laboratories & Instituto de Telecomunicacoes] (2018) [arXiv:1805.09717](https://arxiv.org/abs/1805.09717)
 
 **Smooth Loss Functions for Deep Top-k Classification**. L Berrada, A Zisserman, M. P Kumar [University of Oxford] (2018) [arXiv:1802.07595](https://arxiv.org/abs/1802.07595) [Github](https://github.com/oval-group/smooth-topk)
 
@@ -267,6 +268,8 @@ date: 2018-09-28
 
 
 ## :books: Review
+
+**Analysis Methods in Neural Language Processing: A Survey**. Y Belinkov, J Glass [MIT] (2018) [arXiv:1812.08951](https://arxiv.org/abs/1812.08951) [Github](https://github.com/boknilev/nlp-analysis-methods) [Blog](https://boknilev.github.io/nlp-analysis-methods/)
 
 **Neural Approaches to Conversational AI**. J Gao, M Galley, L Li [Microsoft Research & Google Brain] (2018) [arXiv:1809.08267](https://arxiv.org/abs/1809.08267)
 
