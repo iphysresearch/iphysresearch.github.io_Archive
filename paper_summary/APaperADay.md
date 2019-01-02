@@ -23,6 +23,10 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
+**Finger-GAN: Generating Realistic Fingerprint Images Using Connectivity Imposed GAN**. S Minaee, A Abdolrashidi [New York University & University of California, Riverside] (2018) [arXiv:1812.10482](https://arxiv.org/abs/1812.10482) 
+
+**Generative Models from the perspective of Continual Learning**. T Lesort, H Caselles-Dupré, M Garcia-Ortiz, A Stoian, D Filliat [Flowers Team (ENSTA ParisTech & INRIA)] (2018) [arXiv:1812.09111](https://arxiv.org/abs/1812.09111) [Github](https://github.com/TLESORT/Generative_Continual_Learning) [OpenReview.net](https://openreview.net/forum?id=S1eFtj0cKQ)
+
 **A Probe into Understanding GAN and VAE models**. J Zhang, L Mi, M Shen [MIT] (2018) [arXiv:1812.05676](https://arxiv.org/abs/1812.05676)
 
 **A Style-Based Generator Architecture for Generative Adversarial Networks**. T Karras, S Laine, T Aila [NVIDIA] (2018) [arXiv:1812.04948](https://arxiv.org/abs/1812.04948) [Code](https://docs.google.com/document/d/1SDbnM1nxLZNuwD8fQkIigUve_SlihgoCmvjN3e388Us/edit) [YouTube](https://www.youtube.com/watch?v=kSLJriaOumA) [机器之心](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2650753854&idx=4&sn=683d862b174cb26c01c1e4d7541498d7)
