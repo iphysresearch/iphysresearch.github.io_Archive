@@ -23,6 +23,8 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
+**Improving Generalization and Stability of Generative Adversarial Networks**. H Thanh-Tung, T Tran, S Venkatesh [Deakin University] (ICLR 2018) [OpenReview.net](https://openreview.net/forum?id=ByxPYjC5KQ) [Github](https://github.com/LMescheder/GAN_stability)
+
 **Finger-GAN: Generating Realistic Fingerprint Images Using Connectivity Imposed GAN**. S Minaee, A Abdolrashidi [New York University & University of California, Riverside] (2018) [arXiv:1812.10482](https://arxiv.org/abs/1812.10482) 
 
 **Generative Models from the perspective of Continual Learning**. T Lesort, H Caselles-Dupré, M Garcia-Ortiz, A Stoian, D Filliat [Flowers Team (ENSTA ParisTech & INRIA)] (2018) [arXiv:1812.09111](https://arxiv.org/abs/1812.09111) [Github](https://github.com/TLESORT/Generative_Continual_Learning) [OpenReview.net](https://openreview.net/forum?id=S1eFtj0cKQ)
