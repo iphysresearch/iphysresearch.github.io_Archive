@@ -23,6 +23,8 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
+**InstaGAN: Instance-aware Image-to-Image Translation**. S Mo, M Cho, J Shin [Korea Advanced Institute of Science and Technology (KAIST) & Pohang University of Science and Technology (POSTECH)] (2018) [arXiv:1812.10889](https://arxiv.org/abs/1812.10889) [OpenReview.net](https://openreview.net/forum?id=ryxwJhC9YX) [Github](https://github.com/sangwoomo/instagan)  [机器之心](https://www.jiqizhixin.com/articles/2019-01-02-17)
+
 **Improving Generalization and Stability of Generative Adversarial Networks**. H Thanh-Tung, T Tran, S Venkatesh [Deakin University] (ICLR 2018) [OpenReview.net](https://openreview.net/forum?id=ByxPYjC5KQ) [Github](https://github.com/LMescheder/GAN_stability)
 
 **Finger-GAN: Generating Realistic Fingerprint Images Using Connectivity Imposed GAN**. S Minaee, A Abdolrashidi [New York University & University of California, Riverside] (2018) [arXiv:1812.10482](https://arxiv.org/abs/1812.10482) 
@@ -225,7 +227,7 @@ date: 2018-09-28
 
 **Backprop Evolution**. M Alber, I Bello, B Zoph, P Kindermans, P Ramachandran, Q Le [TU Berlin & Google Brain] (2018) [arXiv:1808.01974](https://arxiv.org/abs/1808.01974)
 
-**Learning Classifiers with Fenchel-Young Losses: Generalized Entropies, Margins, and Algorithms**. M Blondel, A F. T. Martins, V Niculae [NTT Communication Science Laboratories & Instituto de Telecomunicacoes] (2018) [arXiv:1805.09717](https://arxiv.org/abs/1805.09717)
+**Learning Classifiers with Fenchel-Young Losses: Generalized Entropies, Margins, and Algorithms**. M Blondel, A F. T. Martins, V Niculae [NTT Communication Science Laboratories & Instituto de Telecomunicacoes] (2018) [arXiv:1805.09717](https://arxiv.org/abs/1805.09717) [Github](https://github.com/mblondel/fenchel-young-losses)
 
 **Smooth Loss Functions for Deep Top-k Classification**. L Berrada, A Zisserman, M. P Kumar [University of Oxford] (2018) [arXiv:1802.07595](https://arxiv.org/abs/1802.07595) [Github](https://github.com/oval-group/smooth-topk)
 
@@ -246,6 +248,8 @@ date: 2018-09-28
 **Data Driven Governing Equations Approximation Using Deep Neural Networks**. T Qin, K Wu, D Xiu [The Ohio State University] (2018) [arXiv:1811.05537](https://arxiv.org/abs/1811.05537)
 
 **Neural Ordinary Differential Equations**. Ricky T. Q. Chen, Yulia Rubanova, Jesse Bettencourt, David Duvenaud [University of Toronto, Canada] (NeurIPS 2018 | best paper) [arXiv:1806.07366](https://arxiv.org/abs/1806.07366) [Github](https://github.com/rtqichen/torchdiffeq) [Blog](https://rkevingibson.github.io/blog/neural-networks-as-ordinary-differential-equations/) [机器之心](https://mp.weixin.qq.com/s/ZEIsyV-0aTvYn6K8GyANPA)(【硬核NeruIPS 2018最佳论文，一个神经了的常微分方程】这是一篇神奇的论文，以前一层一层叠加的神经网络似乎突然变得连续了，反向传播也似乎不再需要一点一点往前传、一层一层更新参数了。 )
+
+【《Neural Ordinary Differential Equations》论文解读】《Paper Summary: Neural Ordinary Differential Equations》by Branislav Holländer http://t.cn/EGPEh8y 
 
 **Forward-Backward Stochastic Neural Networks: Deep Learning of High-dimensional Partial Differential Equations**. M Raissi [Brown University] (2018) [arXiv:1804.07010](https://arxiv.org/abs/1804.07010)
 
