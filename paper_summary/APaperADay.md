@@ -23,6 +23,10 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
+**On Finding Local Nash Equilibria (and Only Local Nash Equilibria) in Zero-Sum Games**. E V. Mazumdar, M I. Jordan, S. S Sastry [UC Berkeley] (2019) [arXiv:1901.00838](https://arxiv.org/abs/1901.00838)
+
+**Evaluating Generative Adversarial Networks on Explicitly Parameterized Distributions**. S O'Brien, M Groh, A Dubey [MIT] (2018) [arXiv:1812.10782](https://arxiv.org/abs/1812.10782) [Github](https://github.com/shayneobrien/explicit-gan-eval)
+
 **InstaGAN: Instance-aware Image-to-Image Translation**. S Mo, M Cho, J Shin [Korea Advanced Institute of Science and Technology (KAIST) & Pohang University of Science and Technology (POSTECH)] (2018) [arXiv:1812.10889](https://arxiv.org/abs/1812.10889) [OpenReview.net](https://openreview.net/forum?id=ryxwJhC9YX) [Github](https://github.com/sangwoomo/instagan)  [机器之心](https://www.jiqizhixin.com/articles/2019-01-02-17)
 
 **Improving Generalization and Stability of Generative Adversarial Networks**. H Thanh-Tung, T Tran, S Venkatesh [Deakin University] (ICLR 2018) [OpenReview.net](https://openreview.net/forum?id=ByxPYjC5KQ) [Github](https://github.com/LMescheder/GAN_stability)
@@ -83,6 +87,8 @@ date: 2018-09-28
 
 ## :facepunch: Adversarial Examples/Attacks
 
+**Multi-Label Adversarial Perturbations**. Q Song, H Jin, X Huang, X Hu [Texas A&M University] (2019) [arXiv:1901.00546](https://arxiv.org/abs/1901.00546)
+
 **Adversarial Transfer Learning**. G Wilson, D J. Cook [Washington State University] (2018) [arXiv:1812.02849](https://arxiv.org/abs/1812.02849)
 
 **Defensive Dropout for Hardening Deep Neural Networks under Adversarial Attacks**. S Wang, X Wang, P Zhao, W Wen, D Kaeli, P Chin, X Lin [Northeastern University & Boston university & Florida International University] (2018) [arXiv:1809.05165](https://arxiv.org/abs/1809.05165)
@@ -98,6 +104,8 @@ date: 2018-09-28
 
 
 ## :musical_note: Sound & Signal Processing
+
+**Kymatio: Scattering Transforms in Python**. M Andreux, T Angles, G Exarchakis... [PSL Research University & Universite de Montreal & New York University] (2018) [arXiv:1812.11214](https://arxiv.org/abs/1812.11214) [Home](https://www.kymat.io)
 
 **Deep Neural Networks for Automatic Classification of Anesthetic-Induced Unconsciousness**. Konstantinos Patlatzoglou, etc. [etc.] (2018) [PDF](./2018Patlatzoglou-DeepNeuralNetworks.pdf)
 
@@ -133,6 +141,8 @@ date: 2018-09-28
 
 ## :chart_with_downwards_trend: Optimization & Generalization
 
+**Elimination of All Bad Local Minima in Deep Learning**. K Kawaguchi, L P Kaelbling [MIT] (2019) [arXiv:1901.00279](https://arxiv.org/abs/1901.00279)
+
 **Towards Understanding the Role of Over-Parametrization in Generalization of Neural Networks**. B Neyshabur, Z Li... [Princeton & Toyota Technological Institute at Chicago & Facebook AI Research] (2018) [arXiv:1805.12076](https://arxiv.org/abs/1805.12076) [Github](https://github.com/bneyshabur/over-parametrization) [Reddit](https://www.reddit.com/r/MLEVN/comments/92u58v/towards_understanding_the_role_of/)
 
 **Visualizing the Loss Landscape of Neural Nets**. H Li, Z Xu, G Taylor, T Goldstein [University of Maryland & United States Naval Academy] (NIPS 2018) [arXiv:1712.09913](https://arxiv.org/abs/1712.09913) [Github](https://github.com/tomgoldstein/loss-landscape) [Reddit](https://www.reddit.com/r/MachineLearning/comments/7mr7j5/r_171209913_visualizing_the_loss_landscape_of/)
@@ -156,6 +166,10 @@ date: 2018-09-28
 
 
 ## :+1: Model Evaluation & Performance & Interpretion & Visualization
+
+**Attribute-Aware Attention Model for Fine-grained Representation Learning**. K Han, J Guo, C Zhang, M Zhu [Peking University] (2019) [arXiv:1901.00392](https://arxiv.org/abs/1901.00392)
+
+**Multi-class Classification without Multi-class Labels**. Y Hsu, Z Lv, J Schlosser, P Odom, Z Kira [Georgia Institute of Technology & Georgia Tech Research Institute] (ICLR 2019) [arXiv:1901.00544](https://arxiv.org/abs/1901.00544)
 
 **Are All Training Examples Created Equal? An Empirical Study**. K Vodrahalli, K Li, J Malik [UC Berkeley] (2018) [arXiv:1811.12569](https://arxiv.org/abs/1811.12569) [知乎](https://zhuanlan.zhihu.com/p/52458512)
 
@@ -199,6 +213,8 @@ date: 2018-09-28
 
 - Saliency
 
+  **Visualizing Deep Similarity Networks**. A Stylianou, R Souvenir, R Pless [George Washington University & Temple University] (2019) [arXiv:1901.00536](https://arxiv.org/abs/1901.00536) [Github](https://github.com/GWUvision/Similarity-Visualization)
+
   **Understanding Individual Decisions of CNNs via Contrastive Backpropagation**. J Gu, Y Yang, V Tresp [the University of Munich & Siemens AG] (2018) [arXiv:1812.02100](https://arxiv.org/abs/1812.02100)
 
   **Local Explanation Methods for Deep Neural Networks Lack Sensitivity to Parameter Values**. J Adebayo, J Gilmer, I Goodfellow, B Kim [Google Brain] (2018) [arXiv:1810.03307](https://arxiv.org/abs/1810.03307)  [OpenReview](https://openreview.net/forum?id=SJOYTK1vM)
@@ -206,6 +222,8 @@ date: 2018-09-28
   **Sanity Checks for Saliency Maps**. J Adebayo, J Gilmer, M Muelly, I Goodfellow, M Hardt, B Kim [Google Brain] (2018) [arXiv:1810.03292](https://arxiv.org/abs/1810.03292)
 
 ## :control_knobs: Model Configuration
+
+**Flow Based Self-supervised Pixel Embedding for Image Segmentation**. B Ma, S Liu, Y Zhi, Q Song [CuraCloud] (2019) [arXiv:1901.00520](https://arxiv.org/abs/1901.00520)
 
 **Bag of Tricks for Image Classification with Convolutional Neural Networks**. Tong He, Zhi Zhang, Hang Zhang, Zhongyue Zhang, Junyuan Xie, Mu Li [AWS] (2018) [arXiv:1812.01187](https://arxiv.org/abs/1812.01187) [Reddit](https://www.reddit.com/r/MachineLearning/comments/a4dxna/r_bag_of_tricks_for_image_classification_with/) [Slides[Reddit]](https://www.reddit.com/r/MachineLearning/comments/a5s8pv/r_a_bags_of_tricks_which_may_improve_deep/)
 
@@ -278,6 +296,10 @@ date: 2018-09-28
 
 
 ## :books: Review
+
+**A Survey on Multi-output Learning**. D Xu, Y Shi, I W. Tsang, Y Ong, C Gong, X Shen [ University of Technology Sydney & Nanyang Technological University] (2019) [arXiv:1901.00248](https://arxiv.org/abs/1901.00248)
+
+**A Comprehensive Survey on Graph Neural Networks**. Z Wu, S Pan, F Chen, G Long, C Zhang, P S. Yu [University of Technology Sydney & Monash University & University of Illinois at Chicago] (2019) [arXiv:1901.00596](https://arxiv.org/abs/1901.00596)
 
 **Analysis Methods in Neural Language Processing: A Survey**. Y Belinkov, J Glass [MIT] (2018) [arXiv:1812.08951](https://arxiv.org/abs/1812.08951) [Github](https://github.com/boknilev/nlp-analysis-methods) [Blog](https://boknilev.github.io/nlp-analysis-methods/)
 

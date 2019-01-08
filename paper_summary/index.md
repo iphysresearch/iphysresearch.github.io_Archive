@@ -220,7 +220,6 @@ http://www.tapir.caltech.edu/~vvarma/
 - [Paper Summary] Olaf Ronneberger, Philipp Fischer, and Thomas Brox "**U-Net: Convolutional Networks for Biomedical Image Segmentation**" arXiv:1505.04597 (2015) **(U-Net)** ([Website](https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/)) ([code](https://github.com/xuyuting45/DSB2018-mx-unet)) ([code](https://github.com/chinakook/U-Net)) ([code](https://github.com/divamgupta/image-segmentation-keras/tree/master/Models)) ([code](https://github.com/chinakook/U-Net/blob/master/unet_gluon.ipynb)) ([code](https://gluon.mxnet.io/chapter14_generative-adversarial-networks/pixel2pixel.html?highlight=unet)) ([code](https://github.com/bckenstler/unet-nerve-segmentation-mxnet/blob/master/U-Net%20MXNet.ipynb))
 - [Paper Summary] Xiao-Jiao Mao, Chunhua Shen, Yu-Bin Yang. "**Image Restoration Using Convolutional Auto-encoders with Symmetric Skip Connections**" arXiv:1606.08921 (2016) **(Skip connections)** ([code](https://github.com/7wik/convolutional-auto-encoders-with-skip-connections))
 - [Paper Summary] F Zhu, G Chen, PA Heng. "**From Noise Modeling to Blind Image Denoising**" CVPR (2016) ([Website](https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Zhu_From_Noise_Modeling_CVPR_2016_paper.html))
-
 - [Paper Summary] Fu, X., Huang, J., Ding, X., Liao, Y., Paisley. J "**Clearing the skies: A deep network architecture for single-image rain removal**" arXiv:1609.02087 (2017) (**DerainNet**)(a low-pass filter)
 - [Paper Summary] Zhang, H., Sindagi, V., Patel. "**Image de-raining using a conditional generative adversarial network.**" arXiv:1701.05957 (2017) (去雨) (**ID-CGAN**)
 - [Paper Summary] R Qian, R T. Tan, W Yang, J Su, J Liu. "**Attentive Generative Adversarial Network for Raindrop Removal from a Single Image**." arXiv:1711.10098 (2017) **(单图去雨)** ([code](http://t.cn/RDfhFhN)) (attentive GAN)
@@ -232,6 +231,7 @@ http://www.tapir.caltech.edu/~vvarma/
 - [Paper Summary] Jingwen Chen, Jiawei Chen, Hongyang Chao, Ming Yang. "**Image Blind Denoising With Generative Adversarial Network Based Noise Modeling**" CVPR (2018) **(GAN盲降噪)**([Website](http://openaccess.thecvf.com/content_cvpr_2018/html/Chen_Image_Blind_Denoising_CVPR_2018_paper.html))([将门创投](https://mp.weixin.qq.com/s/Vb0sIXC7s0yMRfhZFeC-wg))
 - [Paper Summary] S Guo, Z Yan, K Zhang, W Zuo, L Zhang. "**Toward Convolutional Blind Denoising of Real Photographs**" arXiv:1807.04686 (2018) **(CBDNet)** ([code](http://t.cn/Rgrv2Lr ))
 - [Paper Summary] Xia Li, Jianlong Wu, Zhouchen Lin, Hong Liu1, and Hongbin Zha. "**Recurrent Squeeze-and-Excitation Context Aggregation Net for Single Image Deraining**." arXiv:1807.05698 (2018) **(单图去雨)** ([code](https://github.com/XiaLiPKU/RESCAN))(RESCAN)
+- **I Can See Clearly Now : Image Restoration via De-Raining**. H Porav, T Bruls, P Newman [University of Oxford] (2019) [arXiv:1901.00893](https://arxiv.org/abs/1901.00893) [Home](https://ciumonk.github.io/RobotCar-rainy/)
 
 
 
