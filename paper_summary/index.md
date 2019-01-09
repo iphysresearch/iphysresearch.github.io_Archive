@@ -193,7 +193,7 @@ http://www.tapir.caltech.edu/~vvarma/
 
 **Why does deep and cheap learning work so well?**. Henry W. Lin (Harvard), Max Tegmark (MIT), David Rolnick (MIT) (2016) [arXiv:1608.08225](https://arxiv.org/abs/1608.08225)
 
-
+【基于深度网络的心脏病专家级动态心电图心律失常检测和分类】《Cardiologist-level arrhythmia detection and classification in ambulatory electrocardiograms using a deep neural network | Nature Medicine》[Stanford University] (2019) http://t.cn/EGEZz3N 
 
 
 

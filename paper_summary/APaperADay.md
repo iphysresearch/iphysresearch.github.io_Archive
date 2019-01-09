@@ -297,19 +297,15 @@ date: 2018-09-28
 
 ## :books: Review
 
-**A Survey on Multi-output Learning**. D Xu, Y Shi, I W. Tsang, Y Ong, C Gong, X Shen [ University of Technology Sydney & Nanyang Technological University] (2019) [arXiv:1901.00248](https://arxiv.org/abs/1901.00248)
+**How Generative Adversarial Networks and Their Variants Work: An Overview**. Yongjun Hong, Uiwon Hwang, Jaeyoon Yoo, Sungroh Yoon [Seoul National University] (2017, 2018v9) [arXiv:1711.05914](https://arxiv.org/abs/1711.05914)
 
-**A Comprehensive Survey on Graph Neural Networks**. Z Wu, S Pan, F Chen, G Long, C Zhang, P S. Yu [University of Technology Sydney & Monash University & University of Illinois at Chicago] (2019) [arXiv:1901.00596](https://arxiv.org/abs/1901.00596)
+**A Survey on Multi-output Learning**. D Xu, Y Shi, I W. Tsang, Y Ong, C Gong, X Shen [ University of Technology Sydney & Nanyang Technological University] (2019) [arXiv:1901.00248](https://arxiv.org/abs/1901.00248)
 
 **Analysis Methods in Neural Language Processing: A Survey**. Y Belinkov, J Glass [MIT] (2018) [arXiv:1812.08951](https://arxiv.org/abs/1812.08951) [Github](https://github.com/boknilev/nlp-analysis-methods) [Blog](https://boknilev.github.io/nlp-analysis-methods/)
 
 **Neural Approaches to Conversational AI**. J Gao, M Galley, L Li [Microsoft Research & Google Brain] (2018) [arXiv:1809.08267](https://arxiv.org/abs/1809.08267)
 
-**Graph Neural Networks: A Review of Methods and Applications**. J Zhou, G Cui, Z Zhang, C Yang, Z Liu, M Sun [Tsinghua University] (2018) [arXiv:1812.08434](https://arxiv.org/abs/1812.08434)
-
 **Recent Advances in Autoencoder-Based Representation Learning**. M Tschannen, O Bachem, M Lucic [ETH Zurich & Google AI] (2018) [arXiv:1812.05069](https://arxiv.org/abs/1812.05069)
-
-**Deep Learning on Graphs: A Survey**. Z Zhang, P Cui, W Zhu [Tsinghua University] (2018) [arXiv:1812.04202](https://arxiv.org/abs/1812.04202)
 
 **Learning From Positive and Unlabeled Data: A Survey**. J Bekker, J Davis [KU Leuven] (2018) [arXiv:1811.04820](https://arxiv.org/abs/1811.04820)
 
@@ -339,7 +335,13 @@ date: 2018-09-28
 
 **Deep Learning in Neural Networks: An Overview**. Ju ̈rgen Schmidhuber [University of Lugano & SUPSI, Switzerland] (2014) [arXiv:1404.7828](https://arxiv.org/abs/1404.7828)
 
+- Graph Neural Networks
 
+  **A Comprehensive Survey on Graph Neural Networks**. Z Wu, S Pan, F Chen, G Long, C Zhang, P S. Yu [University of Technology Sydney & Monash University & University of Illinois at Chicago] (2019) [arXiv:1901.00596](https://arxiv.org/abs/1901.00596)
+
+  **Graph Neural Networks: A Review of Methods and Applications**. J Zhou, G Cui, Z Zhang, C Yang, Z Liu, M Sun [Tsinghua University] (2018) [arXiv:1812.08434](https://arxiv.org/abs/1812.08434)
+
+  **Deep Learning on Graphs: A Survey**. Z Zhang, P Cui, W Zhu [Tsinghua University] (2018) [arXiv:1812.04202](https://arxiv.org/abs/1812.04202)
 
 
 
