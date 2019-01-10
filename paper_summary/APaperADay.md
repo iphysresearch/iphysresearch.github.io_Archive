@@ -245,18 +245,21 @@ date: 2018-09-28
 
 **Backprop Evolution**. M Alber, I Bello, B Zoph, P Kindermans, P Ramachandran, Q Le [TU Berlin & Google Brain] (2018) [arXiv:1808.01974](https://arxiv.org/abs/1808.01974)
 
-**Learning Classifiers with Fenchel-Young Losses: Generalized Entropies, Margins, and Algorithms**. M Blondel, A F. T. Martins, V Niculae [NTT Communication Science Laboratories & Instituto de Telecomunicacoes] (2018) [arXiv:1805.09717](https://arxiv.org/abs/1805.09717) [Github](https://github.com/mblondel/fenchel-young-losses)
-
 **Smooth Loss Functions for Deep Top-k Classification**. L Berrada, A Zisserman, M. P Kumar [University of Oxford] (2018) [arXiv:1802.07595](https://arxiv.org/abs/1802.07595) [Github](https://github.com/oval-group/smooth-topk)
 
 **Learning Confidence for Out-of-Distribution Detection in Neural Networks**. T DeVries, G W. Taylor [University of Guelph & Vector Institute] (2018) [arXiv:1802.04865](https://arxiv.org/abs/1802.04865)
 
 - Batch Normalization
 
-  **Generalized Batch Normalization: Towards Accelerating Deep Neural Networks**. X Yuan, Z Feng, M Norton, X Li [University of Florida & Naval Postgraduate School] (2018) [arXiv:1812.03271](https://arxiv.org/abs/1812.03271)
+  - **Generalized Batch Normalization: Towards Accelerating Deep Neural Networks**. X Yuan, Z Feng, M Norton, X Li [University of Florida & Naval Postgraduate School] (2018) [arXiv:1812.03271](https://arxiv.org/abs/1812.03271)
 
-  **How Does Batch Normalization Help Optimization? (No, It Is Not About Internal Covariate Shift)**. S Santurkar, D Tsipras, A Ilyas, A Madry [MIT] (2018) [arXiv:1805.11604](https://arxiv.org/abs/1805.11604) [YouTube](https://www.youtube.com/watch?v=ZOabsYbmBRM) [Reddit](https://www.reddit.com/r/MachineLearning/comments/8n4eot/r_how_does_batch_normalization_help_optimization/) [Notes from SALU](https://shaoanlu.wordpress.com/2018/07/12/notes-for-paper-how-does-batch-normalization-help-optimization-no-it-is-not-about-internal-covariate-shift/)
+  - **How Does Batch Normalization Help Optimization? (No, It Is Not About Internal Covariate Shift)**. S Santurkar, D Tsipras, A Ilyas, A Madry [MIT] (2018) [arXiv:1805.11604](https://arxiv.org/abs/1805.11604) [YouTube](https://www.youtube.com/watch?v=ZOabsYbmBRM) [Reddit](https://www.reddit.com/r/MachineLearning/comments/8n4eot/r_how_does_batch_normalization_help_optimization/) [Notes from SALU](https://shaoanlu.wordpress.com/2018/07/12/notes-for-paper-how-does-batch-normalization-help-optimization-no-it-is-not-about-internal-covariate-shift/)
 
+- Fenchel-Young Losses
+
+  - **Learning with Fenchel-Young Losses**. M Blondel, A F. T. Martins, V Niculae [NTT Communication Science Laboratories & Unbabel & Instituto de Telecomunica¸coes & Instituto de Telecomunica¸coes] (2019) [arXiv:1901.02324](https://arxiv.org/abs/1901.02324)
+
+  - **Learning Classifiers with Fenchel-Young Losses: Generalized Entropies, Margins, and Algorithms**. M Blondel, A F. T. Martins, V Niculae [NTT Communication Science Laboratories & Instituto de Telecomunicacoes] (2018) [arXiv:1805.09717](https://arxiv.org/abs/1805.09717) [Github](https://github.com/mblondel/fenchel-young-losses)
 
 
 

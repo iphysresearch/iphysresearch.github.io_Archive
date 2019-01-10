@@ -195,6 +195,10 @@ http://www.tapir.caltech.edu/~vvarma/
 
 【基于深度网络的心脏病专家级动态心电图心律失常检测和分类】《Cardiologist-level arrhythmia detection and classification in ambulatory electrocardiograms using a deep neural network | Nature Medicine》[Stanford University] (2019) http://t.cn/EGEZz3N 
 
+**Deep Speech Enhancement for Reverberated and Noisy Signals using Wide Residual Networks**. Dayana Ribas, Jorge Llombart, Antonio Miguel, Luis Vicente [University of Zaragoza] (2019) [arXiv:1901.00660](https://arxiv.org/abs/1901.00660)
+
+**CROSSBOW: Scaling Deep Learning with Small Batch Sizes on Multi-GPU Servers**. A Koliousis, P Watcharapichat, M Weidlich, L Mai, P Costa, P Pietzuch [Imperial College London & Microsoft Research & Humboldt-Universitat zu Berlin] (2019) [arXiv:1901.02244](https://arxiv.org/abs/1901.02244) [Github](https://github.com/lsds/Crossbow)
+
 
 
 
