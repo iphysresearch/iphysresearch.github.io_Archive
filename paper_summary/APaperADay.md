@@ -141,6 +141,8 @@ date: 2018-09-28
 
 ## :chart_with_downwards_trend: Optimization & Generalization
 
+**Generalization in Deep Networks: The Role of Distance from Initialization**. Vaishnavh Nagarajan, J. Zico Kolter [Carnegie-Mellon University] (NeurlPS 2017, 2019) [arXiv:1901.01672](https://arxiv.org/abs/1901.01672)
+
 **Elimination of All Bad Local Minima in Deep Learning**. K Kawaguchi, L P Kaelbling [MIT] (2019) [arXiv:1901.00279](https://arxiv.org/abs/1901.00279)
 
 **Towards Understanding the Role of Over-Parametrization in Generalization of Neural Networks**. B Neyshabur, Z Li... [Princeton & Toyota Technological Institute at Chicago & Facebook AI Research] (2018) [arXiv:1805.12076](https://arxiv.org/abs/1805.12076) [Github](https://github.com/bneyshabur/over-parametrization) [Reddit](https://www.reddit.com/r/MLEVN/comments/92u58v/towards_understanding_the_role_of/)
