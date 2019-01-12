@@ -223,6 +223,14 @@ date: 2018-09-28
 
   **Sanity Checks for Saliency Maps**. J Adebayo, J Gilmer, M Muelly, I Goodfellow, M Hardt, B Kim [Google Brain] (2018) [arXiv:1810.03292](https://arxiv.org/abs/1810.03292)
 
+- Explanatory Graphs
+
+  **Explanatory Graphs for CNNs**. Q Zhang, X Wang, R Cao, Y N Wu, F Shi, S Zhu [Shanghai Jiao Tong University & University of California, Los Angeles] (2018) [arXiv:1812.07997](https://arxiv.org/abs/1812.07997)
+
+
+
+
+
 ## :control_knobs: Model Configuration
 
 **Flow Based Self-supervised Pixel Embedding for Image Segmentation**. B Ma, S Liu, Y Zhi, Q Song [CuraCloud] (2019) [arXiv:1901.00520](https://arxiv.org/abs/1901.00520)
@@ -270,9 +278,11 @@ date: 2018-09-28
 
 **Data Driven Governing Equations Approximation Using Deep Neural Networks**. T Qin, K Wu, D Xiu [The Ohio State University] (2018) [arXiv:1811.05537](https://arxiv.org/abs/1811.05537)
 
-**Neural Ordinary Differential Equations**. Ricky T. Q. Chen, Yulia Rubanova, Jesse Bettencourt, David Duvenaud [University of Toronto, Canada] (NeurIPS 2018 | best paper) [arXiv:1806.07366](https://arxiv.org/abs/1806.07366) [Github](https://github.com/rtqichen/torchdiffeq) [Blog](https://rkevingibson.github.io/blog/neural-networks-as-ordinary-differential-equations/) [机器之心](https://mp.weixin.qq.com/s/ZEIsyV-0aTvYn6K8GyANPA)(【硬核NeruIPS 2018最佳论文，一个神经了的常微分方程】这是一篇神奇的论文，以前一层一层叠加的神经网络似乎突然变得连续了，反向传播也似乎不再需要一点一点往前传、一层一层更新参数了。 )
+**Neural Ordinary Differential Equations**. Ricky T. Q. Chen, Yulia Rubanova, Jesse Bettencourt, David Duvenaud [University of Toronto, Canada] (NeurIPS 2018 | best paper) [arXiv:1806.07366](https://arxiv.org/abs/1806.07366) [Github](https://github.com/rtqichen/torchdiffeq) [Blog](https://rkevingibson.github.io/blog/neural-networks-as-ordinary-differential-equations/) [机器之心](https://mp.weixin.qq.com/s/ZEIsyV-0aTvYn6K8GyANPA)(【硬核NeruIPS 2018最佳论文，一个神经了的常微分方程】这是一篇神奇的论文，以前一层一层叠加的神经网络似乎突然变得连续了，反向传播也似乎不再需要一点一点往前传、一层一层更新参数了。 ) 
 
 【《Neural Ordinary Differential Equations》论文解读】《Paper Summary: Neural Ordinary Differential Equations》by Branislav Holländer http://t.cn/EGPEh8y 
+
+summary by Adrian Colyer http://t.cn/EqANCZ0
 
 **Forward-Backward Stochastic Neural Networks: Deep Learning of High-dimensional Partial Differential Equations**. M Raissi [Brown University] (2018) [arXiv:1804.07010](https://arxiv.org/abs/1804.07010)
 
@@ -335,6 +345,8 @@ date: 2018-09-28
 **Generalization Error in Deep Learning**. D Jakubovitz, R Giryes, M R. D. Rodrigues [Tel Aviv University & University College London] (2018) [arXiv:1808.01174](https://arxiv.org/abs/1808.01174)
 
 **How convolutional neural network see the world - A survey of convolutional neural network visualization methods**. Z Qin, F Yu, C Liu, X Chen [George Mason University & Clarkson University] (2018) [arXiv:1804.11191](https://arxiv.org/abs/1804.11191)
+
+**Visual Interpretability for Deep Learning: a Survey**. Quanshi Zhang, Song-Chun Zhu [] (2018) [arXiv:1802.00614](https://arxiv.org/abs/1802.00614)
 
 **Deep Learning for Time-Series Analysis**. John Gamboa [University of Kaiserslautern, Germany] (2017) [arXiv:1701.01887](https://arxiv.org/abs/1701.01887)
 
