@@ -87,6 +87,8 @@ date: 2018-09-28
 
 ## :facepunch: Adversarial Examples/Attacks
 
+**Image Transformation can make Neural Networks more robust against Adversarial Examples**. D D Thang, T Matsui [Institute of Information Security] (2019) [arXiv:1901.03037](https://arxiv.org/abs/1901.03037)
+
 **Multi-Label Adversarial Perturbations**. Q Song, H Jin, X Huang, X Hu [Texas A&M University] (2019) [arXiv:1901.00546](https://arxiv.org/abs/1901.00546)
 
 **Adversarial Transfer Learning**. G Wilson, D J. Cook [Washington State University] (2018) [arXiv:1812.02849](https://arxiv.org/abs/1812.02849)

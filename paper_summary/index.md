@@ -133,11 +133,13 @@ Creswell, James, et al. "**On the time lags of the LIGO signals**." *[Journal of
 
 
 
-
+https://orca.cf.ac.uk/118182/1/2019MuirAWMPhil.pdf
 
 ## GW Astronomy with Machine Learning
 
 ### GW related
+
+**Gravitational Wave Denoising of Binary Black Hole Mergers with Deep Learning**. Wei Wei, E. A. Huerta [Urbana] (2019) [arXiv:1901.00869](https://arxiv.org/abs/1901.00869)
 
 **Predicting surface wave velocities at gravitational wave observatories using archival seismic data**. Nikhil Mukund, Michael Coughlin, Jan Harms, Sebastien Biscans, Jim Warner, Arnaud Pele, Keith Thorne, David Barker, Nicolas Arnaud, Fred Donovan, Irene Fiori, <u>Hunter Gabbard</u>, Brian Lantz, Richard Mittleman, Hugh Radkins, Bas Swinkels [...] (2018) [arXiv:1812.05185](https://arxiv.org/abs/1812.05185)
 
