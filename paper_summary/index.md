@@ -141,6 +141,8 @@ https://orca.cf.ac.uk/118182/1/2019MuirAWMPhil.pdf
 
 **Gravitational Wave Denoising of Binary Black Hole Mergers with Deep Learning**. Wei Wei, E. A. Huerta [Urbana] (2019) [arXiv:1901.00869](https://arxiv.org/abs/1901.00869)
 
+**A New Method to Observe Gravitational Waves emitted by Core Collapse Supernovae**. P. Astone, P. Cerda-Duran, I. Di Palma, M. Drago, F. Muciaccia, C. Palomba, F. Ricci [Italy] (2018) [10.1103/PhysRevD.98.122002](https://arxiv.org/ct?url=https%3A%2F%2Fdx.doi.org%2F10.1103%252FPhysRevD.98.122002&v=818db5a0) (2018) [arXiv:1812.05363](https://arxiv.org/abs/1812.05363)
+
 **Predicting surface wave velocities at gravitational wave observatories using archival seismic data**. Nikhil Mukund, Michael Coughlin, Jan Harms, Sebastien Biscans, Jim Warner, Arnaud Pele, Keith Thorne, David Barker, Nicolas Arnaud, Fred Donovan, Irene Fiori, <u>Hunter Gabbard</u>, Brian Lantz, Richard Mittleman, Hugh Radkins, Bas Swinkels [...] (2018) [arXiv:1812.05185](https://arxiv.org/abs/1812.05185)
 
 [Paper Summary] **Applying deep neural networks to the detection and space parameter estimation of compact binary coalescence with a network of gravitational wave detectors**. <u>Xilong Fan</u>, <u>Jin Li</u>, Xin Li, Yuanhong Zhong, Junwei Cao [Hubei University of Education & Chongqing U. & Tsinghua U.] (2018) [arXiv:1811.01380](https://arxiv.org/abs/1811.01380)

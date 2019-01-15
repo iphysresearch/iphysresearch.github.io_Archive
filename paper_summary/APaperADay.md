@@ -143,6 +143,8 @@ date: 2018-09-28
 
 ## :chart_with_downwards_trend: Optimization & Generalization
 
+**The Benefits of Over-parameterization at Initialization in Deep ReLU Networks**. D Arpit, Y Bengio [Montreal Institute for Learning Algorithms] (2019) [arXiv:1901.03611](https://arxiv.org/abs/1901.03611)
+
 **Generalization in Deep Networks: The Role of Distance from Initialization**. Vaishnavh Nagarajan, J. Zico Kolter [Carnegie-Mellon University] (NeurlPS 2017, 2019) [arXiv:1901.01672](https://arxiv.org/abs/1901.01672)
 
 **Elimination of All Bad Local Minima in Deep Learning**. K Kawaguchi, L P Kaelbling [MIT] (2019) [arXiv:1901.00279](https://arxiv.org/abs/1901.00279)
@@ -286,6 +288,10 @@ date: 2018-09-28
 
 summary by Adrian Colyer http://t.cn/EqANCZ0
 
+【神经常微分方程与对抗攻击】《Neural Ordinary Differential Equations and Adversarial Attacks》by Rajat Vadiraj Dwaraknath http://t.cn/EqW9Anb 
+
+【神经微分方程】《Neural Differential Equations - YouTube》by Siraj Raval http://t.cn/EqWCSBN 
+
 **Forward-Backward Stochastic Neural Networks: Deep Learning of High-dimensional Partial Differential Equations**. M Raissi [Brown University] (2018) [arXiv:1804.07010](https://arxiv.org/abs/1804.07010)
 
 
@@ -313,6 +319,8 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 
 
 ## :books: Review
+
+**Deep Learning for Anomaly Detection: A Survey**. R Chalapathy, S Chawla [University of Sydney & Qatar Computing Research Institute (QCRI)] (2019) [arXiv:1901.03407](https://arxiv.org/abs/1901.03407)
 
 **How Generative Adversarial Networks and Their Variants Work: An Overview**. Yongjun Hong, Uiwon Hwang, Jaeyoon Yoo, Sungroh Yoon [Seoul National University] (2017, 2018v9) [arXiv:1711.05914](https://arxiv.org/abs/1711.05914)
 
