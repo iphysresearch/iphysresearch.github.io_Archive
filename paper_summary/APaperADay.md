@@ -143,6 +143,8 @@ date: 2018-09-28
 
 ## :chart_with_downwards_trend: Optimization & Generalization
 
+**Eliminating all bad Local Minima from Loss Landscapes without even adding an Extra Unit**. J Sohl-Dickstein, K Kawaguchi [Google & MIT] (2019)
+
 **The Benefits of Over-parameterization at Initialization in Deep ReLU Networks**. D Arpit, Y Bengio [Montreal Institute for Learning Algorithms] (2019) [arXiv:1901.03611](https://arxiv.org/abs/1901.03611)
 
 **Generalization in Deep Networks: The Role of Distance from Initialization**. Vaishnavh Nagarajan, J. Zico Kolter [Carnegie-Mellon University] (NeurlPS 2017, 2019) [arXiv:1901.01672](https://arxiv.org/abs/1901.01672)
