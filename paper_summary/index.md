@@ -99,6 +99,8 @@ here the comment ends -->
 
 ## Data Analysis & Signal Processing in GW Astronomy
 
+**Search for gravitational lensing signatures in LIGO-Virgo binary black hole events**. O.A. Hannuksela, K. Haris, K.K.Y. Ng, S. Kumar, A.K. Mehta, D. Keitel, T.G.F. Li, P. Ajith [Chinese University of Hong Kong, Tata Institute of Fundamental Research, MIT, Max-Planck-Institut für Gravitationsphysi, University of Portsmouth, Canadian Institute for Advanced Research] (2019) [arXiv:1901.02674](https://arxiv.org/abs/1901.02674)
+
 **Matched-filter study and energy budget suggest no detectable gravitational-wave ‘extended emission’ from GW170817**. Miquel Oliver, David Keitel, Andrew L. Miller, Hector Estelles, Alicia M. Sintes [etc.][arXiv:1812.06724](https://arxiv.org/abs/1812.06724)
 
 **The GstLAL template bank for spinning compact binary mergers in the second observation run of Advanced LIGO and Virgo**. Debnandini Mukherjee, etc. [etc.] (2018) [arXiv:1812.05121](https://arxiv.org/abs/1812.05121)
@@ -138,6 +140,8 @@ https://orca.cf.ac.uk/118182/1/2019MuirAWMPhil.pdf
 ## GW Astronomy with Machine Learning
 
 ### GW related
+
+**TOROS Optical follow-up of the Advanced LIGO-VIRGO O2 second observational campaign**. Rodolfo Artola, Martin Beroiz, etc. [...] (2019) [arXiv:1901.02960](https://arxiv.org/abs/1901.02960)
 
 **Gravitational Wave Denoising of Binary Black Hole Mergers with Deep Learning**. Wei Wei, E. A. Huerta [Urbana] (2019) [arXiv:1901.00869](https://arxiv.org/abs/1901.00869)
 

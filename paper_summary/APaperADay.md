@@ -23,6 +23,8 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
+**MAD-GAN: Multivariate Anomaly Detection for Time Series Data with Generative Adversarial Networks**. D Li, D Chen, L Shi, B Jin, J Goh, S Ng [National University of Singapore & UC Berkeley & ST Electronics (Info Security) Pte Ltd] (2019) [arXiv:1901.04997](https://arxiv.org/abs/1901.04997)
+
 **On Finding Local Nash Equilibria (and Only Local Nash Equilibria) in Zero-Sum Games**. E V. Mazumdar, M I. Jordan, S. S Sastry [UC Berkeley] (2019) [arXiv:1901.00838](https://arxiv.org/abs/1901.00838)
 
 **Evaluating Generative Adversarial Networks on Explicitly Parameterized Distributions**. S O'Brien, M Groh, A Dubey [MIT] (2018) [arXiv:1812.10782](https://arxiv.org/abs/1812.10782) [Github](https://github.com/shayneobrien/explicit-gan-eval)
@@ -142,6 +144,8 @@ date: 2018-09-28
 
 
 ## :chart_with_downwards_trend: Optimization & Generalization
+
+**Optimization Models for Machine Learning: A Survey**. C Gambella, B Ghaddar, J Naoum-Sawaya [IBM Research Ireland & University of Western Ontario] (2019) [arXiv:1901.05331](https://arxiv.org/abs/1901.05331)
 
 **Eliminating all bad Local Minima from Loss Landscapes without even adding an Extra Unit**. J Sohl-Dickstein, K Kawaguchi [Google & MIT] (2019) [arXiv:1901.03909](https://arxiv.org/abs/1901.03909)
 
