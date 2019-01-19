@@ -195,6 +195,8 @@ http://www.tapir.caltech.edu/~vvarma/
 
 ## Others
 
+**MAD-GAN: Multivariate Anomaly Detection for Time Series Data with Generative Adversarial Networks**. D Li, D Chen, L Shi, B Jin, J Goh, S Ng [National University of Singapore & UC Berkeley & ST Electronics (Info Security) Pte Ltd] (2019) [arXiv:1901.04997](https://arxiv.org/abs/1901.04997)
+
 **Deep Neural Networks for Automatic Classification of Anesthetic-Induced Unconsciousness**. Konstantinos Patlatzoglou, etc. [etc.] (2018) [PDF](./2018Patlatzoglou-DeepNeuralNetworks.pdf)
 
 **Using Convolutional Neural Networks to Classify Audio Signal in Noisy Sound Scenes**. M.V. Gubin [South Ural State University] (2018 GloSIC) [PDF](https://ieeexplore.ieee.org/abstract/document/8570117) [Github](https://github.com/gubinmv/cnn_in_noisy_scenes)

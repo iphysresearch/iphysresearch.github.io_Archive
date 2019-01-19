@@ -145,8 +145,6 @@ date: 2018-09-28
 
 ## :chart_with_downwards_trend: Optimization & Generalization
 
-**Optimization Models for Machine Learning: A Survey**. C Gambella, B Ghaddar, J Naoum-Sawaya [IBM Research Ireland & University of Western Ontario] (2019) [arXiv:1901.05331](https://arxiv.org/abs/1901.05331)
-
 **Eliminating all bad Local Minima from Loss Landscapes without even adding an Extra Unit**. J Sohl-Dickstein, K Kawaguchi [Google & MIT] (2019) [arXiv:1901.03909](https://arxiv.org/abs/1901.03909)
 
 **The Benefits of Over-parameterization at Initialization in Deep ReLU Networks**. D Arpit, Y Bengio [Montreal Institute for Learning Algorithms] (2019) [arXiv:1901.03611](https://arxiv.org/abs/1901.03611)
@@ -324,7 +322,11 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 
 
 
-## :books: Review
+## :books: Review & Lecture Notes
+
+**Artificial Neural Networks**. B. Mehlig [University of Gothenburg, Sweden] (2019) [arXiv:1901.05639](https://arxiv.org/abs/1901.05639) [Reddit](https://www.reddit.com/r/MachineLearning/comments/ah9afa/190105639_artificial_neural_networks/)
+
+**Optimization Models for Machine Learning: A Survey**. C Gambella, B Ghaddar, J Naoum-Sawaya [IBM Research Ireland & University of Western Ontario] (2019) [arXiv:1901.05331](https://arxiv.org/abs/1901.05331)
 
 **Deep Learning for Anomaly Detection: A Survey**. R Chalapathy, S Chawla [University of Sydney & Qatar Computing Research Institute (QCRI)] (2019) [arXiv:1901.03407](https://arxiv.org/abs/1901.03407)
 
