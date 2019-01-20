@@ -141,6 +141,8 @@ https://orca.cf.ac.uk/118182/1/2019MuirAWMPhil.pdf
 
 ### GW related
 
+**Sensitivity study using machine learning algorithms on simulated r-mode gravitational wave signals from newborn neutron stars**. Antonis Mytidis, Athanasios Aris Panagopoulos, Orestis P. Panagopoulos, Andrew Miller, Bernard Whiting  [...] (2019) [10.1103/PhysRevD.99.024024](https://doi.org/10.1103/PhysRevD.99.024024) [arXiv:1508.02064v2](https://arxiv.org/abs/1508.02064)
+
 **TOROS Optical follow-up of the Advanced LIGO-VIRGO O2 second observational campaign**. Rodolfo Artola, Martin Beroiz, etc. [...] (2019) [arXiv:1901.02960](https://arxiv.org/abs/1901.02960)
 
 **Gravitational Wave Denoising of Binary Black Hole Mergers with Deep Learning**. Wei Wei, E. A. Huerta [Urbana] (2019) [arXiv:1901.00869](https://arxiv.org/abs/1901.00869)
