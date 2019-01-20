@@ -97,6 +97,8 @@ here the comment ends -->
 
 [The O2 Catalogue—It goes up to 11](https://cplberry.com/2018/12/07/o2-catalogue/) | An awesome review on O2 Catalogue posted by [CHRISTOPHER BERRY](https://cplberry.com/)
 
+[Gravitational Waves from Gravitational Collapse](https://link.springer.com/article/10.12942/lrr-2011-1)
+
 ## Data Analysis & Signal Processing in GW Astronomy
 
 **Search for gravitational lensing signatures in LIGO-Virgo binary black hole events**. O.A. Hannuksela, K. Haris, K.K.Y. Ng, S. Kumar, A.K. Mehta, D. Keitel, T.G.F. Li, P. Ajith [Chinese University of Hong Kong, Tata Institute of Fundamental Research, MIT, Max-Planck-Institut für Gravitationsphysi, University of Portsmouth, Canadian Institute for Advanced Research] (2019) [arXiv:1901.02674](https://arxiv.org/abs/1901.02674)

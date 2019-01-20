@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+ 
+</head>
+ 
+<body>
+ 
+<DIV id="CountMsg" class="HotDate">
+<span id="td">00天</span>
+<span id="th">00时</span>
+<span id="tm">00分</span>
+<span id="ts">00秒</span>
+</DIV>
+<script type="text/javascript">
+function getRTime(){
+var EndTime= new Date('2017/10/23 10:00:00'); //截止时间
+var NowTime = new Date();
+var t =EndTime.getTime() - NowTime.getTime();
+ 
+var d=Math.floor(t/1000/60/60/24);
+var h=Math.floor(t/1000/60/60%24);
+var m=Math.floor(t/1000/60%60);
+var s=Math.floor(t/1000%60);
+ 
+document.getElementById("td").innerHTML = d + "天";
+document.getElementById("th").innerHTML = h + "时";
+document.getElementById("tm").innerHTML = m + "分";
+document.getElementById("ts").innerHTML = s + "秒";
+}
+setInterval(getRTime,1000);
+</script>
+</body>
+</html>
+<!-- https://blog.csdn.net/liweizhong193516/article/details/74685902 -->
