@@ -77,6 +77,8 @@ date: 2018-09-28
 
 **The relativistic discriminator: a key element missing from standard GAN**. Alexia Jolicoeur-Martineau [Lady Davis Institute Montreal, Canada] (2018) [arXiv:1807.00734](https://arxiv.org/abs/1807.00734)
 
+**Exploring Disentangled Feature Representation Beyond Face Identification**. Yu Liu, Fangyin Wei, Jing Shao, Lu Sheng, Junjie Yan, Xiaogang Wang [The Chinese University of Hong Kong, SenseTime Group Limited, Peking University] (2018) [arXiv:1804.03487](https://arxiv.org/abs/1804.03487)
+
 **Do GANs learn the distribution? Some Theory and Empirics**. Sanjeev Arora, Andrej Risteski, Yi Zhang [Princeton University & MIT] (ICLR 2018) [OpenReview.net](https://openreview.net/forum?id=BJehNfW0-)
 
 **Do GANs actually learn the distribution? An empirical study**. Sanjeev Arora, Yi Zhang [] (2017) [arXiv:1706.08224](https://arxiv.org/abs/1706.08224) [Reddit](https://www.reddit.com/r/MachineLearning/comments/6jxes2/r_170608224_do_gans_actually_learn_the/) [Blog](http://www.offconvex.org/2017/07/06/GANs3/)
@@ -100,8 +102,6 @@ date: 2018-09-28
 **Defensive Dropout for Hardening Deep Neural Networks under Adversarial Attacks**. S Wang, X Wang, P Zhao, W Wen, D Kaeli, P Chin, X Lin [Northeastern University & Boston university & Florida International University] (2018) [arXiv:1809.05165](https://arxiv.org/abs/1809.05165)
 
 **Are adversarial examples inevitable?**. A Shafahi, W. R Huang, C Studer, S Feizi, T Goldstein (2018) [arXiv:1809.02104](https://arxiv.org/abs/1809.02104)
-
-**Exploring Disentangled Feature Representation Beyond Face Identification**. Yu Liu, Fangyin Wei, Jing Shao, Lu Sheng, Junjie Yan, Xiaogang Wang [The Chinese University of Hong Kong, SenseTime Group Limited, Peking University] (2018) arXiv:1804.03487
 
 **Obfuscated Gradients Give a False Sense of Security: Circumventing Defenses to Adversarial Examples**. Anish Athalye, Nicholas Carlini, David Wagner [MIT & Berkeley] (2018) [arXiv:1802.00420](https://arxiv.org/abs/1802.00420) [Github](https://github.com/anishathalye/obfuscated-gradients)
 
