@@ -142,7 +142,7 @@ $ yum install gcc-c++
 
 ## 5. cuDNN-9.2
 
-安装 [CUDA Dependencies](http://mxnet.incubator.apache.org/install/ubuntu_setup.html#cuda-dependencies) ： [cuDNN 7.1.4](https://developer.nvidia.com/cudnn) 。这也可从我的[坚果云](https://www.jianguoyun.com/p/DTtWJJcQwsniBRjM030)下载 (访问密码：A4eYCv)：
+安装 [CUDA Dependencies](http://mxnet.incubator.apache.org/install/ubuntu_setup.html#cuda-dependencies) ： [cuDNN 7.1.4](https://developer.nvidia.com/cudnn) 。这也可从我的[百度云](https://pan.baidu.com/s/1U8pGv_o62iS1JFyXjK04Tg)下载：
 
 ```shell
 $ tar xvf cudnn-9.2-linux-x64-v7.3.1.20.tar
@@ -152,7 +152,7 @@ $ sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 $ sudo ldconfig
 ```
 
-（[ref](http://mxnet.incubator.apache.org/install/ubuntu_setup.html#cuda-dependencies)）
+（From: [ref](http://mxnet.incubator.apache.org/install/ubuntu_setup.html#cuda-dependencies)）
 
 
 

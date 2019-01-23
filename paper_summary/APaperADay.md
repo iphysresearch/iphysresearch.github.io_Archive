@@ -324,6 +324,8 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 
 ## :books: Review & Lecture Notes
 
+**A Survey of the Recent Architectures of Deep Convolutional Neural Networks**. A Khan, A Sohail, U Zahoora, A S Qureshi [PIEAS] (2019) [arXiv:1901.06032](https://arxiv.org/abs/1901.06032)
+
 **Artificial Neural Networks**. B. Mehlig [University of Gothenburg, Sweden] (2019) [arXiv:1901.05639](https://arxiv.org/abs/1901.05639) [Reddit](https://www.reddit.com/r/MachineLearning/comments/ah9afa/190105639_artificial_neural_networks/)
 
 **Optimization Models for Machine Learning: A Survey**. C Gambella, B Ghaddar, J Naoum-Sawaya [IBM Research Ireland & University of Western Ontario] (2019) [arXiv:1901.05331](https://arxiv.org/abs/1901.05331)
