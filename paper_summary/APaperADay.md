@@ -83,7 +83,9 @@ date: 2018-09-28
 
 **Generalization and Equilibrium in Generative Adversarial Nets (GANs)**. S Arora, R Ge, Y Liang, T Ma, Y Zhang [Princeton University & Duke University] (2017) [arXiv:1703.00573](https://arxiv.org/abs/1703.00573) [Blog](http://www.offconvex.org/2017/03/30/GANs2/) [Reddit](https://www.reddit.com/r/MachineLearning/comments/637u1l/r_generalization_and_equilibrium_in_generative/)
 
-**Improved Techniques for Training GANs**. Tim Salimans, Ian Goodfellow, Wojciech Zaremba, Vicki Cheung, Alec Radford, Xi Chen [OpenAI] (2016) [arXiv:1606.03498](https://arxiv.org/abs/1606.03498) [Github](https://github.com/openai/improved-gan) [Reddit](https://www.reddit.com/r/MachineLearning/comments/4o0aj9/160603498_improved_techniques_for_training_gans/)
+**InfoGAN: Interpretable Representation Learning by Information Maximizing Generative Adversarial Nets**. X Chen, Y Duan, R Houthooft, J Schulman, I Sutskever, P Abbeel [UC Berkeley & OpenAI] (2016) [arXiv:1606.03657](https://arxiv.org/abs/1606.03657) [Reddit](https://www.reddit.com/r/MachineLearning/comments/4o4shk/160603657_infogan_interpretable_representation/) 
+
+**Improved Techniques for Training GANs**. Tim Salimans, Ian Goodfellow, Wojciech Zaremba, Vicki Cheung, Alec Radford, Xi Chen [OpenAI] (2016) [arXiv:1606.03498](https://arxiv.org/abs/1606.03498) [Github](https://github.com/openai/improved-gan) [Reddit](https://www.reddit.com/r/MachineLearning/comments/4o0aj9/160603498_improved_techniques_for_training_gans/) [Github](https://github.com/openai/InfoGAN) [PyTorch](https://github.com/Natsu6767/InfoGAN-PyTorch)
 
 
 
@@ -98,6 +100,8 @@ date: 2018-09-28
 **Defensive Dropout for Hardening Deep Neural Networks under Adversarial Attacks**. S Wang, X Wang, P Zhao, W Wen, D Kaeli, P Chin, X Lin [Northeastern University & Boston university & Florida International University] (2018) [arXiv:1809.05165](https://arxiv.org/abs/1809.05165)
 
 **Are adversarial examples inevitable?**. A Shafahi, W. R Huang, C Studer, S Feizi, T Goldstein (2018) [arXiv:1809.02104](https://arxiv.org/abs/1809.02104)
+
+**Exploring Disentangled Feature Representation Beyond Face Identification**. Yu Liu, Fangyin Wei, Jing Shao, Lu Sheng, Junjie Yan, Xiaogang Wang [The Chinese University of Hong Kong, SenseTime Group Limited, Peking University] (2018) arXiv:1804.03487
 
 **Obfuscated Gradients Give a False Sense of Security: Circumventing Defenses to Adversarial Examples**. Anish Athalye, Nicholas Carlini, David Wagner [MIT & Berkeley] (2018) [arXiv:1802.00420](https://arxiv.org/abs/1802.00420) [Github](https://github.com/anishathalye/obfuscated-gradients)
 
