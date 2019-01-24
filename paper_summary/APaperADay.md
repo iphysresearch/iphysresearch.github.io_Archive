@@ -245,6 +245,8 @@ date: 2018-09-28
 
 ## :control_knobs: Model Configuration
 
+**Training Neural Networks with Local Error Signals**. A Nøkland, L H Eidnes [Trondheim] (2019) [arXiv:1901.06656](https://arxiv.org/abs/1901.06656) [GitHub](https://github.com/anokland/local-loss)
+
 **Flow Based Self-supervised Pixel Embedding for Image Segmentation**. B Ma, S Liu, Y Zhi, Q Song [CuraCloud] (2019) [arXiv:1901.00520](https://arxiv.org/abs/1901.00520)
 
 **Bag of Tricks for Image Classification with Convolutional Neural Networks**. Tong He, Zhi Zhang, Hang Zhang, Zhongyue Zhang, Junyuan Xie, Mu Li [AWS] (2018) [arXiv:1812.01187](https://arxiv.org/abs/1812.01187) [Reddit](https://www.reddit.com/r/MachineLearning/comments/a4dxna/r_bag_of_tricks_for_image_classification_with/) [Slides[Reddit]](https://www.reddit.com/r/MachineLearning/comments/a5s8pv/r_a_bags_of_tricks_which_may_improve_deep/)
