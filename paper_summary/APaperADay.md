@@ -332,7 +332,9 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 
 ## :books: Review & Lecture Notes
 
-**A Survey of the Recent Architectures of Deep Convolutional Neural Networks**. A Khan, A Sohail, U Zahoora, A S Qureshi [PIEAS] (2019) [arXiv:1901.06032](https://arxiv.org/abs/1901.06032)
+**Fitting A Mixture Distribution to Data: Tutorial**. B Ghojogh, A Ghojogh, M Crowley, F Karray [University of Waterloo & Shiraz University of Technology] (2019) [arXiv:1901.06708](https://arxiv.org/abs/1901.06708)
+
+**A Survey of the Recent Architectures of Deep Convolutional Neural Networks**. A Khan, A Sohail, U Zahoora, A S Qureshi [PIEAS] (2019) [arXiv:1901.06032](https://arxiv.org/abs/1901.06032) [机器之心](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2650756087&idx=4&sn=39c71d8bd5d210badad2de235d7f3cae)
 
 **Artificial Neural Networks**. B. Mehlig [University of Gothenburg, Sweden] (2019) [arXiv:1901.05639](https://arxiv.org/abs/1901.05639) [Reddit](https://www.reddit.com/r/MachineLearning/comments/ah9afa/190105639_artificial_neural_networks/)
 
