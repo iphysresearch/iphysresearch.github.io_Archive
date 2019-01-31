@@ -37,8 +37,7 @@ date: 2019-01-22
 >
 > - （三星） 860 EVO 250G 2.5英寸 固态硬盘（[ref](http://item.jd.com/6287165.html)）
 >
->   <img src="https://i.loli.net/2019/01/24/5c4965e138b95.jpeg" style="zoom:50%" />
->
+> <img src="https://i.loli.net/2019/01/24/5c4965e138b95.jpeg" style="zoom:50%" />
 
 
 
@@ -331,6 +330,7 @@ Tip：[升级pip后出现ImportError: cannot import name main](https://blog.csdn
 
 ```bash
 $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+$ sudo apt-get install build-essential # (optional)
 ```
 
 Add Linuxbrew to your `PATH` and to your bash shell profile script:
@@ -523,6 +523,8 @@ $ pip install redis
 
 ```bash
 $ pip install -U ray
+$ pip install modin
+$ pip install setproctitle # enable monitoring of worker processes
 ```
 
 
@@ -556,6 +558,82 @@ $ pip install pyinstrument
 注意：
 
 **这样的安装步骤，此用户的 mxnet 将只能在 `anaconda3-5.3.1` 环境下才能调用成功！（不限于此项目目录）**
+
+
+
+## GNU-sed (Just for Mac)
+
+mac自带的sed命令，因为其是基于bsd，所以与常用的gnu不一样，所以最好还是能够使用gnu下的sed，那么对于mac，就需要通过命令行来安装gnu-sed，具体安装过程如下所示：（[ref](https://blog.csdn.net/sun_wangdong/article/details/71078083)）（[ref](https://blog.csdn.net/xicikkk/article/details/52559433)）
+
+```shell
+$ brew install coreutils # optional...
+
+# 注意，命令行之行此句时，要在用户权限下，不要在root下
+# 因为在root下，会提示不安全，这里主要用到homebrew工具
+$ brew install gnu-sed --with-default-names  
+$ brew install watch
+
+$ vi ~/.zshrc  # zsh shell
+```
+
+添加下面两句在末尾：
+
+```bash
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+alias sed="gsed"
+```
+
+这样，`sed` 命令就是 GNU 的 gsed 的别名了。
+
+最后重新激活环境配置：
+
+```bash
+$ source ~/.zshrc
+```
+
+
+
+## lm-sensors
+
+[ref](https://zhidao.baidu.com/question/395389865205357005.html)
+
+- RHEL，Centos，Fedora系列安装：
+
+```bash
+$ sudo yum install lm_sensors
+```
+
+​	查看：
+
+```shell
+$ sudo sensors-detect
+$ sensors
+```
+
+- Debian，Ubuntu系列安装：
+
+```shell
+$ sudo apt-get install lm-sensors
+```
+
+​	查看：
+
+```shell
+# 配置 (yes)
+$ sudo sensors-detect
+# 启动
+$ sudo service module-init-tools start
+# 查看
+$ sensors
+```
+
+
+
+
+
+
+
+
 
 
 

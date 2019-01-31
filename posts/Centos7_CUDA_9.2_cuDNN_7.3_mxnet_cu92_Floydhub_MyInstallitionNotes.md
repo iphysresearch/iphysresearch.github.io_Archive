@@ -472,6 +472,14 @@ $ ./runtime_bootstrap
 
 
 
+## 15. Screen
+
+```bash
+$ yum install screen
+```
+
+
+
 （持续更新中。。。。）
 
 
