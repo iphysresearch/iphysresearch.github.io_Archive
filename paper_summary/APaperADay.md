@@ -95,6 +95,8 @@ date: 2018-09-28
 
 ## :facepunch: Adversarial Examples/Attacks
 
+**Adversarial Examples Are a Natural Consequence of Test Error in Noise**. Nic Ford, Justin Gilmer, Nicolas Carlini, Dogus Cubuk [Google AI Residency] (2019) [arXiv:1901.10513](https://arxiv.org/abs/1901.10513) [Reddit](https://www.reddit.com/r/MachineLearning/comments/alppkp/190110513_adversarial_examples_are_a_natural/)
+
 **Towards a Deeper Understanding of Adversarial Losses**. H Dong, Y Yang [Academia Sinica] (2019) [arXiv:1901.08753](https://arxiv.org/abs/1901.08753) [Github](https://github.com/salu133445/dan) [Blog](https://salu133445.github.io/dan/)
 
 **Image Transformation can make Neural Networks more robust against Adversarial Examples**. D D Thang, T Matsui [Institute of Information Security] (2019) [arXiv:1901.03037](https://arxiv.org/abs/1901.03037)
@@ -188,6 +190,8 @@ date: 2018-09-28
 ## :+1: Model Evaluation & Performance & Interpretion & Visualization
 
 **See Better Before Looking Closer: Weakly Supervised Data Augmentation Network for Fine-Grained Visual Classification**. T Hu, H Qi [University of Chinese Academy of Sciences] (2019) [arXiv:1901.09891](https://arxiv.org/abs/1901.09891)
+
+**Deep Learning on Small Datasets without Pre-Training using Cosine Loss**. B Barz, J Denzler [Friedrich Schiller University Jena] (2019) [arXiv:1901.09054](https://arxiv.org/abs/1901.09054) [Github](https://github.com/cvjena/semantic-embeddings/blob/v1.1.0/CosineLoss.md)
 
 **Using Pre-Training Can Improve Model Robustness and Uncertainty**. D Hendrycks, K Lee, M Mazeika (2019) [arXiv:1901.09960](https://arxiv.org/abs/1901.09960)
 

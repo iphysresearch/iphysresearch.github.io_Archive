@@ -199,7 +199,9 @@ http://www.tapir.caltech.edu/~vvarma/
 
 ## Others
 
-**Unsupervised speech representation learning using WaveNet autoencoders**. J Chorowski, R J. Weiss, S Bengio, A v d Oord [University of Wrocław & Google Research & DeepMind] (2019) [arXiv:1901.08810]
+**Unsupervised speech representation learning using WaveNet autoencoders**. J Chorowski, R J. Weiss, S Bengio, A v d Oord [University of Wrocław & Google Research & DeepMind] (2019) [arXiv:1901.08810] 
+
+论文《Unsupervised speech representation learning using WaveNet autoencoders》介绍了通过将自编码神经网络用到语音波形提取语音中有意义的隐藏表征的无监督任务。目的是学习到一种能够捕捉信号中高层次语义内容的表征，同时又能够对有背景噪声或者潜在基频曲线（underlying pitch contour）的信号中的扰乱信息足够稳定。自编码器模型的行为由应用到隐藏表征的约束所决定。在此论文中，作者对比了三种变体：简单降维瓶颈、高斯变分自编码器和离散向量量化VAE。而后，作者对预测语音内容的能力等进行了分析。
 
 **MAD-GAN: Multivariate Anomaly Detection for Time Series Data with Generative Adversarial Networks**. D Li, D Chen, L Shi, B Jin, J Goh, S Ng [National University of Singapore & UC Berkeley & ST Electronics (Info Security) Pte Ltd] (2019) [arXiv:1901.04997](https://arxiv.org/abs/1901.04997)
 
@@ -243,7 +245,7 @@ http://www.tapir.caltech.edu/~vvarma/
 - [Paper Summary] Fu, X., Huang, J., Ding, X., Liao, Y., Paisley. J "**Clearing the skies: A deep network architecture for single-image rain removal**" arXiv:1609.02087 (2017) (**DerainNet**)(a low-pass filter)
 - [Paper Summary] Zhang, H., Sindagi, V., Patel. "**Image de-raining using a conditional generative adversarial network.**" arXiv:1701.05957 (2017) (去雨) (**ID-CGAN**)
 - [Paper Summary] R Qian, R T. Tan, W Yang, J Su, J Liu. "**Attentive Generative Adversarial Network for Raindrop Removal from a Single Image**." arXiv:1711.10098 (2017) **(单图去雨)** ([code](http://t.cn/RDfhFhN)) (attentive GAN)
-- [Paper Summary] Dmitry Ulyanov, Andrea Vedaldi, Victor Lempitsky. "**Deep Image Prior**" arXiv:1711.10925 (2017) ([Website](https://dmitryulyanov.github.io/deep_image_prior))
+- [Paper Summary] Dmitry Ulyanov, Andrea Vedaldi, Victor Lempitsky. "**Deep Image Prior**" arXiv:1711.10925 (2017) ([Website](https://dmitryulyanov.github.io/deep_image_prior)) [机器之心](https://mp.weixin.qq.com/s/MePEEuwH-e5c2hwiEXo2wg)
 - [Paper Summary] Li, R., Cheong, L.F., Tan, "**Single image deraining using scale-aware multi-stage recurrent network.**" arXiv:1712.06830 (2017)
 - [Paper Summary] Jaakko Lehtinen, Jacob Munkberg, Jon Hasselgren, Samuli Laine, Tero Karras, Miika Aittala, Timo Aila "**Noise2Noise: Learning Image Restoration without Clean Data**" arXiv:1803.04189 (2018) (ICML 2018) ([机器之心](https://mp.weixin.qq.com/s/JZaWJzVHXShgTQUuiJlDVA)) ([nvidia](https://news.developer.nvidia.com/ai-can-now-fix-your-grainy-photos-by-only-looking-at-grainy-photos/)) ([GitHub](https://github.com/NVlabs/noise2noise))
 - [Paper Summary] C Chen, Q Chen, J Xu, V Koltun. "**Learning to See in the Dark**" arXiv:1805.01934 (CVPR)(2018)([YouRube](https://www.youtube.com/watch?v=qWKUFK7MWvg&feature=youtu.be))
