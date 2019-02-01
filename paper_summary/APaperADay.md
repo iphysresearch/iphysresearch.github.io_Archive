@@ -257,7 +257,7 @@ date: 2018-09-28
 
 ## :control_knobs: Model Configuration
 
-**Fixup Initialization: Residual Learning Without Normalization**. H Zhang, Y N. Dauphin, T Ma [MIT & Google Brain & Stanford University] (2019) [arXiv:1901.09321](https://arxiv.org/abs/1901.09321) [Reddit](https://www.reddit.com/r/MachineLearning/comments/aler62/d_l2_regularization_and_batch_norm/)
+**Fixup Initialization: Residual Learning Without Normalization**. H Zhang, Y N. Dauphin, T Ma [MIT & Google Brain & Stanford University] (2019) [arXiv:1901.09321](https://arxiv.org/abs/1901.09321) [Reddit](https://www.reddit.com/r/MachineLearning/comments/aler62/d_l2_regularization_and_batch_norm/) [Github](https://github.com/ajbrock/BoilerPlate/blob/master/Models/fixup.py)
 
 **Training Neural Networks with Local Error Signals**. A Nøkland, L H Eidnes [Trondheim] (2019) [arXiv:1901.06656](https://arxiv.org/abs/1901.06656) [GitHub](https://github.com/anokland/local-loss)
 
