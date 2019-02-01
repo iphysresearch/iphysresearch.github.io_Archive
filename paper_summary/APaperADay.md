@@ -157,6 +157,8 @@ date: 2018-09-28
 
 ## :chart_with_downwards_trend: Optimization & Generalization
 
+**Decoupled Greedy Learning of CNNs**. Eugene Belilovsky, Michael Eickenberg, Edouard Oyallon [University of Montreal , University of California Berkeley, CentraleSupelec and INRIA] (2019) [arXiv:1901.08164](https://arxiv.org/abs/1901.08164v1) [Github](https://github.com/eugenium/DGL)
+
 **Eliminating all bad Local Minima from Loss Landscapes without even adding an Extra Unit**. J Sohl-Dickstein, K Kawaguchi [Google & MIT] (2019) [arXiv:1901.03909](https://arxiv.org/abs/1901.03909)
 
 **The Benefits of Over-parameterization at Initialization in Deep ReLU Networks**. D Arpit, Y Bengio [Montreal Institute for Learning Algorithms] (2019) [arXiv:1901.03611](https://arxiv.org/abs/1901.03611)
@@ -391,6 +393,8 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 **Generalization Error in Deep Learning**. D Jakubovitz, R Giryes, M R. D. Rodrigues [Tel Aviv University & University College London] (2018) [arXiv:1808.01174](https://arxiv.org/abs/1808.01174)
 
 **How convolutional neural network see the world - A survey of convolutional neural network visualization methods**. Z Qin, F Yu, C Liu, X Chen [George Mason University & Clarkson University] (2018) [arXiv:1804.11191](https://arxiv.org/abs/1804.11191)
+
+**An Introduction to Image Synthesis with Generative Adversarial Nets**. He Huang, Philip S. Yu, Changhu Wang [University of Illinois at Chicago & ByteDance AI Lab] (2019) [arXiv:1803.04469](https://arxiv.org/abs/1803.04469)
 
 **Visual Interpretability for Deep Learning: a Survey**. Quanshi Zhang, Song-Chun Zhu [] (2018) [arXiv:1802.00614](https://arxiv.org/abs/1802.00614)
 
