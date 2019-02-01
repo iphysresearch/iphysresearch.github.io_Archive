@@ -93,6 +93,8 @@ date: 2018-09-28
 
 ## :facepunch: Adversarial Examples/Attacks
 
+**Towards a Deeper Understanding of Adversarial Losses**. H Dong, Y Yang [Academia Sinica] (2019) [arXiv:1901.08753](https://arxiv.org/abs/1901.08753) [Github](https://github.com/salu133445/dan) [Blog](https://salu133445.github.io/dan/)
+
 **Image Transformation can make Neural Networks more robust against Adversarial Examples**. D D Thang, T Matsui [Institute of Information Security] (2019) [arXiv:1901.03037](https://arxiv.org/abs/1901.03037)
 
 **Multi-Label Adversarial Perturbations**. Q Song, H Jin, X Huang, X Hu [Texas A&M University] (2019) [arXiv:1901.00546](https://arxiv.org/abs/1901.00546)
