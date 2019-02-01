@@ -199,6 +199,8 @@ http://www.tapir.caltech.edu/~vvarma/
 
 ## Others
 
+**Unsupervised speech representation learning using WaveNet autoencoders**. J Chorowski, R J. Weiss, S Bengio, A v d Oord [University of Wrocław & Google Research & DeepMind] (2019) [arXiv:1901.08810]
+
 **MAD-GAN: Multivariate Anomaly Detection for Time Series Data with Generative Adversarial Networks**. D Li, D Chen, L Shi, B Jin, J Goh, S Ng [National University of Singapore & UC Berkeley & ST Electronics (Info Security) Pte Ltd] (2019) [arXiv:1901.04997](https://arxiv.org/abs/1901.04997)
 
 **Deep Neural Networks for Automatic Classification of Anesthetic-Induced Unconsciousness**. Konstantinos Patlatzoglou, etc. [etc.] (2018) [PDF](./2018Patlatzoglou-DeepNeuralNetworks.pdf)

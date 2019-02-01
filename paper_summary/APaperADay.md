@@ -113,6 +113,8 @@ date: 2018-09-28
 
 ## :musical_note: Sound & Signal Processing
 
+**Unsupervised speech representation learning using WaveNet autoencoders**. J Chorowski, R J. Weiss, S Bengio, A v d Oord [University of Wrocław & Google Research & DeepMind] (2019) [arXiv:1901.08810](https://arxiv.org/abs/1901.08810)
+
 **Kymatio: Scattering Transforms in Python**. M Andreux, T Angles, G Exarchakis... [PSL Research University & Universite de Montreal & New York University] (2018) [arXiv:1812.11214](https://arxiv.org/abs/1812.11214) [Home](https://www.kymat.io)
 
 **Deep Neural Networks for Automatic Classification of Anesthetic-Induced Unconsciousness**. Konstantinos Patlatzoglou, etc. [etc.] (2018) [PDF](./2018Patlatzoglou-DeepNeuralNetworks.pdf)
