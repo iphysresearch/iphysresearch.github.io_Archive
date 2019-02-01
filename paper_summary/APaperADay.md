@@ -185,6 +185,8 @@ date: 2018-09-28
 
 ## :+1: Model Evaluation & Performance & Interpretion & Visualization
 
+**Using Pre-Training Can Improve Model Robustness and Uncertainty**. D Hendrycks, K Lee, M Mazeika (2019) [arXiv:1901.09960](https://arxiv.org/abs/1901.09960)
+
 **Understanding Geometry of Encoder-Decoder CNNs**. J C Ye, W K Sung [KAIST] (2019) [arXiv:1901.07647](https://arxiv.org/abs/1901.07647)
 
 **Attribute-Aware Attention Model for Fine-grained Representation Learning**. K Han, J Guo, C Zhang, M Zhu [Peking University] (2019) [arXiv:1901.00392](https://arxiv.org/abs/1901.00392)

@@ -255,7 +255,7 @@ http://www.tapir.caltech.edu/~vvarma/
 
 
 
-
+《Self-Supervised Deep Image Denoising》S Laine, J Lehtinen, T Aila [NVIDIA] (2019) http://t.cn/EtlXNWl 
 
 
 
