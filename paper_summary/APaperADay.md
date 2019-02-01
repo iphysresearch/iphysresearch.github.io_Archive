@@ -23,6 +23,8 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
+**Lie Group Auto-Encoder**. L Gong, Q Cheng [University of Kentucky] (2019) [arXiv:1901.09970](https://arxiv.org/abs/1901.09970)
+
 **MAD-GAN: Multivariate Anomaly Detection for Time Series Data with Generative Adversarial Networks**. D Li, D Chen, L Shi, B Jin, J Goh, S Ng [National University of Singapore & UC Berkeley & ST Electronics (Info Security) Pte Ltd] (2019) [arXiv:1901.04997](https://arxiv.org/abs/1901.04997)
 
 **On Finding Local Nash Equilibria (and Only Local Nash Equilibria) in Zero-Sum Games**. E V. Mazumdar, M I. Jordan, S. S Sastry [UC Berkeley] (2019) [arXiv:1901.00838](https://arxiv.org/abs/1901.00838)
@@ -184,6 +186,8 @@ date: 2018-09-28
 
 
 ## :+1: Model Evaluation & Performance & Interpretion & Visualization
+
+**See Better Before Looking Closer: Weakly Supervised Data Augmentation Network for Fine-Grained Visual Classification**. T Hu, H Qi [University of Chinese Academy of Sciences] (2019) [arXiv:1901.09891](https://arxiv.org/abs/1901.09891)
 
 **Using Pre-Training Can Improve Model Robustness and Uncertainty**. D Hendrycks, K Lee, M Mazeika (2019) [arXiv:1901.09960](https://arxiv.org/abs/1901.09960)
 
