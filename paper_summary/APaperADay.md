@@ -119,6 +119,8 @@ date: 2018-09-28
 
 ## :musical_note: Sound & Signal Processing
 
+**End-to-End Probabilistic Inference for Nonstationary Audio Analysis**. W J. Wilkinson, M R Andersen, J D. Reiss, D Stowell, A Solin [Queen Mary University of London & Aalto University] (2019) [arXiv:1901.11436](https://arxiv.org/abs/1901.11436)
+
 **Unsupervised speech representation learning using WaveNet autoencoders**. J Chorowski, R J. Weiss, S Bengio, A v d Oord [University of Wrocław & Google Research & DeepMind] (2019) [arXiv:1901.08810](https://arxiv.org/abs/1901.08810)
 
 **Kymatio: Scattering Transforms in Python**. M Andreux, T Angles, G Exarchakis... [PSL Research University & Universite de Montreal & New York University] (2018) [arXiv:1812.11214](https://arxiv.org/abs/1812.11214) [Home](https://www.kymat.io)
@@ -228,6 +230,8 @@ date: 2018-09-28
 **Focal Loss for Dense Object Detection**. Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, Piotr Dollár [Facebook AI Research] (2017) [arXiv:1708.02002](https://arxiv.org/abs/1708.02002) [Github](https://github.com/facebookresearch/Detectron)
 
 - Samples & Datasets
+
+  **Semantic Redundancies in Image-Classification Datasets: The 10% You Don't Need**. V Birodkar, H Mobahi, S Bengio [Google Research] (2019) [arXiv:1901.11409](https://arxiv.org/abs/1901.11409)
 
   **Image Score: How to Select Useful Samples**. Simiao Zuo, Jialin Wu [University of Texas at Austin] (2018) [arXiv:1812.00334](https://arxiv.org/abs/1812.00334) [Reddit](https://www.reddit.com/r/MachineLearning/comments/a30cuw/181200334_image_score_how_to_select_useful_samples/)
 
@@ -359,6 +363,8 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 **Optimization Models for Machine Learning: A Survey**. C Gambella, B Ghaddar, J Naoum-Sawaya [IBM Research Ireland & University of Western Ontario] (2019) [arXiv:1901.05331](https://arxiv.org/abs/1901.05331)
 
 **Deep Learning for Anomaly Detection: A Survey**. R Chalapathy, S Chawla [University of Sydney & Qatar Computing Research Institute (QCRI)] (2019) [arXiv:1901.03407](https://arxiv.org/abs/1901.03407)
+
+## **Revisiting Self-Supervised Visual Representation Learning**. Alexander Kolesnikov, Xiaohua Zhai, Lucas Beyer [Google Brain] (2019) [arXiv:1901.09005](https://arxiv.org/abs/1901.09005) [Github](https://github.com/google/revisiting-self-supervised)
 
 **How Generative Adversarial Networks and Their Variants Work: An Overview**. Yongjun Hong, Uiwon Hwang, Jaeyoon Yoo, Sungroh Yoon [Seoul National University] (2017, 2018v9) [arXiv:1711.05914](https://arxiv.org/abs/1711.05914)
 

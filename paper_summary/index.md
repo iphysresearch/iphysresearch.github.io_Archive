@@ -199,6 +199,8 @@ http://www.tapir.caltech.edu/~vvarma/
 
 ## Others
 
+**End-to-End Probabilistic Inference for Nonstationary Audio Analysis**. W J. Wilkinson, M R Andersen, J D. Reiss, D Stowell, A Solin [Queen Mary University of London & Aalto University] (2019) [arXiv:1901.11436]
+
 **Unsupervised speech representation learning using WaveNet autoencoders**. J Chorowski, R J. Weiss, S Bengio, A v d Oord [University of Wrocław & Google Research & DeepMind] (2019) [arXiv:1901.08810] 
 
 论文《Unsupervised speech representation learning using WaveNet autoencoders》介绍了通过将自编码神经网络用到语音波形提取语音中有意义的隐藏表征的无监督任务。目的是学习到一种能够捕捉信号中高层次语义内容的表征，同时又能够对有背景噪声或者潜在基频曲线（underlying pitch contour）的信号中的扰乱信息足够稳定。自编码器模型的行为由应用到隐藏表征的约束所决定。在此论文中，作者对比了三种变体：简单降维瓶颈、高斯变分自编码器和离散向量量化VAE。而后，作者对预测语音内容的能力等进行了分析。
@@ -254,8 +256,7 @@ http://www.tapir.caltech.edu/~vvarma/
 - [Paper Summary] S Guo, Z Yan, K Zhang, W Zuo, L Zhang. "**Toward Convolutional Blind Denoising of Real Photographs**" arXiv:1807.04686 (2018) **(CBDNet)** ([code](http://t.cn/Rgrv2Lr ))
 - [Paper Summary] Xia Li, Jianlong Wu, Zhouchen Lin, Hong Liu1, and Hongbin Zha. "**Recurrent Squeeze-and-Excitation Context Aggregation Net for Single Image Deraining**." arXiv:1807.05698 (2018) **(单图去雨)** ([code](https://github.com/XiaLiPKU/RESCAN))(RESCAN)
 - **I Can See Clearly Now : Image Restoration via De-Raining**. H Porav, T Bruls, P Newman [University of Oxford] (2019) [arXiv:1901.00893](https://arxiv.org/abs/1901.00893) [Home](https://ciumonk.github.io/RobotCar-rainy/)
-
-
+- **Noise2Self: Blind Denoising by Self-Supervision**. J Batson, L Royer [Chan-Zuckerberg Biohub] (2019) [arXiv:1901.11365](https://arxiv.org/abs/1901.11365) [Github](https://github.com/czbiohub/noise2self)
 
 《Self-Supervised Deep Image Denoising》S Laine, J Lehtinen, T Aila [NVIDIA] (2019) http://t.cn/EtlXNWl 
 
