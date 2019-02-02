@@ -267,6 +267,8 @@ date: 2018-09-28
 
 ## :control_knobs: Model Configuration
 
+**Weighted Channel Dropout for Regularization of Deep Convolutional Neural Network**. Saihui Hou, Zilei Wang [USTC] (AAAI 2019) [Paper](http://home.ustc.edu.cn/~saihui/papers/aaai2019_weighted.pdf) [机器之心](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2650756694&idx=3&sn=007bc096a14d2c0d5ace149322953dc6)
+
 **Fixup Initialization: Residual Learning Without Normalization**. H Zhang, Y N. Dauphin, T Ma [MIT & Google Brain & Stanford University] (2019) [arXiv:1901.09321](https://arxiv.org/abs/1901.09321) [Reddit](https://www.reddit.com/r/MachineLearning/comments/aler62/d_l2_regularization_and_batch_norm/) [Github](https://github.com/ajbrock/BoilerPlate/blob/master/Models/fixup.py)
 
 **Training Neural Networks with Local Error Signals**. A Nøkland, L H Eidnes [Trondheim] (2019) [arXiv:1901.06656](https://arxiv.org/abs/1901.06656) [GitHub](https://github.com/anokland/local-loss)
@@ -364,7 +366,7 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 
 **Deep Learning for Anomaly Detection: A Survey**. R Chalapathy, S Chawla [University of Sydney & Qatar Computing Research Institute (QCRI)] (2019) [arXiv:1901.03407](https://arxiv.org/abs/1901.03407)
 
-## **Revisiting Self-Supervised Visual Representation Learning**. Alexander Kolesnikov, Xiaohua Zhai, Lucas Beyer [Google Brain] (2019) [arXiv:1901.09005](https://arxiv.org/abs/1901.09005) [Github](https://github.com/google/revisiting-self-supervised)
+**Revisiting Self-Supervised Visual Representation Learning**. Alexander Kolesnikov, Xiaohua Zhai, Lucas Beyer [Google Brain] (2019) [arXiv:1901.09005](https://arxiv.org/abs/1901.09005) [Github](https://github.com/google/revisiting-self-supervised) [Reddit](https://www.reddit.com/r/MachineLearning/comments/altr5e/r_revisiting_selfsupervised_visual_representation/)
 
 **How Generative Adversarial Networks and Their Variants Work: An Overview**. Yongjun Hong, Uiwon Hwang, Jaeyoon Yoo, Sungroh Yoon [Seoul National University] (2017, 2018v9) [arXiv:1711.05914](https://arxiv.org/abs/1711.05914)
 
