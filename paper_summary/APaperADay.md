@@ -23,6 +23,8 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
+**HyperGAN: A Generative Model for Diverse, Performant Neural Networks**. N Ratzlaff, L Fuxin [Oregon State University] (2019) [arXiv:1901.11058](https://arxiv.org/abs/1901.11058)
+
 **Lie Group Auto-Encoder**. L Gong, Q Cheng [University of Kentucky] (2019) [arXiv:1901.09970](https://arxiv.org/abs/1901.09970)
 
 **MAD-GAN: Multivariate Anomaly Detection for Time Series Data with Generative Adversarial Networks**. D Li, D Chen, L Shi, B Jin, J Goh, S Ng [National University of Singapore & UC Berkeley & ST Electronics (Info Security) Pte Ltd] (2019) [arXiv:1901.04997](https://arxiv.org/abs/1901.04997)
@@ -119,6 +121,8 @@ date: 2018-09-28
 
 ## :musical_note: Sound & Signal Processing
 
+**catch22: CAnonical Time-series CHaracteristics**. C H Lubba, S S Sethi, P Knaute, S R Schultz, B D Fulcher, N S Jones [Imperial College London] (2019) [arXiv:1901.10200](https://arxiv.org/abs/1901.10200) [Github](https://github.com/chlubba/op_importance)
+
 **End-to-End Probabilistic Inference for Nonstationary Audio Analysis**. W J. Wilkinson, M R Andersen, J D. Reiss, D Stowell, A Solin [Queen Mary University of London & Aalto University] (2019) [arXiv:1901.11436](https://arxiv.org/abs/1901.11436)
 
 **Unsupervised speech representation learning using WaveNet autoencoders**. J Chorowski, R J. Weiss, S Bengio, A v d Oord [University of Wrocław & Google Research & DeepMind] (2019) [arXiv:1901.08810](https://arxiv.org/abs/1901.08810)
@@ -193,6 +197,8 @@ date: 2018-09-28
 
 ## :+1: Model Evaluation & Performance & Interpretion & Visualization
 
+**Approximating CNNs with Bag-of-local-Features models works surprisingly well on ImageNet**. W Brendel, M Bethge [Eberhard Karls University of Tübingen] (2019) [OpenReview.net](https://openreview.net/forum?id=SkfMWhAqYQ) [Reddit](https://www.reddit.com/r/MachineLearning/comments/amj0vv/r_approximating_cnns_with_bagoflocalfeatures/?ref=readnext)
+
 **See Better Before Looking Closer: Weakly Supervised Data Augmentation Network for Fine-Grained Visual Classification**. T Hu, H Qi [University of Chinese Academy of Sciences] (2019) [arXiv:1901.09891](https://arxiv.org/abs/1901.09891)
 
 **Deep Learning on Small Datasets without Pre-Training using Cosine Loss**. B Barz, J Denzler [Friedrich Schiller University Jena] (2019) [arXiv:1901.09054](https://arxiv.org/abs/1901.09054) [Github](https://github.com/cvjena/semantic-embeddings/blob/v1.1.0/CosineLoss.md)
@@ -266,6 +272,8 @@ date: 2018-09-28
 
 
 ## :control_knobs: Model Configuration
+
+**TUNet: Incorporating segmentation maps to improve classification**. Y Tian [New York University] (2019)  [arXiv:1901.11379](https://arxiv.org/abs/1901.11379)
 
 **Weighted Channel Dropout for Regularization of Deep Convolutional Neural Network**. Saihui Hou, Zilei Wang [USTC] (AAAI 2019) [Paper](http://home.ustc.edu.cn/~saihui/papers/aaai2019_weighted.pdf) [机器之心](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2650756694&idx=3&sn=007bc096a14d2c0d5ace149322953dc6)
 
@@ -354,7 +362,9 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 
 
 
-## :books: Review & Lecture Notes
+## :books: Review, Survey & Lecture Notes
+
+**Word Embeddings: A Survey**. F Almeida, G Xexéo [Federal University of Rio de Janeiro] (2019) [arXiv:1901.09069](https://arxiv.org/abs/1901.09069)
 
 **Fitting A Mixture Distribution to Data: Tutorial**. B Ghojogh, A Ghojogh, M Crowley, F Karray [University of Waterloo & Shiraz University of Technology] (2019) [arXiv:1901.06708](https://arxiv.org/abs/1901.06708)
 

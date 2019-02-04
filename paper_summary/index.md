@@ -199,6 +199,10 @@ http://www.tapir.caltech.edu/~vvarma/
 
 ## Others
 
+**Active Anomaly Detection via Ensembles: Insights, Algorithms, and Interpretability**. S Das, M R Islam, N K Jayakodi, J R Doppa [Washington State University] (2019) [arXiv:1901.08930](https://arxiv.org/abs/1901.08930)
+
+> 忽然有一个 idea，就是替换 active learner 为 match-filtering 的 pipeline。
+
 **End-to-End Probabilistic Inference for Nonstationary Audio Analysis**. W J. Wilkinson, M R Andersen, J D. Reiss, D Stowell, A Solin [Queen Mary University of London & Aalto University] (2019) [arXiv:1901.11436]
 
 **Unsupervised speech representation learning using WaveNet autoencoders**. J Chorowski, R J. Weiss, S Bengio, A v d Oord [University of Wrocław & Google Research & DeepMind] (2019) [arXiv:1901.08810] 
@@ -291,7 +295,7 @@ http://www.tapir.caltech.edu/~vvarma/
 - Xception: Deep Learning with Depthwise Separable Convolutions. F Chollet (2016) 
 - From: Alfredo Canziani, Adam Paszke, Eugenio Culurciello, 2017.
 - Mahajan et al, “Exploring the Limits of Weakly Supervised Pretraining”, arXiv 2018
-- 
+- **Invertible Residual Networks**. J Behrmann, W Grathwohl, R T. Q. Chen, D Duvenaud, J Jacobsen [University of Bremen & Vector Institute and University of Toronto] (2019) [arXiv:1811.00995](https://arxiv.org/abs/1811.00995) [机器之心](https://mp.weixin.qq.com/s/AyJ_ZtNFTjkWVH3_Kw7wJg) [AI科技评论](https://mp.weixin.qq.com/s/vTAirbw9WZUi4cJg4jwKGg)
 
 【(Colab Notebooks)AlexNet/VGG/GoogleNet/Inception/MobileNet/ShuffleNet/ResNet/DenseNet的Keras参考实现(及速查)】’Material used for Deep Learning related workshops for Machine Learning Tokyo (MLT)' by Machine-Learning-Tokyo GitHub: http://t.cn/ELtfypS Cheat Sheet:http://t.cn/ELtfypo 
 
