@@ -199,6 +199,8 @@ http://www.tapir.caltech.edu/~vvarma/
 
 ## Others
 
+**Neural Networks Predict Fluid Dynamics Solutions from Tiny Datasets**. C White, D Ushizima, C Farhat [Stanford University] (2019) [arXiv:1902.00091](https://arxiv.org/abs/1902.00091) 用神经网络解决流体力学预测问题
+
 **Active Anomaly Detection via Ensembles: Insights, Algorithms, and Interpretability**. S Das, M R Islam, N K Jayakodi, J R Doppa [Washington State University] (2019) [arXiv:1901.08930](https://arxiv.org/abs/1901.08930)
 
 > 忽然有一个 idea，就是替换 active learner 为 match-filtering 的 pipeline。

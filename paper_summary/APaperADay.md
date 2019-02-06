@@ -237,6 +237,8 @@ date: 2018-09-28
 
 - Samples & Datasets
 
+  **Do we train on test data? Purging CIFAR of near-duplicates**. B Barz, J Denzler [Friedrich Schiller University Jena] (2019) [arXiv:1902.00423](https://arxiv.org/abs/1902.00423) [Blog](https://cvjena.github.io/cifair/)
+
   **Semantic Redundancies in Image-Classification Datasets: The 10% You Don't Need**. V Birodkar, H Mobahi, S Bengio [Google Research] (2019) [arXiv:1901.11409](https://arxiv.org/abs/1901.11409)
 
   **Image Score: How to Select Useful Samples**. Simiao Zuo, Jialin Wu [University of Texas at Austin] (2018) [arXiv:1812.00334](https://arxiv.org/abs/1812.00334) [Reddit](https://www.reddit.com/r/MachineLearning/comments/a30cuw/181200334_image_score_how_to_select_useful_samples/)
