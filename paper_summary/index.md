@@ -199,6 +199,8 @@ http://www.tapir.caltech.edu/~vvarma/
 
 ## Others
 
+【基于CRNN的三维重叠音源事件定位和检测】’seld-net - Sound event localization and detection of overlapping sources in three dimensions using convolutional recurrent neural network' by yakku GitHub: http://t.cn/EcI63BR 
+
 《Navigating with grid-like representations in artificial agents | DeepMind》 http://t.cn/R32KqjC ref:《Vector-based navigation using grid-like representations in artificial agents》http://t.cn/R32KqjN  GitHub:http://t.cn/Ec5Lguh
 
 **Neural Networks Predict Fluid Dynamics Solutions from Tiny Datasets**. C White, D Ushizima, C Farhat [Stanford University] (2019) [arXiv:1902.00091](https://arxiv.org/abs/1902.00091) 用神经网络解决流体力学预测问题

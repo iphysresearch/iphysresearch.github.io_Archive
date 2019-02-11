@@ -199,7 +199,9 @@ date: 2018-09-28
 
 ## :+1: Model Evaluation & Performance & Interpretion & Visualization
 
-**Approximating CNNs with Bag-of-local-Features models works surprisingly well on ImageNet**. W Brendel, M Bethge [Eberhard Karls University of Tübingen] (2019) [OpenReview.net](https://openreview.net/forum?id=SkfMWhAqYQ) [Reddit](https://www.reddit.com/r/MachineLearning/comments/amj0vv/r_approximating_cnns_with_bagoflocalfeatures/?ref=readnext)
+**Are All Layers Created Equal?**. C Zhang, S Bengio, Y Singer [Google] (2019) [arXiv:1902.01996](https://arxiv.org/abs/1902.01996) [新智元](https://www.wxnmh.com/thread-4769772.htm)
+
+**Approximating CNNs with Bag-of-local-Features models works surprisingly well on ImageNet**. W Brendel, M Bethge [Eberhard Karls University of Tübingen] (2019) [OpenReview.net](https://openreview.net/forum?id=SkfMWhAqYQ) [Reddit](https://www.reddit.com/r/MachineLearning/comments/amj0vv/r_approximating_cnns_with_bagoflocalfeatures/?ref=readnext) [Blogcomment](https://blog.evjang.com/2019/02/bagnet.html) [Blogcomment](https://medium.com/bethgelab/neural-networks-seem-to-follow-a-puzzlingly-simple-strategy-to-classify-images-f4229317261f)
 
 **See Better Before Looking Closer: Weakly Supervised Data Augmentation Network for Fine-Grained Visual Classification**. T Hu, H Qi [University of Chinese Academy of Sciences] (2019) [arXiv:1901.09891](https://arxiv.org/abs/1901.09891)
 
