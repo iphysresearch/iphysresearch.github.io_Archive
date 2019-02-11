@@ -201,6 +201,8 @@ date: 2018-09-28
 
 ## :+1: Model Evaluation & Performance & Interpretion & Visualization
 
+**Impact of Fully Connected Layers on Performance of Convolutional Neural Networks for Image Classification**. S H S Basha, S R Dubey, V Pulabaigari, S Mukherjee [Indian Institute of Information Technology Sri City] [arXiv:1902.02771](https://arxiv.org/abs/1902.02771) [Github](https://github.com/shabbeersh/Impact-of-FC-layers)
+
 **CHIP: Channel-wise Disentangled Interpretation of Deep Convolutional Neural Networks**. X Cui, D Wang, Z. J Wang [University of British Columbia] (2019) [arXiv:1902.02497](https://arxiv.org/abs/1902.02497)
 
 **Are All Layers Created Equal?**. C Zhang, S Bengio, Y Singer [Google] (2019) [arXiv:1902.01996](https://arxiv.org/abs/1902.01996) [新智元](https://www.wxnmh.com/thread-4769772.htm)
