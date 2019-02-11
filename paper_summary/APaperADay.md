@@ -23,6 +23,8 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
+**Perturbative GAN: GAN with Perturbation Layers**. Y Kishi, T Ikegami, S O'uchi, R Takano, W Nogami, T Kudoh [National Institute of Advanced Industrial Science and Technology, Tsukuba, Japan & The University of Tokyo] (2019) [arXiv:1902.01514](https://arxiv.org/abs/1902.01514)
+
 **HyperGAN: A Generative Model for Diverse, Performant Neural Networks**. N Ratzlaff, L Fuxin [Oregon State University] (2019) [arXiv:1901.11058](https://arxiv.org/abs/1901.11058)
 
 **Lie Group Auto-Encoder**. L Gong, Q Cheng [University of Kentucky] (2019) [arXiv:1901.09970](https://arxiv.org/abs/1901.09970)
