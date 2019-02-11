@@ -23,6 +23,8 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
+**A Layer-Based Sequential Framework for Scene Generation with GANs**. M O Turkoglu, W Thong, L Spreeuwers, B Kicanaoglu [University of Twente & University of Amsterdam] (2019) [arXiv:1902.00671](https://arxiv.org/abs/1902.00671) [Github](https://github.com/0zgur0/Seq_Scene_Gen)
+
 **Perturbative GAN: GAN with Perturbation Layers**. Y Kishi, T Ikegami, S O'uchi, R Takano, W Nogami, T Kudoh [National Institute of Advanced Industrial Science and Technology, Tsukuba, Japan & The University of Tokyo] (2019) [arXiv:1902.01514](https://arxiv.org/abs/1902.01514)
 
 **HyperGAN: A Generative Model for Diverse, Performant Neural Networks**. N Ratzlaff, L Fuxin [Oregon State University] (2019) [arXiv:1901.11058](https://arxiv.org/abs/1901.11058)
@@ -199,6 +201,8 @@ date: 2018-09-28
 
 ## :+1: Model Evaluation & Performance & Interpretion & Visualization
 
+**CHIP: Channel-wise Disentangled Interpretation of Deep Convolutional Neural Networks**. X Cui, D Wang, Z. J Wang [University of British Columbia] (2019) [arXiv:1902.02497](https://arxiv.org/abs/1902.02497)
+
 **Are All Layers Created Equal?**. C Zhang, S Bengio, Y Singer [Google] (2019) [arXiv:1902.01996](https://arxiv.org/abs/1902.01996) [新智元](https://www.wxnmh.com/thread-4769772.htm)
 
 **Approximating CNNs with Bag-of-local-Features models works surprisingly well on ImageNet**. W Brendel, M Bethge [Eberhard Karls University of Tübingen] (2019) [OpenReview.net](https://openreview.net/forum?id=SkfMWhAqYQ) [Reddit](https://www.reddit.com/r/MachineLearning/comments/amj0vv/r_approximating_cnns_with_bagoflocalfeatures/?ref=readnext) [Blogcomment](https://blog.evjang.com/2019/02/bagnet.html) [Blogcomment](https://medium.com/bethgelab/neural-networks-seem-to-follow-a-puzzlingly-simple-strategy-to-classify-images-f4229317261f)
@@ -260,6 +264,8 @@ date: 2018-09-28
   **Revisiting Small Batch Training for Deep Neural Networks**. Dominic Masters, Carlo Luschi. (2018) [arXiv:1804.07612](https://arxiv.org/abs/1804.07612)
 
 - Saliency
+
+  **Understanding Impacts of High-Order Loss Approximations and Features in Deep Learning Interpretation**. S Singla, E Wallace, S Feng, S Feizi [University of Maryland] (2019) [arXiv:1902.00407](https://arxiv.org/abs/1902.00407) [Reddit](https://www.reddit.com/r/MachineLearning/comments/an1g14/r_understanding_impacts_of_highorder_loss/)
 
   **Visualizing Deep Similarity Networks**. A Stylianou, R Souvenir, R Pless [George Washington University & Temple University] (2019) [arXiv:1901.00536](https://arxiv.org/abs/1901.00536) [Github](https://github.com/GWUvision/Similarity-Visualization)
 
