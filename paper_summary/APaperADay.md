@@ -33,7 +33,7 @@ date: 2018-09-28
 
 **Lie Group Auto-Encoder**. L Gong, Q Cheng [University of Kentucky] (2019) [arXiv:1901.09970](https://arxiv.org/abs/1901.09970)
 
-**Maximum Entropy Generators for Energy-Based Models**. Rithesh Kumar, Anirudh Goyal, Aaron Courville, Yoshua Bengio [Mila & CIFAR & IVADO] (2019) [arXiv:1901.08508](https://arxiv.org/abs/1901.08508) [Reddit](https://www.reddit.com/r/MachineLearning/comments/ak1if1/r_maximum_entropy_generators_for_energybased/)
+**Maximum Entropy Generators for Energy-Based Models**. Rithesh Kumar, Anirudh Goyal, Aaron Courville, Yoshua Bengio [Mila & CIFAR & IVADO] (2019) [arXiv:1901.08508](https://arxiv.org/abs/1901.08508) [Reddit](https://www.reddit.com/r/MachineLearning/comments/ak1if1/r_maximum_entropy_generators_for_energybased/) [PaperWeekly](https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&mid=2247494846&idx=1&sn=0b1bdd770672f038d79b76cc31c1cbb4)
 
 **MAD-GAN: Multivariate Anomaly Detection for Time Series Data with Generative Adversarial Networks**. D Li, D Chen, L Shi, B Jin, J Goh, S Ng [National University of Singapore & UC Berkeley & ST Electronics (Info Security) Pte Ltd] (2019) [arXiv:1901.04997](https://arxiv.org/abs/1901.04997)
 
@@ -211,7 +211,7 @@ date: 2018-09-28
 
 **Are All Layers Created Equal?**. C Zhang, S Bengio, Y Singer [Google] (2019) [arXiv:1902.01996](https://arxiv.org/abs/1902.01996) [新智元](https://www.wxnmh.com/thread-4769772.htm)
 
-**Approximating CNNs with Bag-of-local-Features models works surprisingly well on ImageNet**. W Brendel, M Bethge [Eberhard Karls University of Tübingen] (2019) [OpenReview.net](https://openreview.net/forum?id=SkfMWhAqYQ) [Reddit](https://www.reddit.com/r/MachineLearning/comments/amj0vv/r_approximating_cnns_with_bagoflocalfeatures/?ref=readnext) [Blogcomment](https://blog.evjang.com/2019/02/bagnet.html) [Blogcomment](https://medium.com/bethgelab/neural-networks-seem-to-follow-a-puzzlingly-simple-strategy-to-classify-images-f4229317261f)
+**Approximating CNNs with Bag-of-local-Features models works surprisingly well on ImageNet**. W Brendel, M Bethge [Eberhard Karls University of Tübingen] (2019) [OpenReview.net](https://openreview.net/forum?id=SkfMWhAqYQ) [Reddit](https://www.reddit.com/r/MachineLearning/comments/amj0vv/r_approximating_cnns_with_bagoflocalfeatures/?ref=readnext) [Blogcomment](https://blog.evjang.com/2019/02/bagnet.html) [Blogcomment](https://medium.com/bethgelab/neural-networks-seem-to-follow-a-puzzlingly-simple-strategy-to-classify-images-f4229317261f) [过往Net，皆为调参？一篇BagNet论文引发学界震动](https://mp.weixin.qq.com/s/VmEc-OK60c6sZHYx4JzltA)
 
 **See Better Before Looking Closer: Weakly Supervised Data Augmentation Network for Fine-Grained Visual Classification**. T Hu, H Qi [University of Chinese Academy of Sciences] (2019) [arXiv:1901.09891](https://arxiv.org/abs/1901.09891)
 
@@ -365,6 +365,8 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 
 
 ## :atom_symbol: Physics Related
+
+**Deep learning approach based on dimensionality reduction for designing electromagnetic nanostructures**. Yashar Kiarashinejad, Sajjad Abdollahramezani, Ali Adibi [Georgia Institute of Technology] (2019) [arXiv:1902.03865](https://arxiv.org/abs/1902.03865)
 
 **The Calabi-Yau Landscape: from Geometry, to Physics, to Machine-Learning**. Y He (2018) [arXiv:1812.02893](https://arxiv.org/abs/1812.02893)
 
