@@ -23,6 +23,8 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
+**AVP: Physics-informed Data Generation for Small-data Learning**. J Chen, Y Xie, K Wang, C Zhang, M A. Vannan, B Wang, Z Qian [Georgia Institute of Technology] (2019) [arXiv:1902.01522](https://arxiv.org/abs/1902.01522)
+
 **A Layer-Based Sequential Framework for Scene Generation with GANs**. M O Turkoglu, W Thong, L Spreeuwers, B Kicanaoglu [University of Twente & University of Amsterdam] (2019) [arXiv:1902.00671](https://arxiv.org/abs/1902.00671) [Github](https://github.com/0zgur0/Seq_Scene_Gen)
 
 **Perturbative GAN: GAN with Perturbation Layers**. Y Kishi, T Ikegami, S O'uchi, R Takano, W Nogami, T Kudoh [National Institute of Advanced Industrial Science and Technology, Tsukuba, Japan & The University of Tokyo] (2019) [arXiv:1902.01514](https://arxiv.org/abs/1902.01514)
@@ -30,6 +32,8 @@ date: 2018-09-28
 **HyperGAN: A Generative Model for Diverse, Performant Neural Networks**. N Ratzlaff, L Fuxin [Oregon State University] (2019) [arXiv:1901.11058](https://arxiv.org/abs/1901.11058)
 
 **Lie Group Auto-Encoder**. L Gong, Q Cheng [University of Kentucky] (2019) [arXiv:1901.09970](https://arxiv.org/abs/1901.09970)
+
+**Maximum Entropy Generators for Energy-Based Models**. Rithesh Kumar, Anirudh Goyal, Aaron Courville, Yoshua Bengio [Mila & CIFAR & IVADO] (2019) [arXiv:1901.08508](https://arxiv.org/abs/1901.08508) [Reddit](https://www.reddit.com/r/MachineLearning/comments/ak1if1/r_maximum_entropy_generators_for_energybased/)
 
 **MAD-GAN: Multivariate Anomaly Detection for Time Series Data with Generative Adversarial Networks**. D Li, D Chen, L Shi, B Jin, J Goh, S Ng [National University of Singapore & UC Berkeley & ST Electronics (Info Security) Pte Ltd] (2019) [arXiv:1901.04997](https://arxiv.org/abs/1901.04997)
 

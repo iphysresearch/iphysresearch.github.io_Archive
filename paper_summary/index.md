@@ -143,6 +143,8 @@ https://orca.cf.ac.uk/118182/1/2019MuirAWMPhil.pdf
 
 ### GW related
 
+**Deep Learning for Multi-Messenger Astrophysics: A Gateway for Discovery in the Big Data Era**. ... <u>George D</u>, <u>Huerta E A</u>...etc. [USA] [arXiv:1902.00522](https://arxiv.org/abs/1902.00522)
+
 **Sensitivity study using machine learning algorithms on simulated r-mode gravitational wave signals from newborn neutron stars**. Antonis Mytidis, Athanasios Aris Panagopoulos, Orestis P. Panagopoulos, Andrew Miller, Bernard Whiting  [...] (2019) [10.1103/PhysRevD.99.024024](https://doi.org/10.1103/PhysRevD.99.024024) [arXiv:1508.02064v2](https://arxiv.org/abs/1508.02064)
 
 **TOROS Optical follow-up of the Advanced LIGO-VIRGO O2 second observational campaign**. Rodolfo Artola, Martin Beroiz, etc. [...] (2019) [arXiv:1901.02960](https://arxiv.org/abs/1901.02960)
@@ -199,6 +201,8 @@ http://www.tapir.caltech.edu/~vvarma/
 
 ## Others
 
+**AVP: Physics-informed Data Generation for Small-data Learning**. J Chen, Y Xie, K Wang, C Zhang, M A. Vannan, B Wang, Z Qian [Georgia Institute of Technology] (2019) [arXiv:1902.01522](https://arxiv.org/abs/1902.01522)
+
 【基于CRNN的三维重叠音源事件定位和检测】’seld-net - Sound event localization and detection of overlapping sources in three dimensions using convolutional recurrent neural network' by yakku GitHub: http://t.cn/EcI63BR 
 
 《Navigating with grid-like representations in artificial agents | DeepMind》 http://t.cn/R32KqjC ref:《Vector-based navigation using grid-like representations in artificial agents》http://t.cn/R32KqjN  GitHub:http://t.cn/Ec5Lguh
@@ -226,6 +230,8 @@ http://www.tapir.caltech.edu/~vvarma/
 【基于深度网络的心脏病专家级动态心电图心律失常检测和分类】《Cardiologist-level arrhythmia detection and classification in ambulatory electrocardiograms using a deep neural network | Nature Medicine》[Stanford University] (2019) http://t.cn/EGEZz3N 
 
 **Deep Speech Enhancement for Reverberated and Noisy Signals using Wide Residual Networks**. Dayana Ribas, Jorge Llombart, Antonio Miguel, Luis Vicente [University of Zaragoza] (2019) [arXiv:1901.00660](https://arxiv.org/abs/1901.00660)
+
+**Seeing in the dark with recurrent convolutional neural networks**. T S. Hartmann [Harvard Medical School] (2018) [arXiv:1811.08537](https://arxiv.org/abs/1811.08537)
 
 **CROSSBOW: Scaling Deep Learning with Small Batch Sizes on Multi-GPU Servers**. A Koliousis, P Watcharapichat, M Weidlich, L Mai, P Costa, P Pietzuch [Imperial College London & Microsoft Research & Humboldt-Universitat zu Berlin] (2019) [arXiv:1901.02244](https://arxiv.org/abs/1901.02244) [Github](https://github.com/lsds/Crossbow)
 
