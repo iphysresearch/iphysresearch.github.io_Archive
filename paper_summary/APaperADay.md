@@ -271,6 +271,8 @@ date: 2018-09-28
 
 - Saliency
 
+  **Why are Saliency Maps Noisy? Cause of and Solution to Noisy Saliency Maps**. B Kim, J Seo, S Jeon, J Koo, J Choe, T Jeon [Korea Advanced Institute of Science and Technology & Daejeon] (2019) [arXiv:1902.04893](https://arxiv.org/abs/1902.04893) [Github](https://github.com/1202kbs/Rectified-Gradient)
+
   **Understanding Impacts of High-Order Loss Approximations and Features in Deep Learning Interpretation**. S Singla, E Wallace, S Feng, S Feizi [University of Maryland] (2019) [arXiv:1902.00407](https://arxiv.org/abs/1902.00407) [Reddit](https://www.reddit.com/r/MachineLearning/comments/an1g14/r_understanding_impacts_of_highorder_loss/)
 
   **Visualizing Deep Similarity Networks**. A Stylianou, R Souvenir, R Pless [George Washington University & Temple University] (2019) [arXiv:1901.00536](https://arxiv.org/abs/1901.00536) [Github](https://github.com/GWUvision/Similarity-Visualization)
