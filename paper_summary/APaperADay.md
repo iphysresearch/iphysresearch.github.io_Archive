@@ -105,6 +105,8 @@ date: 2018-09-28
 
 ## :facepunch: Adversarial Examples/Attacks
 
+**On Evaluating Adversarial Robustness**. N Carlini, A Athalye, N Papernot, W Brendel, J Rauber, D Tsipras, I Goodfellow, A Madry [Google Brain & MIT & University of Tübingen] (2019) [arXiv:1902.06705](https://arxiv.org/abs/1902.06705) [Reddit](https://www.reddit.com/r/MachineLearning/comments/as2yhj/r_on_evaluating_adversarial_robustness/)
+
 **Adversarial Examples Are a Natural Consequence of Test Error in Noise**. Nic Ford, Justin Gilmer, Nicolas Carlini, Dogus Cubuk [Google AI Residency] (2019) [arXiv:1901.10513](https://arxiv.org/abs/1901.10513) [Reddit](https://www.reddit.com/r/MachineLearning/comments/alppkp/190110513_adversarial_examples_are_a_natural/)
 
 **Towards a Deeper Understanding of Adversarial Losses**. H Dong, Y Yang [Academia Sinica] (2019) [arXiv:1901.08753](https://arxiv.org/abs/1901.08753) [Github](https://github.com/salu133445/dan) [Blog](https://salu133445.github.io/dan/)
@@ -204,6 +206,8 @@ date: 2018-09-28
 
 
 ## :+1: Model Evaluation & Performance & Interpretion & Visualization
+
+**Wide Neural Networks of Any Depth Evolve as Linear Models Under Gradient Descent**. J Lee, L Xiao, S S. Schoenholz, Y Bahri, J Sohl-Dickstein, J Pennington [Google Brain] (2019) [arXiv:1902.06720](https://arxiv.org/abs/1902.06720) [Reddit](https://www.reddit.com/r/MachineLearning/comments/asifrt/190206720_wide_neural_networks_of_any_depth/)
 
 **Impact of Fully Connected Layers on Performance of Convolutional Neural Networks for Image Classification**. S H S Basha, S R Dubey, V Pulabaigari, S Mukherjee [Indian Institute of Information Technology Sri City] [arXiv:1902.02771](https://arxiv.org/abs/1902.02771) [Github](https://github.com/shabbeersh/Impact-of-FC-layers)
 
@@ -386,7 +390,7 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 
 ## :books: Review, Survey & Lecture Notes
 
-**Deep Learning for Image Super-resolution: A Survey**. Z Wang, J Chen, S C.H. Hoi [Singapore Management University & South China University of Technology] (2019) [arXiv:1902.06068](https://arxiv.org/abs/1902.06068)
+**Deep Learning for Image Super-resolution: A Survey**. Z Wang, J Chen, S C.H. Hoi [Singapore Management University & South China University of Technology] (2019) [arXiv:1902.06068](https://arxiv.org/abs/1902.06068) [专知](https://mp.weixin.qq.com/s/E1RxsUjQN2ufEP4k3OZyCA)
 
 **Word Embeddings: A Survey**. F Almeida, G Xexéo [Federal University of Rio de Janeiro] (2019) [arXiv:1901.09069](https://arxiv.org/abs/1901.09069)
 
