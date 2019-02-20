@@ -143,6 +143,8 @@ https://orca.cf.ac.uk/118182/1/2019MuirAWMPhil.pdf
 
 ### GW related
 
+**Deep learning detection of transients**. [Iftach Sadeh] (2019) [arXiv:1902.03620](https://arxiv.org/abs/1902.03620)
+
 **Deep Learning for Multi-Messenger Astrophysics: A Gateway for Discovery in the Big Data Era**. ... <u>George D</u>, <u>Huerta E A</u>...etc. [USA] [arXiv:1902.00522](https://arxiv.org/abs/1902.00522)
 
 **Sensitivity study using machine learning algorithms on simulated r-mode gravitational wave signals from newborn neutron stars**. Antonis Mytidis, Athanasios Aris Panagopoulos, Orestis P. Panagopoulos, Andrew Miller, Bernard Whiting  [...] (2019) [10.1103/PhysRevD.99.024024](https://doi.org/10.1103/PhysRevD.99.024024) [arXiv:1508.02064v2](https://arxiv.org/abs/1508.02064)
@@ -181,6 +183,8 @@ Biswas R, Blackburn L, Cao J, et al. "**Application of machine learning algorith
 
 ### GW not related
 
+**Weak lensing cosmology with convolutional neural networks on noisy data**. [Dezső Ribli, Bálint Ármin Pataki, José Manuel Zorrilla Matilla, Daniel Hsu, Zoltán Haiman, István Csabai] (2019) [arXiv:1902.03663](https://arxiv.org/abs/1902.03663)
+
 **Unsupervised learning and data clustering for the construction of Galaxy Catalogs in the Dark Energy Survey**. Asad Khan, E. A. Huerta, Sibo Wang, Robert Gruendl [University of Illinois at Urbana-Champaign, Urbana] (2018) [arXiv:1812.02183](https://arxiv.org/abs/1812.02183)
 
 **Exploring galaxy evolution with generative models**. Kevin Schawinski, M. Dennis Turp, Ce Zhang [ETH Zurich] (2018) [arXiv:1812.01114](https://arxiv.org/abs/1812.01114)
@@ -200,6 +204,10 @@ http://www.tapir.caltech.edu/~vvarma/
 # ❣️ Awesome Papers Related to My Interests
 
 ## Others
+
+Heartbeat Anomaly Detection using Adversarial Oversampling. J L. P. Lima, D Macêdo, C Zanchettin [Universidade Federal de Pernambuco] (2019) [arXiv:1901.09972](https://arxiv.org/abs/1901.09972)
+
+[RespNet: A deep learning model for extraction of respiration from photoplethysmogram](https://arxiv.org/abs/1902.04256). V Ravichandran, B Murugesan, V Balakarthikeyan, S M Shankaranarayana, K Ram, P S.P, J Joseph, M Sivaprakasam [Indian Institute of Technology Madras (IITM)] (2019) https://arxiv.org/abs/1902.04256
 
 **AVP: Physics-informed Data Generation for Small-data Learning**. J Chen, Y Xie, K Wang, C Zhang, M A. Vannan, B Wang, Z Qian [Georgia Institute of Technology] (2019) [arXiv:1902.01522](https://arxiv.org/abs/1902.01522)
 

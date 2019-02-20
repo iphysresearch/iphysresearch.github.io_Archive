@@ -386,6 +386,8 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 
 ## :books: Review, Survey & Lecture Notes
 
+**Deep Learning for Image Super-resolution: A Survey**. Z Wang, J Chen, S C.H. Hoi [Singapore Management University & South China University of Technology] (2019) [arXiv:1902.06068](https://arxiv.org/abs/1902.06068)
+
 **Word Embeddings: A Survey**. F Almeida, G Xexéo [Federal University of Rio de Janeiro] (2019) [arXiv:1901.09069](https://arxiv.org/abs/1901.09069)
 
 **Fitting A Mixture Distribution to Data: Tutorial**. B Ghojogh, A Ghojogh, M Crowley, F Karray [University of Waterloo & Shiraz University of Technology] (2019) [arXiv:1901.06708](https://arxiv.org/abs/1901.06708)
