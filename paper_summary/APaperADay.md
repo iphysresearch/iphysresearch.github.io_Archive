@@ -33,7 +33,7 @@ date: 2018-09-28
 
 **Lie Group Auto-Encoder**. L Gong, Q Cheng [University of Kentucky] (2019) [arXiv:1901.09970](https://arxiv.org/abs/1901.09970)
 
-**Maximum Entropy Generators for Energy-Based Models**. Rithesh Kumar, Anirudh Goyal, Aaron Courville, Yoshua Bengio [Mila & CIFAR & IVADO] (2019) [arXiv:1901.08508](https://arxiv.org/abs/1901.08508) [Reddit](https://www.reddit.com/r/MachineLearning/comments/ak1if1/r_maximum_entropy_generators_for_energybased/) [PaperWeekly](https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&mid=2247494846&idx=1&sn=0b1bdd770672f038d79b76cc31c1cbb4)
+**Maximum Entropy Generators for Energy-Based Models**. Rithesh Kumar, Anirudh Goyal, Aaron Courville, Yoshua Bengio [Mila & CIFAR & IVADO] (2019) [arXiv:1901.08508](https://arxiv.org/abs/1901.08508) [Reddit](https://www.reddit.com/r/MachineLearning/comments/ak1if1/r_maximum_entropy_generators_for_energybased/) [PaperWeekly](https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&mid=2247494846&idx=1&sn=0b1bdd770672f038d79b76cc31c1cbb4) [PaperWeekly](https://mp.weixin.qq.com/s/uGuywTY33SrYERDO522N1Q)
 
 **MAD-GAN: Multivariate Anomaly Detection for Time Series Data with Generative Adversarial Networks**. D Li, D Chen, L Shi, B Jin, J Goh, S Ng [National University of Singapore & UC Berkeley & ST Electronics (Info Security) Pte Ltd] (2019) [arXiv:1901.04997](https://arxiv.org/abs/1901.04997)
 
@@ -105,7 +105,7 @@ date: 2018-09-28
 
 ## :facepunch: Adversarial Examples/Attacks
 
-**On Evaluating Adversarial Robustness**. N Carlini, A Athalye, N Papernot, W Brendel, J Rauber, D Tsipras, I Goodfellow, A Madry [Google Brain & MIT & University of Tübingen] (2019) [arXiv:1902.06705](https://arxiv.org/abs/1902.06705) [Reddit](https://www.reddit.com/r/MachineLearning/comments/as2yhj/r_on_evaluating_adversarial_robustness/)
+**On Evaluating Adversarial Robustness**. N Carlini, A Athalye, N Papernot, W Brendel, J Rauber, D Tsipras, I Goodfellow, A Madry [Google Brain & MIT & University of Tübingen] (2019) [arXiv:1902.06705](https://arxiv.org/abs/1902.06705) [Github](https://github.com/evaluating-adversarial-robustness/adv-eval-paper) [Reddit](https://www.reddit.com/r/MachineLearning/comments/as2yhj/r_on_evaluating_adversarial_robustness/)
 
 **Adversarial Examples Are a Natural Consequence of Test Error in Noise**. Nic Ford, Justin Gilmer, Nicolas Carlini, Dogus Cubuk [Google AI Residency] (2019) [arXiv:1901.10513](https://arxiv.org/abs/1901.10513) [Reddit](https://www.reddit.com/r/MachineLearning/comments/alppkp/190110513_adversarial_examples_are_a_natural/)
 
@@ -207,6 +207,8 @@ date: 2018-09-28
 
 ## :+1: Model Evaluation & Performance & Interpretion & Visualization
 
+**Seven Myths in Machine Learning Research**. O Chang, H Lipson [Columbia University] (2019) [arXiv:1902.06789](https://arxiv.org/abs/1902.06789) [Blog](https://crazyoscarchang.github.io/2019/02/16/seven-myths-in-machine-learning-research/)
+
 **Wide Neural Networks of Any Depth Evolve as Linear Models Under Gradient Descent**. J Lee, L Xiao, S S. Schoenholz, Y Bahri, J Sohl-Dickstein, J Pennington [Google Brain] (2019) [arXiv:1902.06720](https://arxiv.org/abs/1902.06720) [Reddit](https://www.reddit.com/r/MachineLearning/comments/asifrt/190206720_wide_neural_networks_of_any_depth/)
 
 **Impact of Fully Connected Layers on Performance of Convolutional Neural Networks for Image Classification**. S H S Basha, S R Dubey, V Pulabaigari, S Mukherjee [Indian Institute of Information Technology Sri City] [arXiv:1902.02771](https://arxiv.org/abs/1902.02771) [Github](https://github.com/shabbeersh/Impact-of-FC-layers)
@@ -297,6 +299,8 @@ date: 2018-09-28
 
 ## :control_knobs: Model Configuration
 
+**On the Impact of the Activation Function on Deep Neural Networks Training**. S Hayou, A Doucet, J Rousseau [Universiy of Oxford] (2019) [arXiv:1902.06853](https://arxiv.org/abs/1902.06853)
+
 **TUNet: Incorporating segmentation maps to improve classification**. Y Tian [New York University] (2019)  [arXiv:1901.11379](https://arxiv.org/abs/1901.11379)
 
 **Weighted Channel Dropout for Regularization of Deep Convolutional Neural Network**. Saihui Hou, Zilei Wang [USTC] (AAAI 2019) [Paper](http://home.ustc.edu.cn/~saihui/papers/aaai2019_weighted.pdf) [机器之心](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2650756694&idx=3&sn=007bc096a14d2c0d5ace149322953dc6)
@@ -383,6 +387,8 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 **Using Machine Learning to Predict the Evolution of Physics Research**. W Liu, S Saganowski, P Kazienko, S A Cheong [Nanyang Technological University & Wrocław University of Science and Technology] (2018) [arXiv:1810.12116](https://arxiv.org/abs/1810.12116)
 
 **hep-th**. Y He, V Jejjala, B D. Nelson [University of London & Nankai University & Northeastern University] (2018) [arXiv:1807.00735](https://arxiv.org/abs/1807.00735) [comment]
+
+**Deep Fluids: A Generative Network for Parameterized Fluid Simulations**. B Kim, VC Azevedo, N Thuerey, T Kim, M Gross… [ETH Zurich & Technical University of Munich & Pixar Animation Studios] (2019) [arXiv:1806.02071](https://arxiv.org/abs/1806.02071) [Blog](http://www.byungsoo.me/project/deep-fluids/)
 
 **Physics-guided Neural Networks (PGNNs)**. Anuj Karpatne, William Watkins, Jordan Read, Vipin Kumar [University of Minnesota] (2017) [arXiv:1710.11431](https://arxiv.org/abs/1710.11431)
 
