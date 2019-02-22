@@ -299,7 +299,7 @@ date: 2018-09-28
 
 ## :control_knobs: Model Configuration
 
-**On the Impact of the Activation Function on Deep Neural Networks Training**. S Hayou, A Doucet, J Rousseau [Universiy of Oxford] (2019) [arXiv:1902.06853](https://arxiv.org/abs/1902.06853)
+**On the Impact of the Activation Function on Deep Neural Networks Training**. S Hayou, A Doucet, J Rousseau [Universiy of Oxford] (2019) [arXiv:1902.06853](https://arxiv.org/abs/1902.06853) [机器之心](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2650757440&idx=1&sn=4164f2d1c88df07ec80b7d24e8fc3c8f&chksm=871a9d3eb06d14289928961cc6dcca5d9eb54d47374b4417dcda48724d2857d24b2ed3bad29c&token=667209389&lang=zh_CN#rd)
 
 **TUNet: Incorporating segmentation maps to improve classification**. Y Tian [New York University] (2019)  [arXiv:1901.11379](https://arxiv.org/abs/1901.11379)
 

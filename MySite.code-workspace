@@ -2,6 +2,10 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "blog"
 		}
-	]
+	],
+	"settings": {}
 }

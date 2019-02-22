@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://distill.pub/template.v2.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.17/webcomponents-loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.17/webcomponents-hi.js"></script>
+    <style id="distill-prerendered-styles" type="text/css">/*
+        * Copyright 2018 The Distill Template Authors
+        *
+        * Licensed under the Apache License, Version 2.0 (the "License");
+        * you may not use this file except in compliance with the License.
+        * You may obtain a copy of the License at
+        *
+        *      http://www.apache.org/licenses/LICENSE-2.0
+        *
+        * Unless required by applicable law or agreed to in writing, software
+        * distributed under the License is distributed on an "AS IS" BASIS,
+        * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        * See the License for the specific language governing permissions and
+        * limitations under the License.
+        */
+       
+       html {
+         font-size: 14px;
+           line-height: 1.6em;
+         /* font-family: "Libre Franklin", "Helvetica Neue", sans-serif; */
+         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+         /*, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";*/
+         text-size-adjust: 100%;
+         -ms-text-size-adjust: 100%;
+         -webkit-text-size-adjust: 100%;
+       }
+       
+       @media(min-width: 768px) {
+         html {
+           font-size: 16px;
+         }
+       }
+       
+       body {
+         margin: 0;
+       }
+       
+       a {
+         color: #004276;
+       }
+       
+       figure {
+         margin: 0;
+       }
+       
+       table {
+           border-collapse: collapse;
+           border-spacing: 0;
+       }
+       
+       table th {
+           text-align: left;
+       }
+       
+       table thead {
+         border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+       }
+       
+       table thead th {
+         padding-bottom: 0.5em;
+       }
+       
+       table tbody :first-child td {
+         padding-top: 0.5em;
+       }
+       
+       pre {
+         overflow: auto;
+         max-width: 100%;
+       }
+       
+       p {
+         margin-top: 0;
+         margin-bottom: 1em;
+       }
+       
+       sup, sub {
+         vertical-align: baseline;
+         position: relative;
+         top: -0.4em;
+         line-height: 1em;
+       }
+       
+       sub {
+         top: 0.4em;
+       }
+       
+       .kicker,
+       .marker {
+         font-size: 15px;
+         font-weight: 600;
+         color: rgba(0, 0, 0, 0.5);
+       }
+       
+       
+       /* Headline */
+       
+       @media(min-width: 1024px) {
+         d-title h1 span {
+           display: block;
+         }
+       }
+       
+       /* Figure */
+       
+       figure {
+         position: relative;
+         margin-bottom: 2.5em;
+         margin-top: 1.5em;
+       }
+       
+       figcaption+figure {
+       
+       }
+       
+       figure img {
+         width: 100%;
+       }
+       
+       figure svg text,
+       figure svg tspan {
+       }
+       
+       figcaption,
+       .figcaption {
+         color: rgba(0, 0, 0, 0.6);
+         font-size: 12px;
+         line-height: 1.5em;
+       }
+       
+       @media(min-width: 1024px) {
+       figcaption,
+       .figcaption {
+           font-size: 13px;
+         }
+       }
+       
+       figure.external img {
+         background: white;
+         border: 1px solid rgba(0, 0, 0, 0.1);
+         box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+         padding: 18px;
+         box-sizing: border-box;
+       }
+       
+       figcaption a {
+         color: rgba(0, 0, 0, 0.6);
+       }
+       
+       figcaption b,
+       figcaption strong, {
+         font-weight: 600;
+         color: rgba(0, 0, 0, 1.0);
+       }
+       /*
+        * Copyright 2018 The Distill Template Authors
+        *
+        * Licensed under the Apache License, Version 2.0 (the "License");
+        * you may not use this file except in compliance with the License.
+        * You may obtain a copy of the License at
+        *
+        *      http://www.apache.org/licenses/LICENSE-2.0
+        *
+        * Unless required by applicable law or agreed to in writing, software
+        * distributed under the License is distributed on an "AS IS" BASIS,
+        * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        * See the License for the specific language governing permissions and
+        * limitations under the License.
+        */
+       
+       @supports not (display: grid) {
+         .base-grid,
+         distill-header,
+         d-title,
+         d-abstract,
+         d-article,
+         d-appendix,
+         distill-appendix,
+         d-byline,
+         d-footnote-list,
+         d-citation-list,
+         distill-footer {
+           display: block;
+           padding: 8px;
+         }
+       }
+       
+       .base-grid,
+       distill-header,
+       d-title,
+       d-abstract,
+       d-article,
+       d-appendix,
+       distill-appendix,
+       d-byline,
+       d-footnote-list,
+       d-citation-list,
+       distill-footer {
+         display: grid;
+         justify-items: stretch;
+         grid-template-columns: [screen-start] 8px [page-start kicker-start text-start gutter-start middle-start] 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr [text-end page-end gutter-end kicker-end middle-end] 8px [screen-end];
+         grid-column-gap: 8px;
+       }
+       
+       .grid {
+         display: grid;
+         grid-column-gap: 8px;
+       }
+       
+       @media(min-width: 768px) {
+         .base-grid,
+         distill-header,
+         d-title,
+         d-abstract,
+         d-article,
+         d-appendix,
+         distill-appendix,
+         d-byline,
+         d-footnote-list,
+         d-citation-list,
+         distill-footer {
+           grid-template-columns: [screen-start] 1fr [page-start kicker-start middle-start text-start] 45px 45px 45px 45px 45px 45px 45px 45px [ kicker-end text-end gutter-start] 45px [middle-end] 45px [page-end gutter-end] 1fr [screen-end];
+           grid-column-gap: 16px;
+         }
+       
+         .grid {
+           grid-column-gap: 16px;
+         }
+       }
+       
+       @media(min-width: 1000px) {
+         .base-grid,
+         distill-header,
+         d-title,
+         d-abstract,
+         d-article,
+         d-appendix,
+         distill-appendix,
+         d-byline,
+         d-footnote-list,
+         d-citation-list,
+         distill-footer {
+           grid-template-columns: [screen-start] 1fr [page-start kicker-start] 50px [middle-start] 50px [text-start kicker-end] 50px 50px 50px 50px 50px 50px 50px 50px [text-end gutter-start] 50px [middle-end] 50px [page-end gutter-end] 1fr [screen-end];
+           grid-column-gap: 16px;
+         }
+       
+         .grid {
+           grid-column-gap: 16px;
+         }
+       }
+       
+       @media(min-width: 1180px) {
+         .base-grid,
+         distill-header,
+         d-title,
+         d-abstract,
+         d-article,
+         d-appendix,
+         distill-appendix,
+         d-byline,
+         d-footnote-list,
+         d-citation-list,
+         distill-footer {
+           grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+           grid-column-gap: 32px;
+         }
+       
+         .grid {
+           grid-column-gap: 32px;
+         }
+       }
+       
+       
+       
+       
+       .base-grid {
+         grid-column: screen;
+       }
+       
+       /* .l-body,
+       d-article > *  {
+         grid-column: text;
+       }
+       
+       .l-page,
+       d-title > *,
+       d-figure {
+         grid-column: page;
+       } */
+       
+       .l-gutter {
+         grid-column: gutter;
+       }
+       
+       .l-text,
+       .l-body {
+         grid-column: text;
+       }
+       
+       .l-page {
+         grid-column: page;
+       }
+       
+       .l-body-outset {
+         grid-column: middle;
+       }
+       
+       .l-page-outset {
+         grid-column: page;
+       }
+       
+       .l-screen {
+         grid-column: screen;
+       }
+       
+       .l-screen-inset {
+         grid-column: screen;
+         padding-left: 16px;
+         padding-left: 16px;
+       }
+       
+       
+       /* Aside */
+       
+       d-article aside {
+         grid-column: gutter;
+         font-size: 12px;
+         line-height: 1.6em;
+         color: rgba(0, 0, 0, 0.6)
+       }
+       
+       @media(min-width: 768px) {
+         aside {
+           grid-column: gutter;
+         }
+       
+         .side {
+           grid-column: gutter;
+         }
+       }
+       /*
+        * Copyright 2018 The Distill Template Authors
+        *
+        * Licensed under the Apache License, Version 2.0 (the "License");
+        * you may not use this file except in compliance with the License.
+        * You may obtain a copy of the License at
+        *
+        *      http://www.apache.org/licenses/LICENSE-2.0
+        *
+        * Unless required by applicable law or agreed to in writing, software
+        * distributed under the License is distributed on an "AS IS" BASIS,
+        * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        * See the License for the specific language governing permissions and
+        * limitations under the License.
+        */
+       
+       d-title {
+         padding: 2rem 0 1.5rem;
+         contain: layout style;
+         overflow-x: hidden;
+       }
+       
+       @media(min-width: 768px) {
+         d-title {
+           padding: 4rem 0 1.5rem;
+         }
+       }
+       
+       d-title h1 {
+         grid-column: text;
+         font-size: 40px;
+         font-weight: 700;
+         line-height: 1.1em;
+         margin: 0 0 0.5rem;
+       }
+       
+       @media(min-width: 768px) {
+         d-title h1 {
+           font-size: 50px;
+         }
+       }
+       
+       d-title p {
+         font-weight: 300;
+         font-size: 1.2rem;
+         line-height: 1.55em;
+         grid-column: text;
+       }
+       
+       d-title .status {
+         margin-top: 0px;
+         font-size: 12px;
+         color: #009688;
+         opacity: 0.8;
+         grid-column: kicker;
+       }
+       
+       d-title .status span {
+         line-height: 1;
+         display: inline-block;
+         padding: 6px 0;
+         border-bottom: 1px solid #80cbc4;
+         font-size: 11px;
+         text-transform: uppercase;
+       }
+       /*
+        * Copyright 2018 The Distill Template Authors
+        *
+        * Licensed under the Apache License, Version 2.0 (the "License");
+        * you may not use this file except in compliance with the License.
+        * You may obtain a copy of the License at
+        *
+        *      http://www.apache.org/licenses/LICENSE-2.0
+        *
+        * Unless required by applicable law or agreed to in writing, software
+        * distributed under the License is distributed on an "AS IS" BASIS,
+        * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        * See the License for the specific language governing permissions and
+        * limitations under the License.
+        */
+       
+       d-byline {
+         contain: style;
+         overflow: hidden;
+         border-top: 1px solid rgba(0, 0, 0, 0.1);
+         font-size: 0.8rem;
+         line-height: 1.8em;
+         padding: 1.5rem 0;
+         min-height: 1.8em;
+       }
+       
+       
+       d-byline .byline {
+         grid-template-columns: 1fr 1fr;
+         grid-column: text;
+       }
+       
+       @media(min-width: 768px) {
+         d-byline .byline {
+           grid-template-columns: 1fr 1fr 1fr 1fr;
+         }
+       }
+       
+       d-byline .authors-affiliations {
+         grid-column-end: span 2;
+         grid-template-columns: 1fr 1fr;
+         margin-bottom: 1em;
+       }
+       
+       @media(min-width: 768px) {
+         d-byline .authors-affiliations {
+           margin-bottom: 0;
+         }
+       }
+       
+       d-byline h3 {
+         font-size: 0.6rem;
+         font-weight: 400;
+         color: rgba(0, 0, 0, 0.5);
+         margin: 0;
+         text-transform: uppercase;
+       }
+       
+       d-byline p {
+         margin: 0;
+       }
+       
+       d-byline a,
+       d-article d-byline a {
+         color: rgba(0, 0, 0, 0.8);
+         text-decoration: none;
+         border-bottom: none;
+       }
+       
+       d-article d-byline a:hover {
+         text-decoration: underline;
+         border-bottom: none;
+       }
+       
+       d-byline p.author {
+         font-weight: 500;
+       }
+       
+       d-byline .affiliations {
+       
+       }
+       /*
+        * Copyright 2018 The Distill Template Authors
+        *
+        * Licensed under the Apache License, Version 2.0 (the "License");
+        * you may not use this file except in compliance with the License.
+        * You may obtain a copy of the License at
+        *
+        *      http://www.apache.org/licenses/LICENSE-2.0
+        *
+        * Unless required by applicable law or agreed to in writing, software
+        * distributed under the License is distributed on an "AS IS" BASIS,
+        * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        * See the License for the specific language governing permissions and
+        * limitations under the License.
+        */
+       
+       d-article {
+         contain: layout style;
+         overflow-x: hidden;
+         border-top: 1px solid rgba(0, 0, 0, 0.1);
+         padding-top: 2rem;
+         color: rgba(0, 0, 0, 0.8);
+       }
+       
+       d-article > * {
+         grid-column: text;
+       }
+       
+       @media(min-width: 768px) {
+         d-article {
+           font-size: 16px;
+         }
+       }
+       
+       @media(min-width: 1024px) {
+         d-article {
+           font-size: 1.06rem;
+           line-height: 1.7em;
+         }
+       }
+       
+       
+       /* H2 */
+       
+       
+       d-article .marker {
+         text-decoration: none;
+         border: none;
+         counter-reset: section;
+         grid-column: kicker;
+         line-height: 1.7em;
+       }
+       
+       d-article .marker:hover {
+         border: none;
+       }
+       
+       d-article .marker span {
+         padding: 0 3px 4px;
+         border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+         position: relative;
+         top: 4px;
+       }
+       
+       d-article .marker:hover span {
+         color: rgba(0, 0, 0, 0.7);
+         border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+       }
+       
+       d-article h2 {
+         font-weight: 600;
+         font-size: 24px;
+         line-height: 1.25em;
+         margin: 2rem 0 1.5rem 0;
+         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+         padding-bottom: 1rem;
+       }
+       
+       @media(min-width: 1024px) {
+         d-article h2 {
+           font-size: 36px;
+         }
+       }
+       
+       /* H3 */
+       
+       d-article h3 {
+         font-weight: 700;
+         font-size: 18px;
+         line-height: 1.4em;
+         margin-bottom: 1em;
+         margin-top: 2em;
+       }
+       
+       @media(min-width: 1024px) {
+         d-article h3 {
+           font-size: 20px;
+         }
+       }
+       
+       /* H4 */
+       
+       d-article h4 {
+         font-weight: 600;
+         text-transform: uppercase;
+         font-size: 14px;
+         line-height: 1.4em;
+       }
+       
+       d-article a {
+         color: inherit;
+       }
+       
+       d-article p,
+       d-article ul,
+       d-article ol,
+       d-article blockquote {
+         margin-top: 0;
+         margin-bottom: 1em;
+         margin-left: 0;
+         margin-right: 0;
+       }
+       
+       d-article blockquote {
+         border-left: 2px solid rgba(0, 0, 0, 0.2);
+         padding-left: 2em;
+         font-style: italic;
+         color: rgba(0, 0, 0, 0.6);
+       }
+       
+       d-article a {
+         border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+         text-decoration: none;
+       }
+       
+       d-article a:hover {
+         border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+       }
+       
+       d-article .link {
+         text-decoration: underline;
+         cursor: pointer;
+       }
+       
+       d-article ul,
+       d-article ol {
+         padding-left: 24px;
+       }
+       
+       d-article li {
+         margin-bottom: 1em;
+         margin-left: 0;
+         padding-left: 0;
+       }
+       
+       d-article li:last-child {
+         margin-bottom: 0;
+       }
+       
+       d-article pre {
+         font-size: 14px;
+         margin-bottom: 20px;
+       }
+       
+       d-article hr {
+         grid-column: screen;
+         width: 100%;
+         border: none;
+         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+         margin-top: 60px;
+         margin-bottom: 60px;
+       }
+       
+       d-article section {
+         margin-top: 60px;
+         margin-bottom: 60px;
+       }
+       
+       d-article span.equation-mimic {
+         font-family: georgia;
+         font-size: 115%;
+         font-style: italic;
+       }
+       
+       d-article > d-code,
+       d-article section > d-code  {
+         display: block;
+       }
+       
+       d-article > d-math[block],
+       d-article section > d-math[block]  {
+         display: block;
+       }
+       
+       @media (max-width: 768px) {
+         d-article > d-code,
+         d-article section > d-code,
+         d-article > d-math[block],
+         d-article section > d-math[block] {
+             overflow-x: scroll;
+             -ms-overflow-style: none;  // IE 10+
+             overflow: -moz-scrollbars-none;  // Firefox
+         }
+       
+         d-article > d-code::-webkit-scrollbar,
+         d-article section > d-code::-webkit-scrollbar,
+         d-article > d-math[block]::-webkit-scrollbar,
+         d-article section > d-math[block]::-webkit-scrollbar {
+           display: none;  // Safari and Chrome
+         }
+       }
+       
+       d-article .citation {
+         color: #668;
+         cursor: pointer;
+       }
+       
+       d-include {
+         width: auto;
+         display: block;
+       }
+       
+       d-figure {
+         contain: layout style;
+       }
+       
+       /* KaTeX */
+       
+       .katex, .katex-prerendered {
+         contain: style;
+         display: inline-block;
+       }
+       
+       /* Tables */
+       
+       d-article table {
+         border-collapse: collapse;
+         margin-bottom: 1.5rem;
+         border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+       }
+       
+       d-article table th {
+         border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+       }
+       
+       d-article table td {
+         border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+       }
+       
+       d-article table tr:last-of-type td {
+         border-bottom: none;
+       }
+       
+       d-article table th,
+       d-article table td {
+         font-size: 15px;
+         padding: 2px 8px;
+       }
+       
+       d-article table tbody :first-child td {
+         padding-top: 2px;
+       }
+       /*
+        * Copyright 2018 The Distill Template Authors
+        *
+        * Licensed under the Apache License, Version 2.0 (the "License");
+        * you may not use this file except in compliance with the License.
+        * You may obtain a copy of the License at
+        *
+        *      http://www.apache.org/licenses/LICENSE-2.0
+        *
+        * Unless required by applicable law or agreed to in writing, software
+        * distributed under the License is distributed on an "AS IS" BASIS,
+        * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        * See the License for the specific language governing permissions and
+        * limitations under the License.
+        */
+       
+       span.katex-display {
+         text-align: left;
+         padding: 8px 0 8px 0;
+         margin: 0.5em 0 0.5em 1em;
+       }
+       
+       span.katex {
+         -webkit-font-smoothing: antialiased;
+         color: rgba(0, 0, 0, 0.8);
+         font-size: 1.18em;
+       }
+       /*
+        * Copyright 2018 The Distill Template Authors
+        *
+        * Licensed under the Apache License, Version 2.0 (the "License");
+        * you may not use this file except in compliance with the License.
+        * You may obtain a copy of the License at
+        *
+        *      http://www.apache.org/licenses/LICENSE-2.0
+        *
+        * Unless required by applicable law or agreed to in writing, software
+        * distributed under the License is distributed on an "AS IS" BASIS,
+        * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        * See the License for the specific language governing permissions and
+        * limitations under the License.
+        */
+       
+       @media print {
+       
+         @page {
+           size: 8in 11in;
+           @bottom-right {
+             content: counter(page) " of " counter(pages);
+           }
+         }
+       
+         html {
+           /* no general margins -- CSS Grid takes care of those */
+         }
+       
+         p, code {
+           page-break-inside: avoid;
+         }
+       
+         h2, h3 {
+           page-break-after: avoid;
+         }
+       
+         d-header {
+           visibility: hidden;
+         }
+       
+         d-footer {
+           display: none!important;
+         }
+       
+       }
+       </style>
+    <style>.subgrid {
+            grid-column: screen; 
+            display: grid; 
+            grid-template-columns: inherit;
+            grid-template-rows: inherit;
+            grid-column-gap: inherit;
+            grid-row-gap: inherit;
+          }
+          
+          d-figure.base-grid {
+            grid-column: screen;
+            background: hsl(0, 0%, 97%);
+            padding: 20px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+          }
+          
+          d-figure {
+            margin-bottom: 1em;
+            position: relative;
+          }
+          
+          d-figure > figure {
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+          
+          .shaded-figure {
+            background-color: hsl(0, 0%, 97%);
+            border-top: 1px solid hsla(0, 0%, 0%, 0.1);
+            border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
+            padding: 30px 0;
+          }
+          
+          .pointer {
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            top: 26px;
+            left: -48px;
+          }
+          
+          .figure-element, .figure-line, .figure-path {
+            stroke: #666;
+            stroke-miterlimit: 10px;
+            stroke-width: 1.5px;
+          }
+          
+          .figure-element {
+            fill: #fff;
+            fill-opacity: 0.8;
+          }
+          
+          .figure-line {
+            fill: none;
+          }
+          
+          .figure-path {
+            fill: #666;
+            stroke-width: 1px;
+          }
+          
+          .figure-group {
+            fill: #f9f9f9;
+            stroke: #666;
+            stroke-width: 1.5px;
+            stroke-opacity: 0.6;
+            stroke-miterlimit: 10px;
+          }
+          
+          .figure-faded {
+            opacity: 0.35;
+          }
+          
+          .figure-box {
+            rx: 6px;
+            ry: 6px;
+          }
+          
+          .figure-dashed {
+            stroke: #666;
+            stroke-width: 1.5px;
+            stroke-miterlimit: 10px;
+            stroke-dasharray: 5, 5;
+          }
+          
+          .figure-text {
+            fill: #000;
+            opacity: 0.6;
+            font-size: 13px;
+          }
+          
+          .figure-text-faded {
+            opacity: 0.35;
+          }
+          
+          .figure-large-text {
+            font-size: 18px;
+          }
+          
+          .subscript {
+            font-size: 8px;
+          }
+          
+          .figure-film-generator {
+            /* stroke: #006064; */
+            /* fill: #80DEEA; */
+            
+            stroke: hsl(203, 65%, 70%);
+            fill: hsl(203, 65%, 85%);
+          }
+          
+          .figure-film-generator-shaded {
+            /* stroke: #006064; */
+            /* fill: #00838F; */
+            
+            stroke: hsl(203, 15%, 85%);
+            fill: hsl(203, 15%, 95%);
+          }
+          
+          .figure-filmed-network {
+            /* stroke: #BF360C; */
+            /* fill: #FFAB91; */
+            
+            stroke: hsl(11, 65%, 70%);
+            fill: rgb(242, 203, 194);
+          }
+          
+          .todo {
+            color: red;
+          }
+          
+          
+          .tooltip {
+            position: absolute;
+            max-width: 300px;
+            max-height: 300px;
+            pointer-events: none;
+            transition: opacity;
+          }
+          
+          .collapsible {
+            cursor: pointer;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 25px;
+            font-weight: 700;
+            background-color: white;
+            color: rgba(0, 0, 0, 0.8);
+            padding: 0.5em;
+            margin: 0.2em;
+            margin-left: 0;
+            padding-left: 0;
+            transform: translateX(0px);
+            transition: 
+                color 0.1s ease-out,
+                transform 0.25s ease;
+          }
+          
+          .collapsible:hover {
+            border-bottom: 1px solid inset;
+            color: rgba(0, 0, 0, 0.4);
+            transform: translateX(10px);
+            transition: 
+                transform 0.25s ease;
+          }
+          
+          d-article .content {
+            display: none;
+            overflow: hidden;
+            background-color: none;
+          }
+          
+          .expand-collapse-button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            font-size: 18px;
+            font-weight: 700;
+            float: right;
+          }
+          
+          #clevr-plot-svg {
+           width:440px;
+           height:400px
+          }
+          
+          #style-transfer-plot-svg {
+           width:440px;
+           height:400px
+          }
+    </style>
+       <script src="https://d3js.org/d3.v4.min.js"></script>
+       <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+       <script src="https://ariutta.github.io/svg-pan-zoom/dist/svg-pan-zoom.js"></script>
+       <link rel="stylesheet" href="https://distill.pub/third-party/katex/katex.min.css" crossorigin="anonymous">
+       <link rel="icon" type="image/png" href="">
+       <!-- <link href="/rss.xml" rel="alternate" type="application/rss+xml" title="Articles from Distill"> -->
+       <title>Feature-wise transformations</title>
+       <link rel="canonical" href="https://distill.pub/2018/feature-wise-transformations">
+
+    <!--  https://schema.org/Article -->
+    <meta property="description" itemprop="description" content="A simple and surprisingly effective family of conditioning mechanisms.">
+    <meta property="article:published" itemprop="datePublished" content="2018-07-09">
+    <meta property="article:created" itemprop="dateCreated" content="2018-07-09">
+    
+    <meta property="article:modified" itemprop="dateModified" content="2018-07-10T22:41:12.000Z">
+    
+    <meta property="article:author" content="Vincent Dumoulin">
+    <meta property="article:author" content="Ethan Perez">
+    <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Feature-wise transformations">
+    <meta property="og:description" content="A simple and surprisingly effective family of conditioning mechanisms.">
+    <meta property="og:url" content="https://distill.pub/2018/feature-wise-transformations">
+    <meta property="og:image" content="https://distill.pub/2018/feature-wise-transformations/thumbnail.jpg">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Distill">
+  
+    <!--  https://dev.twitter.com/cards/types/summary -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Feature-wise transformations">
+    <meta name="twitter:description" content="A simple and surprisingly effective family of conditioning mechanisms.">
+    <meta name="twitter:url" content="https://distill.pub/2018/feature-wise-transformations">
+    <meta name="twitter:image" content="https://distill.pub/2018/feature-wise-transformations/thumbnail.jpg">
+    <meta name="twitter:image:width" content="560">
+    <meta name="twitter:image:height" content="295">
+  
+      <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
+    <meta name="citation_title" content="Feature-wise transformations">
+    <meta name="citation_fulltext_html_url" content="https://distill.pub/2018/feature-wise-transformations">
+    <meta name="citation_volume" content="3">
+    <meta name="citation_issue" content="7">
+    <meta name="citation_firstpage" content="e11">
+    <meta name="citation_doi" content="10.23915/distill.00011">
+    <meta name="citation_journal_title" content="Distill">
+    <meta name="citation_journal_abbrev" content="Distill">
+    <meta name="citation_issn" content="2476-0757">
+    <meta name="citation_fulltext_world_readable" content="">
+    <meta name="citation_online_date" content="2018/07/09">
+    <meta name="citation_publication_date" content="2018/07/09">
+    <meta name="citation_author" content="Dumoulin, Vincent">
+    <meta name="citation_author" content="Perez, Ethan">
+    <meta name="citation_author" content="Schucher, Nathan">
+    <meta name="citation_author" content="Strub, Florian">
+    <meta name="citation_author" content="Vries, Harm de">
+    <meta name="citation_author" content="Courville, Aaron">
+    <meta name="citation_author" content="Bengio, Yoshua">
+    <meta name="citation_reference" content="citation_title=FiLM: Visual Reasoning with a General Conditioning Layer;citation_author=Ethan Perez;citation_author=Florian Strub;citation_author=Harm de Vries;citation_author=Vincent Dumoulin;citation_author=Aaron Courville;citation_publication_date=2018;citation_arxiv_id=1709.07871;">
+    <meta name="citation_reference" content="citation_title=Learning visual reasoning without strong priors;citation_author=Ethan Perez;citation_author=Harm de Vries;citation_author=Florian Strub;citation_author=Vincent Dumoulin;citation_author=Aaron Courville;citation_publication_date=2017;citation_arxiv_id=1707.03017;">
+    <meta name="citation_reference" content="citation_title=CLEVR: A diagnostic dataset for compositional language and elementary visual reasoning;citation_author=Justin Johnson;citation_author=Fei-Fei Li;citation_author=Bharath Hariharan;citation_author=Lawrence C. Zitnick;citation_author=Laurens van der Maaten;citation_author=Ross Girshick;citation_publication_date=2017;citation_arxiv_id=1612.06890;">
+    <meta name="citation_reference" content="citation_title=Visual Reasoning with Multi-hop Feature Modulation;citation_author=Florian Strub;citation_author=Mathieu Seurin;citation_author=Ethan Perez;citation_author=Harm de Vries;citation_author=J\'{e}r\'{e}mie Mary;citation_author=Philippe Preux;citation_author=Aaron Courville;citation_author=Olivier Pietquin;citation_publication_date=2018;">
+    <meta name="citation_reference" content="citation_title=GuessWhat?! Visual object discovery through multi-modal dialogue;citation_author=Harm de Vries;citation_author=Florian Strub;citation_author=Sarath Chandar;citation_author=Olivier Pietquin;citation_author=Hugo Larochelle;citation_author=Aaron Courville;citation_publication_date=2017;citation_arxiv_id=1611.08481;">
+    <meta name="citation_reference" content="citation_title=ReferItGame: Referring to objects in photographs of natural scenes;citation_author=Sahar Kazemzadeh;citation_author=Vicente Ordonez;citation_author=Mark Matten;citation_author=Tamara Berg;citation_publication_date=2014;">
+    <meta name="citation_reference" content="citation_title=Modulating early visual processing by language;citation_author=Harm de Vries;citation_author=Florian Strub;citation_author=J\'{e}r\'{e}mie Mary;citation_author=Hugo Larochelle;citation_author=Olivier Pietquin;citation_author=Aaron Courville;citation_publication_date=2017;citation_arxiv_id=1707.00683;">
+    <meta name="citation_reference" content="citation_title=VQA: visual question answering;citation_author=Aishwarya Agrawal;citation_author=Jiasen Lu;citation_author=Stanislaw Antol;citation_author=Margaret Mitchell;citation_author=C. Lawrence Zitnick;citation_author=Dhruv Batra;citation_author=Devi Parikh;citation_publication_date=2015;citation_arxiv_id=1505.00468;">
+    <meta name="citation_reference" content="citation_title=A learned representation for artistic style;citation_author=Vincent Dumoulin;citation_author=Jonathon Shlens;citation_author=Manjunath Kudlur;citation_publication_date=2017;citation_arxiv_id=1610.07629;">
+    <meta name="citation_reference" content="citation_title=Exploring the structure of a real-time, arbitrary neural artistic stylization network;citation_author=Golnaz Ghiasi;citation_author=Honglak Lee;citation_author=Manjunath Kudlur;citation_author=Vincent Dumoulin;citation_author=Jonathon Shlens;citation_publication_date=2017;citation_arxiv_id=1705.06830;">
+    <meta name="citation_reference" content="citation_title=Efficient video object segmentation via network modulation;citation_author=Linjie Yang;citation_author=Yanran Wang;citation_author=Xuehan Xiong;citation_author=Jianchao Yang;citation_author=Aggelos K. Katsaggelos;citation_publication_date=2018;citation_arxiv_id=1802.01218;">
+    <meta name="citation_reference" content="citation_title=Arbitrary style transfer in real-time with adaptive instance normalization;citation_author=Xun Huang;citation_author=Serge Belongie;citation_publication_date=2017;citation_arxiv_id=1703.06868;">
+    <meta name="citation_reference" content="citation_title=Highway networks;citation_author=Rupesh Kumar Srivastava;citation_author=Klaus Greff;citation_author=Jurgen Schmidhuber;citation_publication_date=2015;citation_arxiv_id=1505.00387;">
+    <meta name="citation_reference" content="citation_title=Long short-term memory;citation_author=Sepp Hochreiter;citation_author=Jurgen Schmidhuber;citation_publication_date=1997;citation_journal_title=Neural Computation;citation_volume=9;citation_number=8;">
+    <meta name="citation_reference" content="citation_title=Squeeze-and-Excitation networks;citation_author=Jie Hu;citation_author=Li Shen;citation_author=Gang Sun;citation_publication_date=2017;citation_arxiv_id=1709.01507;">
+    <meta name="citation_reference" content="citation_title=On the state of the art of evaluation in neural language models;citation_author=G{\'{a}}bor Melis;citation_author=Chris Dyer;citation_author=Phil Blunsom;citation_publication_date=2017;citation_arxiv_id=1707.05589;">
+    <meta name="citation_reference" content="citation_title=Language modeling with gated convolutional networks;citation_author=Yann N Dauphin;citation_author=Angela Fan;citation_author=Michael Auli;citation_author=David Grangier;citation_publication_date=2017;citation_arxiv_id=1612.08083;">
+    <meta name="citation_reference" content="citation_title=Convolution sequence-to-sequence learning;citation_author=Jonas Gehring;citation_author=Michael Auli;citation_author=David Grangier;citation_author=Denis Yarats;citation_author=Yann N. Dauphin;citation_publication_date=2017;citation_arxiv_id=1705.03122;">
+    <meta name="citation_reference" content="citation_title=Gated-attention readers for text comprehension;citation_author=Bhuwan Dhingra;citation_author=Hanxiao Liu;citation_author=Zhilin Yang;citation_author=William W Cohen;citation_author=Ruslan Salakhutdinov;citation_publication_date=2017;citation_arxiv_id=1606.01549;">
+    <meta name="citation_reference" content="citation_title=Gated-attention architectures for task-oriented language grounding;citation_author=Devendra Singh Chaplot;citation_author=Kanthashree Mysore Sathyendra;citation_author=Rama Kumar Pasumarthi;citation_author=Dheeraj Rajagopal;citation_author=Ruslan Salakhutdinov;citation_publication_date=2017;citation_arxiv_id=1706.07230;">
+    <meta name="citation_reference" content="citation_title=Vizdoom: A doom-based AI research platform for visual reinforcement learning;citation_author=Michał Kempka;citation_author=Marek Wydmuch;citation_author=Grzegorz Runc;citation_author=Jakub Toczek;citation_author=Wojciech Jaśkowski;citation_publication_date=2016;citation_arxiv_id=1605.02097;">
+    <meta name="citation_reference" content="citation_title=Learning to follow language instructions with adversarial reward induction;citation_author=Dzmitry Bahdanau;citation_author=Felix Hill;citation_author=Jan Leike;citation_author=Edward Hughes;citation_author=Pushmeet Kohli;citation_author=Edward Grefenstette;citation_publication_date=2018;citation_arxiv_id=1806.01946;">
+    <meta name="citation_reference" content="citation_title=Neural module networks;citation_author=Jacob Andreas;citation_author=Marcus Rohrbach;citation_author=Trevor Darrell;citation_author=Dan Klein;citation_publication_date=2016;citation_arxiv_id=1511.02799;">
+    <meta name="citation_reference" content="citation_title=Overcoming catastrophic forgetting in neural networks;citation_author=James Kirkpatrick;citation_author=Razvan Pascanu;citation_author=Neil Rabinowitz;citation_author=Joel Veness;citation_author=Guillaume Desjardins;citation_author=Andrei A. Rusu;citation_author=Kieran Milan;citation_author=John Quan;citation_author=Tiago Ramalho;citation_author=Agnieszka Grabska-Barwinska;citation_author=Demis Hassabis;citation_author=Claudia Clopath;citation_author=Dharshan Kumaran;citation_author=Raia Hadsell;citation_publication_date=2017;citation_journal_title=Proceedings of the National Academy of Sciences;citation_volume=114;citation_number=13;">
+    <meta name="citation_reference" content="citation_title=Unsupervised representation learning with deep convolutional generative adversarial networks;citation_author=Alec Radford;citation_author=Luke Metz;citation_author=Soumith Chintala;citation_publication_date=2016;citation_arxiv_id=1511.06434;">
+    <meta name="citation_reference" content="citation_title=Generative adversarial nets;citation_author=Ian Goodfellow;citation_author=Jean Pouget-Abadie;citation_author=Mehdi Mirza;citation_author=Bing Xu;citation_author=David Warde-Farley;citation_author=Sherjil Ozair;citation_author=Aaron Courville;citation_author=Yoshua Bengio;citation_publication_date=2014;">
+    <meta name="citation_reference" content="citation_title=Conditional image generation with PixelCNN decoders;citation_author=Aaron van den Oord;citation_author=Nal Kalchbrenner;citation_author=Lasse Espeholt;citation_author=Oriol Vinyals;citation_author=Alex Graves;citation_author=Koray Kavukcuoglu;citation_publication_date=2016;citation_arxiv_id=1606.05328;">
+    <meta name="citation_reference" content="citation_title=WaveNet: A generative model for raw audio;citation_author=Aaron van den Oord;citation_author=Sander Dieleman;citation_author=Heiga Zen;citation_author=Karen Simonyan;citation_author=Oriol Vinyals;citation_author=Alex Graves;citation_author=Nal Kalchbrenner;citation_author=Andrew Senior;citation_author=Koray Kavukcuoglu;citation_publication_date=2016;citation_arxiv_id=1609.03499;">
+    <meta name="citation_reference" content="citation_title=Dynamic layer normalization for adaptive neural acoustic modeling in speech recognition;citation_author=Taesup Kim;citation_author=Inchul Song;citation_author=Yoshua Bengio;citation_publication_date=2017;citation_arxiv_id=1707.06065;">
+    <meta name="citation_reference" content="citation_title=Adaptive batch normalization for practical domain adaptation;citation_author=Yanghao Li;citation_author=Naiyan Wang;citation_author=Jianping Shi;citation_author=Xiaodi Hou;citation_author=Jiaying Liu;citation_publication_date=2018;citation_journal_title=Pattern Recognition;citation_volume=80;">
+    <meta name="citation_reference" content="citation_title=TADAM: Task dependent adaptive metric for improved few-shot learning;citation_author=Boris N. Oreshkin;citation_author=Pau Rodriguez;citation_author=Alexandre Lacoste;citation_publication_date=2018;citation_arxiv_id=1805.10123;">
+    <meta name="citation_reference" content="citation_title=Prototypical networks for few-shot learning;citation_author=Jake Snell;citation_author=Kevin Swersky;citation_author=Richard Zemel;citation_publication_date=2017;citation_arxiv_id=1703.05175;">
+    <meta name="citation_reference" content="citation_title=Devise: A deep visual-semantic embedding model;citation_author=Andrea Frome;citation_author=Greg S Corrado;citation_author=Jon Shlens;citation_author=Samy Bengio;citation_author=Jeff Dean;citation_author=Tomas Mikolov;citation_publication_date=2013;">
+    <meta name="citation_reference" content="citation_title=Zero-shot learning through cross-modal transfer;citation_author=Richard Socher;citation_author=Milind Ganjoo;citation_author=Christopher D Manning;citation_author=Andrew Ng;citation_publication_date=2013;citation_arxiv_id=1301.3666;">
+    <meta name="citation_reference" content="citation_title=Zero-shot learning by convex combination of semantic embeddings;citation_author=Mohammad Norouzi;citation_author=Tomas Mikolov;citation_author=Samy Bengio;citation_author=Yoram Singer;citation_author=Jonathon Shlens;citation_author=Andrea Frome;citation_author=Greg S Corrado;citation_author=Jeffrey Dean;citation_publication_date=2014;citation_arxiv_id=1312.5650;">
+    <meta name="citation_reference" content="citation_title=HyperNetworks;citation_author=David Ha;citation_author=Andrew Dai;citation_author=Quoc Le;citation_publication_date=2016;citation_arxiv_id=1609.09106;">
+    <meta name="citation_reference" content="citation_title=Separating style and content with bilinear models;citation_author=Joshua B. Tenenbaum;citation_author=William T. Freeman;citation_publication_date=2000;citation_journal_title=Neural Computation;citation_volume=12;citation_number=6;">
+    <meta name="citation_reference" content="citation_title=Visualizing data using t-SNE;citation_author=Laurens van der Maaten;citation_author=Geoffrey Hinton;citation_publication_date=2008;citation_journal_title=Journal of machine learning research;citation_volume=9;citation_number=Nov;">
+    <meta name="citation_reference" content="citation_title=A dataset and architecture for visual reasoning with a working memory;citation_author=Guangyu Robert Yang;citation_author=Igor Ganichev;citation_author=Xiao-Jing Wang;citation_author=Jonathon Shlens;citation_author=David Sussillo;citation_publication_date=2018;citation_arxiv_id=1803.06092;">
+    <meta name="citation_reference" content="citation_title=A parallel computation that assigns canonical object-based frames of reference;citation_author=Geoffrey F. Hinton;citation_publication_date=1981;">
+    <meta name="citation_reference" content="citation_title=The correlation theory of brain function;citation_author=Christoph von der Malsburg;citation_publication_date=1994;">
+    <meta name="citation_reference" content="citation_title=Generating text with recurrent neural networks;citation_author=Ilya Sutskever;citation_author=James Martens;citation_author=Geoffrey Hinton;citation_publication_date=2011;">
+    <meta name="citation_reference" content="citation_title=Robust boltzmann machines for recognition and denoising;citation_author=Y. Tang;citation_author=R. Salakhutdinov;citation_author=G. Hinton;citation_publication_date=2012;">
+    <meta name="citation_reference" content="citation_title=Factored conditional restricted Boltzmann machines for modeling motion style;citation_author=Graham W. Taylor;citation_author=Geoffrey E. Hinton;citation_publication_date=2009;">
+    <meta name="citation_reference" content="citation_title=Combining discriminative features to infer complex trajectories;citation_author=David A. Ross;citation_author=Simon Osindero;citation_author=Richard S. Zemel;citation_publication_date=2006;">
+    <meta name="citation_reference" content="citation_title=Learning where to attend with deep architectures for image tracking;citation_author=Misha Denil;citation_author=Loris Bazzani;citation_author=Hugo Larochelle;citation_author=Nando de Freitas;citation_publication_date=2012;citation_journal_title=Neural Comput.;citation_volume=24;citation_number=8;">
+    <meta name="citation_reference" content="citation_title=Learning hierarchical invariant spatio-temporal features for action recognition with independent subspace analysis;citation_author=Q. V. Le;citation_author=W. Y. Zou;citation_author=S. Y. Yeung;citation_author=A. Y. Ng;citation_publication_date=2011;">
+    <meta name="citation_reference" content="citation_title=Convolutional learning of spatio-temporal features;citation_author=Graham W. Taylor;citation_author=Rob Fergus;citation_author=Yann LeCun;citation_author=Christoph Bregler;citation_publication_date=2010;">
+    <meta name="citation_reference" content="citation_title=Learning to relate images;citation_author=R. Memisevic;citation_publication_date=2013;citation_journal_title=IEEE Transactions on Pattern Analysis and Machine Intelligence;citation_volume=35;citation_number=8;">
+    <meta name="citation_reference" content="citation_title=Incorporating side information by adaptive convolution;citation_author=Di Kang;citation_author=Debarun Dhar;citation_author=Antoni Chan;citation_publication_date=2017;">
+    <meta name="citation_reference" content="citation_title=Learning multiple visual domains with residual adapters;citation_author=Sylvestre-Alvise Rebuffi;citation_author=Hakan Bilen;citation_author=Andrea Vedaldi;citation_publication_date=2017;">
+    <meta name="citation_reference" content="citation_title=Predicting deep zero-shot convolutional neural networks using textual descriptions;citation_author=Jimmy Ba;citation_author=Kevin Swersky;citation_author=Sanja Fidler;citation_author=Ruslan Salakhutdinov;citation_publication_date=2015;citation_arxiv_id=1506.00511;">
+    <meta name="citation_reference" content="citation_title=Zero-shot task generalization with multi-task deep reinforcement learning;citation_author=Junhyuk Oh;citation_author=Satinder Singh;citation_author=Honglak Lee;citation_author=Pushmeet Kohli;citation_publication_date=2017;citation_arxiv_id=1706.05064;">
+    <meta name="citation_reference" content="citation_title=Separating style and content;citation_author=Joshua B Tenenbaum;citation_author=William T Freeman;citation_publication_date=1997;">
+    <meta name="citation_reference" content="citation_title=Facial expression space learning;citation_author=E. S. Chuang;citation_author=F. Deshpande;citation_author=C. Bregler;citation_publication_date=2002;">
+    <meta name="citation_reference" content="citation_title=Personalized recommendation on dynamic content using predictive bilinear models;citation_author=Wei Chu;citation_author=Seung-Taek Park;citation_publication_date=2009;">
+    <meta name="citation_reference" content="citation_title=Like like alike: joint friendship and interest propagation in social networks;citation_author=Shuang-Hong Yang;citation_author=Bo Long;citation_author=Alex Smola;citation_author=Narayanan Sadagopan;citation_author=Zhaohui Zheng;citation_author=Hongyuan Zha;citation_publication_date=2011;">
+    <meta name="citation_reference" content="citation_title=Matrix factorization techniques for recommender systems;citation_author=Yehuda Koren;citation_author=Robert Bell;citation_author=Chris Volinsky;citation_publication_date=2009;citation_journal_title=Computer;citation_volume=42;citation_number=8;">
+    <meta name="citation_reference" content="citation_title=Bilinear CNN models for fine-grained visual recognition;citation_author=Tsung-Yu Lin;citation_author=Aruni RoyChowdhury;citation_author=Subhransu Maji;citation_publication_date=2015;">
+    <meta name="citation_reference" content="citation_title=Convolutional two-stream network fusion for video action recognition;citation_author=Christoph Feichtenhofer;citation_author=Axel Pinz;citation_author=AP Zisserman;citation_publication_date=2016;citation_arxiv_id=1604.06573;">
+    <meta name="citation_reference" content="citation_title=Multimodal compact bilinear pooling for visual question answering and visual grounding;citation_author=Akira Fukui;citation_author=Dong Huk Park;citation_author=Daylen Yang;citation_author=Anna Rohrbach;citation_author=Trevor Darrell;citation_author=Marcus Rohrbach;citation_publication_date=2016;citation_arxiv_id=1606.01847;">
+</head>
+
+<body distill-prerendered="">
+    <distill-header distill-prerendered="">
+<style>
+distill-header {
+  position: relative;
+  height: 60px;
+  background-color: hsl(200, 60%, 15%);
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 2;
+  color: rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+distill-header .content {
+  height: 70px;
+  grid-column: page;
+}
+distill-header a {
+  font-size: 16px;
+  height: 60px;
+  line-height: 60px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 22px 0;
+}
+distill-header a:hover {
+  color: rgba(255, 255, 255, 1);
+}
+distill-header svg {
+  width: 24px;
+  position: relative;
+  top: 4px;
+  margin-right: 2px;
+}
+@media(min-width: 1080px) {
+  distill-header {
+    height: 70px;
+  }
+  distill-header a {
+    height: 70px;
+    line-height: 70px;
+    padding: 28px 0;
+  }
+  distill-header .logo {
+  }
+}
+distill-header svg path {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.8);
+  stroke-width: 3px;
+}
+distill-header .logo {
+  font-size: 17px;
+  font-weight: 200;
+}
+distill-header .nav {
+  float: right;
+  font-weight: 300;
+}
+distill-header .nav a {
+  font-size: 12px;
+  margin-left: 24px;
+  text-transform: uppercase;
+}
+</style>
+        <div class="content">
+            <a href="/" class="logo">
+            <svg viewBox="-607 419 64 64">
+                <path d="M-573.4,478.9c-8,0-14.6-6.4-14.6-14.5s14.6-25.9,14.6-40.8c0,14.9,14.6,32.8,14.6,40.8S-565.4,478.9-573.4,478.9z"></path>
+            </svg>
+            IPhysResearch
+            </a>
+            <nav class="nav">
+            <a href="/about/">About</a>
+            <a href="/prize/">Prize</a>
+            <a href="/journal/">Submit</a>
+            </nav>
+        </div>
+    </distill-header>
+
+    <d-front-matter>
+    <script type="text/json">{
+        "title": "Feature-wise transformations",
+        "description": "A simple and surprisingly effective family of conditioning mechanisms.",
+        "authors": [
+        {
+            "author": "Vincent Dumoulin",
+            "authorURL": "https://vdumoulin.github.io",
+            "affiliations": [{"name": "Google Brain", "url": "https://ai.google/research/teams/brain"}]
+        },
+        {
+            "author": "Ethan Perez",
+            "authorURL": "http://ethanperez.net/",
+            "affiliations": [
+            {"name": "Rice University", "url": "http://www.rice.edu/"},
+            {"name": "MILA", "url": "https://mila.quebec/en/"}
+            ]
+        },
+        ],
+        "katex": {
+        "delimiters": [
+            {
+            "left": "$",
+            "right": "$",
+            "display": false
+            },
+            {
+            "left": "$$",
+            "right": "$$",
+            "display": true
+            }
+        ]
+        }
+    }</script>
+    </d-front-matter>
+
+    <d-title>
+        <h1>Feature-wise transformations</h1>
+        <p>A simple and surprisingly effective family of conditioning mechanisms.</p>
+        <div class="l-page" id="vtoc"></div>
+    </d-title>
+
+    <d-byline>
+        <div class="byline grid">
+            <div class="authors-affiliations grid">
+                <h3>Authors</h3>
+                <h3>Affiliations</h3>
+            
+                <p class="author">
+                    <a class="name" href="https://vdumoulin.github.io">Vincent Dumoulin</a>
+                </p>
+                <p class="affiliation">
+                    <a class="affiliation" href="https://ai.google/research/teams/brain">Google Brain</a>
+                </p>
+            
+                <p class="author">
+                    <a class="name" href="http://ethanperez.net/">Ethan Perez</a>
+                </p>
+                <p class="affiliation">
+                    <a class="affiliation" href="http://www.rice.edu/">Rice University</a>, <a class="affiliation" href="https://mila.quebec/en/">MILA</a>
+                </p>
+            </div>
+            <div>
+                <h3>Published</h3>
+                <p>July 9, 2018</p> 
+            </div>
+            <div>
+                <h3>DOI</h3>
+                <p><a href="https://doi.org/10.23915/distill.00011">10.23915/distill.00011</a></p>
+            </div>
+        </div>
+    </d-byline>
+
+    <d-article>
+        <p>
+            Many real-world problems require integrating multiple sources of information.
+            Sometimes these problems involve multiple, distinct modalities of
+            information — vision, language, audio, etc. — as is required
+            to understand a scene in a movie or answer a question about an image.
+            Other times, these problems involve multiple sources of the same
+            kind of input, i.e. when summarizing several documents or drawing one
+            image in the style of another.
+        </p>    
+        <figure class="l-body-outset">
+            <svg viewBox="0 0 888 280" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs>
+                    <filter x="0" y="0" width="1" height="1" id="zoolander-text-background">
+                        <feflood flood-color="#fdf6f2"></feflood>
+                        <fecomposite in="SourceGraphic"></fecomposite>
+                    </filter>
+                </defs>
+                <g transform="translate(70, 0)">
+                    <text x="0" y="210" class="figure-text">
+                        <tspan> Video and audio must be understood in the context of each </tspan>
+                        <tspan x="0" dy="1.5em"> other to understand the scene. </tspan>
+                        <tspan x="0" dy="2em" style="font-style: italic;"> Credit: still frame from the movie Charade. </tspan>
+                    </text>
+                    <image x="0" y="0" width="364" height="182" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="https://distill.pub/2018/feature-wise-transformations/images/charade.png"></image>
+                </g>
+                <g transform="translate(530, 0)">
+                    <text x="0" y="210" class="figure-text">
+                        <tspan> An image needs to be processed in the context of </tspan>
+                        <tspan x="0" dy="1.5em"> a question being asked. </tspan>
+                        <tspan x="0" dy="2em" style="font-style: italic;"> Credit: image-question pair from the CLEVR dataset. </tspan>
+                    </text>
+                    <image x="0" y="0" width="297.18" height="182" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="https://distill.pub/2018/feature-wise-transformations/images/clevr_image.jpg"></image>
+                </g>
+            </svg>
+        </figure>
+
+        <p>
+            When approaching such problems, it often makes sense to process one source
+            of information <em>in the context of</em> another; for instance, in the
+            right example above, one can extract meaning from the image in the context
+            of the question. In machine learning, we often refer to this context-based
+            processing as <em>conditioning</em>: the computation carried out by a model
+            is conditioned or <em>modulated</em> by information extracted from an
+            auxiliary input.
+        </p>
+
+        <p>
+            Finding an effective way to condition on or fuse sources of information
+            is an open research problem, and
+            <!-- Introduction -->
+            in this article, we concentrate on a specific family of approaches we call
+            <em>feature-wise transformations</em>.
+            <!-- Related Work -->
+            We will examine the use of feature-wise transformations in many neural network
+            architectures to solve a surprisingly large and diverse set of problems;
+            <!-- Experiments -->
+            their success, we will argue, is due to being flexible enough to learn an
+            effective representation of the conditioning input in varied settings.
+            In the language of multi-task learning, where the conditioning signal is
+            taken to be a task description, feature-wise transformations
+            learn a task representation which allows them to capture and leverage the
+            relationship between multiple sources of information, even in remarkably
+            different problem settings.
+        </p>
+            
+        <hr>
+        <h2 id="feature-wise-transformations">(h2) Feature-wise transformations</h2>
+
+        <p>
+            To motivate feature-wise transformations, we start with a basic example,
+            where the two inputs are images and category labels, respectively. For the
+            purpose of this example, we are interested in building a generative model of
+            images of various classes (puppy, boat, airplane, etc.). The model takes as
+            input a class and a source of random noise (e.g., a vector sampled from a
+            normal distribution) and outputs an image sample for the requested class.
+        </p>        
+        <figure class="l-body">
+            <svg viewBox="0 0 704 170" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <!-- <defs>
+                    <path id="arrow-right" d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z"></path>
+                    <path id="arrow-down" d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)"></path>
+                    <filter x="0" y="0" width="1" height="1" id="zoolander-text-background">
+                            <feflood flood-color="#fdf6f2"></feflood>
+                            <fecomposite in="SourceGraphic"></fecomposite>
+                    </filter>
+                </defs> -->
+                <g transform="translate(30, 0)">
+                    <text x="0" y="210" class="figure-text">
+                        <tspan> Video and audio must be understood in the context of each </tspan>
+                        <tspan x="0" dy="1.5em"> other to understand the scene. </tspan>
+                        <tspan x="0" dy="2em" style="font-style: italic;"> Credit: still frame from the movie Charade. </tspan>
+                    </text>                    
+                    <image x="305" y="0" width="150" height="150" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="https://distill.pub/2018/feature-wise-transformations/images/puppy.jpg"></image>
+                </g>
+            </svg>
+        </figure>      
+        <p>
+            Because this operation is cheap, we might as well avoid making any such
+            assumptions and concatenate the conditioning representation to the input of
+            <em>all</em> layers in the network. Let’s call this approach
+            <em>concatenation-based conditioning</em>.
+        </p>       
+        <p>
+            Interestingly, conditional biasing can be thought of as another way to
+            implement concatenation-based conditioning. Consider a fully-connected
+            linear layer applied to the concatenation of an input
+            <span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mi mathvariant="bold">x</mi></mrow></mrow><annotation encoding="application/x-tex">\mathbf{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.44444em;"></span><span class="strut bottom" style="height:0.44444em;vertical-align:0em;"></span><span class="base"><span class="mord"><span class="mord mathbf">x</span></span></span></span></span></span> and a conditioning representation
+            <span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mi mathvariant="bold">z</mi></mrow></mrow><annotation encoding="application/x-tex">\mathbf{z}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.44444em;"></span><span class="strut bottom" style="height:0.44444em;vertical-align:0em;"></span><span class="base"><span class="mord"><span class="mord mathbf">z</span></span></span></span></span></span>:
+            <d-footnote>
+            The same argument applies to convolutional networks, provided we ignore
+            the border effects due to zero-padding.
+            </d-footnote>
+        </p>       
+        <p>
+            Given that both additive and multiplicative interactions seem natural and
+            intuitive, which approach should we pick? One argument in favor of
+            <em>multiplicative</em> interactions is that they are useful in learning
+            relationships between inputs, as these interactions naturally identify
+            “matches”: multiplying elements that agree in sign yields larger values than
+            multiplying elements that disagree. This property is why dot products are
+            often used to determine how similar two vectors are.
+            <d-footnote>
+            Multiplicative interactions alone have had a history of success in various
+            domains — see <a href="#bibliographic-notes">Bibliographic Notes</a>.
+            </d-footnote>
+            One argument in favor of <em>additive</em> interactions is that they are
+            more natural for applications that are less strongly dependent on the
+            joint values of two inputs, like feature aggregation or feature detection
+            (i.e., checking if a feature is present in either of two inputs).
+        </p>
+
+        <h3 id="nomenclature">Nomenclature</h3>
+        <p>
+        To continue the discussion on feature-wise transformations we need to
+        abstract away the distinction between multiplicative and additive
+        interactions. Without losing generality, let’s focus on feature-wise affine
+        transformations, and let’s adopt the nomenclature of Perez et al.
+        <d-cite key="perez2018film"></d-cite>, which formalizes conditional affine
+        transformations under the acronym <em>FiLM</em>, for Feature-wise Linear
+        Modulation.
+        <d-footnote>
+            Strictly speaking, <em>linear</em> is a misnomer, as we allow biasing, but
+            we hope the more rigorous-minded reader will forgive us for the sake of a
+            better-sounding acronym.
+        </d-footnote>
+        </p>      
+        
+        <p>
+        As the name implies, a FiLM layer applies a feature-wise affine
+        transformation to its input. By <em>feature-wise</em>, we mean that scaling
+        and shifting are applied element-wise, or in the case of convolutional
+        networks, feature map -wise.
+        <d-footnote>
+        To expand a little more on the convolutional case, feature maps can be
+        thought of as the same feature detector being evaluated at different
+        spatial locations, in which case it makes sense to apply the same affine
+        transformation to all spatial locations.
+        </d-footnote>
+        In other words, assuming <span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mi mathvariant="bold">x</mi></mrow></mrow><annotation encoding="application/x-tex">\mathbf{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.44444em;"></span><span class="strut bottom" style="height:0.44444em;vertical-align:0em;"></span><span class="base"><span class="mord"><span class="mord mathbf">x</span></span></span></span></span></span> is a FiLM layer’s
+        input, <span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mi mathvariant="bold">z</mi></mrow></mrow><annotation encoding="application/x-tex">\mathbf{z}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.44444em;"></span><span class="strut bottom" style="height:0.44444em;vertical-align:0em;"></span><span class="base"><span class="mord"><span class="mord mathbf">z</span></span></span></span></span></span> is a conditioning input, and
+        <span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.05556em;">γ</span></span></span></span></span> and <span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.05278em;">β</span></span></span></span></span> are
+        <span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mi mathvariant="bold">z</mi></mrow></mrow><annotation encoding="application/x-tex">\mathbf{z}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.44444em;"></span><span class="strut bottom" style="height:0.44444em;vertical-align:0em;"></span><span class="base"><span class="mord"><span class="mord mathbf">z</span></span></span></span></span></span>-dependent scaling and shifting vectors,
+
+        <span><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>FiLM</mtext><mo>(</mo><mrow><mi mathvariant="bold">x</mi></mrow><mo>)</mo><mo>=</mo><mi>γ</mi><mo>(</mo><mrow><mi mathvariant="bold">z</mi></mrow><mo>)</mo><mo>⊙</mo><mrow><mi mathvariant="bold">x</mi></mrow><mo>+</mo><mi>β</mi><mo>(</mo><mrow><mi mathvariant="bold">z</mi></mrow><mo>)</mo><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">
+        \textrm{FiLM}(\mathbf{x}) = \gamma(\mathbf{z}) \odot \mathbf{x}
+                                                    + \beta(\mathbf{z}).
+        </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord text"><span class="mord mathrm">FiLM</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathbf">x</span></span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.05556em;">γ</span><span class="mopen">(</span><span class="mord"><span class="mord mathbf">z</span></span><span class="mclose">)</span><span class="mbin">⊙</span><span class="mord"><span class="mord mathbf">x</span></span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.05278em;">β</span><span class="mopen">(</span><span class="mord"><span class="mord mathbf">z</span></span><span class="mclose">)</span><span class="mord mathrm">.</span></span></span></span></span></span>
+
+        You can interact with the following fully-connected and convolutional FiLM
+        layers to get an intuition of the sort of modulation they allow:
+        </p>      
+        
+        <hr>
+
+        <h2 id="in-literature">Feature-wise transformations in the literature</h2>
+        <p>
+            Feature-wise transformations find their way into methods applied to many
+            problem settings, but because of their simplicity, their effectiveness is
+            seldom highlighted in lieu of other novel research contributions.  Below are
+            a few notable examples of feature-wise transformations in the literature,
+            grouped by application domain. The diversity of these applications
+            underscores the flexible, general-purpose ability of feature-wise
+            interactions to learn effective task representations.
+        </p>
+        <div style="width: 100%">
+            <button class="expand-collapse-button" content-type="literature">expand all</button>
+        </div>
+        <button class="collapsible" content-name="vqa" content-type="literature">Visual question-answering<span style="float: right;">+</span></button>
+        <p class="content" content-name="vqa" content-type="literature">
+            Perez et al. <d-cite key="perez2017learning,perez2018film"></d-cite> use
+            FiLM layers to build a visual reasoning model
+            trained on the CLEVR dataset <d-cite key="johnson2017clevr"></d-cite> to
+            answer multi-step, compositional questions about synthetic images.
+        </p>        
+        <button class="collapsible" content-name="domain-adaptation" content-type="literature">Domain adaptation and few-shot learning<span style="float: right;">+</span></button>
+        <p class="content" content-name="domain-adaptation" content-type="literature">
+            For domain adaptation, Li et al. <d-cite key="li2018adaptive"></d-cite>
+            find it effective to update the per-channel batch normalization
+            statistics (mean and variance) of a network trained on one domain with that
+            network’s statistics in a new, target domain. As discussed in the
+            <em>Style transfer</em> subsection, this operation is akin to using the network as
+            both the FiLM generator and the FiLM-ed network. Notably, this approach,
+            along with Adaptive Instance Normalization, has the particular advantage of
+            not requiring any extra trainable parameters.
+        </p>
+        <p class="content" content-name="domain-adaptation" content-type="literature">
+            For few-shot learning, Oreshkin et al.
+            <d-cite key="oreshkin2018tadam"></d-cite> explore the use of FiLM layers to
+            provide more robustness to variations in the input distribution across
+            few-shot learning episodes. The training set for a given episode is used to
+            produce FiLM parameters which modulate the feature extractor used in a
+            Prototypical Networks <d-cite key="snell2017prototypical"></d-cite>
+            meta-training procedure.
+        </p>
+
+        <hr>
+        <h2 id="related-ideas">Related ideas</h2>
+        <p>
+            Aside from methods which make direct use of feature-wise transformations,
+            the FiLM framework connects more broadly with the following methods and
+            concepts.
+        </p>
+    </d-article>
+
+
+
+
+    <footer>
+        <small>&copy; 2018 <a href="http://helloflask.com/tutorial">HelloFlask</a></small>
+    </footer>
+    <script type="text/javascript" src="index.bundle.js"></script>
+</body>
+<script type="text/javascript" src="index.bundle.js"></script>
+</html>
