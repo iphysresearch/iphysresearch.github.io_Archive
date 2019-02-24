@@ -24,4 +24,4 @@ def test_url_for():
 
 @app.route('/post')
 def post():
-    return render_template('post.html')
+    return render_template('post_.html')

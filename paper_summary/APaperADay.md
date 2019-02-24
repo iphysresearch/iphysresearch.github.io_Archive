@@ -173,6 +173,8 @@ date: 2018-09-28
 
 ## :chart_with_downwards_trend: Optimization & Generalization
 
+**Transfusion: Understanding Transfer Learning with Applications to Medical Imaging**. M Raghu, C Zhang, J Kleinberg, S Bengio [Cornell University & Google Brain] (2019) [arXiv:1902.07208](https://arxiv.org/abs/1902.07208)
+
 **Decoupled Greedy Learning of CNNs**. Eugene Belilovsky, Michael Eickenberg, Edouard Oyallon [University of Montreal , University of California Berkeley, CentraleSupelec and INRIA] (2019) [arXiv:1901.08164](https://arxiv.org/abs/1901.08164v1) [Github](https://github.com/eugenium/DGL)
 
 **Eliminating all bad Local Minima from Loss Landscapes without even adding an Extra Unit**. J Sohl-Dickstein, K Kawaguchi [Google & MIT] (2019) [arXiv:1901.03909](https://arxiv.org/abs/1901.03909)
@@ -465,6 +467,8 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 
 
 ## :framed_picture: Figure Design & Dimension Reduction
+
+**Deep Learning Multidimensional Projections**. Mateus Espadoto, Nina S. T. Hirata and Alexandru C. Telea (2019) [arXiv:1902.07958](https://arxiv.org/abs/1902.07958)
 
 **CFUN: Combining Faster R-CNN and U-net Network for Efficient Whole Heart Segmentation**. Z Xu, Z Wu, J Feng [Tsinghua University] (2018) [arXiv:1812.04914](https://arxiv.org/abs/1812.04914) [GitHub](https://github.com/Wuziyi616/CFUN)
 

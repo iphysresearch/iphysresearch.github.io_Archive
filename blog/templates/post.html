@@ -1521,15 +1521,334 @@ distill-header .nav a {
             the FiLM framework connects more broadly with the following methods and
             concepts.
         </p>
+
+        <hr>
+        <h2 id="properties-of-learned-representation">Properties of the learned task representation</h2>
+        <p>
+            As hinted earlier, in adopting the FiLM perspective we implicitly introduce
+            a notion of <em>task representation</em>: each task — be it a question
+            about an image or a painting style to imitate — elicits a different
+            set of FiLM parameters via the FiLM generator which can be understood as its
+            representation in terms of how to modulate the FiLM-ed network. To help
+            better understand the properties of this representation, let’s focus on two
+            FiLM-ed models used in fairly different problem settings:
+        </p>
+        <ul>
+            <li>
+            The visual reasoning model of Perez et al.
+            <d-cite key="perez2017learning,perez2018film"></d-cite>, which uses FiLM
+            to modulate a visual processing pipeline based off an input question.
+            </li>
+
+            <hr>
+        </ul>
+
+        <h2 id="discussion">Discussion</h2>
+        <p>
+            Looking forward, there are still many unanswered questions.
+            Do these experimental observations on FiLM-based architectures generalize to
+            other related conditioning mechanisms, such as conditional biasing, sigmoidal
+            gating, HyperNetworks, and bilinear transformations? When do feature-wise
+            transformations outperform methods with stronger inductive biases and vice
+            versa? Recent work combines feature-wise transformations with stronger
+            inductive bias methods
+            <d-cite key="strub2018visual,bahdanau2018learning,yang2018dataset"></d-cite>,
+            which could be an optimal middle ground. Also, to what extent are FiLM’s
+            task representation properties
+            inherent to FiLM, and to what extent do they emerge from other features
+            of neural networks (i.e. non-linearities, FiLM generator
+            depth, etc.)? If you are interested in exploring these or other
+            questions about FiLM, we recommend looking into the code bases for
+            FiLM models for <a href="https://github.com/ethanjperez/film">visual reasoning</a>
+            <d-cite key="perez2018film"></d-cite> and <a href="https://github.com/tensorflow/magenta/tree/master/magenta/models/arbitrary_image_stylization">style transfer</a>
+            <d-cite key="ghiasi2017exploring"></d-cite> which we used as a
+            starting point for our experiments here.
+        </p>
+        <p>
+            Finally, the fact that changes on the feature level alone are able to
+            compound into large and meaningful modulations of the FiLM-ed network is
+            still very surprising to us, and hopefully future work will uncover deeper
+            explanations. For now, though, it is a question that
+            evokes the even grander mystery of how neural networks in general compound
+            simple operations like matrix multiplications and element-wise
+            non-linearities into semantically meaningful transformations.
+        </p>
     </d-article>
 
 
+    <d-appendix>
+        <h3 id="bibliographic-notes">Bibliographic Notes</h3>
+        <p>
+            Multiplicative interactions have succeeded on various tasks, ever since
+            they were introduced in vision as “mapping units” <d-cite key="hinton1981a"></d-cite>
+            and “dynamic mappings” <d-cite key="vonderMalsburg1994the"></d-cite>
+            around 40 years ago.  These tasks include Character-level Language
+            Modeling<d-cite key="sutskever2011generating"></d-cite>,
+            Image Denoising<d-cite key="tang2012boltzmann"></d-cite>,
+            Pose Estimation<d-cite key="taylor2009factored"></d-cite>,
+            Tracking<d-cite key="ross2006combining,denil2012learning"></d-cite>,
+            Action Recognition<d-cite key="le2011learning,taylor2010convolutional"></d-cite>,
+            and, more generally, tasks involving relating or matching inputs, such as
+            from different modalities or points in time
+            <d-cite key="memisevic2013learning"></d-cite>.
+        </p>
+        <p>
+            Many models lie on the spectrum between FiLM and Hypernetworks:
+        </p>
+        <ul>
+            <li>
+            Adaptive CNN <d-cite key="kang2017incorporating"></d-cite> predicts the
+            value of several of the model’s convolution filters as a function of
+            auxiliary inputs like camera perspective, level of noise, etc. The
+            resulting convolution filters turn out to be very effective in difficult
+            vision tasks such as crowd counting or image deblurring.
+            </li>
+            <li>
+            Residual Adapters <d-cite key="rebuffi2017residualadapters"></d-cite> also
+            propose to predict entire convolutional filters conditioned on the visual
+            recognition domain they are operating in.
+            </li>
+            <li>
+            In zero-shot/one-shot learning, Ba et al.
+            <d-cite key="lei2015predicting"></d-cite> propose a model that predicts
+            convolutional filters and classifiers weights based on textual
+            descriptions of object classes.
+            </li>
+            <li>
+            In reinforcement learning, Oh et al. <d-cite key="oh2017zero"></d-cite>
+            propose a model that computes the parameters of a
+            convolutional policy network conditioned on the task description.
+            </li>
+        </ul>
+        <p>
+            Tenenbaum and Freeman <d-cite key="tenenbaum1997separating"></d-cite> first
+            introduced bilinear models in the vision community to better disentangle
+            latent perceptual factors. The authors wanted to separate an image’s style
+            from its content, arguing that classic linear models were not rich enough to
+            extract such complex interaction. They demonstrate the effectiveness of
+            their approach by applying it to spoken vowel identification or zero-shot
+            font classification. Notable applications include:
+        </p>
+        <ul>
+            <li>
+                Chuang et al. <d-cite key="chuang2002facial"></d-cite> perform facial
+                animation using bilinear transformations by separating key facial features
+                (the style) from visual emotions (the content). Their method can modify
+                a speaking subject’s expression in recorded sequence from happy to angry
+                or neutral.
+            </li>
+            <li>
+                Chu and Park <d-cite key="chu2009personalized"></d-cite> and Yang et al.
+                <d-cite key="yang2011like"></d-cite> apply bilinear models to
+                recommendation systems by extracting user and item information in various
+                settings. More generally, recommendation systems rely heavily on matrix
+                factorization methods <d-cite key="koren2009matrix"></d-cite>, which can
+                be viewed as a bilinear model where one of the latent vectors is
+                fixed<d-cite key="tenenbaum1997separating"></d-cite>.
+            </li>
+            <li>
+                More recently, bilinear models have inspired new neural architectures in
+                visual recognition <d-cite key="lin2015bilinear"></d-cite>, video action
+                recognition <d-cite key="feichtenhofer2016convolutional"></d-cite>, and
+                visual question-answering<d-cite key="fukui2016multimodal"></d-cite>.
+            </li>
+        </ul>
+        <h3 id="acknowledgements">Acknowledgements</h3>
+        <p>
+            This article would be nowhere near where it is today without the honest and
+            constructive feedback we received from various people across several
+            organizations. We would like to thank Chris Olah and Shan Carter from the
+            Distill editorial team as well as Ludwig Schubert from the Google Brain team for being
+            so generous with their time and advice. We would also like to thank Archy de
+            Berker, Xavier Snelgrove, Pedro Oliveira Pinheiro, Alexei Nordell-Markovits,
+            Masha Krol, and Minh Dao from Element AI; Roland Memisevic from TwentyBN;
+            Dzmitry Bahdanau from MILA; Ameesh Shah and Will Levine from Rice
+            University; Dhanush Radhakrishnan from Roivant Sciences; Raymond Cano from
+            Plaid; Eleni Triantafillou from Toronto University; Olivier Pietquin and
+            Jon Shlens from Google Brain; and Jérémie Mary from Criteo.
+        </p>
 
+        <h3 id="peer-reviews">Discussion and Review</h3>
+        <p>
+            <a href="https://github.com/distillpub/post--feature-wise-transformations/issues/156">Review 1 - Anonymous </a><br>
+            <a href="https://github.com/distillpub/post--feature-wise-transformations/issues/158">Review 2 - Anonymous </a><br>
+            <a href="https://github.com/distillpub/post--feature-wise-transformations/issues/159">Review 3 - Chris Olah</a><br>
+        </p>
+      
+        <d-footnote-list></d-footnote-list>
+
+
+        <d-citation-list distill-prerendered="true">
+            <style>
+                d-citation-list {
+                  contain: style;
+                }
+                
+                d-citation-list .references {
+                  grid-column: text;
+                }
+                
+                d-citation-list .references .title {
+                  font-weight: 500;
+                }
+            </style>
+            <h3 id="references">References</h3>
+            <ol id="references-list" class="references"><li id="perez2018film"><span class="title">FiLM: Visual Reasoning with a General Conditioning Layer</span>   <a href="http://arxiv.org/pdf/1709.07871.pdf">[PDF]</a><br>Perez, E., Strub, F., Vries, H.d., Dumoulin, V. and Courville, A., 2018. AAAI. </li><li id="perez2017learning"><span class="title">Learning visual reasoning without strong priors</span>   <a href="https://arxiv.org/pdf/1707.03017.pdf">[PDF]</a><br>Perez, E., de Vries, H., Strub, F., Dumoulin, V. and Courville, A., 2017. ICML Workshop on Machine Learning in Speech and Language Processing. </li><li id="johnson2017clevr"><span class="title">CLEVR: A diagnostic dataset for compositional language and elementary visual reasoning</span>   <a href="https://arxiv.org/pdf/1612.06890.pdf">[PDF]</a><br>Johnson, J., Li, F., Hariharan, B., Zitnick, L.C., van der Maaten, L. and Girshick, R., 2017. Proceedings of the Conference on Computer Vision and Pattern Recognition. </li><li id="strub2018visual"><span class="title">Visual Reasoning with Multi-hop Feature Modulation</span> <br>Strub, F., Seurin, M., Perez, E., de Vries, H., Mary, J., Preux, P., Courville, A. and Pietquin, O., 2018. ECCV. </li><li id="vries2017guesswhat"><span class="title">GuessWhat?! Visual object discovery through multi-modal dialogue</span>   <a href="http://arxiv.org/pdf/1611.08481.pdf">[PDF]</a><br>de Vries, H., Strub, F., Chandar, S., Pietquin, O., Larochelle, H. and Courville, A., 2017. Proceedings of the Conference on Computer Vision and Pattern Recognition. </li><li id="kazemzadeh2014referitgame"><span class="title">ReferItGame: Referring to objects in photographs of natural scenes</span>   <a href="http://tamaraberg.com/papers/referit.pdf">[PDF]</a><br>Kazemzadeh, S., Ordonez, V., Matten, M. and Berg, T., 2014. Conference on Empirical Methods in Natural Language Processing. </li><li id="vries2017modulating"><span class="title">Modulating early visual processing by language</span>   <a href="https://arxiv.org/pdf/1707.00683.pdf">[PDF]</a><br>de Vries, H., Strub, F., Mary, J., Larochelle, H., Pietquin, O. and Courville, A., 2017. Advances in Neural Information Processing Systems. </li><li id="agrawal2015vqa"><span class="title">VQA: visual question answering</span>   
+
+            <a href="https://arxiv.org/pdf/1505.00468.pdf">[PDF]</a><br>Agrawal, A., Lu, J., Antol, S., Mitchell, M., Zitnick, C.L., Batra, D. and Parikh, D., 2015. Proceedings of the International Conference on Computer Vision. </li><li id="dumoulin2017learned"><span class="title">A learned representation for artistic style</span>   <a href="https://arxiv.org/pdf/1610.07629.pdf">[PDF]</a><br>Dumoulin, V., Shlens, J. and Kudlur, M., 2017. Proceedings of the International Conference on Learning Representations. </li><li id="ghiasi2017exploring"><span class="title">Exploring the structure of a real-time, arbitrary neural artistic stylization network</span>   <a href="https://arxiv.org/pdf/1705.06830.pdf">[PDF]</a><br>Ghiasi, G., Lee, H., Kudlur, M., Dumoulin, V. and Shlens, J., 2017. Proceedings of the British Machine Vision Conference. </li><li id="yang2018efficient"><span class="title">Efficient video object segmentation via network modulation</span>   <a href="http://arxiv.org/pdf/1802.01218.pdf">[PDF]</a><br>Yang, L., Wang, Y., Xiong, X., Yang, J. and Katsaggelos, A.K., 2018. arXiv. </li><li id="huang2017arbitrary"><span class="title">Arbitrary style transfer in real-time with adaptive instance normalization</span>   <a href="https://arxiv.org/pdf/1703.06868.pdf">[PDF]</a><br>Huang, X. and Belongie, S., 2017. Proceedings of the International Conference on Computer Vision. </li><li id="srivastava2015highway"><span class="title">Highway networks</span>   <a href="http://arxiv.org/pdf/1505.00387.pdf">[PDF]</a><br>Srivastava, R.K., Greff, K. and Schmidhuber, J., 2015. ICML Deep Learning Workshop. </li><li id="hochreiter1997long"><span class="title">Long short-term memory</span>   
+
+
+            <a href="http://dx.doi.org/10.1162/neco.1997.9.8.1735">[link]</a><br>Hochreiter, S. and Schmidhuber, J., 1997. Neural Computation, Vol 9(8), pp. 1735--1780. MIT Press.</li><li id="hu2017squeeze"><span class="title">Squeeze-and-Excitation networks</span>   <a href="https://arxiv.org/pdf/1709.01507.pdf">[PDF]</a><br>Hu, J., Shen, L. and Sun, G., 2017. CVPR's ILSVRC 2017 Workshop. </li><li id="melis2017lstm"><span class="title">On the state of the art of evaluation in neural language models</span>   <a href="http://arxiv.org/pdf/1707.05589.pdf">[PDF]</a><br>Melis, G., Dyer, C. and Blunsom, P., 2017. Proceedings of the International Conference on Learning Representations. </li><li id="dauphin2017language"><span class="title">Language modeling with gated convolutional networks</span>   <a href="https://arxiv.org/pdf/1612.08083.pdf">[PDF]</a><br>Dauphin, Y.N., Fan, A., Auli, M. and Grangier, D., 2017. Proceedings of the International Conference on Machine Learning. </li><li id="gehring2017convolutional"><span class="title">Convolution sequence-to-sequence learning</span>   <a href="https://arxiv.org/pdf/1705.03122.pdf">[PDF]</a><br>Gehring, J., Auli, M., Grangier, D., Yarats, D. and Dauphin, Y.N., 2017. Proceedings of the International Conference on Machine Learning. </li><li id="dhingra2017gated"><span class="title">Gated-attention readers for text comprehension</span>   <a href="https://arxiv.org/pdf/1606.01549.pdf">[PDF]</a><br>Dhingra, B., Liu, H., Yang, Z., Cohen, W.W. and Salakhutdinov, R., 2017. Proceedings of the Annual Meeting of the Association for Computational Linguistics. </li><li id="chaplot2017gated"><span class="title">Gated-attention architectures for task-oriented language grounding</span>   <a href="https://arxiv.org/pdf/1706.07230.pdf">[PDF]</a><br>Chaplot, D.S., Sathyendra, K.M., Pasumarthi, R.K., Rajagopal, D. and Salakhutdinov, R., 2017. ACL Workshop on Language Grounding for Robotics. </li><li id="kempa2016vizdoom"><span class="title">Vizdoom: A doom-based AI research platform for visual reinforcement learning</span>   <a href="https://arxiv.org/pdf/1605.02097.pdf">[PDF]</a><br>Kempka, M., Wydmuch, M., Runc, G., Toczek, J. and Jaśkowski, W., 2016. IEEE Conference on Computational Intelligence and Games. </li><li id="bahdanau2018learning"><span class="title">Learning to follow language instructions with adversarial reward induction</span>   
+
+            <a href="http://arxiv.org/pdf/1806.01946.pdf">[PDF]</a><br>Bahdanau, D., Hill, F., Leike, J., Hughes, E., Kohli, P. and Grefenstette, E., 2018. arXiv. </li><li id="andreas2016neural"><span class="title">Neural module networks</span>   <a href="http://arxiv.org/pdf/1511.02799.pdf">[PDF]</a><br>Andreas, J., Rohrbach, M., Darrell, T. and Klein, D., 2016. Proceedings of the Conference on Computer Vision and Pattern Recognition. </li><li id="kirkpatrick2017overcoming"><span class="title">Overcoming catastrophic forgetting in neural networks</span>   <a href="http://www.pnas.org/content/114/13/3521.abstract">[link]</a><br>Kirkpatrick, J., Pascanu, R., Rabinowitz, N., Veness, J., Desjardins, G., Rusu, A.A., Milan, K., Quan, J., Ramalho, T., Grabska-Barwinska, A., Hassabis, D., Clopath, C., Kumaran, D. and Hadsell, R., 2017. Proceedings of the National Academy of Sciences, Vol 114(13), pp. 3521--3526. </li><li id="radford2016unsupervised"><span class="title">Unsupervised representation learning with deep convolutional generative adversarial networks</span>   <a href="https://arxiv.org/pdf/1511.06434.pdf">[PDF]</a><br>Radford, A., Metz, L. and Chintala, S., 2016. Proceedings of the International Conference on Learning Representations. </li><li id="goodfellow2014generative"><span class="title">Generative adversarial nets</span>   <a href="https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf">[PDF]</a><br>Goodfellow, I., Pouget-Abadie, J., Mirza, M., Xu, B., Warde-Farley, D., Ozair, S., Courville, A. and Bengio, Y., 2014. Advances in Neural Information Processing Systems. </li><li id="oord2016conditional"><span class="title">Conditional image generation with PixelCNN decoders</span>   <a href="https://arxiv.org/pdf/1606.05328.pdf">[PDF]</a><br>van den Oord, A., Kalchbrenner, N., Espeholt, L., Vinyals, O., Graves, A. and Kavukcuoglu, K., 2016. Advances in Neural Information Processing Systems. </li><li id="oord2016wavenet"><span class="title">WaveNet: A generative model for raw audio</span>   <a href="https://arxiv.org/pdf/1609.03499.pdf">[PDF]</a><br>van den Oord, A., Dieleman, S., Zen, H., Simonyan, K., Vinyals, O., Graves, A., Kalchbrenner, N., Senior, A. and Kavukcuoglu, K., 2016. arXiv. </li><li id="kim2017dynamic"><span class="title">Dynamic layer normalization for adaptive neural acoustic modeling in speech recognition</span>   <a href="https://arxiv.org/pdf/1707.06065.pdf">[PDF]</a><br>Kim, T., Song, I. and Bengio, Y., 2017. Interspeech. </li><li id="li2018adaptive"><span class="title">Adaptive batch normalization for practical domain adaptation</span>   <a href="http://www.sciencedirect.com/science/article/pii/S003132031830092X">[link]</a><br>Li, Y., Wang, N., Shi, J., Hou, X. and Liu, J., 2018. Pattern Recognition, Vol 80, pp. 109 - 117. </li><li id="oreshkin2018tadam"><span class="title">TADAM: Task dependent adaptive metric for improved few-shot learning</span>   <a href="http://arxiv.org/pdf/1805.10123.pdf">[PDF]</a><br>Oreshkin, B.N., Rodriguez, P. and Lacoste, A., 2018. arXiv. </li><li id="snell2017prototypical"><span class="title">Prototypical networks for few-shot learning</span>   <a href="http://arxiv.org/pdf/1703.05175.pdf">[PDF]</a><br>Snell, J., Swersky, K. and Zemel, R., 2017. Advances in Neural Information Processing Systems. </li><li id="frome2013devise"><span class="title">Devise: A deep visual-semantic embedding model</span>   <a href="https://papers.nips.cc/paper/5204-devise-a-deep-visual-semantic-embedding-model">[link]</a><br>Frome, A., Corrado, G.S., Shlens, J., Bengio, S., Dean, J. and Mikolov, T., 2013. Advances in Neural Information Processing Systems, pp. 2121--2129. </li><li id="socher2013zero"><span class="title">Zero-shot learning through cross-modal transfer</span>   <a href="http://arxiv.org/pdf/1301.3666.pdf">[PDF]</a><br>Socher, R., Ganjoo, M., Manning, C.D. and Ng, A., 2013. Advances in Neural Information Processing Systems, pp. 935--943. </li><li id="norouzi2014zero"><span class="title">Zero-shot learning by convex combination of semantic embeddings</span>   <a href="http://arxiv.org/pdf/1312.5650.pdf">[PDF]</a><br>Norouzi, M., Mikolov, T., Bengio, S., Singer, Y., Shlens, J., Frome, A., Corrado, G.S. and Dean, J., 2014. Proceedings of the International Conference on Learning Representations. </li><li id="ha2016hypernetworks"><span class="title">HyperNetworks</span>   <a href="https://arxiv.org/pdf/1609.09106.pdf">[PDF]</a><br>Ha, D., Dai, A. and Le, Q., 2016. Proceedings of the International Conference on Learning Representations. </li><li id="tenenbaum2000separating"><span class="title">Separating style and content with bilinear models</span>   <a href="http://dx.doi.org/10.1162/089976600300015349">[link]</a><br>Tenenbaum, J.B. and Freeman, W.T., 2000. Neural Computation, Vol 12(6), pp. 1247--1283. MIT Press.</li><li id="maaten2008visualizing"><span class="title">Visualizing data using t-SNE</span>   <a href="http://www.jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf">[PDF]</a><br>Maaten, L.v.d. and Hinton, G., 2008. Journal of machine learning research, Vol 9(Nov), pp. 2579--2605. </li><li id="yang2018dataset"><span class="title">A dataset and architecture for visual reasoning with a working memory</span>   
+
+            <a href="http://arxiv.org/pdf/1803.06092.pdf">[PDF]</a><br>Yang, G.R., Ganichev, I., Wang, X., Shlens, J. and Sussillo, D., 2018. arXiv. </li><li id="hinton1981a"><span class="title">A parallel computation that assigns canonical object-based frames of reference</span>   <a href="http://dl.acm.org/citation.cfm?id=1623264.1623282">[link]</a><br>Hinton, G.F., 1981. Proceedings of the International Joint Conference on Artificial Intelligence. </li><li id="vonderMalsburg1994the"><span class="title">The correlation theory of brain function</span>   <a href="https://doi.org/10.1007/978-1-4612-4320-5_2">[link]</a><br>von der Malsburg, C., 1994. Models of Neural Networks: Temporal Aspects of Coding and Information Processing in Biological Systems, pp. 95--119. </li><li id="sutskever2011generating"><span class="title">Generating text with recurrent neural networks</span>   <a href="http://dl.acm.org/citation.cfm?id=3104482.3104610">[link]</a><br>Sutskever, I., Martens, J. and Hinton, G., 2011. Proceedings of the International Conference on Machine Learning. </li><li id="tang2012boltzmann"><span class="title">Robust boltzmann machines for recognition and denoising</span>   
+
+            <a href="http://www.cs.toronto.edu/~tang/papers/robm.pdf">[PDF]</a><br>Tang, Y., Salakhutdinov, R. and Hinton, G., 2012. IEEE Conference on Computer Vision and Pattern Recognition. </li><li id="taylor2009factored"><span class="title">Factored conditional restricted Boltzmann machines for modeling motion style</span>   <a href="http://doi.acm.org/10.1145/1553374.1553505">[link]</a><br>Taylor, G.W. and Hinton, G.E., 2009. Proceedings of the International Conference on Machine Learning. </li><li id="ross2006combining"><span class="title">Combining discriminative features to infer complex trajectories</span>   <a href="http://www.cs.toronto.edu/~osindero/PUBLICATIONS/RossOsinderoZemel_ICML06.pdf">[PDF]</a><br>Ross, D.A., Osindero, S. and Zemel, R.S., 2006. Proceedings of the International Conference on Machine Learning. </li><li id="denil2012learning"><span class="title">Learning where to attend with deep architectures for image tracking</span>   <a href="http://dx.doi.org/10.1162/NECO_a_00312">[link]</a><br>Denil, M., Bazzani, L., Larochelle, H. and de Freitas, N., 2012. Neural Comput., Vol 24(8), pp. 2151--2184. </li><li id="le2011learning"><span class="title">Learning hierarchical invariant spatio-temporal features for action recognition with independent subspace analysis</span>   <a href="https://ieeexplore.ieee.org/document/5995496/">[link]</a><br>Le, Q.V., Zou, W.Y., Yeung, S.Y. and Ng, A.Y., 2011. Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. </li><li id="taylor2010convolutional"><span class="title">Convolutional learning of spatio-temporal features</span>   <a href="https://link.springer.com/chapter/10.1007/978-3-642-15567-3_11">[link]</a><br>Taylor, G.W., Fergus, R., LeCun, Y. and Bregler, C., 2010. ECCV. </li><li id="memisevic2013learning"><span class="title">Learning to relate images</span>   <a href="https://www.iro.umontreal.ca/~memisevr/pubs/pami_relational.pdf">[PDF]</a><br>Memisevic, R., 2013. IEEE Transactions on Pattern Analysis and Machine Intelligence, Vol 35(8), pp. 1829-1846. </li><li id="kang2017incorporating"><span class="title">Incorporating side information by adaptive convolution</span>   <a href="https://papers.nips.cc/paper/6976-incorporating-side-information-by-adaptive-convolution.pdf">[PDF]</a><br>Kang, D., Dhar, D. and Chan, A., 2017. Advances in Neural Information Processing Systems. </li><li id="rebuffi2017residualadapters"><span class="title">Learning multiple visual domains with residual adapters</span>   <a href="http://papers.nips.cc/paper/6654-learning-multiple-visual-domains-with-residual-adapters.pdf">[PDF]</a><br>Rebuffi, S., Bilen, H. and Vedaldi, A., 2017. Advances in Neural Information Processing Systems. </li><li id="lei2015predicting"><span class="title">Predicting deep zero-shot convolutional neural networks using textual descriptions</span>   <a href="https://arxiv.org/pdf/1506.00511.pdf">[PDF]</a><br>Ba, J., Swersky, K., Fidler, S. and Salakhutdinov, R., 2015. Proceedings of the IEEE International Conference on Computer Vision. </li><li id="oh2017zero"><span class="title">Zero-shot task generalization with multi-task deep reinforcement learning</span>   <a href="https://arxiv.org/pdf/1706.05064.pdf">[PDF]</a><br>Oh, J., Singh, S., Lee, H. and Kohli, P., 2017. Proceedings of the International Conference on Machine Learning. </li><li id="tenenbaum1997separating"><span class="title">Separating style and content</span>   <a href="https://papers.nips.cc/paper/1290-separating-style-and-content.pdf">[PDF]</a><br>Tenenbaum, J.B. and Freeman, W.T., 1997. Advances in neural information processing systems. </li><li id="chuang2002facial"><span class="title">Facial expression space learning</span>   <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.65.3338&amp;rep=rep1&amp;type=pdf">[link]</a><br>Chuang, E.S., Deshpande, F. and Bregler, C., 2002. Proceedings of the Pacific Conference on Computer Graphics and Applications. </li><li id="chu2009personalized"><span class="title">Personalized recommendation on dynamic content using predictive bilinear models</span>   <a href="http://www.wwwconference.org/www2009/proceedings/pdf/p691.pdf">[PDF]</a><br>Chu, W. and Park, S., 2009. Proceedings of the International Conference on World Wide Web. </li><li id="yang2011like"><span class="title">Like like alike: joint friendship and interest propagation in social networks</span>   <a href="http://wwwconference.org/proceedings/www2011/proceedings/p537.pdf">[PDF]</a><br>Yang, S., Long, B., Smola, A., Sadagopan, N., Zheng, Z. and Zha, H., 2011. Proceedings of the International Conference on World Wide Web. </li><li id="koren2009matrix"><span class="title">Matrix factorization techniques for recommender systems</span>   <a href="https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf">[PDF]</a><br>Koren, Y., Bell, R. and Volinsky, C., 2009. Computer, Vol 42(8). IEEE.</li><li id="lin2015bilinear"><span class="title">Bilinear CNN models for fine-grained visual recognition</span>   <a href="http://vis-www.cs.umass.edu/bcnn/docs/bcnn_iccv15.pdf">[PDF]</a><br>Lin, T., RoyChowdhury, A. and Maji, S., 2015. Proceedings of the IEEE International Conference on Computer Vision. </li><li id="feichtenhofer2016convolutional"><span class="title">Convolutional two-stream network fusion for video action recognition</span>   <a href="https://arxiv.org/pdf/1604.06573.pdf">[PDF]</a><br>Feichtenhofer, C., Pinz, A. and Zisserman, A., 2016. Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. </li><li id="fukui2016multimodal"><span class="title">Multimodal compact bilinear pooling for visual question answering and visual grounding</span>   <a href="https://arxiv.org/pdf/1606.01847.pdf">[PDF]</a><br>Fukui, A., Park, D.H., Yang, D., Rohrbach, A., Darrell, T. and Rohrbach, M., 2016. Proceedings of the Conference on Empirical Methods in Natural Language Processing. </li></ol>
+        </d-citation-list>
+
+        <distill-appendix>
+            <style>
+            distill-appendix {
+                contain: layout style;
+            }
+
+            distill-appendix .citation {
+                font-size: 11px;
+                line-height: 15px;
+                border-left: 1px solid rgba(0, 0, 0, 0.1);
+                padding-left: 18px;
+                border: 1px solid rgba(0,0,0,0.1);
+                background: rgba(0, 0, 0, 0.02);
+                padding: 10px 18px;
+                border-radius: 3px;
+                color: rgba(150, 150, 150, 1);
+                overflow: hidden;
+                margin-top: -12px;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
+
+            distill-appendix > * {
+                grid-column: text;
+            }
+            </style>
+                    
+
+            <h3 id="updates-and-corrections">Updates and Corrections</h3>
+            <p>
+                If you see mistakes or want to suggest changes, please <a href="https://github.com/distillpub/post--feature-wise-transformations/issues/new">create an issue on GitHub</a>. </p>
+
+            <h3 id="reuse">Reuse</h3>
+            <p>Diagrams and text are licensed under Creative Commons Attribution <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> with the <a class="github" href="https://github.com/distillpub/post--feature-wise-transformations">source available on GitHub</a>, unless noted otherwise. The figures that have been reused from other sources don’t fall under this license and can be recognized by a note in their caption: “Figure from …”.</p>
+
+            <h3 id="citation">Citation</h3>
+            <p>For attribution in academic contexts, please cite this work as</p>
+            <pre class="citation short">Dumoulin, et al., "Feature-wise transformations", Distill, 2018.</pre>
+            <p>BibTeX citation</p>
+            <pre class="citation long">@article{dumoulin2018feature-wise,
+                author = {Dumoulin, Vincent and Perez, Ethan and Schucher, Nathan and Strub, Florian and Vries, Harm de and Courville, Aaron and Bengio, Yoshua},
+                title = {Feature-wise transformations},
+                journal = {Distill},
+                year = {2018},
+                note = {https://distill.pub/2018/feature-wise-transformations},
+                doi = {10.23915/distill.00011}
+                }</pre>
+                
+        </distill-appendix>     
+    </d-appendix>
+
+    <d-bibliography>
+        <script type="text/json">
+            [["vries2017modulating",{"title":"Modulating early visual processing by language","author":"de Vries, Harm and Strub, Florian and Mary, J\\'{e}r\\'{e}mie and Larochelle, Hugo and Pietquin, Olivier and Courville, Aaron","booktitle":"Advances in Neural Information Processing Systems","year":"2017","url":"https://arxiv.org/pdf/1707.00683.pdf","type":"inproceedings"}],["vries2017guesswhat",{"title":"GuessWhat?! Visual object discovery through multi-modal dialogue","author":"de Vries, Harm and Strub, Florian and Chandar, Sarath and Pietquin, Olivier and Larochelle, Hugo and Courville, Aaron","booktitle":"Proceedings of the Conference on Computer Vision and Pattern Recognition","year":"2017","url":"https://arxiv.org/abs/1611.08481","type":"inproceedings"}],["perez2017learning",{"title":"Learning visual reasoning without strong priors","author":"Perez, Ethan and de Vries, Harm and Strub, Florian and Dumoulin, Vincent and Courville, Aaron","booktitle":"ICML Workshop on Machine Learning in Speech and Language Processing","year":"2017","url":"https://arxiv.org/pdf/1707.03017.pdf","type":"inproceedings"}],["perez2018film",{"title":"FiLM: Visual Reasoning with a General Conditioning Layer","author":"Ethan Perez and Florian Strub and Harm de Vries and Vincent Dumoulin and Aaron Courville","booktitle":"AAAI","year":"2018","url":"https://arxiv.org/abs/1709.07871","type":"inproceedings"}],["johnson2017clevr",{"title":"CLEVR: A diagnostic dataset for compositional language and elementary visual reasoning","author":"Johnson, Justin and Li, Fei-Fei and Hariharan, Bharath and Zitnick, Lawrence C. and van der Maaten, Laurens and Girshick, Ross","booktitle":"Proceedings of the Conference on Computer Vision and Pattern Recognition","year":"2017","url":"https://arxiv.org/pdf/1612.06890.pdf","type":"inproceedings"}],["dumoulin2017learned",{"title":"A learned representation for artistic style","author":"Dumoulin, Vincent and Shlens, Jonathon and Kudlur, Manjunath","booktitle":"Proceedings of the International Conference on Learning Representations","year":"2017","url":"https://arxiv.org/pdf/1610.07629.pdf","type":"inproceedings"}],["ghiasi2017exploring",{"title":"Exploring the structure of a real-time, arbitrary neural artistic stylization network","author":"Ghiasi, Golnaz and Lee, Honglak and Kudlur, Manjunath and Dumoulin, Vincent and Shlens, Jonathon","booktitle":"Proceedings of the British Machine Vision Conference","year":"2017","url":"https://arxiv.org/pdf/1705.06830.pdf","type":"inproceedings"}],["huang2017arbitrary",{"title":"Arbitrary style transfer in real-time with adaptive instance normalization","author":"Huang, Xun and Belongie, Serge","booktitle":"Proceedings of the International Conference on Computer Vision","year":"2017","url":"https://arxiv.org/pdf/1703.06868.pdf","type":"inproceedings"}],["radford2016unsupervised",{"title":"Unsupervised representation learning with deep convolutional generative adversarial networks","author":"Radford, Alec and Metz, Luke and Chintala, Soumith","booktitle":"Proceedings of the International Conference on Learning Representations","year":"2016","url":"https://arxiv.org/pdf/1511.06434.pdf","type":"inproceedings"}],["oord2016conditional",{"title":"Conditional image generation with PixelCNN decoders","author":"van den Oord, Aaron and Kalchbrenner, Nal and Espeholt, Lasse and Vinyals, Oriol and Graves, Alex and Kavukcuoglu, Koray","booktitle":"Advances in Neural Information Processing Systems","year":"2016","url":"https://arxiv.org/pdf/1606.05328.pdf","type":"inproceedings"}],["oord2016wavenet",{"title":"WaveNet: A generative model for raw audio","author":"van den Oord, Aaron and Dieleman, Sander and Zen, Heiga and Simonyan, Karen and Vinyals, Oriol and Graves, Alex and Kalchbrenner, Nal and Senior, Andrew and Kavukcuoglu, Koray","journal":"arXiv","year":"2016","url":"https://arxiv.org/pdf/1609.03499.pdf","type":"article"}],["ha2016hypernetworks",{"title":"HyperNetworks","author":"Ha, David and Dai, Andrew and Le, Quoc","booktitle":"Proceedings of the International Conference on Learning Representations","year":"2016","url":"https://arxiv.org/pdf/1609.09106.pdf","type":"inproceedings"}],["kim2017dynamic",{"title":"Dynamic layer normalization for adaptive neural acoustic modeling in speech recognition","author":"Kim, Taesup and Song, Inchul and Bengio, Yoshua","booktitle":"Interspeech","year":"2017","url":"https://arxiv.org/pdf/1707.06065.pdf","type":"inproceedings"}],["hu2017squeeze",{"title":"Squeeze-and-Excitation networks","author":"Hu, Jie and Shen, Li and Sun, Gang","booktitle":"CVPR's ILSVRC 2017 Workshop","year":"2017","url":"https://arxiv.org/pdf/1709.01507.pdf","type":"inproceedings"}],["dauphin2017language",{"title":"Language modeling with gated convolutional networks","author":"Dauphin, Yann N and Fan, Angela and Auli, Michael and Grangier, David","booktitle":"Proceedings of the International Conference on Machine Learning","year":"2017","url":"https://arxiv.org/pdf/1612.08083.pdf","type":"inproceedings"}],["gehring2017convolutional",{"title":"Convolution sequence-to-sequence learning","author":"Gehring, Jonas and Auli, Michael and Grangier, David and Yarats, Denis and Dauphin, Yann N.","booktitle":"Proceedings of the International Conference on Machine Learning","year":"2017","url":"https://arxiv.org/pdf/1705.03122.pdf","type":"inproceedings"}],["hochreiter1997long",{"title":"Long short-term memory","author":"Hochreiter, Sepp and Schmidhuber, Jurgen","journal":"Neural Computation","volume":"9","number":"8","pages":"1735--1780","year":"1997","publisher":"MIT Press","url":"http://dx.doi.org/10.1162/neco.1997.9.8.1735","type":"article"}],["tenenbaum2000separating",{"title":"Separating style and content with bilinear models","author":"Tenenbaum, Joshua B. and Freeman, William T.","journal":"Neural Computation","volume":"12","number":"6","pages":"1247--1283","year":"2000","publisher":"MIT Press","url":"http://dx.doi.org/10.1162/089976600300015349","type":"article"}],["dhingra2017gated",{"title":"Gated-attention readers for text comprehension","author":"Dhingra, Bhuwan and Liu, Hanxiao and Yang, Zhilin, and Cohen, William W and Salakhutdinov, Ruslan","booktitle":"Proceedings of the Annual Meeting of the Association for Computational Linguistics","year":"2017","url":"https://arxiv.org/pdf/1606.01549.pdf","type":"article"}],["chaplot2017gated",{"title":"Gated-attention architectures for task-oriented language grounding","author":"Chaplot, Devendra Singh and Sathyendra, Kanthashree Mysore and Pasumarthi, Rama Kumar and Rajagopal, Dheeraj and Salakhutdinov, Ruslan","booktitle":"ACL Workshop on Language Grounding for Robotics","year":"2017","url":"https://arxiv.org/pdf/1706.07230.pdf","type":"inproceedings"}],["shen2017disan",{"title":"DiSAN: Directional self-attention network for RNN/CNN-free language understanding","author":"Shen, Tao and Zhou, Tianyi and Long, Guodong and Jiang, Jing and Pan, Shirui and Zhang, Chengqi","booktitle":"arXiv","year":"2017","url":"https://arxiv.org/pdf/1709.04696.pdf","type":"inproceedings"}],["bowman2015large",{"title":"A large annotated corpus for learning natural language inference","author":"Bowman, Samuel R. and Angeli, Gabor and Potts, Christopher, and Manning, Christopher D.","booktitle":"Proceedings of the Conference on Empirical Methods in Natural Language Processing","year":"2015","url":"https://nlp.stanford.edu/pubs/snli_paper.pdf","type":"inproceedings"}],["jacobs1991adaptive",{"title":"Adaptive mixtures of local experts","author":"Jacobs, Robert A. and Jordan, Michael I. and Nowlan, Steven J. and Hinton, Geoffrey E.","journal":"Neural Computation","volume":"3","number":"1","pages":"79--87","year":"1991","publisher":"MIT Press","url":"http://dx.doi.org/10.1162/neco.1991.3.1.79","type":"article"}],["jordan1994hierarchical",{"title":"Hierarchical mixtures of experts and the EM algorithm","author":"Jordan, Michael I. and Jacobs, Robert A.","journal":"Neural Computation","volume":"6","number":"2","pages":"181--214","year":"1994","publisher":"MIT Press","url":"http://dx.doi.org/10.1162/neco.1994.6.2.181","type":"article"}],["eigen2014deep",{"title":"Learning factored representations in a deep mixture of experts","author":"Eigen, David and Ranzato, Marc'Aurelio and Sutskever, Ilya","booktitle":"Proceedings of the ICLR Workshops","year":"2014","url":"https://arxiv.org/pdf/1312.4314.pdf","type":"inproceedings"}],["kirkpatrick2017overcoming",{"title":"Overcoming catastrophic forgetting in neural networks","author":"Kirkpatrick, James and Pascanu, Razvan and Rabinowitz, Neil and Veness, Joel and Desjardins, Guillaume and Rusu, Andrei A. and Milan, Kieran and Quan, John and Ramalho, Tiago and Grabska-Barwinska, Agnieszka and Hassabis, Demis and Clopath, Claudia and Kumaran, Dharshan and Hadsell, Raia","journal":"Proceedings of the National Academy of Sciences","volume":"114","number":"13","pages":"3521--3526","year":"2017","url":"http://www.pnas.org/content/114/13/3521.abstract","type":"article"}],["mel1992clusteron",{"title":"The Clusteron: Toward a simple abstraction for a complex neuron","author":"Mel, Bartlett W","booktitle":"Advances in Neural Information Processing Systems","year":"1992","url":"http://papers.nips.cc/paper/450-the-clusteron-toward-a-simple-abstraction-for-a-complex-neuron.pdf","type":"inproceedings"}],["boutonnet2015words",{"title":"Words jump-start vision: A label advantage in object recognition","author":"B. Boutonnet and G. Lupyan","journal":"Journal of Neuroscience","volume":"35","number":"25","pages":"9329--9335","year":"2015","publisher":"Society for Neuroscience","url":"http://www.jneurosci.org/content/35/25/9329","type":"article"}],["agrawal2015vqa",{"title":"VQA: visual question answering","author":"Agrawal, Aishwarya and Lu, Jiasen and Antol, Stanislaw and Mitchell, Margaret and Zitnick, C. Lawrence and Batra, Dhruv and Parikh, Devi","booktitle":"Proceedings of the International Conference on Computer Vision","year":"2015","url":"https://arxiv.org/pdf/1505.00468.pdf","type":"inproceedings"}],["kempa2016vizdoom",{"title":"Vizdoom: A doom-based AI research platform for visual reinforcement learning","author":"Kempka, Michał and Wydmuch, Marek and Runc, Grzegorz and Toczek, Jakub and Jaśkowski, Wojciech","booktitle":"IEEE Conference on Computational Intelligence and Games","year":"2016","url":"https://arxiv.org/pdf/1605.02097.pdf","type":"inproceedings"}],["shazeer2017outrageously",{"title":"Outrageously large neural networks: The sparsely-gated mixture-of-experts layer","author":"Shazeer, Noam and Mirhoseini, Azalia and Maziarz, Krzysztof and Davis, Andy and Le, Quoc and Hinton, Geoffrey and Dean, Jeff","booktitle":"Proceedings of the International Conference on Learning Representations","year":"2017","url":"https://arxiv.org/pdf/1701.06538.pdf","type":"inproceedings"}],["bahdanau2014neural",{"title":"Neural machine translation by jointly learning to align and translate","author":"Bahdanau, Dzmitry and Cho, Kyunghyun and Bengio, Yoshua","booktitle":"Proceedings of the International Conference on Learning Representations","year":"2015","url":"https://arxiv.org/pdf/1409.0473.pdf","type":"inproceedings"}],["yang2016stacked",{"title":"Stacked attention networks for image question answering","author":"Yang, Zichao and He, Xiaodong and Gao, Jianfeng and Deng, Li and Smola, Alex","booktitle":"Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition","year":"2016","url":"https://arxiv.org/abs/1511.02274","type":"inproceedings"}],["kang2017incorporating",{"title":"Incorporating side information by adaptive convolution","author":"Kang, Di and Dhar, Debarun and Chan, Antoni","booktitle":"Advances in Neural Information Processing Systems","year":"2017","url":"https://papers.nips.cc/paper/6976-incorporating-side-information-by-adaptive-convolution.pdf","type":"inproceedings"}],["lei2015predicting",{"title":"Predicting deep zero-shot convolutional neural networks using textual descriptions","author":"Ba, Jimmy and Swersky, Kevin and Fidler, Sanja and Salakhutdinov, Ruslan","booktitle":"Proceedings of the IEEE International Conference on Computer Vision","year":"2015","url":"https://arxiv.org/pdf/1506.00511.pdf","type":"inproceedings"}],["oh2017zero",{"title":"Zero-shot task generalization with multi-task deep reinforcement learning","author":"Oh, Junhyuk and Singh, Satinder and Lee, Honglak and Kohli, Pushmeet","booktitle":"Proceedings of the International Conference on Machine Learning","year":"2017","url":"https://arxiv.org/pdf/1706.05064.pdf","type":"inproceedings"}],["goodfellow2014generative",{"title":"Generative adversarial nets","author":"Goodfellow, Ian and Pouget-Abadie, Jean and Mirza, Mehdi and Xu, Bing and Warde-Farley, David and Ozair, Sherjil and Courville, Aaron and Bengio, Yoshua","booktitle":"Advances in Neural Information Processing Systems","year":"2014","url":"https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf","type":"inproceedings"}],["rebuffi2017residualadapters",{"title":"Learning multiple visual domains with residual adapters","author":"Rebuffi, Sylvestre-Alvise and Bilen, Hakan and Vedaldi, Andrea","booktitle":"Advances in Neural Information Processing Systems","year":"2017","url":"http://papers.nips.cc/paper/6654-learning-multiple-visual-domains-with-residual-adapters.pdf","type":"incollection"}],["fukui2016compactbilinear",{"title":"Multimodal compact bilinear pooling for visual question answering and visual grounding","author":"Akira Fukui and Dong Huk Park and Daylen Yang and Anna Rohrbach and Trevor Darrell and Rohrbach, Marcus","booktitle":"Conference on Empirical Methods in Natural Language Processing","year":"2016","url":"https://arxiv.org/pdf/1606.01847.pdf","type":"inproceedings"}],["tenenbaum1997separating",{"title":"Separating style and content","author":"Tenenbaum, Joshua B and Freeman, William T","booktitle":"Advances in neural information processing systems","year":"1997","url":"https://papers.nips.cc/paper/1290-separating-style-and-content.pdf","type":"inproceedings"}],["chuang2002facial",{"title":"Facial expression space learning","author":"E. S. Chuang and F. Deshpande and C. Bregler","booktitle":"Proceedings of the Pacific Conference on Computer Graphics and Applications","year":"2002","url":"http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.65.3338&rep=rep1&type=pdf","type":"inproceedings"}],["yang2011like",{"title":"Like like alike: joint friendship and interest propagation in social networks","author":"Yang, Shuang-Hong and Long, Bo and Smola, Alex and Sadagopan, Narayanan and Zheng, Zhaohui and Zha, Hongyuan","booktitle":"Proceedings of the International Conference on World Wide Web","year":"2011","url":"http://wwwconference.org/proceedings/www2011/proceedings/p537.pdf","type":"inproceedings"}],["chu2009personalized",{"title":"Personalized recommendation on dynamic content using predictive bilinear models","author":"Chu, Wei and Park, Seung-Taek","booktitle":"Proceedings of the International Conference on World Wide Web","year":"2009","url":"http://www.wwwconference.org/www2009/proceedings/pdf/p691.pdf","type":"inproceedings"}],["lin2015bilinear",{"title":"Bilinear CNN models for fine-grained visual recognition","author":"Lin, Tsung-Yu and RoyChowdhury, Aruni and Maji, Subhransu","booktitle":"Proceedings of the IEEE International Conference on Computer Vision","year":"2015","url":"http://vis-www.cs.umass.edu/bcnn/docs/bcnn_iccv15.pdf","type":"inproceedings"}],["feichtenhofer2016convolutional",{"title":"Convolutional two-stream network fusion for video action recognition","author":"Feichtenhofer, Christoph and Pinz, Axel and Zisserman, AP","booktitle":"Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition","year":"2016","url":"https://arxiv.org/pdf/1604.06573.pdf","type":"inproceedings"}],["fukui2016multimodal",{"title":"Multimodal compact bilinear pooling for visual question answering and visual grounding","author":"Fukui, Akira and Park, Dong Huk and Yang, Daylen and Rohrbach, Anna and Darrell, Trevor and Rohrbach, Marcus","booktitle":"Proceedings of the Conference on Empirical Methods in Natural Language Processing","year":"2016","url":"https://arxiv.org/pdf/1606.01847.pdf","type":"inproceedings"}],["koren2009matrix",{"title":"Matrix factorization techniques for recommender systems","author":"Koren, Yehuda and Bell, Robert and Volinsky, Chris","journal":"Computer","volume":"42","number":"8","year":"2009","publisher":"IEEE","url":"https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf","type":"article"}],["srivastava2015highway",{"title":"Highway networks","author":"Srivastava, Rupesh Kumar and Greff, Klaus and Schmidhuber, Jurgen","booktitle":"ICML Deep Learning Workshop","year":"2015","url":"https://arxiv.org/abs/1505.00387","type":"inproceedings"}],["memisevic2013learning",{"title":"Learning to relate images","author":"R. Memisevic","journal":"IEEE Transactions on Pattern Analysis and Machine Intelligence","volume":"35","number":"8","pages":"1829-1846","year":"2013","url":"https://www.iro.umontreal.ca/~memisevr/pubs/pami_relational.pdf","type":"article"}],["hinton1981a",{"author":"Hinton, Geoffrey F.","title":"A parallel computation that assigns canonical object-based frames of reference","booktitle":"Proceedings of the International Joint Conference on Artificial Intelligence","year":"1981","url":"http://dl.acm.org/citation.cfm?id=1623264.1623282","type":"inproceedings"}],["vonderMalsburg1994the",{"title":"The correlation theory of brain function","author":"von der Malsburg, Christoph","booktitle":"Models of Neural Networks: Temporal Aspects of Coding and Information Processing in Biological Systems","year":"1994","pages":"95--119","url":"https://doi.org/10.1007/978-1-4612-4320-5_2","type":"inbook"}],["le2011learning",{"title":"Learning hierarchical invariant spatio-temporal features for action recognition with independent subspace analysis","author":"Le, Q. V. and Zou, W. Y. and Yeung, S. Y. and Ng, A. Y.","booktitle":"Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition","year":"2011","url":"https://ieeexplore.ieee.org/document/5995496/","type":"inproceedings"}],["taylor2010convolutional",{"title":"Convolutional learning of spatio-temporal features","author":"Taylor, Graham W. and Fergus, Rob and LeCun, Yann and Bregler, Christoph","booktitle":"ECCV","year":"2010","url":"https://link.springer.com/chapter/10.1007/978-3-642-15567-3_11","type":"inproceedings"}],["ross2006combining",{"title":"Combining discriminative features to infer complex trajectories","author":"Ross, David A. and Osindero, Simon and Zemel, Richard S.","booktitle":"Proceedings of the International Conference on Machine Learning","year":"2006","url":"http://www.cs.toronto.edu/~osindero/PUBLICATIONS/RossOsinderoZemel_ICML06.pdf","type":"inproceedings"}],["denil2012learning",{"title":"Learning where to attend with deep architectures for image tracking","author":"Denil, Misha and Bazzani, Loris and Larochelle, Hugo and de Freitas, Nando","journal":"Neural Comput.","volume":"24","number":"8","year":"2012","pages":"2151--2184","url":"http://dx.doi.org/10.1162/NECO_a_00312","type":"article"}],["taylor2009factored",{"title":"Factored conditional restricted Boltzmann machines for modeling motion style","author":"Taylor, Graham W. and Hinton, Geoffrey E.","booktitle":"Proceedings of the International Conference on Machine Learning","year":"2009","url":"http://doi.acm.org/10.1145/1553374.1553505","type":"inproceedings"}],["tang2012boltzmann",{"title":"Robust boltzmann machines for recognition and denoising","author":"Y. Tang and R. Salakhutdinov and G. Hinton","booktitle":"IEEE Conference on Computer Vision and Pattern Recognition","year":"2012","url":"http://www.cs.toronto.edu/~tang/papers/robm.pdf","type":"inproceedings"}],["sutskever2011generating",{"title":"Generating text with recurrent neural networks","author":"Sutskever, Ilya and Martens, James and Hinton, Geoffrey","booktitle":"Proceedings of the International Conference on Machine Learning","year":"2011","url":"http://dl.acm.org/citation.cfm?id=3104482.3104610","type":"inproceedings"}],["li2018adaptive",{"title":"Adaptive batch normalization for practical domain adaptation","author":"Yanghao Li and Naiyan Wang and Jianping Shi and Xiaodi Hou and Jiaying Liu","journal":"Pattern Recognition","volume":"80","pages":"109 - 117","year":"2018","url":"http://www.sciencedirect.com/science/article/pii/S003132031830092X","type":"article"}],["maaten2008visualizing",{"title":"Visualizing data using t-SNE","author":"Maaten, Laurens van der and Hinton, Geoffrey","journal":"Journal of machine learning research","volume":"9","number":"Nov","pages":"2579--2605","year":"2008","url":"http://www.jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf","type":"article"}],["yang2018efficient",{"title":"Efficient video object segmentation via network modulation","author":"Linjie Yang and Yanran Wang and Xuehan Xiong and Jianchao Yang and Aggelos K. Katsaggelos","journal":"arXiv","year":"2018","url":"https://arxiv.org/abs/1802.01218","type":"article"}],["frome2013devise",{"title":"Devise: A deep visual-semantic embedding model","author":"Frome, Andrea and Corrado, Greg S and Shlens, Jon and Bengio, Samy and Dean, Jeff and Mikolov, Tomas","booktitle":"Advances in Neural Information Processing Systems","pages":"2121--2129","year":"2013","url":"https://papers.nips.cc/paper/5204-devise-a-deep-visual-semantic-embedding-model","type":"inproceedings"}],["socher2013zero",{"title":"Zero-shot learning through cross-modal transfer","author":"Socher, Richard and Ganjoo, Milind and Manning, Christopher D and Ng, Andrew","booktitle":"Advances in Neural Information Processing Systems","pages":"935--943","year":"2013","url":"https://arxiv.org/abs/1301.3666","type":"inproceedings"}],["norouzi2014zero",{"title":"Zero-shot learning by convex combination of semantic embeddings","author":"Norouzi, Mohammad and Mikolov, Tomas and Bengio, Samy and Singer, Yoram and Shlens, Jonathon and Frome, Andrea and Corrado, Greg S and Dean, Jeffrey","booktitle":"Proceedings of the International Conference on Learning Representations","year":"2014","url":"https://arxiv.org/abs/1312.5650","type":"inproceedings"}],["yu2018guided",{"title":"Guided feature transformation (GFT): A neural language grounding module for embodied agents","author":"Haonan Yu and Xiaochen Lian and Haichao Zhang and Wei Xu","journal":"arXiv","year":"2018","url":"https://arxiv.org/abs/1805.08329","type":"article"}],["arad2018compositional",{"title":"Compositional attention networks for machine reasoning","author":"Drew Arad Hudson and Christopher D. Manning","booktitle":"Proceedings of the International Conference on Learning Representations","year":"2018","url":"https://arxiv.org/abs/1803.03067","type":"inproceedings"}],["melis2017lstm",{"title":"On the state of the art of evaluation in neural language models","author":"G{\\'{a}}bor Melis and Chris Dyer and Phil Blunsom","journal":"Proceedings of the International Conference on Learning Representations","year":"2017","url":"http://arxiv.org/abs/1707.05589","type":"inproceedings"}],["bahdanau2018learning",{"author":"Dzmitry Bahdanau and Felix Hill and Jan Leike and Edward Hughes and Pushmeet Kohli and Edward Grefenstette","title":"Learning to follow language instructions with adversarial reward induction","journal":"arXiv","year":"2018","url":"https://arxiv.org/abs/1806.01946","type":"article"}],["andreas2016neural",{"title":"Neural module networks","author":"Jacob Andreas and Marcus Rohrbach and Trevor Darrell and Dan Klein","booktitle":"Proceedings of the Conference on Computer Vision and Pattern Recognition","year":"2016","url":"https://arxiv.org/abs/1511.02799","type":"inproceedings"}],["oreshkin2018tadam",{"title":"TADAM: Task dependent adaptive metric for improved few-shot learning","author":"Boris N. Oreshkin and Pau Rodriguez and Alexandre Lacoste","journal":"arXiv","year":"2018","url":"https://arxiv.org/abs/1805.10123","type":"article"}],["snell2017prototypical",{"title":"Prototypical networks for few-shot learning","author":"Snell, Jake and Swersky, Kevin and Zemel, Richard","booktitle":"Advances in Neural Information Processing Systems","year":"2017","url":"https://arxiv.org/abs/1703.05175","type":"inproceedings"}],["yang2018dataset",{"title":"A dataset and architecture for visual reasoning with a working memory","author":"Yang, Guangyu Robert and Ganichev, Igor and Wang, Xiao-Jing and Shlens, Jonathon and Sussillo, David","journal":"arXiv","year":"2018","url":"https://arxiv.org/abs/1803.06092","type":"article"}],["strub2018visual",{"author":"Strub, Florian and Seurin, Mathieu and Perez, Ethan and de Vries, Harm and Mary, J\\'{e}r\\'{e}mie and Preux, Philippe and Courville, Aaron and Pietquin, Olivier","title":"Visual Reasoning with Multi-hop Feature Modulation","booktitle":"ECCV","year":"2018","type":"inproceedings"}],["kazemzadeh2014referitgame",{"title":"ReferItGame: Referring to objects in photographs of natural scenes","author":"Kazemzadeh, Sahar and Ordonez, Vicente and Matten, Mark and Berg, Tamara","booktitle":"Conference on Empirical Methods in Natural Language Processing","year":"2014","url":"http://tamaraberg.com/papers/referit.pdf","type":"inproceedings"}]]
+        </script>
+    </d-bibliography> 
+
+    <script type="text/javascript" src="static/js/index.bundle.js"></script>
+
+    <distill-footer>
+            <style>
+            
+            :host {
+                color: rgba(255, 255, 255, 0.5);
+                font-weight: 300;
+                padding: 2rem 0;
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+                background-color: hsl(180, 5%, 15%); /*hsl(200, 60%, 15%);*/
+                text-align: left;
+                contain: content;
+            }
+            
+            .footer-container .logo svg {
+                width: 24px;
+                position: relative;
+                top: 4px;
+                margin-right: 2px;
+            }
+            
+            .footer-container .logo svg path {
+                fill: none;
+                stroke: rgba(255, 255, 255, 0.8);
+                stroke-width: 3px;
+            }
+            
+            .footer-container .logo {
+                font-size: 17px;
+                font-weight: 200;
+                color: rgba(255, 255, 255, 0.8);
+                text-decoration: none;
+                margin-right: 6px;
+            }
+            
+            .footer-container {
+                grid-column: text;
+            }
+            
+            .footer-container .nav {
+                font-size: 0.9em;
+                margin-top: 1.5em;
+            }
+            
+            .footer-container .nav a {
+                color: rgba(255, 255, 255, 0.8);
+                margin-right: 6px;
+                text-decoration: none;
+            }
+            
+            </style>
+            
+        <div class="footer-container">
+            <a href="/" class="logo">
+                <svg viewBox="-607 419 64 64">
+                <path d="M-573.4,478.9c-8,0-14.6-6.4-14.6-14.5s14.6-25.9,14.6-40.8c0,14.9,14.6,32.8,14.6,40.8S-565.4,478.9-573.4,478.9z"></path>
+                </svg>
+                Distill
+            </a> is dedicated to clear explanations of machine learning
+            
+            <div class="nav">
+                <a href="https://distill.pub/about/">About</a>
+                <a href="https://distill.pub/journal/">Submit</a>
+                <a href="https://distill.pub/prize/">Prize</a>
+                <a href="https://distill.pub/archive/">Archive</a>
+                <a href="https://distill.pub/rss.xml">RSS</a>
+                <a href="https://github.com/distillpub">GitHub</a>
+                <a href="https://twitter.com/distillpub">Twitter</a>
+                &nbsp;&nbsp;&nbsp;&nbsp; ISSN 2476-0757
+            </div>
+        </div>
+    </distill-footer>
+
+    <!-- <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-83741880-1', 'auto');
+        ga('send', 'pageview');
+    </script> -->
 
     <footer>
         <small>&copy; 2018 <a href="http://helloflask.com/tutorial">HelloFlask</a></small>
     </footer>
-    <script type="text/javascript" src="index.bundle.js"></script>
 </body>
-<script type="text/javascript" src="index.bundle.js"></script>
 </html>
