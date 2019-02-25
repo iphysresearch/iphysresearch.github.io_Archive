@@ -73,7 +73,7 @@ date: 2018-09-28
 
 **CariGANs: Unpaired Photo-to-Caricature Translation**. K Cao, J Liao, L Yuan [Tsinghua University & Microsoft Research] (2018) [arXiv:1811.00222](https://arxiv.org/abs/1811.00222) [Blog](https://cari-gan.github.io) [App](https://ai.stanford.edu/~kaidicao/cari-gan/index.html) [YouTube](https://www.youtube.com/watch?v=V6G717ewUuw)
 
-**Large Scale GAN Training for High Fidelity Natural Image Synthesis** | [OpenReview](https://openreview.net/forum?id=B1xsqj09Fm). (2018) 
+**Large Scale GAN Training for High Fidelity Natural Image Synthesis** | [OpenReview](https://openreview.net/forum?id=B1xsqj09Fm). (2018) [More examples](https://drive.google.com/drive/folders/1lWC6XEPD0LT5KUnPXeve_kWeY-FxH002) [BigGAN Demo(Colab Notebook)](https://colab.research.google.com/github/tensorflow/hub/blob/master/examples/colab/biggan_generation_with_tf_hub.ipynb#scrollTo=Cd1dhL4Ykbm7) 
 
 **Generative adversarial networks and adversarial methods in biomedical image analysis**. J M. Wolterink, K Kamnitsas, C Ledig, I Išgum [University Medical Center Utrecht & Imperial College London & Imagen Technologies] (2018) [arXiv:1810.10352](https://arxiv.org/abs/1810.10352)
 
@@ -300,6 +300,8 @@ date: 2018-09-28
 
 
 ## :control_knobs: Model Configuration
+
+**LocalNorm: Robust Image Classification through Dynamically Regularized Normalization**. B Yin, S Schaafsma, H Corporaal, H. S Scholte, S M. Bohte [Centrum Wiskunde & Informatica (CWI) & Holst Centre / IMEC] (2019) [arXiv:1902.06550](https://arxiv.org/abs/1902.06550)
 
 **On the Impact of the Activation Function on Deep Neural Networks Training**. S Hayou, A Doucet, J Rousseau [Universiy of Oxford] (2019) [arXiv:1902.06853](https://arxiv.org/abs/1902.06853) [机器之心](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2650757440&idx=1&sn=4164f2d1c88df07ec80b7d24e8fc3c8f&chksm=871a9d3eb06d14289928961cc6dcca5d9eb54d47374b4417dcda48724d2857d24b2ed3bad29c&token=667209389&lang=zh_CN#rd)
 
