@@ -271,6 +271,8 @@ date: 2018-09-28
 
 - Batch-size
 
+  **Interplay Between Optimization and Generalization of Stochastic Gradient Descent with Covariance Noise**. Y Wen, K Luk, M Gazeau, G Zhang, H Chan, J Ba [Borealis AI & University of Toronto] (2019) [arXiv:1902.08234](https://arxiv.org/abs/1902.08234)
+
   **An Empirical Model of Large-Batch Training**. Sam McCandlish, Jared Kaplan, Dario Amodei [OpenAI] (DECEMBER 14, 2018) [PDF](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/science-of-ai/An+Empirical+Model+of+Large-Batch+Training.pdf) [BLOG](https://blog.openai.com/science-of-ai/)
 
   **Don't Use Large Mini-Batches, Use Local SGD**. T Lin, S U. Stich, M Jaggi [EPFL] (2018) [arXiv:1808.07217](https://arxiv.org/abs/1808.07217)
