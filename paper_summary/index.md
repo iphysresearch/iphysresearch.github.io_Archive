@@ -205,6 +205,10 @@ http://www.tapir.caltech.edu/~vvarma/
 
 ## Others
 
+Utterance-level Aggregation For Speaker Recognition In The Wild. W Xie, A Nagrani, J S Chung, A Zisserman [University of Oxford] (2019) http://t.cn/EfEkz79 
+
+《Bayesian Anomaly Detection and Classification》E Roberts, B A. Bassett, M Lochner [University of Cape Town] (2019) http://t.cn/EfHJOI7 
+
 Heartbeat Anomaly Detection using Adversarial Oversampling. J L. P. Lima, D Macêdo, C Zanchettin [Universidade Federal de Pernambuco] (2019) [arXiv:1901.09972](https://arxiv.org/abs/1901.09972)
 
 [RespNet: A deep learning model for extraction of respiration from photoplethysmogram](https://arxiv.org/abs/1902.04256). V Ravichandran, B Murugesan, V Balakarthikeyan, S M Shankaranarayana, K Ram, P S.P, J Joseph, M Sivaprakasam [Indian Institute of Technology Madras (IITM)] (2019) https://arxiv.org/abs/1902.04256

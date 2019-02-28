@@ -131,6 +131,8 @@ date: 2018-09-28
 
 ## :musical_note: Sound & Signal Processing
 
+**Utterance-level Aggregation For Speaker Recognition In The Wild**. W Xie, A Nagrani, J S Chung, A Zisserman [University of Oxford] (2019) [arXiv:1902.10107](https://arxiv.org/abs/1902.10107) [Blog](http://www.robots.ox.ac.uk/~vgg/research/speakerID/)
+
 **catch22: CAnonical Time-series CHaracteristics**. C H Lubba, S S Sethi, P Knaute, S R Schultz, B D Fulcher, N S Jones [Imperial College London] (2019) [arXiv:1901.10200](https://arxiv.org/abs/1901.10200) [Github](https://github.com/chlubba/op_importance)
 
 **End-to-End Probabilistic Inference for Nonstationary Audio Analysis**. W J. Wilkinson, M R Andersen, J D. Reiss, D Stowell, A Solin [Queen Mary University of London & Aalto University] (2019) [arXiv:1901.11436](https://arxiv.org/abs/1901.11436)
@@ -303,6 +305,8 @@ date: 2018-09-28
 
 ## :control_knobs: Model Configuration
 
+**Ising-Dropout: A Regularization Method for Training and Compression of Deep Neural Networks**. H Salehinejad, S Valaee [University of Toronto] (2019) [arXiv:1902.08673](https://arxiv.org/abs/1902.08673)
+
 **LocalNorm: Robust Image Classification through Dynamically Regularized Normalization**. B Yin, S Schaafsma, H Corporaal, H. S Scholte, S M. Bohte [Centrum Wiskunde & Informatica (CWI) & Holst Centre / IMEC] (2019) [arXiv:1902.06550](https://arxiv.org/abs/1902.06550)
 
 **On the Impact of the Activation Function on Deep Neural Networks Training**. S Hayou, A Doucet, J Rousseau [Universiy of Oxford] (2019) [arXiv:1902.06853](https://arxiv.org/abs/1902.06853) [机器之心](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2650757440&idx=1&sn=4164f2d1c88df07ec80b7d24e8fc3c8f&chksm=871a9d3eb06d14289928961cc6dcca5d9eb54d47374b4417dcda48724d2857d24b2ed3bad29c&token=667209389&lang=zh_CN#rd)
@@ -365,6 +369,8 @@ date: 2018-09-28
 【《Neural Ordinary Differential Equations》论文解读】《Paper Summary: Neural Ordinary Differential Equations》by Branislav Holländer http://t.cn/EGPEh8y 
 
 summary by Adrian Colyer http://t.cn/EqANCZ0
+
+【神经常微分方程的PyTorch实现与分析(Jupyter Notebooks)】’Neural ODEs - Jupyter notebook with Pytorch implementation and investigation of Neural Ordinary Differential Equations' by Mikhail Surtsukov GitHub: http://t.cn/Ef3Qkw4 
 
 【神经常微分方程与对抗攻击】《Neural Ordinary Differential Equations and Adversarial Attacks》by Rajat Vadiraj Dwaraknath http://t.cn/EqW9Anb 
 
