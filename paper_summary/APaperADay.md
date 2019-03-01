@@ -211,6 +211,8 @@ date: 2018-09-28
 
 ## :+1: Model Evaluation & Performance & Interpretion & Visualization
 
+**Unmasking Clever Hans Predictors and Assessing What Machines Really Learn**. S Lapuschkin, S Wäldchen, A Binder, G Montavon, W Samek, K Müller [Fraunhofer Heinrich Hertz Institute & Technische Universitat Berlin & Singapore University of Technology and Design] (2019) [arXiv:1902.10178](https://arxiv.org/abs/1902.10178)
+
 **Seven Myths in Machine Learning Research**. O Chang, H Lipson [Columbia University] (2019) [arXiv:1902.06789](https://arxiv.org/abs/1902.06789) [Blog](https://crazyoscarchang.github.io/2019/02/16/seven-myths-in-machine-learning-research/)
 
 **Wide Neural Networks of Any Depth Evolve as Linear Models Under Gradient Descent**. J Lee, L Xiao, S S. Schoenholz, Y Bahri, J Sohl-Dickstein, J Pennington [Google Brain] (2019) [arXiv:1902.06720](https://arxiv.org/abs/1902.06720) [Reddit](https://www.reddit.com/r/MachineLearning/comments/asifrt/190206720_wide_neural_networks_of_any_depth/)
