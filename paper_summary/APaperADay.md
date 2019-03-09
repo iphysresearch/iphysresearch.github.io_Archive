@@ -348,11 +348,10 @@ date: 2018-09-28
 **Learning Confidence for Out-of-Distribution Detection in Neural Networks**. T DeVries, G W. Taylor [University of Guelph & Vector Institute] (2018) [arXiv:1802.04865](https://arxiv.org/abs/1802.04865)
 
 - Batch Normalization
-
+  - **Mean-field Analysis of Batch Normalization**. M Wei, J Stokes, D J Schwab [Northwestern University & Tunnel & The City University of New York] (2019)  [arXiv:1903.02606](https://arxiv.org/abs/1903.02606) [OpenReview.net](https://openreview.net/forum?id=B1eSg3C9Ym)
   - **Generalized Batch Normalization: Towards Accelerating Deep Neural Networks**. X Yuan, Z Feng, M Norton, X Li [University of Florida & Naval Postgraduate School] (2018) [arXiv:1812.03271](https://arxiv.org/abs/1812.03271)
 
   - **How Does Batch Normalization Help Optimization? (No, It Is Not About Internal Covariate Shift)**. S Santurkar, D Tsipras, A Ilyas, A Madry [MIT] (2018) [arXiv:1805.11604](https://arxiv.org/abs/1805.11604) [YouTube](https://www.youtube.com/watch?v=ZOabsYbmBRM) [Reddit](https://www.reddit.com/r/MachineLearning/comments/8n4eot/r_how_does_batch_normalization_help_optimization/) [Notes from SALU](https://shaoanlu.wordpress.com/2018/07/12/notes-for-paper-how-does-batch-normalization-help-optimization-no-it-is-not-about-internal-covariate-shift/)
-
 - Fenchel-Young Losses
 
   - **Learning with Fenchel-Young Losses**. M Blondel, A F. T. Martins, V Niculae [NTT Communication Science Laboratories & Unbabel & Instituto de Telecomunica¸coes & Instituto de Telecomunica¸coes] (2019) [arXiv:1901.02324](https://arxiv.org/abs/1901.02324)

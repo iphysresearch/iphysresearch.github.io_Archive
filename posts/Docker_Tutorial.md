@@ -318,7 +318,38 @@ $ docker image build -t my-demo:0.0.1 .
 $ docker image ls -a
 ```
 
+> 注：
+>
+> - 当母 image 是有 `ENTRYPOINT` 时，在其基础上创建的子 image 会继承其 `ENTRYPOINT`，并且不会被子 image 的容器在 docker run 时提供的参数覆盖。只有在子 image 的 `Dockerfile` 中指定 `ENTRYPOINT`再 build 后才可以覆盖。（子 image 的`ENTRYPOINT` 为空也可）[REF](https://segmentfault.com/q/1010000004861105/a-1020000005367169) [REF](https://www.cnblogs.com/lienhua34/p/5170335.html)
+>
+> - **基于容器来创建 image**：[REF](https://blog.csdn.net/leo15561050003/article/details/71274718)
+>
+>   先运行一个容器，并在运行容器的基础上进行修改（不要使用 `docker run --rm` 参数会自动删除容器，应使用`-it` 参数来可交互 ），如：
+>
+>   ```bash
+>   $ sudo docker container run -it <image_name> /bin/bash
+>   ```
+>
+>   然后将正在运行的容器导出为 image。
+>
+>   ```bash
+>   $ docker commit -m “Description” -a “users <users@email.com>” <ID> <your_repo:tags>
+>   ```
+>
+>   其中：
+>
+>   - `-m` 指定提交的说明信息
+>   - `-a` 指定更新的作者和邮箱 
+>   - `<ID>` 想要保存为 image 的容器 ID
+>   - `<your_repo:tags>` 欲新建镜像的 repository:tags
+
 ## 12. 删除 image
+
+```shell
+$ docker rmi [image ID]
+```
+
+
 
 > 若生成 image 有误等情况，导致出现难以正常删除的 image，可执行下面的代码即可！
 >
