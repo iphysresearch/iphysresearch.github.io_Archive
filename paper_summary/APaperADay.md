@@ -105,6 +105,10 @@ date: 2018-09-28
 
 ## :facepunch: Adversarial Examples/Attacks
 
+**GanDef: A GAN based Adversarial Training Defense for Neural Network Classifier**. G Liu, I Khalil, A Khreishah [New Jersey Institute of Technology & Qatar Computing Research Institute] (2019) https://arxiv.org/abs/1903.02585
+
+**Adversarial Attacks on Time Series**. Fazle Karim, Somshubra Majumdar, Houshang Darabi […] (2019) [arXiv:1902.10755](https://arxiv.org/abs/1902.10755)
+
 **On Evaluating Adversarial Robustness**. N Carlini, A Athalye, N Papernot, W Brendel, J Rauber, D Tsipras, I Goodfellow, A Madry [Google Brain & MIT & University of Tübingen] (2019) [arXiv:1902.06705](https://arxiv.org/abs/1902.06705) [Github](https://github.com/evaluating-adversarial-robustness/adv-eval-paper) [Reddit](https://www.reddit.com/r/MachineLearning/comments/as2yhj/r_on_evaluating_adversarial_robustness/)
 
 **Adversarial Examples Are a Natural Consequence of Test Error in Noise**. Nic Ford, Justin Gilmer, Nicolas Carlini, Dogus Cubuk [Google AI Residency] (2019) [arXiv:1901.10513](https://arxiv.org/abs/1901.10513) [Reddit](https://www.reddit.com/r/MachineLearning/comments/alppkp/190110513_adversarial_examples_are_a_natural/)

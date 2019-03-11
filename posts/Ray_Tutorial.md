@@ -1017,7 +1017,7 @@ print('Success! The example took {} seconds.'.format(duration))
 >
 > ```python
 > for i in range(10):
->     f.remote(x)
+>    	f.remote(x)
 > ```
 >
 > then 10 copies of the array will be placed into the object store. This takes up more memory in the object store than is necessary, and it also takes time to copy the array into the object store over and over. This can be made more efficient by placing the array in the object store only once as follows.
@@ -1025,7 +1025,7 @@ print('Success! The example took {} seconds.'.format(duration))
 > ```python
 > x_id = ray.put(x)
 > for i in range(10):
->     f.remote(x_id)
+>    	f.remote(x_id)
 > ```
 >
 > In this exercise, you will speed up the code below and reduce the memory footprint by calling `ray.put` on the neural net weights before passing them into the remote functions.

@@ -99,6 +99,8 @@ here the comment ends -->
 
 [Gravitational Waves from Gravitational Collapse](https://link.springer.com/article/10.12942/lrr-2011-1)
 
+**Analyzing Gravitational Waves with General Relativity** https://arxiv.org/abs/1902.09801
+
 ## Data Analysis & Signal Processing in GW Astronomy
 
 **Search for gravitational lensing signatures in LIGO-Virgo binary black hole events**. O.A. Hannuksela, K. Haris, K.K.Y. Ng, S. Kumar, A.K. Mehta, D. Keitel, T.G.F. Li, P. Ajith [Chinese University of Hong Kong, Tata Institute of Fundamental Research, MIT, Max-Planck-Institut für Gravitationsphysi, University of Portsmouth, Canadian Institute for Advanced Research] (2019) [arXiv:1901.02674](https://arxiv.org/abs/1901.02674)
@@ -138,6 +140,24 @@ Creswell, James, et al. "**On the time lags of the LIGO signals**." *[Journal of
 
 
 https://orca.cf.ac.uk/118182/1/2019MuirAWMPhil.pdf
+
+
+
+## GW data analysis with GWOSC
+
+**Convenient filtering techniques for LIGO strain of the GW150914 event**. https://arxiv.org/abs/1903.00546
+
+**A New Search Pipeline for Compact Binary Mergers: Results for Binary Black Holes in the First Observing Run of Advanced LIGO**. https://arxiv.org/abs/1902.10341
+
+**A Highly Spinning and Aligned Binary Black Hole Merger in the Advanced LIGO First Observing Run**. https://arxiv.org/abs/1902.10331
+
+**Potential Gravitational-wave and Gamma-ray Multi-messenger Candidate from Oct. 30, 2015**.  https://arxiv.org/abs/1902.09496
+
+**Searches for Gravitational Waves from Known Pulsars at Two Harmonics in 2015–2017 LIGO Data**.https://arxiv.org/abs/1902.08507
+
+**1-OGC: The first open gravitational-wave catalog of binary mergers from analysis of public Advanced LIGO data**. https://arxiv.org/abs/1811.01921
+
+
 
 ## GW Astronomy with Machine Learning
 
