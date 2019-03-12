@@ -225,6 +225,12 @@ http://www.tapir.caltech.edu/~vvarma/
 
 ## Others
 
+**Deep CNN-based Multi-task Learning for Open-Set Recognition**. P Oza, V M. Patel [Johns Hopkins University] (2019) [arXiv:1903.03161](https://arxiv.org/abs/1903.03161) 
+
+**Phase-aware Speech Enhancement with Deep Complex U-Net**. H Choi, J Kim, J Huh, A Kim, J Ha, K Lee [Seoul National University & NAVER Corp] (2019) [arXiv:1903.03107](https://arxiv.org/abs/1903.03107) [Home](http://www.deepcomplexunet.tk)
+
+**A Deep Generative Model of Speech Complex Spectrograms**. A A Nugraha, K Sekiguchi, K Yoshii [RIKEN Center for Advanced Intelligence Project (AIP) & Kyoto University] (2019)  [arXiv:1903.03269]
+
 Utterance-level Aggregation For Speaker Recognition In The Wild. W Xie, A Nagrani, J S Chung, A Zisserman [University of Oxford] (2019) http://t.cn/EfEkz79 
 
 《Bayesian Anomaly Detection and Classification》E Roberts, B A. Bassett, M Lochner [University of Cape Town] (2019) http://t.cn/EfHJOI7 

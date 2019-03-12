@@ -23,6 +23,8 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
+**O-GAN: Extremely Concise Approach for Auto-Encoding Generative Adversarial Networks**. Jianlin Su [Sun Yat-sen University] (2019) [arXiv:1903.01931](https://arxiv.org/abs/1903.01931) [Reddit](https://www.reddit.com/r/MachineLearning/comments/axw4aw/ogan_extremely_concise_approach_for_autoencoding/) [PaperWeekly](https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&mid=2247495491&idx=1&sn=978f0afeb0b38affe54fc9e6d6086e3c)
+
 **AVP: Physics-informed Data Generation for Small-data Learning**. J Chen, Y Xie, K Wang, C Zhang, M A. Vannan, B Wang, Z Qian [Georgia Institute of Technology] (2019) [arXiv:1902.01522](https://arxiv.org/abs/1902.01522)
 
 **A Layer-Based Sequential Framework for Scene Generation with GANs**. M O Turkoglu, W Thong, L Spreeuwers, B Kicanaoglu [University of Twente & University of Amsterdam] (2019) [arXiv:1902.00671](https://arxiv.org/abs/1902.00671) [Github](https://github.com/0zgur0/Seq_Scene_Gen)
@@ -135,6 +137,10 @@ date: 2018-09-28
 
 ## :musical_note: Sound & Signal Processing
 
+**Phase-aware Speech Enhancement with Deep Complex U-Net**. H Choi, J Kim, J Huh, A Kim, J Ha, K Lee [Seoul National University & NAVER Corp] (2019) [arXiv:1903.03107](https://arxiv.org/abs/1903.03107) [Home](http://www.deepcomplexunet.tk) [OpenReview.net](https://openreview.net/forum?id=SkeRTsAcYm)
+
+**A Deep Generative Model of Speech Complex Spectrograms**. A A Nugraha, K Sekiguchi, K Yoshii [RIKEN Center for Advanced Intelligence Project (AIP) & Kyoto University] (2019)  [arXiv:1903.03269](https://arxiv.org/abs/1903.03269)
+
 **Utterance-level Aggregation For Speaker Recognition In The Wild**. W Xie, A Nagrani, J S Chung, A Zisserman [University of Oxford] (2019) [arXiv:1902.10107](https://arxiv.org/abs/1902.10107) [Blog](http://www.robots.ox.ac.uk/~vgg/research/speakerID/)
 
 **catch22: CAnonical Time-series CHaracteristics**. C H Lubba, S S Sethi, P Knaute, S R Schultz, B D Fulcher, N S Jones [Imperial College London] (2019) [arXiv:1901.10200](https://arxiv.org/abs/1901.10200) [Github](https://github.com/chlubba/op_importance)
@@ -172,6 +178,20 @@ date: 2018-09-28
 **Sound Event Detection Using Spatial Features and Convolutional Recurrent Neural Network**. Sharath Adavanne, Pasi Pertilä, Tuomas Virtanen [Tampere University of Technology] (DCASE 2017) [arXiv:1706.02291](https://arxiv.org/abs/1706.02291) [Github](https://github.com/sharathadavanne/multichannel-sed-crnn)
 
 **Time Series Classification Using Multi-Channels Deep Convolutional Neural Networks**. Yi Zheng, Qi Liu, Enhong Chen, Yong Ge, and J. Leon Zhao [USTC, et al.] (2014) [WAIM2014](http://staff.ustc.edu.cn/~cheneh/paper_pdf/2014/Yi-Zheng-WAIM2014.pdf)
+
+
+
+##  Anomaly Detection
+
+**Deep CNN-based Multi-task Learning for Open-Set Recognition**. P Oza, V M. Patel [Johns Hopkins University] (2019) [arXiv:1903.03161](https://arxiv.org/abs/1903.03161) [Github](https://github.com/otkupjnoz/mlosr)
+
+**Learning Confidence Sets using Support Vector Machines**. W Wang, X Qiao [Binghamton University] (2018) [arXiv:1809.10818](https://arxiv.org/abs/1809.10818)
+
+**Novelty Detection with GAN**, Mark Kliger, Shachar Fleishman [Amazon] [arXiv:1802.10560](https://arxiv.org/abs/1802.10560)
+
+**Learning Confidence for Out-of-Distribution Detection in Neural Networks**. T DeVries, G W. Taylor [University of Guelph & Vector Institute] (2018) [arXiv:1802.04865](https://arxiv.org/abs/1802.04865)
+
+**Training Confidence-calibrated Classifiers for Detecting Out-of-Distribution Samples**, Kimin Lee, Honglak Lee, Kibok Lee, Jinwoo Shin [Korea Advanced Institute of Science and Technology, University of Michigan, Google Brain] (ICLR 2018) [arXiv:1711.09325](https://arxiv.org/abs/1711.09325)
 
 
 
@@ -349,8 +369,6 @@ date: 2018-09-28
 
 **Smooth Loss Functions for Deep Top-k Classification**. L Berrada, A Zisserman, M. P Kumar [University of Oxford] (2018) [arXiv:1802.07595](https://arxiv.org/abs/1802.07595) [Github](https://github.com/oval-group/smooth-topk)
 
-**Learning Confidence for Out-of-Distribution Detection in Neural Networks**. T DeVries, G W. Taylor [University of Guelph & Vector Institute] (2018) [arXiv:1802.04865](https://arxiv.org/abs/1802.04865)
-
 - Batch Normalization
   - **Mean-field Analysis of Batch Normalization**. M Wei, J Stokes, D J Schwab [Northwestern University & Tunnel & The City University of New York] (2019)  [arXiv:1903.02606](https://arxiv.org/abs/1903.02606) [OpenReview.net](https://openreview.net/forum?id=B1eSg3C9Ym)
   - **Generalized Batch Normalization: Towards Accelerating Deep Neural Networks**. X Yuan, Z Feng, M Norton, X Li [University of Florida & Naval Postgraduate School] (2018) [arXiv:1812.03271](https://arxiv.org/abs/1812.03271)
@@ -510,8 +528,6 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 **Analyzing the Noise Robustness of Deep Neural Networks**. M Liu, S Liu, H Su, K Cao, J Zhu [Tsinghua University] (2018) [arXiv:1810.03913](https://arxiv.org/abs/1810.03913) [comment]
 
 **Deep convolutional Gaussian processes**. K Blomqvist, S Kaski, M Heinonen [Aalto university] (2018) [arXiv:1810.03052](https://arxiv.org/abs/1810.03052) [GitHub](https://github.com/kekeblom/DeepCGP) [comment]
-
-**Learning Confidence Sets using Support Vector Machines**. W Wang, X Qiao [Binghamton University] (2018) [arXiv:1809.10818](https://arxiv.org/abs/1809.10818) [comment]
 
 **Learning with Random Learning Rates**. L Blier, P Wolinski, Y Ollivier [Facebook AI Research & Universite Paris Sud] (2018) [arXiv:1810.01322](https://arxiv.org/abs/1810.01322) [Github](https://github.com/leonardblier/alrao) [Blog](https://leonardblier.github.io/alrao/) [comment]
 
