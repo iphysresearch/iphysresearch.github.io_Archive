@@ -181,7 +181,7 @@ date: 2018-09-28
 
 
 
-##  Anomaly Detection
+## 📍 Anomaly Detection
 
 **Deep CNN-based Multi-task Learning for Open-Set Recognition**. P Oza, V M. Patel [Johns Hopkins University] (2019) [arXiv:1903.03161](https://arxiv.org/abs/1903.03161) [Github](https://github.com/otkupjnoz/mlosr)
 
@@ -284,6 +284,8 @@ date: 2018-09-28
 **A disciplined approach to neural network hyper-parameters: Part 1 -- learning rate, batch size, momentum, and weight decay**. Leslie N. Smith. [arXiv:1803.09820](https://arxiv.org/abs/1803.09820)
 
 **Focal Loss for Dense Object Detection**. Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, Piotr Dollár [Facebook AI Research] (2017) [arXiv:1708.02002](https://arxiv.org/abs/1708.02002) [Github](https://github.com/facebookresearch/Detectron)
+
+**How transferable are features in deep neural networks?**. J Yosinski, J Clune, Y Bengio, H Lipson [Cornell University, University of Wyoming, University of Montreal] (2014) [(NIPS 2014)](http://papers.nips.cc/book/advances-in-neural-information-processing-systems-27-2014) 
 
 - Samples & Datasets
 
@@ -488,6 +490,8 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 **Deep Learning for Time-Series Analysis**. John Gamboa [University of Kaiserslautern, Germany] (2017) [arXiv:1701.01887](https://arxiv.org/abs/1701.01887)
 
 **Deep Learning in Neural Networks: An Overview**. Ju ̈rgen Schmidhuber [University of Lugano & SUPSI, Switzerland] (2014) [arXiv:1404.7828](https://arxiv.org/abs/1404.7828)
+
+**Curriculum learning**. Y Bengio, J Louradour, R Collobert, J Weston [Montreal, Fabert, Princeton] (2009) [PDF](https://dl.acm.org/ft_gateway.cfm?id=1553380&ftid=628555&dwn=1&CFID=26059340&CFTOKEN=33e02b66c0c6c7d5-638CF26B-B60E-C2DB-D77FEA4F75987BD4)
 
 - Graph Neural Networks
 
