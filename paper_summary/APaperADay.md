@@ -195,6 +195,14 @@ date: 2018-09-28
 
 
 
+## Unsupervised / Domain Adaptation
+
+**Sliced Wasserstein Discrepancy for Unsupervised Domain Adaptation**. C Lee, T Batra, M H Baig, D Ulbricht [Apple Inc] (2019) [arXiv:1903.04064](https://arxiv.org/abs/1903.04064)
+
+
+
+
+
 
 
 ## :chart_with_downwards_trend: Optimization & Generalization
@@ -432,6 +440,8 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 
 
 ## :books: Review, Survey & Lecture Notes
+
+**Gradient Descent based Optimization Algorithms for Deep Learning Models Training**. J Zhang [Information Fusion and Mining Laboratory] (2019) [arXiv:1903.03614](https://arxiv.org/abs/1903.03614)
 
 **Deep Learning for Image Super-resolution: A Survey**. Z Wang, J Chen, S C.H. Hoi [Singapore Management University & South China University of Technology] (2019) [arXiv:1902.06068](https://arxiv.org/abs/1902.06068) [专知](https://mp.weixin.qq.com/s/E1RxsUjQN2ufEP4k3OZyCA)
 

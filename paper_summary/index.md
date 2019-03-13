@@ -103,6 +103,10 @@ here the comment ends -->
 
 ## Data Analysis & Signal Processing in GW Astronomy
 
+**A search for the isotropic stochastic background using data from Advanced LIGO's second observing run**.  https://arxiv.org/abs/1903.02886
+
+**Looking for ancillary signals around GW150914**. https://arxiv.org/pdf/1903.02823.pdf
+
 **Search for gravitational lensing signatures in LIGO-Virgo binary black hole events**. O.A. Hannuksela, K. Haris, K.K.Y. Ng, S. Kumar, A.K. Mehta, D. Keitel, T.G.F. Li, P. Ajith [Chinese University of Hong Kong, Tata Institute of Fundamental Research, MIT, Max-Planck-Institut für Gravitationsphysi, University of Portsmouth, Canadian Institute for Advanced Research] (2019) [arXiv:1901.02674](https://arxiv.org/abs/1901.02674)
 
 **Matched-filter study and energy budget suggest no detectable gravitational-wave ‘extended emission’ from GW170817**. Miquel Oliver, David Keitel, Andrew L. Miller, Hector Estelles, Alicia M. Sintes [etc.][arXiv:1812.06724](https://arxiv.org/abs/1812.06724)
@@ -162,6 +166,8 @@ https://orca.cf.ac.uk/118182/1/2019MuirAWMPhil.pdf
 ## GW Astronomy with Machine Learning
 
 ### GW related
+
+**Deep Learning at Scale for Gravitational Wave Parameter Estimation of Binary Black Hole Mergers**. Hongyu Shen, E. A. Huerta, Zhizhen Zhao (2019) [arXiv:1903.01998](https://arxiv.org/abs/1903.01998)
 
 **Deep learning detection of transients**. [Iftach Sadeh] (2019) [arXiv:1902.03620](https://arxiv.org/abs/1902.03620)
 
