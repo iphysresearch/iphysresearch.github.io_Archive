@@ -191,7 +191,7 @@ https://orca.cf.ac.uk/118182/1/2019MuirAWMPhil.pdf
 
 [Paper Summary] <u>Gabbard, H.</u>, Williams, M., Hayes, F., & <u>Messenger, C.</u> (2018). "**Matching matched filtering with deep networks for gravitational-wave astronomy**". *[Physical review letters](https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.120.141103)*, *120*(14), 141103.
 
-
+**A Method Of Detecting Gravitational Wave Based On Time-frequency Analysis And Convolutional Neural Networks**. Xiangru Li, Woliang Yu, Xilong Fan [arXiv:1712.00356](https://arxiv.org/abs/1712.00356)
 
 [[Paper Summary](./Deep neural networks to enable real-time multimessenger astrophysics.html)] <u>George D</u>, <u>Huerta E A</u>. "**Deep neural networks to enable real-time multimessenger astrophysics**"[J]. Physical Review D, 2018, 97(4): 044039. (**First attempt using DNN!**)
 
