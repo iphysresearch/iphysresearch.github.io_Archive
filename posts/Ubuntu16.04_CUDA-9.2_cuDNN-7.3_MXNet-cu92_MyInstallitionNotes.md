@@ -633,6 +633,42 @@ $ sensors
 
 
 
+## rm命令改造-把文件删除到回收站
+
+具体操作如下： 
+
+一. 在用户目录新建`.trash`回收站：
+
+```bash
+$ mkdir ~/.trash
+```
+
+二. 在`.bashrc`末尾中添加如下配置：
+
+修改rm
+
+```bash
+alias rm=trash
+alias r=trash
+alias rl='ls ~/.trash/'
+alias ur=recoverfile
+
+recoverfile()
+{
+    mv -i ~/.trash/$@ ./
+}
+
+trash()
+{
+    mv $@ ~/.trash
+}
+```
+
+修改完毕后，使用` $ source .bashrc` 更新下，然后你就可以使用如下命令了：
+
+- `rm`: 删除文件到回收站
+- `rl`: 查看回收站内容
+- `ur`: 恢复文件到当前目录
 
 
 

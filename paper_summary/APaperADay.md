@@ -443,6 +443,8 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 
 ## :books: Review, Survey & Lecture Notes
 
+**A State-of-the-Art Survey on Deep Learning Theory and Architectures**. [PDF](https://www.mdpi.com/2079-9292/8/3/292)
+
 **Gradient Descent based Optimization Algorithms for Deep Learning Models Training**. J Zhang [Information Fusion and Mining Laboratory] (2019) [arXiv:1903.03614](https://arxiv.org/abs/1903.03614)
 
 **Deep Learning for Image Super-resolution: A Survey**. Z Wang, J Chen, S C.H. Hoi [Singapore Management University & South China University of Technology] (2019) [arXiv:1902.06068](https://arxiv.org/abs/1902.06068) [专知](https://mp.weixin.qq.com/s/E1RxsUjQN2ufEP4k3OZyCA)
