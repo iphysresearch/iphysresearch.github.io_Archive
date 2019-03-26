@@ -674,6 +674,62 @@ trash()
 
 
 
+## Pycbc & LALSuite
+
+先在 docker 中的安装 pip（ubuntu）：
+
+```shell
+$ apt install python-pip # 12.3MB
+$ pip install -U pip 
+```
+
+在 `/etc/apt/sources.list.d/lscsoft.list` 中写入：[REF](https://wiki.ligo.org/Computing/DASWG/DebianJessie)
+
+```powershell
+deb http://software.ligo.org/lscsoft/debian jessie contrib
+deb-src http://software.ligo.org/lscsoft/debian jessie contrib
+```
+
+LALSuite 安装的两种方法：
+
+1. Easy Way
+
+   ```shell
+   $ apt-get update
+   $ apt-get install lscsoft-archive-keyring
+   ```
+
+2. Manual verification (better!)
+
+   ```shell
+   $ wget http://software.ligo.org/lscsoft/debian/pool/contrib/l/lscsoft-archive-keyring/lscsoft-archive-keyring_2016.06.20-2_all.deb
+   $ openssl md5 -sha256 lscsoft-archive-keyring_2016.06.20-2_all.deb
+   $ dpkg -i lscsoft-archive-keyring_2016.06.20-2_all.deb
+   $ apt-get update
+   ```
+
+（Optional）You can install all the LSCSoft software by installing the `lscsoft-all` meta-package:
+
+```shell
+$ apt-get install lscsoft-all  # ~5109 MB
+```
+
+安装 Pycbc：[REF](https://pycbc.org/pycbc/latest/html/install.html#simple-installation) 
+
+```bash
+$ pip install pycbc  # Not working....
+```
+
+
+
+
+
+
+
+
+
+
+
 
 （持续更新中。。。。）
 
