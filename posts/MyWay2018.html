@@ -1,0 +1,746 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>数据科学入门之我谈(2018)</title><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:first-child { margin-top: -20px; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.701961); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid-page; }
+  .typora-export #write::after { height: 0px; }
+  @page { margin: 20mm 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror-scroll { overflow-y: hidden; overflow-x: auto; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; white-space: nowrap; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit inherit; background-repeat: inherit inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; border: none !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-width: 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; word-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; background-position: 0px 0px; background-repeat: initial initial; }
+.CodeMirror-wrap pre { word-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-style: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-style: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background-color: rgba(255, 255, 0, 0.4); background-position: initial initial; background-repeat: initial initial; }
+@media print { 
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fff;
+    --control-text-color: #777;
+}
+
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: Source Sans Pro, Helvetica Neue, Arial, sans-serif !important;
+    color: #34495e;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6rem;
+    letter-spacing: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#write {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 30px 40px 30px;
+    padding-top: 20px;
+    padding-bottom: 100px;
+}
+
+#write p {
+    /* text-indent: 2rem; */
+    line-height: 1.6rem;
+    word-spacing: .05rem;
+}
+
+#write ol li {
+    padding-left: 0.5rem;
+}
+
+#write>ul:first-child,
+#write>ol:first-child {
+    margin-top: 30px;
+}
+
+body>*:first-child {
+    margin-top: 0 !important;
+}
+
+body>*:last-child {
+    margin-bottom: 0 !important;
+}
+
+a {
+    color: #42b983;
+    font-weight: 600;
+    padding: 0px 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+
+h1 {
+    padding-bottom: .4rem;
+    font-size: 2.2rem;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 1.75rem;
+    line-height: 1.225;
+    margin: 35px 0px 15px 0px;
+}
+
+h3 {
+    font-size: 1.4rem;
+    line-height: 1.43;
+    margin: 20px 0px 7px 0px;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+    color: #777;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
+}
+
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+body>h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h1:first-child+h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h3:first-child,
+body>h4:first-child,
+body>h5:first-child,
+body>h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+    margin-top: 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul,
+ol {
+    padding-left: 30px;
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+blockquote {
+    border-left: 4px solid #42b983;
+    padding: 10px 0px 10px 15px;
+    color: #777;
+    background-color: rgba(66, 185, 131, .1);
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #fafafa;
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr td {
+    border: 1px solid #dfe2e5;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+#write strong {
+    padding: 0px 1px 0 1px;
+}
+
+#write em {
+    padding: 0px 5px 0 2px;
+}
+
+#write table thead th {
+    background-color: #f2f2f2;
+}
+
+#write .CodeMirror-gutters {
+    border-right: none;
+}
+
+#write .md-fences {
+    border: 1px solid #F4F4F4;
+    -webkit-font-smoothing: initial;
+    margin: 0.8rem 0 !important;
+    padding: 0.3rem 0rem !important;
+    line-height: 1.43rem;
+    background-color: #F8F8F8 !important;
+    border-radius: 2px;
+    font-family: Roboto Mono, Source Sans Pro, Monaco, courier, monospace !important;
+    font-size: 0.85rem;
+    word-wrap: normal;
+}
+
+#write .CodeMirror-wrap .CodeMirror-code pre {
+    padding-left: 12px;
+}
+
+#write code, tt {
+    margin: 0 2px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-family: Source Sans Pro, Roboto Mono, Monaco, courier, monospace !important;
+    font-size: 0.92rem;
+    color: #e96900;
+    background-color: #f8f8f8;
+}
+
+#write .md-footnote {
+    background-color: #f8f8f8;
+    color: #e96900;
+}
+
+/* heighlight. */
+#write mark {
+    background-color:#EBFFEB;
+    border-radius: 2px;
+    padding: 2px 4px;
+    margin: 0 2px;
+    color: #222;
+    font-weight: 500;
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+.cm-s-inner .cm-link,
+.cm-s-inner.cm-link {
+    color: #22a2c9;
+}
+
+.cm-s-inner .cm-string {
+    color: #22a2c9;
+}
+
+.md-task-list-item>input {
+    margin-left: -1.3em;
+}
+
+@media screen and (min-width: 914px) {
+    /*body {
+        width: 854px;
+        margin: 0 auto;
+    }*/
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+    background-color: #f8f8f8;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+    bottom: .375rem;
+}
+
+#write>h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write>h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+
+</style>
+</head>
+<body class='typora-export' >
+<div  id='write'  class = 'is-mac'><p><a href='../index.html'>返回到首页</a></p><div class='md-toc' mdtype='toc'><p class="md-toc-content"><span class="md-toc-item md-toc-h1" data-ref="n6"><a class="md-toc-inner" style="" href="#header-n6">数据科学入门之我谈(2018)</a></span><span class="md-toc-item md-toc-h1" data-ref="n20"><a class="md-toc-inner" style="" href="#header-n20">一、纷纷扰扰的数据科学培训市场</a></span><span class="md-toc-item md-toc-h1" data-ref="n33"><a class="md-toc-inner" style="" href="#header-n33">二、线上学习的参与感非常重要</a></span><span class="md-toc-item md-toc-h1" data-ref="n49"><a class="md-toc-inner" style="" href="#header-n49">三、做好笔记是在线学习的不二捷径</a></span><span class="md-toc-item md-toc-h1" data-ref="n73"><a class="md-toc-inner" style="" href="#header-n73">四、自学路上必会之 "上下求索"的技能</a></span><span class="md-toc-item md-toc-h1" data-ref="n105"><a class="md-toc-inner" style="" href="#header-n105">五、自学路上必会之 "提问的艺术"</a></span><span class="md-toc-item md-toc-h1" data-ref="n146"><a class="md-toc-inner" style="" href="#header-n146">最后</a></span></p></div><hr /><h1><a name='header-n6' class='md-header-anchor '></a>数据科学入门之我谈(2018)</h1><p>匆匆又一年，入坑数据科学领域已有两年。除了每日的科研之余，也要时刻地学习补充新知识，提高技能，于是又有了一些新的体会和感慨，分享给更多打算入门数据科学和人工智能(AI)领域的朋友，希望大家能少一些弯路，少一些迷茫，少一些无助。</p><p>此文是旧帖《<a href='https://iphysresearch.github.io/posts/MyWay2017.html'>数据科学入门之我谈(2017)</a>》的再版新帖。</p><blockquote><p>应某平台的公开课之约，下文是我为直播预备的讲稿内容，主要为了给小白学员讲如何入门数据科学领域的。其实我是把这个话题当做个人博文来讲的，从我自己踩过的坑到这一年学习所经历过的感受感悟，希望能帮助所有对数据科学感兴趣和打算以此转行的朋友。</p></blockquote><p>&nbsp;</p><p>先自我介绍~ 这不仅可以对我有一个必要的了解，也有助于听众对比和自我定位。</p><p>&nbsp;</p><blockquote><p>土豆: </p><p>我是一枚北京某高校在读博士生，做理论物理相关的科学研究，除了十年前的本科接触过一点点C++外，就从没再接触过其他任何编程语言。后来，受到AlphaGo等新闻的影响，2016年对人工智能技术产生了浓厚的兴趣，每天会不由自主的关注有关AI的新闻动态。在2017年初，从我报名了几家数据分析和机器学习实训课程开始正式接触数据科学。换句话说，我的<strong>Python是从零学起的</strong>。</p><p>然而，由于当时自己的懒惰，计划的不周和学习方法上的不足等各种原因，线上课程没有坚持下来。后来直到2017年暑假再报名学习，才开始痛定思痛，认认真真，终于以优秀学员的优异成绩毕业后，又再报名学习了&quot;计算机视觉&quot;和&quot;自然语言处理&quot;等深度学习课程。现在是几家线上数据科学和人工智能工程师课程的助教和讲师，平时也会翻译一些国外数据科学的博文，我的<strong>PhD毕业课题</strong>也已经换成了基于深度学习技术的物理科学研究。</p></blockquote><p>&nbsp;</p><hr /><h1><a name='header-n20' class='md-header-anchor '></a>一、纷纷扰扰的数据科学培训市场</h1><p>正如罗胖在2016年底的跨年演讲中所谈到，为<strong>知识付费</strong>的时代已经来临。在过去的2017年里，看到大量针对Python、数据分析和AI相关的线上教育培训涌现让人眼花缭乱，我还是不一一列举为好（天善/小象/AI100/CSDN/稀牛/炼数成金/专知...）。总之，我几乎都不同程度的报名学习接触过，也可谓花了我不少银子。既然我听了那么多讲师的课，对比也就在所难免。</p><p>&nbsp;</p><p>通过不断的亲身经历和总结后，我理解的好讲师和好的教育培训平台应该是这样的：</p><blockquote><p>课程<strong>干货</strong>满满还不失<strong>风趣</strong>，</p><p>讲师<strong>精力</strong>充沛还热爱<strong>分享</strong>，</p><p>助教认真<strong>批改</strong>还热情<strong>反馈</strong>。</p></blockquote><p>上面总结的每一个点其实都非常重要：</p><ul><li>课程提供的大量典型模板代码可以让学员花更少的时间成本得到更大的未来收获；</li><li>讲师直播过程中的幽默感不仅让人会心一笑，有助于记忆知识点，还能起到提神的效果；</li><li>从讲师的备课和在线直播中最能看到讲师的分享精神，记得头一次听某老师直播的时候，我曾情不自禁地为其热心的倾心分享而感动至热泪盈眶（这是真事啊~）~~~ 助教团队的良好氛围是最难得也是最让人眼前一亮的，这不仅仅学习经验和捷径的分享，也是一个成熟的系列课程能够不断传承的有力标志。</li></ul><p>&nbsp;</p><p>上纲上线的谈了半天，在新版里我就再多聊出些实在的东西来。</p><p>悉数我听过的各种主流线上数据科学课程里，我强烈建议小白从<strong><a href='http://www.xiniuedu.com'>稀牛学院</a></strong>的课程入门。即使在时至今日的数据科学教育培训领域里，我仍然敢肯定稀牛学院的讲师和助教们能为小白学员营造出最好的学习氛围，尤其是已经打磨很久了的&quot;<strong>实训营</strong>&quot;和&quot;<strong>数学基础</strong>&quot;两大金牌课程。此后，稀牛学院和网易合作推出了很类似的微专业课程，关于它们之间的差异和个人理解，可以查看我的<a href='https://www.zhihu.com/question/270538713/answer/370712993'>知乎回答</a>。至于其他的平台课程嘛。。。。如果你接触过天善和小象，再看过他们的课件与 cs231n/A.Ng 等其他知名课程材料，就知道教育领域创业的门槛是多么的低，不过他们的营销确实厉害，至今仍能货如轮转吧；CSDN 也有推出人工智能工程师课程，知识覆盖面之广，每期课程的推出可谓紧锣密鼓，充分燃烧你的钱包，真不知背后的管理领导是咋想的！不过唯一值得可圈可点的是智亮老师的深厚功底和原创课件让人印象深刻；我似乎还提到过&quot;炼数成金&quot;这个东西，丫的就是个骗人的玩意，多说无益~</p><p>安利了半天，还值得一提的是专知的&quot;<strong>深度学习：算法到实战</strong>”课程，我有幸参加了2019年第一期的线上培训。科研一线的中科院自动化所教授与博士生授课，让我头一次从科班学术界的角度全面接触深度学习，让我印象很深刻，收获良多。不过值得注意的是这个课并不适合小白入门哈~</p><p>&nbsp;</p><p>篇幅有限，这个话题就暂且到此吧，只想说：</p><blockquote><p><strong>广泛的口碑固然很重要，但你亲自给的口碑无疑是更重要的。</strong></p></blockquote><p>&nbsp;</p><hr /><h1><a name='header-n33' class='md-header-anchor '></a>二、线上学习的参与感非常重要</h1><p>安利完课程，接下来就是要安利你自己了。</p><p>&nbsp;</p><ul><li>直播随时回放？！</li></ul><p>几乎所有的在线培训课程都支持<strong>直播随时回放</strong>，学习资料也随时获取的功能，对于入门学员来说，这是潜意识中最容易滋生懒惰和拖延的信息。我当初没有很好的坚持下来的主要原因就是这样，虽然心里很清楚这个课程非常好，但是依然会不由自主地产生了懈怠的心理，要么总以为这个钱一花出去，知识就好像已经保存在了我的脑海中，以后可以随时调取来用；要么就是到了直播上课时间，自己明明有时间听直播但还是会自信的以为隔天听直播回放也是一样，还能节省时间。</p><p>&nbsp;</p><ul><li>坚持听直播！</li></ul><p>上述提到的小心思其实都可以理解，我也都有不止一次的经历过。但以我的亲身经验来说，学习的<strong>参与感</strong>是尤为重要的。理论上说，所有的数据科学和AI相关技术知识都是可以通过网络资源获取和自学得到，但是既然选择了知识付费教育，就是选择了相信付费教育可以带来知识的高效获取、安排的灵活便利和有效的监督促进，那么也就应该能理解到紧跟课程进度不掉队，才能保证钱没有白花，其中学习的过程会是自己一步一个脚印不断在进步的过程。自然地，<strong>坚持听直播</strong>也是产生对自己积极暗示的最直接途径，不仅可以增进自己正在上进学习的自我监督感，还可以在直播过程的互动中，更容易边听边联想，提高对知识点的记忆和理解能力（关于人类记忆的本质是联觉这个话题就不展开了…）</p><p>&nbsp;</p><p>至于说，在线上学习的过程中究竟如何更高效的总结和记忆知识呢？这就是下面的话题了哈！</p><p>&nbsp;</p><hr /><h1><a name='header-n49' class='md-header-anchor '></a>三、做好笔记是在线学习的不二捷径</h1><ul><li>用心</li></ul><p>其实，谁都知道做笔记这件习以为常的小事。若按照笔记内容来区分，还可以分为学习笔记，读书笔记，观影笔记（观后感）和心情笔记（随笔）等等。然而，我在这里想强调的关键是：<strong>为什么要做笔记。</strong>这是关乎到笔记该如何存在的本质问题。如果不区分笔记的类型和内容，非要我一语中的说笔记应该怎么做的话，我会故作平静的告诉你：<strong>好笔记是要用心做出来的</strong>。</p><p>&nbsp;</p><ul><li>笔记软件推荐: <strong>Typora</strong></li></ul><p>你在线上参加课程学习的时候，肯定会有这样的感受：资料好多啊！从讲师的授课讲义，直播口述的知识信息，再到你解决bug看过的技术博文和高手给过你的答疑解惑，还有各种电子书籍和教程，这些知识的来源渠道很多也很繁杂，不可能再像中学时知识的来源只有书本和任课老师了。此外，IT类型的技术知识大多会涉及到很多代码，显然不可能拿个小本本手写，更何况大多都是电子版本的形式呈现。所以，不可避免的需要学会在电脑上做笔记，然后就是需要根据个人习惯来谈了。我是都在<strong>Typora</strong>上做笔记的，由于篇幅所限，就不更多安利此软件了，详细请先百度。（“作业部落”上做笔记也是一个不错的选择，它有着完备的 markdown 和 Math 以及完美代码块渲染，行间评论系统非常棒，也可以发布文章，唯一的大缺点就是没有社交化平台）</p><p>&nbsp;</p><p>P.S：除了编程算法技术外的数学理论知识是不适合在 PC 上做电子化笔记的，只能传统的手写笔记才能记到脑子里，切记。。。。</p><p>&nbsp;</p><ul><li>Teaching is Learning</li></ul><p>接下来，就是要说关键了：<strong>你做的笔记是写给未来的自己看的</strong>。在网络上听直播学习的过程中，为了节省时间和提高学习效率，看直播回放的次数应该尽可能的少，不能稍有点想不起来的知识点都要看回放找相关的说明和代码吧？所以说，你在线学习数据科学做笔记的最首要的目标，那就是尽可能的将直播视频中你认为有必要的记录下的内容记下来，就为的是再回忆某个记不太清的知识点或者代码内容的时候，只需要search自己的笔记即可，也就是说让笔记上的内容能够覆盖直播视频中你觉得有价值的所有信息，保证<strong>直播回放只看一次</strong>。此外，由于在电脑上做笔记有着可以快速录入信息，代码格式标准，还可以随时添入新信息等特点，所以在你自己的课程笔记基础上，还可以进一步写清楚如何解决的某报错信息、踩过的坑、花不少精力搞懂的代码详解、各种牛人或博文对同一个问题或者知识点的理解等等，都可以总结和记录下来。这样写的目的是什么呢？就是给你未来的自己看的，并且用自己的口吻写给未来&quot;愚笨&quot;的自己（其实，这里的学习技巧本质叫做<strong>费曼技巧</strong>，不展开谈了，直接贴给你学习大神 <strong>Scott H. Young</strong> 的讲解&quot;<a href='http://article.yeeyan.org/view/94114/329073'>十天内掌握线性代数：惊人的超速学习实验</a>&quot;，<a href='https://www.youtube.com/watch?v=FrNqSLPaZLc&t=50s'>YouTube</a> 上还可以找到他的个人频道有更多细致的讲解）。那么呼应回上面说的，真正&quot;用心&quot;的去思考怎么做笔记给自己的时候，自然地会做出更高效，更适合自己的笔记来。</p><p>&nbsp;</p><p>下面贴一个我自己听完Python和Pandas课的笔记小截图，都是慢慢补充自己写的，可见一斑吧。</p><p><img src='https://i.loli.net/2018/01/16/5a5d842dc14ab.png' alt='' referrerPolicy='no-referrer' /> </p><p><img src='https://i.loli.net/2018/01/16/5a5d85ec5a159.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>&nbsp;</p><hr /><h1><a name='header-n73' class='md-header-anchor '></a>四、自学路上必会之 &quot;上下求索&quot;的技能</h1><p>正如我们在上面谈到的，线上课程学习的过程中<strong>必然</strong>会遇到各种各样的坑或者bug。那么你该如何面对呢？</p><p>&nbsp;</p><p>首先，要摆正一个<strong>正确的态度</strong>。IT相关技术的学习特点是：<u>没有哪个人会知道所有的答案，但所有与答案相关的信息都一定能在互联网上找到</u>。这也就暗示了数据科学和AI技术的学习一定是也只能是以<strong>自学</strong>的方式获取知识和技能为途径的。没有人能给你打包票或提供所有你所需和最适合你的资源去学习，在自学的道路上，靠山靠地，不如靠自己！所以，千万不要有任何等着抱大腿或者轻轻松松、不知不觉就能成为AI算法工程师之类的臆想。</p><p>&nbsp;</p><p>事实上，如果你多留意就会发现，高手都有很强的寻找答案的能力，有时候在讨论群里他们回答问题的时就是给你一个链接那么简单，里面可能是某国内外论坛上的一个讨论帖，但是在评论区某个人给的某某回复就可以完美解决你问题。这种&quot;高手&quot;是如何炼成的？这就是我想要普及一个很少有人强调，但是想入门一个IT技术就必须会的技能：<strong>搜索</strong>。</p><p>&nbsp;</p><p>前面已经从理论和现实的角度上提及很多次为啥要先自己搜索答案了，所以我主要说说如何搜索找到你想要的答案。再说白了，就是<strong>要充分利用百度和Google搜索</strong>！</p><p>&nbsp;</p><p>首先，在自己搜索答案的时候心中要记得这样一个&quot;真理&quot;：”理论上，我现在遇到的这个问题，一定可以找到在网络上的某个角落可以找到相关这个答案的蛛丝马迹~~“。然后，可以先试一试百度中搜索关键词，因为无需翻墙，响应速度也够快，更重要的是对中文的支持要稍微好一些（请暂时容忍一会无良的百度广告推广）。</p><p>&nbsp;</p><p>比方说你忘记了Dataframe中对如何随机抽取某数量的样本（取表格的某几行），你就需要先构思用什么关键词合适了。<strong>关键词取的越多，显示的网页信息会越准确相关，但是真正相关的网页条目越少。关键词取的越少，自然地搜索结果会越泛泛。我的习惯是先用尽量少的但最相关的关键词去搜索，然后再慢慢让搜索要求变松。</strong></p><p>&nbsp;</p><p>对于上面的例子，我会倾向于搜索关键词：”pandas 随机 行“。pandas就是python的一个库，所以有了pandas，就没有必要写python，其他两个关键词是我假设要搜索到的网页上，至少必然会有的词汇。前几个搜索结果如下：</p><p><img src='https://i.loli.net/2018/01/16/5a5d97602b4bc.png' alt='' referrerPolicy='no-referrer' /></p><p>快速用眼睛扫过上面每个搜索结果，阅读红色关键字在该行所要表达的含义，就立马知晓第四个网页有你想要的答案，原来是pandas的sample函数！Google和百度搜索都可以很好的将关键词标记在搜索结果上，搜索引擎的这个功能可以让我们事半功倍的找到答案（居然也有没这种功能的搜索引擎，Yahoo！没错，说的就是你！）。</p><p>&nbsp;</p><p>既然<strong>有百度搜索为啥还要用Google呢？</strong>这个问题的答案与为啥我们所有的键盘上都是写着26个英文字母是一样的，因为IT技术都是外国人发明的。。。那么，你也就可以理解对于很多非常细节的bug报错或者更加专业细致的解答，都会在国外的英文网页上找到答案。国外的技术社区一般都更活跃，牛人更多也更牛。所以，把你含有关键信息的报错信息扔到Google里，会更容易得到相关的解答信息，甚至可以找到对应的开源源码。比如下面我随便在百度上找的报错截图:</p><p><img src='https://i.loli.net/2018/01/16/5a5d9e4832e5c.jpeg' alt='' referrerPolicy='no-referrer' /></p><pre spellcheck="false" class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" lang="shell"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 38px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 26px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -26px; width: 26px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -26px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 18px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">ArrtibuteError: <span class="cm-string">'_NamespacePath'</span> object has no attribute <span class="cm-string">'sort'</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="height: 22px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 26px;"></div></div></div></div></pre><p>这究竟是什么意思呢? 把关键报错信息扔到Google里看看:</p><p><img src='https://i.loli.net/2018/01/16/5a5d9fdad7099.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>可以看到这个报错在Github上的不同代码仓库中有讨论到，还有著名的stackoverflow论坛上也有帖子，逐个点进去查看是否与自己的情况类似就能找到答案的蛛丝马迹啦。至于如何进一步提高自己的搜索水平，请自行搜索！</p><p>&nbsp;</p><p>总之，就还是那句话：</p><blockquote><p>只要你想要的没有找不到的！因为善于搜索，所以了解世界。</p><p>Because it’s there！</p></blockquote><p>（附：免翻墙的谷歌搜索方案：<a href='http://dir.scmor.com/' target='_blank' class='url'>http://dir.scmor.com/</a>）</p><p>&nbsp;</p><hr /><h1><a name='header-n105' class='md-header-anchor '></a>五、自学路上必会之 &quot;提问的艺术&quot;</h1><p>在自学的这条道路上，总有你即使搜索也无能为力的时候，也有一时想快速得到高手或前辈的解答的时候，难免就会想到直接拉个人问一下不就好了嘛？没错，这是获取经验和知识最直接的方式。但是，你是否知道如何提出你的问题，也是一个需要技术含量的哦！其实很多时候群里没有人回答你的问题，不是因为别人对你的问题不屑一顾或者觉得问题太low，而是不知道你在问什么。。。。。</p><p>&nbsp;</p><p>比方说，有的直接求***大神的出现：</p><p><img src='https://i.loli.net/2018/01/16/5a5dabdf6d8f0.png' alt='' referrerPolicy='no-referrer' /></p><p><img src='https://i.loli.net/2018/01/16/5a5db1743a260.png' alt='' referrerPolicy='no-referrer' /></p><p>&nbsp;</p><p>难道会指望有自称大神的人回跳出来说自己是精通的么？请先自行研究，然后直接把具体的问题贴出来，才能让别人有机会接你的话音儿。</p><p>&nbsp;</p><p>更多的情况是，和问题相关的背景细节不说清楚就直接随口一问:</p><p><img src='https://i.loli.net/2018/01/16/5a5db592d16de.png' alt='' referrerPolicy='no-referrer' /></p><p>按照哪个步骤说明？环境怎么检验的？在哪里import说不行？这些如果不说清楚，是不会有人晓得你的电脑环境究竟是啥情况，更没法替你解答。</p><p>&nbsp;</p><p>要知道，只有真正清楚和了解自己是遇到了什么问题，才能给出合理和清晰的提问。下面我翻译了Fast.ai上给出的“<a href='%20http://wiki.fast.ai/index.php/How_to_ask_for_Help'>如何提问的技巧</a>”来简要说明，当你不知道自己遇到什么问题的时候，该如何提问：</p><blockquote><p>提问的内容尽量包含：</p><ol start='' ><li>你为了解决这个问题，你是做了哪些操作？你希望这些操作是什么效果和实际的效果是什么？</li><li>你猜测这个问题的根源是什么，以及你认为解决该问题可能需要如何做？</li><li>请告知你的基本电脑环境：如什么操作系统？在云平台？你的库版本是啥等～</li><li>如果你的操作步骤不同于课程给的notebook模板，请强调出来～</li><li>你收到的报错信息是什么（很重要！）</li><li>如果可以，请<strong>截图</strong>！</li><li>如果和课程中操作的返回结果不一致，请指明～</li><li>你已经解决的部分问题是怎么做的？比方说你重启了电脑？重启了kernel？</li><li>你发觉到某些可行的解决方案，可以贴出来，如来自csdn、简书等～</li></ol></blockquote><p>&nbsp;</p><p>上面的列表信息就是Fast.ai上数据科学家大牛提供的一个“提问说明”。请尽量参照这个列表去提问就好了。你说的越清楚，其他人就会越明白。不然，只有遇到过完全一样问题的人才清楚你在说什么。。。。</p><p>&nbsp;</p><p>（附：其实著名的 stackoverflow.com 上记得也有个类似的提问说明帖子，不过就懒得找了～ 基本类似的～）</p><p>&nbsp;</p><hr /><h1><a name='header-n146' class='md-header-anchor '></a>最后</h1><p>关于小白入门数据科学，我想说的关键内容上述都差不多已经提到了，虽然还有很多小细节，诸如如何看报错信息、如何掌控自己电脑的环境变量等等，但这些小问题经过上面的介绍，终归不会成为问题。</p><p>&nbsp;</p><ul><li><p>小结一下：</p><ul><li><p>优秀的线上教育平台：课程<strong>干货</strong>满满还不失<strong>风趣</strong>，讲师<strong>精力</strong>充沛还热爱<strong>分享</strong>，助教认真<strong>批改</strong>还热情<strong>反馈</strong>。</p></li><li><p>坚持听直播!</p></li><li><p>好笔记是要用<u><strong>心</strong></u>做出来的</p></li><li><p>笔记软件推荐: <strong>Typora</strong></p></li><li><p>笔记是写给未来的<strong>自己</strong>看的！</p><blockquote><p>写笔记的目标是：直播回放只看一次!</p></blockquote></li><li><p>正确的态度是什么?</p><blockquote><p>没有哪个人知道所有的答案, 但所有与答案相关的信息都一定能在互联网上找到。</p></blockquote></li><li><p>入门一个IT技术就必须会的技能：<strong>搜索</strong></p><blockquote><p><strong>要充分利用百度和Google搜索</strong>！</p></blockquote></li><li><p>只有真正清楚和了解自己是遇到了什么问题，才能给出合理和清晰的提问。</p><blockquote><p>论“提问的艺术”</p></blockquote></li></ul></li></ul><p>&nbsp;</p><p>最后的小忠告就是：<strong>不要指望相关的数学基础可以一步到位，要先多操作多实战。在不断应用和使用的过程中，慢慢学习和补充数学基础。</strong></p><p>&nbsp;</p><blockquote><p><strong>相信你终会发觉到，入门机器学习和AI领域其实比你想象得要容易的多。</strong></p></blockquote><p>&nbsp;</p><p>（完）</p><hr /><p><br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+<br></p><script type="application/json" class="js-hypothesis-config">
+  {
+    "openSidebar": false,
+    "showHighlights": true,
+    "theme": classic,
+    "enableExperimentalNewNoteButton": true
+  }
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script></div>
+</body>
+</html>
