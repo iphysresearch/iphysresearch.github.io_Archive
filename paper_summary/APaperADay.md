@@ -129,6 +129,8 @@ date: 2018-09-28
 
 **Are adversarial examples inevitable?**. A Shafahi, W. R Huang, C Studer, S Feizi, T Goldstein (2018) [arXiv:1809.02104](https://arxiv.org/abs/1809.02104)
 
+**Evolutionary Generative Adversarial Networks**. Chaoyue Wang, Chang Xu, Xin Yao, Dacheng Tao [2018] [[arXiv:1803.0065](https://arxiv.org/abs/1803.00657)7](https://arxiv.org/abs/1803.00657) [PaperWeekly](https://www.paperweekly.site/papers/2904)
+
 **Obfuscated Gradients Give a False Sense of Security: Circumventing Defenses to Adversarial Examples**. Anish Athalye, Nicholas Carlini, David Wagner [MIT & Berkeley] (2018) [arXiv:1802.00420](https://arxiv.org/abs/1802.00420) [Github](https://github.com/anishathalye/obfuscated-gradients)
 
 **Generating Natural Adversarial Examples**. Z Zhao, D Dua, S Singh [University of California, Irvine] (2017) [arXiv:1710.11342](https://arxiv.org/abs/1710.11342) [Github](https://github.com/zhengliz/natural-adversary) [comment]
@@ -138,6 +140,8 @@ date: 2018-09-28
 
 
 ## :musical_note: Sound & Signal Processing
+
+**VoiceFilter: Targeted Voice Separation by Speaker-Conditioned Spectrogram Masking**. Q Wang, H Muckenhirn, K Wilson, P Sridhar, Z Wu, J Hershey, R A. Saurous, R J. Weiss, Y Jia, I L Moreno [Google & Idiap Research Institute] (2018)  [arXiv:2018:04826](https://arxiv.org/abs/1810.04826) [Home](https://google.github.io/speaker-id/publications/VoiceFilter/) [VentureBeat](https://venturebeat.com/2018/10/12/google-researchers-use-ai-to-pick-out-voices-in-a-crowd/) [Tproger](https://tproger.ru/news/google-pick-out-voice/) [机器之心](https://www.jiqizhixin.com/articles/2018-10-17-8) [新智元](https://wallstreetcn.com/articles/3419688)
 
 **Phase-aware Speech Enhancement with Deep Complex U-Net**. H Choi, J Kim, J Huh, A Kim, J Ha, K Lee [Seoul National University & NAVER Corp] (2019) [arXiv:1903.03107](https://arxiv.org/abs/1903.03107) [Home](http://www.deepcomplexunet.tk) [OpenReview.net](https://openreview.net/forum?id=SkeRTsAcYm)
 
