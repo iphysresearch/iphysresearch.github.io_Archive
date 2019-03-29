@@ -385,7 +385,8 @@ date: 2018-09-28
 
 **Smooth Loss Functions for Deep Top-k Classification**. L Berrada, A Zisserman, M. P Kumar [University of Oxford] (2018) [arXiv:1802.07595](https://arxiv.org/abs/1802.07595) [Github](https://github.com/oval-group/smooth-topk)
 
-- Batch Normalization
+- Batch Normalization / Standardization
+  - **Weight Standardization**. S Qiao, H Wang, C Liu, W Shen, A Yuille [Johns Hopkins University] (2019) [arXiv:1903.10520](https://arxiv.org/abs/1903.10520) [Github](https://github.com/joe-siyuan-qiao/WeightStandardization)
   - **Mean-field Analysis of Batch Normalization**. M Wei, J Stokes, D J Schwab [Northwestern University & Tunnel & The City University of New York] (2019)  [arXiv:1903.02606](https://arxiv.org/abs/1903.02606) [OpenReview.net](https://openreview.net/forum?id=B1eSg3C9Ym)
   - **Generalized Batch Normalization: Towards Accelerating Deep Neural Networks**. X Yuan, Z Feng, M Norton, X Li [University of Florida & Naval Postgraduate School] (2018) [arXiv:1812.03271](https://arxiv.org/abs/1812.03271)
 
