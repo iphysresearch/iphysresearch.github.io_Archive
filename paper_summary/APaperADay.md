@@ -23,6 +23,8 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
+**Image Generation from Small Datasets via Batch Statistics Adaptation**. A Noguchi, T Harada [The University of Tokyo] (2019) [arXiv:1904.01774](https://arxiv.org/abs/1904.01774)
+
 **A Three-Player GAN: Generating Hard Samples To Improve Classification Networks**. S Vandenhende, B D Brabandere, D Neven, L V Gool [KU Leuven] (2019) [arXiv:1903.03496](https://arxiv.org/abs/1903.03496)
 
 **O-GAN: Extremely Concise Approach for Auto-Encoding Generative Adversarial Networks**. Jianlin Su [Sun Yat-sen University] (2019) [arXiv:1903.01931](https://arxiv.org/abs/1903.01931) [Reddit](https://www.reddit.com/r/MachineLearning/comments/axw4aw/ogan_extremely_concise_approach_for_autoencoding/) [PaperWeekly](https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&mid=2247495491&idx=1&sn=978f0afeb0b38affe54fc9e6d6086e3c)
@@ -399,8 +401,9 @@ date: 2018-09-28
 
 
 
-
 ## 〽️ ODE & PDE
+
+**Augmented Neural ODEs**. E Dupont, A Doucet, Y W Teh [University of Oxford] (2019) [arXiv:1904.01681](https://arxiv.org/abs/1904.01681)
 
 **Data Driven Governing Equations Approximation Using Deep Neural Networks**. T Qin, K Wu, D Xiu [The Ohio State University] (2018) [arXiv:1811.05537](https://arxiv.org/abs/1811.05537)
 
