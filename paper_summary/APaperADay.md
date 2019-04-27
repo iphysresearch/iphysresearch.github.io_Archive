@@ -189,7 +189,7 @@ date: 2018-09-28
 
 
 
-## 📍 Anomaly Detection
+## 📍 Anomaly Detection / Open Set Recognition
 
 **Deep CNN-based Multi-task Learning for Open-Set Recognition**. P Oza, V M. Patel [Johns Hopkins University] (2019) [arXiv:1903.03161](https://arxiv.org/abs/1903.03161) [Github](https://github.com/otkupjnoz/mlosr)
 
@@ -403,6 +403,8 @@ date: 2018-09-28
 
 ## 〽️ ODE & PDE
 
+**A Discussion on Solving Partial Differential Equations using Neural Networks**. Tim Dockhorn [University of Waterloo] (2019) [arXiv:1904.07200](https://arxiv.org/abs/1904.07200) [Reddit](https://www.reddit.com/r/MachineLearning/comments/bdokex/r_httpsarxivorgabs190407200_a_discussion_on/)
+
 **Augmented Neural ODEs**. E Dupont, A Doucet, Y W Teh [University of Oxford] (2019) [arXiv:1904.01681](https://arxiv.org/abs/1904.01681)
 
 **Data Driven Governing Equations Approximation Using Deep Neural Networks**. T Qin, K Wu, D Xiu [The Ohio State University] (2018) [arXiv:1811.05537](https://arxiv.org/abs/1811.05537)
@@ -471,11 +473,11 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 
 **Revisiting Self-Supervised Visual Representation Learning**. Alexander Kolesnikov, Xiaohua Zhai, Lucas Beyer [Google Brain] (2019) [arXiv:1901.09005](https://arxiv.org/abs/1901.09005) [Github](https://github.com/google/revisiting-self-supervised) [Reddit](https://www.reddit.com/r/MachineLearning/comments/altr5e/r_revisiting_selfsupervised_visual_representation/)
 
-**How Generative Adversarial Networks and Their Variants Work: An Overview**. Yongjun Hong, Uiwon Hwang, Jaeyoon Yoo, Sungroh Yoon [Seoul National University] (2017, 2018v9) [arXiv:1711.05914](https://arxiv.org/abs/1711.05914)
-
 **A Survey on Multi-output Learning**. D Xu, Y Shi, I W. Tsang, Y Ong, C Gong, X Shen [ University of Technology Sydney & Nanyang Technological University] (2019) [arXiv:1901.00248](https://arxiv.org/abs/1901.00248)
 
 **Analysis Methods in Neural Language Processing: A Survey**. Y Belinkov, J Glass [MIT] (2018) [arXiv:1812.08951](https://arxiv.org/abs/1812.08951) [Github](https://github.com/boknilev/nlp-analysis-methods) [Blog](https://boknilev.github.io/nlp-analysis-methods/)
+
+**Recent Advances in Open Set Recognition: A Survey**. Chuanxing Geng, Sheng-jun Huang, Songcan Chen [College of Computer Science and Technology, Nanjing] [arXiv:1811.08581](https://arxiv.org/abs/1811.08581) [Reddit](https://www.reddit.com/r/MachineLearning/comments/bdktjv/d_other_class_in_dnn_classification/)
 
 **Neural Approaches to Conversational AI**. J Gao, M Galley, L Li [Microsoft Research & Google Brain] (2018) [arXiv:1809.08267](https://arxiv.org/abs/1809.08267)
 
@@ -508,6 +510,8 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 **An Introduction to Image Synthesis with Generative Adversarial Nets**. He Huang, Philip S. Yu, Changhu Wang [University of Illinois at Chicago & ByteDance AI Lab] (2019) [arXiv:1803.04469](https://arxiv.org/abs/1803.04469)
 
 **Visual Interpretability for Deep Learning: a Survey**. Quanshi Zhang, Song-Chun Zhu [] (2018) [arXiv:1802.00614](https://arxiv.org/abs/1802.00614)
+
+**How Generative Adversarial Networks and Their Variants Work: An Overview**. Yongjun Hong, Uiwon Hwang, Jaeyoon Yoo, Sungroh Yoon [Seoul National University] (2017, 2018v9) [arXiv:1711.05914](https://arxiv.org/abs/1711.05914)
 
 **Deep Learning for Time-Series Analysis**. John Gamboa [University of Kaiserslautern, Germany] (2017) [arXiv:1701.01887](https://arxiv.org/abs/1701.01887)
 
