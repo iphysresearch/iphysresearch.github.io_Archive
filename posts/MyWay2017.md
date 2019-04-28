@@ -227,7 +227,7 @@ ArrtibuteError: '_NamespacePath' object has no attribute 'sort'
 
 （附：其实著名的 stackoverflow.com 上记得也有个类似的提问说明帖子，不过就懒得找了～ 基本类似的～）
 
-
+（4/28/2019注：[《提问的智慧》精读注解版](https://hacpai.com/article/1536377163156)）
 
 ---
 

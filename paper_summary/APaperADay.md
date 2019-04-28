@@ -423,7 +423,7 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 
 **Forward-Backward Stochastic Neural Networks: Deep Learning of High-dimensional Partial Differential Equations**. M Raissi [Brown University] (2018) [arXiv:1804.07010](https://arxiv.org/abs/1804.07010)
 
-
+**Data-driven discovery of partial differential equations**. Samuel H. Rudy, Steven L. Brunton, Joshua L. Proctor, J. Nathan Kutz [Department of Applied Mathematics, University of Washington, Seattle, WA] [arXiv:1609.06401](https://arxiv.org/abs/1609.06401) [Github](https://github.com/snagcliffs/PDE-FIND/)
 
 
 
