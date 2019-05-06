@@ -349,6 +349,8 @@ date: 2018-09-28
 
 ## :control_knobs: Model Configuration
 
+**Kervolutional Neural Networks**. Chen Wang, Jianfei Yang, Lihua Xie, Junsong Yuan [Nanyang Technological University, State University of New York at Buffalo] (2019) [arXiv:1904.03955](https://arxiv.org/abs/1904.03955) [Reddit](https://www.reddit.com/r/MachineLearning/comments/bkil6g/r_kervolutional_neural_networks_cvpr19_oral/)
+
 **Ising-Dropout: A Regularization Method for Training and Compression of Deep Neural Networks**. H Salehinejad, S Valaee [University of Toronto] (2019) [arXiv:1902.08673](https://arxiv.org/abs/1902.08673)
 
 **LocalNorm: Robust Image Classification through Dynamically Regularized Normalization**. B Yin, S Schaafsma, H Corporaal, H. S Scholte, S M. Bohte [Centrum Wiskunde & Informatica (CWI) & Holst Centre / IMEC] (2019) [arXiv:1902.06550](https://arxiv.org/abs/1902.06550)
