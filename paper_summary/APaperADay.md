@@ -251,6 +251,8 @@ date: 2018-09-28
 
 ## :+1: Model Evaluation & Performance & Interpretion & Visualization
 
+**Training decision trees as replacement for convolution layers**. Wolfgang Fuhl, Gjergji Kasneci, Wolfgang Rosenstiel, Enkelejda Kasneci [Eberhard Karls University Tübingen] [arXiv:1905.10073](https://arxiv.org/abs/1905.10073) [Reddit](https://www.reddit.com/r/MachineLearning/comments/btg172/r_training_decision_trees_as_replacement_for/?amp=1)
+
 **Unmasking Clever Hans Predictors and Assessing What Machines Really Learn**. S Lapuschkin, S Wäldchen, A Binder, G Montavon, W Samek, K Müller [Fraunhofer Heinrich Hertz Institute & Technische Universitat Berlin & Singapore University of Technology and Design] (2019) [arXiv:1902.10178](https://arxiv.org/abs/1902.10178)
 
 **Seven Myths in Machine Learning Research**. O Chang, H Lipson [Columbia University] (2019) [arXiv:1902.06789](https://arxiv.org/abs/1902.06789) [Blog](https://crazyoscarchang.github.io/2019/02/16/seven-myths-in-machine-learning-research/)
@@ -454,6 +456,8 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 
 
 ## :books: Review, Survey & Lecture Notes
+
+**Generative Adversarial Networks: A Survey and Taxonomy**. [Zhengwei Wang, Qi She, Tomas E. Ward] (2019) [arXiv:1906.01529](https://arxiv.org/abs/1906.01529) [Github](https://github.com/sheqi/GAN_Review)
 
 **A State-of-the-Art Survey on Deep Learning Theory and Architectures**. [PDF](https://www.mdpi.com/2079-9292/8/3/292)
 
