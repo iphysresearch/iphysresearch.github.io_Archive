@@ -143,6 +143,8 @@ date: 2018-09-28
 
 ## :musical_note: Sound & Signal Processing
 
+**Time Series Anomaly Detection Using Convolutional Neural Networks and Transfer Learning**. T Wen, R Keyes [Arundo Analytics] (2019) [arXiv:1905.13628](https://arxiv.org/abs/1905.13628)
+
 **VoiceFilter: Targeted Voice Separation by Speaker-Conditioned Spectrogram Masking**. Q Wang, H Muckenhirn, K Wilson, P Sridhar, Z Wu, J Hershey, R A. Saurous, R J. Weiss, Y Jia, I L Moreno [Google & Idiap Research Institute] (2018)  [arXiv:2018:04826](https://arxiv.org/abs/1810.04826) [Home](https://google.github.io/speaker-id/publications/VoiceFilter/) [VentureBeat](https://venturebeat.com/2018/10/12/google-researchers-use-ai-to-pick-out-voices-in-a-crowd/) [Tproger](https://tproger.ru/news/google-pick-out-voice/) [机器之心](https://www.jiqizhixin.com/articles/2018-10-17-8) [新智元](https://wallstreetcn.com/articles/3419688)
 
 **Phase-aware Speech Enhancement with Deep Complex U-Net**. H Choi, J Kim, J Huh, A Kim, J Ha, K Lee [Seoul National University & NAVER Corp] (2019) [arXiv:1903.03107](https://arxiv.org/abs/1903.03107) [Home](http://www.deepcomplexunet.tk) [OpenReview.net](https://openreview.net/forum?id=SkeRTsAcYm)

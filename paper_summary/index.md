@@ -231,6 +231,8 @@ http://www.tapir.caltech.edu/~vvarma/
 
 ## Others
 
+**Time Series Anomaly Detection Using Convolutional Neural Networks and Transfer Learning**. T Wen, R Keyes [Arundo Analytics] (2019) [arXiv:1905.13628](https://arxiv.org/abs/1905.13628)
+
 高频成分有助于解释卷积神经网络的生成 | High Frequency Component Helps Explain the Generalization of Convolutional Neural Networks | Haohan Wang、Xindi Wu、Pengcheng Yin、Eric P. Xing
 
 在本文中，研究者研究了图像数据频谱与卷积神经网络生成行为之间的关系。他们首先注意到卷积神经网络有能力捕获图像的高频成分，而人类却几乎察觉不到这些高频成分。因此，这一观察结果可以作为对抗样本存在的一种解释，同时也有助于验证卷积神经网络鲁棒性和准确性之间的权衡。此外，观察结果直接引出的一些方法能够提升训练下卷积神经网络的对抗鲁棒性。最后，研究者利用这一观察结果设计了一种（半）黑盒对抗攻击方法。
