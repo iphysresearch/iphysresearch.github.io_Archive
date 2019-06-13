@@ -23,6 +23,8 @@ date: 2018-09-28
 
 ## :repeat: Generative Models
 
+**Object Discovery with a Copy-Pasting GAN**. Relja Arandjelovic, Andrew Zisserman [DeepMind] (2019) [arXiv:1905.11369](https://arxiv.org/abs/1905.11369)
+
 **Image Generation from Small Datasets via Batch Statistics Adaptation**. A Noguchi, T Harada [The University of Tokyo] (2019) [arXiv:1904.01774](https://arxiv.org/abs/1904.01774)
 
 **A Three-Player GAN: Generating Hard Samples To Improve Classification Networks**. S Vandenhende, B D Brabandere, D Neven, L V Gool [KU Leuven] (2019) [arXiv:1903.03496](https://arxiv.org/abs/1903.03496)
