@@ -231,6 +231,8 @@ http://www.tapir.caltech.edu/~vvarma/
 
 ## Others
 
+**MelNet: A Generative Model for Audio in the Frequency Domain**. Sean Vasquez, Mike Lewis [Facebook AI Research] (2019) [arXiv:1906.01083](https://arxiv.org/abs/1906.01083) [Blog](https://sjvasquez.github.io/blog/melnet/) [Audio Samples](https://audio-samples.github.io) [Facebook频谱图模型生成比尔·盖茨声音，性能完胜WaveNet、MAESTRO](https://mp.weixin.qq.com/s/HubxAFbxCdoaFHNOhfm9QQ)
+
 **Time Series Anomaly Detection Using Convolutional Neural Networks and Transfer Learning**. T Wen, R Keyes [Arundo Analytics] (2019) [arXiv:1905.13628](https://arxiv.org/abs/1905.13628)
 
 高频成分有助于解释卷积神经网络的生成 | High Frequency Component Helps Explain the Generalization of Convolutional Neural Networks | Haohan Wang、Xindi Wu、Pengcheng Yin、Eric P. Xing

@@ -145,6 +145,8 @@ date: 2018-09-28
 
 ## :musical_note: Sound & Signal Processing
 
+**MelNet: A Generative Model for Audio in the Frequency Domain**. Sean Vasquez, Mike Lewis [Facebook AI Research] (2019) [arXiv:1906.01083](https://arxiv.org/abs/1906.01083) [Blog](https://sjvasquez.github.io/blog/melnet/) [Audio Samples](https://audio-samples.github.io) [Facebook频谱图模型生成比尔·盖茨声音，性能完胜WaveNet、MAESTRO](https://mp.weixin.qq.com/s/HubxAFbxCdoaFHNOhfm9QQ)
+
 **Time Series Anomaly Detection Using Convolutional Neural Networks and Transfer Learning**. T Wen, R Keyes [Arundo Analytics] (2019) [arXiv:1905.13628](https://arxiv.org/abs/1905.13628)
 
 **VoiceFilter: Targeted Voice Separation by Speaker-Conditioned Spectrogram Masking**. Q Wang, H Muckenhirn, K Wilson, P Sridhar, Z Wu, J Hershey, R A. Saurous, R J. Weiss, Y Jia, I L Moreno [Google & Idiap Research Institute] (2018)  [arXiv:2018:04826](https://arxiv.org/abs/1810.04826) [Home](https://google.github.io/speaker-id/publications/VoiceFilter/) [VentureBeat](https://venturebeat.com/2018/10/12/google-researchers-use-ai-to-pick-out-voices-in-a-crowd/) [Tproger](https://tproger.ru/news/google-pick-out-voice/) [机器之心](https://www.jiqizhixin.com/articles/2018-10-17-8) [新智元](https://wallstreetcn.com/articles/3419688)
@@ -355,7 +357,7 @@ date: 2018-09-28
 
 ## :control_knobs: Model Configuration
 
-**RandomOut: Using a convolutional gradient norm to rescue convolutional filters**. [Joseph Paul Cohen, Henry Z. Lo, Wei Ding, MILA] (2019) [arXiv:1602.05931](https://arxiv.org/abs/1602.05931)
+**RandomOut: Using a convolutional gradient norm to rescue convolutional filters**. [Joseph Paul Cohen, Henry Z. Lo, Wei Ding, MILA] (2019) [arXiv:1602.05931](https://arxiv.org/abs/1602.05931) [Reddit](https://www.reddit.com/r/MachineLearning/comments/byoz5s/r_randomout_using_a_convolutional_gradient_norm/?amp=1)
 
 **Kervolutional Neural Networks**. Chen Wang, Jianfei Yang, Lihua Xie, Junsong Yuan [Nanyang Technological University, State University of New York at Buffalo] (2019) [arXiv:1904.03955](https://arxiv.org/abs/1904.03955) [Reddit](https://www.reddit.com/r/MachineLearning/comments/bkil6g/r_kervolutional_neural_networks_cvpr19_oral/)
 
@@ -462,6 +464,8 @@ summary by Adrian Colyer http://t.cn/EqANCZ0
 
 
 ## :books: Review, Survey & Lecture Notes
+
+**An Introduction to Variational Autoencoders**. [Diederik P. Kingma, Max Welling] (2019) [arXiv:1906.02691](https://arxiv.org/abs/1906.02691)
 
 **Generative Adversarial Networks: A Survey and Taxonomy**. [Zhengwei Wang, Qi She, Tomas E. Ward] (2019) [arXiv:1906.01529](https://arxiv.org/abs/1906.01529) [Github](https://github.com/sheqi/GAN_Review)
 
