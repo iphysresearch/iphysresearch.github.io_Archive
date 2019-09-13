@@ -421,6 +421,8 @@ date: 2018-09-28
 
 **Data Driven Governing Equations Approximation Using Deep Neural Networks**. T Qin, K Wu, D Xiu [The Ohio State University] (2018) [arXiv:1811.05537](https://arxiv.org/abs/1811.05537)
 
+**Learning data driven discretizations for partial differential equations**. Yohai Bar-Sinai and Stephan Hoyer and Jason Hickey and Michael P. Brenner [] [将门创投](https://mp.weixin.qq.com/s/bKoKex-vaBh6X3qiTw5IeQ) [Github](https://github.com/google-research/data-driven-pdes) 
+
 **Neural Ordinary Differential Equations**. Ricky T. Q. Chen, Yulia Rubanova, Jesse Bettencourt, David Duvenaud [University of Toronto, Canada] (NeurIPS 2018 | best paper) [arXiv:1806.07366](https://arxiv.org/abs/1806.07366) [Github](https://github.com/rtqichen/torchdiffeq) [Blog](https://rkevingibson.github.io/blog/neural-networks-as-ordinary-differential-equations/) [机器之心](https://mp.weixin.qq.com/s/ZEIsyV-0aTvYn6K8GyANPA)(【硬核NeruIPS 2018最佳论文，一个神经了的常微分方程】这是一篇神奇的论文，以前一层一层叠加的神经网络似乎突然变得连续了，反向传播也似乎不再需要一点一点往前传、一层一层更新参数了。 ) 
 
 【《Neural Ordinary Differential Equations》论文解读】《Paper Summary: Neural Ordinary Differential Equations》by Branislav Holländer http://t.cn/EGPEh8y 
@@ -653,7 +655,6 @@ s.setAttribute('data-timestamp', +new Date());
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 <br>
@@ -667,6 +668,5 @@ s.setAttribute('data-timestamp', +new Date());
   }
 </script>
 <script async src="https://hypothes.is/embed.js"></script>
-
 
 

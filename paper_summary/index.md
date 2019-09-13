@@ -61,7 +61,6 @@ Therefore, the list of contents is only collected due to my own interests.
 
 <blockquote class="reddit-card" data-card-created="1543907974"><a href="https://www.reddit.com/r/MachineLearning/comments/a21d0q/what_are_the_must_read_papers_for_a_beginner_in/">What are the must read papers for a beginner in the field of Machine Learning and Artificial Intelligence? [Discussion]</a> from <a href="http://www.reddit.com/r/MachineLearning">r/MachineLearning</a></blockquote>
 <script async src="//embed.redditmedia.com/widgets/platform.js" charset="UTF-8"></script>
-
 [机器学习与深度学习经典论文整理](https://mp.weixin.qq.com/s/jKK6AwmCMGWgVK0vPX359w)
 
 <!-- I am some comments
@@ -100,6 +99,8 @@ here the comment ends -->
 [Gravitational Waves from Gravitational Collapse](https://link.springer.com/article/10.12942/lrr-2011-1)
 
 **Analyzing Gravitational Waves with General Relativity** https://arxiv.org/abs/1902.09801
+
+https://cosmolearning.org/courses/overview-of-gravitational-wave-science-400/
 
 ## Data Analysis & Signal Processing in GW Astronomy
 
@@ -583,7 +584,6 @@ s.setAttribute('data-timestamp', +new Date());
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
 <br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 <br>
@@ -597,6 +597,5 @@ s.setAttribute('data-timestamp', +new Date());
   }
 </script>
 <script async src="https://hypothes.is/embed.js"></script>
-
 
 
