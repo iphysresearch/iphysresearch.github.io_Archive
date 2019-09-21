@@ -133,7 +133,7 @@
   <p>We can also cite <dt-cite key="gregor2015draw"></dt-cite> external publications.</p>
   <dt-byline></dt-byline>
   <p>
-    An example of inline code snippets: <dt-code language="html">let x = 10;</dt-code>
+    An example of inline code snippets: <dt-code language="python">import numpy as np</dt-code>
     For larger blocks of code, add a block attribute:
     <dt-code block language="javascript">
       var x = 25;
@@ -142,6 +142,7 @@
       }
     </dt-code>
   </p>
+  <hr>
   <p>
     Inline : $a^2$,  My money : \$123 and \$321 , 
   </p>
@@ -241,3 +242,12 @@
   url={https://arxiv.org/pdf/1502.04623.pdf} 
 }
 </script>
+
+<!-- https://web.hypothes.is/help/embedding-hypothesis-in-websites-and-platforms/ -->
+<!-- https://h.readthedocs.io/projects/client/en/latest/publishers/config/ -->
+<script type="application/json" class="js-hypothesis-config">
+  {
+    "showHighlights": true
+  }
+</script>
+  <script async src="https://hypothes.is/embed.js"></script>
