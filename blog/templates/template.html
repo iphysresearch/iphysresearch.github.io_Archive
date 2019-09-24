@@ -23,13 +23,13 @@
 </style>
 
 <script type="text/front-matter">
-  title: "Article Title"
-  description: "Description of the post"
-  authors:
-  - Chris Olah: http://colah.github.io
-  - Shan Carter: http://shancarter.com
+  title: "{{ meta_data.title[0] }}"
+  description: "{{ meta_data.authors|length }}"
+  authors: 
+  - {{ meta_data.authors[0] }}: {{ meta_data.authors_url[0] }}
+  - Shan Carter: http://shancarter.com123
   affiliations:
-  - Google Brain: http://g.co/brain
+  - {{ meta_data.affiliations[0] }}: {{ meta_data.affiliations_url[0] }}
   - Google Brain: http://g.co/brain
 </script>
 <dt-header>

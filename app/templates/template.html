@@ -1,0 +1,917 @@
+<!doctype html>
+<!-- https://distill.pub/guide/ -->
+<!-- <script src="https://distill.pub/template.v1.js"></script> -->
+<script src="../static/js/template.v1.js"></script>
+<!-- <script src="../static/js/checklists.js"></script> -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<!-- Loading MathJax Only on Pages with Math -->
+<script src="../static/js/check-for-tex.js" defer></script>
+<style id="distill-prerendered-styles" type="text/css">/*
+  * Copyright 2018 The Distill Template Authors
+  *
+  * Licensed under the Apache License, Version 2.0 (the "License");
+  * you may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at
+  *
+  *      http://www.apache.org/licenses/LICENSE-2.0
+  *
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+ 
+ html {
+   font-size: 14px;
+   line-height: 1.6em;
+   /* font-family: "Libre Franklin", "Helvetica Neue", sans-serif; */
+   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+   /*, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";*/
+   text-size-adjust: 100%;
+   -ms-text-size-adjust: 100%;
+   -webkit-text-size-adjust: 100%;
+ }
+ 
+ @media(min-width: 768px) {
+   html {
+     font-size: 16px;
+   }
+ }
+ 
+ body {
+   margin: 0;
+ }
+ 
+ a {
+   color: #004276;
+ }
+ 
+ figure {
+   margin: 0;
+ }
+ 
+ table {
+   border-collapse: collapse;
+   border-spacing: 0;
+ }
+ 
+ table th {
+   text-align: left;
+ }
+ 
+ table thead {
+   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+ }
+ 
+ table thead th {
+   padding-bottom: 0.5em;
+ }
+ 
+ table tbody :first-child td {
+   padding-top: 0.5em;
+ }
+ 
+ pre {
+   overflow: auto;
+   max-width: 100%;
+ }
+ 
+ p {
+   margin-top: 0;
+   margin-bottom: 1em;
+ }
+ 
+ sup, sub {
+   vertical-align: baseline;
+   position: relative;
+   top: -0.4em;
+   line-height: 1em;
+ }
+ 
+ sub {
+   top: 0.4em;
+ }
+ 
+ .kicker,
+ .marker {
+   font-size: 15px;
+   font-weight: 600;
+   color: rgba(0, 0, 0, 0.5);
+ }
+  
+ /* Figure */
+ 
+ figure {
+   position: relative;
+   margin-bottom: 2.5em;
+   margin-top: 1.5em;
+ }
+ 
+ figcaption+figure {
+ 
+ }
+ 
+ figure img {
+   width: 100%;
+ }
+ 
+ figure svg text,
+ figure svg tspan {
+ }
+ 
+ figcaption,
+ .figcaption {
+   color: rgba(0, 0, 0, 0.6);
+   font-size: 12px;
+   line-height: 1.5em;
+ }
+ 
+ @media(min-width: 1024px) {
+ figcaption,
+ .figcaption {
+     font-size: 13px;
+   }
+ }
+ 
+ figure.external img {
+   background: white;
+   border: 1px solid rgba(0, 0, 0, 0.1);
+   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+   padding: 18px;
+   box-sizing: border-box;
+ }
+ 
+ figcaption a {
+   color: rgba(0, 0, 0, 0.6);
+ }
+ 
+ figcaption b,
+ figcaption strong, {
+   font-weight: 600;
+   color: rgba(0, 0, 0, 1.0);
+ }
+ /*
+  * Copyright 2018 The Distill Template Authors
+  *
+  * Licensed under the Apache License, Version 2.0 (the "License");
+  * you may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at
+  *
+  *      http://www.apache.org/licenses/LICENSE-2.0
+  *
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+ 
+ @supports not (display: grid) {
+   .base-grid,
+   distill-header,
+   dt-abstract,
+   dt-article,
+   dt-appendix,
+   distill-appendix,
+   dt-byline,
+   dt-footnote-list,
+   dt-citation-list,
+   distill-footer {
+     display: block;
+     padding: 8px;
+   }
+ }
+ 
+ .base-grid,
+ distill-header,
+ dt-abstract,
+ dt-article,
+ dt-appendix,
+ distill-appendix,
+ dt-byline,
+ dt-footnote-list,
+ dt-citation-list,
+ distill-footer {
+   display: grid;
+   justify-items: stretch;
+   grid-template-columns: [screen-start] 8px [page-start kicker-start text-start gutter-start middle-start] 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr [text-end page-end gutter-end kicker-end middle-end] 8px [screen-end];
+   grid-column-gap: 8px;
+ }
+ 
+ .grid {
+   display: grid;
+   grid-column-gap: 8px;
+ }
+ 
+ @media(min-width: 768px) {
+   .base-grid,
+   distill-header,
+   dt-abstract,
+   dt-article,
+   dt-appendix,
+   distill-appendix,
+   dt-byline,
+   dt-footnote-list,
+   dt-citation-list,
+   distill-footer {
+     grid-template-columns: [screen-start] 1fr [page-start kicker-start middle-start text-start] 45px 45px 45px 45px 45px 45px 45px 45px [ kicker-end text-end gutter-start] 45px [middle-end] 45px [page-end gutter-end] 1fr [screen-end];
+     grid-column-gap: 16px;
+   }
+ 
+   .grid {
+     grid-column-gap: 16px;
+   }
+ }
+ 
+ @media(min-width: 1000px) {
+   .base-grid,
+   distill-header,
+   dt-abstract,
+   dt-article,
+   dt-appendix,
+   distill-appendix,
+   dt-byline,
+   dt-footnote-list,
+   dt-citation-list,
+   distill-footer {
+     grid-template-columns: [screen-start] 1fr [page-start kicker-start] 50px [middle-start] 50px [text-start kicker-end] 50px 50px 50px 50px 50px 50px 50px 50px [text-end gutter-start] 50px [middle-end] 50px [page-end gutter-end] 1fr [screen-end];
+     grid-column-gap: 16px;
+   }
+ 
+   .grid {
+     grid-column-gap: 16px;
+   }
+ }
+ 
+ @media(min-width: 1180px) {
+   .base-grid,
+   distill-header,
+   dt-abstract,
+   dt-article,
+   dt-appendix,
+   distill-appendix,
+   dt-byline,
+   dt-footnote-list,
+   dt-citation-list,
+   distill-footer {
+     grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+     grid-column-gap: 50px;
+   }
+ 
+   .grid {
+     grid-column-gap: 50px;
+   }
+ }
+ 
+ 
+ 
+ 
+ .base-grid {
+   grid-column: screen;
+ }
+ 
+ /* .l-body,
+ dt-article > *  {
+   grid-column: text;
+ }
+ 
+ .l-page,
+ dt-title > *,
+ dt-figure {
+   grid-column: page;
+ } */
+ 
+ .l-gutter {
+   grid-column: gutter;
+ }
+ 
+ .l-text,
+ .l-body {
+   grid-column: text;
+ }
+ 
+ .l-page {
+   grid-column: page;
+ }
+ 
+ .l-body-outset {
+   grid-column: middle;
+ }
+ 
+ .l-page-outset {
+   grid-column: page;
+ }
+ 
+ .l-screen {
+   grid-column: screen;
+ }
+ 
+ .l-screen-inset {
+   grid-column: screen;
+   padding-left: 16px;
+   padding-left: 16px;
+ }
+ 
+ 
+ /* Aside */
+ 
+ dt-article aside {
+   grid-column: gutter;
+   font-size: 12px;
+   line-height: 1.6em;
+   color: rgba(0, 0, 0, 0.6)
+ }
+ 
+ @media(min-width: 768px) {
+   aside {
+     grid-column: gutter;
+   }
+ 
+   .side {
+     grid-column: gutter;
+   }
+ }
+
+ /*
+  * Copyright 2018 The Distill Template Authors
+  *
+  * Licensed under the Apache License, Version 2.0 (the "License");
+  * you may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at
+  *
+  *      http://www.apache.org/licenses/LICENSE-2.0
+  *
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+ 
+ dt-byline {
+   contain: style;
+   overflow: hidden;
+   border-top: 1px solid rgba(0, 0, 0, 0.1);
+   font-size: 0.8rem;
+   line-height: 1.8em;
+   padding: 1.5rem 0;
+   min-height: 1.8em;
+ }
+ 
+ 
+ dt-byline .byline {
+   grid-template-columns: 1fr 1fr;
+   grid-column: text;
+ }
+ 
+ @media(min-width: 768px) {
+   dt-byline .byline {
+     grid-template-columns: 1fr 1fr 1fr 1fr;
+   }
+ }
+ 
+ dt-byline .authors-affiliations {
+   grid-column-end: span 2;
+   grid-template-columns: 1fr 1fr;
+   margin-bottom: 1em;
+ }
+ 
+ @media(min-width: 768px) {
+   dt-byline .authors-affiliations {
+     margin-bottom: 0;
+   }
+ }
+ 
+ dt-byline h3 {
+   font-size: 0.6rem;
+   font-weight: 400;
+   color: rgba(0, 0, 0, 0.5);
+   margin: 0;
+   text-transform: uppercase;
+ }
+ 
+ dt-byline p {
+   margin: 0;
+ }
+ 
+ dt-byline a,
+ dt-article dt-byline a {
+   color: rgba(0, 0, 0, 0.8);
+   text-decoration: none;
+   border-bottom: none;
+ }
+ 
+ dt-article dt-byline a:hover {
+   text-decoration: underline;
+   border-bottom: none;
+ }
+ 
+ dt-byline p.author {
+   font-weight: 500;
+ }
+ 
+ dt-byline .affiliations {
+ 
+ }
+ /*
+  * Copyright 2018 The Distill Template Authors
+  *
+  * Licensed under the Apache License, Version 2.0 (the "License");
+  * you may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at
+  *
+  *      http://www.apache.org/licenses/LICENSE-2.0
+  *
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+ 
+ dt-article {
+   contain: layout style;
+   overflow-x: hidden;
+   border-top: 1px solid rgba(0, 0, 0, 0.1);
+   padding-top: 2rem;
+   color: rgba(0, 0, 0, 0.8);
+ }
+ 
+ dt-article > * {
+   grid-column: text;
+ }
+ 
+ @media(min-width: 768px) {
+   dt-article {
+     font-size: 16px;
+   }
+ }
+ 
+ @media(min-width: 1024px) {
+   dt-article {
+     font-size: 1.06rem;
+     line-height: 1.7em;
+   }
+ }
+ 
+ 
+ /* H2 */
+ 
+ 
+ dt-article .marker {
+   text-decoration: none;
+   border: none;
+   counter-reset: section;
+   grid-column: kicker;
+   line-height: 1.7em;
+ }
+ 
+ dt-article .marker:hover {
+   border: none;
+ }
+ 
+ dt-article .marker span {
+   padding: 0 3px 4px;
+   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+   position: relative;
+   top: 4px;
+ }
+ 
+ dt-article .marker:hover span {
+   color: rgba(0, 0, 0, 0.7);
+   border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+ }
+ 
+ dt-article h2 {
+   font-weight: 400;
+   font-size: 24px;
+   line-height: 1.25em;
+   margin: 2rem 0 1.5rem 0;
+   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+   padding-bottom: 1rem;
+ }
+ 
+ @media(min-width: 1024px) {
+   dt-article h2 {
+     font-size: 36px;
+   }
+ }
+ 
+ /* H3 */
+ 
+ dt-article h3 {
+   font-weight: 400;
+   font-size: 18px;
+   line-height: 1.4em;
+   margin-bottom: 1em;
+   margin-top: 2em;
+ }
+ 
+ @media(min-width: 1024px) {
+   dt-article h3 {
+     font-size: 20px;
+   }
+ }
+ 
+ /* H4 */
+ 
+ dt-article h4 {
+   font-weight: 600;
+   text-transform: uppercase;
+   font-size: 14px;
+   line-height: 1.4em;
+ }
+ 
+ dt-article a {
+   color: inherit;
+ }
+ 
+ dt-article p,
+ dt-article ul,
+ dt-article ol,
+ dt-article blockquote {
+   margin-top: 0;
+   margin-bottom: 1em;
+   margin-left: 0;
+   margin-right: 0;
+ }
+ 
+ dt-article blockquote {
+   border-left: 2px solid rgba(0, 0, 0, 0.2);
+   padding-left: 2em;
+   font-style: italic;
+   color: rgba(0, 0, 0, 0.6);
+ }
+ 
+ dt-article a {
+   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+   text-decoration: none;
+ }
+ 
+ dt-article a:hover {
+   border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+ }
+ 
+ dt-article .link {
+   text-decoration: underline;
+   cursor: pointer;
+ }
+ 
+ dt-article ul,
+ dt-article ol {
+   padding-left: 24px;
+ }
+ 
+ dt-article li {
+   margin-bottom: 1em;
+   margin-left: 0;
+   padding-left: 0;
+ }
+ 
+ dt-article li:last-child {
+   margin-bottom: 0;
+ }
+ 
+ dt-article pre {
+   font-size: 14px;
+   margin-bottom: 20px;
+ }
+ 
+ dt-article hr {
+   grid-column: screen;
+   width: 100%;
+   border: none;
+   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+   margin-top: 60px;
+   margin-bottom: 60px;
+ }
+ 
+ dt-article section {
+   margin-top: 60px;
+   margin-bottom: 60px;
+ }
+ 
+ dt-article span.equation-mimic {
+   font-family: georgia;
+   font-size: 115%;
+   font-style: italic;
+ }
+ 
+ dt-article > dt-code,
+ dt-article section > dt-code  {
+   display: block;
+ }
+ 
+ dt-article > dt-math[block],
+ dt-article section > dt-math[block]  {
+   display: block;
+ }
+ 
+ @media (max-width: 768px) {
+   dt-article > dt-code,
+   dt-article section > dt-code,
+   dt-article > dt-math[block],
+   dt-article section > dt-math[block] {
+       overflow-x: scroll;
+       -ms-overflow-style: none;  // IE 10+
+       overflow: -moz-scrollbars-none;  // Firefox
+   }
+ 
+   dt-article > dt-code::-webkit-scrollbar,
+   dt-article section > dt-code::-webkit-scrollbar,
+   dt-article > dt-math[block]::-webkit-scrollbar,
+   dt-article section > dt-math[block]::-webkit-scrollbar {
+     display: none;  // Safari and Chrome
+   }
+ }
+ 
+ dt-article .citation {
+   color: #668;
+   cursor: pointer;
+ }
+ 
+ dt-include {
+   width: auto;
+   display: block;
+ }
+ 
+ dt-figure {
+   contain: layout style;
+ }
+ 
+ /* KaTeX */
+ 
+ .katex, .katex-prerendered {
+   contain: style;
+   display: inline-block;
+ }
+ 
+ /* Tables */
+ 
+ dt-article table {
+   border-collapse: collapse;
+   margin-bottom: 1.5rem;
+   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+ }
+ 
+ dt-article table th {
+   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+ }
+ 
+ dt-article table td {
+   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+ }
+ 
+ dt-article table tr:last-of-type td {
+   border-bottom: none;
+ }
+ 
+ dt-article table th,
+ dt-article table td {
+   font-size: 15px;
+   padding: 2px 8px;
+ }
+ 
+ dt-article table tbody :first-child td {
+   padding-top: 2px;
+ }
+ /*
+  * Copyright 2018 The Distill Template Authors
+  *
+  * Licensed under the Apache License, Version 2.0 (the "License");
+  * you may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at
+  *
+  *      http://www.apache.org/licenses/LICENSE-2.0
+  *
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+ 
+ span.katex-display {
+   text-align: left;
+   padding: 8px 0 8px 0;
+   margin: 0.5em 0 0.5em 1em;
+ }
+ 
+ span.katex {
+   -webkit-font-smoothing: antialiased;
+   color: rgba(0, 0, 0, 0.8);
+   font-size: 1.18em;
+ }
+ /*
+  * Copyright 2018 The Distill Template Authors
+  *
+  * Licensed under the Apache License, Version 2.0 (the "License");
+  * you may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at
+  *
+  *      http://www.apache.org/licenses/LICENSE-2.0
+  *
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+ 
+ @media print {
+ 
+   @page {
+     size: 8in 11in;
+     @bottom-right {
+       content: counter(page) " of " counter(pages);
+     }
+   }
+ 
+   html {
+     /* no general margins -- CSS Grid takes care of those */
+   }
+ 
+   p, code {
+     page-break-inside: avoid;
+   }
+ 
+   h2, h3 {
+     page-break-after: avoid;
+   }
+ 
+   dt-header {
+     visibility: hidden;
+   }
+ 
+   dt-footer {
+     display: none!important;
+   }
+ 
+ }
+ </style>
+<style>
+  .fake-img {
+    background: #bbb;
+    border: 1px solid rgba(73, 68, 68, 0.1);
+    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 12px;
+  }
+
+  .fake-img p {
+    font-family: monospace;
+    color: white;
+    text-align: left;
+    margin: 12px 0;
+    text-align: center;
+    font-size: 16px;
+  }
+</style>
+
+<script type="text/front-matter">
+  title: {{ meta_data.title[0] }}
+  description: {{ meta_data.description[0] }}
+  authors: 
+  {% for i in range(meta_data.authors|count) %}
+  - {{ meta_data.authors[i] }}: {{ meta_data.authors_url[i] }}
+  {% endfor %}
+  affiliations:
+  {% for i in range(meta_data.affiliations|count) %}
+  - {{ meta_data.affiliations[i] }}: {{ meta_data.affiliations_url[i] }}
+  {% endfor %}  
+  publishedDate: {{ meta_data.publisheddate[0] }}
+  updatedDate: {{ meta_data.updatedDate }}
+</script>
+
+<dt-header>
+  <style>
+    dt-header {
+      display: block;
+      position: relative;
+      height: 60px;
+      background-color: hsl(200, 60%, 15%);
+      width: 100%;
+      box-sizing: border-box;
+      z-index: 2;
+      color: rgba(0, 0, 0, 0.8);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    dt-header .content {
+      height: 70px;
+    }
+
+    dt-header a {
+      font-size: 16px;
+      height: 60px;
+      line-height: 60px;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.8);
+      padding: 22px 0;
+    }
+
+    dt-header a:hover {
+      color: rgba(255, 255, 255, 1);
+    }
+
+    dt-header svg {
+      width: 24px;
+      position: relative;
+      top: 4px;
+      margin-right: 2px;
+    }
+
+    @media(min-width: 1080px) {
+      dt-header {
+        height: 70px;
+      }
+
+      dt-header a {
+        height: 70px;
+        line-height: 70px;
+        padding: 28px 0;
+      }
+
+      dt-header .logo {}
+    }
+
+    dt-header svg path {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.8);
+      stroke-width: 3px;
+    }
+
+    dt-header .logo {
+      font-size: 17px;
+      font-weight: 200;
+    }
+
+    dt-header .nav {
+      float: right;
+      font-weight: 300;
+    }
+
+    dt-header .nav a {
+      font-size: 12px;
+      margin-left: 24px;
+      text-transform: uppercase;
+    }
+  </style>
+
+  <div class="content l-page">
+    <a href="/" class="logo">
+      <svg viewBox="-607 419 64 64">
+        <path
+          d="M-573.4,478.9c-8,0-14.6-6.4-14.6-14.5s14.6-25.9,14.6-40.8c0,14.9,14.6,32.8,14.6,40.8S-565.4,478.9-573.4,478.9z">
+        </path>
+      </svg>
+
+      Distill
+    </a>
+    <div class="nav">
+      <a href="/about/">About</a>
+      <a href="/prize/">Prize</a>
+      <a href="/journal/">Submit</a>
+    </div>
+  </div>
+</dt-header>
+
+<!-- <dt-title>
+  <h1>{{ meta_data.title[0] }}</h1>
+  <p>{{ meta_data.description[0] }}</p>
+</dt-title> -->
+
+<dt-article class="centered">
+    <h1>{{ meta_data.title[0] }}</h1>
+  <p>{{ meta_data.description[0] }}</p>
+<dt-byline></dt-byline>
+
+  {{ text|markdown }}
+  <!-- 
+    {% filter markdown %}
+    Your Markdown
+    =============
+    {% endfilter %}
+  -->
+</dt-article>
+
+<dt-appendix>
+
+  {{ appendix|markdown }}
+  <!-- If you have an appendix, a bibliography is automatically created and populated in it.
+  <h3>Appendix Section Title</h3>
+  <p>section content<p> -->
+
+</dt-appendix>
+
+<!-- https://web.hypothes.is/help/embedding-hypothesis-in-websites-and-platforms/ -->
+<!-- https://h.readthedocs.io/projects/client/en/latest/publishers/config/ -->
+<script type="application/json" class="js-hypothesis-config">
+  {
+    "showHighlights": true
+  }
+</script>
+<script async src="https://hypothes.is/embed.js"></script>

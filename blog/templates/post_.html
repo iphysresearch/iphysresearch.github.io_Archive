@@ -130,8 +130,14 @@
   <h2>A description of the article</h2>
   <dt-byline></dt-byline>
   <p>This is the first paragraph of the article.</p>
-  <p>We can also cite <dt-cite key="gregor2015draw"></dt-cite> external publications.</p>
+  <p>We can also cite <dt-cite key="gregor2015draw">123</dt-cite> external publications.</p>
+  <p>This is <a href="http://example.com/" title="Optional Title Here">an example</a> reference-style link.
+    Then, anywhere in the document, you define your link label on a line by itself like this:</p>
   <dt-byline></dt-byline>
+  <p>
+     cite <dt-cite key="gregor2016draw"> </dt-cite>
+  </p>
+  <p>Input <code>* list item 1</code> will create an unordered list - the <code>*</code> symbol can be replace with <code>+</code> or <code>-</code>.</p>
   <p>
     An example of inline code snippets: <dt-code language="python">import numpy as np</dt-code>
     For larger blocks of code, add a block attribute:
@@ -239,6 +245,13 @@
   author={Gregor, Karol and Danihelka, Ivo and Graves, Alex and Rezende, Danilo Jimenez and Wierstra, Daan},
   journal={arXivreprint arXiv:1502.04623},
   year={2015},
+  url={https://arxiv.org/pdf/1502.04623.pdf} 
+}
+@article{gregor2016draw,
+  title={DRAW: A recurrent neural network for image generation},
+  author={Gregor, Karol and Danihelka, Ivo and Graves, Alex and Rezende, Danilo Jimenez and Wierstra, Daan},
+  journal={arXivreprint arXiv:1502.04623},
+  year={2016},
   url={https://arxiv.org/pdf/1502.04623.pdf} 
 }
 </script>

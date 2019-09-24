@@ -1,0 +1,242 @@
+<!doctype html>
+<!-- <html lang="en"> -->
+
+<!-- <head> -->
+  <meta charset="utf-8">
+  <script src="https://distill.pub/template.v1.js"></script>
+  <!-- <script src="../static/js/template.v1.js"></script> -->
+  <!-- https://distill.pub/guide/ -->
+
+  <script type="text/front-matter">
+    title: "Article Title"
+  description: "Description of the post"
+  authors:
+  - Chris Olah: http://colah.github.io
+  - Shan Carter: http://shancarter.com
+  affiliations:
+  - Google Brain: http://g.co/brain
+  - Google Brain: http://g.co/brain
+</script>
+  <style>
+    .fake-img {
+      background: #bbb;
+      border: 1px solid rgba(73, 68, 68, 0.1);
+      box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 12px;
+    }
+
+    .fake-img p {
+      font-family: monospace;
+      color: white;
+      text-align: left;
+      margin: 12px 0;
+      text-align: center;
+      font-size: 16px;
+    }
+  </style>
+<!-- </head> -->
+
+<body>
+  <dt-header>
+    <style>
+      dt-header {
+        display: block;
+        position: relative;
+        height: 60px;
+        background-color: hsl(200, 60%, 15%);
+        width: 100%;
+        box-sizing: border-box;
+        z-index: 2;
+        color: rgba(0, 0, 0, 0.8);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+      }
+
+      dt-header .content {
+        height: 70px;
+      }
+
+      dt-header a {
+        font-size: 16px;
+        height: 60px;
+        line-height: 60px;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.8);
+        padding: 22px 0;
+      }
+
+      dt-header a:hover {
+        color: rgba(255, 255, 255, 1);
+      }
+
+      dt-header svg {
+        width: 24px;
+        position: relative;
+        top: 4px;
+        margin-right: 2px;
+      }
+
+      @media(min-width: 1080px) {
+        dt-header {
+          height: 70px;
+        }
+
+        dt-header a {
+          height: 70px;
+          line-height: 70px;
+          padding: 28px 0;
+        }
+
+        dt-header .logo {}
+      }
+
+      dt-header svg path {
+        fill: none;
+        stroke: rgba(255, 255, 255, 0.8);
+        stroke-width: 3px;
+      }
+
+      dt-header .logo {
+        font-size: 17px;
+        font-weight: 200;
+      }
+
+      dt-header .nav {
+        float: right;
+        font-weight: 300;
+      }
+
+      dt-header .nav a {
+        font-size: 12px;
+        margin-left: 24px;
+        text-transform: uppercase;
+      }
+    </style>
+    <div class="content l-page">
+      <a href="/" class="logo">
+        <svg viewBox="-607 419 64 64">
+          <path
+            d="M-573.4,478.9c-8,0-14.6-6.4-14.6-14.5s14.6-25.9,14.6-40.8c0,14.9,14.6,32.8,14.6,40.8S-565.4,478.9-573.4,478.9z">
+          </path>
+        </svg>
+
+        Distill
+      </a>
+      <div class="nav">
+        <a href="/about/">About</a>
+        <a href="/prize/">Prize</a>
+        <a href="/journal/">Submit</a>
+      </div>
+    </div>
+  </dt-header>
+
+  <dt-article class="centered">
+    <h1>Hello World</h1>
+    <h2>A description of the article</h2>
+    <dt-byline></dt-byline>
+    <p>This is the first paragraph of the article.</p>
+    <p>We can also cite <dt-cite key="gregor2015draw"></dt-cite> external publications.</p>
+    <dt-byline></dt-byline>
+    <p>
+      An example of inline code snippets: <dt-code language="html">let x = 10;</dt-code>
+      For larger blocks of code, add a block attribute:
+      <dt-code block language="javascript">
+        var x = 25;
+        function(x){
+        return x * x;
+        }
+      </dt-code>
+    </p>
+    <dt-byline></dt-byline>
+    <p>
+      Just wrap the text you would like to show up in a footnote in a dt-fn tag.
+      The number of the footnote will be automatically generated. <dt-fn>This will become a hoverable footnote.</dt-fn>
+    </p>
+    <hr>
+    <h2>Layouts</h2>
+    <p>The main text column is referred to as the body. It is the assumed layout of any direct descendents of the
+      <code>dt-article</code> element.</p>
+    <div class="fake-img l-body">
+      <p>.l-body</p>
+    </div>
+    <p>For images you want to display a little larger, try these:</p>
+    <div class="fake-img l-middle">
+      <p>.l-middle</p>
+    </div>
+    <div class="fake-img l-page">
+      <p>.l-page</p>
+    </div>
+    <p>All of these have an <dt-code><code>outset</code></dt-code> variant if you want to poke out from the body text a
+      little bit. For instance:</p>
+    <div class="fake-img l-body-outset">
+      <p>.l-body-outset</p>
+    </div>
+    <div class="fake-img l-middle-outset">
+      <p>.l-middle-outset</p>
+    </div>
+    <div class="fake-img l-page-outset">
+      <p>.l-page-outset</p>
+    </div>
+    <p>Occasionally you’ll want to use the full browser width. For this, use <dt-code><code>.l-screen</code></dt-code>.
+      You can also inset the element a little from the edge of the browser by using the inset variant.</p>
+    <div class="fake-img l-screen">
+      <p>.l-screen</p>
+    </div>
+    <div class="fake-img l-screen-inset">
+      <p>.l-screen-inset</p>
+    </div>
+    <p>Often you want to position smaller images so as not to completely interrupt the flow of your text. Or perhaps you
+      want to put some text in the margin as an aside or to signal that it’s optional content. For these cases we’ll use
+      the float-based layouts.</p>
+    <div class="fake-img l-body side">
+      <p>.l-body.side</p>
+    </div>
+    <div class="fake-img l-middle side">
+      <p>.l-middle.side</p>
+    </div>
+    <div class="fake-img l-page side">
+      <p>.l-page.side</p>
+    </div>
+    <p>They are all floated to the right and anchored to the right-hand edge of the position you specify. By default,
+      each will take up approximately half of the width of the standard layout position, but you can override the width
+      with a more specific selector. </p>
+    <div class="fake-img l-gutter">
+      <p>.l-gutter</p>
+    </div>
+    <p>The final layout is for marginalia, asides, and footnotes. It does not interrupt the normal flow of
+      <code>.l-body</code> sized text except on mobile screen sizes.</p>
+    <p>You can also use an alternate centered layout by adding a <dt-code><code>centered</code></dt-code> class to the
+      <dt-code><code>dt-article</code></dt-code> element.</p>
+    <dt-code block="" language="html">
+      <pre><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt-article</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>centered<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Hello World<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt-article</span><span class="token punctuation">&gt;</span></span></code></pre>
+    </dt-code>
+    <p>You can toggle it on this article by <a
+        onclick="document.querySelector('dt-article').classList.toggle('centered');">clicking here</a></p>
+    <section class="centered">
+
+    </section>
+  </dt-article>
+
+  <dt-appendix>
+
+    If you have an appendix, a bibliography is automatically created and populated in it.
+    <h3>Appendix Section Title</h3>
+    <p>section content<p>
+
+  </dt-appendix>
+
+  <script type="text/bibliography">
+    @article{gregor2015draw,
+    title={DRAW: A recurrent neural network for image generation},
+    author={Gregor, Karol and Danihelka, Ivo and Graves, Alex and Rezende, Danilo Jimenez and Wierstra, Daan},
+    journal={arXivreprint arXiv:1502.04623},
+    year={2015},
+    url={https://arxiv.org/pdf/1502.04623.pdf} 
+  }
+</script>
+
+</body>
+
+<!-- </html> -->
