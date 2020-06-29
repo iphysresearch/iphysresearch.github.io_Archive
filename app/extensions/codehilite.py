@@ -93,10 +93,7 @@ class CodeHilite(object):
                 lexer = get_lexer_by_name(self.lang)
             except ValueError:
                 try:
-                    if self.guess_lang:
-                        lexer = guess_lexer(self.src)
-                    else:
-                        lexer = get_lexer_by_name('text')
+                    lexer = guess_lexer(self.src) if self.guess_lang else get_lexer_by_name('text')
                 except ValueError:
                     lexer = get_lexer_by_name('text')
             formatter = get_formatter_by_name('html',
